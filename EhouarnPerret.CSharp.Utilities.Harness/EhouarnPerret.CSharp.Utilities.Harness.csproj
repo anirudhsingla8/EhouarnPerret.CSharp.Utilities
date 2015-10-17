@@ -37,4 +37,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\EhouarnPerret.CSharp.Utilities.Core\EhouarnPerret.CSharp.Utilities.Core.csproj">
+      <Project>{6907DB1F-73E5-42CD-B84D-A23876A67F8D}</Project>
+      <Name>EhouarnPerret.CSharp.Utilities.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

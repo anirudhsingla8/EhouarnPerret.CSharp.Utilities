@@ -12,17 +12,16 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using NUnit.Framework;
 using System;
+using System.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Test
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    [TestFixture()]
-    public class Test
+    public static class ControlExtensions
     {
-        [Test()]
-        public void TestCase()
+        public static void Center(this Control control)
         {
+            
         }
     }
 }
