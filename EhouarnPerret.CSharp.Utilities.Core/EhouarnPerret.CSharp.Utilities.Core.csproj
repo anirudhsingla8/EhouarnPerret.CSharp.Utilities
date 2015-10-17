@@ -8,6 +8,7 @@
     <RootNamespace>EhouarnPerret.CSharp.Utilities.Core</RootNamespace>
     <AssemblyName>EhouarnPerret.CSharp.Utilities.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
