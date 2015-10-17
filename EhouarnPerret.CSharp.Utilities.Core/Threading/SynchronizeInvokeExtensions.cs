@@ -17,10 +17,10 @@ using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class SynchronizedInvokerExtensions
+    public static class SynchronizeInvokeExtensions
     {
-        public static void Invoke<TSynchronizedInvoker>(this TSynchronizedInvoker synchronizedInvoker, Action action)
-            where TSynchronizedInvoker : ISynchronizeInvoke
+        public static void Invoke<TSynchronizeInvoke>(this TSynchronizeInvoke synchronizedInvoker, Action action)
+            where TSynchronizeInvoke : ISynchronizeInvoke
         {
             if (synchronizedInvoker.InvokeRequired)
             {
@@ -32,8 +32,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static TResult Invoke<TSynchronizedInvoker, TResult>(this TSynchronizedInvoker synchronizedInvoker, Func<TResult> func)
-            where TSynchronizedInvoker : ISynchronizeInvoke
+        public static TResult Invoke<TSynchronizeInvoke, TResult>(this TSynchronizeInvoke synchronizedInvoker, Func<TResult> func)
+            where TSynchronizeInvoke : ISynchronizeInvoke
         {
             if (synchronizedInvoker.InvokeRequired)
             {
@@ -45,8 +45,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static void Invoke<TSynchronizedInvoker>(this TSynchronizedInvoker synchronizedInvoker, Action<TSynchronizedInvoker> action)
-            where TSynchronizedInvoker : ISynchronizeInvoke
+        public static void Invoke<TSynchronizeInvoke>(this TSynchronizeInvoke synchronizedInvoker, Action<TSynchronizeInvoke> action)
+            where TSynchronizeInvoke : ISynchronizeInvoke
         {
             if (synchronizedInvoker.InvokeRequired)
             {
@@ -58,8 +58,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static TResult Invoke<TSynchronizedInvoker, TResult>(this TSynchronizedInvoker synchronizedInvoker, Func<TSynchronizedInvoker, TResult> func)
-            where TSynchronizedInvoker : ISynchronizeInvoke
+        public static TResult Invoke<TSynchronizeInvoke, TResult>(this TSynchronizeInvoke synchronizedInvoker, Func<TSynchronizeInvoke, TResult> func)
+            where TSynchronizeInvoke : ISynchronizeInvoke
         {
             if (synchronizedInvoker.InvokeRequired)
             {
