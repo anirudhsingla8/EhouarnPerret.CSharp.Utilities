@@ -5,13 +5,15 @@
 // Copyright: ART logics © All Right Reserved.
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Harness
 {
-    public class MyClass
+    public class Program
     {
-        public MyClass()
+        public static void Main(params String[] arguments)
         {
+            Console.WriteLine(@"Hello World!");
+
+            Console.ReadKey();
         }
     }
 }
-
