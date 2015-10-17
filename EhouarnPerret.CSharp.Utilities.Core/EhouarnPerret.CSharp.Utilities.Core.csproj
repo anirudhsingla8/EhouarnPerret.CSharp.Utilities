@@ -38,6 +38,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Windows\Forms\ControlExtensions.cs" />
     <Compile Include="Collections\Generic\KeyedCollection.cs" />
+    <Compile Include="Drawing\GraphicsExtensions.cs" />
+    <Compile Include="Threading\SynchronizedInvokerExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -47,5 +49,11 @@
     <Folder Include="Windows\" />
     <Folder Include="Windows\Forms\" />
     <Folder Include="Drawing\" />
+    <Folder Include="Windows\Forms\Animation\" />
+    <Folder Include="Collections\Generic\Trees\" />
+    <Folder Include="Collections\Generic\Dictionaries\" />
+    <Folder Include="Collections\Generic\Lists\" />
+    <Folder Include="Threading\" />
+    <Folder Include="Threading\ThreadPool\" />
   </ItemGroup>
 </Project>
