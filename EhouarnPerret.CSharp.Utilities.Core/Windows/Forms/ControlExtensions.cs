@@ -23,6 +23,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             
         }
+
+        public static void CenterHorizontally(this Control control)
+        {
+            
+        }
+
+        public static void CenterVertically(this Control control)
+        {
+            
+        }
     }
 }
 
