@@ -40,6 +40,8 @@
     <Compile Include="Collections\Generic\KeyedCollection.cs" />
     <Compile Include="Drawing\GraphicsExtensions.cs" />
     <Compile Include="Threading\SynchronizeInvokeExtensions.cs" />
+    <Compile Include="IProperties.cs" />
+    <Compile Include="IPropertiesParent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -55,5 +57,6 @@
     <Folder Include="Collections\Generic\Lists\" />
     <Folder Include="Threading\" />
     <Folder Include="Threading\ThreadPool\" />
+    <Folder Include="Patterns\" />
   </ItemGroup>
 </Project>
