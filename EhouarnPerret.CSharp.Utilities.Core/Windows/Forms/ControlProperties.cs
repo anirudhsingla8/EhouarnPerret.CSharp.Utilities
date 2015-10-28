@@ -13,17 +13,28 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Collections.Generic;
+using System.Windows.Forms;
+using System.Dynamic;
 
-namespace EhouarnPerret.CSharp.Utilities.Harness
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class Program
+    public abstract class ControlProperties
     {
-        public static void Main(params String[] arguments)
+        protected ControlProperties(Control parent)
         {
-            Console.WriteLine(@"Hello World!");
-
-            Console.ReadKey();
         }
     }
+
+    public abstract class ControlProperties<TParent> : ControlProperties
+        where TParent : Control
+    {
+        protected ControlProperties(TParent parent)
+            : base(parent)
+        {
+            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+        }
+
+        protected TParent Parent { get; }
+    }
 }
+

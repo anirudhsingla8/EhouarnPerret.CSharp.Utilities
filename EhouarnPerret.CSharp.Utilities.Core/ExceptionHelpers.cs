@@ -13,17 +13,23 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Harness
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class Program
+    public static class ExceptionHelpers
     {
-        public static void Main(params String[] arguments)
+        public static T ThrowIfNull<T>(T parameterValue, String parameterName)
+            where T : class
         {
-            Console.WriteLine(@"Hello World!");
-
-            Console.ReadKey();
+            if (parameterValue == null)
+            {
+                throw new ArgumentNullException(parameterName);
+            }
+            else
+            {
+                return parameterValue;
+            }
         }
     }
 }
+

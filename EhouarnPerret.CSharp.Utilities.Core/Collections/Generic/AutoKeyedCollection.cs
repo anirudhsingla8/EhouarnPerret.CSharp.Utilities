@@ -13,6 +13,7 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
@@ -22,20 +23,40 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector)
             : base()
         {
-            this.ItemKeySelector = itemKeySelector;
+            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+        }
+        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEnumerable<TItem> items)
+            : base()
+        {
+            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            this.Add(items);
         }
         public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer)
             : base(comparer)
         {
-            this.ItemKeySelector = itemKeySelector;
+            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
         }
+        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, IEnumerable<TItem> items)
+            : base(comparer)
+        {
+            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            this.Add(items);
+        }
+
         public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold)
             : base(comparer, dictionaryThreshold)
         {
-            this.ItemKeySelector = itemKeySelector;
+            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+        }
+        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold, IEnumerable<TItem> items)
+            : base(comparer, dictionaryThreshold)
+        {
+            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            this.Add(items);
         }
 
-        private Func<TItem, TKey> ItemKeySelector { get; }
+        private  Func<TItem, TKey> ItemKeySelector { get; }
+
 
         protected override sealed TKey GetKeyForItem(TItem item)
         {
