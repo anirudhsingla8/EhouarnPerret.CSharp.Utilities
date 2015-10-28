@@ -37,11 +37,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Windows\Forms\ControlExtensions.cs" />
-    <Compile Include="Collections\Generic\KeyedCollection.cs" />
     <Compile Include="Drawing\GraphicsExtensions.cs" />
     <Compile Include="Threading\SynchronizeInvokeExtensions.cs" />
     <Compile Include="IProperties.cs" />
     <Compile Include="IPropertiesParent.cs" />
+    <Compile Include="Collections\Generic\AutoKeyedCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
