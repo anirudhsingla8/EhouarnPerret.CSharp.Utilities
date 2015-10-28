@@ -42,6 +42,7 @@
     <Compile Include="IProperties.cs" />
     <Compile Include="IPropertiesParent.cs" />
     <Compile Include="Collections\Generic\AutoKeyedCollection.cs" />
+    <Compile Include="Collections\Generic\CollectionExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
