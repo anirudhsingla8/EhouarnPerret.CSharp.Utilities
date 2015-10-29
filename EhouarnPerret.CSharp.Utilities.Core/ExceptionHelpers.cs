@@ -30,6 +30,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return parameterValue;
             }
         }
+
+        public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName)
+        {
+            if (String.IsNullOrEmpty(parameterValue))
+            {
+                throw new ArgumentNullException(parameterName);
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
     }
 }
 

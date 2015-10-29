@@ -49,6 +49,8 @@
     <Compile Include="ExceptionHelpers.cs" />
     <Compile Include="Reflection\Constructor.cs" />
     <Compile Include="Reflection\AccessModifiers.cs" />
+    <Compile Include="Patterns\PropertyChangesNotification\INotifyPropertyChanges.cs" />
+    <Compile Include="Patterns\PropertyChangesNotification\PropertyChangesNotifier.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -67,5 +69,6 @@
     <Folder Include="Patterns\" />
     <Folder Include="Patterns\Disposition\" />
     <Folder Include="Reflection\" />
+    <Folder Include="Patterns\PropertyChangesNotification\" />
   </ItemGroup>
 </Project>
