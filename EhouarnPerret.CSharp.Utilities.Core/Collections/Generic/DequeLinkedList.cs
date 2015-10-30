@@ -1,4 +1,4 @@
-﻿//
+//
 //  Copyright 2015  Ehouarn Perret
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,27 +12,15 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System.Windows.Forms;
+
+using System;
+using System.Threading.Tasks;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class ControlProperties
-    {
-        internal ControlProperties(Control parent)
-        {
-        }
-    }
-
-    public abstract class ControlProperties<TParent> : ControlProperties
-        where TParent : Control
-    {
-        protected ControlProperties(TParent parent)
-            : base(parent)
-        {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
-        }
-
-        protected TParent Parent { get; }
-    }
+    // TODO: Implementation
+//    public class DequeLinkedList<T> : IDeque<T>
+//    {
+//
+//    }
 }
-

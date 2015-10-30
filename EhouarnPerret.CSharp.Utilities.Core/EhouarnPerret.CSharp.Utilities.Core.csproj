@@ -51,6 +51,18 @@
     <Compile Include="Reflection\AccessModifiers.cs" />
     <Compile Include="Patterns\PropertyChangesNotification\INotifyPropertyChanges.cs" />
     <Compile Include="Patterns\PropertyChangesNotification\PropertyChangesNotifier.cs" />
+    <Compile Include="Collections\Generic\IObservableCollection.cs" />
+    <Compile Include="Collections\Generic\IObservableDictionary.cs" />
+    <Compile Include="Collections\Generic\IBindableDictionary.cs" />
+    <Compile Include="Collections\Generic\IOrderedDictionary.cs" />
+    <Compile Include="Drawing\FastPointerlessBitmap.cs" />
+    <Compile Include="ByteExtensions.cs" />
+    <Compile Include="ByteBitIndex.cs" />
+    <Compile Include="Collections\Generic\IQueue.cs" />
+    <Compile Include="Collections\Generic\IStack.cs" />
+    <Compile Include="Collections\Generic\IDeque.cs" />
+    <Compile Include="Collections\Generic\DequeLinkedList.cs" />
+    <Compile Include="Collections\Generic\DequeArray.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -61,14 +73,14 @@
     <Folder Include="Windows\Forms\" />
     <Folder Include="Drawing\" />
     <Folder Include="Windows\Forms\Animation\" />
-    <Folder Include="Collections\Generic\Trees\" />
-    <Folder Include="Collections\Generic\Dictionaries\" />
-    <Folder Include="Collections\Generic\Lists\" />
     <Folder Include="Threading\" />
     <Folder Include="Threading\ThreadPool\" />
     <Folder Include="Patterns\" />
     <Folder Include="Patterns\Disposition\" />
     <Folder Include="Reflection\" />
     <Folder Include="Patterns\PropertyChangesNotification\" />
+    <Folder Include="Patterns\Design\" />
+    <Folder Include="Patterns\Design\Command\" />
+    <Folder Include="Net\Mail\" />
   </ItemGroup>
 </Project>

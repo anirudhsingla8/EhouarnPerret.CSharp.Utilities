@@ -12,27 +12,23 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System.Windows.Forms;
+using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class ControlProperties
+    /// <summary>
+    /// Bit in Byte
+    /// </summary>
+    public enum ByteBitIndex : byte
     {
-        internal ControlProperties(Control parent)
-        {
-        }
-    }
-
-    public abstract class ControlProperties<TParent> : ControlProperties
-        where TParent : Control
-    {
-        protected ControlProperties(TParent parent)
-            : base(parent)
-        {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
-        }
-
-        protected TParent Parent { get; }
+        Bit0 = 0x00,
+        Bit1 = 0x01,
+        Bit2 = 0x02,
+        Bit3 = 0x03,
+        Bit4 = 0x04,
+        Bit5 = 0x05,
+        Bit6 = 0x06,
+        Bit7 = 0x07,
     }
 }
 

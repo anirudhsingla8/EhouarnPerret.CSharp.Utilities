@@ -12,27 +12,17 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System.Windows.Forms;
+using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class ControlProperties
+    public interface IOrderedDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IOrderedDictionary
     {
-        internal ControlProperties(Control parent)
-        {
-        }
-    }
-
-    public abstract class ControlProperties<TParent> : ControlProperties
-        where TParent : Control
-    {
-        protected ControlProperties(TParent parent)
-            : base(parent)
-        {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
-        }
-
-        protected TParent Parent { get; }
+        new TValue this[Int32 index] { get; set; }  
+        new int Add(TKey key, TValue value);  
+        void Insert(int index, TKey key, TValue value);  
     }
 }
 
