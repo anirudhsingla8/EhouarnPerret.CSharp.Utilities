@@ -13,13 +13,19 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class EnumerableExtensions
+    public static class EnumerableExtensions
     {
-        public EnumerableExtensions()
+        public static IEnumerable<T> AllValues<T> (this IEnumerable<T?> source)
+            where T : struct
         {
+            return source
+                .Where(item => item.HasValue)
+                .Select(item => item.Value);
         }
     }
 }
