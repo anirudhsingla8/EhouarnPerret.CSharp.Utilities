@@ -63,6 +63,9 @@
     <Compile Include="Collections\Generic\IDeque.cs" />
     <Compile Include="Collections\Generic\DequeLinkedList.cs" />
     <Compile Include="Collections\Generic\DequeArray.cs" />
+    <Compile Include="Numeric\StatisticExtensions.cs" />
+    <Compile Include="Numeric\Matrix.cs" />
+    <Compile Include="Linq\EnumerableExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -82,5 +85,8 @@
     <Folder Include="Patterns\Design\" />
     <Folder Include="Patterns\Design\Command\" />
     <Folder Include="Net\Mail\" />
+    <Folder Include="Numeric\" />
+    <Folder Include="Data\" />
+    <Folder Include="Linq\" />
   </ItemGroup>
 </Project>
