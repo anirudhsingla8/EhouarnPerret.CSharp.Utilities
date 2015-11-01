@@ -67,6 +67,8 @@
     <Compile Include="Numeric\StatisticExtensions.cs" />
     <Compile Include="Numeric\Matrix.cs" />
     <Compile Include="Linq\EnumerableExtensions.cs" />
+    <Compile Include="Numeric\SummationStrategy.cs" />
+    <Compile Include="Numeric\SummationExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -89,5 +91,7 @@
     <Folder Include="Numeric\" />
     <Folder Include="Data\" />
     <Folder Include="Linq\" />
+    <Folder Include="Text\" />
+    <Folder Include="Text\RegularExpressions\" />
   </ItemGroup>
 </Project>

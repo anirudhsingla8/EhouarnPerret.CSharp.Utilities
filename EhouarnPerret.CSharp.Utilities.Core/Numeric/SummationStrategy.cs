@@ -1,4 +1,4 @@
-﻿//
+//
 //  Copyright 2015  Ehouarn Perret
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,29 +12,13 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class EnumerableExtensions
+    public enum SummationStrategy : byte
     {
-        public static IEnumerable<T> AllValues<T> (this IEnumerable<T?> source)
-            where T : struct
-        {
-            return source
-                .Where(item => item.HasValue)
-                .Select(item => item.Value);
-        }
-
-        public static T? ApplyIfAnyValuesTo<T> (this IEnumerable<T?> source, Func<IEnumerable<T>, T> func)
-            where T : struct
-        {
-            var values = source.AllValues();
-
-            return values.Any() ? func(values) : null; 
-        }
+        Naive = 0x00,
+        Kahan = 0x01,
+        Pairwise = 0x02,
     }
 }
-

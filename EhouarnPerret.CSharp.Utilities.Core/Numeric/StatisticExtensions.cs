@@ -91,54 +91,45 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return actualValues.Any() ? actualValues.StandardDeviation() : null;
         }
 
-        public static Single SumNaive(this IEnumerable<Single> source)
-        {
-
-        }
-        public static Double SumNaive(this IEnumerable<Double> source)
-        {
-
-        }
-        public static Decimal SumNaive(this IEnumerable<Decimal> source)
-        {
-
-        }
-        public static Single? SumNaive(this IEnumerable<Single?> source)
-        {
-        }
-        public static Double? SumNaive(this IEnumerable<Double?> source)
-        {
-        }
-        public static Decimal? SumNaive(this IEnumerable<Decimal?> source)
-        {
-        }
-
-        public static Single MeanNaive(this IEnumerable<Single> source)
-        {
-            return source.Average();
-        }
-        public static Double MeanNaive(this IEnumerable<Double> source)
-        {
-            return source.Average();
-        }
-        public static Decimal? MeanNaive(this IEnumerable<Decimal?> source)
-        {
-            return source.Average();
-        }
-        public static Single? MeanNaive(this IEnumerable<Single?> source)
-        {
-            return source.Average();
-        }
-        public static Double? MeanNaive(this IEnumerable<Double?> source)
-        {
-            return source.Average();
-        }
-
         public static Single MeanCompensated(this IEnumerable<Single> source)
         {
+            var sum = default(Single);
+            var lowOrderBitsCompensation = default(Single);
+
+            foreach (var item in source)
+            {
+                var compensatedItem = item - lowOrderBitsCompensation;
+                var compensatedSum = sum + compensatedItem;
+
+                lowOrderBitsCompensation = (compensatedSum - sum) - compensatedItem;
+
+                sum = compensatedSum;
+            }
+
+            return sum;
         }
         public static Double MeanCompensated(this IEnumerable<Double> source)
         {
+            var sum = default(Single);
+            var lowOrderBitsCompensation = default(Single);
+
+            foreach (var item in source)
+            {
+                // Does our dear compiler sufficiently aggressive and optimizing?
+                // t = sum + y; 
+                // lowOrderBitsCompensation = (t - sum) - y; 
+                // to 
+                // ((sum + y) - sum) - y; 
+                // then to lowOrderBitsCompensation = 0;
+                var compensatedItem = item - lowOrderBitsCompensation;
+                var compensatedSum = sum + compensatedItem;
+
+                lowOrderBitsCompensation = (compensatedSum - sum) - compensatedItem;
+
+                sum = compensatedSum;
+            }
+
+            return sum;
         }
         public static Decimal MeanCompensated(this IEnumerable<Decimal> source)
         {
