@@ -13,11 +13,10 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface INotifyPropertyChanges : INotifyPropertyChanged, INotifyPropertyChanging
+    internal interface IDisposable : System.IDisposable, INotifyObjectDisposed, INotifyObjectDisposing
     {
     }
 }

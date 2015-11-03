@@ -18,7 +18,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class GraphicsExtensions
     {
-        
     }
 }
 

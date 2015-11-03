@@ -19,31 +19,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class CollectionExtensions
     {
-        /// <summary>
-        /// Add the specified items.
-        /// </summary>
-        /// <param name="collection">Collection.</param>
-        /// <param name="items">Items.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static void Add<T>(this ICollection<T> collection, IEnumerable<T> items)
+        public static void Add<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
         {
-            foreach (var item in items) 
+            foreach (var collection in collections)
             {
-                collection.Add(item);
+                foreach (var item in collection) 
+                {
+                    collection.Add(item);
+                }
             }
         }
 
-        /// <summary>
-        /// Remove the specified items if any.
-        /// </summary>
-        /// <param name="collection">Collection.</param>
-        /// <param name="items">Items.</param>
-        /// <typeparam name="T">The 1st type parameter.</typeparam>
-        public static IEnumerable<Boolean> Remove<T>(this ICollection<T> collection, IEnumerable<T> items)
+        public static IEnumerable<Boolean> Remove<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
         {
-            foreach (var item in items)
+            foreach (var collection in collections)
             {
-                yield return collection.Remove(item);
+                foreach (var item in collection) 
+                {
+                    yield return collection.Remove(item);
+                }
             }
         }
     }

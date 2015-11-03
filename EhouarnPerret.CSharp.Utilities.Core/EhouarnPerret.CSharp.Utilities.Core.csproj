@@ -56,7 +56,6 @@
     <Compile Include="Collections\Generic\IObservableDictionary.cs" />
     <Compile Include="Collections\Generic\IBindableDictionary.cs" />
     <Compile Include="Collections\Generic\IOrderedDictionary.cs" />
-    <Compile Include="Drawing\FastPointerlessBitmap.cs" />
     <Compile Include="ByteExtensions.cs" />
     <Compile Include="ByteBitIndex.cs" />
     <Compile Include="Collections\Generic\IQueue.cs" />
@@ -69,6 +68,11 @@
     <Compile Include="Linq\EnumerableExtensions.cs" />
     <Compile Include="Numeric\SummationStrategy.cs" />
     <Compile Include="Numeric\SummationExtensions.cs" />
+    <Compile Include="Collections\Generic\ArrayExtensions.cs" />
+    <Compile Include="Patterns\Disposition\IDisposable.cs" />
+    <Compile Include="Patterns\Disposition\INotifyObjectDisposed.cs" />
+    <Compile Include="Patterns\Disposition\INotifyObjectDisposing.cs" />
+    <Compile Include="Drawing\FastBitmap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -93,5 +97,6 @@
     <Folder Include="Linq\" />
     <Folder Include="Text\" />
     <Folder Include="Text\RegularExpressions\" />
+    <Folder Include="Numeric\Algorithms\" />
   </ItemGroup>
 </Project>

@@ -13,8 +13,8 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -270,7 +270,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return variance;
         }
-
 
         public static Double Mode(this IEnumerable<Double> source)
         {

@@ -16,8 +16,25 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class FastPointerlessBitmap : Disposable
+    public static class ArrayExtensions
     {
+        public static T[] Concat<T>(this T[] inputArray, params T[][] arraysToConcatenate)
+        {
+            var length = arraysToConcatenate.Sum(array => array.Length);
+
+            var outputArray = new T[length];
+
+            var index = 0;
+
+            foreach (var array in arraysToConcatenate) 
+            {
+                array.CopyTo(outputArray, index);
+
+                index += array.Length;
+            }
+
+            return outputArray;
+        }
     }
 }
 

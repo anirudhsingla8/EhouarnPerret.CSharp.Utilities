@@ -12,78 +12,94 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System;
-using System.CodeDom;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class Disposable : IDisposable
+    internal abstract class Disposable : IDisposable
     {
         ~Disposable()
+        {
+            this.Destruct();
+        }
+
+        protected virtual void Destruct()
         {
             this.Dispose(false);
         }
 
-        private Object SyncRoot { get; } = new Object();
-
-        private Boolean _disposed = false;
-
-        public event EventHandler Disposing;
-        public event EventHandler Disposed;
-
-        protected virtual void OnDisposed(EventArgs e)
+        protected virtual void FreeManagedResources()
         {
-            this.Disposed?.Invoke(this, e);
         }
-        protected virtual void OnDisposing(EventArgs e)
+
+        protected virtual void FreeUnmanagedResources()
+        {
+        }
+
+        /// <summary>
+        /// Raises the Disposing Event.
+        /// </summary>
+        /// <param name="e">Event Arguments.</param>
+        protected virtual void OnDisposing(System.EventArgs e)
         {
             this.Disposing?.Invoke(this, e);
         }
 
-        protected virtual void OnFreeManagedResources()
+        /// <summary>
+        /// Raises the Disposed Event.
+        /// </summary>
+        /// <param name="e">Event Arguments.</param>
+        protected virtual void OnDisposed(System.EventArgs e)
         {
-        }
-        protected virtual void OnFreeUnmanagedResources()
-        {
+            this.Disposed?.Invoke(this, e);
         }
 
-        protected void Dispose(Boolean disposing)
-        {
-            lock (this.SyncRoot)
-            {
-                if (this._disposed)
-                {
-                    // TODO: brings some about the object name... 
-                    // We cannot get the instance name at runtime since the symbols are lost: aw~~
-                    throw new ObjectDisposedException(String.Empty);
-                }
-                else
-                {
-                    if (disposing)
-                    {
-                        this.OnDisposing(EventArgs.Empty);
+        private System.Object SyncRoot { get; } = new System.Object();
 
-                        // Free any other managed objects here.
-                        this.OnFreeManagedResources();
-                    }
+        #region INotifyObjectDisposing Implementation
+        public event System.EventHandler Disposing;
+        public System.Boolean IsDisposing { get; private set; }
+        #endregion
 
-                    // Free any unmanaged objects here.
-                    this.OnFreeUnmanagedResources();
-
-                    this._disposed = true;
-
-                    this.OnDisposed(EventArgs.Empty);
-                }
-            }
-        }
+        #region INotifyObjectDisposed Implementation
+        public event System.EventHandler Disposed;
+        public System.Boolean IsDisposed { get; private set; }
+        #endregion
 
         #region IDisposable Implementation
         public void Dispose()
         {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);   
+            lock (this.SyncRoot)
+            {
+                this.Dispose(true);
+                System.GC.SuppressFinalize(this);
+            }
         }
+
         #endregion
+
+        private void Dispose(System.Boolean disposing)
+        {
+            lock (this.SyncRoot)
+            {
+                if (!this.IsDisposed)
+                {
+                    if (disposing)
+                    {
+                        this.OnDisposing(System.EventArgs.Empty);
+
+                        this.IsDisposing = true;
+                        this.FreeManagedResources();
+                        this.IsDisposing = false;
+                    }
+
+                    this.FreeUnmanagedResources();
+
+                    this.IsDisposed = true;
+
+                    this.OnDisposed(System.EventArgs.Empty);
+                }
+            }
+        }
     }
 }
 
