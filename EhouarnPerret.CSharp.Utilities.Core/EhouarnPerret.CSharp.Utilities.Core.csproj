@@ -75,6 +75,7 @@
     <Compile Include="Drawing\FastBitmap.cs" />
     <Compile Include="Collections\Generic\BlockingCollectionExtensions.cs" />
     <Compile Include="IO\Ports\SerialPortExtensions.cs" />
+    <Compile Include="Net\Sockets\SocketExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -102,5 +103,6 @@
     <Folder Include="Numeric\Algorithms\" />
     <Folder Include="IO\" />
     <Folder Include="IO\Ports\" />
+    <Folder Include="Net\Sockets\" />
   </ItemGroup>
 </Project>
