@@ -74,6 +74,7 @@
     <Compile Include="Patterns\Disposition\INotifyObjectDisposing.cs" />
     <Compile Include="Drawing\FastBitmap.cs" />
     <Compile Include="Collections\Generic\BlockingCollectionExtensions.cs" />
+    <Compile Include="IO\Ports\SerialPortExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -99,5 +100,7 @@
     <Folder Include="Text\" />
     <Folder Include="Text\RegularExpressions\" />
     <Folder Include="Numeric\Algorithms\" />
+    <Folder Include="IO\" />
+    <Folder Include="IO\Ports\" />
   </ItemGroup>
 </Project>
