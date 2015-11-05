@@ -73,6 +73,7 @@
     <Compile Include="Patterns\Disposition\INotifyObjectDisposed.cs" />
     <Compile Include="Patterns\Disposition\INotifyObjectDisposing.cs" />
     <Compile Include="Drawing\FastBitmap.cs" />
+    <Compile Include="Collections\Generic\BlockingCollectionExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
