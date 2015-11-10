@@ -17,157 +17,230 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class SummationExtensions
-    {
-        public static Double Sum(this IEnumerable<Double> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-        }
-        public static Single Sum(this IEnumerable<Single> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-        }
-        public static Decimal Sum(this IEnumerable<Decimal> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-            switch (summationStrategy)
-            {
-                case SummationStrategy.Naive:
-                    break;
-
-                case SummationStrategy.Kahan:
-                    break;
-
-                case SummationStrategy.Pairwise:
-                    break;
-
-                default:
-                    break;
-            }
-        }
-       
-        public static Double? Sum(this IEnumerable<Single?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-        }
-        public static Single? Sum(this IEnumerable<Double?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-        }
-        public static Decimal? Sum(this IEnumerable<Decimal?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-        }
-
-        public static Single SumNaive(this IEnumerable<Single> source)
-        {
-            var sum = default(Single);
-
-            foreach (var item in source)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-        public static Double SumNaive(this IEnumerable<Double> source)
-        {
-            var sum = default(Double);
-
-            foreach (var item in source)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-        public static Decimal SumNaive(this IEnumerable<Decimal> source)
-        {
-            var sum = default(Decimal);
-
-            foreach (var item in source)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-        public static Single? SumNaive(this IEnumerable<Single?> source)
-        {
-            var sum = default(Single?);
-
-            foreach (var item in source)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-        public static Double? SumNaive(this IEnumerable<Double?> source)
-        {
-            var sum = default(Double?);
-
-            foreach (var item in source)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-        public static Decimal? SumNaive(this IEnumerable<Decimal?> source)
-        {
-            var sum = default(Decimal?);
-
-            foreach (var item in source)
-            {
-                sum += item;
-            }
-
-            return sum;
-        }
-
-        public static Single SumKahan(this IEnumerable<Single> source)
-        {
-
-        }
-        public static Double SumKahan(this IEnumerable<Double> source)
-        {
-
-        }
-        public static Decimal SumKahan(this IEnumerable<Decimal> source)
-        {
-
-        }
-        public static Single? SumKahan(this IEnumerable<Single?> source)
-        {
-            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
-        }
-        public static Double? SumKahan(this IEnumerable<Double?> source)
-        {
-            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
-        }
-        public static Decimal? SumKahan(this IEnumerable<Decimal?> source)
-        {
-            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
-        }
-    
-        public static Single SumPairWise(this IEnumerable<Single> source)
-        {
-
-        }
-        public static Double SumPairWise(this IEnumerable<Double> source)
-        {
-
-        }
-        public static Decimal SumPairWise(this IEnumerable<Decimal> source)
-        {
-
-        }
-        public static Single? SumPairWise(this IEnumerable<Single?> source)
-        {
-            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
-        }
-        public static Double? SumPairWise(this IEnumerable<Double?> source)
-        {
-            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
-        }
-        public static Decimal? SumPairWise(this IEnumerable<Decimal?> source)
-        {
-            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
-        }
-    }
+//    public static class SummationExtensions
+//    {
+//        public static Double Sum(this IEnumerable<Double> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+//        {
+//            switch (summationStrategy)
+//            {
+//                case SummationStrategy.Naive: return source.SumNaive();
+//                case SummationStrategy.Kahan: return source.SumKahan();
+//                case SummationStrategy.Pairwise: return source.SumPairWise();
+//
+//                default: throw new NotImplementedException();
+//            }
+//        }
+//        public static Single Sum(this IEnumerable<Single> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+//        {
+//            switch (summationStrategy)
+//            {
+//                case SummationStrategy.Naive: return source.SumNaive();
+//                case SummationStrategy.Kahan: return source.SumKahan();
+//                case SummationStrategy.Pairwise: return source.SumPairWise();
+//
+//                default: throw new NotImplementedException();
+//            }
+//        }
+//        public static Decimal Sum(this IEnumerable<Decimal> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+//        {
+//            switch (summationStrategy)
+//            {
+//                case SummationStrategy.Naive: return source.SumNaive();
+//                case SummationStrategy.Kahan: return source.SumKahan();
+//                case SummationStrategy.Pairwise: return source.SumPairWise();
+//                    
+//                default: throw new NotImplementedException();
+//            }
+//        }
+//       
+//        public static Double? Sum(this IEnumerable<Single?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+//        {
+//            switch (summationStrategy)
+//            {
+//                case SummationStrategy.Naive: return source.SumNaive();
+//                case SummationStrategy.Kahan: return source.SumKahan();
+//                case SummationStrategy.Pairwise: return source.SumPairWise();
+//
+//                default: throw new NotImplementedException();
+//            }
+//        }
+//        public static Single? Sum(this IEnumerable<Double?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+//        {
+//            switch (summationStrategy)
+//            {
+//                case SummationStrategy.Naive: return source.SumNaive();
+//                case SummationStrategy.Kahan: return source.SumKahan();
+//                case SummationStrategy.Pairwise: return source.SumPairWise();
+//
+//                default: throw new NotImplementedException();
+//            }
+//        }
+//        public static Decimal? Sum(this IEnumerable<Decimal?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+//        {
+//            switch (summationStrategy)
+//            {
+//                case SummationStrategy.Naive: return source.SumNaive();
+//                case SummationStrategy.Kahan: return source.SumKahan();
+//                case SummationStrategy.Pairwise: return source.SumPairWise();
+//
+//                default: throw new NotImplementedException();
+//            }
+//        }
+//
+//        public static Single SumNaive(this IEnumerable<Single> source)
+//        {
+//            var sum = default(Single);
+//
+//            foreach (var item in source)
+//            {
+//                sum += item;
+//            }
+//
+//            return sum;
+//        }
+//        public static Double SumNaive(this IEnumerable<Double> source)
+//        {
+//            var sum = default(Double);
+//
+//            foreach (var item in source)
+//            {
+//                sum += item;
+//            }
+//
+//            return sum;
+//        }
+//        public static Decimal SumNaive(this IEnumerable<Decimal> source)
+//        {
+//            var sum = default(Decimal);
+//
+//            foreach (var item in source)
+//            {
+//                sum += item;
+//            }
+//
+//            return sum;
+//        }
+//
+//        public static Single? SumNaive(this IEnumerable<Single?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationExtensions.SumNaive);
+//        }
+//        public static Double? SumNaive(this IEnumerable<Double?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationExtensions.SumNaive);
+//        }
+//        public static Decimal? SumNaive(this IEnumerable<Decimal?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationExtensions.SumNaive);
+//        }
+//
+//        public static Single SumKahan(this IEnumerable<Single> source)
+//        {
+//            var sum = default(Single);
+//            var lowOrderBitsCompensation = default(Single);
+//
+//            foreach (var item in source)
+//            {
+//                // Our dear compiler sufficiently aggressive and optimizing?
+//                // t = sum + y; 
+//                // lowOrderBitsCompensation = (t - sum) - y; 
+//                // to 
+//                // ((sum + y) - sum) - y; 
+//                // then to lowOrderBitsCompensation = 0;
+//                var compensatedItem = item - lowOrderBitsCompensation;
+//                var compensatedSum = sum + compensatedItem;
+//
+//                lowOrderBitsCompensation = (compensatedSum - sum) - compensatedItem;
+//
+//                sum = compensatedSum;
+//            }
+//
+//            return sum;
+//        }
+//        public static Double SumKahan(this IEnumerable<Double> source)
+//        {
+//            var sum = default(Double);
+//            var lowOrderBitsCompensation = default(Double);
+//
+//            foreach (var item in source)
+//            {
+//                // Our dear compiler sufficiently aggressive and optimizing?
+//                // t = sum + y; 
+//                // lowOrderBitsCompensation = (t - sum) - y; 
+//                // to 
+//                // ((sum + y) - sum) - y; 
+//                // then to lowOrderBitsCompensation = 0;
+//                var compensatedItem = item - lowOrderBitsCompensation;
+//                var compensatedSum = sum + compensatedItem;
+//
+//                lowOrderBitsCompensation = (compensatedSum - sum) - compensatedItem;
+//
+//                sum = compensatedSum;
+//            }
+//
+//            return sum;
+//        }
+//        public static Decimal SumKahan(this IEnumerable<Decimal> source)
+//        {
+//            var sum = default(Decimal);
+//            var lowOrderBitsCompensation = default(Decimal);
+//
+//            foreach (var item in source)
+//            {
+//                // Our dear compiler sufficiently aggressive and optimizing?
+//                // t = sum + y; 
+//                // lowOrderBitsCompensation = (t - sum) - y; 
+//                // to 
+//                // ((sum + y) - sum) - y; 
+//                // then to lowOrderBitsCompensation = 0;
+//                var compensatedItem = item - lowOrderBitsCompensation;
+//                var compensatedSum = sum + compensatedItem;
+//
+//                lowOrderBitsCompensation = (compensatedSum - sum) - compensatedItem;
+//
+//                sum = compensatedSum;
+//            }
+//
+//            return sum;
+//        }
+//
+//        public static Single? SumKahan(this IEnumerable<Single?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
+//        }
+//        public static Double? SumKahan(this IEnumerable<Double?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
+//        }
+//        public static Decimal? SumKahan(this IEnumerable<Decimal?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
+//        }
+//    
+//        public static Single SumPairWise(this IEnumerable<Single> source)
+//        {
+//
+//        }
+//        public static Double SumPairWise(this IEnumerable<Double> source)
+//        {
+//
+//        }
+//        public static Decimal SumPairWise(this IEnumerable<Decimal> source)
+//        {
+//
+//        }
+//
+//        public static Single? SumPairWise(this IEnumerable<Single?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
+//        }
+//        public static Double? SumPairWise(this IEnumerable<Double?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
+//        }
+//        public static Decimal? SumPairWise(this IEnumerable<Decimal?> source)
+//        {
+//            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
+//        }
+//    }
 }

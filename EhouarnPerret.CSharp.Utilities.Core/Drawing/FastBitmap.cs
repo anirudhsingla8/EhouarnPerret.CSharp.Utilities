@@ -16,8 +16,8 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class FastBitmap : Disposable
-    {
-    }
+//    public class FastBitmap : Disposable
+//    {
+//    }
 }
 

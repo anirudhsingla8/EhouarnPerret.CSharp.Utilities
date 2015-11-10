@@ -25,7 +25,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bitValues = new Boolean[ByteExtensions.ByteBitCount];
 
-            for (var i = ByteBitIndex.Bit0; i <= ByteBitIndex.Bit7; i++) 
+            for (var i = ByteBits.Bit0; i <= ByteBits.Bit7; i++) 
             {
                 bitValues[(Byte)i] = ByteExtensions.GetBit(value, i);
             }
@@ -33,29 +33,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return bitValues;
         }
 
-        private static Byte GetMask(this ByteBitIndex bitIndex)
+        private static Byte GetMask(this ByteBits bitIndex)
         {
             switch (bitIndex) 
             {
-                case ByteBitIndex.Bit0 : return 0x80;
-                case ByteBitIndex.Bit1 : return 0x40;
-                case ByteBitIndex.Bit2 : return 0x20;
-                case ByteBitIndex.Bit3 : return 0x10;
-                case ByteBitIndex.Bit4 : return 0x08;
-                case ByteBitIndex.Bit5 : return 0x04;
-                case ByteBitIndex.Bit6 : return 0x02;
-                case ByteBitIndex.Bit7 : return 0x01;
+                case ByteBits.Bit0 : return 0x80;
+                case ByteBits.Bit1 : return 0x40;
+                case ByteBits.Bit2 : return 0x20;
+                case ByteBits.Bit3 : return 0x10;
+                case ByteBits.Bit4 : return 0x08;
+                case ByteBits.Bit5 : return 0x04;
+                case ByteBits.Bit6 : return 0x02;
+                case ByteBits.Bit7 : return 0x01;
 
                 default: throw new ArgumentOutOfRangeException(@"bitIndex");
             }
         }
 
-        public static Boolean GetBit(this Byte value, ByteBitIndex bitIndex)
+        public static Boolean GetBit(this Byte value, ByteBits bitIndex)
         {
             var mask = ByteExtensions.GetMask(bitIndex);
             return ByteExtensions.GetBit(value, mask);
         }
-        public static Byte SetBit(this Byte value, ByteBitIndex bitIndex, Boolean bitValue)
+        public static Byte SetBit(this Byte value, ByteBits bitIndex, Boolean bitValue)
         {
             var mask = ByteExtensions.GetMask(bitIndex);
             return ByteExtensions.SetBit(value, mask, bitValue);
@@ -63,38 +63,38 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Byte SetBigEndianMSB(Byte value, Boolean bitValue)
         {
-            return ByteExtensions.SetBit(value, ByteBitIndex.Bit0, bitValue);
+            return ByteExtensions.SetBit(value, ByteBits.Bit0, bitValue);
         }
         public static Byte SetBigEndianLSB(Byte value, Boolean bitValue)
         {
-            return ByteExtensions.SetBit(value, ByteBitIndex.Bit7, bitValue);
+            return ByteExtensions.SetBit(value, ByteBits.Bit7, bitValue);
         }
 
         public static Byte SetLittleEndianMSB(Byte value, Boolean bitValue)
         {
-            return ByteExtensions.SetBit(value, ByteBitIndex.Bit7, bitValue);
+            return ByteExtensions.SetBit(value, ByteBits.Bit7, bitValue);
         }
         public static Byte SetLittleEndianLSB(Byte value, Boolean bitValue)
         {
-            return ByteExtensions.SetBit(value, ByteBitIndex.Bit0, bitValue);
+            return ByteExtensions.SetBit(value, ByteBits.Bit0, bitValue);
         }
 
         public static Boolean GetBigEndianMSB(Byte value)
         {
-            return ByteExtensions.GetBit(value, ByteBitIndex.Bit0);
+            return ByteExtensions.GetBit(value, ByteBits.Bit0);
         }
         public static Boolean GetBigEndianLSB(Byte value)
         {
-            return ByteExtensions.GetBit(value, ByteBitIndex.Bit7);
+            return ByteExtensions.GetBit(value, ByteBits.Bit7);
         }
 
         public static Boolean GetLittleEndianMSB(Byte value)
         {
-            return ByteExtensions.GetBit(value, ByteBitIndex.Bit7);
+            return ByteExtensions.GetBit(value, ByteBits.Bit7);
         }
         public static Boolean GetLittleEndianLSB(Byte value)
         {
-            return ByteExtensions.GetBit(value, ByteBitIndex.Bit0);
+            return ByteExtensions.GetBit(value, ByteBits.Bit0);
         }
 
         private static Byte SetBit(Byte value, Byte mask, Boolean bitValue)

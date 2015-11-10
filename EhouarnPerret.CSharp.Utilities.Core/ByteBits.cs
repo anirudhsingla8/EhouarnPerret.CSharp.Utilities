@@ -13,28 +13,22 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class DoubleBufferedControl : Control
+    /// <summary>
+    /// Bit in Byte
+    /// </summary>
+    public enum ByteBits : byte
     {
-        protected DoubleBufferedControl()
-        {
-            this.SetStyle(
-                ControlStyles.UserPaint |
-                ControlStyles.AllPaintingInWmPaint |
-                ControlStyles.OptimizedDoubleBuffer, true);
-        }
-    }
-
-    public abstract class DoubleBufferedControl<TProperties> : Control<TProperties>
-        where TProperties : ControlProperties
-    {
-        protected DoubleBufferedControl(TProperties properties)
-            : base(properties)
-        {
-        }
+        Bit0 = 0x00,
+        Bit1 = 0x01,
+        Bit2 = 0x02,
+        Bit3 = 0x03,
+        Bit4 = 0x04,
+        Bit5 = 0x05,
+        Bit6 = 0x06,
+        Bit7 = 0x07,
     }
 }
 

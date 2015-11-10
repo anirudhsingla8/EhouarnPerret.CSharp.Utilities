@@ -25,7 +25,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 foreach (var item in collection) 
                 {
-                    collection.Add(item);
+                    source.Add(item);
                 }
             }
         }
@@ -36,7 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 foreach (var item in collection) 
                 {
-                    yield return collection.Remove(item);
+                    yield return source.Remove(item);
                 }
             }
         }

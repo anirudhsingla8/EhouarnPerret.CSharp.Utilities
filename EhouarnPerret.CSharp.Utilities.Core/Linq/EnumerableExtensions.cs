@@ -33,7 +33,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var values = source.AllValues();
 
-            return values.Any() ? func(values) : null; 
+            return values.Any() ? func(values) : new T?(); 
         }
     }
 }

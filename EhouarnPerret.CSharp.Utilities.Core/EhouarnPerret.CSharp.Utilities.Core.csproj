@@ -57,7 +57,6 @@
     <Compile Include="Collections\Generic\IBindableDictionary.cs" />
     <Compile Include="Collections\Generic\IOrderedDictionary.cs" />
     <Compile Include="ByteExtensions.cs" />
-    <Compile Include="ByteBitIndex.cs" />
     <Compile Include="Collections\Generic\IQueue.cs" />
     <Compile Include="Collections\Generic\IStack.cs" />
     <Compile Include="Collections\Generic\IDeque.cs" />
@@ -78,6 +77,10 @@
     <Compile Include="Net\Sockets\SocketExtensions.cs" />
     <Compile Include="Windows\Forms\DoubleBufferedControl.cs" />
     <Compile Include="Windows\Forms\DoubleBufferedControlProperties.cs" />
+    <Compile Include="ByteBits.cs" />
+    <Compile Include="Collections\Generic\ITree.cs">
+      <DeployService-Deploy>True</DeployService-Deploy>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
