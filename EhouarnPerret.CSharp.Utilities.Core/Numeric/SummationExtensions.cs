@@ -19,6 +19,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class SummationExtensions
     {
+        public static Double Sum(this IEnumerable<Double> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+        {
+        }
+        public static Single Sum(this IEnumerable<Single> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+        {
+        }
         public static Decimal Sum(this IEnumerable<Decimal> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
         {
             switch (summationStrategy)
@@ -36,19 +42,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                     break;
             }
         }
-        public static Double Sum(this IEnumerable<Double> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-        }
-        public static Single Sum(this IEnumerable<Single> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-        }
-        public static Decimal? Sum(this IEnumerable<Decimal?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
-        {
-        }
+       
         public static Double? Sum(this IEnumerable<Single?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
         {
         }
         public static Single? Sum(this IEnumerable<Double?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+        {
+        }
+        public static Decimal? Sum(this IEnumerable<Decimal?> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
         {
         }
 
@@ -119,5 +120,54 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return sum;
         }
 
+        public static Single SumKahan(this IEnumerable<Single> source)
+        {
+
+        }
+        public static Double SumKahan(this IEnumerable<Double> source)
+        {
+
+        }
+        public static Decimal SumKahan(this IEnumerable<Decimal> source)
+        {
+
+        }
+        public static Single? SumKahan(this IEnumerable<Single?> source)
+        {
+            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
+        }
+        public static Double? SumKahan(this IEnumerable<Double?> source)
+        {
+            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
+        }
+        public static Decimal? SumKahan(this IEnumerable<Decimal?> source)
+        {
+            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
+        }
+    
+        public static Single SumPairWise(this IEnumerable<Single> source)
+        {
+
+        }
+        public static Double SumPairWise(this IEnumerable<Double> source)
+        {
+
+        }
+        public static Decimal SumPairWise(this IEnumerable<Decimal> source)
+        {
+
+        }
+        public static Single? SumPairWise(this IEnumerable<Single?> source)
+        {
+            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
+        }
+        public static Double? SumPairWise(this IEnumerable<Double?> source)
+        {
+            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
+        }
+        public static Decimal? SumPairWise(this IEnumerable<Decimal?> source)
+        {
+            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
+        }
     }
 }

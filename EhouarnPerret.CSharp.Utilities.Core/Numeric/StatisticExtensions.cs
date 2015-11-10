@@ -115,7 +115,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             foreach (var item in source)
             {
-                // Does our dear compiler sufficiently aggressive and optimizing?
+                // Our dear compiler sufficiently aggressive and optimizing?
                 // t = sum + y; 
                 // lowOrderBitsCompensation = (t - sum) - y; 
                 // to 

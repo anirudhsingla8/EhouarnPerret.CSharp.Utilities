@@ -76,6 +76,8 @@
     <Compile Include="Collections\Generic\BlockingCollectionExtensions.cs" />
     <Compile Include="IO\Ports\SerialPortExtensions.cs" />
     <Compile Include="Net\Sockets\SocketExtensions.cs" />
+    <Compile Include="Windows\Forms\DoubleBufferedControl.cs" />
+    <Compile Include="Windows\Forms\DoubleBufferedControlProperties.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

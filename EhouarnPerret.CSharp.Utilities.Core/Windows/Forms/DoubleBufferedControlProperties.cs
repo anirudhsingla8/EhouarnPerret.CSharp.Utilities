@@ -12,29 +12,17 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System.Windows.Forms;
+using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class ControlProperties
+    public abstract class DoubleBufferedControlProperties<TParent> : ControlProperties<TParent>
+        where TParent : DoubleBufferedControl
     {
-        internal ControlProperties(Control parent)
-        {
-        }
-    }
-
-    public abstract class ControlProperties<TParent> : ControlProperties
-        where TParent : Control
-    {
-        protected ControlProperties(TParent parent)
+        protected DoubleBufferedControlProperties(TParent parent)
             : base(parent)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
-
-        protected TParent Parent { get; }
     }
-
-
 }
 
