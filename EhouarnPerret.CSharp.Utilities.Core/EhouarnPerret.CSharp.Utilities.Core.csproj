@@ -76,11 +76,11 @@
     <Compile Include="IO\Ports\SerialPortExtensions.cs" />
     <Compile Include="Net\Sockets\SocketExtensions.cs" />
     <Compile Include="Windows\Forms\DoubleBufferedControl.cs" />
-    <Compile Include="Windows\Forms\DoubleBufferedControlProperties.cs" />
     <Compile Include="ByteBits.cs" />
     <Compile Include="Collections\Generic\ITree.cs">
       <DeployService-Deploy>True</DeployService-Deploy>
     </Compile>
+    <Compile Include="Text\RegularExpressions\FluentRegex.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

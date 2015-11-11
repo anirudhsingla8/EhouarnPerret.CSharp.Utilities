@@ -13,16 +13,33 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Security.Policy;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class DoubleBufferedControlProperties<TParent> : ControlProperties<TParent>
-        where TParent : DoubleBufferedControl
+    public class FluentRegex
     {
-        protected DoubleBufferedControlProperties(TParent parent)
-            : base(parent)
+        public FluentRegex()
         {
+            this.StringBuilder = new StringBuilder();
+        }
+
+        private StringBuilder StringBuilder { get; }
+
+        public override String ToString()
+        {
+            return this.StringBuilder.ToString();
+        }
+
+        public Regex ToRegex()
+        {
+            var regex = new Regex(this.StringBuilder.ToString());
+
+            return regex;
         }
     }
+
 }
 
