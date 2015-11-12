@@ -1,4 +1,4 @@
-﻿//
+//
 //  Copyright 2015  Ehouarn Perret
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,22 +12,20 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System;
-using System.Reflection;
-using System.Windows.Forms;
+
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class Constructor
+    public interface IBinaryTreeNode<TValue, TBinaryTreeNode> : ITreeNode<TValue, TBinaryTreeNode>
+        where TBinaryTreeNode : IBinaryTreeNode<TValue, TBinaryTreeNode>
     {
-        public static T Construct<T>(AccessModifiers accessModifier = AccessModifiers.Both, params Object[] parameters)
-        {
-            var bindingFlags = BindingFlags.CreateInstance | accessModifier.ToBindingFlags();
+        TBinaryTreeNode Left { get; }
+        TBinaryTreeNode Right { get; }
+    }
 
-            var instance = (T)Activator.CreateInstance(typeof(T), bindingFlags, null, parameters);
+    public interface IBinaryTreeNode<TValue> : IBinaryTreeNode<TValue, IBinaryTreeNode<TValue>>
+    {
 
-            return instance;
-        }
     }
 }
-

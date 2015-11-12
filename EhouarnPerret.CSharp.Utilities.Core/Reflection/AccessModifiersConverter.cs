@@ -14,19 +14,21 @@
 //    limitations under the License.
 using System;
 using System.Reflection;
-using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class Constructor
+    public static class AccessModifiersConverter
     {
-        public static T Construct<T>(AccessModifiers accessModifier = AccessModifiers.Both, params Object[] parameters)
+        public static BindingFlags ToBindingFlags(this AccessModifiers accessModifier)
         {
-            var bindingFlags = BindingFlags.CreateInstance | accessModifier.ToBindingFlags();
-
-            var instance = (T)Activator.CreateInstance(typeof(T), bindingFlags, null, parameters);
-
-            return instance;
+            switch (accessModifier)
+            {
+                case AccessModifiers.Both: return BindingFlags.Public | BindingFlags.NonPublic;
+                case AccessModifiers.Public: return BindingFlags.Public;
+                case AccessModifiers.NonPublic: return BindingFlags.NonPublic;
+                    
+                default: throw new ArgumentException(nameof(accessModifier));
+            }
         }
     }
 }

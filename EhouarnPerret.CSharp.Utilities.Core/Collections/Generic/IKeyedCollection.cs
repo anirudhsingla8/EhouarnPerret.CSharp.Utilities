@@ -13,21 +13,13 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Reflection;
-using System.Windows.Forms;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class Constructor
+    public interface IKeyedCollection<TKey, TItem> : ICollection<TItem>
     {
-        public static T Construct<T>(AccessModifiers accessModifier = AccessModifiers.Both, params Object[] parameters)
-        {
-            var bindingFlags = BindingFlags.CreateInstance | accessModifier.ToBindingFlags();
-
-            var instance = (T)Activator.CreateInstance(typeof(T), bindingFlags, null, parameters);
-
-            return instance;
-        }
     }
 }
 

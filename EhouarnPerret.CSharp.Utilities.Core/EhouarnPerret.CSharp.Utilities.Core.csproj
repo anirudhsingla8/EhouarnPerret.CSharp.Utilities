@@ -42,7 +42,6 @@
     <Compile Include="Threading\SynchronizeInvokeExtensions.cs" />
     <Compile Include="IProperties.cs" />
     <Compile Include="IPropertiesParent.cs" />
-    <Compile Include="Collections\Generic\AutoKeyedCollection.cs" />
     <Compile Include="Collections\Generic\CollectionExtensions.cs" />
     <Compile Include="Windows\Forms\Control.cs" />
     <Compile Include="Windows\Forms\ControlProperties.cs" />
@@ -54,7 +53,6 @@
     <Compile Include="Patterns\PropertyChangesNotification\PropertyChangesNotifier.cs" />
     <Compile Include="Collections\Generic\IObservableCollection.cs" />
     <Compile Include="Collections\Generic\IObservableDictionary.cs" />
-    <Compile Include="Collections\Generic\IBindableDictionary.cs" />
     <Compile Include="Collections\Generic\IOrderedDictionary.cs" />
     <Compile Include="ByteExtensions.cs" />
     <Compile Include="Collections\Generic\IQueue.cs" />
@@ -81,6 +79,15 @@
       <DeployService-Deploy>True</DeployService-Deploy>
     </Compile>
     <Compile Include="Text\RegularExpressions\FluentRegex.cs" />
+    <Compile Include="Drawing\ImageExtensions.cs" />
+    <Compile Include="Collections\Generic\IBindingDictionary.cs" />
+    <Compile Include="Collections\Generic\IKeyedCollection.cs" />
+    <Compile Include="Collections\Generic\KeyedCollection.cs" />
+    <Compile Include="Collections\Generic\IBinaryTree.cs" />
+    <Compile Include="Collections\Generic\ITreeNode.cs" />
+    <Compile Include="Collections\Generic\IBinaryTreeNode.cs" />
+    <Compile Include="Reflection\TypeHelpers.cs" />
+    <Compile Include="Reflection\AccessModifiersConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -109,5 +116,8 @@
     <Folder Include="IO\" />
     <Folder Include="IO\Ports\" />
     <Folder Include="Net\Sockets\" />
+    <Folder Include="Data\Compression\" />
+    <Folder Include="Data\Compression\PairEncoding\" />
+    <Folder Include="Patterns\MVPP\" />
   </ItemGroup>
 </Project>

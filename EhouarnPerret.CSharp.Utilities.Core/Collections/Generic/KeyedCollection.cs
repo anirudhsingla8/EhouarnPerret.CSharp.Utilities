@@ -13,43 +13,43 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class AutoKeyedCollection<TKey, TItem> : KeyedCollection<TKey, TItem>
+    public class KeyedCollection<TKey, TItem> : System.Collections.ObjectModel.KeyedCollection<TKey, TItem>, IKeyedCollection<TKey, TItem>
     {
-        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector)
+        public KeyedCollection(Func<TItem, TKey> itemKeySelector)
             : base()
         {
             this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
         }
-        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEnumerable<TItem> items)
+        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEnumerable<TItem> items)
             : base()
         {
             this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
             this.Add(items);
         }
-        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer)
+        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer)
             : base(comparer)
         {
             this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
         }
-        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, IEnumerable<TItem> items)
+        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, IEnumerable<TItem> items)
             : base(comparer)
         {
             this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
             this.Add(items);
         }
 
-        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold)
+        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold)
             : base(comparer, dictionaryThreshold)
         {
             this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
         }
-        public AutoKeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold, IEnumerable<TItem> items)
+        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold, IEnumerable<TItem> items)
             : base(comparer, dictionaryThreshold)
         {
             this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
@@ -57,7 +57,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
 
         private  Func<TItem, TKey> ItemKeySelector { get; }
-
 
         protected override sealed TKey GetKeyForItem(TItem item)
         {

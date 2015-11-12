@@ -1,4 +1,4 @@
-﻿//
+//
 //  Copyright 2015  Ehouarn Perret
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,21 +13,21 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Reflection;
-using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class Constructor
+    public interface ITreeNode<TValue, TTreeNode>
+        where TTreeNode : ITreeNode<TValue, TTreeNode>
     {
-        public static T Construct<T>(AccessModifiers accessModifier = AccessModifiers.Both, params Object[] parameters)
-        {
-            var bindingFlags = BindingFlags.CreateInstance | accessModifier.ToBindingFlags();
+        TValue Value { get; set; }
 
-            var instance = (T)Activator.CreateInstance(typeof(T), bindingFlags, null, parameters);
-
-            return instance;
-        }
+        IEnumerable<TTreeNode> Nodes { get; }
     }
-}
 
+    public interface ITreeNode<TValue> : ITreeNode<TValue, ITreeNode<TValue>>
+    {
+
+    }
+
+}

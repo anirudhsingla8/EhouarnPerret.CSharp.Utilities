@@ -28,18 +28,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         private StringBuilder StringBuilder { get; }
 
+        public FluentRegex StartCapture(String groupName)
+        {
+            this.StringBuilder.Append($"(?<{groupName}>");
+            return this;
+        }
+
+        public FluentRegex FluentRegexStopCapture()
+        {
+            this.StringBuilder.Append(@")");
+            return this;
+        }
+
         public override String ToString()
         {
             return this.StringBuilder.ToString();
         }
 
-        public Regex ToRegex()
+        public Regex ToRegex(Boolean isCompiled = true)
         {
             var regex = new Regex(this.StringBuilder.ToString());
 
             return regex;
         }
     }
-
 }
 

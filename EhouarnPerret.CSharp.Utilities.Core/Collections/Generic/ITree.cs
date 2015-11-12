@@ -12,25 +12,22 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
+using System;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface ITree<T> : IEnumerable<T>
+    public interface ITree<TValue, TTreeNode>
+        where TTreeNode : ITreeNode<TValue, TTreeNode>
     {
-        ITreeNode<T> Root { get; }
+        TTreeNode Root { get; }
+
+        IEnumerable<TTreeNode> Nodes { get; }
+    }
+
+    public interface ITree<TValue> : ITree<TValue, ITreeNode<TValue>>
+    {
         
-        IEnumerable<ITreeNode<T>> Nodes { get; }
-    }
-
-    public interface ITreeNode<T> : IEnumerable<T>
-    {
-        T Value { get; set; }
-    }
-
-    public interface IBinaryTree<T> : ITree<T>
-    {
-
     }
 }
 

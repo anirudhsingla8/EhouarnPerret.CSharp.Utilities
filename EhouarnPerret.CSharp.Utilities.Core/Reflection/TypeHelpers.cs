@@ -12,13 +12,20 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System.ComponentModel;
-using System.Collections.Generic;
+using System;
+using System.Linq;
+using System.Reflection;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IBindableDictionary<TKey, TValue> : IBindingList, IDictionary<TKey, TValue>, IRaiseItemChangedEvents
+    public static class TypeHelpers
     {
+        public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier  = AccessModifiers.Both)
+        {
+            return type.GetFields(BindingFlags.Static | accessModifier.ToBindingFlags())
+                .Where(fieldInfo => fieldInfo.IsLiteral)
+                .ToArray();
+        }
     }
 }
 
