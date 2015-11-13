@@ -1,4 +1,4 @@
-//
+﻿//
 //  Copyright 2015  Ehouarn Perret
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,19 +13,36 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Collections.Generic;
+using System.Data;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface ITreeNode<TValue, TTreeNode>
-        where TTreeNode : ITreeNode<TValue, TTreeNode>
-    {
-        TValue Value { get; set; }
 
-        IEnumerable<TTreeNode> Nodes { get; }
+    public interface IORM : IDisposable
+    {
     }
 
-    public interface ITreeNode<TValue> : ITreeNode<TValue, ITreeNode<TValue>>
+    public class ORM : Disposable, IORM
     {
+        public ORM(Func<IDbConnection> connectionConstructor)
+        {
+            this.Connection = ExceptionHelpers.ThrowIfNull(connectionConstructor(), nameof(connection));
+        }
+
+        private IDbConnection Connection { get; }
+    }
+
+    public class ORMColumnAttribute : Attribute
+    {
+    }
+
+    public class ORMIndexAttribute : Attribute
+    {
+    }
+
+    public class ORMTable
+    {
+        
     }
 }
+

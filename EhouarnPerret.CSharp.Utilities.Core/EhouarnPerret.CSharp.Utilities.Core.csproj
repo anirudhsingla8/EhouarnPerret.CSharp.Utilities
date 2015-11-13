@@ -88,6 +88,8 @@
     <Compile Include="Collections\Generic\IBinaryTreeNode.cs" />
     <Compile Include="Reflection\TypeHelpers.cs" />
     <Compile Include="Reflection\AccessModifiersConverter.cs" />
+    <Compile Include="Range.cs" />
+    <Compile Include="Data\Common\SQLORM.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -119,5 +121,6 @@
     <Folder Include="Data\Compression\" />
     <Folder Include="Data\Compression\PairEncoding\" />
     <Folder Include="Patterns\MVPP\" />
+    <Folder Include="Data\Common\" />
   </ItemGroup>
 </Project>

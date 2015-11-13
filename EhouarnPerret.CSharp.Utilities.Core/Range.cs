@@ -1,4 +1,4 @@
-//
+﻿//
 //  Copyright 2015  Ehouarn Perret
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,19 +13,14 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Collections.Generic;
+using System.Collections;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface ITreeNode<TValue, TTreeNode>
-        where TTreeNode : ITreeNode<TValue, TTreeNode>
+    public class Range<T>
+        // where T : IComparer<T>, ICompara
     {
-        TValue Value { get; set; }
-
-        IEnumerable<TTreeNode> Nodes { get; }
-    }
-
-    public interface ITreeNode<TValue> : ITreeNode<TValue, ITreeNode<TValue>>
-    {
+        
     }
 }
+
