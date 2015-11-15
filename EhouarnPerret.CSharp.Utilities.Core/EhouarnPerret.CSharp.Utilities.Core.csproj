@@ -92,7 +92,7 @@
     <Compile Include="Patterns\Design\Command\ICommand.cs" />
     <Compile Include="EnvironmentInformation.cs" />
     <Compile Include="Collections\Generic\IBindingListDictionary.cs" />
-    <Compile Include="Data\Common\SQLORM.cs" />
+    <Compile Include="Data\Common\SQLDbMapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

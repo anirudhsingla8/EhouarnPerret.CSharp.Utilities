@@ -21,14 +21,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         static EnvironmentInformation()
         {
             EnvironmentInformation.IsRunningMono = Type.GetType(EnvironmentInformation.MonoRuntimeTypeName) != null;
-            EnvironmentInformation.IsMacOS = Environment.OSVersion.Platform == PlatformID.MacOSX;
-            EnvironmentInformation.IsUnix = (Environment.OSVersion.Platform == PlatformID.MacOSX) || (Environment.OSVersion.Platform == PlatformID.Unix);
+
+            // Cheap Trick
+            var platformId = (Int32)Environment.OSVersion.Platform;
+            EnvironmentInformation.IsUnix = (platformId == 4) || (platformId == 6) || (platformId == 128);
         }
 
         private const String MonoRuntimeTypeName = @"Mono.Runtime";
         public static Boolean IsRunningMono { get; } 
         public static Boolean IsUnix { get; }
-        public static Boolean IsMacOS { get; }
     }
 }
 

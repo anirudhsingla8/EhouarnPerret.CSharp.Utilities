@@ -17,20 +17,13 @@ using System.Data;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IDbORM : IDisposable
+    public interface IDbMapper : IDisposable
     {
-        public void CreateTable(String tableName)
-        {
-        }
-
-        public void CreateView()
-        {
-        }
     }
 
-    public abstract class DbORMNamedAttribute : Attribute
+    public abstract class DbMappingNamedAttribute : Attribute
     {
-        protected DbORMNamedAttribute(String name)
+        protected DbMappingNamedAttribute(String name)
         {
             this.Name = name;
         }
@@ -38,9 +31,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public String Name { get; }
     }
 
-    public class ORM : Disposable, IDbORM
+    public class DbMapper : Disposable, IDbMapper
     {
-        public ORM(IDbConnection connection)
+        public DbMapper(IDbConnection connection)
         {
             this.Connection = ExceptionHelpers.ThrowIfNull(connection, nameof(connection));
         }
@@ -48,9 +41,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         private IDbConnection Connection { get; }
     }
 
-    public class ORMColumnAttribute : DbORMNamedAttribute
+    public class DbMapperColumnAttribute : DbMappingNamedAttribute
     {
-        protected ORMColumnAttribute(String name)
+        protected DbMapperColumnAttribute(String name)
+            : base(name)
         {
             this.Name = name;
         }
@@ -58,9 +52,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public String Name { get; }
     }
 
-    public class ORMIndexAttribute : DbORMNamedAttribute
+    public class DbMapperIndexAttribute : DbMappingNamedAttribute
     {
-        protected ORMIndexAttribute(String name)
+        protected DbMapperIndexAttribute(String name)
+            : base(name)
         {
             this.Name = name;
         }
@@ -68,9 +63,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public String Name { get; }
     }
 
-    public class ORMTableAttribute : DbORMNamedAttribute
+    public class DbMapperTableAttribute : DbMappingNamedAttribute
     {
-        protected ORMTableAttribute(String name)
+        protected DbMapperTableAttribute(String name)
+            : base(name)
         {
             this.Name = name;
         }
@@ -78,9 +74,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public String Name { get; }
     }
 
-    public class ORMPrimaryKeyAttribute : DbORMNamedAttribute
+    public class DbMapperPrimaryKeyAttribute : DbMappingNamedAttribute
     {
-        protected ORMPrimaryKeyAttribute(String name)
+        protected DbMapperPrimaryKeyAttribute(String name)
+            : base(name)
         {
             this.Name = name;
         }
