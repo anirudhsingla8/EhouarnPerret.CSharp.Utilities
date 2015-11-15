@@ -17,7 +17,7 @@ using System;
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public class Singleton<T>
-        where T : new() 
+        where T : class, new() 
     {
         private static readonly Lazy<T> lazy = new Lazy<T>(() => new T());
 
