@@ -16,7 +16,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    internal interface INotifyObjectDisposed
+    public interface INotifyObjectDisposed
     {
         event EventHandler Disposed;
 

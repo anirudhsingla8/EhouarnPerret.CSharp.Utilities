@@ -16,7 +16,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    internal interface IDisposable : System.IDisposable, INotifyObjectDisposed, INotifyObjectDisposing
+    public interface IDisposable : System.IDisposable, INotifyObjectDisposed, INotifyObjectDisposing
     {
     }
 }

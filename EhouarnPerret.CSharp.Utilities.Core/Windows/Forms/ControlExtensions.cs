@@ -26,7 +26,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             where TControl : Control
             where TDataSource : INotifyPropertyChanged
         {
-
+            
             var controlPropertyName = String.Empty;
             var dataSourcePropertyName = String.Empty;
         }

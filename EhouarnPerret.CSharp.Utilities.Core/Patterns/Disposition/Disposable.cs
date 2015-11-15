@@ -15,7 +15,7 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    internal abstract class Disposable : IDisposable
+    public abstract class Disposable : IDisposable
     {
         ~Disposable()
         {

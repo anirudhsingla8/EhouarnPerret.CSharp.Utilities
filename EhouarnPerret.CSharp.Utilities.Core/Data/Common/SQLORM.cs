@@ -17,32 +17,75 @@ using System.Data;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-
-    public interface IORM : IDisposable
+    public interface IDbORM : IDisposable
     {
+        public void CreateTable(String tableName)
+        {
+        }
+
+        public void CreateView()
+        {
+        }
     }
 
-    public class ORM : Disposable, IORM
+    public abstract class DbORMNamedAttribute : Attribute
     {
-        public ORM(Func<IDbConnection> connectionConstructor)
+        protected DbORMNamedAttribute(String name)
         {
-            this.Connection = ExceptionHelpers.ThrowIfNull(connectionConstructor(), nameof(connection));
+            this.Name = name;
+        }
+
+        public String Name { get; }
+    }
+
+    public class ORM : Disposable, IDbORM
+    {
+        public ORM(IDbConnection connection)
+        {
+            this.Connection = ExceptionHelpers.ThrowIfNull(connection, nameof(connection));
         }
 
         private IDbConnection Connection { get; }
     }
 
-    public class ORMColumnAttribute : Attribute
+    public class ORMColumnAttribute : DbORMNamedAttribute
     {
+        protected ORMColumnAttribute(String name)
+        {
+            this.Name = name;
+        }
+
+        public String Name { get; }
     }
 
-    public class ORMIndexAttribute : Attribute
+    public class ORMIndexAttribute : DbORMNamedAttribute
     {
+        protected ORMIndexAttribute(String name)
+        {
+            this.Name = name;
+        }
+
+        public String Name { get; }
     }
 
-    public class ORMTable
+    public class ORMTableAttribute : DbORMNamedAttribute
     {
-        
+        protected ORMTableAttribute(String name)
+        {
+            this.Name = name;
+        }
+
+        public String Name { get; }
+    }
+
+    public class ORMPrimaryKeyAttribute : DbORMNamedAttribute
+    {
+        protected ORMPrimaryKeyAttribute(String name)
+        {
+            this.Name = name;
+        }
+
+        public String Name { get; }
     }
 }
 

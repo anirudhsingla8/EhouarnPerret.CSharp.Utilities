@@ -17,7 +17,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IBindingDictionary<TKey, TValue> : IBindingList, IDictionary<TKey, TValue>, IRaiseItemChangedEvents
+    public interface IBindingListDictionary<TKey, TValue> : IBindingList, IDictionary<TKey, TValue>, IRaiseItemChangedEvents
     {
     }
 }

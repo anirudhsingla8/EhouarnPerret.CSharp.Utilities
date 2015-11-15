@@ -80,7 +80,6 @@
     </Compile>
     <Compile Include="Text\RegularExpressions\FluentRegex.cs" />
     <Compile Include="Drawing\ImageExtensions.cs" />
-    <Compile Include="Collections\Generic\IBindingDictionary.cs" />
     <Compile Include="Collections\Generic\IKeyedCollection.cs" />
     <Compile Include="Collections\Generic\KeyedCollection.cs" />
     <Compile Include="Collections\Generic\IBinaryTree.cs" />
@@ -89,6 +88,10 @@
     <Compile Include="Reflection\TypeHelpers.cs" />
     <Compile Include="Reflection\AccessModifiersConverter.cs" />
     <Compile Include="Range.cs" />
+    <Compile Include="Patterns\Design\Singleton\Singleton.cs" />
+    <Compile Include="Patterns\Design\Command\ICommand.cs" />
+    <Compile Include="EnvironmentInformation.cs" />
+    <Compile Include="Collections\Generic\IBindingListDictionary.cs" />
     <Compile Include="Data\Common\SQLORM.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -122,5 +125,7 @@
     <Folder Include="Data\Compression\PairEncoding\" />
     <Folder Include="Patterns\MVPP\" />
     <Folder Include="Data\Common\" />
+    <Folder Include="Patterns\Design\Singleton\" />
+    <Folder Include="Patterns\Design\Multiton\" />
   </ItemGroup>
 </Project>

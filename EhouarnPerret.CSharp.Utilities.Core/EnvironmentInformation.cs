@@ -16,11 +16,19 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface INotifyObjectDisposing
+    public static class EnvironmentInformation
     {
-        event EventHandler Disposing;
+        static EnvironmentInformation()
+        {
+            EnvironmentInformation.IsRunningMono = Type.GetType(EnvironmentInformation.MonoRuntimeTypeName) != null;
+            EnvironmentInformation.IsMacOS = Environment.OSVersion.Platform == PlatformID.MacOSX;
+            EnvironmentInformation.IsUnix = (Environment.OSVersion.Platform == PlatformID.MacOSX) || (Environment.OSVersion.Platform == PlatformID.Unix);
+        }
 
-        Boolean IsDisposing { get; }
+        private const String MonoRuntimeTypeName = @"Mono.Runtime";
+        public static Boolean IsRunningMono { get; } 
+        public static Boolean IsUnix { get; }
+        public static Boolean IsMacOS { get; }
     }
 }
 

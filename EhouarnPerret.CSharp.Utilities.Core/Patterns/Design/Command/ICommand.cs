@@ -1,5 +1,5 @@
 ﻿//
-//  Copyright 2015  Ehouarn Perret
+//  Copyright 2015  
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
 //    you may not use this file except in compliance with the License.
@@ -16,11 +16,8 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface INotifyObjectDisposing
+    public interface ICommand
     {
-        event EventHandler Disposing;
-
-        Boolean IsDisposing { get; }
     }
 }
 
