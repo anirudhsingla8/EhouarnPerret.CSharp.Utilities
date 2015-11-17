@@ -99,6 +99,17 @@
     <Compile Include="Data\Common\DbMapperIndexAttribute.cs" />
     <Compile Include="Data\Common\DbMapperTableAttribute.cs" />
     <Compile Include="Data\Common\DbMapperPrimaryKeyAttribute.cs" />
+    <Compile Include="IRange.cs" />
+    <Compile Include="IEnumerableRange.cs" />
+    <Compile Include="Patterns\MVPP\IView.cs" />
+    <Compile Include="Patterns\MVPP\IModel.cs" />
+    <Compile Include="Patterns\MVPP\Presenter.cs" />
+    <Compile Include="Patterns\MVPP\IPresenter.cs" />
+    <Compile Include="Patterns\MVPP\View.cs" />
+    <Compile Include="Patterns\MVPP\ViewControl.cs" />
+    <Compile Include="Patterns\MVPP\ViewUserControl.cs" />
+    <Compile Include="Patterns\MVPP\ViewForm.cs" />
+    <Compile Include="Patterns\MVPP\Model.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

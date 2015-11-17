@@ -1,4 +1,4 @@
-//
+﻿//
 //  Copyright 2015  Ehouarn Perret
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,27 +12,12 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-
 using System;
-using System.Data;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class DbMapper : Disposable, IDbMapper
+    public interface IView
     {
-        public DbMapper(IDbConnection connection)
-        {
-            this.Connection = ExceptionHelpers.ThrowIfNull(connection, nameof(connection));
-        }
-
-        private IDbConnection Connection { get; }
-
-        public void Insert<T>(IEnumerable<T> records)
-        {
-
-        }
-
     }
-    
 }
+

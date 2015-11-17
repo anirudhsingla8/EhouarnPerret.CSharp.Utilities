@@ -14,25 +14,25 @@
 //    limitations under the License.
 
 using System;
-using System.Data;
-using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class DbMapper : Disposable, IDbMapper
+    public interface IPresenter
     {
-        public DbMapper(IDbConnection connection)
-        {
-            this.Connection = ExceptionHelpers.ThrowIfNull(connection, nameof(connection));
-        }
-
-        private IDbConnection Connection { get; }
-
-        public void Insert<T>(IEnumerable<T> records)
-        {
-
-        }
-
     }
-    
+
+    public abstract ViewForm<TForm> : ViewControl<TForm>
+        where TForm : Form
+    {
+        protected ViewForm(TForm core)
+            : base(core)
+        { 
+        }
+    }
+
+    public class Model
+    {
+        
+    }
 }

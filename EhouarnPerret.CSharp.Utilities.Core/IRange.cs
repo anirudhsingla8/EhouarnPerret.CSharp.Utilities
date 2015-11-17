@@ -14,25 +14,24 @@
 //    limitations under the License.
 
 using System;
-using System.Data;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class DbMapper : Disposable, IDbMapper
+    public interface IRange<T> : IComparable<IRange<T>>
+        where T : IComparable<T>
     {
-        public DbMapper(IDbConnection connection)
-        {
-            this.Connection = ExceptionHelpers.ThrowIfNull(connection, nameof(connection));
-        }
+        T UpperBound { get; }
+        T LowerBound { get; }
 
-        private IDbConnection Connection { get; }
-
-        public void Insert<T>(IEnumerable<T> records)
-        {
-
-        }
-
+        Boolean Contains(T value);
+        Boolean Contains(IRange<T> range);
+        Boolean IsContainedBy(IRange<T> range);
+        Boolean Overlaps(IRange<T> range);
+        Boolean IsContiguousWith(IRange<T> range);
+        IRange<T> Intersects(IRange<T> value);
+        IRange<T> Union(IRange<T> value);
     }
     
 }

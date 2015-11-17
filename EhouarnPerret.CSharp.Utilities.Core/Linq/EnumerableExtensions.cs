@@ -15,25 +15,41 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading;
+using System.IO.Compression;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class EnumerableExtensions
     {
-        public static IEnumerable<T> AllValues<T> (this IEnumerable<T?> source)
-            where T : struct
+        public static IEnumerable<TSource> AllValues<TSource> (this IEnumerable<TSource?> source)
+            where TSource : struct
         {
             return source
                 .Where(item => item.HasValue)
                 .Select(item => item.Value);
         }
 
-        public static T? ApplyIfAnyValuesTo<T> (this IEnumerable<T?> source, Func<IEnumerable<T>, T> func)
-            where T : struct
+        public static TSource? ApplyIfAnyValuesTo<TSource> (this IEnumerable<TSource?> source, Func<IEnumerable<TSource>, TSource> func)
+            where TSource : struct
         {
             var values = source.AllValues();
 
-            return values.Any() ? func(values) : new T?(); 
+            return values.Any() ? func(values) : new TSource?(); 
+        }
+
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> selector)
+        {
+        }
+
+        public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> selector)
+        {
+            GZipStream d;
+        }
+
+        public static IEnumerable<TSource> ZipBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> selector)
+        {
+            source.
         }
     }
 }
