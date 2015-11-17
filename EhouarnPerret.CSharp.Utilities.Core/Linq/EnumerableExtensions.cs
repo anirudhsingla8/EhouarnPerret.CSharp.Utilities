@@ -20,36 +20,39 @@ using System.IO.Compression;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class EnumerableExtensions
+    public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> AllValues<TSource> (this IEnumerable<TSource?> source)
-            where TSource : struct
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TKey, IEnumerable<TSource>, TResult> resultSelector, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
         {
-            return source
-                .Where(item => item.HasValue)
-                .Select(item => item.Value);
+            var keys = new HashSet<TKey>(keyComparer);
+
+            foreach (var item in source)
+            {
+                if (keys.Add(keySelector(item)))
+                {
+                    yield return item;
+                }
+            }
         }
-
-        public static TSource? ApplyIfAnyValuesTo<TSource> (this IEnumerable<TSource?> source, Func<IEnumerable<TSource>, TSource> func)
-            where TSource : struct
-        {
-            var values = source.AllValues();
-
-            return values.Any() ? func(values) : new TSource?(); 
-        }
-
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> selector)
         {
+            var distinct = new HashSet<TKey>(comparer);
+
+            foreach (var element in source)
+            {
+                if (knownKeys.Add(keySelector(element)))
+                {
+                    yield return element;
+                }
+            }
         }
 
         public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> selector)
         {
-            GZipStream d;
         }
 
         public static IEnumerable<TSource> ZipBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> selector)
         {
-            source.
         }
     }
 }

@@ -18,18 +18,25 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class RangeBase<T> : IRange<T>
+    public sealed class Range<T> : IComparable<Range<T>>, IComparable<T>
         where T : IComparable<T>
     {
         public T UpperBound { get; }
         public T LowerBound { get; }
 
-        protected RangeBase(T lowerBound, T upperBound)
+        public Range(T lowerBound, T upperBound)
         {
-            // Double Boxing... sad =/
-            // I ain't gonna to make another one just for the sake of the structs... come on... meow =]
-            this.LowerBound = (T)ExceptionHelpers.ThrowIfNull((Object)lowerBound, nameof(lowerBound));
-            this.UpperBound = (T)ExceptionHelpers.ThrowIfNull((Object)upperBound, nameof(upperBound));
+            if (lowerBound.CompareTo(upperBound) <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                // Double Boxing... sad =/
+                // I ain't gonna to make another one just for the sake of the structs... come on... meow =]
+                this.LowerBound = (T)ExceptionHelpers.ThrowIfNull((Object)lowerBound, nameof(lowerBound));
+                this.UpperBound = (T)ExceptionHelpers.ThrowIfNull((Object)upperBound, nameof(upperBound));
+            }
         }
 
         public Boolean Contains(T value)
@@ -39,25 +46,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             
             return isValueLowered && isValueUppered;
         }
-        public Boolean Contains(IRange<T> range)
+        public Boolean Contains(Range<T> range)
         {
             var isRangeLowered = this.LowerBound.CompareTo(range.LowerBound) <= 0;
             var isRangeUppered = this.UpperBound.CompareTo(range.UpperBound) >= 0;
 
             return isRangeLowered && isRangeUppered;
         }
-        public Boolean IsContainedBy(IRange<T> range)
+        public Boolean IsContainedBy(Range<T> range)
         {
             return range.Contains(this);
         }
-        public Boolean Overlaps(IRange<T> range)
+        public Boolean Overlaps(Range<T> range)
         {
             return  this.Contains(range.LowerBound) || 
                     this.Contains(range.UpperBound) || 
                     range.Contains(this.LowerBound) || 
                     range.Contains(this.UpperBound);
         }
-        public Boolean IsContiguousWith(IRange<T> range)
+        public Boolean IsContiguousWith(Range<T> range)
         {
             if (this.Overlaps(range) || this.Contains(range) || range.Overlaps(this) || range.Contains(this))
             {
@@ -69,12 +76,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        protected abstract IRange<T> CreateInstance()
-        {
-            
-        }
-
-        public virtual IRange<T> Intersects(IRange<T> value)
+        public Range<T> Intersects(Range<T> value)
         {
             if (this.Overlaps(value))
             {
@@ -88,7 +90,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 throw new ArgumentOutOfRangeException(nameof(value));
             }
         }
-        public virtual IRange<T> Union(IRange<T> value)
+        public Range<T> Union(Range<T> value)
         {
             if (!this.IsContiguousWith(value))
             {
@@ -124,7 +126,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             if (range != null)
             {
-                return ((CompareTo(other) == 0) && (UpperBound.CompareTo(other.UpperBound) == 0));
+                return (this.CompareTo(range) == 0) && (this.UpperBound.CompareTo(range.UpperBound) == 0));
             }
             else
             {
@@ -151,48 +153,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public IEnumerable<T> Enumerate(IEnumerator<T> enumerator)
-        {
-            yield return this.LowerBound;
-
-            var item = incrementor(this.LowerBound);
-
-            while(this.UpperBound.CompareTo(item))
-            {
-                item = incrementor(item);
-
-                yield return item;
-            }
-        }
-
-        #region IComparable Implementation
+        #region IComparable<Range<T>> Implementation
         public Int32 CompareTo(Range<T> other)
         {
-            
+            return this.LowerBound.CompareTo(other.LowerBound);
         }
         #endregion
-    }
-
-    public class Range<T> : Range
-    {
-        
-    }
-
-    public class EnumerableRange<T> : Range<T>, IEnumerableRange<T>
-    {
-        #region IEnumerable Implementation
-        public IEnumerator<T> GetEnumerator()
+        #region IComparable<T> Implementation
+        public Int32 CompareTo(T other)
         {
-            throw new NotImplementedException();
+            return this.LowerBound.CompareTo(other);
         }
         #endregion
-        #region IEnumerable implementation
-        IEnumerator IEnumerable.GetEnumerator()
+    
+        public override String ToString()
         {
-            throw new NotImplementedException();
+            return String.Format(@"[{0};{1}]", this.LowerBound, this.UpperBound);
         }
-        #endregion
-        
     }
 }
 
