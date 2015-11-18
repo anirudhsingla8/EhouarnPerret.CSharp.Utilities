@@ -21,18 +21,4 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     public interface IPresenter
     {
     }
-
-    public abstract ViewForm<TForm> : ViewControl<TForm>
-        where TForm : Form
-    {
-        protected ViewForm(TForm core)
-            : base(core)
-        { 
-        }
-    }
-
-    public class Model
-    {
-        
-    }
 }
