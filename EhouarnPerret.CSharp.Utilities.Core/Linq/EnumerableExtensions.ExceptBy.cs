@@ -15,29 +15,30 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Threading;
-using System.IO.Compression;
-using System.Collections;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
         {
-            var keys = new HashSet<TKey>(keyComparer);
+            var keys = new HashSet<TKey>(second.Select(keySelector), keyComparer);
 
-            foreach (var item in source)
+            foreach (var item in first)
             {
-                if (keys.Add(keySelector(item)))
+                var key = keySelector(item);
+
+                if (!keys.Contains(key))
                 {
                     yield return resultSelector(item);
+                    keys.Add(key);
                 }
             }
         }
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
         {
-            return source.DistinctBy(keySelector, item => item, keyComparer);
+            return first.ExceptBy(second, keySelector, item => item, keyComparer);
         }
     }
 }

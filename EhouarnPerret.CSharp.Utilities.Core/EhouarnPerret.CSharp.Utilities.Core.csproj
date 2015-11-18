@@ -115,6 +115,8 @@
     <Compile Include="Drawing\SizeFExtensions.cs" />
     <Compile Include="Drawing\RectangleExtensions.cs" />
     <Compile Include="Drawing\RectangleFExtensions.cs" />
+    <Compile Include="Linq\EnumerableExtensions.DistinctBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ExceptBy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

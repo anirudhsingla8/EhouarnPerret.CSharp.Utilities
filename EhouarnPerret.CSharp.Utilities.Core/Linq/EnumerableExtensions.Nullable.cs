@@ -18,7 +18,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public static TSource? ApplyIfAnyValuesTo<TSource> (this IEnumerable<TSource?> source, Func<IEnumerable<TSource>, TSource> func)
             where TSource : struct
         {
-            source.GroupBy();
             var values = source.AllValues();
 
             return values.Any() ? func(values) : new TSource?(); 
