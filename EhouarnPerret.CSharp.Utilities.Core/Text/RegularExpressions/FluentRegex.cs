@@ -16,6 +16,7 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Policy;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -24,19 +25,28 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public FluentRegex()
         {
             this.StringBuilder = new StringBuilder();
+			this.UnstoppedStartedgroupNames = new Queue<Tuple<String, Boolean>> ();
         }
 
         private StringBuilder StringBuilder { get; }
 
+		public Stack<Tuple<String, Boolean>> UnstoppedStartedgroupNames { get; }
+
         public FluentRegex StartCapture(String groupName)
         {
             this.StringBuilder.Append($"(?<{groupName}>");
+
+			this.UnstoppedStartedgroupNames.Push(groupName);
+
             return this;
         }
 
-        public FluentRegex FluentRegexStopCapture()
+        public FluentRegex StopCapture()
         {
             this.StringBuilder.Append(@")");
+
+			this.UnstoppedStartedgroupNames.Pop();
+
             return this;
         }
 

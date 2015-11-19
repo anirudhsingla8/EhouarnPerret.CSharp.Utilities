@@ -23,37 +23,42 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Threading;
-using System.IO.Compression;
-using System.Collections;
-using System.Security.Policy;
-using System.Threading.Tasks;
 using System.Data;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static partial class EnumerableExtensions
-    {
-        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            var keys = new HashSet<TKey>(keyComparer);
+	public static partial class EnumerableExtensions
+	{
+		public static DataTable ToDataTable<TSource>(this IEnumerable<TSource> source)
+		{
+			var tSourceType = typeof(TSource);
 
-            foreach (var item in source)
-            {
-                if (keys.Add(keySelector(item)))
-                {
-                    yield return resultSelector(item);
-                }
-            }
-        }
+			var properties = tSourceType.GetProperties (System.Reflection.BindingFlags.Public, System.Reflection.BindingFlags.Instance);
 
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            return source.DistinctBy(keySelector, item => item, keyComparer);
-        }
-    }
+			var dataTable = new DataTable ();
+
+			foreach (var property in properties) 
+			{
+				dataTable.Columns.Add (property.Name, property.PropertyType);
+			}
+
+			foreach (var item in source) 
+			{
+				var dataRow = dataTable.NewRow ();
+
+				foreach (var property in properties) 
+				{
+					dataRow[property] = property.GetValue (item, null);
+				}
+
+				dataTable.Rows.Add (dataRow);
+			}
+
+			return dataTable;
+		}
+	}
 }
 

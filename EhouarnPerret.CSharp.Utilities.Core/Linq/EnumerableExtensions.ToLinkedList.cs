@@ -1,5 +1,5 @@
 ﻿//
-// ToQueue.cs
+// EnumerableExtensions.ToLinkedList.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,37 +23,20 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Threading;
-using System.IO.Compression;
-using System.Collections;
-using System.Security.Policy;
-using System.Threading.Tasks;
-using System.Data;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static partial class EnumerableExtensions
-    {
-        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            var keys = new HashSet<TKey>(keyComparer);
+	public static partial class EnumerableExtensions
+	{
+		public static LinkedList<TSource> ToLinkedList<TSource>(this IEnumerable<TSource> source)
+		{
+			var linkedList = new LinkedList<TSource> (source);
 
-            foreach (var item in source)
-            {
-                if (keys.Add(keySelector(item)))
-                {
-                    yield return resultSelector(item);
-                }
-            }
-        }
-
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            return source.DistinctBy(keySelector, item => item, keyComparer);
-        }
-    }
+			return linkedList;
+		}
+	}
 }
 

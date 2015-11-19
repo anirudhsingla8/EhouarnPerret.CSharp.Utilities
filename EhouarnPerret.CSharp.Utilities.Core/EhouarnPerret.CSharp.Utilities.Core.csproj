@@ -120,6 +120,11 @@
     <Compile Include="Numeric\INumericalOperations.cs" />
     <Compile Include="Numeric\StrictSignedness.cs" />
     <Compile Include="Numeric\Signedness.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToDataTable.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToQueue.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToStack.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToLinkedList.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToHashSet.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
