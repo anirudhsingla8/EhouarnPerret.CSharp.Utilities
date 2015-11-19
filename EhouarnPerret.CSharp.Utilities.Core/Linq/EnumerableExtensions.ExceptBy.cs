@@ -33,7 +33,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
         {
-            var keys = new HashSet<TKey>(second.Select(keySelector), keyComparer);
+            var keys = second.ToHashSet(keySelector, keyComparer);
 
             foreach (var item in first)
             {
@@ -42,12 +42,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 if (!keys.Contains(key))
                 {
                     yield return resultSelector(item);
+
                     keys.Add(key);
                 }
             }
         }
 
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
         {
             return first.ExceptBy(second, keySelector, item => item, keyComparer);
         }

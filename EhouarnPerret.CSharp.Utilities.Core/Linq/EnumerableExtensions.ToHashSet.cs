@@ -24,7 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -32,10 +35,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 	{
 		public static HashSet<TSource> ToHashSet<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer = null)
 		{
-			var hashSet = new HashSet<T> (source);
-
-			return hashSet;
+            return source.ToHashSet(item => item, comparer);
 		}
+
+        public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, IEqualityComparer<TResult> comparer = null)
+        {
+            var hashSet = new HashSet<TResult> (source.Select(resultSelector), comparer);
+
+            return hashSet;
+        }
 	}
 }
 

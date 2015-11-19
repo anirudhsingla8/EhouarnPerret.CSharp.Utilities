@@ -125,6 +125,8 @@
     <Compile Include="Linq\EnumerableExtensions.ToStack.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToLinkedList.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToHashSet.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToList.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToArray.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

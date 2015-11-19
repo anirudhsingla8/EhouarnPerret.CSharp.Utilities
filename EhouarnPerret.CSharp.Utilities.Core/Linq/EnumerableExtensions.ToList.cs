@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.ToLinkedList.cs
+// EnumerableExtensions.ToList.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -32,16 +32,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
 	public static partial class EnumerableExtensions
 	{
-		public static LinkedList<TSource> ToLinkedList<TSource>(this IEnumerable<TSource> source)
-		{
-            return source.ToLinkedList(item => item);
-		}
-
-        public static LinkedList<TResult> ToLinkedList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
+        public static List<TResult> ToList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
         {
-            var linkedList = new LinkedList<TResult> (source.Select(resultSelector));
-
-            return linkedList;
+            return source.Select(resultSelector).ToList();
         }
 	}
 }

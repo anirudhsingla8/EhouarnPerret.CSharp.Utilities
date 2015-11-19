@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
@@ -33,10 +34,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 	{
 		public static Queue<TSource> ToQueue<TSource>(this IEnumerable<TSource> source)
 		{
-			var queue = new Queue<TSource> (source);
-
-			return queue;
+            return source.ToQueue(item => item);
 		}
+
+        public static Queue<TResult> ToQueue<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
+        {
+            var queue = new Queue<TResult> (source.Select(resultSelector));
+
+            return queue;
+        }
 	}
 }
 

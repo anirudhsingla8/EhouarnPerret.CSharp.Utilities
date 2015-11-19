@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.ToLinkedList.cs
+// EnumerableExtensions.ToArray.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,25 +24,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-	public static partial class EnumerableExtensions
-	{
-		public static LinkedList<TSource> ToLinkedList<TSource>(this IEnumerable<TSource> source)
-		{
-            return source.ToLinkedList(item => item);
-		}
-
-        public static LinkedList<TResult> ToLinkedList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
+    public static partial class EnumerableExtensions
+    {
+        public static TResult[] ToArray<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
         {
-            var linkedList = new LinkedList<TResult> (source.Select(resultSelector));
-
-            return linkedList;
+            return source.Select(resultSelector).ToArray();
         }
-	}
+    }
 }
 

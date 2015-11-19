@@ -33,10 +33,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 	{
 		public static Stack<TSource> ToStack<TSource>(this IEnumerable<TSource> source)
 		{
-			var stack = new Stack<TSource> (source);
-
-			return stack;
+            return source.ToStack(item => item);
 		}
+
+        public static Stack<TResult> ToStack<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
+        {
+            var stack = new Stack<TResult> (source.Select(resultSelector));
+
+            return stack;
+        }
 	}
 }
 
