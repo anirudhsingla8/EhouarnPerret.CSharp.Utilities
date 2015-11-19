@@ -117,6 +117,9 @@
     <Compile Include="Drawing\RectangleFExtensions.cs" />
     <Compile Include="Linq\EnumerableExtensions.DistinctBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.ExceptBy.cs" />
+    <Compile Include="Numeric\INumericalOperations.cs" />
+    <Compile Include="Numeric\StrictSignedness.cs" />
+    <Compile Include="Numeric\Signedness.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
