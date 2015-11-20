@@ -30,6 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 	public class Canvas : DoubleBufferedControl<CanvasProperties>
 	{
 		public Canvas ()
+            : base()
 		{
 		}
 	}

@@ -136,6 +136,7 @@
     <Compile Include="Linq\EnumerableExtensions.Max.cs" />
     <Compile Include="Linq\EnumerableExtensions.Min.cs" />
     <Compile Include="Linq\EnumerableExtensions.Single.cs" />
+    <Compile Include="Patterns\MVPP\IMVPComponent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

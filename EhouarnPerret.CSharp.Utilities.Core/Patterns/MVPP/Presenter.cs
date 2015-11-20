@@ -19,8 +19,8 @@ using EhouarnPerret.CSharp.Utilities.Core;
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public abstract class Presenter<TView, TModel>
-        where TView : IView
-        where TModel : IModel
+        where TView : class, IView
+        where TModel : class, IModel
     {
         protected Presenter(TView view, TModel model)
         {

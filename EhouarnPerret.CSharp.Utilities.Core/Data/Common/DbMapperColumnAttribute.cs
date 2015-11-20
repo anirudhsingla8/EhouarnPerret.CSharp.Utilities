@@ -25,7 +25,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         protected DbMapperColumnAttribute(String name)
             : base(name)
         {
-            this.Name = name;
         }
     }
     

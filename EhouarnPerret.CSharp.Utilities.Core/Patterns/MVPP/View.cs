@@ -13,17 +13,16 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-using System;
-using System.Windows.Forms;
 using EhouarnPerret.CSharp.Utilities.Core;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class View : IView
+    public abstract class View : Disposable, IView
     {
     }
 
     public abstract class View<TCore> : View
+        where TCore : class
     {
         protected View(TCore core)
         {

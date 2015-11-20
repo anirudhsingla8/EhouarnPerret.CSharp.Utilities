@@ -16,7 +16,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IView
+    public interface IView : IMVPComponent
     {
     }
 }

@@ -20,7 +20,7 @@ using EhouarnPerret.CSharp.Utilities.Core;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class Model : IModel
+    public abstract class Model : Disposable, IModel
     {
         
     }

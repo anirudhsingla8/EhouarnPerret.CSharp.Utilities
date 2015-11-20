@@ -85,15 +85,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 			this.Bitmap = new Bitmap (size.Width, size.Height);
 		}
 
-		public Color this[Int32 x, Int32 y]
-		{
-			get 
-			{
-			}
-			set 
-			{
-			}
-		}
+//		public Color this[Int32 x, Int32 y]
+//		{
+//			get 
+//			{
+//			}
+//			set 
+//			{
+//			}
+//		}
 
 		private Bitmap Bitmap { get; }
     }

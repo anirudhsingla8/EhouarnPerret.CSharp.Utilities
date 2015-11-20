@@ -24,9 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -151,18 +149,28 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return LowerBound.GetHashCode();
         }
 
-        public IEnumerable<T> Enumerate(Func<T, T> incrementor)
+        private IEnumerable<T> Iterate(Func<T, T> iterator, T start, T stop, Func<T, T, Boolean> stopCondition)
         {
-            yield return this.LowerBound;
+            yield return start;
 
-            var item = incrementor(this.LowerBound);
+            var item = iterator(start);
 
-            while(this.UpperBound.CompareTo(item))
+            while(!stopCondition(stop, item))
             {
-                item = incrementor(item);
-
+                item = iterator(item);
+                
                 yield return item;
             }
+        }
+
+        public IEnumerable<T> Enumerate(Func<T, T> incrementor)
+        {
+            return this.Iterate(incrementor, this.LowerBound, this.UpperBound, (item, stop) => stop.CompareTo(item) < 0);
+        }
+
+        public IEnumerable<T> Denumerate(Func<T, T> decrementor)
+        {
+            return this.Iterate(decrementor, this.UpperBound, this.LowerBound, (item, start) => start.CompareTo(item) > 0);
         }
 
         #region IComparable<Range<T>> Implementation

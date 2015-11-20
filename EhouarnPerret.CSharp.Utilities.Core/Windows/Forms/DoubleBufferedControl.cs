@@ -42,9 +42,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     public abstract class DoubleBufferedControl<TProperties> : Control<TProperties>
         where TProperties : ControlProperties
     {
+        private void SetDoubleBuffered()
+        {
+            this.SetStyle(
+                ControlStyles.UserPaint |
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.OptimizedDoubleBuffer, true);
+        }
+
         protected DoubleBufferedControl(TProperties properties)
             : base(properties)
         {
+            this.SetDoubleBuffered();
+        }
+        protected DoubleBufferedControl()
+            : base()
+        {
+            this.SetDoubleBuffered();
         }
     }
 }

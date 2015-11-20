@@ -24,6 +24,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
         }
+        protected Control()
+        {
+            this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
+        }
 
         #region IProperties Implementation
         public TProperties Properties { get; }

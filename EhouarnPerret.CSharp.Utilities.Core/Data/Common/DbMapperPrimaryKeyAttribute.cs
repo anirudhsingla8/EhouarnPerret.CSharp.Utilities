@@ -23,7 +23,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         protected DbMapperPrimaryKeyAttribute(String name)
             : base(name)
         {
-            this.Name = name;
         }
     }
 }

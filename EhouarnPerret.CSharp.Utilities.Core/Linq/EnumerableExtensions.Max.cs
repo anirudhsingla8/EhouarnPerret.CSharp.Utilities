@@ -32,10 +32,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
 	public static partial class EnumerableExtensions
 	{
-		public static TSource Max<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
-		{
-            return source.Single(keySelector, (comparison) => comparison > 0, keyComparer);
-		}
+        public static TSource Max<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
+        {
+            return source.Max(keySelector, item => item, keyComparer);
+        }
+
+        public static TResult Max<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        {
+            return source.Single(keySelector, resultSelector, comparison => comparison > 0, keyComparer);
+        }
 	}
 }
 

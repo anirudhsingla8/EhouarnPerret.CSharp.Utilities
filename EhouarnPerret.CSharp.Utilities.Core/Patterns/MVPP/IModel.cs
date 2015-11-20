@@ -16,11 +16,8 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class IModel
+    public interface IModel : IMVPComponent
     {
-        public IModel()
-        {
-        }
     }
 }
 

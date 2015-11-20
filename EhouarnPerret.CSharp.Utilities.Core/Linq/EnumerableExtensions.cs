@@ -37,7 +37,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static partial class EnumerableExtensions
     {
-		public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<T> action)
+        public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
 		{
 			foreach (var item in source) 
 			{

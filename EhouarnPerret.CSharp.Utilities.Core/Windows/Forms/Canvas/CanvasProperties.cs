@@ -30,7 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 	public class CanvasProperties : ControlProperties<Canvas>
 	{
 		public CanvasProperties (Canvas parent)
-			: base(Parent)
+			: base(parent)
 		{
 		}
 	}

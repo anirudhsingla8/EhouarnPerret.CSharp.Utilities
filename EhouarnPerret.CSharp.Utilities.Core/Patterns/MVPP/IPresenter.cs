@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IPresenter
+    public interface IPresenter : IMVPComponent
     {
     }
 }

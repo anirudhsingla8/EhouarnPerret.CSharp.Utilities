@@ -30,7 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static partial class EnumerableExtensions
     {
-        public static TSource Single<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
+        public static TResult Single<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
         {
             var itemKeyComparer = keyComparer ?? Comparer<TKey>.Default;
 
@@ -42,20 +42,28 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             else
             {
-                var selectedKey = keySelector(enumerator.Current);
+                var selectedItem = enumerator.Current;
+                var selectedKey = keySelector(selectedItem);
 
                 while (enumerator.MoveNext())
                 {
-                    var key = keySelector(enumerator.Current);
+                    var item = enumerator.Current;
+                    var key = keySelector(selectedItem);
 
                     if (comparerSelection(itemKeyComparer.Compare(key, selectedKey)))
                     {
+                        selectedItem = item;
                         selectedKey = key;
                     }
                 }
 
-                return selectedKey;
+                return resultSelector(selectedItem);
             }
+        }
+ 
+        public static TSource Single<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
+        {
+            return source.Single(keySelector, item => item, comparerSelection, keyComparer);
         }
     }
 }

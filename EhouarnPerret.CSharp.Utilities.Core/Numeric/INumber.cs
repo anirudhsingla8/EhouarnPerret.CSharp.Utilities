@@ -42,82 +42,83 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 		T Epsilon { get; }
     }
 
-	public struct NumberInt32 : INumber<NumberInt32>
-	{
-		private Int32 Int32 { get; }
-
-		public NumberInt32(NumberInt32 value)
-		{
-			this.Int32 = value.Int32;
-		}
-		public NumberInt32(Int32 value)
-		{
-			this.Int32 = value;
-		}
-
-		#region INumber Implementation
-		public NumberInt32 Add (NumberInt32 left, NumberInt32 right)
-		{
-			return left.Int32 + right.Int32;
-		}
-		public NumberInt32 Substract (NumberInt32 left, NumberInt32 right)
-		{
-			return left.Int32 - right.Int32;
-		}
-		public NumberInt32 Divide (NumberInt32 left, NumberInt32 right)
-		{
-			return left.Int32 / right.Int32;
-		}
-		public NumberInt32 Multiply (NumberInt32 left, NumberInt32 right)
-		{
-			return left.Int32 * right.Int32;
-		}
-		public NumberInt32 Modulo (NumberInt32 left, NumberInt32 right)
-		{
-			return left.Int32 % right.Int32;
-		}
-
-		public NumberInt32 Max 
-		{
-			get 
-			{
-				return Int32.MaxValue;
-			}
-		}
-		public NumberInt32 Min 
-		{
-			get 
-			{
-				return Int32.MinValue;
-			}
-		}
-		public NumberInt32 Epsilon 
-		{
-			get 
-			{
-				return NumberInt32._epsilon;
-			}
-		}
-
-		private const Int32 _epsilon = 1;
-
-		#endregion
-
-		#region IEquatable Implementation
-		public Boolean Equals (NumberInt32 other)
-		{
-			throw new NotImplementedException ();
-		}
-		#endregion
-
-		#region IComparable implementation
-		public Int32 CompareTo (NumberInt32 other)
-		{
-			throw new NotImplementedException ();
-		}
-		#endregion
-
-
-	}
+//
+//	public struct NumberInt32 : INumber<NumberInt32>
+//	{
+//		private Int32 Int32 { get; }
+//
+//		public NumberInt32(NumberInt32 value)
+//		{
+//			this.Int32 = value.Int32;
+//		}
+//		public NumberInt32(Int32 value)
+//		{
+//			this.Int32 = value;
+//		}
+//
+//		#region INumber Implementation
+//		public NumberInt32 Add (NumberInt32 left, NumberInt32 right)
+//		{
+//			return left.Int32 + right.Int32;
+//		}
+//		public NumberInt32 Substract (NumberInt32 left, NumberInt32 right)
+//		{
+//			return left.Int32 - right.Int32;
+//		}
+//		public NumberInt32 Divide (NumberInt32 left, NumberInt32 right)
+//		{
+//			return left.Int32 / right.Int32;
+//		}
+//		public NumberInt32 Multiply (NumberInt32 left, NumberInt32 right)
+//		{
+//			return left.Int32 * right.Int32;
+//		}
+//		public NumberInt32 Modulo (NumberInt32 left, NumberInt32 right)
+//		{
+//			return left.Int32 % right.Int32;
+//		}
+//
+//		public NumberInt32 Max 
+//		{
+//			get 
+//			{
+//				return Int32.MaxValue;
+//			}
+//		}
+//		public NumberInt32 Min 
+//		{
+//			get 
+//			{
+//				return Int32.MinValue;
+//			}
+//		}
+//		public NumberInt32 Epsilon 
+//		{
+//			get 
+//			{
+//				return NumberInt32._epsilon;
+//			}
+//		}
+//
+//		private const Int32 _epsilon = 1;
+//
+//		#endregion
+//
+//		#region IEquatable Implementation
+//		public Boolean Equals (NumberInt32 other)
+//		{
+//			throw new NotImplementedException ();
+//		}
+//		#endregion
+//
+//		#region IComparable implementation
+//		public Int32 CompareTo (NumberInt32 other)
+//		{
+//			throw new NotImplementedException ();
+//		}
+//		#endregion
+//
+//
+//	}
 
 }
