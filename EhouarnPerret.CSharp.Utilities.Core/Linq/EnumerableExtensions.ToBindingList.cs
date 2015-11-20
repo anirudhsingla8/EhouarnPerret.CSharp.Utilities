@@ -1,5 +1,5 @@
 ﻿//
-// ToQueue.cs
+// EnumerableExtensions.ToBindingList.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,33 +25,28 @@
 // THE SOFTWARE.
 using System;
 using System.Linq;
+using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static partial class EnumerableExtensions
-    {
-        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            var keys = second.ToHashSet(keySelector, keyComparer);
+	public static partial class EnumerableExtensions
+	{
+		public static BindingList<TResult> ToBindingList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
+		{
+			var bindingList = new BindingList<TResult>();
 
-            foreach (var item in first)
-            {
-                var key = keySelector(item);
+			var results = source.Select (resultSelector);
 
-                if (!keys.Contains(key))
-                {
-                    yield return resultSelector(item);
+			bindingList.Add(results);
 
-                    keys.Add(key);
-                }
-            }
-        }
+			return bindingList;
+		}
 
-        public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            return first.ExceptBy(second, keySelector, item => item, keyComparer);
-        }
-    }
+		public static BindingList<TSource> ToBindingList<TSource>(this IEnumerable<TSource> source)
+		{
+			return source.ToBindingList (item => item);
+		}
+	}
 }
 

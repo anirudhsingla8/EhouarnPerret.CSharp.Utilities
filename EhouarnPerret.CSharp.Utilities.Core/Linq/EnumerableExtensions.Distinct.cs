@@ -1,5 +1,5 @@
-//
-// INumericalOperations.cs
+﻿//
+// EnumerableExtensions.Distinct.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,20 +23,29 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface INumericalOperations<T> : IComparable<T>, IEquatable<T>
+    public static partial class EnumerableExtensions
     {
-        T Add(T left, T right);
-        T Substract (T left, T right);
-        T Divide (T left, T right);
-        T Multiply (T left, T right);
-        T Modulo (T left, T right);
+        public static IEnumerable<TResult> Distinct<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
+        {
+            var keys = new HashSet<TKey>(keyComparer);
 
-        T Max { get; }
-        T Min { get; }
+            foreach (var item in source)
+            {
+                if (keys.Add(keySelector(item)))
+                {
+                    yield return resultSelector(item);
+                }
+            }
+        }
+        public static IEnumerable<TSource> Distinct<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        {
+            return source.Distinct(keySelector, item => item, keyComparer);
+        }
     }
 }
+

@@ -53,7 +53,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             this.Disposed?.Invoke(this, e);
         }
 
-        private System.Object SyncRoot { get; } = new System.Object();
+		private System.Object SyncRoot { get; } = new System.Object();
 
         #region INotifyObjectDisposing Implementation
         public event System.EventHandler Disposing;

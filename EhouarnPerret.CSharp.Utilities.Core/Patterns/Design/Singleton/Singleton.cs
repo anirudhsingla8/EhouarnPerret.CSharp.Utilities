@@ -19,13 +19,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     public class Singleton<T>
         where T : class, new() 
     {
-        private static readonly Lazy<T> lazy = new Lazy<T>(() => new T());
+		private static readonly Lazy<T> _lazy = new Lazy<T>(() => new T());
 
         public static T Instance 
         { 
             get 
             { 
-                return lazy.Value; 
+                return _lazy.Value; 
             } 
         }
 

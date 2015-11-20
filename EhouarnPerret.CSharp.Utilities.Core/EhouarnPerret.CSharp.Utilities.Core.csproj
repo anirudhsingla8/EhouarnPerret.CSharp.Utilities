@@ -34,6 +34,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Data" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,7 +100,6 @@
     <Compile Include="Data\Common\DbMapperIndexAttribute.cs" />
     <Compile Include="Data\Common\DbMapperTableAttribute.cs" />
     <Compile Include="Data\Common\DbMapperPrimaryKeyAttribute.cs" />
-    <Compile Include="IEnumerableRange.cs" />
     <Compile Include="Patterns\MVPP\IView.cs" />
     <Compile Include="Patterns\MVPP\IModel.cs" />
     <Compile Include="Patterns\MVPP\Presenter.cs" />
@@ -115,8 +115,6 @@
     <Compile Include="Drawing\SizeFExtensions.cs" />
     <Compile Include="Drawing\RectangleExtensions.cs" />
     <Compile Include="Drawing\RectangleFExtensions.cs" />
-    <Compile Include="Linq\EnumerableExtensions.DistinctBy.cs" />
-    <Compile Include="Linq\EnumerableExtensions.ExceptBy.cs" />
     <Compile Include="Numeric\INumericalOperations.cs" />
     <Compile Include="Numeric\StrictSignedness.cs" />
     <Compile Include="Numeric\Signedness.cs" />
@@ -127,6 +125,14 @@
     <Compile Include="Linq\EnumerableExtensions.ToHashSet.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToList.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToArray.cs" />
+    <Compile Include="Windows\Forms\Canvas\Canvas.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasProperties.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasPropertiesView.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToBindingList.cs" />
+    <Compile Include="Windows\Forms\ControlPropertiesView.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToKeyedCollection.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Distinct.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Except.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -172,5 +178,6 @@
     <Folder Include="IO\Compression\Lossless\Dictionary\BytePairEncoding\" />
     <Folder Include="IO\Compression\Lossless\Dictionary\Deflate\" />
     <Folder Include="IO\Compression\Lossless\Dictionary\LempelZiv\" />
+    <Folder Include="Windows\Forms\Canvas\" />
   </ItemGroup>
 </Project>

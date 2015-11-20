@@ -25,7 +25,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public FluentRegex()
         {
             this.StringBuilder = new StringBuilder();
-			this.UnstoppedStartedgroupNames = new Queue<Tuple<String, Boolean>> ();
+			// this.UnstoppedStartedgroupNames = new Queue<Tuple<String, Boolean>> ();
         }
 
         private StringBuilder StringBuilder { get; }
@@ -36,7 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             this.StringBuilder.Append($"(?<{groupName}>");
 
-			this.UnstoppedStartedgroupNames.Push(groupName);
+			// this.UnstoppedStartedgroupNames.Push(groupName);
 
             return this;
         }

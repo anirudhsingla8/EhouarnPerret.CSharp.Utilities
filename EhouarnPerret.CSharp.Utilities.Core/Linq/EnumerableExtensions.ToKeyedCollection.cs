@@ -1,5 +1,5 @@
-//
-// INumericalOperations.cs
+﻿//
+// EnumerableExtensions.ToKeyedCollection.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,20 +23,27 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface INumericalOperations<T> : IComparable<T>, IEquatable<T>
-    {
-        T Add(T left, T right);
-        T Substract (T left, T right);
-        T Divide (T left, T right);
-        T Multiply (T left, T right);
-        T Modulo (T left, T right);
+	public static partial class EnumerableExtensions
+	{
+		public static KeyedCollection<TKey, TResult> ToBindingList<TSource, TResult, TKey>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, TKey> resultKeySelector, IEqualityComparer<TKey> comparer = null)
+		{
+			var results = source.Select (resultSelector);
 
-        T Max { get; }
-        T Min { get; }
-    }
+			var keyedCollection = new KeyedCollection<TKey, TResult>(resultKeySelector, results);
+
+			return keyedCollection;
+		}
+
+		public static KeyedCollection<TKey, TSource> ToBindingList<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer = null)
+		{
+			return source.ToBindingList (item => item, keySelector, comparer);
+		}
+	}
 }
+

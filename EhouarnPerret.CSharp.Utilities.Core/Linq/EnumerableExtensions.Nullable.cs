@@ -1,5 +1,5 @@
 ﻿//
-// ToQueue.cs
+// EnumerableExtensions.Nullable.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>

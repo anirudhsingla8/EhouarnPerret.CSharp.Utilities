@@ -1,5 +1,5 @@
 ﻿//
-// ToQueue.cs
+// EnumerableExtensions.ToDataTable.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -27,6 +27,7 @@
 using System;
 using System.Data;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -36,7 +37,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 		{
 			var tSourceType = typeof(TSource);
 
-			var properties = tSourceType.GetProperties (System.Reflection.BindingFlags.Public, System.Reflection.BindingFlags.Instance);
+			const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance;
+
+			var properties = tSourceType.GetProperties (bindingFlags);
 
 			var dataTable = new DataTable ();
 
@@ -51,7 +54,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
 				foreach (var property in properties) 
 				{
-					dataRow[property] = property.GetValue (item, null);
+					dataRow[property.Name] = property.GetValue (item, null);
 				}
 
 				dataTable.Rows.Add (dataRow);

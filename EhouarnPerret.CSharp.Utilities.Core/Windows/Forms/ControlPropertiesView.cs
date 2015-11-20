@@ -1,5 +1,5 @@
 ﻿//
-// ToQueue.cs
+// ControlPropertiesView.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,28 +24,21 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static partial class EnumerableExtensions
-    {
-        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            var keys = new HashSet<TKey>(keyComparer);
+	public class ControlPropertiesView
+	{
+		public ControlPropertiesView ()
+		{
+		}
+	}
 
-            foreach (var item in source)
-            {
-                if (keys.Add(keySelector(item)))
-                {
-                    yield return resultSelector(item);
-                }
-            }
-        }
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            return source.DistinctBy(keySelector, item => item, keyComparer);
-        }
-    }
+	public class ControlPropertiesView<TControlProperties>
+	{
+		public ControlPropertiesView ()
+		{
+		}
+	}
 }
 

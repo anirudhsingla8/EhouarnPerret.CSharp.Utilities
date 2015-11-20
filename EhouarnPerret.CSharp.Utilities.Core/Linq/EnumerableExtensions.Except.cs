@@ -1,5 +1,5 @@
-//
-// INumericalOperations.cs
+﻿//
+// EnumerableExtensionsExcept.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,20 +23,35 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface INumericalOperations<T> : IComparable<T>, IEquatable<T>
+    public static partial class EnumerableExtensions
     {
-        T Add(T left, T right);
-        T Substract (T left, T right);
-        T Divide (T left, T right);
-        T Multiply (T left, T right);
-        T Modulo (T left, T right);
+        public static IEnumerable<TResult> Except<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
+        {
+            var keys = second.ToHashSet(keySelector, keyComparer);
 
-        T Max { get; }
-        T Min { get; }
+            foreach (var item in first)
+            {
+                var key = keySelector(item);
+
+                if (!keys.Contains(key))
+                {
+                    yield return resultSelector(item);
+
+                    keys.Add(key);
+                }
+            }
+        }
+
+        public static IEnumerable<TSource> Except<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        {
+            return first.Except(second, keySelector, item => item, keyComparer);
+        }
     }
 }
+
