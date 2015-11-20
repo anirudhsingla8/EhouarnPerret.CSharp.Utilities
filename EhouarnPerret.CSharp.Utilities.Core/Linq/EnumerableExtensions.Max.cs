@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.cs
+// EnumerableExtensions.Max.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,27 +23,19 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.Threading;
-using System.IO.Compression;
-using System.Collections;
-using System.Security.Policy;
-using System.Threading.Tasks;
-using System.Data;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static partial class EnumerableExtensions
-    {
-		public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<T> action)
+	public static partial class EnumerableExtensions
+	{
+		public static TSource Max<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
 		{
-			foreach (var item in source) 
-			{
-				action (item);
-			}
+            return source.Single(keySelector, (comparison) => comparison > 0, keyComparer);
 		}
-    }
+	}
 }
 

@@ -115,7 +115,6 @@
     <Compile Include="Drawing\SizeFExtensions.cs" />
     <Compile Include="Drawing\RectangleExtensions.cs" />
     <Compile Include="Drawing\RectangleFExtensions.cs" />
-    <Compile Include="Numeric\INumericalOperations.cs" />
     <Compile Include="Numeric\StrictSignedness.cs" />
     <Compile Include="Numeric\Signedness.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToDataTable.cs" />
@@ -133,6 +132,10 @@
     <Compile Include="Linq\EnumerableExtensions.ToKeyedCollection.cs" />
     <Compile Include="Linq\EnumerableExtensions.Distinct.cs" />
     <Compile Include="Linq\EnumerableExtensions.Except.cs" />
+    <Compile Include="Numeric\INumber.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Max.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Min.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Single.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

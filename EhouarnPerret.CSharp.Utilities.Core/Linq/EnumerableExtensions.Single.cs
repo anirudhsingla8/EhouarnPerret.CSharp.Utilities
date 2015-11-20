@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.cs
+// EnumerableExtensions.Single.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,26 +24,39 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Threading;
-using System.IO.Compression;
-using System.Collections;
-using System.Security.Policy;
-using System.Threading.Tasks;
-using System.Data;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static partial class EnumerableExtensions
     {
-		public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<T> action)
-		{
-			foreach (var item in source) 
-			{
-				action (item);
-			}
-		}
+        public static TSource Single<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
+        {
+            var itemKeyComparer = keyComparer ?? Comparer<TKey>.Default;
+
+            var enumerator = source.GetEnumerator();
+
+            if (enumerator.MoveNext())
+            {
+                throw new ArgumentException(nameof(source));
+            }
+            else
+            {
+                var selectedKey = keySelector(enumerator.Current);
+
+                while (enumerator.MoveNext())
+                {
+                    var key = keySelector(enumerator.Current);
+
+                    if (comparerSelection(itemKeyComparer.Compare(key, selectedKey)))
+                    {
+                        selectedKey = key;
+                    }
+                }
+
+                return selectedKey;
+            }
+        }
     }
 }
 

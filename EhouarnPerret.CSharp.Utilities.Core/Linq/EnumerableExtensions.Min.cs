@@ -1,5 +1,5 @@
-//
-// INumericalOperations.cs
+﻿//
+// EnumerableExtensions.Min.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,20 +23,17 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface INumericalOperations<T> : IComparable<T>, IEquatable<T>
-    {
-        T Add(T left, T right);
-        T Substract (T left, T right);
-        T Divide (T left, T right);
-        T Multiply (T left, T right);
-        T Modulo (T left, T right);
-
-        T Max { get; }
-        T Min { get; }
-    }
+	public static partial class EnumerableExtensions
+	{
+		public static TSource Min<TSource, TKey>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
+		{
+            return source.Single(keySelector, (comparison) => comparison < 0, keyComparer);
+		}
+	}
 }
+
