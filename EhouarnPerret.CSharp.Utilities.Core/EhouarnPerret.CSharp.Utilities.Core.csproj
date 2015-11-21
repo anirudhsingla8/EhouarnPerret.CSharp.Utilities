@@ -140,6 +140,8 @@
     <Compile Include="Patterns\EventAggregator\EventAggregator.cs" />
     <Compile Include="Numeric\Algorithms\SortingHelpers.cs" />
     <Compile Include="Numeric\Algorithms\QuickSortPartitionScheme.cs" />
+    <Compile Include="GeneralExtensions.cs" />
+    <Compile Include="GeneralHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

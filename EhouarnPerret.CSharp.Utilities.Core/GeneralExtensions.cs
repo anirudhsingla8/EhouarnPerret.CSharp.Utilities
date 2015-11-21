@@ -1,5 +1,5 @@
 ﻿//
-// SortingHelpers.cs
+// GeneralExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,32 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class SortingHelpers
+    public static class GeneralExtensions
     {
-        public static IEnumerable<T> Quicksort<T>(IEnumerable<T> v, Comparer<T> comparer = null)
-        {
-            comparer = comparer ?? Comparer<T>.Default;
-
-            var pivot = v.First();
-
-            // partitions
-            var lowers = new Stack<T>();
-            var greaters = new Stack<T>();
-
-//            foreach (T item in v.Skip(1)) // skip the pivot
-//            {
-//                (comparer(item, pivot) < 0 ? lowers : greaters).Push(item);
-//            }
-
-            return Quicksort(lowers, comparer)
-                .Concat(new [] { pivot })
-                .Concat(SortingHelpers.Quicksort(greaters, comparer));
-        }
+        
     }
+
 }
 

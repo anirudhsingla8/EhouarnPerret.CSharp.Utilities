@@ -22,17 +22,36 @@ namespace EhouarnPerret.CSharp.Utilities.Harness
     {
         public static void Main(params String[] arguments)
         {
-            var ints = new [] { 1, 4, 5 ,2 , 0, 9 ,3 , 42, 69, -5 };
+            var testclass = new MyClass(4);
+            _SwapByValue(testclass);
+            Console.WriteLine(testclass.Value);
 
-            var intsString = String.Join(@",", ints.Select(item => item.ToString()));
-
-            Console.WriteLine( String.Join(@",", ints.Select(item => item.ToString())));
-
-            var re = SortingHelpers.Quicksort(ints);
-
-            Console.WriteLine( String.Join(@",", re.Select(item => item.ToString())));
+            var testclass2 = new MyClass(4);
+            _SwapByRef(ref testclass2);
+            Console.WriteLine(testclass2.Value);            
 
             Console.ReadKey();
+        }
+
+        internal sealed class MyClass
+        {
+            public MyClass(int value)
+            {
+                Value = value;
+            }
+
+            public int Value { get; set; }
+        }
+
+
+        private static void _SwapByValue(MyClass myClass)
+        {
+            myClass = new MyClass(5);
+        }
+
+        private static void _SwapByRef(ref MyClass myClass)
+        {
+            myClass = new MyClass(5);
         }
     }
 }
