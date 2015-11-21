@@ -137,6 +137,9 @@
     <Compile Include="Linq\EnumerableExtensions.Min.cs" />
     <Compile Include="Linq\EnumerableExtensions.Single.cs" />
     <Compile Include="Patterns\MVPP\IMVPComponent.cs" />
+    <Compile Include="Patterns\EventAggregator\EventAggregator.cs" />
+    <Compile Include="Numeric\Algorithms\SortingHelpers.cs" />
+    <Compile Include="Numeric\Algorithms\QuickSortPartitionScheme.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -169,7 +172,6 @@
     <Folder Include="Data\Common\" />
     <Folder Include="Patterns\Design\Singleton\" />
     <Folder Include="Patterns\Design\Multiton\" />
-    <Folder Include="Patterns\AsyncCreation\" />
     <Folder Include="IO\Compression\" />
     <Folder Include="IO\Compression\Lossless\" />
     <Folder Include="IO\Compression\Lossless\Entropy\" />
@@ -183,5 +185,6 @@
     <Folder Include="IO\Compression\Lossless\Dictionary\Deflate\" />
     <Folder Include="IO\Compression\Lossless\Dictionary\LempelZiv\" />
     <Folder Include="Windows\Forms\Canvas\" />
+    <Folder Include="Patterns\EventAggregator\" />
   </ItemGroup>
 </Project>
