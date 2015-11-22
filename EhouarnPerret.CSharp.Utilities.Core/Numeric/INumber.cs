@@ -30,17 +30,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public interface INumber<T> : IComparable<T>, IEquatable<T>
     {
-        T Add(T left, T right);
-        T Substract (T left, T right);
-        T Divide (T left, T right);
-        T Multiply (T left, T right);
-        T Modulo (T left, T right);
+        void Add(T value);
+        void Substract (T value);
+        void Divide (T value);
+        void Multiply (T value);
+        void Modulo (T value);
 
         T Max { get; }
         T Min { get; }
 
 		T Epsilon { get; }
     }
+
 
 //
 //	public struct NumberInt32 : INumber<NumberInt32>

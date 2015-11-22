@@ -1,5 +1,5 @@
-//
-// QuickSortPartitionScheme.cs
+﻿//
+// StatisticsHelpers.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,17 +23,32 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public enum QuickSortPartitionScheme : byte
+    public static class StatisticsHelpers
     {
-        Lomuto = 0x00,
-        Hoare = 0x01,
+        
+        public static UInt64 Permutation(UInt32 itemCount, UInt32 item)
+        {
+        }
+        public static UInt64 Permutation(UInt64 itemCount, UInt64 item)
+        {
+        }
+        public static UInt64 Permutation(UInt32 itemCount, UInt32 item)
+        {
+        }
+        public static UInt64 Permutation(UInt64 itemCount, UInt64 item)
+        {
+        }
+
+        public static UInt32 Combination(UInt32 itemCount, UInt32 item)
+        {
+        }
+        public static UInt64 Combination(UInt64 itemCount, UInt64 item)
+        {
+        }
     }
 }
+

@@ -142,6 +142,8 @@
     <Compile Include="Numeric\Algorithms\QuickSortPartitionScheme.cs" />
     <Compile Include="GeneralExtensions.cs" />
     <Compile Include="GeneralHelpers.cs" />
+    <Compile Include="Numeric\StatisticsHelpers.cs" />
+    <Compile Include="Numeric\MathHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -188,5 +190,6 @@
     <Folder Include="IO\Compression\Lossless\Dictionary\LempelZiv\" />
     <Folder Include="Windows\Forms\Canvas\" />
     <Folder Include="Patterns\EventAggregator\" />
+    <Folder Include="Diagnostics\" />
   </ItemGroup>
 </Project>

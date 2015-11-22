@@ -1,5 +1,5 @@
-//
-// QuickSortPartitionScheme.cs
+﻿//
+// MathHelpers.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,17 +23,25 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
+using System.Numerics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public enum QuickSortPartitionScheme : byte
+    public static class MathHelpers
     {
-        Lomuto = 0x00,
-        Hoare = 0x01,
+        public static UInt64 Factorial(Byte value)
+        {
+        }
+        public static UInt64 Factorial(UInt16 value)
+        {
+        }
+        public static UInt64 Factorial(UInt32 value)
+        {
+        }
+        public static UInt64 Factorial(UInt64 value)
+        {
+        }
     }
 }
+

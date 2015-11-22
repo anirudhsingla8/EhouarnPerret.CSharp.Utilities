@@ -25,12 +25,20 @@
 // THE SOFTWARE.
 
 using System;
+using System.CodeDom;
+using System.Threading.Tasks;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ExceptionHelpers
     {
-        public static T ThrowIfNull<T>(T parameterValue, String parameterName)
+        // Create something more generic here... WIP
+//        private static T ThrowIf<T>(this T parameterValue, String parameterName, Func<T, Boolean> action)
+//        {
+//            
+//        }
+
+        public static T ThrowIfNull<T>(this T parameterValue, String parameterName)
             where T : class
         {
             if (parameterValue == null)
@@ -43,7 +51,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName)
+        public static String ThrowIfNullOrEmpty(this String parameterValue, String parameterName)
         {
             if (String.IsNullOrEmpty(parameterValue))
             {
@@ -54,6 +62,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return parameterValue;
             }
         }
+
+        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName, String comparedName)
+        {
+            if (parameterValue < comparedValue)
+            {
+                throw new ArgumentOutOfRangeException()
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        // See with the private stuff above...
+//        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName, String comparedName)
+//        {
+//            if (parameterValue < comparedValue)
+//            {
+//                throw new ArgumentOutOfRangeException()
+//            }
+//        }
     }
 }
 
