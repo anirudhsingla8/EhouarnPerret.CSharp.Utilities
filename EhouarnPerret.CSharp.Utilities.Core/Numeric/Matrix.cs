@@ -39,9 +39,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public Int32 ColumnCount { get; set; }
     }
 
-    public class Matrix<T>
-    {
-        
-    }
 }
 

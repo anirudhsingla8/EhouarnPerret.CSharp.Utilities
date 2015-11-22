@@ -28,4 +28,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     public interface ITreeNode<TValue> : ITreeNode<TValue, ITreeNode<TValue>>
     {
     }
+
 }

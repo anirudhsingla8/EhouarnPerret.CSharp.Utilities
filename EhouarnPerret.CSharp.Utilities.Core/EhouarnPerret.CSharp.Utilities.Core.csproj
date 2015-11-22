@@ -144,6 +144,8 @@
     <Compile Include="GeneralHelpers.cs" />
     <Compile Include="Numeric\StatisticsHelpers.cs" />
     <Compile Include="Numeric\MathHelpers.cs" />
+    <Compile Include="Numeric\FactorialScheme.cs" />
+    <Compile Include="Numeric\FactorialApproximationScheme.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

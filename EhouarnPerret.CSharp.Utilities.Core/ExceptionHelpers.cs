@@ -27,6 +27,8 @@
 using System;
 using System.CodeDom;
 using System.Threading.Tasks;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -38,7 +40,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //            
 //        }
 
-        public static T ThrowIfNull<T>(this T parameterValue, String parameterName)
+        public static T ThrowIfNull<T>(T parameterValue, String parameterName)
             where T : class
         {
             if (parameterValue == null)
@@ -51,7 +53,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static String ThrowIfNullOrEmpty(this String parameterValue, String parameterName)
+        public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName)
         {
             if (String.IsNullOrEmpty(parameterValue))
             {
@@ -63,17 +65,44 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName, String comparedName)
+        public static void ThrowIfLesserThan<T>(T parameterValue, T comparedValue, String parameterName)
+            where T : IComparable<T>
         {
-            if (parameterValue < comparedValue)
+            if (parameterValue.CompareTo(comparedValue) < 0)
             {
-                throw new ArgumentOutOfRangeException()
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
             else
             {
-                return parameterValue;
+                return;
             }
         }
+
+        public static void ThrowIfGreaterThan<T>(T parameterValue, T comparedValue, String parameterName)
+            where T : IComparable<T>
+        {
+            if (parameterValue.CompareTo(comparedValue) > 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public static void ThrowIfEqualsTo<T>(T parameterValue, T comparedValue, String parameterName)
+        {
+            if (parameterValue.Equals(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return;
+            }
+        }
+
 
         // See with the private stuff above...
 //        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName, String comparedName)

@@ -29,26 +29,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class StatisticsHelpers
     {
-        
-        public static UInt64 Permutation(UInt32 itemCount, UInt32 item)
-        {
-        }
-        public static UInt64 Permutation(UInt64 itemCount, UInt64 item)
-        {
-        }
-        public static UInt64 Permutation(UInt32 itemCount, UInt32 item)
-        {
-        }
-        public static UInt64 Permutation(UInt64 itemCount, UInt64 item)
-        {
-        }
-
-        public static UInt32 Combination(UInt32 itemCount, UInt32 item)
-        {
-        }
-        public static UInt64 Combination(UInt64 itemCount, UInt64 item)
-        {
-        }
+//        public static UInt64 Permutation(UInt32 itemCount, UInt32 item)
+//        {
+//        }
+//        public static UInt64 Permutation(UInt64 itemCount, UInt64 item)
+//        {
+//        }
+//        public static UInt64 Permutation(UInt32 itemCount, UInt32 item)
+//        {
+//        }
+//        public static UInt64 Permutation(UInt64 itemCount, UInt64 item)
+//        {
+//        }
+//
+//        public static UInt32 Combination(UInt32 itemCount, UInt32 item)
+//        {
+//        }
+//        public static UInt64 Combination(UInt64 itemCount, UInt64 item)
+//        {
+//        }
     }
 }
 

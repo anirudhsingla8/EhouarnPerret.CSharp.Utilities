@@ -28,4 +28,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
 
     }
+
+//    public interface IRedBlackTreeNode<TValue, TRedBlackTreeNode> : IBinaryTreeNode<TValue, TRedBlackTreeNode>
+//        where TRedBlackTreeNode : IRedBlackTreeNode<TValue, TRedBlackTreeNode>
+//    {
+//    }
+
 }

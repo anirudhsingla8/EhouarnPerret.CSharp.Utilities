@@ -31,23 +31,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class SortingHelpers
     {
-        private static IEnumerable<TSource> QuickSortHoareScheme<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer = null)
-        {
-            comparer = comparer ?? Comparer<TSource>.Default;
-        }
-        private static IEnumerable<TSource> QuickSortLomutoScheme<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer = null)
-        {
-            comparer = comparer ?? Comparer<TSource>.Default;
-        }
-
-        private static IEnumerable<TSource> QuickSortLomutoPartition<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer)
-        {
-            
-        }
-        private static IEnumerable<TSource> QuickSortHoarePartition<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer)
-        {
-
-        }
+//            private static IEnumerable<TSource> QuickSortHoareScheme<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer = null)
+//            {
+//                comparer = comparer ?? Comparer<TSource>.Default;
+//            }
+//            private static IEnumerable<TSource> QuickSortLomutoScheme<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer = null)
+//            {
+//                comparer = comparer ?? Comparer<TSource>.Default;
+//            }
+//
+//            private static IEnumerable<TSource> QuickSortLomutoPartition<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer)
+//            {
+//                
+//            }
+//            private static IEnumerable<TSource> QuickSortHoarePartition<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer)
+//            {
+//
+//            }
     }
 }
 

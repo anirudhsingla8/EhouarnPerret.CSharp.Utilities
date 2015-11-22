@@ -22,36 +22,14 @@ namespace EhouarnPerret.CSharp.Utilities.Harness
     {
         public static void Main(params String[] arguments)
         {
-            var testclass = new MyClass(4);
-            _SwapByValue(testclass);
-            Console.WriteLine(testclass.Value);
-
-            var testclass2 = new MyClass(4);
-            _SwapByRef(ref testclass2);
-            Console.WriteLine(testclass2.Value);            
-
-            Console.ReadKey();
-        }
-
-        internal sealed class MyClass
-        {
-            public MyClass(int value)
+            for (UInt16 n = 0; n < 30; n++)
             {
-                Value = value;
+                Console.WriteLine("Recursive: " + n + "! = " + MathHelpers.FactorialNaiveRecursive(n));
+                Console.WriteLine("Iterative: " + n + "! = " + MathHelpers.FactorialNaiveIterative(n));
+                Console.WriteLine();
             }
 
-            public int Value { get; set; }
-        }
-
-
-        private static void _SwapByValue(MyClass myClass)
-        {
-            myClass = new MyClass(5);
-        }
-
-        private static void _SwapByRef(ref MyClass myClass)
-        {
-            myClass = new MyClass(5);
+            Console.ReadKey();
         }
     }
 }

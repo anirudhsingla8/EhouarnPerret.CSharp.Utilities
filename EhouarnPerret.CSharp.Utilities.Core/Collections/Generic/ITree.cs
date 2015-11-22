@@ -27,7 +27,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
     public interface ITree<TValue> : ITree<TValue, ITreeNode<TValue>>
     {
-        
     }
 }
 

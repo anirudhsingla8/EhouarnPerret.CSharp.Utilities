@@ -1,5 +1,5 @@
-﻿//
-// MathHelpers.cs
+//
+// FactorialApproximationScheme.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,51 +23,16 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Numerics;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class MathHelpers
+
+    public enum FactorialApproximationScheme : byte
     {
-        public static BigInteger FactorialApproximate(FactorialApproximationScheme scheme)
-        {
-            return -1;    
-        }
-
-        public IEnumerable<BigInteger> PrimeFactorizationDirectSearch(BigInteger n)
-        {
-            HashSet<Int32> d;
-        }
-
-        public IEnumerable<BigInteger> EratosthenesSieve(BigInteger n)
-        {
-            
-        }
-
-        public static BigInteger FactorialNaiveIterative(UInt16 n)
-        {
-            BigInteger product = 1;
-
-            for (var i = 1; i <= n; i++)
-            {
-                product *= i;
-            }
-
-            return product;
-        }
-        public static BigInteger FactorialNaiveRecursive(UInt16 n)
-        {
-            if (n == 0)
-            {
-                return BigInteger.One;
-            }
-            else
-            {
-                return n * MathHelpers.FactorialNaiveRecursive((UInt16)(n - 1));
-            }
-        }
+        DeMoivre = 0x00,
+        Stirling = 0x01,
     }
 }
-
