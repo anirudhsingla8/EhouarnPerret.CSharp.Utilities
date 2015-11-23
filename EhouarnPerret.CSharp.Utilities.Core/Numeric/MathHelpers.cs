@@ -31,10 +31,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class MathHelpers
     {
-        public static BigInteger FactorialApproximate(FactorialApproximationScheme scheme)
-        {
-            return -1;    
-        }
+//        public static BigInteger FactorialApproximate(FactorialApproximationScheme scheme)
+//        {
+//            
+//        }
 
 //        public IEnumerable<BigInteger> PrimeFactorizationDirectSearch(BigInteger n)
 //        {
@@ -46,9 +46,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //            
 //        }
 
-        public static BigInteger FactorialNaiveIterative(UInt16 n)
+
+
+//        public static BigIntegerFraction SquareRootBabylonianScheme(BigInteger value)
+//        {
+//
+//        }
+//        public static BigIntegerFraction SquareRootBakhshaliScheme(BigInteger value)
+//        {
+//
+//        }
+//        public static BigIntegerFraction SquareRootNewtonScheme(BigInteger value)
+//        {
+//        }
+//        public static BigIntegerFraction SquareRootExponentialIdentityScheme(BigInteger value)
+//        {
+//        }
+
+        private static BigInteger FactorialNaiveIterative(UInt16 n)
         {
-            BigInteger product = 1;
+            var product = BigInteger.One;
 
             for (var i = 1; i <= n; i++)
             {
@@ -57,7 +74,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return product;
         }
-        public static BigInteger FactorialNaiveRecursive(UInt16 n)
+        private static BigInteger FactorialNaiveRecursive(UInt16 n)
         {
             if (n == 0)
             {

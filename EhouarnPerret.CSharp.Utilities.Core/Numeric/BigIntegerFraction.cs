@@ -79,32 +79,32 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Boolean operator ==(BigIntegerFraction left,  BigIntegerFraction right) 
         {
-            return Compare(left, right) == 0;
+            return BigIntegerFraction.Compare(left, right) == 0;
         }
 
         public static Boolean operator !=(BigIntegerFraction left,  BigIntegerFraction right) 
         {
-            return Compare(left, right) != 0;
+            return BigIntegerFraction.Compare(left, right) != 0;
         }
 
         public static Boolean operator <(BigIntegerFraction left,  BigIntegerFraction right) 
         {
-            return Compare(left, right) < 0;
+            return BigIntegerFraction.Compare(left, right) < 0;
         }
 
         public static Boolean operator <=(BigIntegerFraction left,  BigIntegerFraction right) 
         {
-            return Compare(left, right) <= 0;
+            return BigIntegerFraction.Compare(left, right) <= 0;
         }
 
         public static Boolean operator >(BigIntegerFraction left,  BigIntegerFraction right) 
         {
-            return Compare(left, right) > 0;
+            return BigIntegerFraction.Compare(left, right) > 0;
         }
 
         public static Boolean operator >=(BigIntegerFraction left,  BigIntegerFraction right) 
         {
-            return Compare(left, right) >= 0;
+            return BigIntegerFraction.Compare(left, right) >= 0;
         }
 
         public static BigIntegerFraction operator +(BigIntegerFraction value) 
@@ -167,14 +167,38 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return new BigIntegerFraction(numerator, denominator);
         }
 
-        public Boolean Equals(IFraction<BigInteger> other)
+        Boolean IEquatable<IFraction<BigInteger>>.Equals(IFraction<BigInteger> other)
         {
-            throw new NotImplementedException();
+            if ((this.Numerator == other.Numerator) && (this.Denominator == other.Denominator))
+            {
+                return true;
+            }
+            else
+            {
+                return (this.Numerator * other.Denominator) == (this.Denominator * other.Numerator);
+            } 
+        }
+       
+        public override Boolean Equals(object obj)
+        {
+            if ((obj == null) || !(obj is BigIntegerFraction))
+            {
+                return false;
+            }
+            else
+            {
+                return this.Equals((BigIntegerFraction)obj);
+            }
+        }
+
+        public override Int32 GetHashCode()
+        {
+            return (this.Numerator / this.Denominator).GetHashCode();
         }
 
         public Int32 CompareTo(IFraction<BigInteger> other)
         {
-            return Compare(this, other);
+            return Compare(this, (BigIntegerFraction)other);
         }
 
         public static BigIntegerFraction Pow(BigIntegerFraction baseValue, BigInteger exponent) 
@@ -213,16 +237,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             var numerator = left.Numerator * right.Denominator;
             var denominator = right.Numerator * left.Denominator;
 
-            return BigIntegerFraction.Compare(numerator, denominator);
+            return BigInteger.Compare(numerator, denominator);
         }
 
         public Int32 CompareTo(Object obj)
         {
-            if (obj == null)
-            {
-                return 1;
-            }
-            else if (!(obj is BigIntegerFraction))
+            if ((obj == null) || !(obj is BigIntegerFraction))
             {
                 throw new ArgumentException(nameof(obj));
             }
@@ -233,7 +253,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         }
 
-        public String ToString(string format, IFormatProvider formatProvider)
+        public override String ToString()
+        {
+            return $"{Numerator} / {Denominator}";
+        }
+
+        public String ToString(String format, IFormatProvider formatProvider)
         {
             throw new NotImplementedException();
         }
