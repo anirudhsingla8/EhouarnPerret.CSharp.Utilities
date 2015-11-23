@@ -137,7 +137,6 @@
     <Compile Include="Linq\EnumerableExtensions.Min.cs" />
     <Compile Include="Linq\EnumerableExtensions.Single.cs" />
     <Compile Include="Patterns\MVPP\IMVPComponent.cs" />
-    <Compile Include="Patterns\EventAggregator\EventAggregator.cs" />
     <Compile Include="Numeric\Algorithms\SortingHelpers.cs" />
     <Compile Include="Numeric\Algorithms\QuickSortPartitionScheme.cs" />
     <Compile Include="GeneralExtensions.cs" />
@@ -146,6 +145,8 @@
     <Compile Include="Numeric\MathHelpers.cs" />
     <Compile Include="Numeric\FactorialScheme.cs" />
     <Compile Include="Numeric\FactorialApproximationScheme.cs" />
+    <Compile Include="Numeric\BigIntegerFraction.cs" />
+    <Compile Include="Numeric\IFraction.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

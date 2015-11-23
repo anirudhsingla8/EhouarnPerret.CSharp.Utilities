@@ -1,10 +1,10 @@
-﻿//
-// MathHelpers.cs
+//
+// IFraction.cs
 //
 // Author:
-//       Ehouarn Perret <ehouarn.perret@outlook.com>
+//       FastMichouine <>
 //
-// Copyright (c) 2015 Ehouarn Perret
+// Copyright (c) 2015 FastMichouine
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,51 +23,17 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Numerics;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class MathHelpers
+    public interface IFraction<T> : IComparable<IFraction<T>>, IEquatable<IFraction<T>>, IFormattable, IComparable
+        where T : struct, IComparable<T>, IEquatable<T>, IFormattable, IComparable
     {
-        public static BigInteger FactorialApproximate(FactorialApproximationScheme scheme)
-        {
-            return -1;    
-        }
-
-//        public IEnumerable<BigInteger> PrimeFactorizationDirectSearch(BigInteger n)
-//        {
-//            HashSet<Int32> d;
-//        }
-//
-//        public IEnumerable<BigInteger> EratosthenesSieve(BigInteger n)
-//        {
-//            
-//        }
-
-        public static BigInteger FactorialNaiveIterative(UInt16 n)
-        {
-            BigInteger product = 1;
-
-            for (var i = 1; i <= n; i++)
-            {
-                product *= i;
-            }
-
-            return product;
-        }
-        public static BigInteger FactorialNaiveRecursive(UInt16 n)
-        {
-            if (n == 0)
-            {
-                return BigInteger.One;
-            }
-            else
-            {
-                return n * MathHelpers.FactorialNaiveRecursive((UInt16)(n - 1));
-            }
-        }
+        T Numerator { get; }
+        T Denominator { get; }
     }
+    
 }
-

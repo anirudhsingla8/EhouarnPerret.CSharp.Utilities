@@ -17,6 +17,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Security.Policy;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -25,18 +26,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public FluentRegex()
         {
             this.StringBuilder = new StringBuilder();
-			// this.UnstoppedStartedgroupNames = new Queue<Tuple<String, Boolean>> ();
+            this.UnstoppedStartedgroupNames = new Stack<String> ();
         }
 
         private StringBuilder StringBuilder { get; }
 
-		public Stack<Tuple<String, Boolean>> UnstoppedStartedgroupNames { get; }
+		public Stack<String> UnstoppedStartedgroupNames { get; }
 
         public FluentRegex StartCapture(String groupName)
         {
             this.StringBuilder.Append($"(?<{groupName}>");
 
-			// this.UnstoppedStartedgroupNames.Push(groupName);
+			this.UnstoppedStartedgroupNames.Push(groupName);
 
             return this;
         }
@@ -50,6 +51,58 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return this;
         }
 
+//        public FluentRegex AddNumericalRange(Double start, Double stop, Boolean isDotMandatory)
+//        {
+//        }
+//        public FluentRegex AddNumericalRange(Single start, Single stop, Boolean isDotMandatory)
+//        {
+//        }
+//        public FluentRegex AddNumericalRange(Decimal start, Decimal stop, Boolean isDotMandatory)
+//        {
+//        }
+//
+//
+//        public FluentRegex AddNumericalRange(SByte start, SByte stop, Boolean isDotMandatory)
+//        {
+//        }
+//        public FluentRegex AddNumericalRange(Int16 start, Int16 stop, Boolean isDotMandatory)
+//        {
+//        }
+//        public FluentRegex AddNumericalRange(Int32 start, Int32 stop, Boolean isDotMandatory)
+//        {
+//        }
+//        public FluentRegex AddNumericalRange(Int64 start, Int64 stop, Boolean isDotMandatory)
+//        {
+//        }
+//        public FluentRegex AddNumericalRange(BigInteger start, BigInteger stop, Boolean isDotMandatory)
+//        {
+//           
+//        }
+//
+//
+//        public FluentRegex AddUnsignedNumericalRange(Byte start, Byte stop)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddUnsignedNumericalRange(UInt16 start, UInt16 stop)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddUnsignedNumericalRange(UInt32 start, UInt32 stop)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
+//        {
+//            return this;
+//        }
+//
+//        private FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
+//        {
+//            return this
+//        }
+
+
         public override String ToString()
         {
             return this.StringBuilder.ToString();
@@ -57,10 +110,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public Regex ToRegex(Boolean isCompiled = true)
         {
-            var regex = new Regex(this.StringBuilder.ToString());
+            if (this.UnstoppedStartedgroupNames.Count > 0)
+            {
+                var groupName = this.UnstoppedStartedgroupNames.Peek();
+                var message = $"The group {groupName} is not stopped.";
 
-            return regex;
+                throw new InvalidOperationException(message);
+            }
+            else
+            {
+                var regex = new Regex(this.StringBuilder.ToString());
+
+                return regex;
+            }
         }
+    }
+
+    public enum Signedness : byte
+    {
+        Both = 0x00,
+        Positive = 0x01,
+        Negative = 0x02,
     }
 }
 

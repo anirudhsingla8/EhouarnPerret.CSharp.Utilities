@@ -34,4 +34,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //    {
 //    }
 
+
+    public interface IQuadTreeNode<TValue, TQuadTreeNode> : ITreeNode<TValue, TQuadTreeNode>
+        where TQuadTreeNode : IQuadTreeNode<TValue, TQuadTreeNode>
+    {
+        TQuadTreeNode BottomLeft { get; }
+
+        TQuadTreeNode BottomRight { get; }
+
+        TQuadTreeNode TopLeft { get; }
+
+        TQuadTreeNode TopRight { get; }
+    }
+
 }

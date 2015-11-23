@@ -28,9 +28,9 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public enum Signedness : byte
-    {
-        Positive = 0x00,
-        Negative = 0x01,
-    }
+//    public enum Signedness : byte
+//    {
+//        Positive = 0x00,
+//        Negative = 0x01,
+//    }
 }
