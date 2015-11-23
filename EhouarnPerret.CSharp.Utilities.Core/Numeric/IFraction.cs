@@ -29,7 +29,7 @@ using System.Numerics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IFraction<T> : IComparable<IFraction<T>>, IEquatable<IFraction<T>>, IFormattable, IComparable
+    public interface IFraction<T> : IFormattable, IComparable, IComparable<IFraction<T>>, IEquatable<IFraction<T>> 
         where T : struct, IComparable<T>, IEquatable<T>, IFormattable, IComparable
     {
         T Numerator { get; }
