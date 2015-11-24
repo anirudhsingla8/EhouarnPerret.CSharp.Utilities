@@ -148,6 +148,7 @@
     <Compile Include="Numeric\BigIntegerFraction.cs" />
     <Compile Include="Numeric\IFraction.cs" />
     <Compile Include="Diagnostics\ProcessHelpers.cs" />
+    <Compile Include="Runtime\Serialization\SerializationHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -195,5 +196,7 @@
     <Folder Include="Windows\Forms\Canvas\" />
     <Folder Include="Patterns\EventAggregator\" />
     <Folder Include="Diagnostics\" />
+    <Folder Include="Runtime\" />
+    <Folder Include="Runtime\Serialization\" />
   </ItemGroup>
 </Project>
