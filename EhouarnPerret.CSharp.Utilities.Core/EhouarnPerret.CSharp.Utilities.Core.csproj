@@ -147,6 +147,7 @@
     <Compile Include="Numeric\FactorialApproximationScheme.cs" />
     <Compile Include="Numeric\BigIntegerFraction.cs" />
     <Compile Include="Numeric\IFraction.cs" />
+    <Compile Include="Diagnostics\ProcessHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
