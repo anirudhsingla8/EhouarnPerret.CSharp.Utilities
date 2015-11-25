@@ -1,10 +1,10 @@
 ﻿//
-// TypeHelpers.cs
+// CanvasItem.cs
 //
 // Author:
-//       Ehouarn Perret <ehouarn.perret@outlook.com>
+//       FastMichouine <>
 //
-// Copyright (c) 2015 Ehouarn Perret
+// Copyright (c) 2015 FastMichouine
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,19 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Reflection;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class TypeHelpers
+    public abstract class CanvasItem
     {
-        public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier  = AccessModifiers.Both)
-        {
-            return type.GetFields(BindingFlags.Static | accessModifier.ToBindingFlags())
-                .Where(fieldInfo => fieldInfo.IsLiteral)
-                .ToArray();
-        }
     }
 }
 

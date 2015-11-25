@@ -149,6 +149,10 @@
     <Compile Include="Numeric\IFraction.cs" />
     <Compile Include="Diagnostics\ProcessHelpers.cs" />
     <Compile Include="Runtime\Serialization\SerializationHelpers.cs" />
+    <Compile Include="Patterns\EventAggregator\IPublisher.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasItem.cs" />
+    <Compile Include="Patterns\EventAggregator\IEventAggregator.cs" />
+    <Compile Include="Patterns\EventAggregator\ISubscriber.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

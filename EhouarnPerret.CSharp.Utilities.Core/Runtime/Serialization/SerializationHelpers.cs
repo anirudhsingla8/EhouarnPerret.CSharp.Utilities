@@ -31,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class SerializationHelpers
     {
-        public static Byte[] Serialize<T>(T value)
+        public static Byte[] BinarySerialize<T>(T value)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -47,7 +47,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static T Deserialize<T>(Byte[] valueBytes)
+        public static T BinaryDeserialize<T>(Byte[] valueBytes)
         {
             using (var memoryStream = new MemoryStream())
             {
