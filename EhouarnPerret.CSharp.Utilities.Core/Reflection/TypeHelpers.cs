@@ -27,14 +27,36 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class TypeHelpers
     {
-        static TypeHelpers()
+        private static KeyValuePair<Type, NumericalTypeInformation<T>> CreateNumericalTypeInformationKeyValuePair()
         {
 
+        }
+
+        static TypeHelpers()
+        {
+            var dictionary = new Dictionary<Type, NumericalTypeInformation>()
+            {
+                { typeof(Boolean), new NumericalTypeInformation<Boolean>() },
+                { typeof(Byte), new NumericalTypeInformation<Boolean>() },
+                { typeof(UInt16), new NumericalTypeInformation<Boolean>() },
+                { typeof(UInt32), new NumericalTypeInformation<Boolean>() },
+                { typeof(UInt64), new NumericalTypeInformation<Boolean>() },
+                { typeof(SByte), new NumericalTypeInformation<Boolean>() },
+                { typeof(Int16), new NumericalTypeInformation<Boolean>() },
+                { typeof(Int32), new NumericalTypeInformation<Boolean>() },
+                { typeof(Int64), new NumericalTypeInformation<Boolean>() },
+                { typeof(Single), new NumericalTypeInformation<Single>() },
+                { typeof(Double), new NumericalTypeInformation<Double>() },
+                { typeof(Decimal), new NumericalTypeInformation<Decimal>() },
+            };
+
+            TypeHelpers.Numbers = new ReadOnlyDictionary<Type, NumericalTypeInformation>();
         }
 
         public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier = AccessModifiers.Both)
@@ -58,8 +80,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static IReadOnlyDictionary<Type, NumberTypeInformation> Numbers { get; }
-
+        public static IReadOnlyDictionary<Type, NumericalTypeInformation> Numbers { get; }
     }
 }
 

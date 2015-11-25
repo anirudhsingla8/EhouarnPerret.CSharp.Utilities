@@ -1,10 +1,10 @@
 //
-// NumberTypeInformation.cs
+// NumericalTypeInformation.cs
 //
 // Author:
-//       FastMichouine <>
+//       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 FastMichouine
+// Copyright (c) 2015 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,20 +31,22 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class NumberTypeInformation
+    public abstract class NumericalTypeInformation
     {
         private const String DecimalTypeFullName = @"System.Decimal";
         private const String MinValueConstantFieldName = @"MinValue";
         private const String MaxValueConstantFieldName = @"MaxValue";
 
-        public NumberTypeInformation(Type type)
+        internal NumericalTypeInformation(Type type)
         {
             if (type.IsPrimitive || (type.IsValueType && (type.FullName == DecimalTypeFullName)))
             {
-                var minValueConstantFieldInfo = type.GetConstantField(NumberTypeInformation.MinValueConstantFieldName);
-                var maxValueConstantFieldInfo = type.GetConstantField(NumberTypeInformation.MaxValueConstantFieldName);
+                var minValueConstantFieldInfo = type.GetConstantField(NumericalTypeInformation.MinValueConstantFieldName);
+                var maxValueConstantFieldInfo = type.GetConstantField(NumericalTypeInformation.MaxValueConstantFieldName);
 
-                this.Name = type.Name;
+                this.Type = this.Type;
+
+                this.Name = this.Type.Name;
 
                 this.BoxedMinValue = minValueConstantFieldInfo.GetValue(null);
                 this.BoxedMaxValue = maxValueConstantFieldInfo.GetValue(null);
@@ -55,6 +57,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
+        public Type Type { get; }
+
         public String Name { get; }
 
         public Object BoxedMinValue { get; }
@@ -62,7 +66,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     }
 
 
-    public class NumberTypeInformation<T> : NumberTypeInformation
+    public class NumericalTypeInformation<T> : NumericalTypeInformation
         where T :   struct, 
                     IComparable, 
                     IComparable<T>, 
@@ -70,7 +74,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                     IEquatable<T>, 
                     IFormattable
     {
-        public NumberTypeInformation()
+        internal NumericalTypeInformation()
             :base(typeof(T))
         {
             this.MinValue = (T)this.BoxedMinValue;

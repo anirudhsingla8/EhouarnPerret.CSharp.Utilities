@@ -153,7 +153,10 @@
     <Compile Include="Windows\Forms\Canvas\CanvasItem.cs" />
     <Compile Include="Patterns\EventAggregator\IEventAggregator.cs" />
     <Compile Include="Patterns\EventAggregator\ISubscriber.cs" />
-    <Compile Include="Reflection\NumberTypeInformation.cs" />
+    <Compile Include="Reflection\NumericalTypeInformation.cs" />
+    <Compile Include="Collections\Generic\OrderedDictionary.cs" />
+    <Compile Include="Collections\Generic\IReadOnlyOrderedDictionary.cs" />
+    <Compile Include="Collections\Generic\IReadOnlyKeyedCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

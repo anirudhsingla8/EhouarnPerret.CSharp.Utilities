@@ -1,8 +1,8 @@
-﻿//
-// IQueue.cs
+//
+// IReadOnlyOrderedDictionary.cs
 //
 // Author:
-//       Ehouarn Perret <ehouarn.perret@outlook.com>
+//       Ehouarn <ehouarn.perret@outlook.com>
 //
 // Copyright (c) 2015 Ehouarn Perret
 //
@@ -23,15 +23,17 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Threading.Tasks;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IQueue<T> : IEnumerable<T>, ICollection<T>
+
+    public interface IReadOnlyOrderedDictionary<TKey, TValue> : IReadOnlyDictionary<TKey, TValue>
     {
+        TValue this[Int32 index] { get; }
+        Int32 IndexOf(TKey key);
     }
 }
-
