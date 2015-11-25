@@ -33,28 +33,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class TypeHelpers
     {
-        private static KeyValuePair<Type, NumericalTypeInformation<T>> CreateNumericalTypeInformationKeyValuePair()
+        private static KeyValuePair<Type, NumericalTypeInformation<T>> CreateNumericalTypeInformationKeyValuePair<T>()
         {
+            var keyValuePair = new KeyValuePair<Type, NumericalTypeInformation<T>>(typeof(T), new NumericalTypeInformation<T>());
 
+            return keyValuePair;
         }
 
         static TypeHelpers()
         {
-            var dictionary = new Dictionary<Type, NumericalTypeInformation>()
-            {
-                { typeof(Boolean), new NumericalTypeInformation<Boolean>() },
-                { typeof(Byte), new NumericalTypeInformation<Boolean>() },
-                { typeof(UInt16), new NumericalTypeInformation<Boolean>() },
-                { typeof(UInt32), new NumericalTypeInformation<Boolean>() },
-                { typeof(UInt64), new NumericalTypeInformation<Boolean>() },
-                { typeof(SByte), new NumericalTypeInformation<Boolean>() },
-                { typeof(Int16), new NumericalTypeInformation<Boolean>() },
-                { typeof(Int32), new NumericalTypeInformation<Boolean>() },
-                { typeof(Int64), new NumericalTypeInformation<Boolean>() },
-                { typeof(Single), new NumericalTypeInformation<Single>() },
-                { typeof(Double), new NumericalTypeInformation<Double>() },
-                { typeof(Decimal), new NumericalTypeInformation<Decimal>() },
-            };
+            var dictionary = new Dictionary<Type, NumericalTypeInformation>();
 
             TypeHelpers.Numbers = new ReadOnlyDictionary<Type, NumericalTypeInformation>();
         }

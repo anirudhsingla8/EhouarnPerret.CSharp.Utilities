@@ -1,5 +1,5 @@
 //
-// IReadOnlyOrderedDictionary.cs
+// IQuadTree.cs
 //
 // Author:
 //       Ehouarn <ehouarn.perret@outlook.com>
@@ -24,15 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IReadOnlyOrderedDictionary<TKey, TValue> : IReadOnlyDictionary<TKey, TValue>
+
+    public interface IQuadTree<TValue, TQuadTreeNode> : ITree<TValue, TQuadTreeNode>
+        where TQuadTreeNode : IQuadTreeNode<TValue, TQuadTreeNode>
     {
-        TValue this[Int32 index] { get; }
-        Int32 IndexOf(TKey key);
+    }
+
+    public interface IQuadTree<TValue> : ITree<TValue, IQuadTreeNode<TValue>>
+    {
     }
 }

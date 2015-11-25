@@ -30,7 +30,6 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-
     public interface IReadOnlyKeyedCollection<TKey, TItem> : IReadOnlyCollection<TItem>, IReadOnlyOrderedDictionary<TKey, TItem>
     {
     }

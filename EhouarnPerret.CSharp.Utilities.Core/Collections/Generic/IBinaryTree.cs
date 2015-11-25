@@ -20,11 +20,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     public interface IBinaryTree<TValue, TBinaryTreeNode> : ITree<TValue, TBinaryTreeNode>
         where TBinaryTreeNode : IBinaryTreeNode<TValue, TBinaryTreeNode>
     {
-
     }
 
     public interface IBinaryTree<TValue> : ITree<TValue, IBinaryTreeNode<TValue>>
     {
-
     }
 }

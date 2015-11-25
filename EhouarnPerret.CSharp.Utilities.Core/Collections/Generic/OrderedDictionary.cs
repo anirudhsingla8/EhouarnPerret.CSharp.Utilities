@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -35,7 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             this.KeyedCollection = new KeyedCollection<TKey, KeyValuePair<TKey, TValue>>(item => item.Key);
         }
 
-        private KeyedCollection<TKey, TValue> KeyedCollection { get; }
+        private IKeyedCollection<TKey, KeyValuePair<TKey, TValue>> KeyedCollection { get; }
 
         #region IOrderedDictionary Implementation
         public Int32 Add(TKey key, TValue value)
@@ -75,92 +76,95 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         #region IDictionary Implementation
         public Boolean ContainsKey(TKey key)
         {
-            return this.KeyedCollection.ContainsKey(
+            return this.KeyedCollection.ContainsKey(key);
         }
         void System.Collections.Generic.IDictionary<TKey, TValue>.Add(TKey key, TValue value)
         {
-            throw new NotImplementedException();
+            this.KeyedCollection.Add(key, value);
         }
-        public bool Remove(TKey key)
+        public Boolean Remove(TKey key)
         {
-            throw new NotImplementedException();
+            return this.KeyedCollection.Remove(key);
         }
-        public bool TryGetValue(TKey key, out TValue value)
+        public Boolean TryGetValue(TKey key, out TValue value)
         {
-            throw new NotImplementedException();
+            return this.KeyedCollection.TryGetValue(key, out value);
         }
         public TValue this[TKey index]
         {
             get
             {
-                throw new NotImplementedException();
+                return this.KeyedCollection[index];
             }
             set
             {
-                throw new NotImplementedException();
+                this.KeyedCollection[index] = value;
             }
         }
-        public System.Collections.Generic.ICollection<TKey> Keys
+        public ICollection<TKey> Keys
         {
             get
             {
-                throw new NotImplementedException();
+                return this.KeyedCollection.Keys;
             }
         }
-        public System.Collections.Generic.ICollection<TValue> Values
+        public ICollection<TValue> Values
         {
             get
             {
-                throw new NotImplementedException();
+                return this.KeyedCollection.Values;
             }
         }
         #endregion
-        #region ICollection implementation
-        public void Add(System.Collections.Generic.KeyValuePair<TKey, TValue> item)
+
+        #region ICollection Implementation
+        public void Add(KeyValuePair<TKey, TValue> item)
         {
-            throw new NotImplementedException();
+            return this.KeyedCollection.Add(item);
         }
         public void Clear()
         {
-            throw new NotImplementedException();
+            this.KeyedCollection.Clear();
         }
-        public bool Contains(System.Collections.Generic.KeyValuePair<TKey, TValue> item)
+        public Boolean Contains(KeyValuePair<TKey, TValue> item)
         {
-            throw new NotImplementedException();
+            return this.KeyedCollection.Contains(item);
         }
-        public void CopyTo(System.Collections.Generic.KeyValuePair<TKey, TValue>[] array, int arrayIndex)
+        public void CopyTo(KeyValuePair<TKey, TValue>[] array, Int32 arrayIndex)
         {
-            throw new NotImplementedException();
+            this.KeyedCollection.CopyTo(array, arrayIndex);
         }
-        public bool Remove(System.Collections.Generic.KeyValuePair<TKey, TValue> item)
+        public Boolean Remove(KeyValuePair<TKey, TValue> item)
         {
-            throw new NotImplementedException();
+            return this.KeyedCollection.Remove(item);
         }
-        public int Count
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-        public bool IsReadOnly
+        public Int32 Count
         {
             get
             {
-                throw new NotImplementedException();
+                return this.KeyedCollection.Count;
+            }
+        }
+        public Boolean IsReadOnly
+        {
+            get
+            {
+                return this.KeyedCollection.IsReadOnly;
             }
         }
         #endregion
-        #region IEnumerable implementation
-        public System.Collections.Generic.IEnumerator<System.Collections.Generic.KeyValuePair<TKey, TValue>> GetEnumerator()
+
+        #region IEnumerable Implementation
+        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.KeyedCollection.GetEnumerator();
         }
         #endregion
-        #region IEnumerable implementation
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+
+        #region IEnumerable Implementation
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return this.KeyedCollection.GetEnumerator();
         }
         #endregion
     }

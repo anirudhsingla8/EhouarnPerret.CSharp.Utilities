@@ -31,6 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public interface IKeyedCollection<TKey, TItem> : ICollection<TItem>, IOrderedDictionary<TKey, TItem>
     {
+        Boolean Contains(TKey key);
     }
 }
 

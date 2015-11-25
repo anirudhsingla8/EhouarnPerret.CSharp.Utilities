@@ -81,7 +81,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         void IDictionary<TKey, TItem>.Add(TKey key, TItem value)
         {
-            if (key == this.GetKeyForItem(item))
+            if (key.Equals(this.GetKeyForItem(value)))
             {
                 this.Add(value);
             }
@@ -123,6 +123,37 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             get
             {
                 return this.Dictionary.Values;
+            }
+        }
+
+        void IOrderedDictionary<TKey, TItem>.Insert(Int32 index, TKey key, TItem value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Int32 IndexOf(TKey key)
+        {
+            var index = -1;
+
+            if (this.Contains(key))
+            {
+                var item = this[key];
+
+                index = this.IndexOf(item);
+            }
+
+            return index;
+        }
+
+        TItem IOrderedDictionary<TKey, TItem>.this[Int32 index]
+        {
+            get
+            {
+                return this[index];
+            }
+            set
+            {
+                this[index] = value;
             }
         }
     }

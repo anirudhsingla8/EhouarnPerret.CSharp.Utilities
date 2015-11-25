@@ -32,7 +32,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     public interface IOrderedDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
         TValue this[Int32 index] { get; set; }  
-        Int32 Add(TKey key, TValue value);  
         void Insert(Int32 index, TKey key, TValue value);  
         Int32 IndexOf(TKey key);
         void RemoveAt(Int32 index);
