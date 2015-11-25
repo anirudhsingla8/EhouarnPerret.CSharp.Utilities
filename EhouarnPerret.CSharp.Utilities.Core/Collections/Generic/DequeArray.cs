@@ -29,9 +29,9 @@ using System.Threading.Tasks;
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     // TODO: Implementation
-//    public class DequeArray<T> : IDeque<T>
-//    {
-//
-//    }
+    public class DequeArray<T> : IDeque<T>
+    {
+
+    }
 }
 

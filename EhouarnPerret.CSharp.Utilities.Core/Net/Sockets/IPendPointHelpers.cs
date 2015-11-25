@@ -1,10 +1,10 @@
-//
-// IBinaryTreeNode.cs
+﻿//
+// IPendPointHelpers.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 Ehouarn Perret
+// Copyright (c) 2015 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,19 +23,40 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+using System.Net;
 
-using System.Collections.Generic;
-
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
 {
-    public interface IBinaryTreeNode<TValue, TBinaryTreeNode> : ITreeNode<TValue, TBinaryTreeNode>
-        where TBinaryTreeNode : IBinaryTreeNode<TValue, TBinaryTreeNode>
+    public static class IPEndPointHelpers
     {
-        TBinaryTreeNode Left { get; }
-        TBinaryTreeNode Right { get; }
-    }
+        public static IPEndPoint Parse(String ipEndPointString)
+        {
+            var tokens = ipEndPointString.Split(':');
 
-    public interface IBinaryTreeNode<TValue> : IBinaryTreeNode<TValue, IBinaryTreeNode<TValue>>
-    {
+            if (tokens.Length != 2)
+            {
+                throw new FormatException(nameof(ipEndPointString));
+            }
+            else
+            {
+                var ipAddress = IPAddress.Parse(tokens.First());
+                var port = UInt16.Parse(tokens.Last());
+
+                var ipEndPoint = new IPEndPoint(ipAddress, port);
+
+                return ipEndPoint;
+            }
+        }
+
+        public static IPEndPoint Parse(String ipAddressString, UInt16 port)
+        {
+            var ipAddress = IPAddress.Parse(ipAddressString);
+
+            var ipEndPoint = new IPEndPoint(ipAddress, port);
+
+            return ipEndPoint;
+        }
     }
 }
+

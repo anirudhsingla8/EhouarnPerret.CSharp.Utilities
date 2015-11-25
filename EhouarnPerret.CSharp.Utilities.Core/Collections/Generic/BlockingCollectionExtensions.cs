@@ -43,7 +43,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 throw new TimeoutException();
             }
         }
-        public static T Take<T>(this BlockingCollection<T> blockingCollection, Int32 timeout)
+        public static T Take<T>(this BlockingCollection<T> blockingCollection, UInt16 timeout)
         {
             var t = default(T);
 

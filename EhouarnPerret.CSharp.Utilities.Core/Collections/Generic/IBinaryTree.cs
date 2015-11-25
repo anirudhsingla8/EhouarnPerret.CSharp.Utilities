@@ -36,4 +36,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     public interface IBinaryTree<TValue> : ITree<TValue, IBinaryTreeNode<TValue>>
     {
     }
+
+    // We can replace it someday with... a Boolean
+    // isRed (if not seems it would be obvisouly black...)
+    public enum RedBlackTreeNodeColor : byte
+    {
+        Red = 0x00,
+        Black = 0x01,
+    }
 }

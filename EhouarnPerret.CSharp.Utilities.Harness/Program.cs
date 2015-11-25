@@ -15,6 +15,7 @@
 using System;
 using System.Linq;
 using EhouarnPerret.CSharp.Utilities.Core;
+using System.Net;
 
 namespace EhouarnPerret.CSharp.Utilities.Harness
 {
@@ -22,12 +23,7 @@ namespace EhouarnPerret.CSharp.Utilities.Harness
     {
         public static void Main(params String[] arguments)
         {
-//            for (UInt16 n = 0; n < 30; n++)
-//            {
-////                Console.WriteLine("Recursive: " + n + "! = " + MathHelpers.FactorialNaiveRecursive(n));
-////                Console.WriteLine("Iterative: " + n + "! = " + MathHelpers.FactorialNaiveIterative(n));
-//                Console.WriteLine();
-//            }
+            var keyedCollection = new KeyedCollection<Int32, IPEndPoint>()
 
 
             Console.ReadKey();
