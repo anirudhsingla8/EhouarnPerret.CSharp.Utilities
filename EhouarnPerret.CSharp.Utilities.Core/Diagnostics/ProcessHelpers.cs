@@ -31,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ProcessHelpers
     {
-        public Boolean CheckIsCurrentProcessAlreadyRunning()
+        public static Boolean CheckIsCurrentProcessAlreadyRunning()
         {
             var currentProcess = Process.GetCurrentProcess();
 

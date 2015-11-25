@@ -153,6 +153,7 @@
     <Compile Include="Windows\Forms\Canvas\CanvasItem.cs" />
     <Compile Include="Patterns\EventAggregator\IEventAggregator.cs" />
     <Compile Include="Patterns\EventAggregator\ISubscriber.cs" />
+    <Compile Include="Reflection\NumberTypeInformation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

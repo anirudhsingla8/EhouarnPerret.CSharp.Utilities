@@ -26,17 +26,40 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class TypeHelpers
     {
-        public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier  = AccessModifiers.Both)
+        static TypeHelpers()
+        {
+
+        }
+
+        public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier = AccessModifiers.Both)
         {
             return type.GetFields(BindingFlags.Static | accessModifier.ToBindingFlags())
                 .Where(fieldInfo => fieldInfo.IsLiteral)
                 .ToArray();
         }
+
+        public static FieldInfo GetConstantField(this Type type, String name, AccessModifiers accessModifier = AccessModifiers.Both)
+        {
+            var fieldInfo = type.GetField(name, BindingFlags.Static | accessModifier.ToBindingFlags());
+
+            if (fieldInfo.IsLiteral)
+            {
+                return fieldInfo;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static IReadOnlyDictionary<Type, NumberTypeInformation> Numbers { get; }
+
     }
 }
 

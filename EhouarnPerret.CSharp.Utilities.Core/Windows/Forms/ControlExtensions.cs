@@ -26,15 +26,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             where TControl : Control
             where TDataSource : INotifyPropertyChanged
         {
-            
             var controlPropertyName = String.Empty;
             var dataSourcePropertyName = String.Empty;
         }
 
 
         /// <summary>
-        /// Centers the control both horizontially and vertically 
-        /// according to the parent control that contains it.
+        /// Centers the control both horizontially and vertically according to the parent control that contains it.
         /// </summary>
         /// <param name="control"></param>
         public static void Center(this Control control)
@@ -44,8 +42,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
 
         /// <summary>
-        /// Centers the control horizontially according 
-        /// to the parent control that contains it.
+        /// Centers the control horizontially according to the parent control that contains it.
         /// </summary>
         public static void CenterHorizontally(this Control control)
         {
@@ -54,8 +51,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
 
         /// <summary>
-        /// Centers the control vertically according 
-        /// to the parent control that contains it.
+        /// Centers the control vertically according to the parent control that contains it.
         /// </summary>
         public static void CenterVertically(this Control control)
         {

@@ -39,11 +39,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         private IDbConnection Connection { get; }
 
-        public void Insert<T>(IEnumerable<T> records)
-        {
-
-        }
-
+//        public void Insert<T>(IEnumerable<T> records)
+//        {
+//            
+//        }
+//
+//        public IEnumerable<T> Query<T>()
+//        {
+//        }
     }
-    
 }
