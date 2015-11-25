@@ -24,9 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.ComponentModel;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -74,63 +72,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return this.ItemKeySelector(item);
         }
 
-        public Boolean ContainsKey(TKey key)
-        {
-            return this.Contains(key);
-        }
-
-        void IDictionary<TKey, TItem>.Add(TKey key, TItem value)
-        {
-            if (key.Equals(this.GetKeyForItem(value)))
-            {
-                this.Add(value);
-            }
-            else
-            {
-                throw new ArgumentException(nameof(key));
-            }
-        }
-
-        Boolean IDictionary<TKey, TItem>.TryGetValue(TKey key, out TItem value)
-        {
-            return this.Dictionary.TryGetValue(key, out value);
-        }
-
-        TItem IDictionary<TKey, TItem>.this[TKey index]
-        {
-            get
-            {
-                return this.Dictionary[index];
-            }
-            set
-            {
-                var currentItem = this[index];
-                var currentItemIndex = this.IndexOf(currentItem);
-                this.SetItem(currentItemIndex, value);
-            }
-        }
-
-        ICollection<TKey> IDictionary<TKey, TItem>.Keys
-        {
-            get
-            {
-                return this.Dictionary.Keys;
-            }
-        }
-
-        ICollection<TItem> IDictionary<TKey, TItem>.Values
-        {
-            get
-            {
-                return this.Dictionary.Values;
-            }
-        }
-
-        void IOrderedDictionary<TKey, TItem>.Insert(Int32 index, TKey key, TItem value)
-        {
-            throw new NotImplementedException();
-        }
-
         public Int32 IndexOf(TKey key)
         {
             var index = -1;
@@ -145,15 +86,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return index;
         }
 
-        TItem IOrderedDictionary<TKey, TItem>.this[Int32 index]
+        public Boolean TryGetItem(TKey key, out TItem item)
+        {
+            return this.Dictionary.TryGetValue(key, out item);
+        }
+
+        // Aw... hiding...
+        public TItem this[TKey key]
         {
             get
             {
-                return this[index];
+                return this[key];
             }
             set
             {
-                this[index] = value;
+                var item = this[key];
+                var index = this.IndexOf(item);
+                this.SetItem(index, value);
             }
         }
     }

@@ -33,18 +33,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class TypeHelpers
     {
-        private static KeyValuePair<Type, NumericalTypeInformation<T>> CreateNumericalTypeInformationKeyValuePair<T>()
-        {
-            var keyValuePair = new KeyValuePair<Type, NumericalTypeInformation<T>>(typeof(T), new NumericalTypeInformation<T>());
-
-            return keyValuePair;
-        }
-
         static TypeHelpers()
         {
-            var dictionary = new Dictionary<Type, NumericalTypeInformation>();
+            var dictionary = new Dictionary<Type, NumericalTypeInformation>()
+            {
+                { typeof(Byte), new NumericalTypeInformation<Byte>() },
+                { typeof(Int16), new NumericalTypeInformation<Int16>() },
+                { typeof(Int32), new NumericalTypeInformation<Int32>() },
+                { typeof(Int64), new NumericalTypeInformation<Int64>() },
 
-            TypeHelpers.Numbers = new ReadOnlyDictionary<Type, NumericalTypeInformation>();
+                { typeof(SByte), new NumericalTypeInformation<SByte>() },
+                { typeof(UInt16), new NumericalTypeInformation<UInt16>() },
+                { typeof(UInt32), new NumericalTypeInformation<UInt32>() },
+                { typeof(UInt64), new NumericalTypeInformation<UInt64>() },
+
+                { typeof(Single), new NumericalTypeInformation<Single>() },
+                { typeof(Double), new NumericalTypeInformation<Double>() },
+                { typeof(Decimal), new NumericalTypeInformation<Decimal>() },
+            };
+
+            TypeHelpers.Numbers = new ReadOnlyDictionary<Type, NumericalTypeInformation>(dictionary);
         }
 
         public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier = AccessModifiers.Both)

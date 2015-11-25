@@ -24,14 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IKeyedCollection<TKey, TItem> : ICollection<TItem>, IOrderedDictionary<TKey, TItem>
+    public interface IKeyedCollection<TKey, TItem> : ICollection<TItem>
     {
         Boolean Contains(TKey key);
+        Boolean TryGetItem(TKey key, out TItem item);
+        Int32 IndexOf(TKey key);
+
+        TItem this [TKey key]{ get; set; }
     }
 }
 
