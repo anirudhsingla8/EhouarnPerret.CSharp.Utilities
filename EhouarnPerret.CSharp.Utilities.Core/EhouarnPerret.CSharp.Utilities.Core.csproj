@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -60,7 +60,6 @@
     <Compile Include="Collections\Generic\IStack.cs" />
     <Compile Include="Collections\Generic\IDeque.cs" />
     <Compile Include="Collections\Generic\DequeLinkedList.cs" />
-    <Compile Include="Collections\Generic\DequeArray.cs" />
     <Compile Include="Numeric\StatisticExtensions.cs" />
     <Compile Include="Numeric\Matrix.cs" />
     <Compile Include="Linq\EnumerableExtensions.cs" />
@@ -86,6 +85,7 @@
     <Compile Include="Collections\Generic\IBinaryTree.cs" />
     <Compile Include="Collections\Generic\ITreeNode.cs" />
     <Compile Include="Collections\Generic\IBinaryTreeNode.cs" />
+    <Compile Include="Collections\Generic\DequeArray.cs" />
     <Compile Include="Reflection\TypeHelpers.cs" />
     <Compile Include="Reflection\AccessModifiersConverter.cs" />
     <Compile Include="Range.cs" />
