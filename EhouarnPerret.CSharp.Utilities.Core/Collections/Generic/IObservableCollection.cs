@@ -31,7 +31,7 @@ using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IObservableCollection<TItem> : ICollection<TItem>, INotifyCollectionChanged, INotifyPropertyChanged
+    public interface IObservableCollection<TItem> : ICollection<TItem>, INotifyCollectionChanged, INotifyPropertyChanged, IRaiseItemChangedEvents
     {
     }
 }

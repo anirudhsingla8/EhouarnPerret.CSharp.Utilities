@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Net;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
 {

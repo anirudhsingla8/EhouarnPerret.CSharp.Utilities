@@ -34,7 +34,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         Boolean TryGetItem(TKey key, out TItem item);
         Int32 IndexOf(TKey key);
 
-        TItem this [TKey key]{ get; set; }
+        TItem this [TKey key]{ get; }
     }
 }
 

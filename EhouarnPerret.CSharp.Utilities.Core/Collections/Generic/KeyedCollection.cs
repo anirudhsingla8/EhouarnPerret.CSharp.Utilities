@@ -90,21 +90,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return this.Dictionary.TryGetValue(key, out item);
         }
-
-        // Aw... hiding...
-        public TItem this[TKey key]
-        {
-            get
-            {
-                return this[key];
-            }
-            set
-            {
-                var item = this[key];
-                var index = this.IndexOf(item);
-                this.SetItem(index, value);
-            }
-        }
     }
 }
 

@@ -37,6 +37,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         void RemoveAt(Int32 index);
         void SetItem(Int32 index, TValue value);
     }
-
 }
 

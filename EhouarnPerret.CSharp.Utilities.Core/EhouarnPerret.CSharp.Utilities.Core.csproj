@@ -159,9 +159,9 @@
     <Compile Include="Collections\Generic\IReadOnlyKeyedCollection.cs" />
     <Compile Include="Collections\Generic\IQuadTreeNode.cs" />
     <Compile Include="Collections\Generic\IQuadTree.cs" />
-    <Compile Include="Net\Sockets\IPendPointHelpers.cs" />
     <Compile Include="Net\Sockets\StringIPEndPointExtensions.cs" />
     <Compile Include="Net\Sockets\IPAddressExtensions.cs" />
+    <Compile Include="Net\Sockets\IPEndPointHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
