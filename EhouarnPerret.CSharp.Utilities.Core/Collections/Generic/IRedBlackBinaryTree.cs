@@ -1,5 +1,5 @@
 //
-// IBinaryTreeNode.cs
+// IRedBlackBinaryTree.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -28,15 +28,12 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IBinaryTreeNode<TValue, TBinaryTreeNode> : ITreeNode<TValue, TBinaryTreeNode>
-        where TBinaryTreeNode : IBinaryTreeNode<TValue, TBinaryTreeNode>
-    {
-        TBinaryTreeNode Left { get; }
-        TBinaryTreeNode Right { get; }
-    }
-
-    public interface IBinaryTreeNode<TValue> : IBinaryTreeNode<TValue, IBinaryTreeNode<TValue>>
+    public interface IRedBlackBinaryTree<TValue, TRedBlackBinaryTreeNode> : IBinaryTree<TValue, TRedBlackBinaryTreeNode>
+        where TRedBlackBinaryTreeNode : IRedBlackBinaryTreeNode<TValue, TRedBlackBinaryTreeNode>
     {
     }
 
+    public interface IRedBlackBinaryTree<TValue> : IRedBlackBinaryTree<TValue, IRedBlackBinaryTreeNode<TValue>>
+    {
+    }
 }

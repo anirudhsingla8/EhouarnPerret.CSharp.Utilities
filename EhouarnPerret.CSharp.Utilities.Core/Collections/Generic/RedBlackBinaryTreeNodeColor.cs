@@ -1,5 +1,5 @@
 //
-// IBinaryTreeNode.cs
+// RedBlackTreeNodeColor.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -28,15 +28,11 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IBinaryTreeNode<TValue, TBinaryTreeNode> : ITreeNode<TValue, TBinaryTreeNode>
-        where TBinaryTreeNode : IBinaryTreeNode<TValue, TBinaryTreeNode>
+    // We can replace it someday with... a Boolean
+    // isRed (if not seems it would be obvisouly black...)
+    public enum RedBlackBinaryTreeNodeColor : byte
     {
-        TBinaryTreeNode Left { get; }
-        TBinaryTreeNode Right { get; }
+        Red = 0x00,
+        Black = 0x01,
     }
-
-    public interface IBinaryTreeNode<TValue> : IBinaryTreeNode<TValue, IBinaryTreeNode<TValue>>
-    {
-    }
-
 }

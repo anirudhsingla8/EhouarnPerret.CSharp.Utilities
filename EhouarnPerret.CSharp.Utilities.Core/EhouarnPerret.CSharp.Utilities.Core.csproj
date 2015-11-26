@@ -82,7 +82,6 @@
     <Compile Include="Drawing\ImageExtensions.cs" />
     <Compile Include="Collections\Generic\IKeyedCollection.cs" />
     <Compile Include="Collections\Generic\KeyedCollection.cs" />
-    <Compile Include="Collections\Generic\IBinaryTree.cs" />
     <Compile Include="Collections\Generic\ITreeNode.cs" />
     <Compile Include="Collections\Generic\IBinaryTreeNode.cs" />
     <Compile Include="Collections\Generic\DequeArray.cs" />
@@ -162,6 +161,10 @@
     <Compile Include="Net\Sockets\StringIPEndPointExtensions.cs" />
     <Compile Include="Net\Sockets\IPAddressExtensions.cs" />
     <Compile Include="Net\Sockets\IPEndPointHelpers.cs" />
+    <Compile Include="Collections\Generic\RedBlackBinaryTreeNodeColor.cs" />
+    <Compile Include="Collections\Generic\IRedBlackBinaryTreeNode.cs" />
+    <Compile Include="Collections\Generic\IRedBlackBinaryTree.cs" />
+    <Compile Include="Collections\Generic\IBinaryTree.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
