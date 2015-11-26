@@ -29,7 +29,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IObservableCollection<TItem> : ICollection<TItem>, INotifyCollectionChanged, INotifyPropertyChanged, IRaiseItemChangedEvents
     {

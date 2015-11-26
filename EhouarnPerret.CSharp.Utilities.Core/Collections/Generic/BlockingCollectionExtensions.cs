@@ -26,7 +26,7 @@
 using System;
 using System.Collections.Concurrent;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public static class BlockingCollectionExtensions
     {

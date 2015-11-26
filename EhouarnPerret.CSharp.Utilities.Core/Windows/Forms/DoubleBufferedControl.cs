@@ -26,7 +26,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public abstract class DoubleBufferedControl : Control
     {

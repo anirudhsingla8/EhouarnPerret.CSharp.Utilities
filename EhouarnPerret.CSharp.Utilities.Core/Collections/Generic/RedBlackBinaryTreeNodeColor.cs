@@ -26,7 +26,7 @@
 
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     // We can replace it someday with... a Boolean
     // isRed (if not seems it would be obvisouly black...)

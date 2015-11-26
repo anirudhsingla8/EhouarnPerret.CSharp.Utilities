@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
 	public class CanvasProperties : ControlProperties<Canvas>
 	{

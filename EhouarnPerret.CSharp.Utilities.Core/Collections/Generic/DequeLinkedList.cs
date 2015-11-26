@@ -27,7 +27,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     // TODO: Implementation
 //    public class DequeLinkedList<T> : IDeque<T>

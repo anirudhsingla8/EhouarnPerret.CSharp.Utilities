@@ -26,7 +26,7 @@
 using System;
 using System.Net.Sockets;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
 {
     public static class SocketExtensions
     {

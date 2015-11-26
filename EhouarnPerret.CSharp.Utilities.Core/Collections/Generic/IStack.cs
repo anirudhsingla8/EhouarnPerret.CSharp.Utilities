@@ -28,7 +28,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IStack<T> : IEnumerable<T>, ICollection<T>
     {

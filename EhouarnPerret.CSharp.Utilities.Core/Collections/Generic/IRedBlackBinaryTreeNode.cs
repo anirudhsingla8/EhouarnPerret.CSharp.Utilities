@@ -26,7 +26,7 @@
 
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
 
     public interface IRedBlackBinaryTreeNode<TValue, TRedBlackBinaryTreeNode> : IBinaryTreeNode<TValue, TRedBlackBinaryTreeNode>

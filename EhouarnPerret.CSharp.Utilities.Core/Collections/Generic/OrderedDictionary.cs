@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
 //    public class OrderedDictionary<TKey, TValue> : IOrderedDictionary<TKey, TValue>
 //    {

@@ -14,7 +14,7 @@
 //    limitations under the License.
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
     public static class ImageExtensions
     {

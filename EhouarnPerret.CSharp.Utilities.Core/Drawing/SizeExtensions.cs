@@ -15,7 +15,7 @@
 using System;
 using System.Drawing;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
     public static class SizeExtensions
     {

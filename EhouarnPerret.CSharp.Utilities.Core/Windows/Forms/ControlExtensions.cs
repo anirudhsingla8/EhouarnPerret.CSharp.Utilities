@@ -30,7 +30,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq.Expressions;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public static class ControlExtensions
     {

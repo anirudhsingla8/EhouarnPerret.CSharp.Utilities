@@ -29,7 +29,7 @@ using System.Data;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{

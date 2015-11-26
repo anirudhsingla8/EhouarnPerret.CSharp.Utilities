@@ -15,7 +15,7 @@
 using System;
 using System.IO.Ports;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ports
 {
     internal static class SerialPortExtensions
     {

@@ -26,7 +26,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     // TODO: Implementation
 //    public class DequeArray<T> : IDeque<T>

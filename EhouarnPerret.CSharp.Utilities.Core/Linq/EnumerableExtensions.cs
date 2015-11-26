@@ -33,7 +33,7 @@ using System.Security.Policy;
 using System.Threading.Tasks;
 using System.Data;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {

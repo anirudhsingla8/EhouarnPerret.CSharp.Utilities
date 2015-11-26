@@ -28,7 +28,7 @@ using System;
 using System.Data;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
     public class DbMapper : Disposable, IDbMapper
     {

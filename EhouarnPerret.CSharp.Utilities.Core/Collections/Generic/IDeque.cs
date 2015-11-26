@@ -27,7 +27,7 @@ using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IDeque<T> : IQueue<T>
     {

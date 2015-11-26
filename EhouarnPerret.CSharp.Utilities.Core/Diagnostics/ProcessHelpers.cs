@@ -28,7 +28,7 @@ using System;
 using System.Linq;
 using System.Diagnostics;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Diagnostics
 {
     public static class ProcessHelpers
     {

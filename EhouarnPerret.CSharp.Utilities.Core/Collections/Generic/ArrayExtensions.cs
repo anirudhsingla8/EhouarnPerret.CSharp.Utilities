@@ -26,7 +26,7 @@
 using System;
 using System.Linq;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public static class ArrayExtensions
     {

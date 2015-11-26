@@ -26,7 +26,7 @@
 
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IQuadTreeNode<TValue, TQuadTreeNode> : ITreeNode<TValue, TQuadTreeNode>
         where TQuadTreeNode : IQuadTreeNode<TValue, TQuadTreeNode>
