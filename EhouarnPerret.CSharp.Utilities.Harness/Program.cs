@@ -28,6 +28,7 @@ using System.Net;
 using System.Linq;
 using EhouarnPerret.CSharp.Utilities.Core;
 using EhouarnPerret.CSharp.Utilities.Core.Net.Sockets;
+using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Harness
 {
@@ -35,6 +36,40 @@ namespace EhouarnPerret.CSharp.Utilities.Harness
     {
         public static void Main(params String[] arguments)
         {
+            Application.EnableVisualStyles();
+
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            var form = new Form();
+
+            var splitContainer = 
+                new EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.SplitContainer()
+                { 
+                    Orientation = Orientation.Horizontal, 
+                    BorderStyle = BorderStyle.FixedSingle, 
+                    Dock = DockStyle.Fill 
+                };
+
+            var tabControl = new EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.TabControl()
+                {
+                    Multiline = true,
+                    SizeMode = TabSizeMode.FillToRight,
+                    Dock = DockStyle.Fill,
+                };
+
+            tabControl.TabPages.Add(@"One");
+            tabControl.TabPages.Add(@"Two");    
+            tabControl.TabPages.Add(@"Three");    
+
+            splitContainer.Panel1.Controls.Add(tabControl);
+
+            form.Controls.Add
+            (
+                splitContainer
+            );
+
+            Application.Run(form);
+
             var keyedCollection = new KeyedCollection<String, IPEndPoint>(ipEndPoint => Convert.ToString(ipEndPoint.Port));
 
             for (var i = 0; i < Byte.MaxValue; i++)

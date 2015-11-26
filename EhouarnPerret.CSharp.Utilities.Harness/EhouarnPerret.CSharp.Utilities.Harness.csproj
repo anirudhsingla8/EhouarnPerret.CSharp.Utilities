@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{AFB81F8F-FFFF-404B-B92C-078A4042971E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>EhouarnPerret.CSharp.Utilities.Harness</RootNamespace>
     <AssemblyName>EhouarnPerret.CSharp.Utilities.Harness</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
