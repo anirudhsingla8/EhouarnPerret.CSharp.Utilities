@@ -1,5 +1,5 @@
 ﻿//
-// CollectionExtensions.cs
+// IBin.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,46 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    // Use SelectMany...
-    public static class CollectionExtensions
+    public interface IBin<T>
     {
-        public static void Add<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection) 
-                {
-                    source.Add(item);
-                }
-            }
-        }
-
-        public static IEnumerable<Boolean> Remove<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection) 
-                {
-                    yield return source.Remove(item);
-                }
-            }
-        }
-    
-        public static IEnumerable<Boolean> Contains<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection)
-                {
-                    yield return source.Contains(item);
-                }
-            }
-        }
     }
 }
 

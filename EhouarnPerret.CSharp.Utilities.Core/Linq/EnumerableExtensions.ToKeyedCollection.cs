@@ -27,11 +27,13 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
+
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-		public static KeyedCollection<TKey, TResult> ToBindingList<TSource, TResult, TKey>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, TKey> resultKeySelector, IEqualityComparer<TKey> comparer = null)
+		public static KeyedCollection<TKey, TResult> ToKeyedCollection<TSource, TResult, TKey>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, TKey> resultKeySelector, IEqualityComparer<TKey> comparer = null)
 		{
 			var results = source.Select (resultSelector);
 
@@ -40,9 +42,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 			return keyedCollection;
 		}
 
-		public static KeyedCollection<TKey, TSource> ToBindingList<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer = null)
+        public static KeyedCollection<TKey, TSource> ToKeyedCollection<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer = null)
 		{
-			return source.ToBindingList (item => item, keySelector, comparer);
+            return source.ToKeyedCollection (item => item, keySelector, comparer);
 		}
 	}
 }

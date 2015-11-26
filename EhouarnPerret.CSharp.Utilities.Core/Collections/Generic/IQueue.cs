@@ -30,8 +30,9 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IQueue<T> : IEnumerable<T>, ICollection<T>
+    public interface IQueue<T> : IPeekableCollection<T>
     {
+        void Enqueue<T> (T item);
+        T Dequeue<T> ();
     }
 }
-

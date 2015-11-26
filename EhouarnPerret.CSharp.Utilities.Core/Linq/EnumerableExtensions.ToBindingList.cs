@@ -28,6 +28,8 @@ using System.Linq;
 using System.ComponentModel;
 using System.Collections.Generic;
 
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
+
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
@@ -38,7 +40,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 
 			var results = source.Select (resultSelector);
 
-			bindingList.Add(results);
+            bindingList.Add(results);
 
 			return bindingList;
 		}

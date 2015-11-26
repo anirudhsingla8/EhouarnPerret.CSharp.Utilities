@@ -30,8 +30,10 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IStack<T> : IEnumerable<T>, ICollection<T>
+    public interface IStack<T> : IInspectableClearableCollection<T>
     {
+        void Push<T>(T item);
+        T Pop<T>();
     }
 }
 

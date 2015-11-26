@@ -1,5 +1,5 @@
-﻿//
-// CollectionExtensions.cs
+//
+// IPeekableCollection.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,47 +23,29 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    // Use SelectMany...
-    public static class CollectionExtensions
+    public interface IPeekableCollection<T> : IInspectableClearableCollection<T>
     {
-        public static void Add<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection) 
-                {
-                    source.Add(item);
-                }
-            }
-        }
+        T Peek<T>();
+    }
 
-        public static IEnumerable<Boolean> Remove<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection) 
-                {
-                    yield return source.Remove(item);
-                }
-            }
-        }
-    
-        public static IEnumerable<Boolean> Contains<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection)
-                {
-                    yield return source.Contains(item);
-                }
-            }
-        }
+    public interface IInspectableClearableCollection<T> : IInspectableReadOnlyCollection<T>
+    {
+        void Clear();
+    }
+
+    public interface IInspectableReadOnlyCollection<T> : ICollection, IEnumerable<T>
+    {
+        Boolean Contains(T item);
+
+        void CopyTo(T[] array, Int32 arrayIndex);
+
+        Boolean TryGetItem(out T item);
     }
 }
-

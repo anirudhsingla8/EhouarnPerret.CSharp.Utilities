@@ -23,14 +23,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IDeque<T> : IQueue<T>
+    public interface IDeque<T> : IInspectableClearableCollection<T>
     {
+        void AppendFirst<T> (T item);
+        void AppendFirst<T> (IEnumerable<T> items);
+
+        void AppendLast<T> (T item);
+        void AppendLast<T> (IEnumerable<T> items);
+
+        T PollFirst<T>();
+        T PollLast<T>();
+
+        T PeekFirst<T>();
+        T PeekLast<T>();
     }
 }
 
