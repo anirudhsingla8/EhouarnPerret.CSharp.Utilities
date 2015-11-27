@@ -1,5 +1,5 @@
 //
-// IPeekableCollection.cs
+// IInspectableReadOnlyCollection.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -30,8 +30,13 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IPeekableCollection<T> : IInspectableClearableCollection<T>
+
+    public interface IInspectableReadOnlyCollection<T> : ICollection, IEnumerable<T>
     {
-        T Peek<T>();
+        Boolean Contains(T item);
+
+        void CopyTo(T[] array, Int32 arrayIndex);
+
+        Boolean TryGetItem(out T item);
     }
 }

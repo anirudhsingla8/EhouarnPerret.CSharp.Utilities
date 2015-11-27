@@ -1,5 +1,5 @@
 //
-// IPeekableCollection.cs
+// IOrderedObservableDictionary.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,13 +25,12 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections;
+using System.Windows.Forms;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IPeekableCollection<T> : IInspectableClearableCollection<T>
+    public interface IOrderedObservableDictionary<TKey, TValue> : IOrderedDictionary<TKey, TValue>, IObservableCollection<KeyValuePair<TKey, TValue>>
     {
-        T Peek<T>();
     }
 }

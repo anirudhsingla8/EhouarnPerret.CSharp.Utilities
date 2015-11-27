@@ -32,5 +32,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
     public interface IObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IObservableCollection<KeyValuePair<TKey, TValue>>
     {
     }
+
 }
 

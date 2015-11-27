@@ -169,6 +169,9 @@
     <Compile Include="Collections\Generic\IBinaryTree.cs" />
     <Compile Include="Collections\Generic\IBin.cs" />
     <Compile Include="Collections\Generic\IPeekableCollection.cs" />
+    <Compile Include="Collections\Generic\IOrderedObservableDictionary.cs" />
+    <Compile Include="Collections\Generic\IInspectableReadOnlyCollection.cs" />
+    <Compile Include="Collections\Generic\IInspectableClearableCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
