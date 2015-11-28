@@ -1,10 +1,10 @@
 //
-// DbMapper.cs
+// DbCommandExtensions.cs
 //
 // Author:
-//       Ehouarn Perret <ehouarn.perret@outook.com>
+//       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 Ehouarn Perret
+// Copyright (c) 2015 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,14 +31,14 @@ using System.Data.Common;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
-    public class DbMapper : Disposable, IDbMapper
+
+    public static class DbCommandExtensions
     {
-        public DbMapper(IDbConnection connection)
+        public static T ExecuteScalar<T>(this DbCommand dbCommand)
         {
-            this.Connection = ExceptionHelpers.ThrowIfNull(connection, nameof(connection));
+            var scalar = dbCommand.ExecuteScalar();
+
+            return (T)Convert.ChangeType(scalar, typeof(T));
         }
-
-        private IDbConnection Connection { get; }
     }
-
 }

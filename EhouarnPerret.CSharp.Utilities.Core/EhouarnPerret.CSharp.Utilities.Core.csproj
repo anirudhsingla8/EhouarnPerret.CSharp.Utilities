@@ -172,6 +172,7 @@
     <Compile Include="Collections\Generic\IOrderedObservableDictionary.cs" />
     <Compile Include="Collections\Generic\IInspectableReadOnlyCollection.cs" />
     <Compile Include="Collections\Generic\IInspectableClearableCollection.cs" />
+    <Compile Include="Data\Common\DbCommandExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
