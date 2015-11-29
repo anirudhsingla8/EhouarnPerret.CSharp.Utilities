@@ -25,9 +25,9 @@
 // THE SOFTWARE.
 using System;
 using System.Text;
+using System.Numerics;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Numerics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 {
@@ -89,41 +89,100 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
         {
             return this;
         }
-        public FluentRegex AddNumericalRange(BigInteger start, BigInteger stop, Boolean isDotMandatory)
+        public FluentRegex AddNumericalRange(BigInteger start, BigInteger stop)
         {
             return this;
         }
-//
-//
-//        public FluentRegex AddUnsignedNumericalRange(Byte start, Byte stop)
-//        {
-//            return this;
-//        }
-//        public FluentRegex AddUnsignedNumericalRange(UInt16 start, UInt16 stop)
-//        {
-//            return this;
-//        }
-//        public FluentRegex AddUnsignedNumericalRange(UInt32 start, UInt32 stop)
-//        {
-//            return this;
-//        }
-//        public FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
-//        {
-//            return this;
-//        }
-//
-//        private FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
-//        {
-//            return this
-//        }
+        public FluentRegex AddNumericalRange(BigIntegerFraction start, BigIntegerFraction stop, Boolean isDotMandatory)
+        {
+            return this;
+        }
 
+        public FluentRegex AddUnsignedNumericalRange(Byte start, Byte stop)
+        {
+            return this;
+        }
+        public FluentRegex AddUnsignedNumericalRange(UInt16 start, UInt16 stop)
+        {
+            return this;
+        }
+        public FluentRegex AddUnsignedNumericalRange(UInt32 start, UInt32 stop)
+        {
+            return this;
+        }
+        public FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
+        {
+            return this;
+        }
+        private FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
+        {
+            return this;
+        }
+
+        public FluentRegex AddIPAddressv4(String groupName)
+        {
+            return this;
+        }
+        public FluentRegex AddIPAddressv6(String groupName)
+        {
+            return this;
+        }
+        public FluentRegex AddIPEndPointv4(String groupName)
+        {
+            return this;
+        }
+        public FluentRegex AddIPEndPointv6(String groupName)
+        {
+            return this;
+        }
+
+        public FluentRegex AddTimeSpan()
+        {
+            return this;
+        }
+        public FluentRegex AddTimeSpan(String groupName)
+        {
+            return this;
+        }
+        public FluentRegex AddDateTime()
+        {
+            return this;
+        }
+        public FluentRegex AddDateTime(String groupName)
+        {
+            return this;
+        }
+
+        public FluentRegex AddHexadecimalNumber(String groupName)
+        {
+        }
+        public FluentRegex AddHexadecimalNumbers(Byte numberCount, String groupName)
+        {
+        }
+        public FluentRegex AddHexadecimalNumbers(Byte numberCount)
+        {
+        }
+
+        public FluentRegex AddIPAddressv4()
+        {
+        }
+        public FluentRegex AddIPAddressv6()
+        {
+        }
+        public FluentRegex AddIPEndPointv4()
+        {
+        }
+        public FluentRegex AddIPEndPointv6()
+        {
+        }
 
         public override String ToString()
         {
             return this.StringBuilder.ToString();
         }
 
-        public Regex ToRegex(Boolean isCompiled = true)
+
+        private void CheckUnstoppedStartedGroupNames()
         {
             if (this.UnstoppedStartedgroupNames.Count > 0)
             {
@@ -134,10 +193,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
             }
             else
             {
-                var regex = new Regex(this.StringBuilder.ToString());
-
-                return regex;
+                return;
             }
+        }
+
+        public Regex ToRegex(Boolean isCompiled = true)
+        {
+            this.CheckUnstoppedStartedGroupNames();
+
+            var regex = new Regex(this.StringBuilder.ToString());
+            return regex;
         }
     }
 
