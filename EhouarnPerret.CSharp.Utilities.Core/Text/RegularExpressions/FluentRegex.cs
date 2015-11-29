@@ -27,6 +27,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Numerics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 {
@@ -62,31 +63,36 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
         public FluentRegex AddNumericalRange(Double start, Double stop, Boolean isDotMandatory)
         {
+            return this;
         }
         public FluentRegex AddNumericalRange(Single start, Single stop, Boolean isDotMandatory)
         {
+            return this;
         }
         public FluentRegex AddNumericalRange(Decimal start, Decimal stop, Boolean isDotMandatory)
         {
+            return this;
         }
-//
-//
-//        public FluentRegex AddNumericalRange(SByte start, SByte stop, Boolean isDotMandatory)
-//        {
-//        }
-//        public FluentRegex AddNumericalRange(Int16 start, Int16 stop, Boolean isDotMandatory)
-//        {
-//        }
-//        public FluentRegex AddNumericalRange(Int32 start, Int32 stop, Boolean isDotMandatory)
-//        {
-//        }
-//        public FluentRegex AddNumericalRange(Int64 start, Int64 stop, Boolean isDotMandatory)
-//        {
-//        }
-//        public FluentRegex AddNumericalRange(BigInteger start, BigInteger stop, Boolean isDotMandatory)
-//        {
-//           
-//        }
+        public FluentRegex AddNumericalRange(SByte start, SByte stop, Boolean isDotMandatory)
+        {
+            return this;
+        }
+        public FluentRegex AddNumericalRange(Int16 start, Int16 stop, Boolean isDotMandatory)
+        {
+            return this;
+        }
+        public FluentRegex AddNumericalRange(Int32 start, Int32 stop, Boolean isDotMandatory)
+        {
+            return this;
+        }
+        public FluentRegex AddNumericalRange(Int64 start, Int64 stop, Boolean isDotMandatory)
+        {
+            return this;
+        }
+        public FluentRegex AddNumericalRange(BigInteger start, BigInteger stop, Boolean isDotMandatory)
+        {
+            return this;
+        }
 //
 //
 //        public FluentRegex AddUnsignedNumericalRange(Byte start, Byte stop)
