@@ -1,5 +1,5 @@
 ﻿//
-// TabControl.cs
+// CollectionEditor.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,13 +24,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Windows.Forms;
+using System.ComponentModel.Design;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class TabControl : System.Windows.Forms.TabControl
+    public class ExtendedCollectionEditor : CollectionEditor
     {
-        public TabControl()
+        public ExtendedCollectionEditor(Type type)
+            : base(type)
         {
+        }
+    }
+
+    public class ExtendedCollectionEditor<T> : ExtendedCollectionEditor
+    {
+        public ExtendedCollectionEditor()
+            : base(typeof(T))
+        {
+            
         }
     }
 }

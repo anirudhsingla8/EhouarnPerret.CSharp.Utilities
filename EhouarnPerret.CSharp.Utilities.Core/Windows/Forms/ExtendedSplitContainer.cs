@@ -27,9 +27,9 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class SplitContainer : System.Windows.Forms.SplitContainer
+    public class ExtendedSplitContainer : System.Windows.Forms.SplitContainer
     {
-        public SplitContainer()
+        public ExtendedSplitContainer()
         {
         }
 

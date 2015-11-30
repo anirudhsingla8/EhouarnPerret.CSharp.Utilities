@@ -1,5 +1,5 @@
 ﻿//
-// Program.cs
+// ExtendedButton.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,30 +25,27 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
-namespace EhouarnPerret.CSharp.Utilities.Harness
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public static class Program
+    public class ExtendedButton : Button
     {
-        public static void Main(params String[] arguments)
+        public ExtendedButton()
         {
-            var form = new Form();
+        }
 
-            var checkBox = new CheckBox();
-
-            checkBox.Appearance = Appearance.Button;
-
-            checkBox.Dock = DockStyle.Fill;
-
-            checkBox.Text = @"Hi";
-            checkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            checkBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            form.Controls.Add(checkBox);
-
-            form.ShowDialog();
-
-            Console.ReadKey();
+        private Boolean _checked;
+        public Boolean Checked
+        {
+            get
+            {
+                return this._checked;
+            }
+            set
+            {
+                this._checked = value;
+            }
         }
     }
 }
+

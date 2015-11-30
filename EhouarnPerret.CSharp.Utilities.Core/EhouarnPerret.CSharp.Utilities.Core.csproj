@@ -35,6 +35,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Design" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,8 +166,6 @@
     <Compile Include="Collections\Generic\RedBlackBinaryTreeNodeColor.cs" />
     <Compile Include="Collections\Generic\IRedBlackBinaryTreeNode.cs" />
     <Compile Include="Collections\Generic\IRedBlackBinaryTree.cs" />
-    <Compile Include="Windows\Forms\SplitContainer.cs" />
-    <Compile Include="Windows\Forms\TabControl.cs" />
     <Compile Include="Collections\Generic\IBinaryTree.cs" />
     <Compile Include="Collections\Generic\IBin.cs" />
     <Compile Include="Collections\Generic\IPeekableCollection.cs" />
@@ -173,6 +173,14 @@
     <Compile Include="Collections\Generic\IInspectableReadOnlyCollection.cs" />
     <Compile Include="Collections\Generic\IInspectableClearableCollection.cs" />
     <Compile Include="Data\Common\DbCommandExtensions.cs" />
+    <Compile Include="Windows\Forms\DataLayoutPanel.cs" />
+    <Compile Include="Windows\Forms\ExtendedSplitContainer.cs" />
+    <Compile Include="Windows\Forms\ExtendedCollectionEditor.cs" />
+    <Compile Include="Windows\Forms\ExtendedButton.cs" />
+    <Compile Include="Windows\Forms\Dropdown.cs" />
+    <Compile Include="Windows\Forms\Accordion.cs" />
+    <Compile Include="Windows\Forms\ToggleButton.cs" />
+    <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -222,5 +230,7 @@
     <Folder Include="Diagnostics\" />
     <Folder Include="Runtime\" />
     <Folder Include="Runtime\Serialization\" />
+    <Folder Include="Windows\Forms\Editors\" />
+    <Folder Include="Windows\Forms\Chart\" />
   </ItemGroup>
 </Project>

@@ -60,126 +60,126 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
             return this;
         }
-
-        public FluentRegex AddNumericalRange(Double start, Double stop, Boolean isDotMandatory)
-        {
-            return this;
-        }
-        public FluentRegex AddNumericalRange(Single start, Single stop, Boolean isDotMandatory)
-        {
-            return this;
-        }
-        public FluentRegex AddNumericalRange(Decimal start, Decimal stop, Boolean isDotMandatory)
-        {
-            return this;
-        }
-        public FluentRegex AddNumericalRange(SByte start, SByte stop, Boolean isDotMandatory)
-        {
-            return this;
-        }
-        public FluentRegex AddNumericalRange(Int16 start, Int16 stop, Boolean isDotMandatory)
-        {
-            return this;
-        }
-        public FluentRegex AddNumericalRange(Int32 start, Int32 stop, Boolean isDotMandatory)
-        {
-            return this;
-        }
-        public FluentRegex AddNumericalRange(Int64 start, Int64 stop, Boolean isDotMandatory)
-        {
-            return this;
-        }
-        public FluentRegex AddNumericalRange(BigInteger start, BigInteger stop)
-        {
-            return this;
-        }
-        public FluentRegex AddNumericalRange(BigIntegerFraction start, BigIntegerFraction stop, Boolean isDotMandatory)
-        {
-            return this;
-        }
-
-        public FluentRegex AddUnsignedNumericalRange(Byte start, Byte stop)
-        {
-            return this;
-        }
-        public FluentRegex AddUnsignedNumericalRange(UInt16 start, UInt16 stop)
-        {
-            return this;
-        }
-        public FluentRegex AddUnsignedNumericalRange(UInt32 start, UInt32 stop)
-        {
-            return this;
-        }
-        public FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
-        {
-            return this;
-        }
-        private FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
-        {
-            return this;
-        }
-
-        public FluentRegex AddIPAddressv4(String groupName)
-        {
-            return this;
-        }
-        public FluentRegex AddIPAddressv6(String groupName)
-        {
-            return this;
-        }
-        public FluentRegex AddIPEndPointv4(String groupName)
-        {
-            return this;
-        }
-        public FluentRegex AddIPEndPointv6(String groupName)
-        {
-            return this;
-        }
-
-        public FluentRegex AddTimeSpan()
-        {
-            return this;
-        }
-        public FluentRegex AddTimeSpan(String groupName)
-        {
-            return this;
-        }
-        public FluentRegex AddDateTime()
-        {
-            return this;
-        }
-        public FluentRegex AddDateTime(String groupName)
-        {
-            return this;
-        }
-
-        public FluentRegex AddHexadecimalNumber(String groupName)
-        {
-        }
-        public FluentRegex AddHexadecimalNumbers(Byte numberCount, String groupName)
-        {
-        }
-        public FluentRegex AddHexadecimalNumbers(Byte numberCount)
-        {
-        }
-
-        public FluentRegex AddIPAddressv4()
-        {
-        }
-        public FluentRegex AddIPAddressv6()
-        {
-        }
-        public FluentRegex AddIPEndPointv4()
-        {
-        }
-        public FluentRegex AddIPEndPointv6()
-        {
-        }
-
-        public override String ToString()
-        {
-            return this.StringBuilder.ToString();
-        }
+//
+//        public FluentRegex AddNumericalRange(Double start, Double stop, Boolean isDotMandatory)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddNumericalRange(Single start, Single stop, Boolean isDotMandatory)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddNumericalRange(Decimal start, Decimal stop, Boolean isDotMandatory)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddNumericalRange(SByte start, SByte stop, Boolean isDotMandatory)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddNumericalRange(Int16 start, Int16 stop, Boolean isDotMandatory)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddNumericalRange(Int32 start, Int32 stop, Boolean isDotMandatory)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddNumericalRange(Int64 start, Int64 stop, Boolean isDotMandatory)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddNumericalRange(BigInteger start, BigInteger stop)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddNumericalRange(BigIntegerFraction start, BigIntegerFraction stop, Boolean isDotMandatory)
+//        {
+//            return this;
+//        }
+//
+//        public FluentRegex AddUnsignedNumericalRange(Byte start, Byte stop)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddUnsignedNumericalRange(UInt16 start, UInt16 stop)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddUnsignedNumericalRange(UInt32 start, UInt32 stop)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
+//        {
+//            return this;
+//        }
+//        private FluentRegex AddUnsignedNumericalRange(UInt64 start, UInt64 stop)
+//        {
+//            return this;
+//        }
+//
+//        public FluentRegex AddIPAddressv4(String groupName)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddIPAddressv6(String groupName)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddIPEndPointv4(String groupName)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddIPEndPointv6(String groupName)
+//        {
+//            return this;
+//        }
+//
+//        public FluentRegex AddTimeSpan()
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddTimeSpan(String groupName)
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddDateTime()
+//        {
+//            return this;
+//        }
+//        public FluentRegex AddDateTime(String groupName)
+//        {
+//            return this;
+//        }
+//
+//        public FluentRegex AddHexadecimalNumber(String groupName)
+//        {
+//        }
+//        public FluentRegex AddHexadecimalNumbers(Byte numberCount, String groupName)
+//        {
+//        }
+//        public FluentRegex AddHexadecimalNumbers(Byte numberCount)
+//        {
+//        }
+//
+//        public FluentRegex AddIPAddressv4()
+//        {
+//        }
+//        public FluentRegex AddIPAddressv6()
+//        {
+//        }
+//        public FluentRegex AddIPEndPointv4()
+//        {
+//        }
+//        public FluentRegex AddIPEndPointv6()
+//        {
+//        }
+//
+//        public override String ToString()
+//        {
+//            return this.StringBuilder.ToString();
+//        }
 
 
         private void CheckUnstoppedStartedGroupNames()
@@ -204,13 +204,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
             var regex = new Regex(this.StringBuilder.ToString());
             return regex;
         }
-    }
-
-    public enum Signedness : byte
-    {
-        Both = 0x00,
-        Positive = 0x01,
-        Negative = 0x02,
     }
 }
 

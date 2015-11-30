@@ -2,9 +2,9 @@
 // Canvas.cs
 //
 // Author:
-//       FastMichouine <${AuthorEmail}>
+//       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 FastMichouine
+// Copyright (c) 2015 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal

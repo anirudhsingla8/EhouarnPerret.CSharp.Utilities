@@ -1,5 +1,5 @@
 ﻿//
-// Program.cs
+// DataLayoutPanel.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,30 +25,31 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
-namespace EhouarnPerret.CSharp.Utilities.Harness
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public static class Program
+    public class DataLayoutPanel : Control
     {
-        public static void Main(params String[] arguments)
+        public DataLayoutPanel()
         {
-            var form = new Form();
+            this.TableLayoutPanel = new TableLayoutPanel();
+            this._selectedObject = null;
+        }
 
-            var checkBox = new CheckBox();
+        private TableLayoutPanel TableLayoutPanel { get; }
 
-            checkBox.Appearance = Appearance.Button;
+        private Object _selectedObject;
+        public Object SelectedObject
+        {
+            get
+            {
+                return this._selectedObject;
+            }
+            set
+            {
 
-            checkBox.Dock = DockStyle.Fill;
-
-            checkBox.Text = @"Hi";
-            checkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            checkBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            form.Controls.Add(checkBox);
-
-            form.ShowDialog();
-
-            Console.ReadKey();
+            }
         }
     }
 }
+
