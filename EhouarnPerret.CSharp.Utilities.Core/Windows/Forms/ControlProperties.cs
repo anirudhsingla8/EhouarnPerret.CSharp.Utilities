@@ -14,6 +14,8 @@
 //    limitations under the License.
 using System.Windows.Forms;
 
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
+
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public abstract class ControlProperties
@@ -34,7 +36,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
         protected TParent Parent { get; }
     }
-
-
 }
 

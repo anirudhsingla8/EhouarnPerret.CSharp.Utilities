@@ -29,20 +29,37 @@ using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public abstract class Control<TProperties> : Control, IProperties<TProperties>
+    public abstract class Control<TProperties, TAppearance> : Control, IProperties<TProperties>, IAppearance<TAppearance>
         where TProperties : ControlProperties
+        where TAppearance : ControlAppearance
     {
+        protected Control(TProperties properties, TAppearance appearance)
+        {
+            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
+            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
+        }
         protected Control(TProperties properties)
         {
             this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
+            this.Appearance = Constructor.Construct<TAppearance>(AccessModifiers.Both, this);
+        }
+        protected Control(TAppearance appearance)
+        {
+            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
+            this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
         }
         protected Control()
         {
             this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
+            this.Appearance = Constructor.Construct<TAppearance>(AccessModifiers.Both, this);
         }
 
         #region IProperties Implementation
         public TProperties Properties { get; }
+        #endregion
+
+        #region IAppearance Implementation
+        public TAppearance Appearance { get; }
         #endregion
     }
 }

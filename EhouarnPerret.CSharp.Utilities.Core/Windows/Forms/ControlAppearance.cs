@@ -1,10 +1,10 @@
-﻿//
-// IProperties.cs
+//
+// ControlAppearance.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 Ehouarn Perret
+// Copyright (c) 2015 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,18 +24,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
+using System.Windows.Forms;
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public interface IProperties<TProperties>
+    public abstract class ControlAppearance
     {
-        TProperties Properties { get; }
+        internal ControlAppearance(Control parent)
+        {
+        }
     }
 
-    public interface IAppearance<TAppearance>
+    public abstract class ControlAppearance<TParent> : ControlAppearance
+        where TParent : Control
     {
-        TAppearance Appearance { get; }
+        protected ControlAppearance(TParent parent)
+            : base(parent)
+        {
+            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+        }
+
+        protected TParent Parent { get; }
     }
 }
-
