@@ -181,6 +181,7 @@
     <Compile Include="Windows\Forms\Accordion.cs" />
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
+    <Compile Include="Windows\Forms\DataTreeView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
