@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Forms;
+using System.Security.Cryptography.X509Certificates;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
@@ -34,6 +35,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
            
         }
+    
+        private Object _dataSource;
+        public Object DataSource
+        {
+            get;
+            set;
+        }
+
     }
 }
 

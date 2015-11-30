@@ -35,6 +35,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     public class EditorProperties
     {
     }
-
 }
 
