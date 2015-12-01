@@ -39,40 +39,40 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         }
     }
 
-    public abstract class DoubleBufferedControl<TProperties, TAppearance> : Control<TProperties, TAppearance>
-        where TProperties : ControlProperties
-    {
-        private void SetDoubleBuffered()
-        {
-            this.SetStyle(
-                ControlStyles.UserPaint |
-                ControlStyles.AllPaintingInWmPaint |
-                ControlStyles.OptimizedDoubleBuffer, true);
-        }
-
-        protected DoubleBufferedControl(TProperties properties)
-            : base(properties)
-        {
-            this.SetDoubleBuffered();
-        }
-
-        protected DoubleBufferedControl(TProperties properties, TAppearance appearance)
-            : base(properties, appearance)
-        {
-            this.SetDoubleBuffered();
-        }
-
-        protected DoubleBufferedControl(TAppearance appearance)
-            : base(appearance)
-        {
-            this.SetDoubleBuffered();
-        }
-
-        protected DoubleBufferedControl()
-            : base()
-        {
-            this.SetDoubleBuffered();
-        }
-    }
+//    public abstract class DoubleBufferedControl<TProperties, TAppearance> : Control<TProperties, TAppearance>
+//        where TProperties : ControlProperties
+//    {
+//        private void SetDoubleBuffered()
+//        {
+//            this.SetStyle(
+//                ControlStyles.UserPaint |
+//                ControlStyles.AllPaintingInWmPaint |
+//                ControlStyles.OptimizedDoubleBuffer, true);
+//        }
+//
+//        protected DoubleBufferedControl(TProperties properties)
+//            : base(properties)
+//        {
+//            this.SetDoubleBuffered();
+//        }
+//
+//        protected DoubleBufferedControl(TProperties properties, TAppearance appearance)
+//            : base(properties, appearance)
+//        {
+//            this.SetDoubleBuffered();
+//        }
+//
+//        protected DoubleBufferedControl(TAppearance appearance)
+//            : base(appearance)
+//        {
+//            this.SetDoubleBuffered();
+//        }
+//
+//        protected DoubleBufferedControl()
+//            : base()
+//        {
+//            this.SetDoubleBuffered();
+//        }
+//    }
 }
 

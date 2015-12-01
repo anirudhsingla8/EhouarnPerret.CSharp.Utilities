@@ -27,12 +27,12 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
-	public class CanvasProperties : ControlProperties<Canvas>
-	{
-		public CanvasProperties (Canvas parent)
-			: base(parent)
-		{
-		}
-	}
+//	public class CanvasProperties : ControlProperties<Canvas>
+//	{
+//		public CanvasProperties (Canvas parent)
+//			: base(parent)
+//		{
+//		}
+//	}
 }
 

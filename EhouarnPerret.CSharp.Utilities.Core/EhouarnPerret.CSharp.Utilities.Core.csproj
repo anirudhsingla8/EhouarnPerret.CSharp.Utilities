@@ -184,6 +184,8 @@
     <Compile Include="Windows\Forms\DataTreeView.cs" />
     <Compile Include="Windows\Forms\Editor.cs" />
     <Compile Include="Windows\Forms\ControlAppearance.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="Collections\Generic\DictionaryExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -162,38 +162,66 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 //        public FluentRegex AddHexadecimalNumbers(Byte numberCount)
 //        {
 //        }
+
+//        public FluentRegex Contains(String value)
+//        {
+//            this.StringBuilder.Append(value);
 //
+//            return this;
+//        }
+//
+//        public FluentRegex NotContains(String value)
+//        {
+//            this.StringBuilder.Append(value);
+//
+//            return this;
+//        }
+
 
 //        private static readonly String DecimalSByte = 
 //        private static readonly String DecimalInt16 = 
 //        private static readonly String DecimalInt32 = 
 //        private static readonly String DecimalInt64 = 
 //
-        private static readonly String DecimalByte = 
-        private static readonly String HexadecimalByte = 
-        private static readonly String DecimalUInt16 = 
-        private static readonly String DecimalUInt32 = 
-        private static readonly String DecimalUInt64 = 
-
-
-
-
-        private const String IPAddressv4DecimalOnly = @"(?<Byte>2[0-4]\d|25[0-5]|[01]?\d\d?){4}" +
-        private const String IPAddressv6DecimalOnly = @"(?<Byte>2[0-4]\d|25[0-5]|[01]?\d\d?){6}" +
-
-        public FluentRegex AddIPAddressv4()
+//        private static readonly String DecimalByte = 
+//        private static readonly String HexadecimalByte = 
+//        private static readonly String DecimalUInt16 = 
+//        private static readonly String DecimalUInt32 = 
+//        private static readonly String DecimalUInt64 = 
+//
+//
+//
+//
+//        private const String IPAddressv4DecimalOnly = @"(?<Byte>2[0-4]\d|25[0-5]|[01]?\d\d?){4}" +
+//        private const String IPAddressv6DecimalOnly = @"(?<Byte>2[0-4]\d|25[0-5]|[01]?\d\d?){6}" +
+//
+        public FluentRegex StartLine()
         {
-            (?<First>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Second>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Third>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Fourth>2[0-4]\d|25[0-5]|[01]?\d\d?)
+            this.StringBuilder.Append(@"^");      
+
+            return this;
         }
-        public FluentRegex AddIPAddressv6()
+
+        public FluentRegex StopLine()
         {
+            this.StringBuilder.Append(@"$");      
+
+            return this;
         }
-        public FluentRegex AddIPEndPointv4()
-        {
-        }
-        public FluentRegex AddIPEndPointv6()
-        {
-        }
+
+//        public FluentRegex AddIPAddressv4()
+//        {
+//            (?<First>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Second>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Third>2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?<Fourth>2[0-4]\d|25[0-5]|[01]?\d\d?)
+//        }
+//        public FluentRegex AddIPAddressv6()
+//        {
+//        }
+//        public FluentRegex AddIPEndPointv4()
+//        {
+//        }
+//        public FluentRegex AddIPEndPointv6()
+//        {
+//        }
 //
 //        public override String ToString()
 //        {

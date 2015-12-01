@@ -1,5 +1,5 @@
 ﻿//
-// DataTreeView.cs
+// DictionaryExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,23 +24,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Windows.Forms;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
+using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public class DataTreeView
+    public static class DictionaryExtensions
     {
-        public DataTreeView()
+        public static ILookup<TKey, TItem> ToLookup<TKey, TItem>(this IDictionary<TKey, IList<TItem>> source)
         {
-           
-        }
-    
-        private Object _dataSource;
-        public Object DataSource
-        {
-            get;
-            set;
+            var lookup = source
+                .SelectMany(p => p.Value, Tuple.Create)
+                .ToLookup(p => p.Item1.Key, p => p.Item2);
+
+            return lookup;
         }
     }
 }
