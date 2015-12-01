@@ -1,5 +1,5 @@
 ﻿//
-// IQueue.cs
+// MatchExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,15 +24,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
+namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 {
-    public interface IQueue<T> : IPeekableCollection<T>
+    public static class MatchExtensions
     {
-        void Enqueue<T> (T item);
-        T Dequeue<T> ();
+        public static IReadOnlyDictionary<String, String> MatchNamedCaptures(this Regex regex, String input)
+        {
+            var namedCaptureDictionary = new Dictionary<String, String>();
+
+            var groupCollection = regex.Match(input).Groups;
+
+            var groupNames = regex.GetGroupNames();
+
+            foreach (var groupName in groupNames)
+            {
+                if (groupCollection[groupName].Captures.Count > 0)
+                {
+                    namedCaptureDictionary.Add(groupName, groupCollection[groupName].Value);
+                }
+            }
+
+            return namedCaptureDictionary;
+        }
     }
 }
+

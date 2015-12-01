@@ -186,6 +186,7 @@
     <Compile Include="Windows\Forms\ControlAppearance.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Collections\Generic\DictionaryExtensions.cs" />
+    <Compile Include="Text\RegularExpressions\MatchExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

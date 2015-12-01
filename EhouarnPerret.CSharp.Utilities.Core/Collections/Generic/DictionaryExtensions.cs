@@ -39,6 +39,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
             return lookup;
         }
+        public static ILookup<TKey, TItem> ToLookup<TKey, TItem>(this IDictionary<TKey, IEnumerable<TItem>> source)
+        {
+            var lookup = source
+                .SelectMany(p => p.Value, Tuple.Create)
+                .ToLookup(p => p.Item1.Key, p => p.Item2);
+
+            return lookup;
+        }
     }
 }
 

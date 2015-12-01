@@ -37,10 +37,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         private new Font Font { get; set; }
         private new Color BackColor { get; set; }
         private new Image BackgroundImage { get; set; }
-        private new ImageLayout ImageLayout { get; set; }
-        private new event EventHandler BackgroundImageChanged;
-        private new event EventHandler BackgroundImageLayoutChanged;
-        private new event EventHandler BackColorChanged;
+//        private new ImageLayout ImageLayout { get; set; }
+//        private new event EventHandler BackgroundImageChanged;
+//        private new event EventHandler BackgroundImageLayoutChanged;
+//        private new event EventHandler BackColorChanged;
 
         protected Control(TProperties properties, TAppearance appearance)
         {

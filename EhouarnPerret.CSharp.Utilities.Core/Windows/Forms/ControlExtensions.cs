@@ -25,10 +25,11 @@
 // THE SOFTWARE.
 
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
-using System.Drawing;
 using System.Linq.Expressions;
+
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
