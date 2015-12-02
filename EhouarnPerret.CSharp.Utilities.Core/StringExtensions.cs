@@ -32,6 +32,7 @@ using System.Globalization;
 using System.Collections.Generic;
 
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -60,6 +61,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return lookup;
         }
+
+        public static Regex ToRegex(this String value, RegexOptions regexOptions = RegexOptions.None)
+        {
+            var regex = new Regex(value, regexOptions);
+
+            return regex;
+        }
+
+        // public static Match Match(this String value, 
 
         public static Boolean In (this String value, IEnumerable<String> source)
         {
