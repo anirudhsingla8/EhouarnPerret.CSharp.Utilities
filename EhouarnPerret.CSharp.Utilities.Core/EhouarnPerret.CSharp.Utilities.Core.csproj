@@ -125,9 +125,6 @@
     <Compile Include="Linq\EnumerableExtensions.ToHashSet.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToList.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToArray.cs" />
-    <Compile Include="Windows\Forms\Canvas\Canvas.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasProperties.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasPropertiesView.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToBindingList.cs" />
     <Compile Include="Windows\Forms\ControlPropertiesView.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToKeyedCollection.cs" />
@@ -151,7 +148,6 @@
     <Compile Include="Diagnostics\ProcessHelpers.cs" />
     <Compile Include="Runtime\Serialization\SerializationHelpers.cs" />
     <Compile Include="Patterns\EventAggregator\IPublisher.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasItem.cs" />
     <Compile Include="Patterns\EventAggregator\IEventAggregator.cs" />
     <Compile Include="Patterns\EventAggregator\ISubscriber.cs" />
     <Compile Include="Reflection\NumericalTypeInformation.cs" />
@@ -181,13 +177,21 @@
     <Compile Include="Windows\Forms\Accordion.cs" />
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
-    <Compile Include="Windows\Forms\DataTreeView.cs" />
     <Compile Include="Windows\Forms\Editor.cs" />
     <Compile Include="Windows\Forms\ControlAppearance.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Collections\Generic\DictionaryExtensions.cs" />
     <Compile Include="Text\RegularExpressions\MatchExtensions.cs" />
     <Compile Include="Windows\Forms\Form.cs" />
+    <Compile Include="Windows\Forms\ListViewControl.cs" />
+    <Compile Include="Reflection\CustomAttributesProviderExtensions.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControl.cs" />
+    <Compile Include="Windows\Forms\Chart\ChartControl.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlItem.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlProperties.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlPropertiesView.cs" />
+    <Compile Include="Windows\Forms\Chart\ChartControlSeries.cs" />
+    <Compile Include="StringValueAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

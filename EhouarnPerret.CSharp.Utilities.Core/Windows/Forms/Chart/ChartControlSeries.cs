@@ -1,5 +1,5 @@
 ﻿//
-// IQueue.cs
+// ChartControlSeries.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,15 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Chart
 {
-    public interface IQueue<T> : IPeekableCollection<T>
+    public class ChartControlSeries
     {
-        void Enqueue (T item);
-        T Dequeue ();
+        public ChartControlSeries()
+        {
+        }
     }
 }
+

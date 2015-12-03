@@ -1,5 +1,5 @@
 ﻿//
-// IQueue.cs
+// StringValueAttribute.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,15 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IQueue<T> : IPeekableCollection<T>
+    public class StringValueAttribute : Attribute
     {
-        void Enqueue (T item);
-        T Dequeue ();
+        public StringValueAttribute(String value)
+        {
+            this.Value = value;
+        }
+
+        public String Value { get; }
     }
 }
+

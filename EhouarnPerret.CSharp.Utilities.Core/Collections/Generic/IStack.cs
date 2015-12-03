@@ -32,8 +32,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IStack<T> : IInspectableClearableCollection<T>
     {
-        void Push<T>(T item);
-        T Pop<T>();
+        void Push(T item);
+        T Pop();
     }
 }
 

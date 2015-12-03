@@ -39,11 +39,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             where TControl : Control
             where TDataSource : INotifyPropertyChanged
         {
-            var controlPropertyName = String.Empty;
-
-            var dataSourcePropertyName = String.Empty;
-        
-            
+//            var controlPropertyName = String.Empty;
+//            var dataSourcePropertyName = String.Empty;
         }
 
         /// <summary>

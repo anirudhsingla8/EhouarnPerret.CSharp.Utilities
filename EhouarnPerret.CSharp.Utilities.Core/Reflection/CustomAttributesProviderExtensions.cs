@@ -1,5 +1,5 @@
 ﻿//
-// DataTreeView.cs
+// CustomAttributesProviderExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,23 +24,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Windows.Forms;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
+using System.Reflection;
+using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
+namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
-    public class DataTreeView
+    public static class CustomAttributesProviderExtensions
     {
-        public DataTreeView()
+        public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this ICustomAttributeProvider customAttributeProvider, Boolean isInherit = true)
+            where TAttribute : ICustomAttributeProvider
         {
-           
+            var attributeType = typeof(TAttribute);  
+
+            var attributes = customAttributeProvider.GetCustomAttributes(attributeType, isInherit).Cast<TAttribute>();
+
+            return attributes;
         }
-    
-        private Object _dataSource;
-        public Object DataSource
+
+        public static Boolean IsDefined<TAttribute>(this ICustomAttributeProvider customAttributeProvider, Boolean isInherit = true)
+            where TAttribute : ICustomAttributeProvider
         {
-            get;
-            set;
+            var attributeType = typeof(TAttribute);  
+
+            return customAttributeProvider.IsDefined(attributeType, isInherit);
         }
     }
 }

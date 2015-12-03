@@ -28,9 +28,9 @@ using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class DataLayoutPanel : Control
+    public class DataLayoutControl : Control
     {
-        public DataLayoutPanel()
+        public DataLayoutControl()
         {
             this.TableLayoutPanel = new TableLayoutPanel();
             this._selectedObject = null;

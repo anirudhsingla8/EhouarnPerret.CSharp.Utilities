@@ -30,17 +30,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IDeque<T> : IInspectableClearableCollection<T>
     {
-        void AppendFirst<T> (T item);
-        void AppendFirst<T> (IEnumerable<T> items);
+        void AppendFirst (T item);
+        void AppendFirst (IEnumerable<T> items);
 
-        void AppendLast<T> (T item);
-        void AppendLast<T> (IEnumerable<T> items);
+        void AppendLast (T item);
+        void AppendLast (IEnumerable<T> items);
 
-        T PollFirst<T>();
-        T PollLast<T>();
+        T PollFirst();
+        T PollLast();
 
-        T PeekFirst<T>();
-        T PeekLast<T>();
+        T PeekFirst();
+        T PeekLast();
     }
 }
 

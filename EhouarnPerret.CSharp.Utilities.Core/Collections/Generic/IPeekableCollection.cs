@@ -32,6 +32,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IPeekableCollection<T> : IInspectableClearableCollection<T>
     {
-        T Peek<T>();
+        T Peek();
     }
 }
