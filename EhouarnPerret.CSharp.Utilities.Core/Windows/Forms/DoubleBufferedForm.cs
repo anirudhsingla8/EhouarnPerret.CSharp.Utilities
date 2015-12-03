@@ -50,17 +50,44 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
-        public Boolean RepaintOnRedraw
+        protected override void OnResizeEnd(EventArgs e)
+        {
+            base.OnResizeEnd(e);
+
+            if (this.RepaintStrategy == RepaintStrategy.OnResizeEnd)
+            {
+                this.Invalidate();
+            }
+        }
+
+        private RepaintStrategy _repaintStrategy;
+        public RepaintStrategy RepaintStrategy
         {
             get
             {
-                return this.ResizeRedraw;
+                return this._repaintStrategy;
             }
             set
             {
-                this.ResizeRedraw = value;
+                if (value == RepaintStrategy.OnResize)
+                {
+                    this.ResizeRedraw = true;
+                }
+                else
+                {
+                    this.ResizeRedraw = false;
+                }
+
+                this._repaintStrategy = value;
             }
         }
+    }
+
+    public enum RepaintStrategy : byte
+    {
+        None = 0x00,
+        OnResizeEnd = 0x01,
+        OnResize = 0x02,
     }
 }
 

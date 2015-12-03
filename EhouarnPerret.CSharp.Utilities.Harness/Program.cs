@@ -38,11 +38,11 @@ namespace EhouarnPerret.CSharp.Utilities.Harness
         {
             var form = new DoubleBufferedForm();
 //
-            form.RepaintOnRedraw = true;
+            form.RepaintStrategy = RepaintStrategy.OnResizeEnd;
 
             form.Paint += (object sender, PaintEventArgs e) => 
             {
-                    e.Graphics.DrawGrid(new Pen(Color.Black), e.ClipRectangle, 5, 6);
+                e.Graphics.DrawGrid(new Pen(Color.Black), e.ClipRectangle, 5, 6);
             };
 
             form.ShowDialog();
