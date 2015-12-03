@@ -1,5 +1,5 @@
-﻿//
-// Program.cs
+//
+// FormResizeRepaintStrategy.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,44 +23,16 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using EhouarnPerret.CSharp.Utilities.Core.Drawing;
-using System.Drawing;
-using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Harness
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public static class Program
+    public enum FormResizeRepaintStrategy : byte
     {
-        public static void Main(params String[] arguments)
-        {
-            var form = new DoubleBufferedForm();
-//
-            form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;
-
-            form.Paint += (object sender, PaintEventArgs e) => 
-            {
-                e.Graphics.DrawGrid(new Pen(Color.Black), e.ClipRectangle, 5, 6);
-            };
-
-            form.ShowDialog();
-
-//            var checkBox = new CheckBox();
-//
-//            checkBox.Appearance = Appearance.Button;
-//
-//            checkBox.Dock = DockStyle.Fill;
-//
-//            checkBox.Text = @"Hi";
-//            checkBox.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-//            checkBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-//            form.Controls.Add(checkBox);
-//
-//            form.ShowDialog();
-
-            Console.ReadKey();
-        }
+        None = 0x00,
+        OnResizeEnd = 0x01,
+        OnResize = 0x02,
     }
 }

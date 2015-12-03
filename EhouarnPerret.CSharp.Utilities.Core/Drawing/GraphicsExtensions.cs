@@ -81,24 +81,42 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 
         public static void DrawCircle(this Graphics graphics, Pen pen, Point center, Int32 radius)
         {
-            var ellipseRectangle = new Rectangle(center.X - radius / 2, center.Y - radius / 2, radius * 2, radius * 2);
+            graphics.DrawCircle(pen, center.X, center.Y, radius);
+        }
+        public static void DrawCircle(this Graphics graphics, Pen pen, Int32 centerX, Int32 centerY, Int32 radius)
+        {
+            var ellipseRectangle = new Rectangle(centerX - radius, centerY - radius, radius * 2, radius * 2);
 
             graphics.DrawEllipse(pen, ellipseRectangle);
         }
         public static void DrawCircle(this Graphics graphics, Pen pen, PointF center, Single radius)
         {
-            var ellipseRectangle = new RectangleF(center.X - radius / 2, center.Y - radius / 2, radius * 2, radius * 2);
+            graphics.DrawCircle(pen, center.X, center.Y, radius);
+        }
+        public static void DrawCircle(this Graphics graphics, Pen pen, Single centerX, Single centerY, Single radius)
+        {
+            var ellipseRectangle = new RectangleF(centerX - radius, centerY - radius, radius * 2f, radius * 2f);
 
             graphics.DrawEllipse(pen, ellipseRectangle);
         }
 
         public static void FillCircle(this Graphics graphics, Brush brush, Point center, Int32 radius)
         {
-            graphics.FillEllipse(brush, center.X - radius / 2, center.Y - radius / 2, radius * 2, radius * 2);
+            graphics.FillCircle(brush, center.X, center.Y, radius);
         }
+        public static void FillCircle(this Graphics graphics, Brush brush, Int32 centerX, Int32 centerY, Int32 radius)
+        {
+            graphics.FillEllipse(brush, centerX - radius, centerY - radius, radius * 2, radius * 2);
+        }
+
+
         public static void FillCircle(this Graphics graphics, Brush brush, PointF center, Single radius)
         {
-            graphics.FillEllipse(brush, center.X - radius / 2, center.Y - radius / 2, radius * 2, radius * 2);
+            graphics.FillCircle(brush, center.X, center.Y, radius);
+        }
+        public static void FillCircle(this Graphics graphics, Brush brush, Single centerX, Single centerY, Single radius)
+        {
+            graphics.FillEllipse(brush, centerX - radius, centerY - radius, radius * 2f, radius * 2f);
         }
     }
 }

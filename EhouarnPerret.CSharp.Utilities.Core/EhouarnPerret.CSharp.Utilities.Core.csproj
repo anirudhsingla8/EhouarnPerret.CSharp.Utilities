@@ -193,6 +193,7 @@
     <Compile Include="Windows\Forms\Chart\ChartControlSeries.cs" />
     <Compile Include="StringValueAttribute.cs" />
     <Compile Include="Windows\Forms\DoubleBufferedForm.cs" />
+    <Compile Include="Windows\Forms\FormResizeRepaintStrategy.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

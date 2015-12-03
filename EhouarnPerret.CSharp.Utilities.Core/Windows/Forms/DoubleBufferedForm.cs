@@ -25,6 +25,8 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Forms;
+using System.Drawing;
+using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
@@ -50,26 +52,59 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
+        protected override void OnResizeBegin(EventArgs e)
+        {
+            base.OnResizeBegin(e);
+
+            this.IsResizing = true;
+        }
+
+        protected Boolean IsResizing { get; private set; }
+
         protected override void OnResizeEnd(EventArgs e)
         {
+            this.IsResizing = false;
+
             base.OnResizeEnd(e);
 
-            if (this.RepaintStrategy == RepaintStrategy.OnResizeEnd)
+            if (this.ResizeRepaintStrategy == FormResizeRepaintStrategy.OnResizeEnd)
             {
                 this.Invalidate();
             }
         }
 
-        private RepaintStrategy _repaintStrategy;
-        public RepaintStrategy RepaintStrategy
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (this.IsResizing)
+            {
+                var radius = 0.25f * (this.ClientRectangle.Width > this.ClientRectangle.Height ? this.ClientRectangle.Height : this.ClientRectangle.Width);
+
+                var top = 0.5f * this.ClientRectangle.Height;
+                var left = 0.5f * this.ClientRectangle.Width;
+
+                e.Graphics.FillCircle(Brushes.White, left, top, radius);
+                e.Graphics.DrawCircle(new Pen(Color.Black), left, top, radius);
+
+                var ellipseRectangle = new RectangleF(top - radius, left - radius, radius * 2f, radius * 2f);
+
+                e.Graphics.DrawString(this.Size.Width + " x " + this.Size.Height, new Font(@"Tahoma", 11.0f), Brushes.Black, ellipseRectangle);
+            }
+            else
+            {
+                base.OnPaint(e);
+            }
+        }
+
+        private FormResizeRepaintStrategy _resizeRepaintStrategy;
+        public FormResizeRepaintStrategy ResizeRepaintStrategy
         {
             get
             {
-                return this._repaintStrategy;
+                return this._resizeRepaintStrategy;
             }
             set
             {
-                if (value == RepaintStrategy.OnResize)
+                if (value == FormResizeRepaintStrategy.OnResize)
                 {
                     this.ResizeRedraw = true;
                 }
@@ -78,16 +113,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
                     this.ResizeRedraw = false;
                 }
 
-                this._repaintStrategy = value;
+                this._resizeRepaintStrategy = value;
             }
         }
-    }
-
-    public enum RepaintStrategy : byte
-    {
-        None = 0x00,
-        OnResizeEnd = 0x01,
-        OnResize = 0x02,
     }
 }
 
