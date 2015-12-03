@@ -192,6 +192,7 @@
     <Compile Include="Windows\Forms\Canvas\CanvasControlPropertiesView.cs" />
     <Compile Include="Windows\Forms\Chart\ChartControlSeries.cs" />
     <Compile Include="StringValueAttribute.cs" />
+    <Compile Include="Windows\Forms\DoubleBufferedForm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

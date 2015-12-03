@@ -26,28 +26,38 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
     public static class GraphicsExtensions
     {
-        public static void DrawGrid(this Graphics graphics, Pen pen)
-        {
-            
-        }
-
         public static void DrawGrid(this Graphics graphics, Pen pen, Rectangle rectangle, Int32 columnCount, Int32 rowCount)
         {
-            var cellSize = new SizeF(rectangle.Width / columnCount, rectangle.Height / rowCount);
-
-            var cellCount = rectangle.GetArea() / cellSize.GetArea();
-
-            for (var i = 0; i < cellCount; i++)
+            try
             {
-                
-				graphics.DrawLine(pen, i * cellSize.Width, 0, i * cellSize.Width, cellCount * cellSize.Height);
-                
-				graphics.DrawLine(pen, 0, i * cellSize.Height, cellCount * cellSize.Width, i * cellSize.Height);
+                var cellSize = new SizeF(rectangle.Width / columnCount, rectangle.Height / rowCount);
+
+                var cellCount = rectangle.GetArea() / cellSize.GetArea();
+
+                for (var i = 0; i < cellCount; i++)
+                {
+                    graphics.DrawLine(pen, i * cellSize.Width, 0, i * cellSize.Width, cellCount * cellSize.Height);
+
+                    graphics.DrawLine(pen, 0, i * cellSize.Height, cellCount * cellSize.Width, i * cellSize.Height);
+                }
+            }
+            catch (Exception exception)
+            {
+                // Winforms Mono Support...
+                if (exception.Message != @"Argument is out of range [GDI+ status: ValueOverflow]")
+                {
+                    throw exception;
+                }
+                else
+                {
+                    Trace.WriteLine(exception.Message);
+                }
             }
         }
 

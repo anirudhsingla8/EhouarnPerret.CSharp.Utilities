@@ -26,6 +26,9 @@
 using System;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using EhouarnPerret.CSharp.Utilities.Core.Drawing;
+using System.Drawing;
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Harness
 {
@@ -33,8 +36,17 @@ namespace EhouarnPerret.CSharp.Utilities.Harness
     {
         public static void Main(params String[] arguments)
         {
-//            var form = new Form();
+            var form = new DoubleBufferedForm();
 //
+            form.RepaintOnRedraw = true;
+
+            form.Paint += (object sender, PaintEventArgs e) => 
+            {
+                    e.Graphics.DrawGrid(new Pen(Color.Black), e.ClipRectangle, 5, 6);
+            };
+
+            form.ShowDialog();
+
 //            var checkBox = new CheckBox();
 //
 //            checkBox.Appearance = Appearance.Button;
