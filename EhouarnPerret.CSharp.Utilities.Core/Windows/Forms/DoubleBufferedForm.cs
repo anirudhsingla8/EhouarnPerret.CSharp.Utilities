@@ -77,17 +77,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             if (this.IsResizing)
             {
-                var radius = 0.25f * (this.ClientRectangle.Width > this.ClientRectangle.Height ? this.ClientRectangle.Height : this.ClientRectangle.Width);
+//                var radius = 0.25f * (this.ClientRectangle.Width > this.ClientRectangle.Height ? this.ClientRectangle.Height : this.ClientRectangle.Width);
+//
+//                var top = 0.5f * this.ClientRectangle.Height;
+//                var left = 0.5f * this.ClientRectangle.Width;
+//
+//                e.Graphics.FillCircle(Brushes.White, left, top, radius);
+//                e.Graphics.DrawCircle(new Pen(Color.Black), left, top, radius);
+//
+//                var text = this.Size.Width + " x " + this.Size.Height;
+//
+//                var size = TextRenderer.MeasureText(text, this.Font);
 
-                var top = 0.5f * this.ClientRectangle.Height;
-                var left = 0.5f * this.ClientRectangle.Width;
-
-                e.Graphics.FillCircle(Brushes.White, left, top, radius);
-                e.Graphics.DrawCircle(new Pen(Color.Black), left, top, radius);
-
-                var ellipseRectangle = new RectangleF(top - radius, left - radius, radius * 2f, radius * 2f);
-
-                e.Graphics.DrawString(this.Size.Width + " x " + this.Size.Height, new Font(@"Tahoma", 11.0f), Brushes.Black, ellipseRectangle);
+                // e.Graphics.DrawString(
             }
             else
             {

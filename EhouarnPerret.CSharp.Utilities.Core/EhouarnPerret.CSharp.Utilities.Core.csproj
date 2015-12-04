@@ -93,7 +93,6 @@
     <Compile Include="Patterns\Design\Singleton\Singleton.cs" />
     <Compile Include="Patterns\Design\Command\ICommand.cs" />
     <Compile Include="EnvironmentInformation.cs" />
-    <Compile Include="Collections\Generic\IBindingListDictionary.cs" />
     <Compile Include="Data\Common\IDbMapper.cs" />
     <Compile Include="Data\Common\DbMappingNamedAttribute.cs" />
     <Compile Include="Data\Common\DbMapper.cs" />
@@ -194,6 +193,9 @@
     <Compile Include="StringValueAttribute.cs" />
     <Compile Include="Windows\Forms\DoubleBufferedForm.cs" />
     <Compile Include="Windows\Forms\FormResizeRepaintStrategy.cs" />
+    <Compile Include="Collections\Generic\IOrderedBindableDictionary.cs" />
+    <Compile Include="Collections\Generic\IBindableDictionary.cs" />
+    <Compile Include="Patterns\Design\Multiton\Multiton.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

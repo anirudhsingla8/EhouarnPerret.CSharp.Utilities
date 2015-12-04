@@ -29,6 +29,8 @@ using System.Windows.Forms.VisualStyles;
 using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 using System.Drawing;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
+using System.ComponentModel;
+using System.Linq.Expressions;
 
 namespace EhouarnPerret.CSharp.Utilities.Harness
 {
@@ -36,16 +38,16 @@ namespace EhouarnPerret.CSharp.Utilities.Harness
     {
         public static void Main(params String[] arguments)
         {
-            var form = new DoubleBufferedForm();
+//            var form = new DoubleBufferedForm();
+////
+//            form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;
 //
-            form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;
-
-            form.Paint += (object sender, PaintEventArgs e) => 
-            {
-                e.Graphics.DrawGrid(new Pen(Color.Black), e.ClipRectangle, 5, 6);
-            };
-
-            form.ShowDialog();
+//            form.Paint += (object sender, PaintEventArgs e) => 
+//            {
+//                e.Graphics.DrawGrid(new Pen(Color.Black), e.ClipRectangle, 5, 6);
+//            };
+//
+//            form.ShowDialog();
 
 //            var checkBox = new CheckBox();
 //
@@ -60,7 +62,56 @@ namespace EhouarnPerret.CSharp.Utilities.Harness
 //
 //            form.ShowDialog();
 
+            Expression<Func<Form, Int32, String, String>> controlPropertySelector = (Form f, Int32 index, String controlName) => f.Controls[index].Controls[controlName].Name;
+
+            var visiteur = new Visiteur();
+
+            visiteur.Visit(controlPropertySelector);
+
             Console.ReadKey();
+        }
+
+        public static void Bind <TControl, TControlProperty, TDataSource, TDataSourceProperty> (this TControl control, Expression<Func<TControl, TControlProperty>> controlPropertySelector, Expression<Func<TDataSource, TDataSourceProperty>> datasourcePropertySelector)
+            where TControl : Control
+            where TDataSource : INotifyPropertyChanged
+        {
+            
+        }
+
+        public class Visiteur : ExpressionVisitor
+        {
+            public Visiteur()
+            {
+            }
+
+
+            public override Expression Visit(Expression node)
+            {
+                Console.WriteLine(node.NodeType + ": " + node.ToString());
+                return base.Visit(node);
+            }
+
+            protected override MemberBinding VisitMemberBinding(MemberBinding node)
+            {
+                return base.VisitMemberBinding(node);
+            }
+        }
+
+        public class Dummy
+        {
+            public virtual String Property
+            {
+                get { return property; }
+                set { property = value; }
+            }
+            private String property;
+
+            public virtual Int32 AnotherProp
+            {
+                get { return anotherProp; }
+                set { anotherProp = value; }
+            }
+            private Int32 anotherProp; 
         }
     }
 }

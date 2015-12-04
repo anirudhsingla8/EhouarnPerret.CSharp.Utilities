@@ -29,6 +29,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using System.Reflection;
 
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
@@ -39,8 +40,28 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             where TControl : Control
             where TDataSource : INotifyPropertyChanged
         {
-//            var controlPropertyName = String.Empty;
-//            var dataSourcePropertyName = String.Empty;
+
+        }
+
+        static ControlExtensions()
+        {
+            var controlType = typeof(Control);
+
+            ControlExtensions.DoubleBufferedProperty = controlType.GetProperty(ControlExtensions.DoubleBufferedPropertyName, BindingFlags.Instance | BindingFlags.NonPublic);
+        }
+
+        private static PropertyInfo DoubleBufferedProperty { get; }
+
+        private const String DoubleBufferedPropertyName = @"DoubleBuffered";
+
+        public static void SetDoubleBuffered(this Control control, Boolean value)
+        {
+            ControlExtensions.DoubleBufferedProperty.SetValue(control, value);
+        }
+
+        public static Boolean GetDoubleBuffered(this Control control)
+        {
+            return (Boolean)ControlExtensions.DoubleBufferedProperty.GetValue(control);
         }
 
         /// <summary>

@@ -60,6 +60,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
             return this;
         }
+
+//        public FluentRegex FloatingNumber(String name)
+//        {
+//
+//        }
 //
 //        public FluentRegex AddNumericalRange(Double start, Double stop, Boolean isDotMandatory)
 //        {
