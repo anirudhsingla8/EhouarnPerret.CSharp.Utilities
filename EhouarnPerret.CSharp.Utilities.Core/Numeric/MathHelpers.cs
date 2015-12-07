@@ -26,6 +26,7 @@
 using System;
 using System.Numerics;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -84,6 +85,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 return n * MathHelpers.FactorialNaiveRecursive((UInt16)(n - 1));
             }
+        }
+    
+        public static Double EuclidianDistance(PointF pointA, PointF pointB)
+        {
+            return Math.Sqrt(Math.Pow(pointB.Y - pointA.Y, 2) + Math.Pow(pointB.X - pointA.X, 2));
         }
     }
 }

@@ -29,6 +29,8 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Drawing.Drawing2D;
 using System.Drawing;
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
+using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -36,8 +38,45 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var form = new Form();
+            var form = new DoubleBufferedForm();
 
+            form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;
+
+            var pointA = new PointF(0, 0);
+            var pointB = new PointF(2, 4);
+
+            var xOffset = pointB.X - pointA.X;
+            var yOffset = pointB.Y - pointA.Y;
+
+            var radius = 1.0f;
+
+            var distance = (Single)Math.Sqrt(Math.Pow(xOffset, 2) + Math.Pow(yOffset, 2));
+
+            var radiusDistanceRatio = (distance - radius) / distance;
+
+            var pointM = new PointF(pointA.X + xOffset * radiusDistanceRatio, pointA.Y + yOffset * radiusDistanceRatio);
+            
+            form.Paint += Program.Paint;
+
+            form.ShowDialog();
+        }
+
+        private static void Paint (object sender, PaintEventArgs e)
+        {
+            var form = sender as Form;
+
+            const Single offset = 50;
+
+            var pointA = new PointF(offset, offset);
+            var pointB = new PointF(offset, form.ClientRectangle.Height - offset);
+            var pointC = new PointF(form.ClientRectangle.Width - offset, form.ClientRectangle.Height - offset);
+
+            var graphicsPath = new GraphicsPath();
+            graphicsPath.StartFigure();
+            graphicsPath.AddPolygon(new PointF[] { pointA, pointB, pointC} );
+            graphicsPath.CloseFigure();
+
+            e.Graphics.FillTriangle(Brushes.Green, pointA, pointB, pointC);
 
 
         }
