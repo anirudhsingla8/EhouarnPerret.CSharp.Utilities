@@ -27,6 +27,8 @@ using System;
 using System.Windows.Forms;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -34,56 +36,10 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            Expression<Func<Form, Int32, String, String>> controlPropertySelector = (Form f, Int32 index, String controlName) => f.Controls[index].Controls[controlName].Name;
-
-            var visiteur = new Visiteur();
-
-            visiteur.Visit(controlPropertySelector);
-
-            Console.ReadKey();
-        }
-
-        public static void Bind <TControl, TControlProperty, TDataSource, TDataSourceProperty> (this TControl control, Expression<Func<TControl, TControlProperty>> controlPropertySelector, Expression<Func<TDataSource, TDataSourceProperty>> datasourcePropertySelector)
-            where TControl : Control
-            where TDataSource : INotifyPropertyChanged
-        {
-            
-        }
-
-        public class Visiteur : ExpressionVisitor
-        {
-            public Visiteur()
-            {
-            }
+            var form = new Form();
 
 
-            public override Expression Visit(Expression node)
-            {
-                Console.WriteLine(node.NodeType + ": " + node.ToString());
-                return base.Visit(node);
-            }
 
-            protected override MemberBinding VisitMemberBinding(MemberBinding node)
-            {
-                return base.VisitMemberBinding(node);
-            }
-        }
-
-        public class Dummy
-        {
-            public virtual String Property
-            {
-                get { return property; }
-                set { property = value; }
-            }
-            private String property;
-
-            public virtual Int32 AnotherProp
-            {
-                get { return anotherProp; }
-                set { anotherProp = value; }
-            }
-            private Int32 anotherProp; 
         }
     }
 }

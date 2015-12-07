@@ -32,7 +32,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
     {
         public static void Round(this GraphicsPath graphicsPath)
         {
-
         }
     }
 }
