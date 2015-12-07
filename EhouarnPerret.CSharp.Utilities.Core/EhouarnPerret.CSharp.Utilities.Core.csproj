@@ -196,6 +196,11 @@
     <Compile Include="Collections\Generic\IOrderedBindableDictionary.cs" />
     <Compile Include="Collections\Generic\IBindableDictionary.cs" />
     <Compile Include="Patterns\Design\Multiton\Multiton.cs" />
+    <Compile Include="Runtime\Serialization\BinarySerializer.cs" />
+    <Compile Include="Runtime\Serialization\XMLSerializer.cs" />
+    <Compile Include="Runtime\Serialization\JSONSerializer.cs" />
+    <Compile Include="Runtime\Serialization\Serializer.cs" />
+    <Compile Include="Drawing\GraphicsPathExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

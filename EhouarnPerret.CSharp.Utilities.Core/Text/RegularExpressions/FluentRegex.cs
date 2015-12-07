@@ -51,7 +51,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
             return this;
         }
-
         public FluentRegex StopCapture()
         {
             this.StringBuilder.Append(@")");
@@ -206,7 +205,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
             return this;
         }
-
         public FluentRegex StopLine()
         {
             this.StringBuilder.Append(@"$");      

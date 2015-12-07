@@ -1,5 +1,5 @@
 ﻿//
-// SerializationHelpers.cs
+// GraphicsPathExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,39 +24,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Drawing.Drawing2D;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
+namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
-    public static class SerializationHelpers
+    public static class GraphicsPathExtensions
     {
-        public static Byte[] BinarySerialize<T>(T value)
+        public static void Round(this GraphicsPath graphicsPath)
         {
-            using (var memoryStream = new MemoryStream())
-            {
-                var binaryFormatter = new BinaryFormatter();
 
-                binaryFormatter.Serialize(memoryStream, value);
-
-                memoryStream.Position = 0;
-
-                var bytes = memoryStream.ToArray();
-
-                return bytes;
-            }
-        }
-
-        public static T BinaryDeserialize<T>(Byte[] valueBytes)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                var binaryFormatter = new BinaryFormatter();
-
-                var value = (T)binaryFormatter.Deserialize(memoryStream);
-
-                return value;
-            }
         }
     }
 }

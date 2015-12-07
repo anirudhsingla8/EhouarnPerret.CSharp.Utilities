@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Diagnostics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
@@ -108,7 +107,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
         {
             graphics.FillEllipse(brush, centerX - radius, centerY - radius, radius * 2, radius * 2);
         }
-
 
         public static void FillCircle(this Graphics graphics, Brush brush, PointF center, Single radius)
         {

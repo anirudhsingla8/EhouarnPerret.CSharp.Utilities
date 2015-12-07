@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EhouarnPerret.CSharp.Utilities.Harness", "EhouarnPerret.CSharp.Utilities.Harness\EhouarnPerret.CSharp.Utilities.Harness.csproj", "{AFB81F8F-FFFF-404B-B92C-078A4042971E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EhouarnPerret.CSharp.Utilities.Sandbox", "EhouarnPerret.CSharp.Utilities.Harness\EhouarnPerret.CSharp.Utilities.Sandbox.csproj", "{AFB81F8F-FFFF-404B-B92C-078A4042971E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EhouarnPerret.CSharp.Utilities.Core", "EhouarnPerret.CSharp.Utilities.Core\EhouarnPerret.CSharp.Utilities.Core.csproj", "{6907DB1F-73E5-42CD-B84D-A23876A67F8D}"
 EndProject
