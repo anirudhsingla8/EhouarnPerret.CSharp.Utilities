@@ -31,6 +31,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 using EhouarnPerret.CSharp.Utilities.Core.Drawing;
+using EhouarnPerret.CSharp.Utilities.Core;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -38,6 +39,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
+            var re = MathHelpers.GCDBinaryIterative(UInt32.MaxValue + 456ul, 78469747472ul);
+
+
             var form = new DoubleBufferedForm();
 
             form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;

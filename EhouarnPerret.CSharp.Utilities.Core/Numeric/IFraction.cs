@@ -34,5 +34,4 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         T Numerator { get; }
         T Denominator { get; }
     }
-    
 }

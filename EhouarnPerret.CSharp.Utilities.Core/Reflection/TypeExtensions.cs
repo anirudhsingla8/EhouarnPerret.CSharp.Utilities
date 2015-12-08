@@ -77,6 +77,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
 
         public static IReadOnlyDictionary<Type, NumericalTypeInformation> Numbers { get; }
+    
+    
+        public static Object GetDefaultValue(this Type type)
+        {
+            return Activator.CreateInstance(type);
+        }
     }
 }
 

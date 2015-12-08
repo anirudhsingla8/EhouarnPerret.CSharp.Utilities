@@ -91,6 +91,252 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return Math.Sqrt(Math.Pow(pointB.Y - pointA.Y, 2) + Math.Pow(pointB.X - pointA.X, 2));
         }
+        public static Double EuclidianDistance(Point pointA, Point pointB)
+        {
+            return Math.Sqrt(Math.Pow(pointB.Y - pointA.Y, 2) + Math.Pow(pointB.X - pointA.X, 2));
+        }
+
+        public static UInt32 GCDBinaryRecursive(UInt32 a, UInt32 b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDBinaryScheme.Iterative: return MathHelpers.GCDBinaryIterative(a, b);
+                case GCDBinaryScheme.Recursive: return MathHelpers.GCDBinaryRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+        public static UInt64 GCDBinaryRecursive(UInt64 a, UInt64 b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDBinaryScheme.Iterative: return MathHelpers.GCDBinaryIterative(a, b);
+                case GCDBinaryScheme.Recursive: return MathHelpers.GCDBinaryRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+
+        public static UInt32 GCDBinaryRecursive(UInt32 a, UInt32 b)
+        {
+            // Simple cases (termination)
+            if (a == b)
+            {
+                return a;
+            }
+            else if (a == 0)
+            {
+                return b;
+            }
+            else if (b == 0)
+            {
+                return a;
+            }
+            // Look for factors of 2
+            // a is even
+            else if ((~a & 1) > 0) 
+            {
+                // b is odd
+                if ((b & 1) > 0) 
+                {
+                    return MathHelpers.GCDBinaryRecursive(a >> 1, b);
+                }
+                else // both a and b are eben
+                {
+                    return MathHelpers.GCDBinaryRecursive(a >> 1, b >> 1) << 1;
+                }
+            }
+
+            // a is odd and b is eben
+            if ((~b & 1) > 0)
+            {
+                return MathHelpers.GCDBinaryRecursive(a, b >> 1);
+            }
+            // Reduce larger argument
+            else if (a > b)
+            {
+                return MathHelpers.GCDBinaryRecursive((a - b) >> 1, b);
+            }
+            else
+            {
+                return MathHelpers.GCDBinaryRecursive((b - a) >> 1, a);
+            }
+        }
+        public static UInt32 GCDBinaryIterative(UInt32 a, UInt32 b)
+        {
+            Int32 shift;
+
+            // GCD(0,v) == v; GCD(u,0) == u, GCD(0,0) == 0
+            if (a == 0)
+            {
+                return b;
+            }
+            else if (b == 0)
+            {
+                return a;
+            }
+            else
+            {
+                // Let shift := lg K, where K is the greatest power of 2 dividing both a and v.
+                for (shift = 0; ((a | b) & 1) == 0; ++shift)
+                {
+                    a >>= 1;
+                    b >>= 1;
+                }
+
+                while ((a & 1) == 0)
+                {
+                    a >>= 1;
+                }
+
+                // From here on, a is always odd.
+                do
+                {
+                    // Remove all factors of 2 in b -- they are not common
+                    // Note: b is not zero, so while will terminate
+                    // Loop X
+                    while ((b & 1) == 0)
+                    {
+                        b >>= 1;
+                    }
+
+                    // Now a and b are both odd. Swap if necessary so a <= v,
+                    // then set b = b - a (which is even). 
+
+                    // For bignums, the swapping is just pointer movement, 
+                    // and the subtraction can be done in-place.
+
+                    if (a > b)
+                    {
+                        var temp = b; 
+                        b = a; 
+                        a = temp;
+                    }  
+
+                    // Swap a and v.
+                    // Here b >= u.
+                    b = b - a;                       
+                }
+                while (b != 0);
+
+                // Restore common factors of
+                return a << shift;
+            }
+        }
+        public static UInt64 GCDBinaryRecursive(UInt64 a, UInt64 b)
+        {
+            // Simple cases (termination)
+            if (a == b)
+            {
+                return a;
+            }
+            else if (a == 0)
+            {
+                return b;
+            }
+            else if (b == 0)
+            {
+                return a;
+            }
+            // Look for factors of 2
+            // a is even
+            else if ((~a & 1) > 0) 
+            {
+                // b is odd
+                if ((b & 1) > 0) 
+                {
+                    return MathHelpers.GCDBinaryRecursive(a >> 1, b);
+                }
+                else // both a and b are eben
+                {
+                    return MathHelpers.GCDBinaryRecursive(a >> 1, b >> 1) << 1;
+                }
+            }
+
+            // a is odd and b is eben
+            if ((~b & 1) > 0)
+            {
+                return MathHelpers.GCDBinaryRecursive(a, b >> 1);
+            }
+            // Reduce larger argument
+            else if (a > b)
+            {
+                return MathHelpers.GCDBinaryRecursive((a - b) >> 1, b);
+            }
+            else
+            {
+                return MathHelpers.GCDBinaryRecursive((b - a) >> 1, a);
+            }
+        }
+        public static UInt64 GCDBinaryIterative(UInt64 a, UInt64 b)
+        {
+            Int32 shift;
+
+            // GCD(0,v) == v; GCD(u,0) == u, GCD(0,0) == 0
+            if (a == 0)
+            {
+                return b;
+            }
+            else if (b == 0)
+            {
+                return a;
+            }
+            else
+            {
+                // Let shift := lg K, where K is the greatest power of 2 dividing both a and v.
+                for (shift = 0; ((a | b) & 1) == 0; ++shift)
+                {
+                    a >>= 1;
+                    b >>= 1;
+                }
+
+                while ((a & 1) == 0)
+                {
+                    a >>= 1;
+                }
+
+                // From here on, a is always odd.
+                do
+                {
+                    // Remove all factors of 2 in b -- they are not common
+                    // Note: b is not zero, so while will terminate
+                    // Loop X
+                    while ((b & 1) == 0)
+                    {
+                        b >>= 1;
+                    }
+
+                    // Now a and b are both odd. Swap if necessary so a <= v,
+                    // then set b = b - a (which is even). 
+
+                    // For bignums, the swapping is just pointer movement, 
+                    // and the subtraction can be done in-place.
+
+                    if (a > b)
+                    {
+                        var temp = b; 
+                        b = a; 
+                        a = temp;
+                    }  
+
+                    // Swap a and v.
+                    // Here b >= u.
+                    b = b - a;                       
+                }
+                while (b != 0);
+
+                // Restore common factors of
+                return a << shift;
+            }
+        }
+
+//        public static Int32 GCDBinaryEuclide(Int32 a, Int32 b)
+//        {
+//        }
+    }
+
+    public enum GCDBinaryScheme : byte
+    {
+        Iterative = 0x00,
+        Recursive = 0x01,
     }
 }
 
