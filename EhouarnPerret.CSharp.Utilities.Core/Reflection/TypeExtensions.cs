@@ -31,9 +31,9 @@ using System.Collections.ObjectModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class TypeHelpers
+    public static class TypeExtensions
     {
-        static TypeHelpers()
+        static TypeExtensions()
         {
             var dictionary = new Dictionary<Type, NumericalTypeInformation>()
             {
@@ -52,7 +52,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 { typeof(Decimal), new NumericalTypeInformation<Decimal>() },
             };
 
-            TypeHelpers.Numbers = new ReadOnlyDictionary<Type, NumericalTypeInformation>(dictionary);
+            TypeExtensions.Numbers = new ReadOnlyDictionary<Type, NumericalTypeInformation>(dictionary);
         }
 
         public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier = AccessModifiers.Both)

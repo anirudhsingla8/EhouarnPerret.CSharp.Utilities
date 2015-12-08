@@ -87,7 +87,6 @@
     <Compile Include="Collections\Generic\ITreeNode.cs" />
     <Compile Include="Collections\Generic\IBinaryTreeNode.cs" />
     <Compile Include="Collections\Generic\DequeArray.cs" />
-    <Compile Include="Reflection\TypeHelpers.cs" />
     <Compile Include="Reflection\AccessModifiersConverter.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Patterns\Design\Singleton\Singleton.cs" />
@@ -201,6 +200,7 @@
     <Compile Include="Runtime\Serialization\JSONSerializer.cs" />
     <Compile Include="Runtime\Serialization\Serializer.cs" />
     <Compile Include="Drawing\GraphicsPathExtensions.cs" />
+    <Compile Include="Reflection\TypeExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
