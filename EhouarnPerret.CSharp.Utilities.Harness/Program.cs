@@ -39,8 +39,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var re = MathHelpers.GCDBinaryIterative(UInt32.MaxValue + 456ul, 78469747472ul);
+            var re1 = MathHelpers.GCDBinaryIterative(UInt32.MaxValue + 456ul, 78469747472ul);
 
+            var re2 = MathHelpers.GCDEuclide(UInt32.MaxValue + 456ul, 78469747472ul);
 
             var form = new DoubleBufferedForm();
 
@@ -59,7 +60,28 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             var radiusDistanceRatio = (distance - radius) / distance;
 
             var pointM = new PointF(pointA.X + xOffset * radiusDistanceRatio, pointA.Y + yOffset * radiusDistanceRatio);
-            
+
+            var button = new Button()
+            {
+                Text = @"GO!",
+            };
+
+            var graphics = form.CreateGraphics();
+
+            button.Click += (sender, e) => 
+            {
+                var random = new Random();
+
+                var colorProperties = typeof(Color).GetProperties(System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+
+                var index = random.Next(0, colorProperties.Length);
+
+                graphics.FillEllipse(new SolidBrush((Color)colorProperties[index].GetValue(null)), form.ClientRectangle.X / 2, form.ClientRectangle.Y / 2, form.ClientRectangle.Width / 2, form.ClientRectangle.Height / 2);
+            };
+
+            form.Controls.Add(button);
+
+
             form.Paint += Program.Paint;
 
             form.ShowDialog();
@@ -81,8 +103,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             graphicsPath.CloseFigure();
 
             e.Graphics.FillTriangle(Brushes.Green, pointA, pointB, pointC);
-
-
         }
     }
 }

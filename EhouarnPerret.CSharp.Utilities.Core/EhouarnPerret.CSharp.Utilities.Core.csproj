@@ -201,6 +201,8 @@
     <Compile Include="Runtime\Serialization\Serializer.cs" />
     <Compile Include="Drawing\GraphicsPathExtensions.cs" />
     <Compile Include="Reflection\TypeExtensions.cs" />
+    <Compile Include="Numeric\GCDEuclideScheme.cs" />
+    <Compile Include="Numeric\GCDBinaryScheme.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

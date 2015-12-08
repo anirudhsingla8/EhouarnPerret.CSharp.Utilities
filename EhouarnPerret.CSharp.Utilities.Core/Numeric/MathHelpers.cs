@@ -328,15 +328,224 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-//        public static Int32 GCDBinaryEuclide(Int32 a, Int32 b)
-//        {
-//        }
+        public static SByte GCDEuclideIterative(SByte a, SByte b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = (SByte)(a % b);
+
+                a = temp;
+            }
+
+            return a;
+        }
+        public static Int16 GCDEuclideIterative(Int16 a, Int16 b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = (Int16)(a % b);
+
+                a = temp;
+            }
+
+            return a;
+        }
+        public static Int32 GCDEuclideIterative(Int32 a, Int32 b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = a % b;
+
+                a = temp;
+            }
+
+            return a;
+        }
+        public static Int64 GCDEuclideIterative(Int64 a, Int64 b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = a % b;
+
+                a = temp;
+            }
+
+            return a;
+        }
+
+        public static Byte GCDEuclideIterative(Byte a, Byte b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = (Byte)(a % b);
+
+                a = temp;
+            }
+
+            return a;
+        }
+        public static UInt16 GCDEuclideIterative(UInt16 a, UInt16 b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = (UInt16)(a % b);
+
+                a = temp;
+            }
+
+            return a;
+        }
+        public static UInt32 GCDEuclideIterative(UInt32 a, UInt32 b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = (UInt32)a % b;
+
+                a = temp;
+            }
+
+            return a;
+        }
+        public static UInt64 GCDEuclideIterative(UInt64 a, UInt64 b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = a % b;
+
+                a = temp;
+            }
+
+            return a;
+        }
+
+
+        public static SByte GCDEuclideRecursive(SByte a, SByte b)
+        {
+            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (SByte)(a % b));
+        }
+        public static Int16 GCDEuclideRecursive(Int16 a, Int16 b)
+        {
+            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (Int16)(a % b));
+        }
+        public static Int32 GCDEuclideRecursive(Int32 a, Int32 b)
+        {
+            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
+        }
+        public static Int64 GCDEuclideRecursive(Int64 a, Int64 b)
+        {
+            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
+        }
+
+
+        public static Byte GCDEuclideRecursive(Byte a, Byte b)
+        {
+            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (Byte)(a % b));
+        }
+        public static UInt16 GCDEuclideRecursive(UInt16 a, UInt16 b)
+        {
+            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (UInt16)(a % b));
+        }
+        public static UInt32 GCDEuclideRecursive(UInt32 a, UInt32 b)
+        {
+            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
+        }
+        public static UInt64 GCDEuclideRecursive(UInt64 a, UInt64 b)
+        {
+            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
+        }
+
+        public static SByte GCDEuclide(SByte a, SByte b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+        public static Int16 GCDEuclide(Int16 a, Int16 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+        public static Int32 GCDEuclide(Int32 a, Int32 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+        public static Int64 GCDEuclide(Int64 a, Int64 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+
+
+        public static Byte GCDEuclide(Byte a, Byte b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+        public static UInt16 GCDEuclide(UInt16 a, UInt16 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+        public static UInt32 GCDEuclide(UInt32 a, UInt32 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
+        public static UInt64 GCDEuclide(UInt64 a, UInt64 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        {
+            switch (scheme)
+            {
+                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                default: throw new NotImplementedException(nameof(scheme));
+            }
+        }
     }
 
-    public enum GCDBinaryScheme : byte
-    {
-        Iterative = 0x00,
-        Recursive = 0x01,
-    }
+
 }
 
