@@ -93,7 +93,6 @@
     <Compile Include="Patterns\Design\Command\ICommand.cs" />
     <Compile Include="EnvironmentInformation.cs" />
     <Compile Include="Data\Common\IDbMapper.cs" />
-    <Compile Include="Data\Common\DbMappingNamedAttribute.cs" />
     <Compile Include="Data\Common\DbMapper.cs" />
     <Compile Include="Data\Common\DbMapperColumnAttribute.cs" />
     <Compile Include="Data\Common\DbMapperIndexAttribute.cs" />
@@ -203,6 +202,7 @@
     <Compile Include="Reflection\TypeExtensions.cs" />
     <Compile Include="Numeric\GCDEuclideScheme.cs" />
     <Compile Include="Numeric\GCDBinaryScheme.cs" />
+    <Compile Include="Data\Common\DbMappingNameAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

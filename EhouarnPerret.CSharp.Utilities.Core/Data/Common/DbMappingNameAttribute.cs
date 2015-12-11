@@ -30,9 +30,9 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
-    public abstract class DbMappingNamedAttribute : Attribute
+    public abstract class DbMappingNameAttribute : Attribute
     {
-        protected DbMappingNamedAttribute(String name)
+        protected DbMappingNameAttribute(String name)
         {
             this.Name = name;
         }

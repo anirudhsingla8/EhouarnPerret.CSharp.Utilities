@@ -30,7 +30,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
-    public class DbMapperPrimaryKeyAttribute : DbMappingNamedAttribute
+    public class DbMapperPrimaryKeyAttribute : DbMappingNameAttribute
     {
         protected DbMapperPrimaryKeyAttribute(String name)
             : base(name)
