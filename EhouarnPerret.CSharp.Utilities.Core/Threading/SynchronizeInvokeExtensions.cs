@@ -26,7 +26,7 @@
 using System;
 using System.ComponentModel;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 {
     public static class SynchronizeInvokeExtensions
     {
