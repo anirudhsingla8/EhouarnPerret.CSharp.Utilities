@@ -202,7 +202,8 @@
     <Compile Include="Numeric\GCDEuclideScheme.cs" />
     <Compile Include="Numeric\GCDBinaryScheme.cs" />
     <Compile Include="Data\Common\DbMappingNameAttribute.cs" />
-    <Compile Include="Windows\Forms\FormControl.cs" />
+    <Compile Include="Windows\Forms\Form.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Sum.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

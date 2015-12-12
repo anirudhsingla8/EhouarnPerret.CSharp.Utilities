@@ -24,14 +24,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Data;
 using System.Collections.Generic;
+using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
-    public interface IDbMapper : IDisposable
+    public interface IDbMapper<out T> : IDisposable, IEnumerable<T>
     {
+        Boolean IsCreated { get; }
+        Boolean IsReadOnly { get; }
+
+        void Insert(IEnumerable<T> records);
+        void Create();
+        void Drop();
     }
-    
 }

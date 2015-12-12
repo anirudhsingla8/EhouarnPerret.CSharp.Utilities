@@ -25,10 +25,13 @@
 // THE SOFTWARE.
 
 using System.Data;
+using System.Threading.Tasks;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
-    public class DbMapper : Disposable, IDbMapper
+    public abstract class DbMapper<T> : Disposable, IDbMapper<T>
     {
         public DbMapper(IDbConnection connection)
         {
@@ -37,5 +40,4 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 
         private IDbConnection Connection { get; }
     }
-
 }

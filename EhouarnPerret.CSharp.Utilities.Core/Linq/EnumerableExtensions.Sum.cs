@@ -1,8 +1,8 @@
-//
-// DbMapperTableAttribute.cs
+﻿//
+// EnumerableExtensions.Sum.cs
 //
 // Author:
-//       Ehouarn Perret <ehouarn.perret@outook.com>
+//       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
 // Copyright (c) 2015 Ehouarn Perret
 //
@@ -23,19 +23,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Data;
-using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
+namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    public class DbMapperTableAttribute : DbMappingNameAttribute
+    public class EnumerableExtensions
     {
-        protected DbMapperTableAttribute(String name)
-            : base(name)
+        public EnumerableExtensions()
         {
         }
     }
-    
 }
+

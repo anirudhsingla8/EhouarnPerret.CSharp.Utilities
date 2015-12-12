@@ -26,6 +26,7 @@
 using System;
 using System.Numerics;
 using System.Globalization;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -265,7 +266,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static BigIntegerFraction TryParse(String value, NumberStyles style, IFormatProvider provider, out BigIntegerFraction result)
         {
-
         }
 
         public static BigIntegerFraction TryParse(String value, out BigIntegerFraction result)
