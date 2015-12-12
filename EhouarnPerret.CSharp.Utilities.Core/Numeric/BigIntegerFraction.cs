@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Numerics;
+using System.Globalization;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -250,6 +251,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 return BigIntegerFraction.Compare(this, (BigIntegerFraction)obj);
             }
+        }
+
+        public static BigIntegerFraction Parse(String numeratorString, String denominatorString)
+        {
+            var numerator = BigInteger.Parse(numeratorString);
+            var denominator = BigInteger.Parse(denominatorString);
+
+            var bigIntegerFraction = new BigIntegerFraction(numerator, denominator);
+
+            return bigIntegerFraction;
+        }
+
+        public static BigIntegerFraction TryParse(String value, NumberStyles style, IFormatProvider provider, out BigIntegerFraction result)
+        {
+
+        }
+
+        public static BigIntegerFraction TryParse(String value, out BigIntegerFraction result)
+        {
 
         }
 
@@ -258,9 +278,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return $"{Numerator} / {Denominator}";
         }
 
-        public String ToString(String format, IFormatProvider formatProvider)
+        public String ToDecimalString()
         {
-            throw new NotImplementedException();
         }
     }
 }

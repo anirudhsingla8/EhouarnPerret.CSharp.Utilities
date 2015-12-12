@@ -270,7 +270,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             Int32 shift;
 
-            // GCD(0,v) == v; GCD(u,0) == u, GCD(0,0) == 0
             if (a == 0)
             {
                 return b;
@@ -307,7 +306,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                     // Now a and b are both odd. Swap if necessary so a <= v,
                     // then set b = b - a (which is even). 
 
-                    // For bignums, the swapping is just pointer movement, 
+                    // For big numbers, the swapping is just pointer movement, 
                     // and the subtraction can be done in-place.
 
                     if (a > b)
@@ -317,8 +316,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                         a = temp;
                     }  
 
-                    // Swap a and v.
-                    // Here b >= u.
+                    // Swap a and b.
+                    // Here b >= a.
                     b = b - a;                       
                 }
                 while (b != 0);
