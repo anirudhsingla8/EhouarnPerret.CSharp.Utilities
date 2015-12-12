@@ -179,7 +179,6 @@
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Collections\Generic\DictionaryExtensions.cs" />
     <Compile Include="Text\RegularExpressions\MatchExtensions.cs" />
-    <Compile Include="Windows\Forms\Form.cs" />
     <Compile Include="Windows\Forms\ListViewControl.cs" />
     <Compile Include="Reflection\CustomAttributesProviderExtensions.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControl.cs" />
@@ -203,6 +202,7 @@
     <Compile Include="Numeric\GCDEuclideScheme.cs" />
     <Compile Include="Numeric\GCDBinaryScheme.cs" />
     <Compile Include="Data\Common\DbMappingNameAttribute.cs" />
+    <Compile Include="Windows\Forms\FormControl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

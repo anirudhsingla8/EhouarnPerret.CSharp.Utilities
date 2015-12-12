@@ -27,13 +27,8 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class SafeForm
+    public class FormControl
     {
-    }
-
-    public class SafeControl
-    {
-        
     }
 }
 
