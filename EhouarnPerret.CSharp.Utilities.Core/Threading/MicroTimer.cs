@@ -125,7 +125,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
                             delay = 0L;
                         }
 
-                        var timerMicroEventArgs = new EventArgsTimerMicro(count, elapsedMicroseconds, delay, callbackDuration);
+                        var timerMicroEventArgs = new MicroTimerElapsedEventArgs(count, elapsedMicroseconds, delay, callbackDuration);
                         this.Elapsed(this, timerMicroEventArgs);
                     }
                 }
