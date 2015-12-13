@@ -33,23 +33,23 @@ using System.Configuration;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public abstract class Matrix<Int32>
-    {
-        internal Matrix();
-    }
-
-    public class RealMatrix
-    {
-        public Matrix(Int32 rowCount, Int32 columnCount, Double defaultValue)
-        {
-        }
-
-        public Int32 RowCount { get; set; }
-        public Int32 ColumnCount { get; set; }
-
-        private 
-
-        public Int32 this[Int32 rowIndex, Int32 columnIndex] { get; set; }
-    }
+//    public abstract class Matrix<Int32>
+//    {
+//        internal Matrix();
+//    }
+//
+//    public class RealMatrix
+//    {
+//        public Matrix(Int32 rowCount, Int32 columnCount, Double defaultValue)
+//        {
+//        }
+//
+//        public Int32 RowCount { get; set; }
+//        public Int32 ColumnCount { get; set; }
+//
+//        private 
+//
+//        public Int32 this[Int32 rowIndex, Int32 columnIndex] { get; set; }
+//    }
 }
 

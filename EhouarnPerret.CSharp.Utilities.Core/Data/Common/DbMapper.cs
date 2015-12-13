@@ -24,20 +24,16 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.Data;
-using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
-    public abstract class DbMapper<T> : Disposable, IDbMapper<T>
-    {
-        public DbMapper(IDbConnection connection)
-        {
-            this.Connection = ExceptionHelpers.ThrowIfNull(connection, nameof(connection));
-        }
-
-        private IDbConnection Connection { get; }
-    }
+//    public abstract class DbMapper<T> : Disposable, IDbMapper<T>
+//    {
+//        public DbMapper(IDbConnection connection)
+//        {
+//            this.Connection = ExceptionHelpers.ThrowIfNull(connection, nameof(connection));
+//        }
+//
+//        private IDbConnection Connection { get; }
+//    }
 }

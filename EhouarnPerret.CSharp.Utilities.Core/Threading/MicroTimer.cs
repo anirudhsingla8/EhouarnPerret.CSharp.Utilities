@@ -187,7 +187,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
     
         public event EventHandler<MicroTimerElapsedEventArgs> Elapsed;
 
-        protected override void FreeResourcesManaged()
+        protected override void FreeManagedResources()
         {
             this.Stop();
         }
