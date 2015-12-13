@@ -185,7 +185,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         }
         private Int64 _ignoreDurationThreshold = Int64.MaxValue;
     
-        public event EventHandler<EventArgsTimerMicro> Elapsed;
+        public event EventHandler<MicroTimerElapsedEventArgs> Elapsed;
 
         protected override void FreeResourcesManaged()
         {
