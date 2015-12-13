@@ -31,7 +31,6 @@ using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-
     public enum GCDEuclideScheme : byte
     {
         Iterative = 0x00,

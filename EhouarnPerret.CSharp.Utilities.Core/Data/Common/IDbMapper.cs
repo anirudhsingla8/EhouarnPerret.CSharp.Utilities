@@ -29,7 +29,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
-    public interface IDbMapper<out T> : IDisposable, IEnumerable<T>
+    public interface IDbMapper<T> : IDisposable, IEnumerable<T>
     {
         Boolean IsCreated { get; }
         Boolean IsReadOnly { get; }

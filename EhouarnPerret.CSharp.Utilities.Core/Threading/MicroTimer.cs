@@ -1,5 +1,5 @@
 ﻿//
-// Matrix.cs
+// MicroTimer.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,33 +23,35 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Numerics;
-using System.ComponentModel;
-using System.Runtime.Remoting.Messaging;
-using System.Dynamic;
-using System.Configuration;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 {
-    public abstract class Matrix<Int32>
+    public class MicroTimer : Disposable
     {
-        internal Matrix();
-    }
+        public const Int64 IntervalDefault = 1000;
 
-    public class RealMatrix
-    {
-        public Matrix(Int32 rowCount, Int32 columnCount, Double defaultValue)
+        public MicroTimer()
         {
+            this.Interval = MicroTimer.DefaultInterval;
         }
 
-        public Int32 RowCount { get; set; }
-        public Int32 ColumnCount { get; set; }
+        public MicroTimer(Int64 interval) 
+        {
+            if (interval < 0L)
+            {
+                throw new ArgumentException (@"The ""interval"" cannot be negative.", @"interval");
+            }
+            else
+            {
+                this.Interval = interval;
+            }
+        }
 
-        private 
-
-        public Int32 this[Int32 rowIndex, Int32 columnIndex] { get; set; }
+        public MicroTimer(TimeSpan interval) 
+            : this()
+        {
+        }
     }
 }
 

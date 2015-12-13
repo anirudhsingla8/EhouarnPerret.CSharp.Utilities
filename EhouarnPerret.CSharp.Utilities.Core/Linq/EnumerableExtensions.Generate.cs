@@ -1,5 +1,5 @@
 ﻿//
-// Matrix.cs
+// EnumerableExtensions.Generate.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,33 +23,29 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Numerics;
-using System.ComponentModel;
-using System.Runtime.Remoting.Messaging;
-using System.Dynamic;
-using System.Configuration;
+using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    public abstract class Matrix<Int32>
+    public static partial class EnumerableExtensions
     {
-        internal Matrix();
-    }
-
-    public class RealMatrix
-    {
-        public Matrix(Int32 rowCount, Int32 columnCount, Double defaultValue)
+        public static IEnumerable<TSource> Generate<TSource>(this TSource seed, Func<TSource, TSource> generator)
         {
+            return seed.Generate(generator, item => true);
         }
 
-        public Int32 RowCount { get; set; }
-        public Int32 ColumnCount { get; set; }
+        public static IEnumerable<TSource> Generate<TSource>(this TSource seed, Func<TSource, TSource> generator, Func<TSource, Boolean> terminator)
+        {
+            var current = seed;
 
-        private 
+            while (terminator(current))
+            {
+                yield return current;
 
-        public Int32 this[Int32 rowIndex, Int32 columnIndex] { get; set; }
+                current = generator(current);
+            }
+        }
     }
 }
 

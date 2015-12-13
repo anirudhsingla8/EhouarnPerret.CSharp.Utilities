@@ -202,8 +202,10 @@
     <Compile Include="Numeric\GCDEuclideScheme.cs" />
     <Compile Include="Numeric\GCDBinaryScheme.cs" />
     <Compile Include="Data\Common\DbMappingNameAttribute.cs" />
-    <Compile Include="Windows\Forms\Form.cs" />
     <Compile Include="Linq\EnumerableExtensions.Sum.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Generate.cs" />
+    <Compile Include="Threading\MicroStopwatch.cs" />
+    <Compile Include="Threading\MicroTimer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

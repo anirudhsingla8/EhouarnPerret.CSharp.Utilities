@@ -31,11 +31,17 @@ using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-
     public enum GCDBinaryScheme : byte
     {
         Iterative = 0x00,
         Recursive = 0x01,
     }
 
+    public enum GCDScheme : byte
+    {
+        BinaryIterative = 0x00,
+        BinaryRecursive = 0x01,
+        EuclidianIterative = 0x00,
+        EuclidianRecursive = 0x02,
+    }
 }

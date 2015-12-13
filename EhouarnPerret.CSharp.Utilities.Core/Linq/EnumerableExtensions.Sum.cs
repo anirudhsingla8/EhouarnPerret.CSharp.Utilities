@@ -23,14 +23,35 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+using System.Numerics;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    public class EnumerableExtensions
+    public static partial class EnumerableExtensions
     {
-        public EnumerableExtensions()
+        public static BigInteger Sum(IEnumerable<BigInteger> source)
         {
+            var sum = BigInteger.Zero;
+
+            foreach (var item in source)
+            {
+                sum += item;
+            }
+
+            return sum;
+        }
+
+        public static BigIntegerFraction Sum(IEnumerable<BigIntegerFraction> source)
+        {
+            var sum = BigIntegerFraction.Zero;
+
+            foreach (var item in source)
+            {
+                sum += item;
+            }
+
+            return sum;
         }
     }
 }

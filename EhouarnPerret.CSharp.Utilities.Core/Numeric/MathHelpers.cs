@@ -25,44 +25,42 @@
 // THE SOFTWARE.
 using System;
 using System.Numerics;
-using System.Collections.Generic;
 using System.Drawing;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class MathHelpers
     {
-//        public static BigInteger FactorialApproximate(FactorialApproximationScheme scheme)
-//        {
-//            
-//        }
-
-//        public IEnumerable<BigInteger> PrimeFactorizationDirectSearch(BigInteger n)
-//        {
-//            HashSet<Int32> d;
-//        }
-//
-//        public IEnumerable<BigInteger> EratosthenesSieve(BigInteger n)
-//        {
-//            
-//        }
-
-
-
-//        public static BigIntegerFraction SquareRootBabylonianScheme(BigInteger value)
-//        {
-//
-//        }
-//        public static BigIntegerFraction SquareRootBakhshaliScheme(BigInteger value)
-//        {
-//
-//        }
-//        public static BigIntegerFraction SquareRootNewtonScheme(BigInteger value)
-//        {
-//        }
-//        public static BigIntegerFraction SquareRootExponentialIdentityScheme(BigInteger value)
-//        {
-//        }
+        //        public static BigInteger FactorialApproximate(FactorialApproximationScheme scheme)
+        //        {
+        //            
+        //        }
+        //        public IEnumerable<BigInteger> PrimeFactorizationDirectSearch(BigInteger n)
+        //        {
+        //            HashSet<Int32> d;
+        //        }
+        //
+        //        public IEnumerable<BigInteger> EratosthenesSieve(BigInteger n)
+        //        {
+        //            
+        //        }
+        //        public static BigIntegerFraction SquareRootBabylonianScheme(BigInteger value)
+        //        {
+        //
+        //        }
+        //        public static BigIntegerFraction SquareRootBakhshaliScheme(BigInteger value)
+        //        {
+        //
+        //        }
+        //        public static BigIntegerFraction SquareRootNewtonScheme(BigInteger value)
+        //        {
+        //        }
+        //        public static BigIntegerFraction SquareRootExponentialIdentityScheme(BigInteger value)
+        //        {
+        //        }
 
         private static BigInteger FactorialNaiveIterative(UInt16 n)
         {
@@ -96,7 +94,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return Math.Sqrt(Math.Pow(pointB.Y - pointA.Y, 2) + Math.Pow(pointB.X - pointA.X, 2));
         }
 
-        public static UInt32 GCDBinaryRecursive(UInt32 a, UInt32 b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
+        public static UInt32 GCDBinary(UInt32 a, UInt32 b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
         {
             switch (scheme)
             {
@@ -105,7 +103,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
-        public static UInt64 GCDBinaryRecursive(UInt64 a, UInt64 b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
+        public static UInt64 GCDBinary(UInt64 a, UInt64 b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
         {
             switch (scheme)
             {
@@ -114,6 +112,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
+
+        // Add new methods to handle more than two numbers...
 
         public static UInt32 GCDBinaryRecursive(UInt32 a, UInt32 b)
         {
@@ -433,7 +433,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return a;
         }
 
-
         public static SByte GCDEuclideRecursive(SByte a, SByte b)
         {
             return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (SByte)(a % b));
@@ -450,7 +449,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
         }
-
 
         public static Byte GCDEuclideRecursive(Byte a, Byte b)
         {
@@ -506,7 +504,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-
         public static Byte GCDEuclide(Byte a, Byte b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
@@ -544,7 +541,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
     }
-
-
 }
 

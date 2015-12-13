@@ -1,5 +1,5 @@
 ﻿//
-// Matrix.cs
+// MicroStopwatch.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,33 +23,39 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Numerics;
-using System.ComponentModel;
-using System.Runtime.Remoting.Messaging;
-using System.Dynamic;
-using System.Configuration;
+using System.Diagnostics;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 {
-    public abstract class Matrix<Int32>
+    public class MicroStopwatch : Stopwatch
     {
-        internal Matrix();
-    }
-
-    public class RealMatrix
-    {
-        public Matrix(Int32 rowCount, Int32 columnCount, Double defaultValue)
+        private static readonly Double _microSecondsPerTick = 1E6D / Stopwatch.Frequency;
+        public static Double MicroSecondsPerTick
         {
+            get { return this._microSecondsPerTick; }
         }
 
-        public Int32 RowCount { get; set; }
-        public Int32 ColumnCount { get; set; }
+        public MicroStopwatch()
+            : base()
+        {
+            if (!Stopwatch.IsHighResolution)
+            {
+                throw new NotSupportedException(@"The system does not support high-resolution performance counter.");
+            }
+            else
+            {
+                return;
+            }
+        }
 
-        private 
-
-        public Int32 this[Int32 rowIndex, Int32 columnIndex] { get; set; }
+        public Int64 ElapsedMicroseconds
+        {
+            get 
+            {
+                return (Int64)(this.ElapsedTicks * StopwatchMicro.MicroSecondsPerTick);
+            }
+        }
     }
 }
 
