@@ -1,5 +1,5 @@
 ﻿//
-// CanvasItem.cs
+// Accordion.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,19 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.ComponentModel;
-using System.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public abstract class CanvasItem
+    public class AccordionControl : Control
     {
-        protected CanvasItem()
+        public AccordionControl()
         {
-            this.Items = new BindingList<CanvasItem>();
         }
-
-        public BindingList<CanvasItem> Items { get; }
     }
 }
 

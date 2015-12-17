@@ -171,7 +171,6 @@
     <Compile Include="Windows\Forms\ExtendedCollectionEditor.cs" />
     <Compile Include="Windows\Forms\ExtendedButton.cs" />
     <Compile Include="Windows\Forms\Dropdown.cs" />
-    <Compile Include="Windows\Forms\Accordion.cs" />
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
     <Compile Include="Windows\Forms\Editor.cs" />
@@ -208,6 +207,8 @@
     <Compile Include="Threading\MicroTimer.cs" />
     <Compile Include="Linq\EnumerableExtensions.Join.cs" />
     <Compile Include="Threading\MicroTimerElapsedEventArgs.cs" />
+    <Compile Include="Windows\Forms\ButtonControl.cs" />
+    <Compile Include="Windows\Forms\AccordionControl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
