@@ -206,8 +206,8 @@
     <Compile Include="Linq\EnumerableExtensions.Generate.cs" />
     <Compile Include="Threading\MicroStopwatch.cs" />
     <Compile Include="Threading\MicroTimer.cs" />
-    <Compile Include="Threading\MicroTimerElapsedEventArgs.cs" />
     <Compile Include="Linq\EnumerableExtensions.Join.cs" />
+    <Compile Include="Threading\MicroTimerElapsedEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
