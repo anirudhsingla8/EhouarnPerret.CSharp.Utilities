@@ -50,7 +50,8 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             {
                 throw new ArgumentException("MemberExpression is expected in expression.Body", "expression");
             }
-            MemberInfo member = body.Member;
+
+            var member = body.Member;
             if (member.MemberType != MemberTypes.Field || member.Name == null || !member.Name.StartsWith("$VB$Local_"))
             {
                 return member.Name;
@@ -58,9 +59,11 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             return member.Name.Substring("$VB$Local_".Length);
         }
 
+        public static Int32 Mi;
+
         public static void Main(params String[] arguments)
         {
-            var propertyName = Program.GetPropertyName((String str) => str.Length);
+            var propertyName = Program.GetPropertyName(() => Program.Mi);
 
 //            Expression<Func<String, Int32>> expression = (String str) => str.Length;
 //
