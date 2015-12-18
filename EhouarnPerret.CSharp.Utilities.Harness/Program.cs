@@ -38,16 +38,38 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
     public static class Program
     {
+        public static string GetPropertyName<T>(Expression<Func<T>> expression)
+        {
+            return Program.GetPropertyNameFast(expression);
+        }
+
+        internal static string GetPropertyNameFast(LambdaExpression expression)
+        {
+            var body = expression.Body as MemberExpression;
+            if (body == null)
+            {
+                throw new ArgumentException("MemberExpression is expected in expression.Body", "expression");
+            }
+            MemberInfo member = body.Member;
+            if (member.MemberType != MemberTypes.Field || member.Name == null || !member.Name.StartsWith("$VB$Local_"))
+            {
+                return member.Name;
+            }
+            return member.Name.Substring("$VB$Local_".Length);
+        }
+
         public static void Main(params String[] arguments)
         {
-            LambdaExpression expression = (Expression<(String str) => str.Length;
+            var propertyName = Program.GetPropertyName((String str) => str.Length);
 
-            var properties = expression.GetType().GetProperties();
-
-            foreach (var property in properties)
-            {
-                Console.WriteLine(property.Name + " = " + property.GetValue(expression, null));
-            }
+//            Expression<Func<String, Int32>> expression = (String str) => str.Length;
+//
+//            var properties = expression.GetType().GetProperties();
+//
+//            foreach (var property in properties)
+//            {
+//                Console.WriteLine(property.Name + " = " + property.GetValue(expression, null));
+//            }
 
             Console.ReadKey();
 //            var re1 = MathHelpers.GCDBinaryIterative(UInt32.MaxValue + 456ul, 78469747472ul);
