@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Join.cs
+// Bindable.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,29 +23,17 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Linq.Expressions;
 
-
-namespace EhouarnPerret.CSharp.Utilities.Core.Linq
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-	public static partial class EnumerableExtensions
-	{
-        public static String Join<T>(this IEnumerable<T> source, String separator = @"")
-		{
-            return String.Join(separator, source);
-		}
-
-//        public static IEnumerable<String> OrderByRegexGroups<T> (IEnumerable<T> source, Regex regex, params String[] regexGroupNames)
-//        {
-//            source.Select(item => new regex.Match(item))
-//        }
-
-
-//        private static IEnumerable<String> OrderByRegexGroups
-	}
+    /// <summary>
+    /// Bindable.
+    /// </summary>
+    public abstract class Bindable : PropertyChangesNotifier
+    {
+        
+    }
 }
 

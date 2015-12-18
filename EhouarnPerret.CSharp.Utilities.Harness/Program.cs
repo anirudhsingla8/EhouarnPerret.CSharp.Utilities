@@ -32,6 +32,7 @@ using System.Drawing;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 using EhouarnPerret.CSharp.Utilities.Core;
+using System.Reflection;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -39,6 +40,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
+
             var re1 = MathHelpers.GCDBinaryIterative(UInt32.MaxValue + 456ul, 78469747472ul);
 
             var re2 = MathHelpers.GCDEuclide(UInt32.MaxValue + 456ul, 78469747472ul);
@@ -49,6 +51,8 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
             var pointA = new PointF(0, 0);
             var pointB = new PointF(2, 4);
+
+            var str = GetPropertyInfo((PointF point) => point.X);
 
             var xOffset = pointB.X - pointA.X;
             var yOffset = pointB.Y - pointA.Y;

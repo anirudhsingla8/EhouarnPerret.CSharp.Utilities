@@ -27,11 +27,11 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class AccordionControl : Control
-    {
-        public AccordionControl()
-        {
-        }
-    }
+//    public class AccordionControl : Control
+//    {
+//        public AccordionControl()
+//        {
+//        }
+//    }
 }
 

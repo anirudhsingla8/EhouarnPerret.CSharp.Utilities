@@ -86,7 +86,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
                 var count = 0L;
                 var nextNotification = 0L;
 
-                var microStopwatch = MicroStopwatch.StartNew();
+                var microStopwatch = MicroStopwatch.StartNewMicro();
 
                 while (!hasToStopTimer)
                 {

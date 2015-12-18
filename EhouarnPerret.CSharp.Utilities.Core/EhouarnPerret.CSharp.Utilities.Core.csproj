@@ -209,6 +209,8 @@
     <Compile Include="Threading\MicroTimerElapsedEventArgs.cs" />
     <Compile Include="Windows\Forms\ButtonControl.cs" />
     <Compile Include="Windows\Forms\AccordionControl.cs" />
+    <Compile Include="Windows\Forms\Bindable.cs" />
+    <Compile Include="Linq\Expressions\ExpressionHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -260,5 +262,6 @@
     <Folder Include="Runtime\Serialization\" />
     <Folder Include="Windows\Forms\Editors\" />
     <Folder Include="Windows\Forms\Chart\" />
+    <Folder Include="Linq\Expressions\" />
   </ItemGroup>
 </Project>
