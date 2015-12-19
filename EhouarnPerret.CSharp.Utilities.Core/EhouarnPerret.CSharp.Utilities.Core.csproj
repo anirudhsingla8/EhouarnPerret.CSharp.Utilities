@@ -212,6 +212,7 @@
     <Compile Include="Windows\Forms\Bindable.cs" />
     <Compile Include="Linq\Expressions\ExpressionHelpers.cs" />
     <Compile Include="Linq\EnumerableExtensions.Concat.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ForEach.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

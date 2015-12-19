@@ -30,7 +30,28 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<T> Concat<T> (params IEnumerable<T>[] sources)
+        /// <summary>
+        /// Concat the specified source and sources.
+        /// </summary>
+        /// <param name="source">Source.</param>
+        /// <param name="sources">Sources.</param>
+        /// <typeparam name="T">The Source type parameter.</typeparam>
+        public static IEnumerable<T> Concat<T> (this IEnumerable<T> source, params IEnumerable<T>[] sources)
+        {
+            foreach (var item in sources)
+            {
+                yield return item;
+            }
+
+            return sources.Concat();
+        }
+
+        /// <summary>
+        /// Concat the specified sources.
+        /// </summary>
+        /// <param name="sources">Sources.</param>
+        /// <typeparam name="T">The Source type parameter.</typeparam>
+        public static IEnumerable<T> Concat<T>(this IEnumerable<IEnumerable<T>> sources)
         {
             foreach (var source in sources)
             {
