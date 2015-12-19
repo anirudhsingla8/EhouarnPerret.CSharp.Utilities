@@ -211,6 +211,7 @@
     <Compile Include="Windows\Forms\AccordionControl.cs" />
     <Compile Include="Windows\Forms\Bindable.cs" />
     <Compile Include="Linq\Expressions\ExpressionHelpers.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Concat.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

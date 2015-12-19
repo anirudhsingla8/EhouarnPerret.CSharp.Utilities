@@ -24,46 +24,43 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Windows.Forms;
-using System.ComponentModel;
-using System.Linq.Expressions;
-using System.Drawing.Drawing2D;
-using System.Drawing;
-using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
-using EhouarnPerret.CSharp.Utilities.Core.Drawing;
-using EhouarnPerret.CSharp.Utilities.Core;
 using System.Reflection;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
     public static class Program
     {
-        public static string GetPropertyName<T>(Expression<Func<T>> expression)
-        {
-            return Program.GetPropertyNameFast(expression);
-        }
-
-        internal static string GetPropertyNameFast(LambdaExpression expression)
-        {
-            var body = expression.Body as MemberExpression;
-            if (body == null)
-            {
-                throw new ArgumentException("MemberExpression is expected in expression.Body", "expression");
-            }
-
-            var member = body.Member;
-            if (member.MemberType != MemberTypes.Field || member.Name == null || !member.Name.StartsWith("$VB$Local_"))
-            {
-                return member.Name;
-            }
-            return member.Name.Substring("$VB$Local_".Length);
-        }
-
+//        public static string GetPropertyName<T>(Expression<Func<T>> expression)
+//        {
+//            return Program.GetPropertyNameFast(expression);
+//        }
+//
+//        internal static string GetPropertyNameFast(LambdaExpression expression)
+//        {
+//            var body = expression.Body as MemberExpression;
+//
+//            if (body == null)
+//            {
+//                throw new ArgumentException("MemberExpression is expected in expression.Body", "expression");
+//            }
+//
+//            var member = body.Member;
+//            if (member.MemberType != MemberTypes.Field || member.Name == null || !member.Name.StartsWith("$VB$Local_"))
+//            {
+//                return member.Name;
+//            }
+//            return member.Name.Substring("$VB$Local_".Length);
+//        }
+//
         public static Int32 Mi;
 
         public static void Main(params String[] arguments)
         {
-            var propertyName = Program.GetPropertyName(() => Program.Mi);
+//            var propertyName = Program.GetPropertyName(() => Program.Mi);
+
+            var array1 = new Int32[] { 0, 1, 2, 3, 4, 5 };
+            var array2 = new Int32[] { 1, 2, 3, 4, 5, 6 };
 
 //            Expression<Func<String, Int32>> expression = (String str) => str.Length;
 //

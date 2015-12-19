@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Join.cs
+// EnumerableExtensions.Concat.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,19 +23,23 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
-using System;
+using System.Linq;
 using System.Collections.Generic;
-
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-	public static partial class EnumerableExtensions
-	{
-        public static String Join<T>(this IEnumerable<T> source, String separator = @"")
-		{
-            return String.Join(separator, source);
-		}
-	}
+    public static partial class EnumerableExtensions
+    {
+        public static IEnumerable<T> Concat<T> (params IEnumerable<T>[] sources)
+        {
+            foreach (var source in sources)
+            {
+                foreach (var item in source) 
+                {
+                    yield return item;
+                }
+            }
+        }
+    }
 }
 
