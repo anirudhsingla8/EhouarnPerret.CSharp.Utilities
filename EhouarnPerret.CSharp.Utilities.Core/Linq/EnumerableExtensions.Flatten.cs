@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Concat.cs
+// EnumerableExtensions.Flatten.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -22,9 +22,8 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE
-
-using System.Linq;
+// THE SOFTWARE.
+using System;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
@@ -32,16 +31,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
     public static partial class EnumerableExtensions
     {
         /// <summary>
-        /// Concat the specified source and sources.
+        /// Flatten the specified sources.
         /// </summary>
-        /// <param name="source">Source.</param>
         /// <param name="sources">Sources.</param>
         /// <typeparam name="T">The Source type parameter.</typeparam>
-        public static IEnumerable<T> Concat<T> (this IEnumerable<T> source, params IEnumerable<T>[] sources)
+        public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> sources)
         {
-            foreach (var item in source.Concat(sources.Flatten()))
+            foreach (var source in sources)
             {
-                yield return item;
+                foreach (var item in source) 
+                {
+                    yield return item;
+                }
             }
         }
     }

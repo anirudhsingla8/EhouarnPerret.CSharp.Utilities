@@ -216,6 +216,7 @@
     <Compile Include="Linq\EnumerableExtensions.Union.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToReadOnlyDictionary.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToReadOnlyCollection.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Flatten.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

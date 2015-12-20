@@ -38,11 +38,13 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             var array1 = new Int32[] { 0, 1, 2, 3, 4, 5 };
             var array2 = new Int32[] { 1, 2, 3, 4, 5, 6 };
-            var array3 = new Int32[][] { array1, array2 };
+            var array3 = new [] { array1, array2 };
 
-            var res = array3.Concat();
+            var res = array3.Flatten();
 
             res.ForEach(item => Console.Write(item + " "));
+
+            Console.WriteLine();
 
             Console.ReadKey();
         }
