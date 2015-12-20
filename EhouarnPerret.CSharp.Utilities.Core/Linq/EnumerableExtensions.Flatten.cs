@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
@@ -35,15 +36,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
         /// </summary>
         /// <param name="sources">Sources.</param>
         /// <typeparam name="T">The Source type parameter.</typeparam>
-        public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> sources)
+        public static IEnumerable<T> Flatten<T>(this IEnumerable<IEnumerable<T>> source)
         {
-            foreach (var source in sources)
-            {
-                foreach (var item in source) 
-                {
-                    yield return item;
-                }
-            }
+            return source.SelectMany(item => item);
         }
     }
 }

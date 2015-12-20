@@ -42,7 +42,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
             var res = array3.Flatten();
 
-            res.ForEach(item => Console.Write(item + " "));
+            array3.Flatten.ForEach(item => Console.Write(item + " "));
 
             Console.WriteLine();
 
