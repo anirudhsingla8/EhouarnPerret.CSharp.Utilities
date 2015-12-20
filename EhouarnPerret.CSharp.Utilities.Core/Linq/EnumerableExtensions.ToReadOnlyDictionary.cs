@@ -40,11 +40,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
         }
         public static ReadOnlyDictionary<TKey, TElement> ToReadOnlyDictionary<TSource, TKey, TElement>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector)
         {
-            var readOnlyDictionary = new ReadOnlyDictionary<TKey, TSource>(source.ToDictionary(keySelector, elementSelector));
+            var readOnlyDictionary = new ReadOnlyDictionary<TKey, TElement>(source.ToDictionary(keySelector, elementSelector));
 
             return readOnlyDictionary;
         }
-        public static ReadOnlyDictionary<TKey, TElement> ToReadOnlyDictionary<TSource, TKey, TElement>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
+        public static ReadOnlyDictionary<TKey, TSource> ToReadOnlyDictionary<TSource, TKey>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
         {
             var readOnlyDictionary = new ReadOnlyDictionary<TKey, TSource>(source.ToDictionary(keySelector, comparer));
 
@@ -52,7 +52,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
         }
         public static ReadOnlyDictionary<TKey, TElement> ToReadOnlyDictionary<TSource, TKey, TElement>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector, IEqualityComparer<TKey> comparer)
         {
-            var readOnlyDictionary = new ReadOnlyDictionary<TKey, TSource>(source.ToDictionary(keySelector, elementSelector, comparer));
+            var readOnlyDictionary = new ReadOnlyDictionary<TKey, TElement>(source.ToDictionary(keySelector, elementSelector, comparer));
 
             return readOnlyDictionary;
         }

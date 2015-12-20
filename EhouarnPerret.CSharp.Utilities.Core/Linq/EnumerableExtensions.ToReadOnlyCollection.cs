@@ -40,7 +40,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
         }
         public static ReadOnlyCollection<TResult> ToReadOnlyCollection<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
         {
-            var readOnlyCollection = new ReadOnlyCollection<TSource>(source.ToList(resultSelector));
+            var readOnlyCollection = new ReadOnlyCollection<TResult>(source.ToList(resultSelector));
 
             return readOnlyCollection;
         }

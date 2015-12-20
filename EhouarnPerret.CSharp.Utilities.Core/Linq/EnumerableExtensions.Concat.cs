@@ -39,12 +39,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
         /// <typeparam name="T">The Source type parameter.</typeparam>
         public static IEnumerable<T> Concat<T> (this IEnumerable<T> source, params IEnumerable<T>[] sources)
         {
-            foreach (var item in sources)
+            foreach (var item in source.Concat(sources.Concat()))
             {
                 yield return item;
             }
-
-            return sources.Concat();
         }
 
         /// <summary>
