@@ -214,6 +214,7 @@
     <Compile Include="Linq\EnumerableExtensions.Concat.cs" />
     <Compile Include="Linq\EnumerableExtensions.ForEach.cs" />
     <Compile Include="Linq\EnumerableExtensions.Union.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ToReadOnlyDictionary.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
