@@ -78,10 +78,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static IReadOnlyDictionary<Type, NumericalTypeInformation> Numbers { get; }
     
-    
         public static Object GetDefaultValue(this Type type)
         {
             return Activator.CreateInstance(type);
+        }
+    
+        public static Boolean IsAssignableTo(this Type type, Type assignableType)
+        {
+            return assignableType.IsAssignableFrom(type);
+        }
+
+        public static Boolean IsAssignableTo<TAssignable>(this Type type)
+        {
+            return TypeExtensions.IsAssignableTo(type, typeof(TAssignable));
         }
     }
 }

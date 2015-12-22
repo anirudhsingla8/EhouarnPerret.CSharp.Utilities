@@ -1,5 +1,5 @@
-﻿//
-// IBindingListDictionary.cs
+//
+// IBindableStack.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,13 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IBindableDictionary<TKey, TValue> : IBindingList, IDictionary<TKey, TValue>, IRaiseItemChangedEvents
+    public interface IBindableStack<T> : IStack<T>, IBindingList, IRaiseItemChangedEvents
     {
     }
 }
-

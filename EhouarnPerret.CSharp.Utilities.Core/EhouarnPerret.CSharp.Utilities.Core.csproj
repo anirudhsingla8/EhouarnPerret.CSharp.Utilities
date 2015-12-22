@@ -19,6 +19,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -27,6 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -217,6 +219,11 @@
     <Compile Include="Linq\EnumerableExtensions.ToReadOnlyDictionary.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToReadOnlyCollection.cs" />
     <Compile Include="Linq\EnumerableExtensions.Flatten.cs" />
+    <Compile Include="Drawing\UnsafeFastBitmap.cs" />
+    <Compile Include="Drawing\SafeFastBitmap.cs" />
+    <Compile Include="Management\Hardware.cs" />
+    <Compile Include="Collections\Generic\IBindableQueue.cs" />
+    <Compile Include="Collections\Generic\IBindableStack.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -269,5 +276,6 @@
     <Folder Include="Windows\Forms\Editors\" />
     <Folder Include="Windows\Forms\Chart\" />
     <Folder Include="Linq\Expressions\" />
+    <Folder Include="Management\" />
   </ItemGroup>
 </Project>

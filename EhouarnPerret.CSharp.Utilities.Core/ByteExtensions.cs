@@ -111,7 +111,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         private static Byte SetBit(Byte value, Byte mask, Boolean bitValue)
         {
-            // Why, fucking stupid downgrading Int32 performance cast... motherfucka'
+            // Why, fucking stupid Int32 downgrading performance cast... motherfucka'
             return bitValue ? (value |= mask) : (value &=(Byte)~mask);
         }
         private static Boolean GetBit(Byte value, Byte mask)

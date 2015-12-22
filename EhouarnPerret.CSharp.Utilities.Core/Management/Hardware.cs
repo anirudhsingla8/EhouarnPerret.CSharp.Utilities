@@ -1,5 +1,5 @@
 ﻿//
-// IBindingListDictionary.cs
+// Hardware.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,13 +23,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.ComponentModel;
-using System.Collections.Generic;
+using System;
+using System.Drawing;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
+namespace EhouarnPerret.CSharp.Utilities.Core.Management
 {
-    public interface IBindableDictionary<TKey, TValue> : IBindingList, IDictionary<TKey, TValue>, IRaiseItemChangedEvents
+    public static class HardwareInformation
     {
+        public static String MotherboardId { get; }
+        public static String ProcessorId { get; }
     }
 }
 
