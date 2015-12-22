@@ -29,8 +29,77 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class GeneralExtensions
     {
-        
-    }
+        /// <summary>
+        /// Determines if the give value is between the specified value lowerBound upperBound.
+        /// </summary>
+        /// <returns><c>true</c> if the given value is between the specified value lowerBound upperBound; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
+        /// <param name="lowerBound">Lower bound.</param>
+        /// <param name="upperBound">Upper bound.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        public static Boolean IsBetween<T>(this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            if (lowerBound.CompareTo(upperBound) <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                var isValueLowered = lowerBound.CompareTo(value) <= 0;
+                var isValueUppered = upperBound.CompareTo(value) >= 0;
 
+                return isValueLowered && isValueUppered;
+            }
+        }
+
+        /// <summary>
+        /// Determines if the given value is strictly between the specified value lowerBound upperBound.
+        /// </summary>
+        /// <returns><c>true</c> if the given value is strictly between the specified value lowerBound upperBound; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
+        /// <param name="lowerBound">Lower bound.</param>
+        /// <param name="upperBound">Upper bound.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        public static Boolean IsStrictlyBetween<T>(this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            if (lowerBound.CompareTo(upperBound) <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                var isValueLowered = lowerBound.CompareTo(value) < 0;
+                var isValueUppered = upperBound.CompareTo(value) > 0;
+
+                return isValueLowered && isValueUppered;
+            }
+        }
+
+        /// <summary>
+        /// Determines if the given value is not between the specified value lowerBound upperBound.
+        /// </summary>
+        /// <returns><c>true</c> if the given value is not between the specified value lowerBound upperBound; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
+        /// <param name="lowerBound">Lower bound.</param>
+        /// <param name="upperBound">Upper bound.</param>
+        /// <typeparam name="T">The 1st type parameter.</typeparam>
+        public static Boolean IsNotBetween<T>(this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            if (lowerBound.CompareTo(upperBound) <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                var isValueLowerThanLowerBound = lowerBound.CompareTo(value) > 0;
+                var isValueUpperThanUpperBound = upperBound.CompareTo(value) < 0;
+
+                return isValueLowerThanLowerBound ^ isValueUpperThanUpperBound;
+            }
+        }
+    }
 }
 

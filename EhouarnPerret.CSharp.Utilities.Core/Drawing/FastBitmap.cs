@@ -31,61 +31,63 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
     public abstract class FastBitmap : Disposable
     {
-		public static FastBitmap FromFile(String path)
-		{
-			return new FastBitmap (path);
-		}
-		public static FastBitmap FromFile(FileInfo path)
-		{
-			return new FastBitmap (path);
-		}
-		public static FastBitmap FromImage(Image image)
-		{
-			return new FastBitmap (image);
-		}
-		public static FastBitmap FromImage(Bitmap bitmap)
-		{
-			return new FastBitmap (bitmap);
-		}
-		public static FastBitmap FromSize(Int32 width, Int32 height)
-		{
-			return new FastBitmap (width, height);
-		}
-		public static FastBitmap FromSize(Size size)
-		{
-			return new FastBitmap (size.Width, size.Height);
-		}
-
-		public FastBitmap(Image image)
-		{
-			this.Bitmap = new Bitmap (image);
-		}
-		public FastBitmap(Bitmap bitmap)
-		{
-			this.Bitmap = new Bitmap (bitmap);
-		}
-		public FastBitmap(String path)
-		{
-			this.Bitmap = new Bitmap (path);
-		}
-		public FastBitmap(FileInfo fileInfo)
-		{
-			this.Bitmap = new Bitmap (fileInfo.FullName);
-		}
-		public FastBitmap(Stream stream)
-		{
-			this.Bitmap = new Bitmap (stream);
-		}
-		public FastBitmap(Int32 width, Int32 height)
-		{
-			this.Bitmap = new Bitmap (width, height);
-		}
-		public FastBitmap(Size size)
-		{
-			this.Bitmap = new Bitmap (size.Width, size.Height);
-		}
-
-		private Bitmap Bitmap { get; }
+//		public static FastBitmap FromFile(String path)
+//		{
+//			return new FastBitmap (path);
+//		}
+//		public static FastBitmap FromFile(FileInfo path)
+//		{
+//			return new FastBitmap (path);
+//		}
+//		public static FastBitmap FromImage(Image image)
+//		{
+//			return new FastBitmap (image);
+//		}
+//		public static FastBitmap FromImage(Bitmap bitmap)
+//		{
+//			return new FastBitmap (bitmap);
+//		}
+//		public static FastBitmap FromSize(Int32 width, Int32 height)
+//		{
+//			return new FastBitmap (width, height);
+//		}
+//		public static FastBitmap FromSize(Size size)
+//		{
+//			return new FastBitmap (size.Width, size.Height);
+//		}
+//
+//		public FastBitmap(Image image)
+//		{
+//			this.Bitmap = new Bitmap (image);
+//		}
+//		public FastBitmap(Bitmap bitmap)
+//		{
+//			this.Bitmap = new Bitmap (bitmap);
+//		}
+//		public FastBitmap(String path)
+//		{
+//			this.Bitmap = new Bitmap (path);
+//		}
+//		public FastBitmap(FileInfo fileInfo)
+//		{
+//			this.Bitmap = new Bitmap (fileInfo.FullName);
+//		}
+//		public FastBitmap(Stream stream)
+//		{
+//			this.Bitmap = new Bitmap (stream);
+//		}
+//		public FastBitmap(Int32 width, Int32 height)
+//		{
+//			this.Bitmap = new Bitmap (width, height);
+//		}
+//		public FastBitmap(Size size)
+//		{
+//			this.Bitmap = new Bitmap (size.Width, size.Height);
+//		}
+//
+//		private Bitmap Bitmap { get; }
+//
+//        protected abstract FastBitmap CreateInstanceFromBitmap(Bitmap bitmap);
     }
 }
 

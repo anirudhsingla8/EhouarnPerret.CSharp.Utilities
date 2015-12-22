@@ -27,6 +27,7 @@ using System;
 using System.Linq;
 
 using EhouarnPerret.CSharp.Utilities.Core.Linq;
+using EhouarnPerret.CSharp.Utilities.Core;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -34,7 +35,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-           
+            Console.WriteLine(DateTime.MinValue.IsNotBetween(DateTime.Now, DateTime.MaxValue));
 
             Console.ReadKey();
         }

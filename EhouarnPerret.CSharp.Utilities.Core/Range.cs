@@ -51,10 +51,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public Boolean Contains(T value)
         {
-            var isValueLowered = this.LowerBound.CompareTo(value) <= 0;
-            var isValueUppered = this.UpperBound.CompareTo(value) >= 0;
-            
-            return isValueLowered && isValueUppered;
+            return value.IsBetween(this.LowerBound, this.UpperBound);
         }
         public Boolean Contains(Range<T> range)
         {
@@ -69,10 +66,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
         public Boolean Overlaps(Range<T> range)
         {
-            return  this.Contains(range.LowerBound) || 
-                    this.Contains(range.UpperBound) || 
-                    range.Contains(this.LowerBound) || 
-                    range.Contains(this.UpperBound);
+            return this.Contains(range.LowerBound) || 
+                   this.Contains(range.UpperBound) || 
+                   range.Contains(this.LowerBound) || 
+                   range.Contains(this.UpperBound);
         }
         public Boolean IsContiguousWith(Range<T> range)
         {
