@@ -26,6 +26,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
@@ -39,6 +40,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
             return lookup;
         }
+
         public static ILookup<TKey, TItem> ToLookup<TKey, TItem>(this IDictionary<TKey, IEnumerable<TItem>> source)
         {
             var lookup = source
@@ -46,6 +48,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
                 .ToLookup(p => p.Item1.Key, p => p.Item2);
 
             return lookup;
+        }
+
+        public static IReadOnlyDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> dictionary)
+        {
+            var readOnlyDictionary = new ReadOnlyDictionary<TKey, TValue>(dictionary);
+
+            return readOnlyDictionary;
         }
     }
 }

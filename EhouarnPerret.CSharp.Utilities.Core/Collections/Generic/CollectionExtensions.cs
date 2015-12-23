@@ -64,6 +64,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
                 }
             }
         }
+
+        // public static IReadOnlyCollection<T> AsReadOnly<>
     }
 }
 

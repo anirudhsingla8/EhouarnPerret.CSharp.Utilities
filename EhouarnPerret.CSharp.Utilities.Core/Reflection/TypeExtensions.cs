@@ -28,6 +28,7 @@ using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -52,7 +53,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 { typeof(Decimal), new NumericalTypeInformation<Decimal>() },
             };
 
-            TypeExtensions.Numbers = new ReadOnlyDictionary<Type, NumericalTypeInformation>(dictionary);
+            TypeExtensions.Numbers = dictionary.AsReadOnly();
         }
 
         public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier = AccessModifiers.Both)
