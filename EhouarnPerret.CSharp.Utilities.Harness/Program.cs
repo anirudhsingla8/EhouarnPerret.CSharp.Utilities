@@ -28,6 +28,7 @@ using System.Linq;
 
 using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using EhouarnPerret.CSharp.Utilities.Core;
+using EhouarnPerret.CSharp.Utilities.Core.Threading;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -35,7 +36,12 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            Console.WriteLine(DateTime.MinValue.IsNotBetween(DateTime.Now, DateTime.MaxValue));
+            var microTimer = new MicroTimer(200);
+
+            microTimer.Elapsed += (object sender, MicroTimerElapsedEventArgs e) => 
+            {
+                    
+            };
 
             Console.ReadKey();
         }

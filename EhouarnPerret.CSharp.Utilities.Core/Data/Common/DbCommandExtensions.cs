@@ -31,7 +31,6 @@ using System.Data.Common;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
-
     public static class DbCommandExtensions
     {
         public static T ExecuteScalar<T>(this DbCommand dbCommand)

@@ -224,6 +224,9 @@
     <Compile Include="Management\Hardware.cs" />
     <Compile Include="Collections\Generic\IBindableQueue.cs" />
     <Compile Include="Collections\Generic\IBindableStack.cs" />
+    <Compile Include="Collections\Generic\ListExtensions.cs" />
+    <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="IO\FileHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
