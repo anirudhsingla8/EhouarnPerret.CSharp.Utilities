@@ -25,10 +25,11 @@
 // THE SOFTWARE.
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
     public interface ICommand
     {
+        void Execute();
     }
 }
 
