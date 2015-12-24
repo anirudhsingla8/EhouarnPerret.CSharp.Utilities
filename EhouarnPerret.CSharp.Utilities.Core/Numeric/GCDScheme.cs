@@ -1,10 +1,10 @@
 //
-// IFraction.cs
+// GCDScheme.cs
 //
 // Author:
-//       FastMichouine <>
+//       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 FastMichouine
+// Copyright (c) 2015 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,14 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
-    public interface IFraction<T> : IFormattable, IComparable, IComparable<IFraction<T>>, IEquatable<IFraction<T>> 
-        where T : struct, IComparable<T>, IEquatable<T>, IFormattable, IComparable
+
+    public enum GCDScheme : byte
     {
-        T Numerator { get; }
-        T Denominator { get; }
+        BinaryIterative = 0x00,
+        BinaryRecursive = 0x01,
+        EuclidianIterative = 0x00,
+        EuclidianRecursive = 0x02,
     }
 }

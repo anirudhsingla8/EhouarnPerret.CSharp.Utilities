@@ -30,7 +30,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
     public static class MathHelpers
     {

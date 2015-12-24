@@ -27,7 +27,7 @@
 using System;
 using System.Numerics;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
     public enum FactorialScheme : byte
     {

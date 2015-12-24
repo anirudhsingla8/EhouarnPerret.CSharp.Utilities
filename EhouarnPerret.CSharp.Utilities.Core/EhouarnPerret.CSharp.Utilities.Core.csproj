@@ -227,6 +227,7 @@
     <Compile Include="Collections\Generic\ListExtensions.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="IO\FileHelpers.cs" />
+    <Compile Include="Numeric\GCDScheme.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

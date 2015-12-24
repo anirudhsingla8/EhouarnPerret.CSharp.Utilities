@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
     public enum SummationStrategy : byte
     {

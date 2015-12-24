@@ -27,9 +27,8 @@
 
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
-
     public enum StrictSignedness : byte
     {
         Positive = 0x00,

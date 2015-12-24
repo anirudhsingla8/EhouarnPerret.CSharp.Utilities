@@ -24,12 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Numerics;
-using System.Collections.Generic;
-using System.Drawing;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
     public enum GCDBinaryScheme : byte
     {
@@ -37,11 +33,4 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         Recursive = 0x01,
     }
 
-    public enum GCDScheme : byte
-    {
-        BinaryIterative = 0x00,
-        BinaryRecursive = 0x01,
-        EuclidianIterative = 0x00,
-        EuclidianRecursive = 0x02,
-    }
 }

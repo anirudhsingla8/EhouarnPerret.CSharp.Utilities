@@ -31,7 +31,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Dynamic;
 using System.Configuration;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
 //    public abstract class Matrix<Int32>
 //    {

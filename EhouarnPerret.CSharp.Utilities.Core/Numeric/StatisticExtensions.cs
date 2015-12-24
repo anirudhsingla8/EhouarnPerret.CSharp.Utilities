@@ -28,7 +28,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
 //    public static class StatisticExtensions
 //    {

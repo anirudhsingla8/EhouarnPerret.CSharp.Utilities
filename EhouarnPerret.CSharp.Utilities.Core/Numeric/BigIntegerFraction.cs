@@ -29,7 +29,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
     [Serializable]
     public struct BigIntegerFraction : IFraction<BigInteger>

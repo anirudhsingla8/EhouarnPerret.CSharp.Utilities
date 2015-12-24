@@ -26,7 +26,7 @@
 
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
     public interface INumber<T> : IComparable<T>, IEquatable<T>
     {
