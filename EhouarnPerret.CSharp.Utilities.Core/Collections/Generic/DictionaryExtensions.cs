@@ -52,7 +52,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
         public static IReadOnlyDictionary<TKey, TValue> AsReadOnly<TKey, TValue>(this IDictionary<TKey, TValue> source)
         {
-            var readOnlyDictionary = new ReadOnlyDictionary<TKey, TValue>(source);
+            var readOnlyDictionary = new ReadOnlyDictionary<TKey, TValue>(dictionary);
 
             return readOnlyDictionary;
         }

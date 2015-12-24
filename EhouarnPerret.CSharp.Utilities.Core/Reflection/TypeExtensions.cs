@@ -91,7 +91,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Boolean IsAssignableTo<TAssignable>(this Type type)
         {
-            return TypeExtensions.IsAssignableTo(type, typeof(TAssignable));
+            return type.IsAssignableTo(typeof(TAssignable));
         }
     }
 }
