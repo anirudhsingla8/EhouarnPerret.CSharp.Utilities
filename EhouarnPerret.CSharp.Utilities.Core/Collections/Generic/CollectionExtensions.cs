@@ -57,8 +57,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
     
         public static IEnumerable<Boolean> Contains<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
         {
-            ReadOnlyCollection<T> d;
-
             foreach (var collection in collections)
             {
                 foreach (var item in collection)

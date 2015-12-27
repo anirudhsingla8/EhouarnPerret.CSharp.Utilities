@@ -26,9 +26,7 @@
 using System;
 using System.Linq;
 
-using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using EhouarnPerret.CSharp.Utilities.Core;
-using EhouarnPerret.CSharp.Utilities.Core.Threading;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -36,12 +34,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var microTimer = new MicroTimer(200);
-
-            microTimer.Elapsed += (object sender, MicroTimerElapsedEventArgs e) => 
-            {
-                    
-            };
+            Console.WriteLine(DateTime.Now.ToInvariantIsoString());
+            Console.WriteLine(DateTime.Now.ToInvariantIsoDateString());
+            Console.WriteLine(DateTime.Now.ToInvariantIsoTimeString());
 
             Console.ReadKey();
         }

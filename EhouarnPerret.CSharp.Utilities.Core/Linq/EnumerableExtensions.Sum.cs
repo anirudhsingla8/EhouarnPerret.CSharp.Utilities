@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System.Numerics;
 using System.Collections.Generic;
+using EhouarnPerret.CSharp.Utilities.Core.Numeric;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
