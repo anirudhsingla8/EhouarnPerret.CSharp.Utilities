@@ -30,7 +30,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
     public static class TypeExtensions
     {
@@ -67,14 +67,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var fieldInfo = type.GetField(name, BindingFlags.Static | accessModifier.ToBindingFlags());
 
-            if (fieldInfo.IsLiteral)
-            {
-                return fieldInfo;
-            }
-            else
-            {
-                return null;
-            }
+            return fieldInfo.IsLiteral ? fieldInfo : null;
         }
 
         public static IReadOnlyDictionary<Type, NumericalTypeInformation> Numbers { get; }

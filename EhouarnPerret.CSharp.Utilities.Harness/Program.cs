@@ -34,9 +34,22 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            Console.WriteLine(DateTime.Now.ToInvariantIsoString());
-            Console.WriteLine(DateTime.Now.ToInvariantIsoDateString());
-            Console.WriteLine(DateTime.Now.ToInvariantIsoTimeString());
+//            var random = new Random();
+//
+//            var min = 0ul;
+//
+//            var max = 2ul;
+//
+//            for (var i = 0; i < 500000; i++)
+//            {
+//                var bytes = new Byte[8];
+//
+//                random.NextBytes(bytes);
+//
+//                var number = BitConverter.ToUInt64(bytes, 0);
+//
+//                Console.WriteLine(number % (max - min) + min);
+//            }
 
             Console.ReadKey();
         }

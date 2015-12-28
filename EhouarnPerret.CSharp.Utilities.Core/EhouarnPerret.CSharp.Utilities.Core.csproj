@@ -229,6 +229,7 @@
     <Compile Include="IO\FileHelpers.cs" />
     <Compile Include="Numeric\GCDScheme.cs" />
     <Compile Include="RandomHelpers.cs" />
+    <Compile Include="RandomExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

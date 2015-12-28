@@ -27,7 +27,7 @@ using System;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
     public static class Constructor
     {

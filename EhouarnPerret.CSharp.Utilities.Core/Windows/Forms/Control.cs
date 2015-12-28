@@ -42,26 +42,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 //        private new event EventHandler BackgroundImageLayoutChanged;
 //        private new event EventHandler BackColorChanged;
 
-        protected Control(TProperties properties, TAppearance appearance)
-        {
-            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
-            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
-        }
-        protected Control(TProperties properties)
-        {
-            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
-            this.Appearance = Constructor.Construct<TAppearance>(AccessModifiers.Both, this);
-        }
-        protected Control(TAppearance appearance)
-        {
-            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
-            this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
-        }
-        protected Control()
-        {
-            this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
-            this.Appearance = Constructor.Construct<TAppearance>(AccessModifiers.Both, this);
-        }
+//        protected Control(TProperties properties, TAppearance appearance)
+//        {
+//            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
+//            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
+//        }
+//        protected Control(TProperties properties)
+//        {
+//            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
+//            this.Appearance = Constructor.Construct<TAppearance>(AccessModifiers.Both, this);
+//        }
+//        protected Control(TAppearance appearance)
+//        {
+//            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
+//            this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
+//        }
+//        protected Control()
+//        {
+//            this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
+//            this.Appearance = Constructor.Construct<TAppearance>(AccessModifiers.Both, this);
+//        }
 
         #region IProperties Implementation
         public TProperties Properties { get; }

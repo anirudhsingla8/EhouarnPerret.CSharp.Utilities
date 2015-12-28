@@ -29,7 +29,7 @@ using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
     public abstract class NumericalTypeInformation
     {
