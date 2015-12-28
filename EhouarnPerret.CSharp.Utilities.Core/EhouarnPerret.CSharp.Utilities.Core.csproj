@@ -228,6 +228,7 @@
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="IO\FileHelpers.cs" />
     <Compile Include="Numeric\GCDScheme.cs" />
+    <Compile Include="RandomHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

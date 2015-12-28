@@ -39,7 +39,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             for (var i = ByteBits.Bit0; i <= ByteBits.Bit7; i++) 
             {
-                bitValues[(Byte)i] = ByteExtensions.GetBit(value, i);
+                bitValues[(Byte)i] = value.GetBit(i);
             }
 
             return bitValues;
@@ -64,49 +64,49 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Boolean GetBit(this Byte value, ByteBits bitIndex)
         {
-            var mask = ByteExtensions.GetMask(bitIndex);
+            var mask = bitIndex.GetMask();
             return ByteExtensions.GetBit(value, mask);
         }
         public static Byte SetBit(this Byte value, ByteBits bitIndex, Boolean bitValue)
         {
-            var mask = ByteExtensions.GetMask(bitIndex);
+            var mask = bitIndex.GetMask();
             return ByteExtensions.SetBit(value, mask, bitValue);
         }
 
         public static Byte SetBigEndianMSB(Byte value, Boolean bitValue)
         {
-            return ByteExtensions.SetBit(value, ByteBits.Bit0, bitValue);
+            return value.SetBit(ByteBits.Bit0, bitValue);
         }
         public static Byte SetBigEndianLSB(Byte value, Boolean bitValue)
         {
-            return ByteExtensions.SetBit(value, ByteBits.Bit7, bitValue);
+            return value.SetBit(ByteBits.Bit7, bitValue);
         }
 
         public static Byte SetLittleEndianMSB(Byte value, Boolean bitValue)
         {
-            return ByteExtensions.SetBit(value, ByteBits.Bit7, bitValue);
+            return value.SetBit(ByteBits.Bit7, bitValue);
         }
         public static Byte SetLittleEndianLSB(Byte value, Boolean bitValue)
         {
-            return ByteExtensions.SetBit(value, ByteBits.Bit0, bitValue);
+            return value.SetBit(ByteBits.Bit0, bitValue);
         }
 
         public static Boolean GetBigEndianMSB(Byte value)
         {
-            return ByteExtensions.GetBit(value, ByteBits.Bit0);
+            return value.GetBit(ByteBits.Bit0);
         }
         public static Boolean GetBigEndianLSB(Byte value)
         {
-            return ByteExtensions.GetBit(value, ByteBits.Bit7);
+            return value.GetBit(ByteBits.Bit7);
         }
 
         public static Boolean GetLittleEndianMSB(Byte value)
         {
-            return ByteExtensions.GetBit(value, ByteBits.Bit7);
+            return value.GetBit(ByteBits.Bit7);
         }
         public static Boolean GetLittleEndianLSB(Byte value)
         {
-            return ByteExtensions.GetBit(value, ByteBits.Bit0);
+            return value.GetBit(ByteBits.Bit0);
         }
 
         private static Byte SetBit(Byte value, Byte mask, Boolean bitValue)
