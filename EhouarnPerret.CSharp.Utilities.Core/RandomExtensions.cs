@@ -136,12 +136,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Decimal NextDecimal(this Random random)
         {
-            var bytes = random.NextBytes(13);
+            var bytes = random.NextBytes(12);
 
             var low = BitConverter.ToInt32(bytes, 0);
             var mid = BitConverter.ToInt32(bytes, 4);
             var high = BitConverter.ToInt32(bytes, 8);
-            var scale = bytes[12];
+            var scale = random.NextByte(0, 28);
 
             var isNegative = random.NextBoolean();
 
@@ -149,7 +149,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
         public static Decimal NextDecimal(this Random random, Decimal minimumValue, Decimal maximumValue)
         {
-            return random.NextDouble() * (maximumValue - minimumValue) + minimumValue;
+            return random.NextDecimal() * (maximumValue - minimumValue) + minimumValue;
         }
     }
 }

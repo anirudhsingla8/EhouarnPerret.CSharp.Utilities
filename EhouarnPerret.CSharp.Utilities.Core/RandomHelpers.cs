@@ -34,6 +34,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             RandomHelpers.Random = new Random();
         }
 
+        public static Boolean NextBoolean()
+        {
+            return RandomHelpers.Random.NextBoolean();
+        }
+
         public static Byte[] NextBytes(Int32 byteCount)
         {
             return RandomHelpers.Random.NextBytes(byteCount);
