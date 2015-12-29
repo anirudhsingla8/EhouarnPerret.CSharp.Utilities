@@ -36,7 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return (Byte)value;
             }
         }
-        public static SByte AsUInt32(this Byte value)
+        public static SByte AsSByte(this Byte value)
         {
             unchecked
             {
