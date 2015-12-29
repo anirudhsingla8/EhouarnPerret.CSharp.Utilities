@@ -24,9 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Windows.Forms;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -39,7 +36,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //        }
 //        public static Byte NextByte(this Random random, Byte minimumValue, Byte maximumValue)
 //        {
-//            return (Byte)random.NextInt32(minimumValue, maximumValue);
+//            var bytes = new Byte[1];
+//
+//            random.NextBytes(bytes);
+//
+//            var number = bytes[0];
+//
+//            number = (Byte)(number % (maximumValue + 1 - minimumValue) + minimumValue);
+//
+//            return number;
 //        }
 //
 //        public static UInt16 NextUInt16(this Random random)
@@ -48,7 +53,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //        }
 //        public static UInt16 NextUInt16(this Random random, UInt16 minimumValue, UInt16 maximumValue)
 //        {
-//            return (UInt16)random.NextInt32(minimumValue, maximumValue);
+//            var bytes = new Byte[2];
+//
+//            random.NextBytes(bytes);
+//
+//            var number = BitConverter.ToUInt16(bytes, 0);
+//
+//            number = (UInt16)(number % (maximumValue + 1 - minimumValue) + minimumValue);
+//
+//            return number;
 //        }
 //
 //        public static UInt32 NextUInt32(this Random random)
@@ -57,6 +70,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //        }
 //        public static UInt32 NextUInt32(this Random random, UInt32 minimumValue, UInt32 maximumValue)
 //        {
+//            var bytes = new Byte[4];
+//
+//            random.NextBytes(bytes);
+//
+//            var number = BitConverter.ToUInt32(bytes, 0);
+//
+//            number = number % (maximumValue + 1 - minimumValue) + minimumValue;
+//
+//            return number;
 //        }
 //
 //        public static UInt64 NextUInt64(this Random random)
@@ -66,10 +88,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //        public static UInt64 NextUInt64(this Random random, UInt64 minimumValue, UInt64 maximumValue)
 //        {
 //            var bytes = new Byte[8];
-//            random.NextBytes(bytes);
-//            var value = BitConverter.ToInt64(bytes, 0);
 //
-//            return Math.Abs(longRand % (max - min)) + min);
+//            random.NextBytes(bytes);
+//
+//            var number = BitConverter.ToUInt64(bytes, 0);
+//
+//            number = number % (maximumValue + 1 - minimumValue) + minimumValue;
+//
+//            return number;
 //        }
 //
 //        public static SByte NextSByte(this Random random)

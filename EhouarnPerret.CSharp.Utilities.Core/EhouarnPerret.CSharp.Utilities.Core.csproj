@@ -230,6 +230,7 @@
     <Compile Include="Numeric\GCDScheme.cs" />
     <Compile Include="RandomHelpers.cs" />
     <Compile Include="RandomExtensions.cs" />
+    <Compile Include="PrimitiveExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

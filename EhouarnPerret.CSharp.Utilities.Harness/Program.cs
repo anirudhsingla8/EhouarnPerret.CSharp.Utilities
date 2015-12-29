@@ -34,12 +34,20 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-//            var random = new Random();
-//
-//            var min = 0ul;
-//
-//            var max = 2ul;
-//
+            var random = new Random();
+
+            var a = -5L;
+            Console.WriteLine(a.ToString(@"X"));
+
+            var b = a.AsUInt64();
+            Console.WriteLine(b.ToString(@"X"));
+
+            var c = a.AsDouble();
+            Console.WriteLine(BitConverter.ToString(BitConverter.GetBytes(c)));
+                        
+            var d = (a == b.AsInt64()) && (a == c.AsInt64());
+
+
 //            for (var i = 0; i < 500000; i++)
 //            {
 //                var bytes = new Byte[8];
@@ -48,7 +56,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 //
 //                var number = BitConverter.ToUInt64(bytes, 0);
 //
-//                Console.WriteLine(number % (max - min) + min);
+//                number = number % (max + 1 - min) + min;
+//
+//                Console.WriteLine(number);
 //            }
 
             Console.ReadKey();
