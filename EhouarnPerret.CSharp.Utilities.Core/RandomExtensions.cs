@@ -127,11 +127,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Double NextDouble(this Random random)
         {
-            return random.NextDouble(Double.MinValue, Double.MaxValue);
+            return BitConverter.ToDouble(random.NextBytes(PrimitiveHelpers.DoubleByteCount), 0);
         }
         public static Double NextDouble(this Random random, Double minimumValue, Double maximumValue)
         {
-            return random.NextDouble() * (maximumValue - minimumValue) + minimumValue;
+            return RandomExtensions.NextDouble(random) * (maximumValue - minimumValue) + minimumValue;
         }
 
         public static Decimal NextDecimal(this Random random)

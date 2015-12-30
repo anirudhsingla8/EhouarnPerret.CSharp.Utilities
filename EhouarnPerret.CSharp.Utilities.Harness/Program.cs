@@ -36,6 +36,8 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             while (true)
             {
+                Console.WriteLine(@"Boolean = " + RandomHelpers.NextBoolean());
+
                 Console.WriteLine(@"SByte = " + RandomHelpers.NextSByte());
                 Console.WriteLine(@"Int16 = " + RandomHelpers.NextInt16());
                 Console.WriteLine(@"Int32 = " + RandomHelpers.NextInt32());
@@ -48,11 +50,10 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
                
                 Console.WriteLine(@"Single = " + RandomHelpers.NextSingle());
                 Console.WriteLine(@"Double = " + RandomHelpers.NextDouble());
-
-                Console.ReadKey();
+                Console.WriteLine(@"Decimal = " + RandomHelpers.NextDecimal());
             }
 
-            Console.ReadKey();
+            // Console.ReadKey();
         }
     }
 }

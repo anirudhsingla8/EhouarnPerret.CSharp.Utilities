@@ -127,7 +127,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Double NextDouble()
         {
-            return RandomHelpers.Random.NextDouble();
+            // RandomHelpers.Random.NextDouble();
+            return RandomExtensions.NextDouble(RandomHelpers.Random);
         }
         public static Double NextDouble(Double minimumValue, Double maximumValue)
         {

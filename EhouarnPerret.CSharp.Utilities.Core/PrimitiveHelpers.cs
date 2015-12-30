@@ -70,6 +70,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// </summary>
         public const Int32 Int64ByteCount = 8;
 
+
         /// <summary>
         /// The Single byte count.
         /// </summary>
@@ -79,7 +80,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// The Double byte count.
         /// </summary>
         public const Int32 DoubleByteCount = 8;
-
 
         /// <summary>
         /// The Decimal byte count.
