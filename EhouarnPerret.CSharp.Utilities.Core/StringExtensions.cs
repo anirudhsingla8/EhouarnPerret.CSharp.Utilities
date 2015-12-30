@@ -30,9 +30,9 @@ using System.Security;
 using System.Numerics;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {

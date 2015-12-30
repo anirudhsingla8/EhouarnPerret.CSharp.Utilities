@@ -176,6 +176,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return this.LowerBound.CompareTo(other.LowerBound);
         }
         #endregion
+
         #region IComparable<T> Implementation
         public Int32 CompareTo(T other)
         {
