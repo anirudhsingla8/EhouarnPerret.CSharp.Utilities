@@ -34,6 +34,24 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
+            while (true)
+            {
+                Console.WriteLine(@"SByte = " + RandomHelpers.NextSByte());
+                Console.WriteLine(@"Int16 = " + RandomHelpers.NextInt16());
+                Console.WriteLine(@"Int32 = " + RandomHelpers.NextInt32());
+                Console.WriteLine(@"Int64 = " + RandomHelpers.NextInt64());
+
+                Console.WriteLine(@"Byte = " + RandomHelpers.NextByte());
+                Console.WriteLine(@"UInt16 = " + RandomHelpers.NextUInt16());
+                Console.WriteLine(@"UInt32 = " + RandomHelpers.NextUInt32());
+                Console.WriteLine(@"UInt64 = " + RandomHelpers.NextUInt64());
+               
+                Console.WriteLine(@"Single = " + RandomHelpers.NextSingle());
+                Console.WriteLine(@"Double = " + RandomHelpers.NextDouble());
+
+                Console.ReadKey();
+            }
+
             Console.ReadKey();
         }
     }
