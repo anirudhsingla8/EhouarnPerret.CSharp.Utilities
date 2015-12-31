@@ -103,14 +103,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(SByte);
 
-            if (SByte.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return SByte.TryParse(value, out result) ? result : null;
         }
 
         public static Int16 ToInt16(this String value)
@@ -121,14 +114,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Int16);
 
-            if (Int16.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return null;
-            }
+            return Int16.TryParse(value, out result) ? result : null;
         }
 
         public static Int32 ToInt32(this String value)
@@ -139,14 +125,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Int32);
 
-            if (Int32.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new Int32?();
-            }
+            return Int32.TryParse(value, out result) ? result : new Int32?();
         }
 
         public static Int64 ToInt64(this String value)
@@ -157,14 +136,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Int64);
 
-            if (Int64.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new Int64?();
-            }
+            return Int64.TryParse(value, out result) ? result : new Int64?();
         }
 
         public static BigInteger ToBigInteger(this String value)
@@ -175,14 +147,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(BigInteger);
 
-            if (BigInteger.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new BigInteger?();
-            }
+            return BigInteger.TryParse(value, out result) ? result : new BigInteger?();
         }
 
         public static Byte ToByte(this String value)
@@ -206,55 +171,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Byte);
 
-            if (Byte.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new Byte?();
-            }
+            return Byte.TryParse(value, out result) ? result : new Byte?();
         }
         public static Int16? TryToUInt16(this String value)
         {
             var result = default(Int16);
 
-            if (Int16.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new Int16?();
-            }
+            return Int16.TryParse(value, out result) ? result : new Int16?();
         }
         public static UInt32? TryToUInt32(this String value)
         {
             var result = default(UInt32);
 
-            if (UInt32.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new UInt32?();
-            }
+            return UInt32.TryParse(value, out result) ? result : new UInt32?();
         }
         public static UInt64? TryToUInt64 (this String value)
         {
             var result = default(UInt64);
 
-            if (UInt64.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new UInt64?();
-            }
+            return UInt64.TryParse(value, out result) ? result : new UInt64?();
         }
-
 
         public static Single ToSingle(this String value)
         {
@@ -264,14 +200,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Single);
 
-            if (Single.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new Single?();
-            }
+            return Single.TryParse(value, out result) ? result : new Single?();
         }
 
         public static Double ToDouble(this String value)
@@ -282,14 +211,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Double);
 
-            if (Double.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new Double?();
-            }
+            return Double.TryParse(value, out result) ? result : new Double?();
         }
 
         public static Decimal ToDecimal(this String value)
@@ -300,17 +222,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Decimal);
 
-            if (Decimal.TryParse(value, out result))
-            {
-                return result;
-            }
-            else
-            {
-                return new Decimal?();
-            }
+            return Decimal.TryParse(value, out result) ? result : new Decimal?();
         }
-       
-
 
 //        public static BigIntegerFraction ToBigIntegerFraction (this String value)
 //        {
