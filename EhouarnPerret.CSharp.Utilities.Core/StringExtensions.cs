@@ -103,7 +103,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(SByte);
 
-            return SByte.TryParse(value, out result) ? result : null;
+            return SByte.TryParse(value, out result) ? result : default(SByte?);
         }
 
         public static Int16 ToInt16(this String value)
@@ -114,7 +114,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Int16);
 
-            return Int16.TryParse(value, out result) ? result : null;
+            return Int16.TryParse(value, out result) ? result : default(Int16?);
         }
 
         public static Int32 ToInt32(this String value)
@@ -125,7 +125,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Int32);
 
-            return Int32.TryParse(value, out result) ? result : new Int32?();
+            return Int32.TryParse(value, out result) ? result : default(Int32?);
         }
 
         public static Int64 ToInt64(this String value)
@@ -136,7 +136,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Int64);
 
-            return Int64.TryParse(value, out result) ? result : new Int64?();
+            return Int64.TryParse(value, out result) ? result : default(Int64?);
         }
 
         public static BigInteger ToBigInteger(this String value)
@@ -147,7 +147,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(BigInteger);
 
-            return BigInteger.TryParse(value, out result) ? result : new BigInteger?();
+            return BigInteger.TryParse(value, out result) ? result :  default(BigInteger?);
         }
 
         public static Byte ToByte(this String value)
@@ -171,25 +171,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Byte);
 
-            return Byte.TryParse(value, out result) ? result : new Byte?();
+            return Byte.TryParse(value, out result) ? result : default(Byte?);
         }
-        public static Int16? TryToUInt16(this String value)
+        public static UInt16? TryToUInt16(this String value)
         {
-            var result = default(Int16);
+            var result = default(UInt16);
 
-            return Int16.TryParse(value, out result) ? result : new Int16?();
+            return UInt16.TryParse(value, out result) ? result : default(UInt16?);
         }
         public static UInt32? TryToUInt32(this String value)
         {
             var result = default(UInt32);
 
-            return UInt32.TryParse(value, out result) ? result : new UInt32?();
+            return UInt32.TryParse(value, out result) ? result : default(UInt32?);
         }
         public static UInt64? TryToUInt64 (this String value)
         {
             var result = default(UInt64);
 
-            return UInt64.TryParse(value, out result) ? result : new UInt64?();
+            return UInt64.TryParse(value, out result) ? result : default(UInt64?);
         }
 
         public static Single ToSingle(this String value)
@@ -200,7 +200,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Single);
 
-            return Single.TryParse(value, out result) ? result : new Single?();
+            return Single.TryParse(value, out result) ? result : default(Single?);
         }
 
         public static Double ToDouble(this String value)
@@ -211,7 +211,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Double);
 
-            return Double.TryParse(value, out result) ? result : new Double?();
+            return Double.TryParse(value, out result) ? result : default(Double?);
         }
 
         public static Decimal ToDecimal(this String value)
@@ -222,7 +222,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var result = default(Decimal);
 
-            return Decimal.TryParse(value, out result) ? result : new Decimal?();
+            return Decimal.TryParse(value, out result) ? result : default(Decimal?);
         }
 
 //        public static BigIntegerFraction ToBigIntegerFraction (this String value)

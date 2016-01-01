@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -147,6 +148,51 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 return (UInt16)value;
             }
+        }
+    
+//        public static String ToHexString(this Byte value)
+//        {
+//        }
+//        public static String ToHexString(this UInt16 value)
+//        {
+//        }
+//        public static String ToHexString(this UInt32 value)
+//        {
+//        }
+//        public static String ToHexString(this UInt64 value)
+//        {
+//            
+//        }
+//
+//        public static String ToHexString(this SByte value)
+//        {
+//        }
+//        public static String ToHexString(this Int16 value)
+//        {
+//        }
+//        public static String ToHexString(this Int32 value)
+//        {
+//        }
+//        public static String ToHexString(this Int64 value)
+//        {
+//        }
+//    
+
+        public static Byte[] ToBytes(this Decimal value)
+        {
+            // Load 4 32 bit integers from the Decimal.GetBits method
+            var int32s = Decimal.GetBits(value);
+
+            var bytes = new Byte[PrimitiveHelpers.DecimalByteCount];
+
+            for (var i = 0; i < int32s.Length; i++)
+            {
+                var int32Bytes = BitConverter.GetBytes(int32s[i]);
+
+                Array.Copy(int32Bytes, 0, bytes, i * PrimitiveHelpers.Int32ByteCount, PrimitiveHelpers.Int32ByteCount);
+            }
+
+            return bytes;
         }
     }
 }

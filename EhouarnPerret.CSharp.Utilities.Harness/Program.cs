@@ -27,6 +27,9 @@ using System;
 using System.Linq;
 
 using EhouarnPerret.CSharp.Utilities.Core;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Threading;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -34,6 +37,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
+            var mich = 3243.23434m;
+            var michBytes = mich.ToBytes();
+
             while (true)
             {
                 Console.WriteLine(@"Boolean = " + RandomHelpers.NextBoolean());
