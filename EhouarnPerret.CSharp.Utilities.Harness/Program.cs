@@ -24,13 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
 
 using EhouarnPerret.CSharp.Utilities.Core;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Threading;
-using System.Numerics;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -38,19 +33,21 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var decimalNumber = 3243.23434m;
-            var decimalBytes = decimalNumber.ToBytes();
+            var int32Number = 4;
+            var int32BytesBE = int32Number.ToBytes(Endianess.BigEndian);
+            var int32BytesLE = int32Number.ToBytes(Endianess.LittleEndian);
 
-            var int32Number = 32;
-            var int32Bytes = int32Number.ToBytes();
+            var int64Number = 4L;
+            var int64BytesBE = int64Number.ToBytes(Endianess.BigEndian);
+            var int64BytesLE = int64Number.ToBytes(Endianess.LittleEndian);
 
+            Console.WriteLine(BitConverter.ToString(int32BytesBE));
+            Console.WriteLine(BitConverter.ToString(int32BytesLE));
 
-            Console.WriteLine(decimalNumber);
+            Console.WriteLine(BitConverter.ToString(int64BytesBE));
+            Console.WriteLine(BitConverter.ToString(int64BytesLE));
 
-            Console.WriteLine(BitConverter.ToString(decimalBytes));
-
-            Console.WriteLine(BitConverter.ToString(int32Bytes));
-            Console.WriteLine(int32Number.ToString(@"4X"));
+            Console.ReadKey();
 
             while (true)
             {

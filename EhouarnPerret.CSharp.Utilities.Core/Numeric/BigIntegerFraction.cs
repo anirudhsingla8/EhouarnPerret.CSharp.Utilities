@@ -25,9 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Numerics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {

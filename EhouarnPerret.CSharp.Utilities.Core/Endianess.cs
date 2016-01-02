@@ -1,5 +1,5 @@
-﻿//
-// ArrayExtensions.cs
+//
+// Endianess.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,38 +23,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class ArrayExtensions
+    public enum Endianess : byte
     {
-        public static T[] CopyTo<T> (this T[] source, Int32 offset, Int32 length)
-        {
-            var array = new T[length];
-
-            Array.Copy(source, offset, array, 0, length);
-
-            return array;
-        }
-
-        public static T[] Swap<T> (this T[] source)
-        {
-            Array.Reverse(source);
-
-            return source;
-        }
-
-        public static T[] SwapCopy<T> (this T[] source)
-        {
-            var copy = new T[source.Length];
-
-            Buffer.BlockCopy(source, 0, copy, 0, source.Length);
-
-            Array.Reverse(copy);
-
-            return copy;
-        }
+        LittleEndian = 0x00,
+        BigEndian = 0x01,
     }
+    
 }
-

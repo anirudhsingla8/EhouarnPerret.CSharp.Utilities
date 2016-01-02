@@ -234,6 +234,7 @@
     <Compile Include="PrimitiveHelpers.cs" />
     <Compile Include="ArrayExtensions.cs" />
     <Compile Include="Linq\EnumerableExtensions.CopyTo.cs" />
+    <Compile Include="Endianess.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

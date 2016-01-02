@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -150,33 +149,32 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
     
-//        public static String ToHexString(this Byte value)
-//        {
-//        }
-//        public static String ToHexString(this UInt16 value)
-//        {
-//        }
-//        public static String ToHexString(this UInt32 value)
-//        {
-//        }
-//        public static String ToHexString(this UInt64 value)
-//        {
-//            
-//        }
-//
-//        public static String ToHexString(this SByte value)
-//        {
-//        }
-//        public static String ToHexString(this Int16 value)
-//        {
-//        }
-//        public static String ToHexString(this Int32 value)
-//        {
-//        }
-//        public static String ToHexString(this Int64 value)
-//        {
-//        }
-//    
+        public static Byte[] ToBytes(this Char value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
+        public static Byte[] ToBytes(this Char value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+
+        // A WTF function for the sake of completion!
+        public static Byte[] ToBytes(this Byte value)
+        {
+            return new [] { value };
+        }
+        // Another WTF function for the sake of completion...
+        public static Byte[] ToBytes(this SByte value)
+        {
+            return new [] { value.AsByte() };
+        }
 
         public static Byte[] ToBytes(this Decimal value)
         {
@@ -194,12 +192,136 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-    
+
+        public static Byte[] ToBytes(this Int32 value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
         public static Byte[] ToBytes(this Int32 value)
+        {
+            var bytes = BitConverter.GetBytes(value);
+
+            return bytes;
+        }
+
+        public static Byte[] ToBytes(this UInt32 value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
+        public static Byte[] ToBytes(this UInt32 value)
         {
             return BitConverter.GetBytes(value);
         }
-    
+
+        public static Byte[] ToBytes(this Int16 value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
+        public static Byte[] ToBytes(this Int16 value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+
+        public static Byte[] ToBytes(this UInt16 value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
+        public static Byte[] ToBytes(this UInt16 value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+
+        public static Byte[] ToBytes(this Int64 value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
+        public static Byte[] ToBytes(this Int64 value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+
+        public static Byte[] ToBytes(this UInt64 value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
+        public static Byte[] ToBytes(this UInt64 value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+
+        public static Byte[] ToBytes(this Single value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
+        public static Byte[] ToBytes(this Single value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+
+        public static Byte[] ToBytes(this Double value, Endianess endianess)
+        {
+            var bytes = value.ToBytes();
+
+            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            {
+                bytes.Swap();
+            }
+
+            return bytes;
+        }
+        public static Byte[] ToBytes(this Double value)
+        {
+            return BitConverter.GetBytes(value);
+        }
     }
 }
 
