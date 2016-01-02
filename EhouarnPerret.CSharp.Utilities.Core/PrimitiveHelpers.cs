@@ -85,6 +85,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// The Decimal byte count.
         /// </summary>
         public const Int32 DecimalByteCount = 16;
+
+        /// <summary>
+        /// The decimal int32 count.
+        /// </summary>
+        public const Int32 DecimalInt32Count = PrimitiveHelpers.DecimalByteCount / PrimitiveHelpers.Int32ByteCount;
     }
 }
 

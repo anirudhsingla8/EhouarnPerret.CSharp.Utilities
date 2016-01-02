@@ -30,6 +30,7 @@ using EhouarnPerret.CSharp.Utilities.Core;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Threading;
+using System.Numerics;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -37,8 +38,19 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var mich = 3243.23434m;
-            var michBytes = mich.ToBytes();
+            var decimalNumber = 3243.23434m;
+            var decimalBytes = decimalNumber.ToBytes();
+
+            var int32Number = 32;
+            var int32Bytes = int32Number.ToBytes();
+
+
+            Console.WriteLine(decimalNumber);
+
+            Console.WriteLine(BitConverter.ToString(decimalBytes));
+
+            Console.WriteLine(BitConverter.ToString(int32Bytes));
+            Console.WriteLine(int32Number.ToString(@"4X"));
 
             while (true)
             {

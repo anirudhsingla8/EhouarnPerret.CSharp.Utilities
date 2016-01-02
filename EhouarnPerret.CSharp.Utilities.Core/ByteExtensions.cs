@@ -33,6 +33,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         public const Int32 ByteBitCount = 8;
 
+        public static Decimal ToDecimal(this Byte[] source)
+        {
+            if (source.Length != PrimitiveHelpers.DecimalByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                var int32s = new Int32[PrimitiveHelpers.DecimalInt32Count];         
+
+                for (var i = 0; i < PrimitiveHelpers.DecimalInt32Count; i++)
+                {
+                    var int32Bytes = source.CopyTo(i * PrimitiveHelpers.DecimalInt32Count, PrimitiveHelpers.DecimalInt32Count);
+                    int32s[i] = BitConverter.ToInt32(int32Bytes, 0);
+                }
+
+                return new Decimal(int32s);
+            }
+        }
+
         public static Boolean[] GetBits(this Byte value)
         {
             var bitValues = new Boolean[ByteExtensions.ByteBitCount];

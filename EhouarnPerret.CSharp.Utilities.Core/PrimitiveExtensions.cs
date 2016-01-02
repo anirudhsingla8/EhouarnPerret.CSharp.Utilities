@@ -194,6 +194,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
+    
+        public static Byte[] ToBytes(this Int32 value)
+        {
+            return BitConverter.GetBytes(value);
+        }
+    
     }
 }
 
