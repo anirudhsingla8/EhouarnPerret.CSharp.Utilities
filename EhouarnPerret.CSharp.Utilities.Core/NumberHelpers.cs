@@ -27,7 +27,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class PrimitiveHelpers
+    public static class NumberHelpers
     {
         /// <summary>
         /// The Byte byte count...
@@ -89,7 +89,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The decimal int32 count.
         /// </summary>
-        public const Int32 DecimalInt32Count = PrimitiveHelpers.DecimalByteCount / PrimitiveHelpers.Int32ByteCount;
+        public const Int32 DecimalInt32Count = NumberHelpers.DecimalByteCount / NumberHelpers.Int32ByteCount;
     }
 }
 

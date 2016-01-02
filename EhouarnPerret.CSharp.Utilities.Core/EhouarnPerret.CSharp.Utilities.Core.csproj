@@ -230,11 +230,11 @@
     <Compile Include="Numeric\GCDScheme.cs" />
     <Compile Include="RandomHelpers.cs" />
     <Compile Include="RandomExtensions.cs" />
-    <Compile Include="PrimitiveExtensions.cs" />
-    <Compile Include="PrimitiveHelpers.cs" />
     <Compile Include="ArrayExtensions.cs" />
     <Compile Include="Linq\EnumerableExtensions.CopyTo.cs" />
     <Compile Include="Endianess.cs" />
+    <Compile Include="NumberExtensions.cs" />
+    <Compile Include="NumberHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

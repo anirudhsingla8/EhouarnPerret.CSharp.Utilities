@@ -55,7 +55,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static UInt16 NextUInt16(this Random random)
         {
-            return BitConverter.ToUInt16(random.NextBytes(PrimitiveHelpers.UInt16ByteCount), 0);
+            return BitConverter.ToUInt16(random.NextBytes(NumberHelpers.UInt16ByteCount), 0);
         }
         public static UInt16 NextUInt16(this Random random, UInt16 minimumValue, UInt16 maximumValue)
         {
@@ -64,7 +64,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static UInt32 NextUInt32(this Random random)
         {
-            return BitConverter.ToUInt32(random.NextBytes(PrimitiveHelpers.UInt32ByteCount), 0);
+            return BitConverter.ToUInt32(random.NextBytes(NumberHelpers.UInt32ByteCount), 0);
         }
         public static UInt32 NextUInt32(this Random random, UInt32 minimumValue, UInt32 maximumValue)
         {
@@ -73,7 +73,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static UInt64 NextUInt64(this Random random)
         {
-            return BitConverter.ToUInt64(random.NextBytes(PrimitiveHelpers.UInt64ByteCount), 0);
+            return BitConverter.ToUInt64(random.NextBytes(NumberHelpers.UInt64ByteCount), 0);
         }
         public static UInt64 NextUInt64(this Random random, UInt64 minimumValue, UInt64 maximumValue)
         {
@@ -91,7 +91,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int16 NextInt16(this Random random)
         {
-            return BitConverter.ToInt16(random.NextBytes(PrimitiveHelpers.Int16ByteCount), 0);
+            return BitConverter.ToInt16(random.NextBytes(NumberHelpers.Int16ByteCount), 0);
         }
         public static Int16 NextInt16(this Random random, Int16 minimumValue, Int16 maximumValue)
         {
@@ -100,7 +100,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int32 NextInt32(this Random random)
         {
-            return BitConverter.ToInt32(random.NextBytes(PrimitiveHelpers.Int32ByteCount), 0);
+            return BitConverter.ToInt32(random.NextBytes(NumberHelpers.Int32ByteCount), 0);
         }
         public static Int32 NextInt32(this Random random, Int32 minimumValue, Int32 maximumValue)
         {
@@ -109,7 +109,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int64 NextInt64(this Random random)
         {
-            return BitConverter.ToInt64(random.NextBytes(PrimitiveHelpers.Int64ByteCount), 0);
+            return BitConverter.ToInt64(random.NextBytes(NumberHelpers.Int64ByteCount), 0);
         }
         public static Int64 NextInt64(this Random random, Int64 minimumValue, Int64 maximumValue)
         {
@@ -118,7 +118,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Single NextSingle(this Random random)
         {
-            return BitConverter.ToSingle(random.NextBytes(PrimitiveHelpers.SingleByteCount), 0);
+            return BitConverter.ToSingle(random.NextBytes(NumberHelpers.SingleByteCount), 0);
         }
         public static Single NextSingle(this Random random, Single minimumValue, Single maximumValue)
         {
@@ -127,7 +127,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Double NextDouble(this Random random)
         {
-            return BitConverter.ToDouble(random.NextBytes(PrimitiveHelpers.DoubleByteCount), 0);
+            return BitConverter.ToDouble(random.NextBytes(NumberHelpers.DoubleByteCount), 0);
         }
         public static Double NextDouble(this Random random, Double minimumValue, Double maximumValue)
         {

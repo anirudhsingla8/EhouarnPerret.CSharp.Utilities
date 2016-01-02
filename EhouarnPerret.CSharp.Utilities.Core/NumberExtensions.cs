@@ -27,7 +27,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class PrimitiveExtensions
+    public static class NumberExtensions
     {
         public static Byte AsByte(this SByte value)
         {
@@ -181,13 +181,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             // Load 4 32 bit integers from the Decimal.GetBits method
             var int32s = Decimal.GetBits(value);
 
-            var bytes = new Byte[PrimitiveHelpers.DecimalByteCount];
+            var bytes = new Byte[NumberHelpers.DecimalByteCount];
 
             for (var i = 0; i < int32s.Length; i++)
             {
                 var int32Bytes = BitConverter.GetBytes(int32s[i]);
 
-                Array.Copy(int32Bytes, 0, bytes, i * PrimitiveHelpers.Int32ByteCount, PrimitiveHelpers.Int32ByteCount);
+                Array.Copy(int32Bytes, 0, bytes, i * NumberHelpers.Int32ByteCount, NumberHelpers.Int32ByteCount);
             }
 
             return bytes;
