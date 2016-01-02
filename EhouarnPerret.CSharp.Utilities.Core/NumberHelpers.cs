@@ -27,10 +27,33 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
+    // Oh silliness of my constants...
     public static class NumberHelpers
     {
+        public const Int32 ByteBitCount = 8;
+        public const Int32 SByteBitCount = NumberHelpers.ByteBitCount;
+
+        public const Int32 Int16bitCount = 16;
+        public const Int32 UInt16BitCount = NumberHelpers.Int16bitCount;
+
+        public const Int32 Int32BitCount = 32;
+        public const Int32 UInt32BitCount = NumberHelpers.Int32BitCount;
+
+        public const Int32 Int64BitCount = 64;
+        public const Int32 UInt64BitCount = NumberHelpers.Int64BitCount;
+
+        public const Int32 SingleBitCount = 32;
+
         /// <summary>
-        /// The Byte byte count...
+        /// Makes sense double is double single... eh!?
+        /// </summary>
+        public const Int32 DoubleBitCount = NumberHelpers.SingleBitCount * 2;
+
+        public const Int32 DecimalBitCount = 128;
+
+        /// <summary>
+        /// The Byte byte count... makes some sense here.
+        /// My sanity has been vanished long ago I guess.
         /// </summary>
         public const Int32 ByteByteCount = 1;
 
@@ -53,22 +76,22 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The SByte byte count.
         /// </summary>
-        public const Int32 SByteByteCount = 1;
+        public const Int32 SByteByteCount = NumberHelpers.ByteByteCount;
 
         /// <summary>
         /// The Int16 byte count.
         /// </summary>
-        public const Int32 Int16ByteCount = 2;
+        public const Int32 Int16ByteCount = NumberHelpers.UInt16ByteCount;
 
         /// <summary>
         /// The Int32 byte count.
         /// </summary>
-        public const Int32 Int32ByteCount = 4;
+        public const Int32 Int32ByteCount = NumberHelpers.UInt32ByteCount;
 
         /// <summary>
         /// The Int64 byte count.
         /// </summary>
-        public const Int32 Int64ByteCount = 8;
+        public const Int32 Int64ByteCount = NumberHelpers.UInt64ByteCount;
 
 
         /// <summary>

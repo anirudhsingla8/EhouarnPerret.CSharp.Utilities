@@ -29,6 +29,141 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class NumberExtensions
     {
+        public static Int64 ToInt64(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.Int64ByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return BitConverter.ToInt64(source, startIndex);
+            }
+        }
+        public static UInt64 ToUInt64(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.UInt64ByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return BitConverter.ToUInt64(source, startIndex);
+            }
+        }
+
+        public static Int32 ToInt32(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.Int32ByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return BitConverter.ToInt32(source, startIndex);
+            }
+        }
+        public static UInt32 ToUInt32(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.UInt32ByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return BitConverter.ToUInt32(source, startIndex);
+            }
+        }
+
+        public static Int16 ToInt16(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.Int16ByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return BitConverter.ToInt16(source, startIndex);
+            }
+        }
+        public static UInt16 ToUInt16(this Byte[] source, Int32 startIndex)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.UInt16ByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return BitConverter.ToUInt16(source, startIndex);
+            }
+        }
+
+        public static Byte ToByte(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.ByteByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return source[startIndex];
+            }
+        }
+        public static SByte ToSByte(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.SByteByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return source[startIndex].AsSByte();
+            }
+        }
+
+        public static Single ToSingle(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.SingleByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return BitConverter.ToSingle(source, startIndex);
+            }
+        }
+        public static Double ToDouble(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.DoubleByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                return BitConverter.ToDouble(source, startIndex);
+            }
+        }
+
+        public static Decimal ToDecimal(this Byte[] source, Int32 startIndex = 0)
+        {
+            if ((source.Length - startIndex) < NumberHelpers.DecimalByteCount)
+            {
+                throw new ArgumentOutOfRangeException(nameof(source));
+            }
+            else
+            {
+                var int32s = new Int32[NumberHelpers.DecimalInt32Count];         
+
+                for (var i = startIndex; i < NumberHelpers.DecimalInt32Count; i++)
+                {
+                    var int32Bytes = source.CopyTo(i * NumberHelpers.DecimalInt32Count, NumberHelpers.DecimalInt32Count);
+                    int32s[i] = BitConverter.ToInt32(int32Bytes, 0);
+                }
+
+                return new Decimal(int32s);
+            }
+        }
+
         public static Byte AsByte(this SByte value)
         {
             unchecked

@@ -131,6 +131,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
         public static Double NextDouble(this Random random, Double minimumValue, Double maximumValue)
         {
+            // Analysis disable once InvokeAsExtensionMethod
             return RandomExtensions.NextDouble(random) * (maximumValue - minimumValue) + minimumValue;
         }
 

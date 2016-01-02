@@ -31,31 +31,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ByteExtensions
     {
-        public const Int32 ByteBitCount = 8;
-
-        public static Decimal ToDecimal(this Byte[] source)
-        {
-            if (source.Length != NumberHelpers.DecimalByteCount)
-            {
-                throw new ArgumentOutOfRangeException(nameof(source));
-            }
-            else
-            {
-                var int32s = new Int32[NumberHelpers.DecimalInt32Count];         
-
-                for (var i = 0; i < NumberHelpers.DecimalInt32Count; i++)
-                {
-                    var int32Bytes = source.CopyTo(i * NumberHelpers.DecimalInt32Count, NumberHelpers.DecimalInt32Count);
-                    int32s[i] = BitConverter.ToInt32(int32Bytes, 0);
-                }
-
-                return new Decimal(int32s);
-            }
-        }
-
         public static Boolean[] GetBits(this Byte value)
         {
-            var bitValues = new Boolean[ByteExtensions.ByteBitCount];
+            var bitValues = new Boolean[NumberHelpers.ByteByteCount];
 
             for (var i = ByteBits.Bit0; i <= ByteBits.Bit7; i++) 
             {
