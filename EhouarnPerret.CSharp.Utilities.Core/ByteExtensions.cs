@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 Ehouarn Perret
+// Copyright (c) 2016 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,17 +35,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Decimal ToDecimal(this Byte[] source)
         {
-            if (source.Length != PrimitiveHelpers.DecimalByteCount)
+            if (source.Length != NumberHelpers.DecimalByteCount)
             {
                 throw new ArgumentOutOfRangeException(nameof(source));
             }
             else
             {
-                var int32s = new Int32[PrimitiveHelpers.DecimalInt32Count];         
+                var int32s = new Int32[NumberHelpers.DecimalInt32Count];         
 
-                for (var i = 0; i < PrimitiveHelpers.DecimalInt32Count; i++)
+                for (var i = 0; i < NumberHelpers.DecimalInt32Count; i++)
                 {
-                    var int32Bytes = source.CopyTo(i * PrimitiveHelpers.DecimalInt32Count, PrimitiveHelpers.DecimalInt32Count);
+                    var int32Bytes = source.CopyTo(i * NumberHelpers.DecimalInt32Count, NumberHelpers.DecimalInt32Count);
                     int32s[i] = BitConverter.ToInt32(int32Bytes, 0);
                 }
 

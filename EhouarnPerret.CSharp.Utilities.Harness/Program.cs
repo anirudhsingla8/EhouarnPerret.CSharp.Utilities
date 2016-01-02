@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 Ehouarn Perret
+// Copyright (c) 2016 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System;
 
-using EhouarnPerret.CSharp.Utilities.Core;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -33,42 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var int32Number = 4;
-            var int32BytesBE = int32Number.ToBytes(Endianess.BigEndian);
-            var int32BytesLE = int32Number.ToBytes(Endianess.LittleEndian);
-
-            var int64Number = 4L;
-            var int64BytesBE = int64Number.ToBytes(Endianess.BigEndian);
-            var int64BytesLE = int64Number.ToBytes(Endianess.LittleEndian);
-
-            Console.WriteLine(BitConverter.ToString(int32BytesBE));
-            Console.WriteLine(BitConverter.ToString(int32BytesLE));
-
-            Console.WriteLine(BitConverter.ToString(int64BytesBE));
-            Console.WriteLine(BitConverter.ToString(int64BytesLE));
-
             Console.ReadKey();
-
-            while (true)
-            {
-                Console.WriteLine(@"Boolean = " + RandomHelpers.NextBoolean());
-
-                Console.WriteLine(@"SByte = " + RandomHelpers.NextSByte());
-                Console.WriteLine(@"Int16 = " + RandomHelpers.NextInt16());
-                Console.WriteLine(@"Int32 = " + RandomHelpers.NextInt32());
-                Console.WriteLine(@"Int64 = " + RandomHelpers.NextInt64());
-
-                Console.WriteLine(@"Byte = " + RandomHelpers.NextByte());
-                Console.WriteLine(@"UInt16 = " + RandomHelpers.NextUInt16());
-                Console.WriteLine(@"UInt32 = " + RandomHelpers.NextUInt32());
-                Console.WriteLine(@"UInt64 = " + RandomHelpers.NextUInt64());
-               
-                Console.WriteLine(@"Single = " + RandomHelpers.NextSingle());
-                Console.WriteLine(@"Double = " + RandomHelpers.NextDouble());
-                Console.WriteLine(@"Decimal = " + RandomHelpers.NextDecimal());
-            }
-
-            // Console.ReadKey();
         }
     }
 }

@@ -4,7 +4,7 @@
 // Author:
 //       FastMichouine <>
 //
-// Copyright (c) 2015 FastMichouine
+// Copyright (c) 2016 FastMichouine
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
