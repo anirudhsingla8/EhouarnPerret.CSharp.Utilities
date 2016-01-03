@@ -100,8 +100,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return bytes.ToUInt16();
         }
 
-
-
         public static Single ToSingle(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.SingleByteCount);
@@ -136,7 +134,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes.ToDecimal();
         }
-
 
         public static Int64 ToInt64(this Byte[] source, Int32 startIndex = 0)
         {
@@ -565,6 +562,78 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public static Byte[] ToBytes(this Double value)
         {
             return BitConverter.GetBytes(value);
+        }
+
+        public static Boolean IsEven(this Int64 value)
+        {
+            return value % 2 == 0;
+        }
+        public static Boolean IsOdd(this Int64 value)
+        {
+            return value % 2 == 1;
+        }
+
+        public static Boolean IsEven(this UInt64 value)
+        {
+            return value % 2 == 0;
+        }
+        public static Boolean IsOdd(this UInt64 value)
+        {
+            return value % 2 == 1;
+        }
+
+        public static Boolean IsEven(this Int32 value)
+        {
+            return value % 2 == 0;
+        }
+        public static Boolean IsOdd(this Int32 value)
+        {
+            return value % 2 == 1;
+        }
+
+        public static Boolean IsEven(this UInt32 value)
+        {
+            return value % 2 == 0;
+        }
+        public static Boolean IsOdd(this UInt32 value)
+        {
+            return value % 2 == 1;
+        }
+
+        public static Boolean IsEven(this Int16 value)
+        {
+            return value % 2 == 0;
+        }
+        public static Boolean IsOdd(this Int16 value)
+        {
+            return value % 2 == 1;
+        }
+
+        public static Boolean IsEven(this UInt16 value)
+        {
+            return value % 2 == 0;
+        }
+        public static Boolean IsOdd(this UInt16 value)
+        {
+            return value % 2 == 1;
+        }
+
+        public static Boolean IsEven(this SByte value)
+        {
+            return value % 2 == 0;
+        }
+        public static Boolean IsOdd(this SByte value)
+        {
+            return value % 2 == 1;
+        }
+
+        public static Boolean IsEven(this Byte value)
+        {
+            return value % 2 == 0;
+        }
+        public static Boolean IsOdd(this Byte value)
+        {
+            return value % 2 == 1;
         }
     }
 }

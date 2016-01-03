@@ -234,6 +234,7 @@
     <Compile Include="Linq\EnumerableExtensions.CopyTo.cs" />
     <Compile Include="NumberExtensions.cs" />
     <Compile Include="NumberHelpers.cs" />
+    <Compile Include="ComparableExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
