@@ -138,10 +138,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
 
 
-
-
-
-
         public static Int64 ToInt64(this Byte[] source, Int32 startIndex = 0)
         {
             if ((source.Length - startIndex) < NumberHelpers.Int64ByteCount)
@@ -199,7 +195,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return BitConverter.ToInt16(source, startIndex);
             }
         }
-        public static UInt16 ToUInt16(this Byte[] source, Int32 startIndex)
+        public static UInt16 ToUInt16(this Byte[] source, Int32 startIndex = 0)
         {
             if ((source.Length - startIndex) < NumberHelpers.UInt16ByteCount)
             {

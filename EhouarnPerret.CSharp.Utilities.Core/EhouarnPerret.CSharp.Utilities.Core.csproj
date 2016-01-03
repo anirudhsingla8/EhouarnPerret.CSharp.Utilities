@@ -226,12 +226,12 @@
     <Compile Include="Collections\Generic\IBindableStack.cs" />
     <Compile Include="Collections\Generic\ListExtensions.cs" />
     <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="Endianess.cs" />
     <Compile Include="IO\FileHelpers.cs" />
     <Compile Include="Numeric\GCDScheme.cs" />
     <Compile Include="RandomHelpers.cs" />
     <Compile Include="RandomExtensions.cs" />
     <Compile Include="Linq\EnumerableExtensions.CopyTo.cs" />
-    <Compile Include="Endianess.cs" />
     <Compile Include="NumberExtensions.cs" />
     <Compile Include="NumberHelpers.cs" />
   </ItemGroup>
