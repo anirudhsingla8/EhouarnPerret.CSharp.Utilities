@@ -1,5 +1,5 @@
 ﻿//
-// PrimitiveExtensions.cs
+// NumberExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,10 +25,123 @@
 // THE SOFTWARE.
 using System;
 
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
+
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class NumberExtensions
     {
+        public static Int64 ToInt64(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.Int64ByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToInt64();
+        }
+        public static UInt64 ToUInt64(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.UInt64ByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToUInt64();
+        }
+
+        public static Int32 ToInt32(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.Int32ByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToInt32();
+        }
+        public static UInt32 ToUInt32(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.UInt32ByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToUInt32();
+        }
+
+        public static Int16 ToInt16(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.Int16ByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToInt16();
+        }
+        public static UInt16 ToUInt16(this Byte[] source, Endianess endianess, Int32 startIndex)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.UInt16ByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToUInt16();
+        }
+
+
+
+        public static Single ToSingle(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.SingleByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToSingle();
+        }
+        public static Double ToDouble(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.DoubleByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToDouble();
+        }
+
+        public static Decimal ToDecimal(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        {
+            var bytes = source.Copy(startIndex, NumberHelpers.DecimalByteCount);
+
+            if (NumberHelpers.Endianess != endianess)
+            {
+                bytes.Swap();
+            }
+
+            return bytes.ToDecimal();
+        }
+
+
+
+
+
+
         public static Int64 ToInt64(this Byte[] source, Int32 startIndex = 0)
         {
             if ((source.Length - startIndex) < NumberHelpers.Int64ByteCount)
@@ -156,7 +269,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
                 for (var i = startIndex; i < NumberHelpers.DecimalInt32Count; i++)
                 {
-                    var int32Bytes = source.CopyTo(i * NumberHelpers.DecimalInt32Count, NumberHelpers.DecimalInt32Count);
+                    var int32Bytes = source.Copy(i * NumberHelpers.DecimalInt32Count, NumberHelpers.DecimalInt32Count);
                     int32s[i] = BitConverter.ToInt32(int32Bytes, 0);
                 }
 
@@ -288,7 +401,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }
@@ -332,7 +445,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }
@@ -350,7 +463,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }
@@ -366,7 +479,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }
@@ -382,7 +495,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }
@@ -398,7 +511,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }
@@ -414,7 +527,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }
@@ -430,7 +543,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }
@@ -446,7 +559,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             var bytes = value.ToBytes();
 
-            if (BitConverter.IsLittleEndian && (endianess != Endianess.LittleEndian))
+            if (NumberHelpers.Endianess != endianess)
             {
                 bytes.Swap();
             }

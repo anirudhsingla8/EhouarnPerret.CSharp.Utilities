@@ -24,6 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Configuration;
+
+
+using System.Dynamic;
+using System.Windows.Forms;
 
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
@@ -34,5 +39,18 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             Console.ReadKey();
         }
+    }
+
+    public class BinaryTree<T>
+    {
+        public BinaryTreeNode<T> Root { get; set; }
+    }
+
+    public class BinaryTreeNode<T>
+    {
+        public T Value { get; set;}
+
+        public BinaryTreeNode<T> Left { get; set; }
+        public BinaryTreeNode<T> Right { get; set; }
     }
 }

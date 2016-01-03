@@ -48,7 +48,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             return outputArray;
         }
     
-        public static T[] CopyTo<T> (this T[] source, Int32 offset, Int32 length)
+        public static T[] Copy<T> (this T[] source, Int32 offset, Int32 length)
         {
             var array = new T[length];
 

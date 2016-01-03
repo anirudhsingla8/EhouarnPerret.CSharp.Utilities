@@ -30,6 +30,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     // Oh silliness of my constants...
     public static class NumberHelpers
     {
+        static NumberHelpers()
+        {
+            NumberHelpers.Endianess = BitConverter.IsLittleEndian ? Endianess.LittleEndian : Endianess.BigEndian;
+        }
+
         /// <summary>
         /// The Byte bit count.
         /// </summary>
@@ -147,6 +152,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// The decimal int32 count.
         /// </summary>
         public const Int32 DecimalInt32Count = NumberHelpers.DecimalByteCount / NumberHelpers.Int32ByteCount;
+    
+        public static Endianess Endianess { get; }
     }
 }
 

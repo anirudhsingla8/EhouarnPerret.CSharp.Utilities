@@ -30,7 +30,6 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-
     public interface IInspectableClearableCollection<T> : IInspectableReadOnlyCollection<T>
     {
         void Clear();
