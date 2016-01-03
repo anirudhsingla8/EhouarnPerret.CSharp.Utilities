@@ -230,7 +230,6 @@
     <Compile Include="Numeric\GCDScheme.cs" />
     <Compile Include="RandomHelpers.cs" />
     <Compile Include="RandomExtensions.cs" />
-    <Compile Include="ArrayExtensions.cs" />
     <Compile Include="Linq\EnumerableExtensions.CopyTo.cs" />
     <Compile Include="Endianess.cs" />
     <Compile Include="NumberExtensions.cs" />

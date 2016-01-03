@@ -30,18 +30,49 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     // Oh silliness of my constants...
     public static class NumberHelpers
     {
+        /// <summary>
+        /// The Byte bit count.
+        /// </summary>
         public const Int32 ByteBitCount = 8;
+
+        /// <summary>
+        /// The SByte bit count.
+        /// </summary>
         public const Int32 SByteBitCount = NumberHelpers.ByteBitCount;
 
+        /// <summary>
+        /// The Tnt16 bit count.
+        /// </summary>
         public const Int32 Int16bitCount = 16;
+
+        /// <summary>
+        /// The UInt16 bit count.
+        /// </summary>
         public const Int32 UInt16BitCount = NumberHelpers.Int16bitCount;
 
+        /// <summary>
+        /// The Int32 bit count.
+        /// </summary>
         public const Int32 Int32BitCount = 32;
+
+        /// <summary>
+        /// The UInt32 bit count.
+        /// </summary>
         public const Int32 UInt32BitCount = NumberHelpers.Int32BitCount;
 
+        /// <summary>
+        /// The Int64 bit count.
+        /// </summary>
         public const Int32 Int64BitCount = 64;
+
+        /// <summary>
+        /// The UInt64 bit count.
+        /// </summary>
         public const Int32 UInt64BitCount = NumberHelpers.Int64BitCount;
 
+        /// <summary>
+        /// The Single bit count.
+        /// </summary>
         public const Int32 SingleBitCount = 32;
 
         /// <summary>
@@ -49,6 +80,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// </summary>
         public const Int32 DoubleBitCount = NumberHelpers.SingleBitCount * 2;
 
+        /// <summary>
+        /// The Decimal bit count.
+        /// </summary>
         public const Int32 DecimalBitCount = 128;
 
         /// <summary>
