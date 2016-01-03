@@ -136,7 +136,6 @@
     <Compile Include="Patterns\MVPP\IMVPComponent.cs" />
     <Compile Include="Numeric\Algorithms\SortingHelpers.cs" />
     <Compile Include="Numeric\Algorithms\QuickSortPartitionScheme.cs" />
-    <Compile Include="GeneralExtensions.cs" />
     <Compile Include="GeneralHelpers.cs" />
     <Compile Include="Numeric\StatisticsHelpers.cs" />
     <Compile Include="Numeric\MathHelpers.cs" />
