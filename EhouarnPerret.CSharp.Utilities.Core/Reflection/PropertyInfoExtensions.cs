@@ -1,5 +1,5 @@
 ﻿//
-// Program.cs
+// PropertyInfoExtension.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,53 +24,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Reflection;
 
-namespace EhouarnPerret.CSharp.Utilities.Sandbox
+namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
-    public static class Program
+    public static class PropertyInfoExtensions
     {
-        public static void Main(params String[] arguments)
+        public static TProperty GetValue<TProperty, TInstance> (this PropertyInfo propertyInfo, TInstance instance)
         {
-            Console.ReadKey();
-        }
-    }
+            var value = (TProperty)propertyInfo.GetValue(instance);
 
-    public class BinaryTree<T>
-    {
-        public BinaryTree()
+            return value;
+        }
+        public static void SetValue<TProperty, TInstance> (this PropertyInfo propertyInfo, TInstance instance, TProperty value)
         {
-            this.Root = null;
+            propertyInfo.SetValue(instance, value);
         }
-
-        public BinaryTree(BinaryTreeNode<T> root)
-        {
-            this.Root = root;
-        }
-
-        public BinaryTreeNode<T> Root { get; set; }
-    }
-
-    public class BinaryTreeNode<T>
-    {
-        public BinaryTreeNode() 
-        {
-        }
-
-        public BinaryTreeNode(T data) : 
-           this (data, null, null)
-        {
-        }
-
-        public BinaryTreeNode(T data, BinaryTreeNode<T> left, BinaryTreeNode<T> right)
-        {
-            this.Data = data;
-            this.Left = left;
-            this.Right = right;
-        }
-
-        public T Data { get; set;}
-
-        public BinaryTreeNode<T> Left { get; set; }
-        public BinaryTreeNode<T> Right { get; set; }
     }
 }
+

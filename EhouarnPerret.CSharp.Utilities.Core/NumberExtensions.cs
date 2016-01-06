@@ -411,6 +411,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return new [] { value };
         }
+
         // Another WTF function for the sake of completion...
         public static Byte[] ToBytes(this SByte value)
         {

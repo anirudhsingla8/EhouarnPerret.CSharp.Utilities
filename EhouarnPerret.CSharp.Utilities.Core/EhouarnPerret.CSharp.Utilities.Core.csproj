@@ -234,6 +234,8 @@
     <Compile Include="NumberExtensions.cs" />
     <Compile Include="NumberHelpers.cs" />
     <Compile Include="ComparableExtensions.cs" />
+    <Compile Include="Reflection\Type.cs" />
+    <Compile Include="Reflection\PropertyInfoExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

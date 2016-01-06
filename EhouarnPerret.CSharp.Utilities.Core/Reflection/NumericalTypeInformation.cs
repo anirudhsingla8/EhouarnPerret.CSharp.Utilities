@@ -65,7 +65,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
         public Object BoxedMaxValue { get; }
     }
 
-
     public class NumericalTypeInformation<T> : NumericalTypeInformation
         where T :   struct, 
                     IComparable, 
