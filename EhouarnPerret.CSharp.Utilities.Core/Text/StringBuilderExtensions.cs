@@ -1,5 +1,5 @@
 ﻿//
-// ComparableHelpers.cs
+// StringBuilderExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,21 +24,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Text;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Text
 {
-    public static class ComparableHelpers
+    public static class StringBuilderExtensions
     {
-        public static T Min<T>(T x, T y)
-            where T : IComparable<T>
+        public static StringBuilder RemoveAt(this StringBuilder value, Int32 index)
         {
-            return (x.CompareTo(y) >= 0) ? y : x;
-        }
-
-        public static T Max<T>(T x, T y)
-            where T : IComparable<T>
-        {
-            return (x.CompareTo(y) >= 0) ? x : y;
+            return value.Remove(index, 1);
         }
     }
 }
