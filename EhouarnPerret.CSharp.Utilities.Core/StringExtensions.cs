@@ -246,6 +246,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return letters.SequenceEqual(reversedLetters);
         }
 
+        /// <summary>
+        /// Reverse the specified value.
+        /// </summary>
+        /// <param name="value">Value.</param>
+        public static String Reverse(this String value)
+        {
+            var characters = value.ToCharArray();
+            Array.Reverse(characters);
+            return new String(characters);
+        }
 
 //        public static BigIntegerFraction ToBigIntegerFraction (this String value)
 //        {
