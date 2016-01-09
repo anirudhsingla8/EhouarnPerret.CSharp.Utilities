@@ -234,6 +234,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 .GroupBy(character => character)
                 .Count() == StringExtensions.LatinAlphabetCharacterCount;
         }
+
         public static Boolean IsPalindrome(this String value, Boolean insensitiveCase = true)
         {
             // Not sure the compiler is optimizing that sort of things

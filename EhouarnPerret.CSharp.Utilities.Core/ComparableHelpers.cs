@@ -29,13 +29,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ComparableHelpers
     {
-        public T Min<T>(T x, T y)
+        public static T Min<T>(T x, T y)
             where T : IComparable<T>
         {
             return (x >= y) ? y : x;
         }
 
-        public T Max<T>(T x, T y)
+        public static T Max<T>(T x, T y)
             where T : IComparable<T>
         {
             Math.Min();
