@@ -225,6 +225,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return Decimal.TryParse(value, out result) ? result : default(Decimal?);
         }
 
+        private const Int32 LatinAlphabetCharacterCount = 26;
+
+        public static Boolean IsPangram(this String value)
+        {
+            return value.ToLower()
+                .Where(Char.IsLetter)
+                .GroupBy(character => character)
+                .Count() == StringExtensions.LatinAlphabetCharacterCount;
+        }
+        public static Boolean IsPalindrome(this String value, Boolean insensitiveCase = true)
+        {
+            // Not sure the compiler is optimizing that sort of things
+            value = insensitiveCase ? value.ToLower() : value;
+
+            var letters = value.Where(Char.IsLetter);
+            var reversedLetters = value.Reverse().Where(Char.IsLetter);
+
+            return letters.SequenceEqual(reversedLetters);
+        }
+
+
 //        public static BigIntegerFraction ToBigIntegerFraction (this String value)
 //        {
 //            return BigIntegerFraction.Parse(value);
