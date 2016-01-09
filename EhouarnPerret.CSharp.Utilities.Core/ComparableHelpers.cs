@@ -1,5 +1,5 @@
 ﻿//
-// Program.cs
+// ComparableHelpers.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,54 +24,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
 
-namespace EhouarnPerret.CSharp.Utilities.Sandbox
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public static class Program
+    public static class ComparableHelpers
     {
-        public static void Main(params String[] arguments)
-        {
-            Console.ReadKey();
-        }
-    }
-
-    public class BinaryTree<T>
-    {
-        public BinaryTree()
-        {
-            this.Root = null;
-        }
-
-        public BinaryTree(BinaryTreeNode<T> root)
-        {
-            this.Root = root;
-        }
-
-        public BinaryTreeNode<T> Root { get; set; }
-    }
-
-    public class BinaryTreeNode<T>
-    {
-        public BinaryTreeNode() 
+        public T Min<T>(T )
         {
         }
-
-        public BinaryTreeNode(T data) : 
-           this (data, null, null)
-        {
-        }
-
-        public BinaryTreeNode(T data, BinaryTreeNode<T> left, BinaryTreeNode<T> right)
-        {
-            this.Data = data;
-            this.Left = left;
-            this.Right = right;
-        }
-
-        public T Data { get; set;}
-
-        public BinaryTreeNode<T> Left { get; set; }
-        public BinaryTreeNode<T> Right { get; set; }
     }
 }
+

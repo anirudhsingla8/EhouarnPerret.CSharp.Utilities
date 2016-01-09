@@ -236,6 +236,7 @@
     <Compile Include="ComparableExtensions.cs" />
     <Compile Include="Reflection\Type.cs" />
     <Compile Include="Reflection\PropertyInfoExtensions.cs" />
+    <Compile Include="ComparableHelpers.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
