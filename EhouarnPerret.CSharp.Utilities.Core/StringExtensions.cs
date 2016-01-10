@@ -69,8 +69,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return regex;
         }
 
-        // public static Match Match(this String value, 
-
         public static Boolean In (this String value, IEnumerable<String> source)
         {
             return source.Any(item => item.Contains(value));
@@ -227,6 +225,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         private const Int32 LatinAlphabetCharacterCount = 26;
 
+        /// <summary>
+        /// Determines if the specified value is a palindrom anagram.
+        /// </summary>
+        /// <returns><c>true</c> if  the specified value is a palindrom anagram; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
+        public static Boolean IsPalindromAnagram(this String value)
+        {
+            var charactersCount = value.GroupBy(character => character, (character, characters)
+                => new 
+                {
+                    Character = character,
+                    Count = characters.Count(),
+                }
+            );
+
+            return charactersCount.Count(character => (character.Count % 2) == 1) <= 1;
+        }
+
+        /// <summary>
+        /// Determines if the specified value is a pangram.
+        /// </summary>
+        /// <returns><c>true</c> if the specified value is a pangram; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
         public static Boolean IsPangram(this String value)
         {
             return value.ToLower()
@@ -235,6 +256,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 .Count() == StringExtensions.LatinAlphabetCharacterCount;
         }
 
+        /// <summary>
+        /// Determines if  the specified value is a palindrome.
+        /// </summary>
+        /// <returns><c>true</c> if the specified value is a palindrome; otherwise, <c>false</c>.</returns>
+        /// <param name="value">Value.</param>
+        /// <param name="insensitiveCase">If set to <c>true</c> insensitive case.</param>
         public static Boolean IsPalindrome(this String value, Boolean insensitiveCase = true)
         {
             // Not sure the compiler is optimizing that sort of things
