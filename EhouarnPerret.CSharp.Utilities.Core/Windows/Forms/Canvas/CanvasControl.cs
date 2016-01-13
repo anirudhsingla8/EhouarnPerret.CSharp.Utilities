@@ -27,11 +27,10 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
-	public class CanvasControl : DoubleBufferedControl<CanvasProperties>
+	public class CanvasControl : DoubleBufferedControl<CanvasControlAppearance, CanvasControlProperties>
 	{
 		public CanvasControl ()
 		{
-            
 		}
 	}
 }

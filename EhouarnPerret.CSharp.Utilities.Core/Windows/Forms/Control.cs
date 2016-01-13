@@ -49,7 +49,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return base.Font;
+                return base.BackColor;
             }
             set
             {
@@ -60,7 +60,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return base.Font;
+                return base.ForeColor;
             }
             set
             {
@@ -94,45 +94,63 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             add
             {
-                base.BackColorChanged += base.OnBackColorChanged;
+                base.BackColorChanged += Base_BackColorChanged;
             }
             remove
             {
-                base.BackColorChanged -= base.OnBackColorChanged;
+                base.BackColorChanged -= Base_BackColorChanged;
             }
+        }
+
+        private void Base_FontChanged (Object sender, EventArgs e)
+        {
+
+        }
+        private void Base_ForeColorChanged (Object sender, EventArgs e)
+        {
+
+        }
+        private void Base_BackColorChanged (Object sender, EventArgs e)
+        {
+            
         }
         private new event EventHandler ForeColorChanged
         {
             add
             {
-                base.ForeColorChanged += base.OnForeColorChanged;
+                base.ForeColorChanged += Base_ForeColorChanged;
             }
             remove
             {
-                base.ForeColorChanged -= base.OnForeColorChanged;
+                base.ForeColorChanged -= Base_ForeColorChanged;
             }
         }
         private new event EventHandler FontChanged
         {
             add
             {
-                base.FontChanged += base.OnFontChanged;
+                base.FontChanged += Base_FontChanged;
             }
             remove
             {
-                base.FontChanged -= base.OnFontChanged;
+                base.FontChanged -= Base_FontChanged;
             }
         }
         private new event EventHandler BackgroundImageChanged
         {
             add
             {
-                base.FontChanged += base.OnFontChanged;
+                base.BackgroundImageChanged += Base_BackgroundImageChanged;
             }
             remove
             {
-                base.FontChanged -= base.OnFontChanged;
+                base.BackgroundImageChanged -= Base_BackgroundImageChanged;
             }
+        }
+
+        void Base_BackgroundImageChanged (object sender, EventArgs e)
+        {
+            
         }
         private new event EventHandler BackgroundImageLayoutChanged
         {
@@ -208,6 +226,66 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             {
                 base.Capture = value;
             }
+        }
+
+        private new AccessibleObject CreateAccessibilityInstance()
+        {
+            return base.CreateAccessibilityInstance();
+        }
+        private new BindingContext BindingContext
+        {
+            get
+            {
+                return base.BindingContext;
+            }
+            set
+            {
+                base.BindingContext = value;
+            }
+        }
+        private new Boolean CanRaiseEvents
+        {
+            get
+            {
+                return base.CanRaiseEvents;
+            }
+        }
+
+        private new Boolean AllowDrop
+        {
+            get
+            {
+                return base.AllowDrop;
+            }
+            set
+            {
+                base.AllowDrop = value;
+            }
+        }
+
+        private new void DndContinueDrag(QueryContinueDragEventArgs e)
+        {
+            base.DndContinueDrag(e);
+        }
+        private new void DndDrop(DragEventArgs e)
+        {
+            base.DndDrop(e);
+        }
+        private new void DndEnter(DragEventArgs e)
+        {
+            base.DndEnter(e);
+        }
+        private new void DndFeedback(GiveFeedbackEventArgs e)
+        {
+            base.DndFeedback(e);
+        }
+        private new void DndLeave(EventArgs e)
+        {
+            base.DndLeave(e);
+        }
+        private new void DndOver(DragEventArgs e)
+        {
+            base.DndOver(e);
         }
 
         protected Control()

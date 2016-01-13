@@ -26,6 +26,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
@@ -37,6 +38,38 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         }
 
         public BindingList<CanvasItem> Items { get; }
+
+        public event PaintEventHandler Paint;
+        public event EventHandler SizeChanged;
+        public event EventHandler LocationChanged;
+
+        private Boolean _enabled;
+        public Boolean Enabled 
+        {
+            get
+            {
+                return this._enabled;
+            }
+            set
+            {
+                this._enabled = value;
+            }
+        }
+
+        private RectangleF _boundingRectangle;
+        public RectangleF BoundingRectangle
+        {
+            get
+            {
+                return this._boundingRectangle;
+            }
+        }
+
+        protected virtual void OnPaint(Object sender, PaintEventArgs e)
+        {
+            this.Paint?.Invoke(this, e);
+        }
+
     }
 }
 
