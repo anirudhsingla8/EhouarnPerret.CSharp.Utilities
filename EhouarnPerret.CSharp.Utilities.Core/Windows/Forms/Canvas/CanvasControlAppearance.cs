@@ -1,5 +1,5 @@
 ﻿//
-// ControlPropertiesView.cs
+// CanvasControlAppearance.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,22 +25,14 @@
 // THE SOFTWARE.
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
-	public class ControlPropertiesView
-	{
-        internal ControlPropertiesView (ControlProperties parent)
-		{
-		}
-	}
-
-	public class ControlPropertiesView<TParent>
-        where TParent : ControlProperties
-	{
-        public ControlPropertiesView (TParent parent)
+    public class CanvasControlAppearance : ControlAppearance<CanvasControl>
+    {
+        public CanvasControlAppearance(CanvasControl parent)
             : base(parent)
-		{
-		}
-	}
+        {
+        }
+    }
 }
 

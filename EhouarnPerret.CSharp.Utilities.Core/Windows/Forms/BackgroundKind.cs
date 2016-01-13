@@ -1,5 +1,5 @@
 ﻿//
-// ControlPropertiesView.cs
+// ControlAppearanceBackgroundKind.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -27,20 +27,11 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-	public class ControlPropertiesView
-	{
-        internal ControlPropertiesView (ControlProperties parent)
-		{
-		}
-	}
-
-	public class ControlPropertiesView<TParent>
-        where TParent : ControlProperties
-	{
-        public ControlPropertiesView (TParent parent)
-            : base(parent)
-		{
-		}
-	}
+    public enum BackgroundKind
+    {
+        Color = 0x00,
+        Image = 0x01,
+        Gradient = 0x02,
+    }
 }
 

@@ -30,38 +30,189 @@ using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public abstract class Control<TProperties, TAppearance> : Control, IProperties<TProperties>, IAppearance<TAppearance>
-        where TProperties : ControlProperties
+    public abstract class Control<TAppearance, TProperties> : Control, IProperties<TProperties>, IAppearance<TAppearance>
         where TAppearance : ControlAppearance
+        where TProperties : ControlProperties
     {
-        private new Font Font { get; set; }
-        private new Color BackColor { get; set; }
-        private new Image BackgroundImage { get; set; }
-//        private new ImageLayout ImageLayout { get; set; }
-//        private new event EventHandler BackgroundImageChanged;
-//        private new event EventHandler BackgroundImageLayoutChanged;
-//        private new event EventHandler BackColorChanged;
+        private new Font Font
+        {
+            get
+            {
+                return base.Font;
+            }
+            set
+            {
+                base.Font = value;
+            }
+        }
+        private new Color BackColor
+        {
+            get
+            {
+                return base.Font;
+            }
+            set
+            {
+                base.BackColor = value;
+            }
+        }
+        private new Color ForeColor
+        {
+            get
+            {
+                return base.Font;
+            }
+            set
+            {
+                base.ForeColor = value;
+            }
+        }
+        private new Image BackgroundImage
+        {
+            get
+            {
+                return base.BackgroundImage;
+            }
+            set
+            {
+                base.BackgroundImage = value;
+            }
+        }
+        private new ImageLayout BackgroundImageLayout
+        {
+            get
+            {
+                return base.BackgroundImageLayout;
+            }
+            set
+            {
+                base.BackgroundImageLayout = value;
+            }
+        }
 
-//        protected Control(TProperties properties, TAppearance appearance)
-//        {
-//            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
-//            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
-//        }
-//        protected Control(TProperties properties)
-//        {
-//            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
-//            this.Appearance = Constructor.Construct<TAppearance>(AccessModifiers.Both, this);
-//        }
-//        protected Control(TAppearance appearance)
-//        {
-//            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
-//            this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
-//        }
-//        protected Control()
-//        {
-//            this.Properties = Constructor.Construct<TProperties>(AccessModifiers.Both, this);
-//            this.Appearance = Constructor.Construct<TAppearance>(AccessModifiers.Both, this);
-//        }
+        private new event EventHandler BackColorChanged
+        {
+            add
+            {
+                base.BackColorChanged += base.OnBackColorChanged;
+            }
+            remove
+            {
+                base.BackColorChanged -= base.OnBackColorChanged;
+            }
+        }
+        private new event EventHandler ForeColorChanged
+        {
+            add
+            {
+                base.ForeColorChanged += base.OnForeColorChanged;
+            }
+            remove
+            {
+                base.ForeColorChanged -= base.OnForeColorChanged;
+            }
+        }
+        private new event EventHandler FontChanged
+        {
+            add
+            {
+                base.FontChanged += base.OnFontChanged;
+            }
+            remove
+            {
+                base.FontChanged -= base.OnFontChanged;
+            }
+        }
+        private new event EventHandler BackgroundImageChanged
+        {
+            add
+            {
+                base.FontChanged += base.OnFontChanged;
+            }
+            remove
+            {
+                base.FontChanged -= base.OnFontChanged;
+            }
+        }
+        private new event EventHandler BackgroundImageLayoutChanged
+        {
+            add
+            {
+                base.BackgroundImageLayoutChanged += base.BackgroundImageLayoutChanged;
+            }
+            remove
+            {
+                base.BackgroundImageLayoutChanged -= base.BackgroundImageLayoutChanged;
+            }
+        }
+
+        private new void OnBackColorChanged(EventArgs e)
+        {
+            base.OnBackColorChanged(e);
+        }
+        private new void OnForeColorChanged(EventArgs e)
+        {
+            base.OnForeColorChanged(e);
+        }
+        private new void OnBackgroundImageChanged(EventArgs e)
+        {
+            base.OnBackgroundImageChanged(e);
+        }
+        private new void OnBackgroundImageLayoutChanged(EventArgs e)
+        {
+            base.OnBackgroundImageLayoutChanged(e);
+        }
+
+        private new void OnPaintBackgroundInternal(PaintEventArgs e)
+        {
+            base.OnPaintBackgroundInternal(e);
+        }
+        private new void OnPaintInternal(PaintEventArgs e)
+        {
+            base.OnPaintInternal(e);
+        }
+
+        private new void OnPaintBackground(PaintEventArgs pevent)
+        {
+            base.OnPaintBackground(pevent);
+        }
+
+        private new Padding DefaultPadding
+        {
+            get
+            {
+                return base.DefaultPadding;
+            }
+        }
+        private new void OnPaddingChanged(EventArgs e)
+        {
+            base.OnPaddingChanged(e);
+        }
+
+        private new void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+        }
+        private new void DefWndProc(ref Message m)
+        {
+            base.DefWndProc(ref m);
+        }
+
+        private new Boolean Capture
+        {
+            get
+            {
+                return base.Capture;
+            }
+            set
+            {
+                base.Capture = value;
+            }
+        }
+
+        protected Control()
+        {
+        }
 
         #region IProperties Implementation
         public TProperties Properties { get; }

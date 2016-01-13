@@ -1,5 +1,5 @@
-﻿//
-// ControlPropertiesView.cs
+//
+// CanvasControlItemBinding.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,24 +23,19 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
+using System.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
-	public class ControlPropertiesView
-	{
-        internal ControlPropertiesView (ControlProperties parent)
-		{
-		}
-	}
+    public class CanvasControlItemBinding
+    {
+        
+    }
 
-	public class ControlPropertiesView<TParent>
-        where TParent : ControlProperties
-	{
-        public ControlPropertiesView (TParent parent)
-            : base(parent)
-		{
-		}
-	}
+    public class d : Binding
+    {
+
+    }
 }
-

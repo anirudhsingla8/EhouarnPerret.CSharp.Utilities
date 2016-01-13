@@ -175,7 +175,6 @@
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
     <Compile Include="Windows\Forms\Editor.cs" />
-    <Compile Include="Windows\Forms\ControlAppearance.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Collections\Generic\DictionaryExtensions.cs" />
     <Compile Include="Text\RegularExpressions\MatchExtensions.cs" />
@@ -238,6 +237,12 @@
     <Compile Include="Reflection\PropertyInfoExtensions.cs" />
     <Compile Include="ComparableHelpers.cs" />
     <Compile Include="Text\StringBuilderExtensions.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlItemBindingCollection.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlItemBinding.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlAppearance.cs" />
+    <Compile Include="Windows\Forms\ControlAppearance.cs" />
+    <Compile Include="Windows\Forms\Chart\ChartControlSeriesKind.cs" />
+    <Compile Include="Windows\Forms\BackgroundKind.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -33,5 +33,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Chart
         {
         }
     }
+
 }
 
