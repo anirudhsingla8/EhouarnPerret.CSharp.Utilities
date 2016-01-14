@@ -34,6 +34,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         }
 
         public Boolean Checked { get; set; }
+
+        public void Toggle()
+        {
+        }
     }
 }
 

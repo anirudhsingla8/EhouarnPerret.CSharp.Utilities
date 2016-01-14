@@ -34,7 +34,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 		}
 	}
 
-	public class ControlPropertiesView<TParent>
+    public class ControlPropertiesView<TParent> : ControlPropertiesView
         where TParent : ControlProperties
 	{
         public ControlPropertiesView (TParent parent)

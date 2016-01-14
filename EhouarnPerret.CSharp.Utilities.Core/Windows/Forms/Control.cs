@@ -94,11 +94,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             add
             {
-                base.BackColorChanged += Base_BackColorChanged;
+                base.BackColorChanged += value;
             }
             remove
             {
-                base.BackColorChanged -= Base_BackColorChanged;
+                base.BackColorChanged -= value;
             }
         }
 
@@ -118,49 +118,44 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             add
             {
-                base.ForeColorChanged += Base_ForeColorChanged;
+                base.ForeColorChanged += value;
             }
             remove
             {
-                base.ForeColorChanged -= Base_ForeColorChanged;
+                base.ForeColorChanged -= value;
             }
         }
         private new event EventHandler FontChanged
         {
             add
             {
-                base.FontChanged += Base_FontChanged;
+                base.FontChanged += value;
             }
             remove
             {
-                base.FontChanged -= Base_FontChanged;
+                base.FontChanged -= value;
             }
         }
         private new event EventHandler BackgroundImageChanged
         {
             add
             {
-                base.BackgroundImageChanged += Base_BackgroundImageChanged;
+                base.BackgroundImageChanged += value;
             }
             remove
             {
-                base.BackgroundImageChanged -= Base_BackgroundImageChanged;
+                base.BackgroundImageChanged -= value;
             }
-        }
-
-        void Base_BackgroundImageChanged (object sender, EventArgs e)
-        {
-            
         }
         private new event EventHandler BackgroundImageLayoutChanged
         {
             add
             {
-                base.BackgroundImageLayoutChanged += base.BackgroundImageLayoutChanged;
+                base.BackgroundImageLayoutChanged += value;
             }
             remove
             {
-                base.BackgroundImageLayoutChanged -= base.BackgroundImageLayoutChanged;
+                base.BackgroundImageLayoutChanged -= value;
             }
         }
 
@@ -181,14 +176,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             base.OnBackgroundImageLayoutChanged(e);
         }
 
-        private new void OnPaintBackgroundInternal(PaintEventArgs e)
-        {
-            base.OnPaintBackgroundInternal(e);
-        }
-        private new void OnPaintInternal(PaintEventArgs e)
-        {
-            base.OnPaintInternal(e);
-        }
+//        private new void OnPaintBackgroundInternal(PaintEventArgs e)
+//        {
+//            base.OnPaintBackgroundInternal(e);
+//        }
+//        private new void OnPaintInternal(PaintEventArgs e)
+//        {
+//            base.OnPaintInternal(e);
+//        }
 
         private new void OnPaintBackground(PaintEventArgs pevent)
         {
@@ -263,33 +258,46 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
-        private new void DndContinueDrag(QueryContinueDragEventArgs e)
-        {
-            base.DndContinueDrag(e);
-        }
-        private new void DndDrop(DragEventArgs e)
-        {
-            base.DndDrop(e);
-        }
-        private new void DndEnter(DragEventArgs e)
-        {
-            base.DndEnter(e);
-        }
-        private new void DndFeedback(GiveFeedbackEventArgs e)
-        {
-            base.DndFeedback(e);
-        }
-        private new void DndLeave(EventArgs e)
-        {
-            base.DndLeave(e);
-        }
-        private new void DndOver(DragEventArgs e)
-        {
-            base.DndOver(e);
-        }
+//        private new void DndContinueDrag(QueryContinueDragEventArgs e)
+//        {
+//            base.DndContinueDrag(e);
+//        }
+//        private new void DndDrop(DragEventArgs e)
+//        {
+//            base.DndDrop(e);
+//        }
+//        private new void DndEnter(DragEventArgs e)
+//        {
+//            base.DndEnter(e);
+//        }
+//        private new void DndFeedback(GiveFeedbackEventArgs e)
+//        {
+//            base.DndFeedback(e);
+//        }
+//        private new void DndLeave(EventArgs e)
+//        {
+//            base.DndLeave(e);
+//        }
+//        private new void DndOver(DragEventArgs e)
+//        {
+//            base.DndOver(e);
+//        }
 
         protected Control()
         {
+        }
+        protected Control(TProperties properties)
+        {
+            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
+        }
+        protected Control(TAppearance appearance)
+        {
+            this.Appearance = ExceptionHelpers.ThrowIfNull(appearance, nameof(appearance));
+        }
+        protected Control(TAppearance appearance, TProperties properties)
+            : this(appearance)
+        {
+            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
         }
 
         #region IProperties Implementation
@@ -300,5 +308,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         public TAppearance Appearance { get; }
         #endregion
     }
-}
 
+
+    public class MyControl : Control<ControlAppearance, ControlProperties>
+    {
+        public MyControl()
+        {
+        }
+    }
+}

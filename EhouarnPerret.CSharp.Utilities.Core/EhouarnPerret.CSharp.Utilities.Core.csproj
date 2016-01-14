@@ -244,6 +244,10 @@
     <Compile Include="Windows\Forms\ControlAppearance.cs" />
     <Compile Include="Windows\Forms\Chart\ChartControlSeriesKind.cs" />
     <Compile Include="Windows\Forms\BackgroundKind.cs" />
+    <Compile Include="UI\Chart\IChart.cs" />
+    <Compile Include="UI\Canvas\ICanvas.cs" />
+    <Compile Include="UI\Canvas\ICanvasItem.cs" />
+    <Compile Include="UI\Chart\IChartItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -297,5 +301,8 @@
     <Folder Include="Windows\Forms\Chart\" />
     <Folder Include="Linq\Expressions\" />
     <Folder Include="Management\" />
+    <Folder Include="UI\" />
+    <Folder Include="UI\Canvas\" />
+    <Folder Include="UI\Chart\" />
   </ItemGroup>
 </Project>

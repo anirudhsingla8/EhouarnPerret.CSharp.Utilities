@@ -29,7 +29,30 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public abstract class Editor : DoubleBufferedControl
     {
+        public Object Value { get; set; }
+    }
 
+    public abstract class Editor<TValue> : Editor
+    {
+        public new TValue Value
+        {
+            get
+            {
+                return (TValue)base.Value;
+            }
+            set
+            {
+                base.Value = value;
+            }
+        }
+    }
+
+    public class StringEditor : Editor<String>
+    {
+    }
+
+    public class NumberEditor
+    {
     }
 
     public class EditorProperties

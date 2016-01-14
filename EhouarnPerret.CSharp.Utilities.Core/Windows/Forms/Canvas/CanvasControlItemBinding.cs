@@ -33,9 +33,4 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
     {
         
     }
-
-    public class d : Binding
-    {
-
-    }
 }

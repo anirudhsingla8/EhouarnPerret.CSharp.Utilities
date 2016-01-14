@@ -1,5 +1,5 @@
 ﻿//
-// CanvasPropertiesView.cs
+// ICanvasItem.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,14 +25,10 @@
 // THE SOFTWARE.
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
+namespace EhouarnPerret.CSharp.Utilities.Core.UI.Canvas
 {
-    public class CanvasPropertiesView : ControlPropertiesView<CanvasControlProperties>
-	{
-        public CanvasPropertiesView (CanvasControlProperties parent)
-            : base(parent)
-		{
-		}
-	}
+    public interface ICanvasItem
+    {
+    }
 }
 
