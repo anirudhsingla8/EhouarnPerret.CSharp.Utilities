@@ -1,5 +1,5 @@
 ﻿//
-// Canvas.cs
+// CanvasItemMouseEventHandler.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,18 +24,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Windows.Forms;
-using System.IO;
-using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
-	public class CanvasControl : DoubleBufferedControl<CanvasControlProperties>
-	{
-		public CanvasControl ()
-            : base()
-		{
-		}
-	}
+    public delegate void CanvasItemMouseEventHandler (Object sender, CanvasItemMouseEventArgs e);
 }
 

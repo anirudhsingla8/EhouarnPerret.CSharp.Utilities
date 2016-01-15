@@ -1,5 +1,5 @@
 ﻿//
-// Canvas.cs
+// SimpleApplication.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,17 +25,15 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Forms;
-using System.IO;
-using System.Drawing;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
 {
-	public class CanvasControl : DoubleBufferedControl<CanvasControlProperties>
-	{
-		public CanvasControl ()
-            : base()
-		{
-		}
-	}
+    public static class SimpleApplication
+    {
+        public static void Run(SimpleFom simpleForm)
+        {
+            Application.Run(simpleForm.Form);
+        }
+    }
 }
 

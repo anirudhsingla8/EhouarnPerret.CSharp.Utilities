@@ -251,6 +251,11 @@
     <Compile Include="Windows\Forms\Canvas\CanvasControlPropertiesAppearance.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlItemUpdateMode.cs" />
     <Compile Include="ActionExtensions.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasItemMouseEventArgs.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasItemMouseEventHandler.cs" />
+    <Compile Include="Windows\Forms\Simple\SimpleApplication.cs" />
+    <Compile Include="Windows\Forms\Simple\SimpleForm.cs" />
+    <Compile Include="Windows\Forms\FormExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -308,5 +313,6 @@
     <Folder Include="UI\Canvas\" />
     <Folder Include="UI\Chart\" />
     <Folder Include="Threading\Tasks\" />
+    <Folder Include="Windows\Forms\Simple\" />
   </ItemGroup>
 </Project>
