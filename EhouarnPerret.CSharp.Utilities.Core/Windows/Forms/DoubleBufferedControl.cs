@@ -63,9 +63,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         }
     }
 
-    public abstract class DoubleBufferedControl<TAppearance, TProperties> : Control<TAppearance, TProperties>
+    public abstract class DoubleBufferedControl<TProperties> : Control<TProperties>
         where TProperties : ControlProperties
-        where TAppearance : ControlAppearance
     {
         private void SetDoubleBuffered()
         {
@@ -75,26 +74,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
                 ControlStyles.OptimizedDoubleBuffer, true);
         }
 
-        protected DoubleBufferedControl(TProperties properties)
-            : base(properties)
-        {
-            this.SetDoubleBuffered();
-        }
-
-        protected DoubleBufferedControl(TAppearance appearance, TProperties properties)
-            : base(appearance, properties)
-        {
-            this.SetDoubleBuffered();
-        }
-
-        protected DoubleBufferedControl(TAppearance appearance)
-            : base(appearance)
-        {
-            this.SetDoubleBuffered();
-        }
-
         protected DoubleBufferedControl()
             : base()
+        {
+            this.SetDoubleBuffered();
+        }
+
+        protected DoubleBufferedControl(Func<TProperties> propertiesConstructor)
+            : base(propertiesConstructor)
+        {
+            this.SetDoubleBuffered();
+        }
+
+        protected DoubleBufferedControl(TProperties properties)
+            : base(properties)
         {
             this.SetDoubleBuffered();
         }

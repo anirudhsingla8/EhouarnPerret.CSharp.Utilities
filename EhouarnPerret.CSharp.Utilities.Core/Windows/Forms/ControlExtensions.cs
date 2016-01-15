@@ -31,7 +31,6 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
 
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public static class ControlExtensions

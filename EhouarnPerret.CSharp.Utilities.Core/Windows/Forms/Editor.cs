@@ -49,6 +49,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
     public class StringEditor : Editor<String>
     {
+        public StringEditor()
+        {
+        }
     }
 
     public class NumberEditor

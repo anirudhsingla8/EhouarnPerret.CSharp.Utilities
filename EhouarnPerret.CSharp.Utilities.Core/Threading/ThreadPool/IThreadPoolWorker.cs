@@ -1,5 +1,5 @@
 ﻿//
-// Control.cs
+// IThreadPoolWorker.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,33 +23,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Drawing;
-using System.Windows.Forms;
 
-using EhouarnPerret.CSharp.Utilities.Core.Reflection;
-
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
+namespace EhouarnPerret.CSharp.Utilities.Core.Threading.ThreadPool
 {
-    public abstract class Control<TProperties> : Control, IProperties<TProperties>
-        where TProperties : ControlProperties
+    public interface IThreadPoolWorker
     {
-        protected Control()
-        {
-            this.Properties = Reflection.Constructor.Construct<TProperties>(AccessModifiers.Both, this);
-        }
-        protected Control(Func<TProperties> propertiesConstructor)
-        {
-            this.Properties = propertiesConstructor();
-        }
-        protected Control(TProperties properties)
-        {
-            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
-        }
-
-        #region IProperties Implementation
-        public TProperties Properties { get; }
-        #endregion
     }
 }
+

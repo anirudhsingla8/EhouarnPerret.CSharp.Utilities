@@ -1,10 +1,10 @@
-//
-// ControlAppearance.cs
+﻿//
+// IThreadPool.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 
+// Copyright (c) 2016 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 
-using System.Windows.Forms;
-using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
-
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
+namespace EhouarnPerret.CSharp.Utilities.Core.Threading.ThreadPool
 {
-    public abstract class ControlAppearance
+    public interface IThreadPool
     {
-        internal ControlAppearance(Control parent)
-        {
-        }
-    }
-
-    public abstract class ControlAppearance<TParent> : ControlAppearance
-        where TParent : Control
-    {
-        protected ControlAppearance(TParent parent)
-            : base(parent)
-        {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
-        }
-
-        protected TParent Parent { get; }
     }
 }
+

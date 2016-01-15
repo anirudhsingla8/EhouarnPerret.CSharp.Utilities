@@ -1,5 +1,5 @@
-﻿//
-// Control.cs
+//
+// CanvasControlItemBinding.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,31 +25,13 @@
 // THE SOFTWARE.
 
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
-using EhouarnPerret.CSharp.Utilities.Core.Reflection;
-
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
-    public abstract class Control<TProperties> : Control, IProperties<TProperties>
-        where TProperties : ControlProperties
+    public enum CanvasControlItemUpdateMode
     {
-        protected Control()
-        {
-            this.Properties = Reflection.Constructor.Construct<TProperties>(AccessModifiers.Both, this);
-        }
-        protected Control(Func<TProperties> propertiesConstructor)
-        {
-            this.Properties = propertiesConstructor();
-        }
-        protected Control(TProperties properties)
-        {
-            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
-        }
-
-        #region IProperties Implementation
-        public TProperties Properties { get; }
-        #endregion
+        Never = 0x00,
+        OnPropertyChanged = 0x01,
     }
 }

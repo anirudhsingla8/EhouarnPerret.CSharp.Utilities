@@ -1,10 +1,10 @@
-﻿//
-// Control.cs
+//
+// ControlAppearance.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) 2016 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,32 +24,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Drawing;
 using System.Windows.Forms;
-
-using EhouarnPerret.CSharp.Utilities.Core.Reflection;
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public abstract class Control<TProperties> : Control, IProperties<TProperties>
-        where TProperties : ControlProperties
+    public abstract class ControlPropertiesAppearance
     {
-        protected Control()
+        internal ControlPropertiesAppearance(ControlProperties parent)
         {
-            this.Properties = Reflection.Constructor.Construct<TProperties>(AccessModifiers.Both, this);
         }
-        protected Control(Func<TProperties> propertiesConstructor)
+    }
+
+    public abstract class ControlPropertiesAppearance<TParent> : ControlPropertiesAppearance
+        where TParent : ControlProperties
+    {
+        protected ControlPropertiesAppearance(TParent parent)
+            : base(parent)
         {
-            this.Properties = propertiesConstructor();
-        }
-        protected Control(TProperties properties)
-        {
-            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
+            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
-        #region IProperties Implementation
-        public TProperties Properties { get; }
-        #endregion
+        protected TParent Parent { get; }
     }
 }

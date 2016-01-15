@@ -1,5 +1,5 @@
 ﻿//
-// CanvasControlAppearance.cs
+// ActionExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,14 +24,30 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Threading.Tasks;
+using System.Threading;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class CanvasControlAppearance : ControlAppearance<CanvasControl>
+    public static class ActionExtensions
     {
-        public CanvasControlAppearance(CanvasControl parent)
-            : base(parent)
+        public static async Task RepeatEvery(this Action action, TimeSpan interval, CancellationToken cancellationToken)
         {
+            while (cancellationToken.IsCancellationRequested)
+            {
+                action();
+
+                var task = Task.Delay(interval, cancellationToken);
+
+                try
+                {
+                    await task;
+                }
+                catch (TaskCanceledException)
+                {
+                    return;
+                }             
+            }
         }
     }
 }

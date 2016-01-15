@@ -239,15 +239,18 @@
     <Compile Include="ComparableHelpers.cs" />
     <Compile Include="Text\StringBuilderExtensions.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlItemBindingCollection.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasControlItemBinding.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasControlAppearance.cs" />
-    <Compile Include="Windows\Forms\ControlAppearance.cs" />
     <Compile Include="Windows\Forms\Chart\ChartControlSeriesKind.cs" />
     <Compile Include="Windows\Forms\BackgroundKind.cs" />
     <Compile Include="UI\Chart\IChart.cs" />
     <Compile Include="UI\Canvas\ICanvas.cs" />
     <Compile Include="UI\Canvas\ICanvasItem.cs" />
     <Compile Include="UI\Chart\IChartItem.cs" />
+    <Compile Include="Windows\Forms\ControlPropertiesAppearance.cs" />
+    <Compile Include="Threading\ThreadPool\IThreadPool.cs" />
+    <Compile Include="Threading\ThreadPool\IThreadPoolWorker.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlPropertiesAppearance.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlItemUpdateMode.cs" />
+    <Compile Include="ActionExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -304,5 +307,6 @@
     <Folder Include="UI\" />
     <Folder Include="UI\Canvas\" />
     <Folder Include="UI\Chart\" />
+    <Folder Include="Threading\Tasks\" />
   </ItemGroup>
 </Project>

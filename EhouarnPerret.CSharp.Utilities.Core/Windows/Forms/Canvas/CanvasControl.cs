@@ -24,15 +24,38 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Windows.Forms;
+using System.IO;
+using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
-	public class CanvasControl : DoubleBufferedControl<CanvasControlAppearance, CanvasControlProperties>
+	public class CanvasControl : DoubleBufferedControl<CanvasControlProperties>
 	{
 		public CanvasControl ()
             : base()
 		{
 		}
 	}
+
+    public class CanvasItemMouseEventArgs : EventArgs
+    {
+        public CanvasItemMouseEventArgs(MouseButtons button, PointF location, Byte clicks, Byte delta)
+        {
+            this.Button = button;
+            this.Location = location;
+            this.Clicks = clicks;
+            this.Delta = delta;
+        }
+
+        public MouseButtons Button { get; }
+        public PointF Location { get; }
+        public Single X { get { return this.Location.X; } }
+        public Single Y { get { return this.Location.Y; } }
+        public Byte Clicks { get; }
+        public Byte Delta { get; }
+    }
+
+    public delegate void CanvasItemMouseEventHandler (Object sender, CanvasItemMouseEventArgs e);
 }
 
