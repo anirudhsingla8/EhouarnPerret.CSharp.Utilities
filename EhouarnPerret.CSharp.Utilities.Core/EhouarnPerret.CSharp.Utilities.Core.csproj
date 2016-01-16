@@ -257,6 +257,7 @@
     <Compile Include="Windows\Forms\Simple\SimpleForm.cs" />
     <Compile Include="Windows\Forms\FormExtensions.cs" />
     <Compile Include="Collections\Generic\ListExensions.cs" />
+    <Compile Include="Linq\EnumerableExtensions.WriteLineToConsole.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
