@@ -1,5 +1,5 @@
-//
-// QuickSortPartitionScheme.cs
+﻿//
+// ListExensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,13 +23,19 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+using System.Collections.Generic;
 
-
-namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public enum QuickSortPartitionScheme : byte
+    public static class ListExensions
     {
-        Lomuto = 0x00,
-        Hoare = 0x01,
+        public static void Swap<T>(this IList<T> source, Int32 index1, Int32 index2)
+        {
+            var temp = source[index1];
+            source[index1] = source[index2];
+            source[index2] = temp;
+        }
     }
 }
+

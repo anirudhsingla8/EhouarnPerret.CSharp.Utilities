@@ -24,9 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.ComponentModel;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 {
@@ -35,7 +34,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         protected CanvasItem()
         {
         }
-
 
         public event EventHandler Click;
         public event PaintEventHandler Paint;
@@ -188,16 +186,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         }
 
 
-        protected virtual void OnBackColorChanged(EventHandler e)
+        protected virtual void OnBackColorChanged(EventArgs e)
         {
             this.BackColorChanged?.Invoke(this, e);
         }
-        protected virtual void OnForeColorChanged(EventHandler e)
+        protected virtual void OnForeColorChanged(EventArgs e)
         {
             this.ForeColorChanged?.Invoke(this, e);
         }
 
-        protected virtual void OnClick(EventHandler e)
+        protected virtual void OnClick(EventArgs e)
         {
             this.Click?.Invoke(this, e);
         }

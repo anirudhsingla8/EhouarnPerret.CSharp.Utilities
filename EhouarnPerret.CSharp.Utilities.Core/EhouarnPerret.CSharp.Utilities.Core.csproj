@@ -256,6 +256,7 @@
     <Compile Include="Windows\Forms\Simple\SimpleApplication.cs" />
     <Compile Include="Windows\Forms\Simple\SimpleForm.cs" />
     <Compile Include="Windows\Forms\FormExtensions.cs" />
+    <Compile Include="Collections\Generic\ListExensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

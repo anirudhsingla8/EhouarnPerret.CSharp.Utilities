@@ -30,7 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
 {
     public static class SimpleApplication
     {
-        public static void Run(SimpleFom simpleForm)
+        public static void Run(SimpleForm simpleForm)
         {
             Application.Run(simpleForm.Form);
         }
