@@ -284,6 +284,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return new String(characters);
         }
 
+        public static void WriteLineToConsole(this String value)
+        {
+            Console.WriteLine(value);
+        }
+
+        public static void WriteToConsole(this String value)
+        {
+            Console.Write(value);
+        }
+
 //        public static BigIntegerFraction ToBigIntegerFraction (this String value)
 //        {
 //            return BigIntegerFraction.Parse(value);
