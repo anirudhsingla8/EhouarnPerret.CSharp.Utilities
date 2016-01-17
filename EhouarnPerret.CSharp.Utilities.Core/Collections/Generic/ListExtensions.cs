@@ -37,6 +37,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
             return readOnlyList;
         }
+
+        public static void Swap<T>(this IList<T> source, Int32 index1, Int32 index2)
+        {
+            var temp = source[index1];
+            source[index1] = source[index2];
+            source[index2] = temp;
+        }
     }
 }
 
