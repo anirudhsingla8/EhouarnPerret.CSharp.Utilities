@@ -294,6 +294,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             Console.Write(value);
         }
 
+        public static Boolean IsAnagramOf(this String value, String other)
+        {
+            return value.OrderBy(character => character).SequenceEqual(other.OrderBy(character => character));
+        }
+
 //        public static BigIntegerFraction ToBigIntegerFraction (this String value)
 //        {
 //            return BigIntegerFraction.Parse(value);
