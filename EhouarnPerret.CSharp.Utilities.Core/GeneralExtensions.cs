@@ -1,5 +1,5 @@
-﻿//
-// SimpleForm.cs
+//
+// GeneralExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,45 +23,23 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Windows.Forms;
+using System.Threading.Tasks;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public class SimpleForm
+
+    public static class GeneralExtensions
     {
-        public SimpleForm()
+        public static void WriteLineToConsole<T>(this T value)
         {
-            this.Form = new BorderlessForm();
+            Console.WriteLine(value.ToString());
         }
 
-        internal BorderlessForm Form { get; }
-    }
-
-    public class SimpleFormAppearance
-    {
-
-    }
-
-    internal class BorderlessForm : Form
-    {
-        public BorderlessForm()
+        public static void WriteToConsole<T>(this T value)
         {
-            this.FormBorderStyle = FormBorderStyle.None;
+            Console.Write(value.ToString());
         }
-    }
-
-    internal class BorderForm : BorderlessForm
-    {
-        public BorderForm()
-        {
-            
-        }
-    }
-
-    internal class BorderlessFormBorder
-    {
-
     }
 }
-

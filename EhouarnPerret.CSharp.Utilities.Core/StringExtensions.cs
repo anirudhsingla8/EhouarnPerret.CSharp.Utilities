@@ -284,14 +284,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return new String(characters);
         }
 
-        public static void WriteLineToConsole(this String value)
+        public static IEnumerable<String> ToSubstrings(this String value)
         {
-            Console.WriteLine(value);
-        }
-
-        public static void WriteToConsole(this String value)
-        {
-            Console.Write(value);
+            for (var length = 1; length < value.Length; length++)
+            {
+                for (var start = 0; start <= (value.Length - length); start++)
+                {
+                    yield return value.Substring(start, length);
+                }
+            }
         }
 
         public static Boolean IsAnagramOf(this String value, String other)

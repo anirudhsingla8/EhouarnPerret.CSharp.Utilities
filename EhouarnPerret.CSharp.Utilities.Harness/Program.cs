@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections;
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -32,6 +33,8 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
+            SimpleApplication.Run(new SimpleForm());
+
             Console.ReadKey();
         }
     }

@@ -260,6 +260,7 @@
     <Compile Include="Linq\EnumerableExtensions.ConsecutiveSelect.cs" />
     <Compile Include="Linq\EnumerableExtensions.ConsecutiveMin.cs" />
     <Compile Include="Linq\EnumerableExtensions.ConsecutiveMax.cs" />
+    <Compile Include="GeneralExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
