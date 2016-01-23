@@ -1,10 +1,10 @@
-﻿//
-// SimpleForm.cs
+//
+// ControlAppearance.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) 2016 
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,52 +23,28 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Windows.Forms;
-using System.Threading;
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class SimpleForm
+    public abstract class ControlAppearance
     {
-        public SimpleForm()
+        internal ControlAppearance(Control parent)
         {
-            this.Form = new BorderlessForm();
-        }
-
-        internal BorderlessForm Form { get; }
-    }
-
-    public class SimpleFormAppearance
-    {
-
-    }
-
-    internal class BorderlessForm : Form
-    {
-        public BorderlessForm()
-        {
-            this.FormBorderStyle = FormBorderStyle.None;
         }
     }
 
-<<<<<<< HEAD
-    internal class SimpleFormBorder : BorderlessForm
+    public abstract class ControlAppearance<TParent> : ControlAppearance
+        where TParent : Control
     {
-        public SimpleFormBorder()
-=======
-    internal class BorderForm : BorderlessForm
-    {
-        public BorderForm()
->>>>>>> origin
+        protected ControlAppearance(TParent parent)
+            : base(parent)
         {
-            
+            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
-    }
 
-    internal class BorderlessFormBorder
-    {
-
+        protected TParent Parent { get; }
     }
 }
-

@@ -261,6 +261,18 @@
     <Compile Include="Linq\EnumerableExtensions.ConsecutiveMin.cs" />
     <Compile Include="Linq\EnumerableExtensions.ConsecutiveMax.cs" />
     <Compile Include="GeneralExtensions.cs" />
+    <Compile Include="PrimitiveExtensions.cs" />
+    <Compile Include="PrimitiveHelpers.cs" />
+    <Compile Include="Linq\EnumerableExtensions.WriteToConsole.cs" />
+    <Compile Include="UI\IButton.cs" />
+    <Compile Include="UI\ICheckBox.cs" />
+    <Compile Include="UI\ICheckButton.cs" />
+    <Compile Include="UI\ICheckEdit.cs" />
+    <Compile Include="UI\ITextBox.cs" />
+    <Compile Include="UI\ITextEdit.cs" />
+    <Compile Include="Windows\Forms\ControlAppearance.cs" />
+    <Compile Include="Windows\Forms\FormControl.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlAppearance.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -319,5 +331,8 @@
     <Folder Include="UI\Chart\" />
     <Folder Include="Threading\Tasks\" />
     <Folder Include="Windows\Forms\Simple\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Linq\EnumerableExtensions.ConsecutiveSelect" />
   </ItemGroup>
 </Project>

@@ -25,6 +25,23 @@
 // THE SOFTWARE.
 
 using System;
+<<<<<<< HEAD
+
+namespace EhouarnPerret.CSharp.Utilities.Core
+{
+    public static class GeneralExtensions
+    {
+        public static Boolean IsNull<T>(this T value)
+            where T : class
+        {
+            return value == null;
+        }
+
+        public static Boolean IsNotNull<T>(this T value)
+            where T : class
+        {
+            return value != null;
+=======
 using System.Threading.Tasks;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
@@ -40,6 +57,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public static void WriteToConsole<T>(this T value)
         {
             Console.Write(value.ToString());
+>>>>>>> origin
         }
     }
 }

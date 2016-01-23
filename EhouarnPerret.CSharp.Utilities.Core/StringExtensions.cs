@@ -28,7 +28,6 @@ using System.Linq;
 using System.Text;
 using System.Security;
 using System.Numerics;
-using System.Globalization;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -286,11 +285,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static IEnumerable<String> ToSubstrings(this String value)
         {
+<<<<<<< HEAD
+            for (var substringLength = 1; substringLength < value.Length; substringLength++)
+            {
+                for (var start = 0; start <= (value.Length - substringLength); start++)
+                {
+                    yield return value.Substring(start, substringLength);
+=======
             for (var length = 1; length < value.Length; length++)
             {
                 for (var start = 0; start <= (value.Length - length); start++)
                 {
                     yield return value.Substring(start, length);
+>>>>>>> origin
                 }
             }
         }

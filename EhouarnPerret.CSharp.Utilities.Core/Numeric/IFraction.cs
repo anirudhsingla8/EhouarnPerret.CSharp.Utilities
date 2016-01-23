@@ -34,4 +34,37 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         T Numerator { get; }
         T Denominator { get; }
     }
+
+//    public struct ByteFraction : IFraction<Byte>
+//    {
+//    }
+//
+//    public struct UInt16Fraction : IFraction<UInt16>
+//    {
+//    }
+//
+//    public struct UInt32Fraction : IFraction<UInt16>
+//    {
+//    }
+//
+//    public struct UInt64Fraction : IFraction<UInt16>
+//    {
+//    }
+//
+//    public struct SByteFraction : IFraction<SByte>
+//    {
+//    }
+//
+//    public struct Int16Fraction : IFraction<Int16>
+//    {
+//    }
+//
+//    public struct Int32Fraction : IFraction<Int32>
+//    {
+//    }
+//
+//    public struct Int64Fraction : IFraction<Int64>
+//    {
+//    }
 }
+

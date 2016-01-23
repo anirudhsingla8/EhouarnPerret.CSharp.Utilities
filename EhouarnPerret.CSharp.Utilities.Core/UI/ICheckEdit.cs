@@ -1,5 +1,5 @@
 ﻿//
-// SimpleForm.cs
+// ICheckEdit.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,51 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Windows.Forms;
-using System.Threading;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
+namespace EhouarnPerret.CSharp.Utilities.Core.UI
 {
-    public class SimpleForm
+    public interface ICheckEdit
     {
-        public SimpleForm()
-        {
-            this.Form = new BorderlessForm();
-        }
-
-        internal BorderlessForm Form { get; }
-    }
-
-    public class SimpleFormAppearance
-    {
-
-    }
-
-    internal class BorderlessForm : Form
-    {
-        public BorderlessForm()
-        {
-            this.FormBorderStyle = FormBorderStyle.None;
-        }
-    }
-
-<<<<<<< HEAD
-    internal class SimpleFormBorder : BorderlessForm
-    {
-        public SimpleFormBorder()
-=======
-    internal class BorderForm : BorderlessForm
-    {
-        public BorderForm()
->>>>>>> origin
-        {
-            
-        }
-    }
-
-    internal class BorderlessFormBorder
-    {
-
     }
 }
 

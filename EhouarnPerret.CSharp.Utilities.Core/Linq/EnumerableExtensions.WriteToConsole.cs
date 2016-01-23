@@ -1,5 +1,5 @@
 ﻿//
-// SimpleForm.cs
+// EnumerableExtensions.WriteLineToConsole.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,52 +23,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
-using System.Windows.Forms;
-using System.Threading;
+using System.Linq;
+using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
+namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    public class SimpleForm
-    {
-        public SimpleForm()
+	public static class EnumerableExtensions
+	{
+        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, String separator = @"")
+		{
+            source.WriteLineToConsole(item => item.ToString(), separator);
+		}
+
+        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, Func<TSource, String> stringConverter, String separator = @"")
         {
-            this.Form = new BorderlessForm();
+            var stringedSource = source.Select(stringConverter);
+
+            Console.WriteLine(String.Join(separator, stringedSource));
         }
-
-        internal BorderlessForm Form { get; }
-    }
-
-    public class SimpleFormAppearance
-    {
-
-    }
-
-    internal class BorderlessForm : Form
-    {
-        public BorderlessForm()
-        {
-            this.FormBorderStyle = FormBorderStyle.None;
-        }
-    }
-
-<<<<<<< HEAD
-    internal class SimpleFormBorder : BorderlessForm
-    {
-        public SimpleFormBorder()
-=======
-    internal class BorderForm : BorderlessForm
-    {
-        public BorderForm()
->>>>>>> origin
-        {
-            
-        }
-    }
-
-    internal class BorderlessFormBorder
-    {
-
-    }
+	}
 }
 
