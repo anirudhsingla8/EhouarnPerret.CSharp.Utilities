@@ -261,8 +261,6 @@
     <Compile Include="Linq\EnumerableExtensions.ConsecutiveMin.cs" />
     <Compile Include="Linq\EnumerableExtensions.ConsecutiveMax.cs" />
     <Compile Include="GeneralExtensions.cs" />
-    <Compile Include="PrimitiveExtensions.cs" />
-    <Compile Include="PrimitiveHelpers.cs" />
     <Compile Include="UI\IButton.cs" />
     <Compile Include="UI\ICheckBox.cs" />
     <Compile Include="UI\ICheckButton.cs" />
