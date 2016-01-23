@@ -52,23 +52,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
         }
     }
 
-<<<<<<< HEAD
-    internal class SimpleFormBorder : BorderlessForm
-    {
-        public SimpleFormBorder()
-=======
-    internal class BorderForm : BorderlessForm
-    {
-        public BorderForm()
->>>>>>> origin
-        {
-            
-        }
-    }
-
-    internal class BorderlessFormBorder
-    {
-
-    }
+//    internal class SimpleFormBorder : BorderlessForm
+//    {
+//        public SimpleFormBorder()
+//    internal class BorderForm : BorderlessForm
+//    {
+//        public BorderForm()
+//        {
+//            
+//        }
+//    }
+//
+//    internal class BorderlessFormBorder
+//    {
+//
+//    }
 }
 
