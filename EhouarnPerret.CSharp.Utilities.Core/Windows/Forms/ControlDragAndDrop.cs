@@ -24,12 +24,23 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public class ControlDragAndDrop
     {
-       
+        public ControlDragAndDrop()
+        {
+            
+        }
+
+        public Action<Control, MouseEventArgs> MouseMove { get; } 
+        public Action<Control, MouseEventArgs> MouseDown { get; }
+        public Action<Control, DragEventArgs> DragEnter { get; }
+        public Action<Control, DragEventArgs> DragDrop { get; }
+        public Action<Control, DragEventArgs> DragOver { get; }
+        public Action<Control> DragLeave { get; }
     }
 }
 

@@ -122,32 +122,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             control.DragDrop += ControlExtensions.OnControlDragDrop;
         }
 
-        static void OnControlDragOver (object sender, DragEventArgs e)
+        private static void OnControlDragOver (Object sender, DragEventArgs e)
         {
             
         }
-
-        static void OnControlMouseDown (object sender, MouseEventArgs e)
+        private static void OnControlMouseDown (Object sender, MouseEventArgs e)
         {
             
         }
-
-        static void OnControlMouseMove (object sender, MouseEventArgs e)
+        private static void OnControlMouseMove (Object sender, MouseEventArgs e)
         {
             
         }
-
-        static void OnControlDragDrop (object sender, DragEventArgs e)
+        private static void OnControlDragDrop (Object sender, DragEventArgs e)
         {
             
         }
-
-        static void OnControlDragLeave (object sender, EventArgs e)
+        private static void OnControlDragLeave (Object sender, EventArgs e)
         {
             
         }
-
-        static void OnControlDragEnter (object sender, DragEventArgs e)
+        private static void OnControlDragEnter (Object sender, DragEventArgs e)
         {
             
         }
