@@ -267,9 +267,9 @@
     <Compile Include="UI\ICheckEdit.cs" />
     <Compile Include="UI\ITextBox.cs" />
     <Compile Include="UI\ITextEdit.cs" />
-    <Compile Include="Windows\Forms\ControlAppearance.cs" />
     <Compile Include="Windows\Forms\FormControl.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlAppearance.cs" />
+    <Compile Include="Windows\Forms\ControlDragAndDrop.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

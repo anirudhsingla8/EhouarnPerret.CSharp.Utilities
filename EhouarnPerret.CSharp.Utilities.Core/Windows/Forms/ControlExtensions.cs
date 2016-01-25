@@ -30,6 +30,9 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
@@ -47,18 +50,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             var controlType = typeof(Control);
 
             ControlExtensions.DoubleBufferedProperty = controlType.GetProperty(ControlExtensions.DoubleBufferedPropertyName, BindingFlags.Instance | BindingFlags.NonPublic);
+        
+            ControlExtensions.DragAndDrops = new Dictionary<Control, ControlDragAndDrop>();
         }
 
         private static PropertyInfo DoubleBufferedProperty { get; }
 
         private const String DoubleBufferedPropertyName = @"DoubleBuffered";
 
-        public static void SetDoubleBuffered(this Control control, Boolean value)
+        public static void SetDoubleBuffered<TControl>(this TControl control, Boolean value)
+            where TControl : Control
         {
             ControlExtensions.DoubleBufferedProperty.SetValue(control, value);
         }
 
-        public static Boolean GetDoubleBuffered(this Control control)
+        public static Boolean GetDoubleBuffered<TControl>(this TControl control)
         {
             return (Boolean)ControlExtensions.DoubleBufferedProperty.GetValue(control);
         }
@@ -67,7 +73,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         /// Centers the control both horizontially and vertically according to the parent control that contains it.
         /// </summary>
         /// <param name="control"></param>
-        public static void Center(this Control control)
+        public static void Center<TControl>(this TControl control)
+            where TControl : Control
         {
             control.CenterHorizontally();
             control.CenterVertically();
@@ -76,7 +83,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         /// <summary>
         /// Centers the control horizontially according to the parent control that contains it.
         /// </summary>
-        public static void CenterHorizontally(this Control control)
+        public static void CenterHorizontally<TControl>(this TControl control)
+            where TControl : Control
         {
             var parentClientRectangle = control.Parent.ClientRectangle;
             control.Left = (parentClientRectangle.Width - control.Width) / 2;
@@ -85,13 +93,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         /// <summary>
         /// Centers the control vertically according to the parent control that contains it.
         /// </summary>
-        public static void CenterVertically(this Control control)
+        public static void CenterVertically<TControl>(this TControl control)
+            where TControl : Control
         {
             var parentClientRectangle = control.Parent.ClientRectangle;
             control.Top = (parentClientRectangle.Height - control.Height) / 2;
         }
 
-        public static Bitmap ExportToBitmap(this Control control)
+        public static Bitmap ExportToBitmap<TControl>(this TControl control)
+            where TControl : Control
         {
             var bitmap = new Bitmap(control.Width, control.Height);
 
@@ -99,6 +109,69 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
             return bitmap;
         }
+    
+        public static void EnableDragAndDropSupport<TControl>(this TControl control)
+            where TControl : Control
+        {
+            control.Disposed += ControlExtensions.OnControlDisposed;
+            control.MouseMove += ControlExtensions.OnControlMouseMove;
+            control.MouseDown += ControlExtensions.OnControlMouseDown;
+            control.DragEnter += ControlExtensions.OnControlDragEnter;
+            control.DragOver += ControlExtensions.OnControlDragOver;
+            control.DragLeave += ControlExtensions.OnControlDragLeave;
+            control.DragDrop += ControlExtensions.OnControlDragDrop;
+        }
+
+        static void OnControlDragOver (object sender, DragEventArgs e)
+        {
+            
+        }
+
+        static void OnControlMouseDown (object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        static void OnControlMouseMove (object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        static void OnControlDragDrop (object sender, DragEventArgs e)
+        {
+            
+        }
+
+        static void OnControlDragLeave (object sender, EventArgs e)
+        {
+            
+        }
+
+        static void OnControlDragEnter (object sender, DragEventArgs e)
+        {
+            
+        }
+
+        private static void OnControlDisposed (Object sender, EventArgs e)
+        {
+            var control = sender as Control;
+
+            control.DisableDragAndDropSupport();
+        }
+
+        public static void DisableDragAndDropSupport<TControl>(this TControl control)
+            where TControl : Control
+        {
+            control.Disposed -= ControlExtensions.OnControlDisposed;
+            control.MouseMove -= ControlExtensions.OnControlMouseMove;
+            control.MouseDown -= ControlExtensions.OnControlMouseDown;
+            control.DragEnter -= ControlExtensions.OnControlDragEnter;
+            control.DragOver -= ControlExtensions.OnControlDragOver;
+            control.DragLeave -= ControlExtensions.OnControlDragLeave;
+            control.DragDrop -= ControlExtensions.OnControlDragDrop;
+        }
+
+        private static Dictionary<Control, ControlDragAndDrop> DragAndDrops { get; }
     }
 }
 

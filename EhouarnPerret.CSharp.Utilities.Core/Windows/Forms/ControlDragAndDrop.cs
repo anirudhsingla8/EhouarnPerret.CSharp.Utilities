@@ -1,5 +1,5 @@
 ﻿//
-// CanvasControlAppearance.cs
+// ControlDragAndDrop.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,14 +25,11 @@
 // THE SOFTWARE.
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class CanvasControlAppearance : ControlAppearance<CanvasControl>
+    public class ControlDragAndDrop
     {
-        public CanvasControlAppearance(CanvasControl parent)
-            : base(parent)
-        {
-        }
+       
     }
 }
 
