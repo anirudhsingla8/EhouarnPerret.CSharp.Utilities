@@ -1,5 +1,5 @@
 ﻿//
-// IEventAggregator.cs
+// ISubscriber.cs
 //
 // Author:
 //       FastMichouine <>
@@ -25,11 +25,10 @@
 // THE SOFTWARE.
 
 using System;
-using EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IEventAggregator : IEventPublisher, IEventSubscriptionManager
+    public interface IEventSubscriber<in TMessage>
     {
     }
 }

@@ -1,10 +1,10 @@
 ﻿//
-// IPublisher.cs
+// IEventSubscriptionManager.cs
 //
 // Author:
-//       FastMichouine <>
+//       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 FastMichouine
+// Copyright (c) 2016 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,13 +23,15 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
 {
-    public interface IPublisher<T>
+    public interface IEventSubscriptionManager
     {
+        void AddSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber);
+
+        void RemoveSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber);
     }
 }
 

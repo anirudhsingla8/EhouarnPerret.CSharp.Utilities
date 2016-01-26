@@ -146,9 +146,7 @@
     <Compile Include="Numeric\IFraction.cs" />
     <Compile Include="Diagnostics\ProcessHelpers.cs" />
     <Compile Include="Runtime\Serialization\SerializationHelpers.cs" />
-    <Compile Include="Patterns\EventAggregator\IPublisher.cs" />
     <Compile Include="Patterns\EventAggregator\IEventAggregator.cs" />
-    <Compile Include="Patterns\EventAggregator\ISubscriber.cs" />
     <Compile Include="Reflection\NumericalTypeInformation.cs" />
     <Compile Include="Collections\Generic\OrderedDictionary.cs" />
     <Compile Include="Collections\Generic\IReadOnlyOrderedDictionary.cs" />
@@ -270,6 +268,11 @@
     <Compile Include="Windows\Forms\FormControl.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlAppearance.cs" />
     <Compile Include="Windows\Forms\ControlDragAndDrop.cs" />
+    <Compile Include="Patterns\EventAggregator\EventAggregator.cs" />
+    <Compile Include="Patterns\EventAggregator\IEventSubscriptionManager.cs" />
+    <Compile Include="Patterns\EventAggregator\IEventPublisher.cs" />
+    <Compile Include="Patterns\EventAggregator\IEventSubscriber.cs" />
+    <Compile Include="IReference.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

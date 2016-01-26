@@ -38,27 +38,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return dateTime.ToIsoString(CultureInfo.InvariantCulture);
         }
-        public static String ToIsoString(this DateTime dateTime, IFormatProvider provider)
+        public static String ToIsoString(this DateTime dateTime, IFormatProvider formatProvider)
         {
-            return dateTime.ToString(DateTimeExtensions.DateTimeIsoStringFormat, provider);
+            return dateTime.ToString(DateTimeExtensions.DateTimeIsoStringFormat, formatProvider);
         }
 
         public static String ToInvariantIsoDateString(this DateTime dateTime)
         {
             return dateTime.ToIsoDatetring(CultureInfo.InvariantCulture);
         }
-        public static String ToIsoDatetring(this DateTime dateTime, IFormatProvider provider)
+        public static String ToIsoDatetring(this DateTime dateTime, IFormatProvider formatProvider)
         {
-            return dateTime.ToString(DateTimeExtensions.DateIsoStringFormat, provider);
+            return dateTime.ToString(DateTimeExtensions.DateIsoStringFormat, formatProvider);
         }
     
         public static String ToInvariantIsoTimeString(this DateTime dateTime)
         {
-            return dateTime.ToIsoTimetring(CultureInfo.InvariantCulture);
+            return dateTime.ToIsoTimeString(CultureInfo.InvariantCulture);
         }
-        public static String ToIsoTimetring(this DateTime dateTime, IFormatProvider provider)
+        public static String ToIsoTimeString(this DateTime dateTime, IFormatProvider formatProvider)
         {
-            return dateTime.ToString(DateTimeExtensions.TimeIsoStringFormat, provider);
+            return dateTime.ToString(DateTimeExtensions.TimeIsoStringFormat, formatProvider);
         }
     }
 }
