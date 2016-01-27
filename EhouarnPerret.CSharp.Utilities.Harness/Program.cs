@@ -26,6 +26,11 @@
 using System;
 using System.Collections;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple;
+using System.Dynamic;
+using System.Collections.Generic;
+using EhouarnPerret.CSharp.Utilities.Core;
+using System.IO;
+using System.Security.Policy;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {

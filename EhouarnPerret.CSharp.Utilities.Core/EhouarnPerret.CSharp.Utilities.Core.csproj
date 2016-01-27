@@ -246,7 +246,6 @@
     <Compile Include="Windows\Forms\ControlPropertiesAppearance.cs" />
     <Compile Include="Threading\ThreadPool\IThreadPool.cs" />
     <Compile Include="Threading\ThreadPool\IThreadPoolWorker.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasControlPropertiesAppearance.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlItemUpdateMode.cs" />
     <Compile Include="ActionExtensions.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasItemMouseEventArgs.cs" />
@@ -266,13 +265,16 @@
     <Compile Include="UI\ITextBox.cs" />
     <Compile Include="UI\ITextEdit.cs" />
     <Compile Include="Windows\Forms\FormControl.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasControlAppearance.cs" />
     <Compile Include="Windows\Forms\ControlDragAndDrop.cs" />
     <Compile Include="Patterns\EventAggregator\EventAggregator.cs" />
     <Compile Include="Patterns\EventAggregator\IEventSubscriptionManager.cs" />
     <Compile Include="Patterns\EventAggregator\IEventPublisher.cs" />
     <Compile Include="Patterns\EventAggregator\IEventSubscriber.cs" />
     <Compile Include="IReference.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControlPropertiesAppearance.cs" />
+    <Compile Include="Patterns\EventAggregator\SubscriberWrapper.cs" />
+    <Compile Include="Patterns\EventAggregator\SubscriberWrapperCollection.cs" />
+    <Compile Include="StrongReference.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

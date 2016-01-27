@@ -30,6 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public interface IEventSubscriber<in TMessage>
     {
+        void OnMessageReceived(TMessage message);
     }
 }
 

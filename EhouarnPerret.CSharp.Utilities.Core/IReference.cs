@@ -31,5 +31,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         Object Target { get; }
     }
+
+    public interface IReference<TTarget>
+        where TTarget : class
+    {
+        TTarget Target { get; }
+    }
 }
 

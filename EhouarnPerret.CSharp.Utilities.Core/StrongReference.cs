@@ -1,5 +1,5 @@
-﻿//
-// IEventSubscriptionManager.cs
+//
+// StrongReference.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,17 +23,35 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    public interface IEventSubscriptionManager
+    public class StrongReference : IReference
     {
-        void AddSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber);
+        public StrongReference(Object target)
+        {
+            this.Target = ExceptionHelpers.ThrowIfNull(target);
+        }
 
-        void RemoveSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber);
-
-        Boolean IsSubscribed<TMessage>(IEventSubscriber<TMessage> subscriber);
+        #region IReference Implementation
+        public Object Target { get; }
+        #endregion
     }
-}
 
+    public class StrongReference<TTarget> : IReference<TTarget>
+        where TTarget : class
+    {
+        public StrongReference(Object target)
+        {
+            this.Target = ExceptionHelpers.ThrowIfNull(target);
+        }
+
+        #region IReference implementation
+        public TTarget Target { get; }
+        #endregion
+
+    }
+    
+}

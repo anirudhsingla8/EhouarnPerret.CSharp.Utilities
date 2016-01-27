@@ -24,15 +24,31 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Drawing;
 using System.Windows.Forms;
+
+using EhouarnPerret.CSharp.Utilities.Core.Numeric;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public class ControlDragAndDrop
     {
-        public ControlDragAndDrop()
+        public ControlDragAndDrop(
+            Action<Control, MouseEventArgs> mouseDown, 
+            Action<Control, MouseEventArgs> mouseMove, 
+            Action<Control, DragEventArgs> dragEnter, 
+            Action<Control, DragEventArgs> dragDrop,
+            Action<Control, DragEventArgs> dragOver,
+            Action<Control, EventArgs> dragLeave,
+            Action<Control, GiveFeedbackEventArgs> giveFeedback
+        )
         {
-            
+            this.MouseDown = ExceptionHelpers.ThrowIfNull(mouseDown, nameof(mouseDown));
+            this.MouseMove = ExceptionHelpers.ThrowIfNull(mouseMove, nameof(mouseDown));
+            this.DragEnter = ExceptionHelpers.ThrowIfNull(dragEnter, nameof(dragEnter));
+            this.DragOver = ExceptionHelpers.ThrowIfNull(dragOver, nameof(dragOver));
+            this.DragLeave = ExceptionHelpers.ThrowIfNull(dragLeave, nameof(dragLeave));
+            this.GiveFeedback =  ExceptionHelpers.ThrowIfNull(giveFeedback, nameof(giveFeedback));
         }
 
         public Action<Control, MouseEventArgs> MouseMove { get; } 
@@ -40,7 +56,52 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         public Action<Control, DragEventArgs> DragEnter { get; }
         public Action<Control, DragEventArgs> DragDrop { get; }
         public Action<Control, DragEventArgs> DragOver { get; }
-        public Action<Control> DragLeave { get; }
+        public Action<Control, EventArgs> DragLeave { get; }
+        public Action<Control, GiveFeedbackEventArgs> GiveFeedback { get; }
     }
+
+//    public class AutoTriggeredControlDragAndDrop : ControlDragAndDrop
+//    {
+//        public Byte TriggeringDistance { get; }
+//        private Point MouseDownLocation { get; set; }
+//
+//        private Action<Control> DoDragDrop { get; }
+//
+//        protected virtual void OnMouseDown (Object sender, MouseEventArgs e)
+//        {
+//            this.MouseDownLocation = e.Location;
+//        }
+//
+//        protected virtual void OnMouseMove(Object sender, MouseEventArgs e)
+//        {
+//            if (MathHelpers.EuclidianDistance(this.MouseDownLocation, e.Location) > this.TriggeringDistance)
+//            {
+//                var control = (Control)sender;
+//
+//                control.DoDragDrop();
+//            }
+//        }
+//
+//        public AutoTriggeredControlDragAndDrop(
+//        Byte triggerDistance, 
+//        Action<Control> doDragDrop,
+//        Action<Control, DragEventArgs> dragEnter, 
+//        Action<Control, DragEventArgs> dragDrop,
+//        Action<Control, DragEventArgs> dragOver,
+//        Action<Control, EventArgs> dragLeave,
+//        Action<Control, GiveFeedbackEventArgs> giveFeedback
+//        )
+//            : base(
+//                AutoTriggeredControlDragAndDrop.OnMouseDown,
+//                AutoTriggeredControlDragAndDrop.OnMouseMove,
+//                dragEnter,
+//                dragDrop,
+//                dragLeave,
+//                giveFeedback
+//            )
+//        {
+//            this.TriggeringDistance = triggerDistance;
+//        }
+//    }
 }
 

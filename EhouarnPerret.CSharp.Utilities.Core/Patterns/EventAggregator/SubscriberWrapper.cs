@@ -1,5 +1,5 @@
-﻿//
-// IEventSubscriptionManager.cs
+//
+// SubscriberWrapper.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,16 +24,27 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections;
+using System.Data.SqlTypes;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
+
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
 {
-    public interface IEventSubscriptionManager
+    internal class SubscriberWrapper
     {
-        void AddSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber);
+        public static SubscriberWrapper CreateFromSubscriber<TMessage>(IEventSubscriber<TMessage> eventSubscriber)
+        {
+            var subscriberWrapper = new SubscriberWrapper(eventSubscriber);
 
-        void RemoveSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber);
+            return subscriberWrapper;
+        }
 
-        Boolean IsSubscribed<TMessage>(IEventSubscriber<TMessage> subscriber);
+        private SubscriberWrapper(Object subscriber)
+        {
+            var type = subscriber.GetType();
+        }
     }
 }
-
