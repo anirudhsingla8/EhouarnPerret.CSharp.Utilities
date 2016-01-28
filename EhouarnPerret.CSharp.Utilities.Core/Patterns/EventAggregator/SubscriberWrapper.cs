@@ -42,6 +42,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
             return subscriberWrapper;
         }
 
+        private Type SuscriberInterfaceType { get; }
+
+        private Type MessageType { get; }
+
+
+
+
         private SubscriberWrapper(Object subscriber)
         {
             var type = subscriber.GetType();

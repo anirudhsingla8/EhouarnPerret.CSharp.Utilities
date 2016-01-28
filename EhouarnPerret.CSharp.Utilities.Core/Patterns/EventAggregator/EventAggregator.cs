@@ -29,6 +29,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
 using System.Data.SqlTypes;
+using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
 {
@@ -58,5 +59,34 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
 
         private SubscriberWrapperCollection Subscribers { get; }
     }
+
+
+//
+//    public class EventAggregatorOptions
+//    {
+//        public EventAggregatorOptions()
+//        {
+//            
+//        }
+//
+////        private Boolean useWeak;
+////        public Boolean _useWeakReferences
+////        {
+////            get
+////            {
+////                return this._isUsingWeakRefereces;
+////            }
+////        }
+////
+////
+////        private Boolean _supportsMessageInheritances;
+////        public Boolean SupportsMessageInheritances
+////        {
+////            get
+////            {
+////                return this._supportsMessageInheritances;
+////            }
+////        }
+//    }
 }
 
