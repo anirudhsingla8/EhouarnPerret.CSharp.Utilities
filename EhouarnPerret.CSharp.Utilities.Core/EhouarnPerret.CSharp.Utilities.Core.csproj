@@ -275,6 +275,7 @@
     <Compile Include="Patterns\EventAggregator\SubscriberWrapper.cs" />
     <Compile Include="Patterns\EventAggregator\SubscriberWrapperCollection.cs" />
     <Compile Include="StrongReference.cs" />
+    <Compile Include="Patterns\EventAggregator\EventAggregatorOptions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

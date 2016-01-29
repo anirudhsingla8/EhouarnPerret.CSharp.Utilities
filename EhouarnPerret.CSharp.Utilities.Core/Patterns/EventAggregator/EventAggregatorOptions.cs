@@ -1,5 +1,5 @@
-﻿//
-// EventAggregator.cs
+//
+// EventAggregatorOptions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,35 +23,34 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
 {
-    public class EventAggregator : IEventAggregator
+
+    public class EventAggregatorOptions
     {
-        #region IEventSubscriptionManager Implementation
-        public void AddSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber)
+        public EventAggregatorOptions()
         {
-            this.Subscribers.AddSubscriber();
         }
-        public void RemoveSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber)
-        {
-            this.Subscribers.RemoveSubscriber();
-        }
-        public Boolean IsSubscribed<TMessage>(IEventSubscriber<TMessage> subscriber)
-        {
-            return this.Subscribers.Exists(subscriber);
-        }
-        #endregion
 
-        #region IEventPublisher Implementation
-        public void SendMessage<TMessage>(TMessage message)
+        private Boolean _useWeakReferences;
+        public Boolean UseWeakReferences
         {
-            throw new NotImplementedException();
+            get
+            {
+                return this._useWeakReferences;
+            }
         }
-        #endregion
 
-        private SubscriberWrapperCollection Subscribers { get; }
+        private Boolean _supportsMessageInheritances;
+        public Boolean SupportsMessageInheritances
+        {
+            get
+            {
+                return this._supportsMessageInheritances;
+            }
+        }
     }
 }
-
