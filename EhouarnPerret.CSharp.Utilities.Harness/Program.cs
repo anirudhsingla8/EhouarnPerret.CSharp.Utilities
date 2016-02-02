@@ -28,9 +28,9 @@ using System.Collections;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple;
 using System.Dynamic;
 using System.Collections.Generic;
-using EhouarnPerret.CSharp.Utilities.Core;
 using System.IO;
 using System.Security.Policy;
+using System.Threading;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -38,9 +38,21 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            SimpleApplication.Run(new SimpleForm());
+            //SimpleApplication.Run(new SimpleForm());
 
-            Console.ReadKey();
+            var reference = new WeakReference(null);
+            reference.Target = new object();
+
+            // Read the reference.Target many times if you want, only
+            // to represent that you are using it.
+            Console.WriteLine(reference.Target);
+
+            GC.Collect();
+            Thread.Sleep(1000);
+
+            // Now check if the reference.Target is null. It will probably be.
+            Console.WriteLine(reference.Target);
+           
         }
     }
 

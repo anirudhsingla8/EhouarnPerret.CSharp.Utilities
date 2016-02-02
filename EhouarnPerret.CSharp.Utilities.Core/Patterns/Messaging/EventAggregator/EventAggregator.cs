@@ -1,5 +1,5 @@
-//
-// StrongReference.cs
+﻿//
+// EventAggregator.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,33 +23,35 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
 {
-    public class StrongReference : IReference
-    {
-        public StrongReference(Object target)
-        {
-            this.Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
-        }
-
-        #region IReference Implementation
-        public Object Target { get; }
-        #endregion
-    }
-
-    public class StrongReference<TTarget> : IReference<TTarget>
-        where TTarget : class
-    {
-        public StrongReference(TTarget target)
-        {
-            this.Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
-        }
-
-        #region IReference implementation
-        public TTarget Target { get; }
-        #endregion
-    }
+//    public class EventAggregator : IEventAggregator
+//    {
+//        #region IEventSubscriptionManager Implementation
+//        public void AddSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber)
+//        {
+//            this.Subscribers.AddSubscriber();
+//        }
+//        public void RemoveSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber)
+//        {
+//            this.Subscribers.RemoveSubscriber();
+//        }
+//        public Boolean IsSubscribed<TMessage>(IEventSubscriber<TMessage> subscriber)
+//        {
+//            return this.Subscribers.Exists(subscriber);
+//        }
+//        #endregion
+//
+//        #region IEventPublisher Implementation
+//        public void SendMessage<TMessage>(TMessage message)
+//        {
+//            throw new NotImplementedException();
+//        }
+//        #endregion
+//
+//        private SubscriberWrapperCollection Subscribers { get; }
+//    }
 }
+

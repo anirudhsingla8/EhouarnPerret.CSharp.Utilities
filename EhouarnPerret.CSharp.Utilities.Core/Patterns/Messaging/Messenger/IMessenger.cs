@@ -1,5 +1,5 @@
-//
-// StrongReference.cs
+﻿//
+// IMessenger.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,33 +23,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.Messenger
 {
-    public class StrongReference : IReference
+    public interface IMessenger
     {
-        public StrongReference(Object target)
-        {
-            this.Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
-        }
-
-        #region IReference Implementation
-        public Object Target { get; }
-        #endregion
-    }
-
-    public class StrongReference<TTarget> : IReference<TTarget>
-        where TTarget : class
-    {
-        public StrongReference(TTarget target)
-        {
-            this.Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
-        }
-
-        #region IReference implementation
-        public TTarget Target { get; }
-        #endregion
     }
 }
+

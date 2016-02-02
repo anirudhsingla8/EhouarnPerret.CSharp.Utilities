@@ -1,5 +1,5 @@
-//
-// SubscriberWrapperCollection.cs
+﻿//
+// WeakEventHandler.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,37 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
-using System.Data.SqlTypes;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
+namespace EhouarnPerret.CSharp.Utilities.Core
 {
-    internal class SubscriberWrapperCollection : IEnumerable<SubscriberWrapper>
+    public class WeakEventHandler<TEventHandler>
     {
-        public SubscriberWrapperCollection()
-        {
-        }
-
-        private Object SyncRoot { get; } = new Object();
-
-        public Boolean Exists(SubscriberWrapper subscriberWrapper)
-        {
-            
-        }
-
-        public void AddSubscriber(SubscriberWrapper subscriberWrapper)
-        {
-            
-        }
-
-        public void RemoveSubscriber(SubscriberWrapper subscriberWrapper)
-        {
-
-        }
+       
     }
 }
+

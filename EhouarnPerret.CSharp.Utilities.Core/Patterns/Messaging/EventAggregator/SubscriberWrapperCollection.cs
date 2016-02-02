@@ -1,5 +1,5 @@
-﻿//
-// EventAggregator.cs
+//
+// SubscriberWrapperCollection.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,35 +23,37 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
+using System.Data.SqlTypes;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
 {
-    public class EventAggregator : IEventAggregator
-    {
-        #region IEventSubscriptionManager Implementation
-        public void AddSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber)
-        {
-            this.Subscribers.AddSubscriber();
-        }
-        public void RemoveSubscriber<TMessage>(IEventSubscriber<TMessage> subscriber)
-        {
-            this.Subscribers.RemoveSubscriber();
-        }
-        public Boolean IsSubscribed<TMessage>(IEventSubscriber<TMessage> subscriber)
-        {
-            return this.Subscribers.Exists(subscriber);
-        }
-        #endregion
-
-        #region IEventPublisher Implementation
-        public void SendMessage<TMessage>(TMessage message)
-        {
-            throw new NotImplementedException();
-        }
-        #endregion
-
-        private SubscriberWrapperCollection Subscribers { get; }
-    }
+//    internal class SubscriberWrapperCollection : IEnumerable<SubscriberWrapper>
+//    {
+//        public SubscriberWrapperCollection()
+//        {
+//        }
+//
+//        private Object SyncRoot { get; } = new Object();
+//
+//        public Boolean Exists(SubscriberWrapper subscriberWrapper)
+//        {
+//            
+//        }
+//
+//        public void AddSubscriber(SubscriberWrapper subscriberWrapper)
+//        {
+//            
+//        }
+//
+//        public void RemoveSubscriber(SubscriberWrapper subscriberWrapper)
+//        {
+//
+//        }
+//    }
 }
-
