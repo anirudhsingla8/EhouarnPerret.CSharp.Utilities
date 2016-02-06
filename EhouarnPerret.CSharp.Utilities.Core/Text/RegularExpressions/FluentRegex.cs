@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Text;
+using System.Linq;
 using System.Numerics;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -51,6 +52,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
             return this;
         }
+
         public FluentRegex StopCapture()
         {
             this.StringBuilder.Append(@")");
@@ -205,6 +207,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
             return this;
         }
+
         public FluentRegex StopLine()
         {
             this.StringBuilder.Append(@"$");      
@@ -232,12 +235,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 //        }
 
 
-        private void CheckUnstoppedStartedGroupNames()
+        private void CheckUnclosedGroupNames()
         {
-            if (this.UnstoppedStartedgroupNames.Count > 0)
+            if (this.UnstoppedStartedgroupNames.Any())
             {
-                var groupName = this.UnstoppedStartedgroupNames.Peek();
-                var message = $"The group {groupName} is not stopped.";
+                var groupName = this.UnstoppedStartedgroupNames;
+                var message = $"The groups {groupName} are not closed.", this.UnstoppedStartedgroupNames.;
 
                 throw new InvalidOperationException(message);
             }
@@ -249,7 +252,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
         public Regex ToRegex(Boolean isCompiled = true)
         {
-            this.CheckUnstoppedStartedGroupNames();
+            this.CheckUnclosedGroupNames();
 
             var regex = new Regex(this.StringBuilder.ToString());
             return regex;

@@ -303,6 +303,24 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //        {
 //            return BigIntegerFraction.Parse(value);
 //        }
+    
+        public static String[] SplitLines(this String value, Boolean removeEmptyEntries = true)
+        {
+            var stringSplitOptions = removeEmptyEntries ? 
+                StringSplitOptions.RemoveEmptyEntries : 
+                StringSplitOptions.None;
+            
+            return value.Split(new [] { Environment.NewLine }, stringSplitOptions);
+        }
+
+        public static String[] SplitSpaces(this String value, Boolean removeEmptyEntries = true)
+        {
+            var stringSplitOptions = removeEmptyEntries ? 
+                StringSplitOptions.RemoveEmptyEntries : 
+                StringSplitOptions.None;
+            
+            return value.Split(new [] { ' ' } , stringSplitOptions);
+        }
     }
 }
 
