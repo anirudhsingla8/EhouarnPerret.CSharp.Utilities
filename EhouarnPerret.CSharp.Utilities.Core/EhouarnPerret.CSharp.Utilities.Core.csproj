@@ -281,6 +281,7 @@
     <Compile Include="Patterns\Messaging\Messenger\IMessenger.cs" />
     <Compile Include="Numeric\Operator.cs" />
     <Compile Include="Linq\EnumerableExtensions.GenerateCombinations.cs" />
+    <Compile Include="Linq\EnumerableExtensions.GeneratePermutations.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
