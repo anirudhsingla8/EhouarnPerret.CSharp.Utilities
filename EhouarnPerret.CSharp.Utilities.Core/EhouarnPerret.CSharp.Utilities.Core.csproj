@@ -280,6 +280,7 @@
     <Compile Include="Patterns\Messaging\Mediator\IMediator.cs" />
     <Compile Include="Patterns\Messaging\Messenger\IMessenger.cs" />
     <Compile Include="Numeric\Operator.cs" />
+    <Compile Include="Linq\EnumerableExtensions.GenerateCombinations.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
