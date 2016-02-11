@@ -38,60 +38,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            //SimpleApplication.Run(new SimpleForm());
-
-            var reference = new WeakReference(null);
-            reference.Target = new object();
-
-            // Read the reference.Target many times if you want, only
-            // to represent that you are using it.
-            Console.WriteLine(reference.Target);
-
-            GC.Collect();
-            Thread.Sleep(1000);
-
-            // Now check if the reference.Target is null. It will probably be.
-            Console.WriteLine(reference.Target);
-           
         }
-    }
-
-    public class BinaryTree<T>
-    {
-        public BinaryTree()
-        {
-            this.Root = null;
-        }
-
-        public BinaryTree(BinaryTreeNode<T> root)
-        {
-            this.Root = root;
-        }
-
-        public BinaryTreeNode<T> Root { get; set; }
-    }
-
-    public class BinaryTreeNode<T>
-    {
-        public BinaryTreeNode() 
-        {
-        }
-
-        public BinaryTreeNode(T data) : 
-           this (data, null, null)
-        {
-        }
-
-        public BinaryTreeNode(T data, BinaryTreeNode<T> left, BinaryTreeNode<T> right)
-        {
-            this.Data = data;
-            this.Left = left;
-            this.Right = right;
-        }
-
-        public T Data { get; set;}
-
-        public BinaryTreeNode<T> Left { get; set; }
-        public BinaryTreeNode<T> Right { get; set; }
     }
 }
