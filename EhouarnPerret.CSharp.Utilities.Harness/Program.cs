@@ -24,13 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
-using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple;
-using System.Dynamic;
 using System.Collections.Generic;
-using System.IO;
-using System.Security.Policy;
-using System.Threading;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -38,6 +32,45 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
+            var abcd = "ABCD".ToCharArray();
+
+            Program.HeapPermutation(abcd, abcd.Length);
+
+            Console.ReadKey();
+        }
+
+        private static void HeapPermutation<T>(IList<T> source, Int32 n)
+        {
+            if (n == 1)
+            {
+                Console.WriteLine(String.Join(@" ", source));
+            }
+            else
+            {
+                for (var i = 0; i < n - 1; i++)
+                {
+                    Program.HeapPermutation(source, n - 1);
+
+                    if ((i % 2) != 0)
+                    {
+                        Program.Swap(source, 0, n - 1);
+                    }
+                    else
+                    {
+                        Program.Swap(source, i, n - 1);
+                    }
+                }
+
+                Program.HeapPermutation(source, n - 1);
+
+            }
+        }
+
+        private static void Swap<T>(IList<T> source, Int32 index1, Int32 index2)
+        {
+            var tmp = source[index1];
+            source[index1] = source[index2];
+            source[index2] = tmp;
         }
     }
 }

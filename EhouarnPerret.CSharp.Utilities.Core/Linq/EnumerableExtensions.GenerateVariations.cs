@@ -30,7 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<IEnumerable<TSource>> GenerateCombinations<TSource>(this IEnumerable<TSource> seed)
+        public static IEnumerable<IEnumerable<TSource>> GenerateVariations<TSource>(this IEnumerable<TSource> seed)
         {
             throw new NotImplementedException();
         }

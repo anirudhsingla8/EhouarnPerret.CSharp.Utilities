@@ -240,9 +240,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
             if (this.UnstoppedStartedgroupNames.Any())
             {
                 var groupName = this.UnstoppedStartedgroupNames;
-                var message = $"The groups {groupName} are not closed.", this.UnstoppedStartedgroupNames.;
+                // var message = $"The groups {groupName} are not closed.", this.UnstoppedStartedgroupNames;
 
-                throw new InvalidOperationException(message);
+                throw new InvalidOperationException();
             }
             else
             {
