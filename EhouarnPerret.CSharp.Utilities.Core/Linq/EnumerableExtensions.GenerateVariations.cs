@@ -32,6 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
     {
         public static IEnumerable<IEnumerable<TSource>> GenerateCombinations<TSource>(this IEnumerable<TSource> seed)
         {
+            throw new NotImplementedException();
         }
     }
 }
