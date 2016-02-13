@@ -47,11 +47,11 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             }
             else
             {
-                for (var i = 0; i < n - 1; i++)
+                for (var i = 0; i < n; i++)
                 {
                     Program.HeapPermutation(source, n - 1);
 
-                    if ((i % 2) != 0)
+                    if ((i % 2) == 1)
                     {
                         Program.Swap(source, 0, n - 1);
                     }
@@ -60,9 +60,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
                         Program.Swap(source, i, n - 1);
                     }
                 }
-
-                Program.HeapPermutation(source, n - 1);
-
             }
         }
 
