@@ -41,6 +41,8 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
         private static void HeapPermutation<T>(IList<T> source, Int32 n)
         {
+            // Console.Write(" n = {0} => ", n);
+
             if (n == 1)
             {
                 Console.WriteLine(String.Join(@" ", source));
@@ -51,14 +53,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
                 {
                     Program.HeapPermutation(source, n - 1);
 
-                    if ((i % 2) == 1)
-                    {
-                        Program.Swap(source, 0, n - 1);
-                    }
-                    else
-                    {
-                        Program.Swap(source, i, n - 1);
-                    }
+                    var index = ((i % 2) == 0) ? i : 0;
+
+                    Program.Swap(source, i, n - 1);
                 }
             }
         }
