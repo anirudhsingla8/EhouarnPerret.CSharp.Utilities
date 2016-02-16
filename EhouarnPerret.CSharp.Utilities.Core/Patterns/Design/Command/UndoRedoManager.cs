@@ -36,8 +36,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
             this.RedoCommands = new Stack<IReversibleCommand>();
         }
 
-        public UInt16 RedoLevelCount => Convert.ToUInt16(this.RedoCommands.Count);
-        public UInt16 UndoLevelCount => Convert.ToUInt16(this.UndoCommands.Count);
+//        private UInt16 _capacity;
+//        public UInt16 Capacity
+//        {
+//            get
+//            {
+//                return this._capacity;
+//            }
+//            set
+//            {
+//                this._capacity = value;
+//            }
+//        }
+
+        public UInt16 RedoCount => Convert.ToUInt16(this.RedoCommands.Count);
+        public UInt16 UndoCount => Convert.ToUInt16(this.UndoCommands.Count);
 
         private Stack<IReversibleCommand> UndoCommands { get; }
         private Stack<IReversibleCommand> RedoCommands { get; }

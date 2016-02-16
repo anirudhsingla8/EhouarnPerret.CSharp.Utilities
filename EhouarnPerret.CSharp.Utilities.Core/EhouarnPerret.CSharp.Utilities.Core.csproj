@@ -292,6 +292,7 @@
     <Compile Include="Patterns\Design\Command\UndoRedoManager.cs" />
     <Compile Include="Collections\Generic\RedBlackBinaryTreeNodeColors.cs" />
     <Compile Include="Linq\EnumerableExtensions.Replace.cs" />
+    <Compile Include="ReferenceTypeExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -324,18 +325,6 @@
     <Folder Include="Data\Common\" />
     <Folder Include="Patterns\Design\Singleton\" />
     <Folder Include="Patterns\Design\Multiton\" />
-    <Folder Include="IO\Compression\" />
-    <Folder Include="IO\Compression\Lossless\" />
-    <Folder Include="IO\Compression\Lossless\Entropy\" />
-    <Folder Include="IO\Compression\Lossless\Entropy\Golomb\" />
-    <Folder Include="IO\Compression\Lossless\Entropy\Huffman\" />
-    <Folder Include="IO\Compression\Lossless\Entropy\Range\" />
-    <Folder Include="IO\Compression\Lossless\Entropy\Shannon\" />
-    <Folder Include="IO\Compression\Lossless\Entropy\Unary\" />
-    <Folder Include="IO\Compression\Lossless\Dictionary\" />
-    <Folder Include="IO\Compression\Lossless\Dictionary\BytePairEncoding\" />
-    <Folder Include="IO\Compression\Lossless\Dictionary\Deflate\" />
-    <Folder Include="IO\Compression\Lossless\Dictionary\LempelZiv\" />
     <Folder Include="Windows\Forms\Canvas\" />
     <Folder Include="Diagnostics\" />
     <Folder Include="Runtime\" />
@@ -353,5 +342,17 @@
     <Folder Include="Patterns\Messaging\EventAggregator\" />
     <Folder Include="Patterns\Messaging\Messenger\" />
     <Folder Include="Patterns\Messaging\Mediator\" />
+    <Folder Include="IO\Encoding\" />
+    <Folder Include="IO\Encoding\Lossless\" />
+    <Folder Include="IO\Encoding\Lossless\Entropy\" />
+    <Folder Include="IO\Encoding\Lossless\Entropy\Golomb\" />
+    <Folder Include="IO\Encoding\Lossless\Entropy\Huffman\" />
+    <Folder Include="IO\Encoding\Lossless\Entropy\Range\" />
+    <Folder Include="IO\Encoding\Lossless\Entropy\Shannon\" />
+    <Folder Include="IO\Encoding\Lossless\Entropy\Unary\" />
+    <Folder Include="IO\Encoding\Lossless\Dictionary\" />
+    <Folder Include="IO\Encoding\Lossless\Dictionary\BytePairEncoding\" />
+    <Folder Include="IO\Encoding\Lossless\Dictionary\Deflate\" />
+    <Folder Include="IO\Encoding\Lossless\Dictionary\LempelZiv\" />
   </ItemGroup>
 </Project>
