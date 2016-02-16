@@ -1,5 +1,5 @@
 //
-// Permutat2ionGenerationScheme.cs
+// PermutationGenerationScheme.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -26,9 +26,10 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    public enum PermutationGenerationOption : byte
+
+    public enum PermutationGenerationScheme : byte
     {
-        WithRepetitions = 0x00,
-        WithoutRepetitions = 0x01,
+        Head = 0x00,
+        SteinhausJohnsonTrotter = 0x01,
     }
 }

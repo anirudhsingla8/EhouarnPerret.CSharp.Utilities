@@ -1,5 +1,5 @@
-//
-// Permutat2ionGenerationScheme.cs
+﻿//
+// IReversibleCommand.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,12 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Linq
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
-    public enum PermutationGenerationOption : byte
+    public interface IReversibleCommand : ICommand
     {
-        WithRepetitions = 0x00,
-        WithoutRepetitions = 0x01,
+        void Unexecute();
     }
 }
+
