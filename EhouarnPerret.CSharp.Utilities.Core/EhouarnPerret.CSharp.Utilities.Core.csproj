@@ -283,6 +283,7 @@
     <Compile Include="Linq\EnumerableExtensions.GenerateCombinations.cs" />
     <Compile Include="Linq\EnumerableExtensions.GeneratePermutations.cs" />
     <Compile Include="Linq\EnumerableExtensions.GenerateVariations.cs" />
+    <Compile Include="Linq\PermutationGenerationOption.cs" />
     <Compile Include="Linq\PermutationGenerationScheme.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

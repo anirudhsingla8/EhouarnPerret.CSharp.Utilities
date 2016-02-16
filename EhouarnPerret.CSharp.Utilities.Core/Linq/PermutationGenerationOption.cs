@@ -29,7 +29,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    public enum PermutationGenerationScheme : byte
+    public enum PermutationGenerationOption : byte
     {
         WithRepetitions = 0x00,
         WithoutRepetitions = 0x01,
