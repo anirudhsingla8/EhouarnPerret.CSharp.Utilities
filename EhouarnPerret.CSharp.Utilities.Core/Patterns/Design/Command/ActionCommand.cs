@@ -1,5 +1,5 @@
-//
-// SubscriberWrapper.cs
+﻿//
+// ActionCommand.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,31 +24,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections;
-using System.Data.SqlTypes;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
 
-
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
-    internal class SubscriberWrapper
+    public class ActionCommand : Command, ICommand
     {
-        public static SubscriberWrapper CreateFromSubscriber<TMessage>(IEventSubscriber<TMessage> eventSubscriber)
+        public ActionCommand(Action executeAction)
         {
-            var subscriberWrapper = new SubscriberWrapper(eventSubscriber);
-
-            return subscriberWrapper;
+            this.ExecuteAction = executeAction;
         }
 
-        private Type SuscriberInterfaceType { get; }
+        private Action ExecuteAction { get; }
 
-        private Type MessageType { get; }
-
-        private SubscriberWrapper(Object subscriber)
+        #region ICommand Implementation
+        public override void Execute()
         {
-            var type = subscriber.GetType();
+            this.ExecuteAction();
         }
+        #endregion
     }
+
 }
+

@@ -227,7 +227,6 @@
     <Compile Include="Numeric\GCDScheme.cs" />
     <Compile Include="RandomHelpers.cs" />
     <Compile Include="RandomExtensions.cs" />
-    <Compile Include="Linq\EnumerableExtensions.CopyTo.cs" />
     <Compile Include="NumberExtensions.cs" />
     <Compile Include="NumberHelpers.cs" />
     <Compile Include="ComparableExtensions.cs" />
@@ -285,6 +284,13 @@
     <Compile Include="Linq\EnumerableExtensions.GenerateVariations.cs" />
     <Compile Include="Linq\PermutationGenerationOption.cs" />
     <Compile Include="Linq\PermutationGenerationScheme.cs" />
+    <Compile Include="Linq\EnumerableExtensions.SkipTake.cs" />
+    <Compile Include="Patterns\Design\Command\IReversibleCommand.cs" />
+    <Compile Include="Patterns\Design\Command\ActionCommand.cs" />
+    <Compile Include="Patterns\Design\Command\Command.cs" />
+    <Compile Include="Patterns\Design\Command\ReversibleCommand.cs" />
+    <Compile Include="Patterns\Design\Command\ReversibleActionCommand.cs" />
+    <Compile Include="Patterns\Design\Command\UndoRedoManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
