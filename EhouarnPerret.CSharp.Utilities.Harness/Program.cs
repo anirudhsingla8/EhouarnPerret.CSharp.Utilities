@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -34,7 +35,20 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             var abcd = "ABCD".ToCharArray();
 
-            Program.HeapPermutation(abcd, abcd.Length);
+            // Program.HeapPermutation(abcd, abcd.Length);
+
+            var undoRedoManager = new UndoRedoManager();
+
+            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do"), () => Console.WriteLine(@"Undo"));
+            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do1"), () => Console.WriteLine(@"Undo1"));
+            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do2"), () => Console.WriteLine(@"Undo2"));
+            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do3"), () => Console.WriteLine(@"Undo3"));
+            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do4"), () => Console.WriteLine(@"Undo4"));
+
+            undoRedoManager.Undo(2);
+            undoRedoManager.Redo();
+            undoRedoManager.Redo();
+            undoRedoManager.Redo();
 
             Console.ReadKey();
         }

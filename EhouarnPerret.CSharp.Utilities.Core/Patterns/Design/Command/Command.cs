@@ -32,7 +32,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
         #region ICommand Implementation
         public abstract void Execute();
         #endregion
-
     }
 }
 

@@ -29,17 +29,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
     public class ActionCommand : Command, ICommand
     {
-        public ActionCommand(Action executeAction)
+        public ActionCommand(Action execute)
         {
-            this.ExecuteAction = executeAction;
+            this._execute = ExceptionHelpers.ThrowIfNull(execute, (nameof(execute)));
         }
 
-        private Action ExecuteAction { get; }
+        private Action _execute;
 
         #region ICommand Implementation
         public override void Execute()
         {
-            this.ExecuteAction();
+            this._execute();
         }
         #endregion
     }

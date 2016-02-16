@@ -29,26 +29,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
     public class ReversibleActionCommand : ReversibleCommand
     {
-        public ReversibleActionCommand(Action executeAction, Action unexecuteAction)
+        public ReversibleActionCommand(Action execute, Action unexecute)
         {
-            this.ExecuteAction = executeAction;
-            this.UnexecuteAction = unexecuteAction;
+            this._execute = ExceptionHelpers.ThrowIfNull(execute, (nameof(execute)));
+            this._unexecute = ExceptionHelpers.ThrowIfNull(unexecute, (nameof(unexecute)));
         }
 
-        private Action ExecuteAction { get; }
-        private Action UnexecuteAction { get; }
+        private Action _execute;
+        private Action _unexecute;
 
         #region ICommand Implementation
         public override void Execute()
         {
-            this.ExecuteAction();
+            this._execute();
         }
         #endregion
 
         #region IReversibleCommand Implementation
         public override void Unexecute()
         {
-            this.UnexecuteAction();
+            this._unexecute();
         }
         #endregion
     }
