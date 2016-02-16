@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
@@ -37,12 +38,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
             return readOnlyList;
         }
-
         public static void Swap<T>(this IList<T> source, Int32 index1, Int32 index2)
         {
             var temp = source[index1];
             source[index1] = source[index2];
             source[index2] = temp;
+        }
+
+        public static void RemoveFirst<T>(this IList<T> source)
+        {
+            source.RemoveAt(0);
+        }
+        public static void RemoveLast<T>(this IList<T> source)
+        {
+            source.RemoveAt(source.Count - 1);
         }
     }
 }
