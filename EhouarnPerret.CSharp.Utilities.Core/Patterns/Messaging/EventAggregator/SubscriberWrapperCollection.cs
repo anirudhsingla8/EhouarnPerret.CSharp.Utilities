@@ -24,14 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.InteropServices;
-using System.Data.SqlTypes;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
 {
 //    internal class SubscriberWrapperCollection : IEnumerable<SubscriberWrapper>
 //    {

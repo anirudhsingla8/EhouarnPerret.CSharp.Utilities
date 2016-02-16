@@ -26,9 +26,8 @@
 
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
 {
-
     public class EventAggregatorOptions
     {
         public EventAggregatorOptions()

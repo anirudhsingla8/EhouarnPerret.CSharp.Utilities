@@ -33,7 +33,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var abcd = "ABCD".ToCharArray();
+            // var abcd = "ABCD".ToCharArray();
 
             // Program.HeapPermutation(abcd, abcd.Length);
 
@@ -48,37 +48,41 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             undoRedoManager.Undo(2);
             undoRedoManager.Redo();
             undoRedoManager.Redo();
+            undoRedoManager.Undo(2);
+
+            undoRedoManager.Redo();
+            undoRedoManager.Redo();
             undoRedoManager.Redo();
 
             Console.ReadKey();
         }
 
-        private static void HeapPermutation<T>(IList<T> source, Int32 n)
-        {
-            // Console.Write(" n = {0} => ", n);
-
-            if (n == 1)
-            {
-                Console.WriteLine(String.Join(@" ", source));
-            }
-            else
-            {
-                for (var i = 0; i < n; i++)
-                {
-                    Program.HeapPermutation(source, n - 1);
-
-                    var index = ((i % 2) == 0) ? i : 0;
-
-                    Program.Swap(source, i, n - 1);
-                }
-            }
-        }
-
-        private static void Swap<T>(IList<T> source, Int32 index1, Int32 index2)
-        {
-            var tmp = source[index1];
-            source[index1] = source[index2];
-            source[index2] = tmp;
-        }
+//        private static void HeapPermutation<T>(IList<T> source, Int32 n)
+//        {
+//            // Console.Write(" n = {0} => ", n);
+//
+//            if (n == 1)
+//            {
+//                Console.WriteLine(String.Join(@" ", source));
+//            }
+//            else
+//            {
+//                for (var i = 0; i < n; i++)
+//                {
+//                    Program.HeapPermutation(source, n - 1);
+//
+//                    var index = ((i % 2) == 0) ? i : 0;
+//
+//                    Program.Swap(source, i, n - 1);
+//                }
+//            }
+//        }
+//
+//        private static void Swap<T>(IList<T> source, Int32 index1, Int32 index2)
+//        {
+//            var tmp = source[index1];
+//            source[index1] = source[index2];
+//            source[index2] = tmp;
+//        }
     }
 }

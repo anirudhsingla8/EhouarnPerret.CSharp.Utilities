@@ -25,29 +25,20 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms.Design;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
     public class UndoRedoManager
     {
-        public UndoRedoManager()
+        public UndoRedoManager(UInt16 capacity = 512)
         {
-            this.UndoCommands = new Stack<IReversibleCommand>();
-            this.RedoCommands = new Stack<IReversibleCommand>();
+            this.Capacity = capacity;
+            this.UndoCommands = new Stack<IReversibleCommand>(capacity);
+            this.RedoCommands = new Stack<IReversibleCommand>(capacity);
         }
 
-//        private UInt16 _capacity;
-//        public UInt16 Capacity
-//        {
-//            get
-//            {
-//                return this._capacity;
-//            }
-//            set
-//            {
-//                this._capacity = value;
-//            }
-//        }
+        public UInt16 Capacity { get; }
 
         public UInt16 RedoCount => Convert.ToUInt16(this.RedoCommands.Count);
         public UInt16 UndoCount => Convert.ToUInt16(this.UndoCommands.Count);
@@ -55,6 +46,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
         private Stack<IReversibleCommand> UndoCommands { get; }
         private Stack<IReversibleCommand> RedoCommands { get; }
 
+        public void AddExecute(IEnumerable<IReversibleCommand> commands)
+        {
+            foreach (var command in commands)
+            {
+                this.AddExecute(command);
+            }
+        }
         public void AddExecute(IReversibleCommand command)
         {
             command.Execute();
@@ -73,7 +71,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 
         public void Undo(UInt16 levelCount = 1)
         {
-            for (var i = 0; i < levelCount; i++)
+            for (var i = 0; (i < levelCount) && (this.UndoCount > 0); i++)
             {
                 var reversibleCommand = this.UndoCommands.Pop();
 
@@ -84,7 +82,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
         }
         public void Redo(UInt16 levelCount = 1)
         {
-            for (var i = 0; i < levelCount; i++)
+            for (var i = 0; (i < levelCount) && (this.RedoCount > 0); i++)
             {
                 var reversibleCommand = this.RedoCommands.Pop();
 

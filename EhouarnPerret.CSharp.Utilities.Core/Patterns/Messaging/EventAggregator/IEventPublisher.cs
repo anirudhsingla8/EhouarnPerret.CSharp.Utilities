@@ -25,7 +25,7 @@
 // THE SOFTWARE.
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.EventAggregator
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
 {
     public interface IEventPublisher
     {
