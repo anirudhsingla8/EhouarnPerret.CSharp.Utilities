@@ -1,5 +1,5 @@
-//
-// RedBlackTreeNodeColor.cs
+﻿//
+// EnumerableExtensions.Replace.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,16 +23,29 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
+using System;
 using System.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
+namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    // We can replace it someday with... a Boolean
-    // isRed (if not then it is obviously black)
-    public enum RedBlackBinaryTreeNodeColor : byte
+    public static partial class EnumerableExtensions
     {
-        Red = 0x00,
-        Black = 0x01,
+        public static IEnumerable<T> Replace<T>(this IEnumerable<T> source, T oldValue, T newValue, IEqualityComparer<T> comparer = null)
+        {
+            comparer = comparer ?? EqualityComparer<T>.Default;
+
+            foreach (var item in source)
+            {
+                if (comparer.Equals(item, oldValue))
+                {
+                    yield return newValue;
+                }
+                else
+                {
+                    yield return item;
+                }
+            }
+        }
     }
 }
+
