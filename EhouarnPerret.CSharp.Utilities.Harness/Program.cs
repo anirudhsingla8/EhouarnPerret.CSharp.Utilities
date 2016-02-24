@@ -26,6 +26,14 @@
 using System;
 using System.Collections.Generic;
 using EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command;
+using System.Web.Script.Serialization;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.IO;
+using System.Dynamic;
+using System.Configuration;
+using EhouarnPerret.CSharp.Utilities.Core.Linq;
+using System.Xml.Serialization;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -54,7 +62,95 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             undoRedoManager.Redo();
             undoRedoManager.Redo();
 
+            var javaScriptSerializer = new JavaScriptSerializer();
+            var person = new Person() { Age = 10, Name = @"Bobito" };
+            person.Dico = new Dictionary<String, Int32>()
+            { 
+                { "a", 1},
+                { "b", 2},
+                { "c", 3},
+            };
+            var memoryStream = new MemoryStream();
+            var jsonSerializer = new DataContractJsonSerializer(typeof(Person));
+            jsonSerializer.WriteObject(memoryStream, person);
+            memoryStream.Position = 0;
+
+            var streamReader = new StreamReader(memoryStream);
+
+            Console.WriteLine(streamReader.ReadToEnd());
+
+            var d = new XmlSerializer(typeof(Person));
+
+            Console.WriteLine(javaScriptSerializer.Serialize(person));
+
             Console.ReadKey();
+        }
+
+        public class Person
+        {
+            public Byte Age { get; set; }
+            public String Name { get; set; }
+
+            public Dictionary<String, Int32> Dico { get; set;}
+
+        }
+
+        public class Configuration
+        {
+            
+        }
+
+        public class TestModeConfiguration
+        {
+            
+        }
+
+        public class ApplicationConfiguration
+        {
+            public FrequencyInputConfiguration FrequencyInput { get; }
+            public SensorInterfaceConfiguration SensorInterface { get; }
+            public AdcDataConfiguration AdcData { get; }
+            public DigitalInputConfiguration DigitalInput { get; }
+
+        }
+
+        public class FrequencyInputConfiguration
+        {
+            
+        }
+        public class SensorInterfaceConfiguration
+        {
+
+        }
+        public class AdcDataConfiguration
+        {
+
+        }
+        public class DigitalInputConfiguration
+        {
+
+        }
+        public class ReadIdConfiguration
+        {
+        }
+        public class RelayPowerConfiguration
+        {
+        }
+        public class MotorFunctionConfiguration
+        {
+        }
+        public class MotorCurrentConfiguration
+        {
+        }
+        public class ReservedFunctionsConfiguration
+        {
+        }
+        public class EpRomConfiguration
+        {
+        }
+        public class FlashCommandConfiguration
+        {
+            
         }
 
 //        private static void HeapPermutation<T>(IList<T> source, Int32 n)

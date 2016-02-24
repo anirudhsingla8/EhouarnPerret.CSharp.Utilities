@@ -26,12 +26,13 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Web.Script.Serialization;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
-    public static class SerializationHelpers
+    public static class SerializationExtensions
     {
-        public static Byte[] BinarySerialize<T>(T value)
+        public static Byte[] ToBinary<T>(this T value)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -46,8 +47,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
                 return bytes;
             }
         }
-
-        public static T BinaryDeserialize<T>(Byte[] valueBytes)
+        public static T ToValue<T>(this Byte[] source)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -58,6 +58,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
                 return value;
             }
         }
+
+//    
+//        public static String ToXml<T>(this T value)
+//        {
+//            
+//        }
+//        public static String ToJson<T>(this T value)
+//        {
+//            var javaScriptSerializer = new JavaScriptSerializer();
+//            return javaScriptSerializer.Serialize(value);
+//        }
+//        public static T ToValue<T>(this String value)
+//        {
+//        }
     }
 }
-
+    

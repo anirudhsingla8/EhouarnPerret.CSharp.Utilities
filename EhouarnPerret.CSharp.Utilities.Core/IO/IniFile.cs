@@ -150,10 +150,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
         /// Persist this instance to the given path.
         /// </summary>
         /// <param name="path">Path.</param>
-//        public IniFile SaveAs(String path)
-//        {
-//            
-//        }
+        public IniFile SaveAs(String path)
+        {
+            return null;
+        }
 
         /// <summary>
         /// Reload this instance from its physical file.
