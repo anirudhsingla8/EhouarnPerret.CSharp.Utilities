@@ -1,0 +1,89 @@
+//
+// IniFileSection.cs
+//
+// Author:
+//       Ehouarn Perret <ehouarn.perret@outlook.com>
+//
+// Copyright (c) 2016 Ehouarn Perret
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
+using System;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Security.Permissions;
+using System.Collections.Generic;
+
+namespace EhouarnPerret.CSharp.Utilities.Core.IO
+{
+    public class IniFileSection
+    {
+        public IniFileSection(String name)
+        {
+            this.Properties = new Dictionary<String, String>();
+        }
+
+        public IniFileSection(String name, IDictionary<String, String> properties)
+        {
+            this.Name = name;
+            this.Properties = new Dictionary<String, String>(properties);
+        }
+
+        public String this[String propertyKey]
+        {
+            get
+            {
+                return this.Properties[propertyKey];
+            }
+            set
+            {
+                this.Properties[propertyKey] = value;
+            }
+        }
+
+        public String Name { get; }
+        public Dictionary<String, String> Properties { get; }
+
+        public const Char KeyValueDelimiter = '=';
+        public const Char LeftNameDelimiter = '[';
+        public const Char RightNameDelimiter = ']';
+
+        public override String ToString()
+        {
+            var stringBuilder = new StringBuilder();
+
+            stringBuilder.Append(this.LeftNameDelimiter);
+            stringBuilder.Append(this.Name);
+            stringBuilder.Append(this.RightNameDelimiter);
+            stringBuilder.Append(Environment.NewLine);
+
+            foreach (var propertyKey in Properties)
+            {
+                var propertyValue = this.Properties[propertyKey];
+                stringBuilder.Append(propertyKey);
+                stringBuilder.Append(IniFileSection.KeyValueDelimiter);
+                stringBuilder.Append(propertyValue);
+                stringBuilder.Append(Environment.NewLine);
+            }
+
+            return stringBuilder.ToString();
+        }
+    }
+}

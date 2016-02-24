@@ -293,6 +293,8 @@
     <Compile Include="ReferenceTypeExtensions.cs" />
     <Compile Include="Patterns\Design\Command\IReversibleCommand.cs" />
     <Compile Include="Linq\PermutationGenerationScheme.cs" />
+    <Compile Include="IO\IniFile.cs" />
+    <Compile Include="IO\IniFileSection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

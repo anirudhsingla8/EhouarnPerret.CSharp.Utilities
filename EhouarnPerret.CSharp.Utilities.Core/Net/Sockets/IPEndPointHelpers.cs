@@ -31,9 +31,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
 {
     public static class IPEndPointHelpers
     {
+        public const Char IPAddressPortSeparator = ':';
+
         public static IPEndPoint Parse(String ipEndPointString)
         {
-            var tokens = ipEndPointString.Split(':');
+            var tokens = ipEndPointString.Split(IPEndPointHelpers.IPAddressPortSeparator);
 
             if (tokens.Length != 2)
             {
@@ -41,8 +43,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
             }
             else
             {
-                var ipAddress = IPAddress.Parse(tokens.First());
-                var port = UInt16.Parse(tokens.Last());
+                var ipAddress = IPAddress.Parse(tokens[0]);
+                var port = UInt16.Parse(tokens[1]);
 
                 var ipEndPoint = new IPEndPoint(ipAddress, port);
 
