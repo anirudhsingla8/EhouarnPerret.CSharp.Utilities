@@ -28,49 +28,35 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Dynamic;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {
-    /// <summary>
-    /// Ini file options.
-    /// </summary>
-    public class IniFileOptions
-    {
-        public IniFileOptions()
-        {
-            
-        }
-        public IniFileOptions(String fileExtension, String )
-        {
-            
-        }
-
-        public String FileExtension { get; }
-        public String CommentTag { get; }
-        public String KeyValueDelimiter { get; }
-        public String SectionLeftDelimiter { get; }
-        public String SectionRightDelimiter { get; }
-        public String 
-
-        public const String DefaultSectionLeftDelimiter = '[';
-        public const String DefaultSectionRightDelimiter = ']';
-        public const String DefaultKeyValueDelimiter = '=';
-        public const String DefaultFileExtension = ".ini";
-        public const String DefaultCommentTag = ";";
-    }
-
     /// <summary>
     /// A class representing an Ini file.
     /// </summary>
     public class IniFile : IEnumerable<IniFileSection>
     {
         public IniFile(String path)
+            : this(path, IniFileOptions.Default)
         {
-            this.Path = path;
-            this._fileInfo = new FileInfo(path);
         }
 
-        public InitFileOptions Options { get; }
+        public IniFile(String path, IniFileOptions options)
+        {
+            if (!File.Exists(path))
+            {
+                throw new FileNotFoundException();
+            }
+            else
+            {
+                this.Path = path;
+                this._fileInfo = new FileInfo(path);
+                this.Options = ExceptionHelpers.ThrowIfNull(options, nameof(options));
+            }
+        } 
+
+        public IniFileOptions Options { get; }
 
         /// <summary>
         /// Gets the physical creation time.

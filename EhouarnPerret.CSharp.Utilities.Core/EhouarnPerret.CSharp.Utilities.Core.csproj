@@ -295,6 +295,11 @@
     <Compile Include="Linq\PermutationGenerationScheme.cs" />
     <Compile Include="IO\IniFile.cs" />
     <Compile Include="IO\IniFileSection.cs" />
+    <Compile Include="IO\IniFileOptions.cs" />
+    <Compile Include="IO\IniFileAutoSaveMode.cs" />
+    <Compile Include="IReferenceParent.cs" />
+    <Compile Include="Collections\Generic\ParentReferencedCollection.cs" />
+    <Compile Include="Collections\Generic\ParentReferencedKeyedCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -28,6 +28,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
+    // TODO: Leverage optional parameters
     public class KeyedCollection<TKey, TItem> : System.Collections.ObjectModel.KeyedCollection<TKey, TItem>, IKeyedCollection<TKey, TItem>
     {
         public KeyedCollection(Func<TItem, TKey> itemKeySelector)

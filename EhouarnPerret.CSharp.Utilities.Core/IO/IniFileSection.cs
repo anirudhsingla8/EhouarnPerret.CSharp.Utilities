@@ -28,23 +28,42 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Security.Permissions;
 using System.Collections.Generic;
+using System.Security.Permissions;
+using System.Windows.Forms;
+using System.Collections.ObjectModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {
+    public class IniFileSectionCollection : BaseCollection
+    {
+        internal IniFileSectionCollection(IniFile iniFile)
+        {
+            this.File = 
+        }
+
+        protected IniFile File { get; } 
+
+        public void Add(String name)
+        {
+        }
+    }
+
     public class IniFileSection
     {
-        public IniFileSection(String name)
+        internal IniFileSection(IniFileSectionCollection parent, String name)
         {
+            this.File = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
             this.Properties = new Dictionary<String, String>();
         }
 
-        public IniFileSection(String name, IDictionary<String, String> properties)
+        internal IniFileSection(String name, IDictionary<String, String> properties)
         {
             this.Name = name;
             this.Properties = new Dictionary<String, String>(properties);
         }
+
+        protected IniFileSectionCollection File { get; }
 
         public String this[String propertyKey]
         {
@@ -61,24 +80,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
         public String Name { get; }
         public Dictionary<String, String> Properties { get; }
 
-        public const Char KeyValueDelimiter = '=';
-        public const Char LeftNameDelimiter = '[';
-        public const Char RightNameDelimiter = ']';
-
         public override String ToString()
         {
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.Append(this.LeftNameDelimiter);
+            stringBuilder.Append(this.File.Options.SectionLeftDelimiter);
             stringBuilder.Append(this.Name);
-            stringBuilder.Append(this.RightNameDelimiter);
+            stringBuilder.Append(this.File.Options.SectionRightDelimiter);
             stringBuilder.Append(Environment.NewLine);
 
             foreach (var propertyKey in Properties)
             {
                 var propertyValue = this.Properties[propertyKey];
                 stringBuilder.Append(propertyKey);
-                stringBuilder.Append(IniFileSection.KeyValueDelimiter);
+                stringBuilder.Append(this.File.Options.SectionKeyValueSeparator);
                 stringBuilder.Append(propertyValue);
                 stringBuilder.Append(Environment.NewLine);
             }
