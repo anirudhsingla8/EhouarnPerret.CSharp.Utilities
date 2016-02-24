@@ -32,35 +32,53 @@ using System.Collections.Generic;
 using System.Security.Permissions;
 using System.Windows.Forms;
 using System.Collections.ObjectModel;
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {
-    public class IniFileSectionCollection : BaseCollection
+    public class IniFileSectionCollection : ParentReferencedKeyedCollection<String, IniFileSection, IniFile>
     {
         internal IniFileSectionCollection(IniFile iniFile)
-        {
-            this.File = 
-        }
-
-        protected IniFile File { get; } 
-
-        public void Add(String name)
+            : base(iniFile, section => section.Name)
         {
         }
+
+        protected override void InsertItem(Int32 index, IniFileSection item)
+        {
+            base.InsertItem(index, item);
+
+            switch (this.Parent.Options.AutoSaveMode)
+            {
+                case IniFileAutoSaveMode.OnSectionChange:
+                case IniFileAutoSaveMode.OnSectionPropertyChange:
+                    this.Parent.Save();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+//        public IniFileSection Add(String name)
+//        {
+//        }
+//        public IniFileSection Add(String name, IDictionary<String, String> properties)
+//        {
+//        }
     }
 
     public class IniFileSection
     {
         internal IniFileSection(IniFileSectionCollection parent, String name)
         {
-            this.File = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            this.Name = ExceptionHelpers.ThrowIfNullOrEmpty(name, nameof(name));
             this.Properties = new Dictionary<String, String>();
         }
 
-        internal IniFileSection(String name, IDictionary<String, String> properties)
+        internal IniFileSection(IniFileSectionCollection parent, String name, IDictionary<String, String> properties)
+            : this(parent, name)
         {
-            this.Name = name;
-            this.Properties = new Dictionary<String, String>(properties);
+            this.Properties.Add(properties);
         }
 
         protected IniFileSectionCollection File { get; }
@@ -80,25 +98,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
         public String Name { get; }
         public Dictionary<String, String> Properties { get; }
 
-        public override String ToString()
-        {
-            var stringBuilder = new StringBuilder();
-
-            stringBuilder.Append(this.File.Options.SectionLeftDelimiter);
-            stringBuilder.Append(this.Name);
-            stringBuilder.Append(this.File.Options.SectionRightDelimiter);
-            stringBuilder.Append(Environment.NewLine);
-
-            foreach (var propertyKey in Properties)
-            {
-                var propertyValue = this.Properties[propertyKey];
-                stringBuilder.Append(propertyKey);
-                stringBuilder.Append(this.File.Options.SectionKeyValueSeparator);
-                stringBuilder.Append(propertyValue);
-                stringBuilder.Append(Environment.NewLine);
-            }
-
-            return stringBuilder.ToString();
-        }
+//        public override String ToString()
+//        {
+//            var stringBuilder = new StringBuilder();
+//
+//            stringBuilder.Append(this.File.Options.SectionLeftDelimiter);
+//            stringBuilder.Append(this.Name);
+//            stringBuilder.Append(this.File.Options.SectionRightDelimiter);
+//            stringBuilder.Append(Environment.NewLine);
+//
+//            foreach (var propertyKey in Properties)
+//            {
+//                var propertyValue = this.Properties[propertyKey];
+//                stringBuilder.Append(propertyKey);
+//                stringBuilder.Append(this.File.Options.SectionKeyValueSeparator);
+//                stringBuilder.Append(propertyValue);
+//                stringBuilder.Append(Environment.NewLine);
+//            }
+//
+//            return stringBuilder.ToString();
+//        }
     }
 }

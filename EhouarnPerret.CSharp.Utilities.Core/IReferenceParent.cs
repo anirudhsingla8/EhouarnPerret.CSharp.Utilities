@@ -28,6 +28,7 @@ using System;
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public interface IReferenceParent<TParent>
+        where TParent : class
     {
         TParent Parent { get; }
     }

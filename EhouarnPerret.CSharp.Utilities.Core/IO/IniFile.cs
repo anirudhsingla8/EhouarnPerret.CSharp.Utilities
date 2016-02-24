@@ -50,7 +50,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
             }
             else
             {
-                this.Path = path;
                 this._fileInfo = new FileInfo(path);
                 this.Options = ExceptionHelpers.ThrowIfNull(options, nameof(options));
             }
@@ -151,10 +150,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
         /// Persist this instance to the given path.
         /// </summary>
         /// <param name="path">Path.</param>
-        public IniFile SaveAs(String path)
-        {
-            
-        }
+//        public IniFile SaveAs(String path)
+//        {
+//            
+//        }
 
         /// <summary>
         /// Reload this instance from its physical file.

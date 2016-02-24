@@ -31,8 +31,9 @@ using System.Collections.ObjectModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    // TODO: Refactor... make it dry
-    public class ParentReferencedKeyedCollection<TKey, TItem, TParent> : KeyedCollection<TKey, TItem> //, IReferenceParent<TParent> Explicit Impl?
+    // TODO: Refactor it: make it DRY...
+    public class ParentReferencedKeyedCollection<TKey, TItem, TParent> : KeyedCollection<TKey, TItem>, IReferenceParent<TParent>
+        where TParent : class
     {
         public ParentReferencedKeyedCollection(TParent parent, Func<TItem, TKey> itemKeySelector)
             : base(itemKeySelector)
@@ -59,12 +60,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         }
 
         public ParentReferencedKeyedCollection(TParent parent, Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold, IEnumerable<TItem> items)
-            : base(itemKeySelector, comparer, items, dictionaryThreshold)
+            : base(itemKeySelector, comparer, dictionaryThreshold, items)
         {
             this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
-        protected TParent Parent { get; }
+        #region IReferenceParent Implementation
+        public TParent Parent { get; }
+        #endregion
     }
+
 }
 

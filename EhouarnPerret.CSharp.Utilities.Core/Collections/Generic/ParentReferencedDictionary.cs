@@ -1,5 +1,5 @@
 //
-// ParentReferencedCollection.cs
+// ParentReferencedDictionary.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -32,18 +32,38 @@ using System.Collections.ObjectModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public class ParentReferencedCollection<TItem, TParent> : Collection<TItem>, IReferenceParent<TParent>
+    // TODO: Refactor it: make it DRY...
+    public class ParentReferencedDictionary<TKey, TValue, TParent> : Dictionary<TKey, TValue>, IReferenceParent<TParent>
         where TParent : class
-    { 
-        public ParentReferencedCollection(TParent parent)
-            : this(parent, Enumerable.Empty<TItem>())
-        {
-        }
-
-        public ParentReferencedCollection(TParent parent, IEnumerable<TItem> items)
+    {
+        public ParentReferencedDictionary(TParent parent)
+            : base()
         {
             this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
-            this.Add(items);
+        }
+
+        public ParentReferencedDictionary(TParent parent, Int32 capacity)
+            : base(capacity)
+        {
+            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+        }
+
+        public ParentReferencedDictionary(TParent parent, Int32 capacity, IEqualityComparer<TKey> comparer)
+            : base(capacity, comparer)
+        {
+            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+        }
+
+        public ParentReferencedDictionary(TParent parent, IDictionary<TKey, TValue> dictionary)
+            : base(dictionary)
+        {
+            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+        }
+
+        public ParentReferencedDictionary(TParent parent, IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparer)
+            : base(dictionary, comparer)
+        {
+            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         #region IReferenceParent Implementation

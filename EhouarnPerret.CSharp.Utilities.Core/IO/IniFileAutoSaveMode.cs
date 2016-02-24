@@ -32,11 +32,10 @@ using System.Dynamic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {
-
     public enum IniFileAutoSaveMode : byte
     {
         None = 0x00,
-        OnSection = 0x01,
-        OnSectionProperties = 0x02,
+        OnSectionChange = 0x01,
+        OnSectionPropertyChange = 0x02,
     }
 }

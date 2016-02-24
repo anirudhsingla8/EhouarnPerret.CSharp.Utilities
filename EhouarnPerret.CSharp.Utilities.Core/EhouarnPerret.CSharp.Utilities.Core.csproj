@@ -300,6 +300,7 @@
     <Compile Include="IReferenceParent.cs" />
     <Compile Include="Collections\Generic\ParentReferencedCollection.cs" />
     <Compile Include="Collections\Generic\ParentReferencedKeyedCollection.cs" />
+    <Compile Include="Collections\Generic\ParentReferencedDictionary.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
