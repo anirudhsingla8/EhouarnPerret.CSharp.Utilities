@@ -41,38 +41,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             Console.Write(value.ToString());
         }
-    
-        public static void WriteToFile(this String value, String path)
-        {
-            File.WriteAllText(value, path);
-        }
-    
-        public static void WriteToFile(this Byte[] value, String path)
-        {
-            File.WriteAllBytes(value, path);
-        }
-
-        public static void WriteToFile(this IEnumerable<String> source, String path)
-        {
-            File.AppendAllLines(path, source);
-        }
-
-        public static void AppendToFile(this String value, String path)
-        {
-            File.AppendAllText(path, value);
-        }
-
-        public static void AppendToFile(this IEnumerable<String> source, String path)
-        {
-            File.AppendAllLines(path, source);
-        }
-
-        public static void AppendToFile(this Byte[] bytes, String path)
-        {
-            using (var stream = new FileStream(path, FileMode.Append))
-            {
-                stream.Write(bytes, 0, bytes.Length);
-            }
-        }
     }
 }

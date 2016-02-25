@@ -42,27 +42,28 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
     {
         public static void SerializeToBinaryFile<T>(this T value, String path)
         {
-            File.WriteAllBytes(path, value.SerializeToBinary());
+            value.SerializeToBinary().WriteToFile(path);
         }
         public static void SerializeToXmlFile<T>(this T value, String path)
         {
-            File.WriteAllText(value.SerializeToBinary());
+            value.SerializeToXml().WriteToFile(path);
         }
         public static void SerializeToJsonFile<T>(this T value, String path)
         {
-            File.WriteAllText
+            value.SerializeToJson().WriteToFile(path);
         }
 
         public static T DeserializeBinaryFile<T>(this String path)
         {
-            
+            return path.ReadBytesFromFile().DeserializeBinary<T>();
         }
         public static T DeserializeXmlFile<T>(this String path)
         {
-
+            return path.ReadTextFromFile().DeserializeXml<T>();
         }
         public static T DeserializeJsonFile<T>(this String path)
         {
+            return path.ReadTextFromFile().DeserializeJson<T>();
         }
 
         public static Byte[] SerializeToBinary<T>(this T value)

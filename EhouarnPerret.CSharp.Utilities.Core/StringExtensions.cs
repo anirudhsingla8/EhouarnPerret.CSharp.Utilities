@@ -24,19 +24,51 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
-using System.Text;
-using System.Security;
-using System.Numerics;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Security;
+using System.Text;
 
+using System.Text.RegularExpressions;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class StringExtensions
     {
+        public static void AppendToFile(this IEnumerable<String> source, String path)
+        {
+            File.AppendAllLines(path, source);
+        }
+        public static void WriteToFile(this IEnumerable<String> source, String path)
+        {
+            File.WriteAllLines(path, source);
+        }
+
+        public static void WriteToFile(this String value, String path)
+        {
+            File.WriteAllText(value, path);
+        }
+        public static void AppendToFile(this String value, String path)
+        {
+            File.AppendAllText(path, value);
+        }
+
+        public static String ReadTextFromFile(this String path, Encoding encoding)
+        {
+            return File.ReadAllText(path);
+        }
+        public static IEnumerable<String> ReadLinesFromFile(this String path)
+        {
+            return File.ReadAllLines(path);
+        }
+        public static Byte[] ReadBytesFromFile(this String path)
+        {
+            return File.ReadAllBytes(path);
+        }
+
         public static ILookup<Char, Int32> IndexesOf(this String value, params Char[] characters) 
         {
             var dictionary = new Dictionary<Char, IList<Int32>>();

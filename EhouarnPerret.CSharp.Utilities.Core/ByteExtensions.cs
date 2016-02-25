@@ -26,11 +26,24 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ByteExtensions
     {
+        public static void WriteToFile(this Byte[] value, String path)
+        {
+            File.WriteAllBytes(value, path);
+        }
+        public static void AppendToFile(this Byte[] bytes, String path)
+        {
+            using (var stream = new FileStream(path, FileMode.Append))
+            {
+                stream.Write(bytes, 0, bytes.Length);
+            }
+        }
+
         public static Boolean[] GetBits(this Byte value)
         {
             var bitValues = new Boolean[NumberHelpers.ByteByteCount];
