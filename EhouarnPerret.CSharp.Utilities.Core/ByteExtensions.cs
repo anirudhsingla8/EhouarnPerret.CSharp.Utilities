@@ -34,7 +34,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         public static void WriteToFile(this Byte[] value, String path)
         {
-            File.WriteAllBytes(value, path);
+            File.WriteAllBytes(path, value);
         }
         public static void AppendToFile(this Byte[] bytes, String path)
         {

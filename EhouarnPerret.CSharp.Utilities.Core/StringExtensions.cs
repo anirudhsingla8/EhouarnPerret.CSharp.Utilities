@@ -56,14 +56,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             File.AppendAllText(path, value);
         }
 
-        public static String ReadTextFromFile(this String path, Encoding encoding)
+        public static String ReadTextFromFile(this String path)
         {
             return File.ReadAllText(path);
+        }
+        public static String ReadTextFromFile(this String path, Encoding encoding)
+        {
+            return File.ReadAllText(path, encoding);
         }
         public static IEnumerable<String> ReadLinesFromFile(this String path)
         {
             return File.ReadAllLines(path);
         }
+        public static IEnumerable<String> ReadLinesFromFile(this String path, Encoding encoding)
+        {
+            return File.ReadAllLines(path, encoding);
+        }
+
         public static Byte[] ReadBytesFromFile(this String path)
         {
             return File.ReadAllBytes(path);
