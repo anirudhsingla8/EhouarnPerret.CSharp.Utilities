@@ -35,6 +35,7 @@ using System.Configuration;
 using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using System.Xml.Serialization;
 using EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization;
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -42,9 +43,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            // var abcd = "ABCD".ToCharArray();
-            // Program.HeapPermutation(abcd, abcd.Length);
-
             var undoRedoManager = new UndoRedoManager();
 
             undoRedoManager.AddExecute(() => Console.WriteLine(@"Do"), () => Console.WriteLine(@"Undo"));
@@ -62,37 +60,46 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             undoRedoManager.Redo();
             undoRedoManager.Redo();
 
-            var person = new Person() { Age = 10, Name = @"Bobito", Dico = new Dictionary<UInt16, Int32>() };
+            var configuration = new Configuration();
 
-            var test = person.SerializeToJson();
+            var configurationPath = @"Configuration.xml";
 
-            test.WriteLineToConsole();
+            configuration.EcuId = 0x742;
+            configuration.TesterId = 0x743;
+            configuration.TestMode.InitializationFrame = new Byte[] { 0x42, 0x69, 0x78 };
 
-            File.WriteAllText(@"here.xml", test);
+            configuration.SerializeToXmlFile(configurationPath);
 
-            var re = test.DeserializeJson<Person>();
+            var re = configurationPath.DeserializeXmlFile<Configuration>();
 
             Console.ReadKey();
         }
-
-        public class Person
-        {
-            public Byte Age { get; set; }
-            public String Name { get; set; }
-
-            public Dictionary<UInt16, Int32> Dico { get; set;}
-
-        }
-
+       
         public class Configuration
         {
+            public Configuration()
+            {
+                this.TestMode = new TestModeConfiguration();
+                this.Application = new ApplicationConfiguration();
+            }
+
+            public UInt16 TesterId { get; set; } 
+            public UInt16 EcuId { get; set; }
+
             public TestModeConfiguration TestMode { get; }
             public ApplicationConfiguration Application { get; }
         }
 
         public class TestModeConfiguration
         {
-            
+            public TestModeConfiguration()
+            {
+                this.FrequencyInputs = new KeyedCollection<Byte, FrequencyInputConfiguration>(item => item.Id);
+            }
+
+            public Byte[] InitializationFrame { get; set; }
+
+            public KeyedCollection<Byte, FrequencyInputConfiguration> FrequencyInputs { get; }
         }
 
         public class ApplicationConfiguration
@@ -101,13 +108,51 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             public SensorInterfaceConfiguration SensorInterface { get; }
             public AdcDataConfiguration AdcData { get; }
             public DigitalInputConfiguration DigitalInput { get; }
-
         }
 
-        public class FrequencyInputConfiguration
+        public interface ISupportLinearTransformation
+        {
+            LinearTransformation Transformation { get; }
+        }
+
+        public class LoadControlConfiguration
         {
             
         }
+
+        public class LoadConfiguration
+        {
+            public Single DutyCycle { get; set; }
+            public Single Frequency { get; set; }
+            public Single Voltage { get; set; }
+        }
+
+        public struct LinearTransformation
+        {
+            public LinearTransformation(Single a, Single b)
+            {
+                this.A = a;
+                this.B = b;
+            }
+
+            public Single A { get; }
+            public Single B { get; }
+        }
+
+        public class FrequencyInputConfiguration : ISupportLinearTransformation
+        {
+            public FrequencyInputConfiguration(Byte id)
+            {
+                this.Id = id ;   
+                this.Transformation = new LinearTransformation();
+            }
+
+            public Byte Id { get; }
+            public Single Frequency { get; }
+
+            public LinearTransformation Transformation { get; }
+        }
+
         public class SensorInterfaceConfiguration
         {
 

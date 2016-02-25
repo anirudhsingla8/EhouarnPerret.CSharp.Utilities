@@ -80,9 +80,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
                 }
             }
         }
+
+        public class DataContractResolverEx : DataContractResolver
+        {
+            #region DataContractResolver Implementation
+            public override Boolean TryResolveType(Type type, Type declaredType, DataContractResolver knownTypeResolver, out XmlDictionaryString typeName, out XmlDictionaryString typeNamespace)
+            {
+                return knownTypeResolver.TryResolveType(type, declaredType, knownTypeResolver, out typeName, out typeNamespace);
+            }
+            public override Type ResolveName(String typeName, String typeNamespace, Type declaredType, DataContractResolver knownTypeResolver)
+            {
+                return knownTypeResolver.ResolveName(typeName, typeNamespace, declaredType, knownTypeResolver);
+            }
+            #endregion
+            
+        }
+
         public static String SerializeToXml<T>(this T value)
         {
-            var dataContractSerializer = new DataContractSerializer(typeof(T));
+            var rr = new DataContractSerializerSettings();
+            rr.PreserveObjectReferences = true;
+            rr.SerializeReadOnlyTypes = true;
+            rr.DataContractResolver = new DataContractResolverEx();
+            var dataContractSerializer = new DataContractSerializer(typeof(T), rr);
 
             using (var stringWriter = new StringWriter())
             {
@@ -115,7 +135,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         public static String SerializeToJson<T>(this T value)
         {
             var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
-
+           
             using (var memoryStream = new MemoryStream())
             {
                 using(var jsonWriter = JsonReaderWriterFactory.CreateJsonWriter(memoryStream))

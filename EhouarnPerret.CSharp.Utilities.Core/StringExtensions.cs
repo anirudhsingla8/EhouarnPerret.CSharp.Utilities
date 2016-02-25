@@ -49,7 +49,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static void WriteToFile(this String value, String path)
         {
-            File.WriteAllText(value, path);
+            File.WriteAllText(path, value);
         }
         public static void AppendToFile(this String value, String path)
         {
