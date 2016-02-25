@@ -34,6 +34,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         public BinarySerializer()
         {
         }
+
+        #region Serializer Implementation
+        public override Byte[] Serialize<T>(T value)
+        {
+            throw new NotImplementedException();
+        }
+        public override T Deserialize<T>(Byte[] source)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
 

@@ -27,11 +27,22 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
-    public class JSONSerializer
+    public class JsonSerializer : Serializer
     {
-        public JSONSerializer()
+        public JsonSerializer()
         {
         }
+
+        #region Serializer Implementation
+        public override Byte[] Serialize<T>(T value)
+        {
+            throw new NotImplementedException();
+        }
+        public override T Deserialize<T>(Byte[] source)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
 

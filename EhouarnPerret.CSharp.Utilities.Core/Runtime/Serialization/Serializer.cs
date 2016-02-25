@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Threading.Tasks;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
@@ -32,6 +33,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         public Serializer()
         {
         }
+
+        public abstract Byte[] Serialize<T>(T value);
+        public abstract T Deserialize<T>(Byte[] source);
     }
 }
 

@@ -146,7 +146,6 @@
     <Compile Include="Numeric\BigIntegerFraction.cs" />
     <Compile Include="Numeric\IFraction.cs" />
     <Compile Include="Diagnostics\ProcessHelpers.cs" />
-    <Compile Include="Runtime\Serialization\SerializationHelpers.cs" />
     <Compile Include="Reflection\NumericalTypeInformation.cs" />
     <Compile Include="Collections\Generic\OrderedDictionary.cs" />
     <Compile Include="Collections\Generic\IReadOnlyOrderedDictionary.cs" />
@@ -192,7 +191,6 @@
     <Compile Include="Patterns\Design\Multiton\Multiton.cs" />
     <Compile Include="Runtime\Serialization\BinarySerializer.cs" />
     <Compile Include="Runtime\Serialization\XMLSerializer.cs" />
-    <Compile Include="Runtime\Serialization\JSONSerializer.cs" />
     <Compile Include="Runtime\Serialization\Serializer.cs" />
     <Compile Include="Drawing\GraphicsPathExtensions.cs" />
     <Compile Include="Reflection\TypeExtensions.cs" />
@@ -302,6 +300,8 @@
     <Compile Include="Collections\Generic\ParentReferencedCollection.cs" />
     <Compile Include="Collections\Generic\ParentReferencedKeyedCollection.cs" />
     <Compile Include="Collections\Generic\ParentReferencedDictionary.cs" />
+    <Compile Include="Runtime\Serialization\SerializationExtensions.cs" />
+    <Compile Include="Runtime\Serialization\JsonSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

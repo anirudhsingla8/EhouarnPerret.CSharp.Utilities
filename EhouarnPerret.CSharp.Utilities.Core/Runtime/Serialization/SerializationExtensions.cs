@@ -26,13 +26,18 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
     public static class SerializationExtensions
     {
-        public static Byte[] ToBinary<T>(this T value)
+        public static Byte[] SerializeToBinary<T>(this T value)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -47,7 +52,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
                 return bytes;
             }
         }
-        public static T ToValue<T>(this Byte[] source)
+        public static String SerializeToXml<T>(this T value)
+        {
+            using (var stringWriter = new StringWriter())
+            {
+                var xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+
+                xmlSerializer.Serialize(stringWriter, value);
+
+                return stringWriter.ToString();
+            }
+        }
+        public static String SerializeToJson<T>(this T value)
+        {
+            var javaScriptSerializer = new JavaScriptSerializer();
+
+            return javaScriptSerializer.Serialize(value);
+        }
+     
+        public static T DeserializeBinary<T>(this Byte[] source)
         {
             using (var memoryStream = new MemoryStream())
             {
@@ -58,20 +81,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
                 return value;
             }
         }
+        public static T DeserializeXml<T>(this String value)
+        {
+            using (var stringReader = new StringReader(value))
+            {
+                var xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
 
-//    
-//        public static String ToXml<T>(this T value)
-//        {
-//            
-//        }
-//        public static String ToJson<T>(this T value)
-//        {
-//            var javaScriptSerializer = new JavaScriptSerializer();
-//            return javaScriptSerializer.Serialize(value);
-//        }
-//        public static T ToValue<T>(this String value)
-//        {
-//        }
+                return (T)xmlSerializer.Deserialize(stringReader);
+            }
+        }
+        public static T DeserializeJson<T>(this String value)
+        {
+            var javaScriptSerializer = new JavaScriptSerializer();
+
+            return javaScriptSerializer.Deserialize<T>(value);
+        }
     }
 }
     

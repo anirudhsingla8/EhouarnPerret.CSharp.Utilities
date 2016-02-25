@@ -27,9 +27,9 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
-    public class XMLSerializer
+    public class XmlSerializer : BinarySerializer
     {
-        public XMLSerializer()
+        public XmlSerializer()
         {
         }
     }
