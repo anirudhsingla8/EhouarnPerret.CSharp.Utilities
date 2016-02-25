@@ -34,6 +34,7 @@ using System.Dynamic;
 using System.Configuration;
 using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using System.Xml.Serialization;
+using EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -42,7 +43,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         public static void Main(params String[] arguments)
         {
             // var abcd = "ABCD".ToCharArray();
-
             // Program.HeapPermutation(abcd, abcd.Length);
 
             var undoRedoManager = new UndoRedoManager();
@@ -62,26 +62,15 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             undoRedoManager.Redo();
             undoRedoManager.Redo();
 
-            var javaScriptSerializer = new JavaScriptSerializer();
-            var person = new Person() { Age = 10, Name = @"Bobito" };
-            person.Dico = new Dictionary<String, Int32>()
-            { 
-                { "a", 1},
-                { "b", 2},
-                { "c", 3},
-            };
-            var memoryStream = new MemoryStream();
-            var jsonSerializer = new DataContractJsonSerializer(typeof(Person));
-            jsonSerializer.WriteObject(memoryStream, person);
-            memoryStream.Position = 0;
+            var person = new Person() { Age = 10, Name = @"Bobito", Dico = new Dictionary<UInt16, Int32>() };
 
-            var streamReader = new StreamReader(memoryStream);
+            var test = person.SerializeToJson();
 
-            Console.WriteLine(streamReader.ReadToEnd());
+            test.WriteLineToConsole();
 
-            var d = new XmlSerializer(typeof(Person));
+            File.WriteAllText(@"here.xml", test);
 
-            Console.WriteLine(javaScriptSerializer.Serialize(person));
+            var re = test.DeserializeJson<Person>();
 
             Console.ReadKey();
         }
@@ -91,13 +80,14 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             public Byte Age { get; set; }
             public String Name { get; set; }
 
-            public Dictionary<String, Int32> Dico { get; set;}
+            public Dictionary<UInt16, Int32> Dico { get; set;}
 
         }
 
         public class Configuration
         {
-            
+            public TestModeConfiguration TestMode { get; }
+            public ApplicationConfiguration Application { get; }
         }
 
         public class TestModeConfiguration

@@ -26,75 +26,140 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
+
     public static class SerializationExtensions
     {
+        public static void SerializeToBinaryFile<T>(this T value, String path)
+        {
+            File.WriteAllBytes(path, value.SerializeToBinary());
+        }
+        public static void SerializeToXmlFile<T>(this T value, String path)
+        {
+            File.WriteAllText(value.SerializeToBinary());
+        }
+        public static void SerializeToJsonFile<T>(this T value, String path)
+        {
+            File.WriteAllText
+        }
+
+        public static T DeserializeBinaryFile<T>(this String path)
+        {
+            
+        }
+        public static T DeserializeXmlFile<T>(this String path)
+        {
+
+        }
+        public static T DeserializeJsonFile<T>(this String path)
+        {
+        }
+
         public static Byte[] SerializeToBinary<T>(this T value)
         {
+            var dataContractSerializer = new DataContractSerializer(typeof(T));
+
             using (var memoryStream = new MemoryStream())
             {
-                var binaryFormatter = new BinaryFormatter();
+                using (var binaryWriter = new BinaryWriter(memoryStream))
+                {
+                    dataContractSerializer.WriteObject(memoryStream, value);
 
-                binaryFormatter.Serialize(memoryStream, value);
-
-                memoryStream.Position = 0;
-
-                var bytes = memoryStream.ToArray();
-
-                return bytes;
+                    return memoryStream.ToArray();
+                }
             }
         }
         public static String SerializeToXml<T>(this T value)
         {
+            var dataContractSerializer = new DataContractSerializer(typeof(T));
+
             using (var stringWriter = new StringWriter())
             {
-                var xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
+//                var xmlWriterSettings = new XmlWriterSettings();
+//                xmlWriterSettings.Indent = true;
+//                xmlWriterSettings.IndentChars = "\t";
+//                xmlWriterSettings.OmitXmlDeclaration = true;
+//
+//                using (var xmlWriter = XmlTextWriter.Create(stringWriter, xmlWriterSettings))
+//                {
+//                    dataContractSerializer.WriteObject(xmlWriter, value);
+//
+//                    xmlWriter.Flush();
+//
+//                    return stringWriter.ToString();
+//                }
 
-                xmlSerializer.Serialize(stringWriter, value);
+                using (var xmlTextWriter = new XmlTextWriter(stringWriter))
+                {
+                    xmlTextWriter.Formatting = Formatting.Indented;
+                    xmlTextWriter.IndentChar = '\t';
+                    xmlTextWriter.Indentation = 1;
 
-                return stringWriter.ToString();
+                    dataContractSerializer.WriteObject(xmlTextWriter, value);
+
+                    return stringWriter.ToString();
+                }
             }
         }
         public static String SerializeToJson<T>(this T value)
         {
-            var javaScriptSerializer = new JavaScriptSerializer();
+            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
 
-            return javaScriptSerializer.Serialize(value);
-        }
-     
-        public static T DeserializeBinary<T>(this Byte[] source)
-        {
             using (var memoryStream = new MemoryStream())
             {
-                var binaryFormatter = new BinaryFormatter();
+                using(var jsonWriter = JsonReaderWriterFactory.CreateJsonWriter(memoryStream))
+                {
+                    dataContractJsonSerializer.WriteObject(jsonWriter, value);
 
-                var value = (T)binaryFormatter.Deserialize(memoryStream);
+                    jsonWriter.Flush();
 
-                return value;
+                    return Encoding.Default.GetString(memoryStream.ToArray());
+                }
+            }
+        }
+
+        public static T DeserializeBinary<T>(this Byte[] source)
+        {
+            var dataContractSerializer = new DataContractSerializer(typeof(T));
+
+            using (var memoryStream = new MemoryStream(source))
+            {
+                using (var binaryReader = new BinaryReader(memoryStream))
+                {
+                    return (T)dataContractSerializer.ReadObject(memoryStream);
+                }
             }
         }
         public static T DeserializeXml<T>(this String value)
         {
+            var dataContractSerializer = new DataContractSerializer(typeof(T));
+
             using (var stringReader = new StringReader(value))
             {
-                var xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-
-                return (T)xmlSerializer.Deserialize(stringReader);
+                using (var xmlTextReader = new XmlTextReader(stringReader))
+                {
+                     return (T)dataContractSerializer.ReadObject(xmlTextReader);
+                }
             }
         }
         public static T DeserializeJson<T>(this String value)
         {
-            var javaScriptSerializer = new JavaScriptSerializer();
+            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
 
-            return javaScriptSerializer.Deserialize<T>(value);
+            using (var memoryStream = new MemoryStream(Encoding.Default.GetBytes(value)))
+            {
+               return (T)dataContractJsonSerializer.ReadObject(memoryStream);
+            }
         }
     }
 }

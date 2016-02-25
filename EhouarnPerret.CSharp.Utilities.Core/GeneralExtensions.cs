@@ -25,23 +25,13 @@
 // THE SOFTWARE.
 
 using System;
+using System.IO;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class GeneralExtensions
     {
-        public static Boolean IsNull<T>(this T value)
-            where T : class
-        {
-            return value == null;
-        }
-
-        public static Boolean IsNotNull<T>(this T value)
-            where T : class
-        {
-            return value != null;
-        }
-
         public static void WriteLineToConsole<T>(this T value)
         {
             Console.WriteLine(value.ToString());
@@ -50,6 +40,39 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public static void WriteToConsole<T>(this T value)
         {
             Console.Write(value.ToString());
+        }
+    
+        public static void WriteToFile(this String value, String path)
+        {
+            File.WriteAllText(value, path);
+        }
+    
+        public static void WriteToFile(this Byte[] value, String path)
+        {
+            File.WriteAllBytes(value, path);
+        }
+
+        public static void WriteToFile(this IEnumerable<String> source, String path)
+        {
+            File.AppendAllLines(path, source);
+        }
+
+        public static void AppendToFile(this String value, String path)
+        {
+            File.AppendAllText(path, value);
+        }
+
+        public static void AppendToFile(this IEnumerable<String> source, String path)
+        {
+            File.AppendAllLines(path, source);
+        }
+
+        public static void AppendToFile(this Byte[] bytes, String path)
+        {
+            using (var stream = new FileStream(path, FileMode.Append))
+            {
+                stream.Write(bytes, 0, bytes.Length);
+            }
         }
     }
 }

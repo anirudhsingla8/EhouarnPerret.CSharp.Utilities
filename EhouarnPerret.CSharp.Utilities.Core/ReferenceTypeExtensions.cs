@@ -35,6 +35,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return ExceptionHelpers.ThrowIfNull(value, name);
         }
+
+        public static Boolean IsNull<T>(this T value)
+            where T : class
+        {
+            return value == null;
+        }
+
+        public static Boolean IsNotNull<T>(this T value)
+            where T : class
+        {
+            return value != null;
+        }
+
     }
 }
 
