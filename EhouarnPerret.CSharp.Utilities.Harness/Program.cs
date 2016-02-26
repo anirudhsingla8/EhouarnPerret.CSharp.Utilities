@@ -40,6 +40,9 @@ using EhouarnPerret.CSharp.Utilities.Core;
 using System.Xml.Schema;
 using System.Security.Cryptography.X509Certificates;
 using System.Net;
+using System.Reflection;
+using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -47,88 +50,260 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var undoRedoManager = new UndoRedoManager();
+//            var undoRedoManager = new UndoRedoManager();
+//
+//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do"), () => Console.WriteLine(@"Undo"));
+//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do1"), () => Console.WriteLine(@"Undo1"));
+//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do2"), () => Console.WriteLine(@"Undo2"));
+//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do3"), () => Console.WriteLine(@"Undo3"));
+//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do4"), () => Console.WriteLine(@"Undo4"));
+//
+//            undoRedoManager.Undo(2);
+//            undoRedoManager.Redo();
+//            undoRedoManager.Redo();
+//            undoRedoManager.Undo(2);
+//
+//            undoRedoManager.Redo();
+//            undoRedoManager.Redo();
+//            undoRedoManager.Redo();
 
-            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do"), () => Console.WriteLine(@"Undo"));
-            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do1"), () => Console.WriteLine(@"Undo1"));
-            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do2"), () => Console.WriteLine(@"Undo2"));
-            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do3"), () => Console.WriteLine(@"Undo3"));
-            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do4"), () => Console.WriteLine(@"Undo4"));
-
-            undoRedoManager.Undo(2);
-            undoRedoManager.Redo();
-            undoRedoManager.Redo();
-            undoRedoManager.Undo(2);
-
-            undoRedoManager.Redo();
-            undoRedoManager.Redo();
-            undoRedoManager.Redo();
+            var path = @"Configuration.xml";
 
             var configuration = new Configuration();
 
-            var configurationPath = @"Configuration.xml";
+            configuration.TestMode.SensorInterfaces.Add(new SingleStateMessageBasedFunctionConfiguration(42, "Michelle"));
 
-            var keyedCollection = new KeyedCollection<Byte, String>(str => (Byte)str.Length);
+            configuration.SerializeToXmlFile(path);
 
+            path.ReadTextFromFile().WriteLineToConsole();
 
-            keyedCollection.SerializeToXmlFile(configurationPath);
-
-            configurationPath.ReadTextFromFile().WriteLineToConsole();
-
-            var re = configurationPath.DeserializeXmlFile<Configuration>();
+            var restoredConfiguration = path.DeserializeXmlFile<Configuration>();
 
             Console.ReadKey();
         }
 
-//        public struct QuiSertAQueDalle
-//        {
-//            public QuiSertAQueDalle(UInt64 ha)
-//            {
-//                this.Pew = ha;
-//                this.MyChaine = String.Empty;
-//            }
-//
-//            public String MyChaine { get; set; }
-//            public UInt64 Pew { get; }
-//        }
-//
-//        public class Configuration
-//        {
-//            public Configuration()
-//            {
-//                this.TestMode = new TestModeConfiguration();
-//            }
-//
-//            public UInt16 TesterId { get; set; } 
-//            public UInt16 EcuId { get; set; }
-//            public TestModeConfiguration TestMode { get; set; }
-//            // public ApplicationConfiguration Application { get; set; }
-//        }
-//
-//        public class TestModeConfiguration
-//        {
-//            public TestModeConfiguration()
-//            {
-//                this.FrequencyInputs = new Dictionary<Byte, FrequencyInputConfiguration>();
-//            }
-//
-//            public Byte[] InitializationFrame { get; set; }
-//            public Dictionary<Byte, QuiSertAQueDalle> FrequencyInputs { get; set; }
-//        }
-//
-//        public class ApplicationConfiguration
-//        {
-//            public FrequencyInputConfiguration FrequencyInput { get; }
-//            public SensorInterfaceConfiguration SensorInterface { get; }
-//            public AdcDataConfiguration AdcData { get; }
-//            public DigitalInputConfiguration DigitalInput { get; }
-//        }
-//
-//        public interface ISupportLinearTransformation
-//        {
-//            LinearTransformation Transformation { get; }
-//        }
-//
+
+        public class IdentifiableKeyedCollection<TItem> : System.Collections.ObjectModel.KeyedCollection<Byte, TItem>
+            where TItem : IIdentifiable
+        {
+            public IdentifiableKeyedCollection()
+            {
+            }
+
+            public IdentifiableKeyedCollection(IEnumerable<TItem> items)
+            {
+                foreach (var item in items) 
+                {
+                    this.Add(item);
+                }
+            }
+
+            protected override Byte GetKeyForItem(TItem item)
+            {
+                return item.Id;
+            }
+        }
+
+        [DataContract]
+        public class Configuration
+        {
+            public Configuration()
+            {
+                this.TestMode = new TestModeConfiguration();
+            }
+
+            [DataMember]
+            public UInt32 TesterId { get; set; } 
+
+            [DataMember]
+            public UInt32 EcuId { get; set; }
+
+            [DataMember]
+            public TestModeConfiguration TestMode { get; private set; }
+        }
+
+        [DataContract]
+        public class TestModeConfiguration
+        {
+            public TestModeConfiguration()
+            {
+                this.SensorInterfaces = new IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration>();
+            }
+
+            [DataMember]
+            public ReadOnlyCollection<Byte> InitializationFrame { get; set; }
+        
+            [DataMember]
+            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> SensorInterfaces { get; private set; }
+
+            [DataMember]
+            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> DigitalInputs { get; private set; }
+
+            [DataMember]
+            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> FrequencyInputs { get; private set; }
+
+            [DataMember]
+            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> AdcData { get; private set; }
+
+              
+        }
+
+        public interface INamable
+        {
+            String Name { get; }
+        }
+
+        public interface IIdentifiable
+        {
+            Byte Id { get; }
+        }
+
+        public interface IFunctionConfiguration : IIdentifiable, INamable
+        {
+        }
+
+        [DataContract]
+        public struct LinearTransformation
+        {
+            public LinearTransformation(Single a, Single b)
+            {
+                if ((a == 0.0f))
+                {
+                    throw new ArgumentOutOfRangeException(nameof(a));
+                }
+                else
+                {
+                    this.A = a;
+                    this.B = b;
+                }
+            }
+
+            [DataMember]
+            public Single A { get; private set; }
+
+            [DataMember]
+            public Single B { get; private set; }
+
+            public static LinearTransformation Constant { get; } = new LinearTransformation(1.0f, 0.0f);
+        }
+
+        public interface ISupportLinearTransformation
+        {
+            LinearTransformation Transformation { get; }
+        }
+
+        public interface ISingleStateMessageBasedFunctionConfiguration : IFunctionConfiguration, ISupportLinearTransformation
+        {
+            Byte[] Activation { get; }
+        }
+
+        public interface IDoubleStateMessageBasedFunctionConfiguration : ISingleStateMessageBasedFunctionConfiguration
+        {
+            Byte[] Deactivation { get; }
+        }
+
+        [DataContract]
+        public abstract class FunctionConfiguration : IFunctionConfiguration
+        {
+            protected FunctionConfiguration()
+            {
+            }
+
+            protected FunctionConfiguration(Byte id, String name)
+            {
+                this.Id = id;
+                this.Name = name;
+            }
+
+            #region IIdentifiable Implementation
+            [DataMember]
+            public Byte Id { get; private set; }
+            #endregion
+
+            #region INamable Implementation
+            [DataMember]
+            public String Name { get; private set; }
+            #endregion
+        }
+
+        [DataContract]
+        public class SingleStateMessageBasedFunctionConfiguration : FunctionConfiguration, ISingleStateMessageBasedFunctionConfiguration
+        {
+            public SingleStateMessageBasedFunctionConfiguration()
+            {
+            }
+
+            public SingleStateMessageBasedFunctionConfiguration(Byte id, String name)
+                : base(id, name)
+            {
+                this.Transformation = LinearTransformation.Constant;
+            }
+
+            public SingleStateMessageBasedFunctionConfiguration(Byte id, String name, LinearTransformation transformation)
+                : base(id, name)
+            {
+                this.Transformation = transformation;
+            }
+
+            public SingleStateMessageBasedFunctionConfiguration(Byte id, String name, Single transformationA = 1, Single transformationB = 0)
+                : base(id, name)
+            {
+                this.Transformation = new LinearTransformation(transformationA, transformationB);
+            }
+
+            #region ISingleStateMessageBasedFunctionConfiguration Implementation
+            [DataMember]
+            public Byte[] Activation { get; private set; }
+            #endregion
+
+            #region ISupportLinearTransformation Implementation
+            [DataMember]
+            public LinearTransformation Transformation { get; private set; }
+            #endregion
+        }
+
+        [DataContract]
+        public class DoubleStateMessageBasedFunctionConfiguration : SingleStateMessageBasedFunctionConfiguration, IDoubleStateMessageBasedFunctionConfiguration
+        {
+            public DoubleStateMessageBasedFunctionConfiguration()
+            {
+            }
+
+            public DoubleStateMessageBasedFunctionConfiguration(Byte id, String name)
+                : base(id, name)
+            {
+            }
+
+            public DoubleStateMessageBasedFunctionConfiguration(Byte id, String name, LinearTransformation transformation)
+                : base(id, name, transformation)
+            {
+            }
+
+            #region IDoubleStateMessageBasedFunctionConfiguration Implementation
+            [DataMember]
+            public Byte[] Deactivation { get; private set; }
+            #endregion
+        }
+
+        [DataContract]
+        public class ApplicationConfiguration
+        {
+     
+        }
+
+        public enum BusKind : byte
+        {
+            Can = 0x00,
+            Kline = 0x01,
+        }
+
+        public enum SensorKind : byte
+        {
+            Analog = 0x00,
+            Digital = 0x01,
+        }
+
+
 //        public class LoadControlConfiguration
 //        {
 //            

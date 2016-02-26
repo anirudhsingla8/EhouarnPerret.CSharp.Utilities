@@ -43,19 +43,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
     public static class SerializationExtensions
     {
         public static void SerializeToXmlFile<T>(this T value, String path)
+            where T : new()
         {
             value.SerializeToXml().WriteToFile(path);
         }
         public static void SerializeToJsonFile<T>(this T value, String path)
+            where T : new()
         {
             value.SerializeToJson().WriteToFile(path);
         }
 
         public static T DeserializeXmlFile<T>(this String path)
+            where T : new()
         {
             return path.ReadTextFromFile().DeserializeXml<T>();
         }
         public static T DeserializeJsonFile<T>(this String path)
+            where T : new()
         {
             return path.ReadTextFromFile().DeserializeJson<T>();
         }
@@ -74,6 +78,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         };
 
         public static String SerializeToXml<T>(this T value)
+            where T : new()
         {
             var dataContractSerializer = new DataContractSerializer(typeof(T), SerializationExtensions.XmlSerializerSettings);
 
@@ -106,6 +111,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             }
         }
         public static String SerializeToJson<T>(this T value)
+            where T : new()
         {
             var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), SerializationExtensions.JsonSerializerSettings);
            
@@ -123,6 +129,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         }
 
         public static T DeserializeXml<T>(this String value)
+            where T : new()
         {
             var dataContractSerializer = new DataContractSerializer(typeof(T), SerializationExtensions.XmlSerializerSettings);
 
@@ -135,6 +142,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             }
         }
         public static T DeserializeJson<T>(this String value)
+            where T : new()
         {
             var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), SerializationExtensions.JsonSerializerSettings);
 
