@@ -25,24 +25,26 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command;
-using System.Web.Script.Serialization;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.IO;
-using System.Dynamic;
+using System.Collections.ObjectModel;
 using System.Configuration;
-using EhouarnPerret.CSharp.Utilities.Core.Linq;
-using System.Xml.Serialization;
-using EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization;
-using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
-using EhouarnPerret.CSharp.Utilities.Core;
-using System.Xml.Schema;
-using System.Security.Cryptography.X509Certificates;
+using System.Dynamic;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
-using System.Collections.ObjectModel;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading;
+using System.Web.Script.Serialization;
+using System.Xml.Schema;
+using System.Xml.Serialization;
+using EhouarnPerret.CSharp.Utilities.Core;
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
+using EhouarnPerret.CSharp.Utilities.Core.Linq;
+using EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command;
+using EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -71,7 +73,41 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
             var configuration = new Configuration();
 
-            configuration.TestMode.SensorInterfaces.Add(new SingleStateMessageBasedFunctionConfiguration(42, "Michelle"));
+            for (Byte i = 0; i < 2; i++)
+            {
+                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(i, @"F" + i);
+                configuration.TestMode.FrequencyInputs.Add(item);
+            }
+
+            for (Byte i = 0; i < 6; i++)
+            {
+                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(i, i.ToString(@"X2"));
+                configuration.TestMode.SensorInterfaces.Add(item);
+            }
+
+            for (Byte i = 0; i < 16; i++)
+            {
+                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(i, @"S" + i);
+                configuration.TestMode.AdcData.Add(item);
+            }
+
+            for (Byte i = 0; i < 2; i++)
+            {
+                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(i, @"D" + i);
+                configuration.TestMode.DigitalInputs.Add(item);
+            }
+
+            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(0, @"Software Id"));
+            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(1, @"Hardware Id"));
+            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(2, @"Boot Id"));
+            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(3, @"Calibration Id"));
+            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(4, @"TMSW Id"));
+
+            for (Byte i = 0; i < 3; i++)
+            {
+                // configuration.TestMode.RelayPowers.Add(new DoubleStateMessageBasedFunctionConfiguration(i, ))
+            }
+
 
             configuration.SerializeToXmlFile(path);
 
@@ -81,7 +117,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
             Console.ReadKey();
         }
-
 
         public class IdentifiableKeyedCollection<TItem> : System.Collections.ObjectModel.KeyedCollection<Byte, TItem>
             where TItem : IIdentifiable
@@ -113,6 +148,12 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             }
 
             [DataMember]
+            public DateTime Creation { get; private set; }
+
+            [DataMember]
+            public DateTime LastModification { get; private set; }
+
+            [DataMember]
             public UInt32 TesterId { get; set; } 
 
             [DataMember]
@@ -127,25 +168,47 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             public TestModeConfiguration()
             {
-                this.SensorInterfaces = new IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration>();
+                this.SensorInterfaces = new IdentifiableKeyedCollection<TransformableSingleStateMessageBasedFunctionConfiguration>();
+                this.DigitalInputs = new IdentifiableKeyedCollection<TransformableSingleStateMessageBasedFunctionConfiguration>();
+                this.FrequencyInputs = new IdentifiableKeyedCollection<TransformableSingleStateMessageBasedFunctionConfiguration>();
+                this.AdcData = new IdentifiableKeyedCollection<TransformableSingleStateMessageBasedFunctionConfiguration>();
+                this.ReadIds = new IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration>();
+
+                this.RelayPowers = new IdentifiableKeyedCollection<DoubleStateMessageBasedFunctionConfiguration>();
+                this.Motor = new IdentifiableKeyedCollection<DoubleStateMessageBasedFunctionConfiguration>();
+                this.MotorCurrent = new IdentifiableKeyedCollection<TransformableDoubleStateMessageBasedFunctionConfiguration>();
+                this.Reserved = new IdentifiableKeyedCollection<DoubleStateMessageBasedFunctionConfiguration>();
             }
 
             [DataMember]
             public ReadOnlyCollection<Byte> InitializationFrame { get; set; }
         
             [DataMember]
-            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> SensorInterfaces { get; private set; }
+            public IdentifiableKeyedCollection<TransformableSingleStateMessageBasedFunctionConfiguration> SensorInterfaces { get; private set; }
 
             [DataMember]
-            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> DigitalInputs { get; private set; }
+            public IdentifiableKeyedCollection<TransformableSingleStateMessageBasedFunctionConfiguration> DigitalInputs { get; private set; }
 
             [DataMember]
-            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> FrequencyInputs { get; private set; }
+            public IdentifiableKeyedCollection<TransformableSingleStateMessageBasedFunctionConfiguration> FrequencyInputs { get; private set; }
 
             [DataMember]
-            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> AdcData { get; private set; }
+            public IdentifiableKeyedCollection<TransformableSingleStateMessageBasedFunctionConfiguration> AdcData { get; private set; }
+        
+            [DataMember]
+            public IdentifiableKeyedCollection<SingleStateMessageBasedFunctionConfiguration> ReadIds { get; private set; }
+        
+            [DataMember]
+            public IdentifiableKeyedCollection<DoubleStateMessageBasedFunctionConfiguration> RelayPowers { get; private set; }
 
-              
+            [DataMember]
+            public IdentifiableKeyedCollection<DoubleStateMessageBasedFunctionConfiguration> Motor { get; private set; }
+         
+            [DataMember]
+            public IdentifiableKeyedCollection<TransformableDoubleStateMessageBasedFunctionConfiguration> MotorCurrent { get; private set; }
+
+            [DataMember]
+            public IdentifiableKeyedCollection<DoubleStateMessageBasedFunctionConfiguration> Reserved { get; private set; }
         }
 
         public interface INamable
@@ -158,12 +221,50 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             Byte Id { get; }
         }
 
-        public interface IFunctionConfiguration : IIdentifiable, INamable
+        public interface INamableIdentifiable : IIdentifiable, INamable
         {
         }
 
+        public abstract class NamableIdentifiable : INamableIdentifiable
+        {
+            #region INamable Implementation
+            public string Name { get; }
+            #endregion
+            #region IIdentifiable implementation
+            public byte Id
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+            #endregion
+            
+        }
+
+        public interface ISupportLinearTransformation
+        {
+            LinearTransformation Transformation { get; }
+        }
+
+        public interface ISingleStateMessageBasedFunctionConfiguration : INamableIdentifiable
+        {
+            ReadOnlyCollection<Byte> Activation { get; set; }
+        }
+
+        public interface IDoubleStateMessageBasedFunctionConfiguration : ISingleStateMessageBasedFunctionConfiguration
+        {
+            ReadOnlyCollection<Byte> Deactivation { get; set; }
+        }
+
+        public interface ILinearTransformation
+        {
+            Single A { get; set; }
+            Single B { get; set; }
+        }
+
         [DataContract]
-        public struct LinearTransformation
+        public struct LinearTransformation : ILinearTransformation
         {
             public LinearTransformation(Single a, Single b)
             {
@@ -179,31 +280,16 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             }
 
             [DataMember]
-            public Single A { get; private set; }
+            public Single A { get; set; }
 
             [DataMember]
-            public Single B { get; private set; }
+            public Single B { get; set; }
 
             public static LinearTransformation Constant { get; } = new LinearTransformation(1.0f, 0.0f);
         }
 
-        public interface ISupportLinearTransformation
-        {
-            LinearTransformation Transformation { get; }
-        }
-
-        public interface ISingleStateMessageBasedFunctionConfiguration : IFunctionConfiguration, ISupportLinearTransformation
-        {
-            Byte[] Activation { get; }
-        }
-
-        public interface IDoubleStateMessageBasedFunctionConfiguration : ISingleStateMessageBasedFunctionConfiguration
-        {
-            Byte[] Deactivation { get; }
-        }
-
         [DataContract]
-        public abstract class FunctionConfiguration : IFunctionConfiguration
+        public abstract class FunctionConfiguration : INamableIdentifiable
         {
             protected FunctionConfiguration()
             {
@@ -227,7 +313,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         }
 
         [DataContract]
-        public class SingleStateMessageBasedFunctionConfiguration : FunctionConfiguration, ISingleStateMessageBasedFunctionConfiguration
+        public class SingleStateMessageBasedFunctionConfiguration : TransformableFunctionConfiguration, ISingleStateMessageBasedFunctionConfiguration
         {
             public SingleStateMessageBasedFunctionConfiguration()
             {
@@ -236,29 +322,17 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             public SingleStateMessageBasedFunctionConfiguration(Byte id, String name)
                 : base(id, name)
             {
-                this.Transformation = LinearTransformation.Constant;
             }
 
-            public SingleStateMessageBasedFunctionConfiguration(Byte id, String name, LinearTransformation transformation)
+            public SingleStateMessageBasedFunctionConfiguration(Byte id, String name, IEnumerable<Byte> activation)
                 : base(id, name)
             {
-                this.Transformation = transformation;
-            }
-
-            public SingleStateMessageBasedFunctionConfiguration(Byte id, String name, Single transformationA = 1, Single transformationB = 0)
-                : base(id, name)
-            {
-                this.Transformation = new LinearTransformation(transformationA, transformationB);
+                this.Activation = new ReadOnlyCollection<Byte>(activation.ToList());
             }
 
             #region ISingleStateMessageBasedFunctionConfiguration Implementation
             [DataMember]
-            public Byte[] Activation { get; private set; }
-            #endregion
-
-            #region ISupportLinearTransformation Implementation
-            [DataMember]
-            public LinearTransformation Transformation { get; private set; }
+            public ReadOnlyCollection<Byte> Activation { get; set; }
             #endregion
         }
 
@@ -274,14 +348,91 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             {
             }
 
-            public DoubleStateMessageBasedFunctionConfiguration(Byte id, String name, LinearTransformation transformation)
-                : base(id, name, transformation)
+            public DoubleStateMessageBasedFunctionConfiguration(Byte id, String name, IEnumerable<Byte> activation, IEnumerable<Byte> deactivation)
+                : base(id, name, activation)
             {
+                this.Deactivation = new ReadOnlyCollection<Byte>(deactivation.ToList());
             }
 
             #region IDoubleStateMessageBasedFunctionConfiguration Implementation
             [DataMember]
-            public Byte[] Deactivation { get; private set; }
+            public ReadOnlyCollection<Byte> Deactivation { get; set; }
+            #endregion
+        }
+
+        [DataContract]
+        public abstract class TransformableFunctionConfiguration : FunctionConfiguration, ISupportLinearTransformation
+        {
+            protected TransformableFunctionConfiguration()
+            {
+            }
+
+            public TransformableFunctionConfiguration(Byte id, String name, LinearTransformation transformation)
+                : base(id, name)
+            {
+                this.Transformation = transformation;
+            }
+
+            public TransformableFunctionConfiguration(Byte id, String name, Single transformationA = 1, Single transformationB = 0)
+                : this(id, name, new LinearTransformation(transformationA, transformationB))
+            {
+            }
+
+            #region ISupportLinearTransformation Implementation
+            [DataMember]
+            public LinearTransformation Transformation { get; set; }
+            #endregion
+        }
+
+        [DataContract]
+        public class TransformableSingleStateMessageBasedFunctionConfiguration : TransformableFunctionConfiguration, ISingleStateMessageBasedFunctionConfiguration
+        {
+            public TransformableSingleStateMessageBasedFunctionConfiguration()
+            {
+            }
+
+            public TransformableSingleStateMessageBasedFunctionConfiguration(Byte id, String name, Single transformationA = 1, Single transformationB = 0, ReadOnlyCollection<Byte> activation = null)
+                : base(id, name, transformationA, transformationB)
+            {
+                this.Activation = activation;
+            }
+
+            public TransformableSingleStateMessageBasedFunctionConfiguration(Byte id, String name, LinearTransformation transformation, ReadOnlyCollection<Byte> activation = null)
+                : base(id, name, transformation)
+            {
+                this.Activation = activation;
+            }
+
+          
+
+            #region ISingleStateMessageBasedFunctionConfiguration Implementation
+            [DataMember]
+            public ReadOnlyCollection<Byte> Activation { get; set; }
+            #endregion
+        }
+
+        [DataContract]
+        public class TransformableDoubleStateMessageBasedFunctionConfiguration : TransformableSingleStateMessageBasedFunctionConfiguration, IDoubleStateMessageBasedFunctionConfiguration
+        {
+            public TransformableDoubleStateMessageBasedFunctionConfiguration()
+            {
+            }
+
+            public TransformableDoubleStateMessageBasedFunctionConfiguration(Byte id, String name, LinearTransformation transformation, ReadOnlyCollection<Byte> activation = null, ReadOnlyCollection<Byte> deactivation = null)
+                : base(id, name, transformation, activation)
+            {
+                this.Deactivation = deactivation;
+            }
+
+            public TransformableDoubleStateMessageBasedFunctionConfiguration(Byte id, String name, Single transformationA = 1, Single transformationB = 0,  ReadOnlyCollection<Byte> activation = null, ReadOnlyCollection<Byte> deactivation = null)
+                : base(id, name, transformationA, transformationB, activation)
+            {
+                this.Deactivation = deactivation;
+            }
+
+            #region IDoubleStateMessageBasedFunctionConfiguration Implementation
+            [DataMember]
+            public ReadOnlyCollection<Byte> Deactivation { get; set; }
             #endregion
         }
 
@@ -303,6 +454,33 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             Digital = 0x01,
         }
 
+        public interface IDescriptable
+        {
+            String Description { get; set; }
+        }
+
+        public class ErrorCode : INamableIdentifiable
+        {
+            #region IIdentifiable Implementation
+            public Byte Id
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+            #endregion
+
+            #region INamable Implementation
+            public string Name
+            {
+                get
+                {
+                    throw new NotImplementedException();
+                }
+            }
+            #endregion
+        }
 
 //        public class LoadControlConfiguration
 //        {
