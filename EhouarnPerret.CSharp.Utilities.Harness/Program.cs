@@ -36,6 +36,10 @@ using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using System.Xml.Serialization;
 using EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
+using EhouarnPerret.CSharp.Utilities.Core;
+using System.Xml.Schema;
+using System.Security.Cryptography.X509Certificates;
+using System.Net;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -64,129 +68,139 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
             var configurationPath = @"Configuration.xml";
 
-            configuration.EcuId = 0x742;
-            configuration.TesterId = 0x743;
-            configuration.TestMode.InitializationFrame = new Byte[] { 0x42, 0x69, 0x78 };
+            var keyedCollection = new KeyedCollection<Byte, String>(str => (Byte)str.Length);
 
-            configuration.SerializeToXmlFile(configurationPath);
+
+            keyedCollection.SerializeToXmlFile(configurationPath);
+
+            configurationPath.ReadTextFromFile().WriteLineToConsole();
 
             var re = configurationPath.DeserializeXmlFile<Configuration>();
 
             Console.ReadKey();
         }
-       
-        public class Configuration
-        {
-            public Configuration()
-            {
-                this.TestMode = new TestModeConfiguration();
-                this.Application = new ApplicationConfiguration();
-            }
 
-            public UInt16 TesterId { get; set; } 
-            public UInt16 EcuId { get; set; }
-
-            public TestModeConfiguration TestMode { get; }
-            public ApplicationConfiguration Application { get; }
-        }
-
-        public class TestModeConfiguration
-        {
-            public TestModeConfiguration()
-            {
-                this.FrequencyInputs = new KeyedCollection<Byte, FrequencyInputConfiguration>(item => item.Id);
-            }
-
-            public Byte[] InitializationFrame { get; set; }
-
-            public KeyedCollection<Byte, FrequencyInputConfiguration> FrequencyInputs { get; }
-        }
-
-        public class ApplicationConfiguration
-        {
-            public FrequencyInputConfiguration FrequencyInput { get; }
-            public SensorInterfaceConfiguration SensorInterface { get; }
-            public AdcDataConfiguration AdcData { get; }
-            public DigitalInputConfiguration DigitalInput { get; }
-        }
-
-        public interface ISupportLinearTransformation
-        {
-            LinearTransformation Transformation { get; }
-        }
-
-        public class LoadControlConfiguration
-        {
-            
-        }
-
-        public class LoadConfiguration
-        {
-            public Single DutyCycle { get; set; }
-            public Single Frequency { get; set; }
-            public Single Voltage { get; set; }
-        }
-
-        public struct LinearTransformation
-        {
-            public LinearTransformation(Single a, Single b)
-            {
-                this.A = a;
-                this.B = b;
-            }
-
-            public Single A { get; }
-            public Single B { get; }
-        }
-
-        public class FrequencyInputConfiguration : ISupportLinearTransformation
-        {
-            public FrequencyInputConfiguration(Byte id)
-            {
-                this.Id = id ;   
-                this.Transformation = new LinearTransformation();
-            }
-
-            public Byte Id { get; }
-            public Single Frequency { get; }
-
-            public LinearTransformation Transformation { get; }
-        }
-
-        public class SensorInterfaceConfiguration
-        {
-
-        }
-        public class AdcDataConfiguration
-        {
-
-        }
-        public class DigitalInputConfiguration
-        {
-
-        }
-        public class ReadIdConfiguration
-        {
-        }
-        public class RelayPowerConfiguration
-        {
-        }
-        public class MotorFunctionConfiguration
-        {
-        }
-        public class MotorCurrentConfiguration
-        {
-        }
-        public class ReservedFunctionsConfiguration
-        {
-        }
-        public class EpRomConfiguration
-        {
-        }
-        public class FlashCommandConfiguration
-        {
-            
-        }
+//        public struct QuiSertAQueDalle
+//        {
+//            public QuiSertAQueDalle(UInt64 ha)
+//            {
+//                this.Pew = ha;
+//                this.MyChaine = String.Empty;
+//            }
+//
+//            public String MyChaine { get; set; }
+//            public UInt64 Pew { get; }
+//        }
+//
+//        public class Configuration
+//        {
+//            public Configuration()
+//            {
+//                this.TestMode = new TestModeConfiguration();
+//            }
+//
+//            public UInt16 TesterId { get; set; } 
+//            public UInt16 EcuId { get; set; }
+//            public TestModeConfiguration TestMode { get; set; }
+//            // public ApplicationConfiguration Application { get; set; }
+//        }
+//
+//        public class TestModeConfiguration
+//        {
+//            public TestModeConfiguration()
+//            {
+//                this.FrequencyInputs = new Dictionary<Byte, FrequencyInputConfiguration>();
+//            }
+//
+//            public Byte[] InitializationFrame { get; set; }
+//            public Dictionary<Byte, QuiSertAQueDalle> FrequencyInputs { get; set; }
+//        }
+//
+//        public class ApplicationConfiguration
+//        {
+//            public FrequencyInputConfiguration FrequencyInput { get; }
+//            public SensorInterfaceConfiguration SensorInterface { get; }
+//            public AdcDataConfiguration AdcData { get; }
+//            public DigitalInputConfiguration DigitalInput { get; }
+//        }
+//
+//        public interface ISupportLinearTransformation
+//        {
+//            LinearTransformation Transformation { get; }
+//        }
+//
+//        public class LoadControlConfiguration
+//        {
+//            
+//        }
+//
+//        public class LoadConfiguration
+//        {
+//            public Single DutyCycle { get; set; }
+//            public Single Frequency { get; set; }
+//            public Single Voltage { get; set; }
+//        }
+//
+//        public struct LinearTransformation
+//        {
+//            public LinearTransformation(Single a, Single b)
+//            {
+//                this.A = a;
+//                this.B = b;
+//            }
+//
+//            public Single A { get; }
+//
+//            public Single B { get; }
+//        }
+//
+//        public class FrequencyInputConfiguration : ISupportLinearTransformation
+//        {
+//            public FrequencyInputConfiguration()
+//            {
+//            }
+//
+//            public Byte Id { get; }
+//
+//            public Single Frequency { get; }
+//
+//            public LinearTransformation LinearTransformation { get; }
+//        }
+//
+//        public class SensorInterfaceConfiguration
+//        {
+//
+//        }
+//        public class AdcDataConfiguration
+//        {
+//
+//        }
+//        public class DigitalInputConfiguration
+//        {
+//
+//        }
+//        public class ReadIdConfiguration
+//        {
+//        }
+//        public class RelayPowerConfiguration
+//        {
+//        }
+//        public class MotorFunctionConfiguration
+//        {
+//        }
+//        public class MotorCurrentConfiguration
+//        {
+//        }
+//        public class ReservedFunctionsConfiguration
+//        {
+//        }
+//        public class EpRomConfiguration
+//        {
+//        }
+//        public class FlashCommandConfiguration
+//        {
+//            
+//        }
 
 //        private static void HeapPermutation<T>(IList<T> source, Int32 n)
 //        {

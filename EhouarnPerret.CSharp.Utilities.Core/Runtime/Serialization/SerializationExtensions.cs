@@ -34,16 +34,14 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
+using System.Windows.Forms;
+using System.Dynamic;
+using System.Runtime.Serialization.Formatters.Soap;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
-
     public static class SerializationExtensions
     {
-        public static void SerializeToBinaryFile<T>(this T value, String path)
-        {
-            value.SerializeToBinary().WriteToFile(path);
-        }
         public static void SerializeToXmlFile<T>(this T value, String path)
         {
             value.SerializeToXml().WriteToFile(path);
@@ -53,10 +51,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             value.SerializeToJson().WriteToFile(path);
         }
 
-        public static T DeserializeBinaryFile<T>(this String path)
-        {
-            return path.ReadBytesFromFile().DeserializeBinary<T>();
-        }
         public static T DeserializeXmlFile<T>(this String path)
         {
             return path.ReadTextFromFile().DeserializeXml<T>();
@@ -66,43 +60,22 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             return path.ReadTextFromFile().DeserializeJson<T>();
         }
 
-        public static Byte[] SerializeToBinary<T>(this T value)
+        private static DataContractSerializerSettings XmlSerializerSettings { get; }
+        = new DataContractSerializerSettings()
         {
-            var dataContractSerializer = new DataContractSerializer(typeof(T));
+            PreserveObjectReferences = true,
+            SerializeReadOnlyTypes = true,
+        };
 
-            using (var memoryStream = new MemoryStream())
-            {
-                using (var binaryWriter = new BinaryWriter(memoryStream))
-                {
-                    dataContractSerializer.WriteObject(memoryStream, value);
-
-                    return memoryStream.ToArray();
-                }
-            }
-        }
-
-        public class DataContractResolverEx : DataContractResolver
+        private static DataContractJsonSerializerSettings JsonSerializerSettings 
+        = new DataContractJsonSerializerSettings()
         {
-            #region DataContractResolver Implementation
-            public override Boolean TryResolveType(Type type, Type declaredType, DataContractResolver knownTypeResolver, out XmlDictionaryString typeName, out XmlDictionaryString typeNamespace)
-            {
-                return knownTypeResolver.TryResolveType(type, declaredType, knownTypeResolver, out typeName, out typeNamespace);
-            }
-            public override Type ResolveName(String typeName, String typeNamespace, Type declaredType, DataContractResolver knownTypeResolver)
-            {
-                return knownTypeResolver.ResolveName(typeName, typeNamespace, declaredType, knownTypeResolver);
-            }
-            #endregion
-            
-        }
+            SerializeReadOnlyTypes = true,
+        };
 
         public static String SerializeToXml<T>(this T value)
         {
-            var rr = new DataContractSerializerSettings();
-            rr.PreserveObjectReferences = true;
-            rr.SerializeReadOnlyTypes = true;
-            rr.DataContractResolver = new DataContractResolverEx();
-            var dataContractSerializer = new DataContractSerializer(typeof(T), rr);
+            var dataContractSerializer = new DataContractSerializer(typeof(T), SerializationExtensions.XmlSerializerSettings);
 
             using (var stringWriter = new StringWriter())
             {
@@ -134,7 +107,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         }
         public static String SerializeToJson<T>(this T value)
         {
-            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
+            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), SerializationExtensions.JsonSerializerSettings);
            
             using (var memoryStream = new MemoryStream())
             {
@@ -149,21 +122,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             }
         }
 
-        public static T DeserializeBinary<T>(this Byte[] source)
-        {
-            var dataContractSerializer = new DataContractSerializer(typeof(T));
-
-            using (var memoryStream = new MemoryStream(source))
-            {
-                using (var binaryReader = new BinaryReader(memoryStream))
-                {
-                    return (T)dataContractSerializer.ReadObject(memoryStream);
-                }
-            }
-        }
         public static T DeserializeXml<T>(this String value)
         {
-            var dataContractSerializer = new DataContractSerializer(typeof(T));
+            var dataContractSerializer = new DataContractSerializer(typeof(T), SerializationExtensions.XmlSerializerSettings);
 
             using (var stringReader = new StringReader(value))
             {
@@ -175,13 +136,55 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         }
         public static T DeserializeJson<T>(this String value)
         {
-            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T));
+            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), SerializationExtensions.JsonSerializerSettings);
 
             using (var memoryStream = new MemoryStream(Encoding.Default.GetBytes(value)))
             {
                return (T)dataContractJsonSerializer.ReadObject(memoryStream);
             }
         }
+    
+        //        public static void SerializeToBinaryFile<T>(this T value, String path)
+        //        {
+        //            value.SerializeToBinary().WriteToFile(path);
+        //        }
+        //        public static T DeserializeBinaryFile<T>(this String path)
+        //        {
+        //            return path.ReadBytesFromFile().DeserializeBinary<T>();
+        //        }
+        //        public static T DeserializeBinary<T>(this Byte[] source)
+        //        {
+        //            var dataContractSerializer = new DataContractSerializer(typeof(T));
+        //
+        //            using (var memoryStream = new MemoryStream(source))
+        //            {
+        //                using (var binaryReader = new BinaryReader(memoryStream))
+        //                {
+        //                    return (T)dataContractSerializer.ReadObject(memoryStream);
+        //                }
+        //            }
+        //        }
+        //        public static Byte[] SerializeToBinary<T>(this T value)
+        //        {
+        //            var dataContractSerializerSettings = new DataContractSerializerSettings()
+        //            {
+        //                PreserveObjectReferences = true,
+        //                SerializeReadOnlyTypes = true,
+        //            };
+        //
+        //            var dataContractSerializer = new DataContractSerializer(typeof(T), dataContractSerializerSettings);
+        //
+        //            using (var memoryStream = new MemoryStream())
+        //            {
+        //                using (var binaryWriter = new BinaryWriter(memoryStream))
+        //                {
+        //                    dataContractSerializer.WriteObject(memoryStream, value);
+        //
+        //                    return memoryStream.ToArray();
+        //                }
+        //            }
+        //        }
+
     }
 }
     
