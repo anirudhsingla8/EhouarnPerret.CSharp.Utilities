@@ -184,6 +184,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
                 this.Motor = new List<DoubleStateMessageBasedFunctionConfiguration>();
                 this.MotorCurrent = new List<TransformableDoubleStateMessageBasedFunctionConfiguration>();
                 this.Reserved = new List<DoubleStateMessageBasedFunctionConfiguration>();
+
+                this.EpRom = new DoubleStateMessageBasedFunctionConfiguration();
+                this.Flash = new SingleStateMessageBasedFunctionConfiguration();
             }
 
             [DataMember]
@@ -215,6 +218,12 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
             [DataMember]
             public List<DoubleStateMessageBasedFunctionConfiguration> Reserved { get; private set; }
+        
+            [DataMember]
+            public DoubleStateMessageBasedFunctionConfiguration EpRom { get; private set; }
+
+            [DataMember]
+            public SingleStateMessageBasedFunctionConfiguration Flash { get; private set; }
         }
 
         public interface INamable
