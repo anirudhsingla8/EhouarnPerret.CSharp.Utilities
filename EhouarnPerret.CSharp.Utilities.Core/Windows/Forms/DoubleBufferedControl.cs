@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
@@ -91,6 +92,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             this.SetDoubleBuffered();
         }
+    }
+
+    public abstract class GraphicsPathControl<TProperties>
+    {
+        protected GraphicsPathControl()
+        {
+        }
+
+        protected abstract GraphicsPath CreateGraphicsPath();
+    }
+
+    public abstract class GraphicsPathControl : DoubleBufferedControl
+    {
+        protected GraphicsPathControl()
+        {
+            this.GraphicsPath = this.CreateGraphics();
+        }
+
+        protected GraphicsPath GraphicsPath { get; }
+        protected abstract GraphicsPath CreateGraphicsPath();
     }
 }
 

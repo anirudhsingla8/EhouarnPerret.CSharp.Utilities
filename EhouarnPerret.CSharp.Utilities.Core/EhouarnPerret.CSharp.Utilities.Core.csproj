@@ -304,6 +304,9 @@
     <Compile Include="Collections\Generic\ParentReferencedDictionary.cs" />
     <Compile Include="Runtime\Serialization\SerializationExtensions.cs" />
     <Compile Include="Runtime\Serialization\JsonSerializer.cs" />
+    <Compile Include="Windows\Forms\Industrial\Meter.cs" />
+    <Compile Include="Windows\Forms\Industrial\LightIndicator.cs" />
+    <Compile Include="Windows\Forms\Industrial\SquareIndicator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -366,5 +369,6 @@
     <Folder Include="IO\Encoding\Lossless\Dictionary\Deflate\" />
     <Folder Include="IO\Encoding\Lossless\Dictionary\LempelZiv\" />
     <Folder Include="Xml\" />
+    <Folder Include="Windows\Forms\Industrial\" />
   </ItemGroup>
 </Project>

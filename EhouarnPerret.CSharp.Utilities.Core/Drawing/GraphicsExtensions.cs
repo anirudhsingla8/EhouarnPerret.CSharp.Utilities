@@ -133,6 +133,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
         {
             graphics.FillPolygon(brush, new PointF[] { pointA, pointB, pointC} );
         }
+    
     }
 }
 

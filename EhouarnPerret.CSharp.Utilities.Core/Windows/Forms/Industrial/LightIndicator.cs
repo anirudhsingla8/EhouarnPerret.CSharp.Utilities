@@ -1,10 +1,10 @@
 ﻿//
-// GraphicsPathExtensions.cs
+// LightIndicator.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 
+// Copyright (c) 2016 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,15 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Drawing.Drawing2D;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
+namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Industrial
 {
-    public static class GraphicsPathExtensions
+    public class LightIndicator
     {
-        public static void Round(this GraphicsPath graphicsPath, Int32 )
+        public LightIndicator()
         {
-
         }
     }
 }
