@@ -30,7 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
     public static class GraphicsPathExtensions
     {
-        public static void Round(this GraphicsPath graphicsPath, Int32 )
+        public static void Round(this GraphicsPath graphicsPath, UInt16 radius, Boolean vertexes)
         {
 
         }

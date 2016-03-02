@@ -46,6 +46,9 @@ using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command;
 using EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization;
 using System.Drawing.Printing;
+using System.Net.Sockets;
+using System.Text;
+using EhouarnPerret.CSharp.Utilities.Core.Net.Sockets;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -53,73 +56,80 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-//            var undoRedoManager = new UndoRedoManager();
+            var udpClient = new UdpClient();
+
+            var data = Encoding.ASCII.GetBytes(@"@11XX_UNIT=OFF;");
+
+            udpClient.Send(data, data.Length, IPEndPointHelpers.Parse(@"192.168.0.17:7"));
+
+            //            var undoRedoManager = new UndoRedoManager();
+            //
+            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do"), () => Console.WriteLine(@"Undo"));
+            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do1"), () => Console.WriteLine(@"Undo1"));
+            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do2"), () => Console.WriteLine(@"Undo2"));
+            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do3"), () => Console.WriteLine(@"Undo3"));
+            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do4"), () => Console.WriteLine(@"Undo4"));
+            //
+            //            undoRedoManager.Undo(2);
+            //            undoRedoManager.Redo();
+            //            undoRedoManager.Redo();
+            //            undoRedoManager.Undo(2);
+            //
+            //            undoRedoManager.Redo();
+            //            undoRedoManager.Redo();
+            //            undoRedoManager.Redo();
+
 //
-//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do"), () => Console.WriteLine(@"Undo"));
-//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do1"), () => Console.WriteLine(@"Undo1"));
-//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do2"), () => Console.WriteLine(@"Undo2"));
-//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do3"), () => Console.WriteLine(@"Undo3"));
-//            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do4"), () => Console.WriteLine(@"Undo4"));
+//            var path = @"Configuration.xml";
 //
-//            undoRedoManager.Undo(2);
-//            undoRedoManager.Redo();
-//            undoRedoManager.Redo();
-//            undoRedoManager.Undo(2);
+//            var configuration = new Configuration();
 //
-//            undoRedoManager.Redo();
-//            undoRedoManager.Redo();
-//            undoRedoManager.Redo();
-
-            var path = @"Configuration.xml";
-
-            var configuration = new Configuration();
-
-            for (Byte i = 0; i < 2; i++)
-            {
-                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"F" + i);
-                configuration.TestMode.FrequencyInputs.Add(item);
-            }
-
-            for (Byte i = 0; i < 6; i++)
-            {
-                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(i.ToString(@"X2"));
-                configuration.TestMode.SensorInterfaces.Add(item);
-            }
-
-            for (Byte i = 0; i < 16; i++)
-            {
-                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"S" + i);
-                configuration.TestMode.AdcData.Add(item);
-            }
-
-            for (Byte i = 0; i < 2; i++)
-            {
-                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"D" + i);
-                configuration.TestMode.DigitalInputs.Add(item);
-            }
-
-            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Software Id"));
-            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Hardware Id"));
-            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Boot Id"));
-            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Calibration Id"));
-            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"TMSW Id"));
-
-            for (Byte i = 0; i < 3; i++)
-            {
-                configuration.TestMode.RelayPowers.Add(new DoubleStateMessageBasedFunctionConfiguration(@"RP" + i));
-            }
-
-            for (Byte i = 0; i < 3; i++)
-            {
-                configuration.TestMode.Motor.Add(new DoubleStateMessageBasedFunctionConfiguration(@"M" + i));
-            }
-
-            configuration.SerializeToXmlFile(path);
-
-            path.ReadTextFromFile().WriteLineToConsole();
-
-            var restoredConfiguration = path.DeserializeXmlFile<Configuration>();
-
+//            for (Byte i = 0; i < 2; i++)
+//            {
+//                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"F" + i);
+//                configuration.TestMode.FrequencyInputs.Add(item);
+//            }
+//
+//            for (Byte i = 0; i < 6; i++)
+//            {
+//                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(i.ToString(@"X2"));
+//                configuration.TestMode.SensorInterfaces.Add(item);
+//            }
+//
+//            for (Byte i = 0; i < 16; i++)
+//            {
+//                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"S" + i);
+//                configuration.TestMode.AdcData.Add(item);
+//            }
+//
+//            for (Byte i = 0; i < 2; i++)
+//            {
+//                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"D" + i);
+//                configuration.TestMode.DigitalInputs.Add(item);
+//            }
+//
+//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Software Id"));
+//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Hardware Id"));
+//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Boot Id"));
+//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Calibration Id"));
+//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"TMSW Id"));
+//
+//            for (Byte i = 0; i < 3; i++)
+//            {
+//                configuration.TestMode.RelayPowers.Add(new DoubleStateMessageBasedFunctionConfiguration(@"RP" + i));
+//            }
+//
+//            for (Byte i = 0; i < 3; i++)
+//            {
+//                configuration.TestMode.Motor.Add(new DoubleStateMessageBasedFunctionConfiguration(@"M" + i));
+//            }
+//
+//            configuration.SerializeToXmlFile(path);
+//
+//            path.ReadTextFromFile().WriteLineToConsole();
+//
+//            var restoredConfiguration = path.DeserializeXmlFile<Configuration>();
+//
             Console.ReadKey();
         }
 

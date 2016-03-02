@@ -107,11 +107,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         protected GraphicsPathControl()
         {
-            this.GraphicsPath = this.CreateGraphics();
+            this.GraphicsPath = this.CreateGraphicsPath();
         }
 
         protected GraphicsPath GraphicsPath { get; }
         protected abstract GraphicsPath CreateGraphicsPath();
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            e.Graphics.FillPath();
+        }
     }
 }
 
