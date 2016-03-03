@@ -307,6 +307,7 @@
     <Compile Include="Windows\Forms\Industrial\Meter.cs" />
     <Compile Include="Windows\Forms\Industrial\LightIndicator.cs" />
     <Compile Include="Windows\Forms\Industrial\SquareIndicator.cs" />
+    <Compile Include="Windows\Forms\GraphicsPathControl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

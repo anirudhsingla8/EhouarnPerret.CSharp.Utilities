@@ -93,31 +93,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             this.SetDoubleBuffered();
         }
     }
-
-    public abstract class GraphicsPathControl<TProperties>
-    {
-        protected GraphicsPathControl()
-        {
-        }
-
-        protected abstract GraphicsPath CreateGraphicsPath();
-    }
-
-    public abstract class GraphicsPathControl : DoubleBufferedControl
-    {
-        protected GraphicsPathControl()
-        {
-            this.GraphicsPath = this.CreateGraphicsPath();
-        }
-
-        protected GraphicsPath GraphicsPath { get; }
-        protected abstract GraphicsPath CreateGraphicsPath();
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            e.Graphics.FillPath();
-        }
-    }
 }
 

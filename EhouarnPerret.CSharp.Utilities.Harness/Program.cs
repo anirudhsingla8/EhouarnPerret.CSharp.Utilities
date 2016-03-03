@@ -49,6 +49,11 @@ using System.Drawing.Printing;
 using System.Net.Sockets;
 using System.Text;
 using EhouarnPerret.CSharp.Utilities.Core.Net.Sockets;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using System.ComponentModel;
+using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -56,552 +61,324 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var udpClient = new UdpClient();
+            var form = new DoubleBufferedForm();
 
-            var data = Encoding.ASCII.GetBytes(@"@11XX_UNIT=OFF;");
+            form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;
 
-            udpClient.Send(data, data.Length, IPEndPointHelpers.Parse(@"192.168.0.17:7"));
+            var ledControl = new LedControl();
 
-            //            var undoRedoManager = new UndoRedoManager();
-            //
-            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do"), () => Console.WriteLine(@"Undo"));
-            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do1"), () => Console.WriteLine(@"Undo1"));
-            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do2"), () => Console.WriteLine(@"Undo2"));
-            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do3"), () => Console.WriteLine(@"Undo3"));
-            //            undoRedoManager.AddExecute(() => Console.WriteLine(@"Do4"), () => Console.WriteLine(@"Undo4"));
-            //
-            //            undoRedoManager.Undo(2);
-            //            undoRedoManager.Redo();
-            //            undoRedoManager.Redo();
-            //            undoRedoManager.Undo(2);
-            //
-            //            undoRedoManager.Redo();
-            //            undoRedoManager.Redo();
-            //            undoRedoManager.Redo();
+            ledControl.Dock = DockStyle.Fill;
 
-//
-//            var path = @"Configuration.xml";
-//
-//            var configuration = new Configuration();
-//
-//            for (Byte i = 0; i < 2; i++)
-//            {
-//                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"F" + i);
-//                configuration.TestMode.FrequencyInputs.Add(item);
-//            }
-//
-//            for (Byte i = 0; i < 6; i++)
-//            {
-//                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(i.ToString(@"X2"));
-//                configuration.TestMode.SensorInterfaces.Add(item);
-//            }
-//
-//            for (Byte i = 0; i < 16; i++)
-//            {
-//                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"S" + i);
-//                configuration.TestMode.AdcData.Add(item);
-//            }
-//
-//            for (Byte i = 0; i < 2; i++)
-//            {
-//                var item = new TransformableSingleStateMessageBasedFunctionConfiguration(@"D" + i);
-//                configuration.TestMode.DigitalInputs.Add(item);
-//            }
-//
-//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Software Id"));
-//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Hardware Id"));
-//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Boot Id"));
-//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"Calibration Id"));
-//            configuration.TestMode.ReadIds.Add(new SingleStateMessageBasedFunctionConfiguration(@"TMSW Id"));
-//
-//            for (Byte i = 0; i < 3; i++)
-//            {
-//                configuration.TestMode.RelayPowers.Add(new DoubleStateMessageBasedFunctionConfiguration(@"RP" + i));
-//            }
-//
-//            for (Byte i = 0; i < 3; i++)
-//            {
-//                configuration.TestMode.Motor.Add(new DoubleStateMessageBasedFunctionConfiguration(@"M" + i));
-//            }
-//
-//            configuration.SerializeToXmlFile(path);
-//
-//            path.ReadTextFromFile().WriteLineToConsole();
-//
-//            var restoredConfiguration = path.DeserializeXmlFile<Configuration>();
-//
+            ledControl.RepaintOnRedraw = true;
+
+            ledControl.Click += (sender, e) => ledControl.Toggle();
+
+            form.Controls.Add(ledControl);
+
+            form.ShowDialog();
+
             Console.ReadKey();
         }
+    }
 
-//        public class IdentifiableKeyedCollection<TItem> : System.Collections.ObjectModel.KeyedCollection<Byte, TItem>
-//            where TItem : IIdentifiable
-//        {
-//            public IdentifiableKeyedCollection()
-//            {
-//            }
-//
-//            public IdentifiableKeyedCollection(IEnumerable<TItem> items)
-//            {
-//                foreach (var item in items) 
-//                {
-//                    this.Add(item);
-//                }
-//            }
-//
-//            protected override Byte GetKeyForItem(TItem item)
-//            {
-//                return item.Id;
-//            }
-//        }
-//
+    public interface ILedControl
+    {
+        Boolean State { get; set; }
 
-        [DataContract]
-        public class Configuration
+        LedColor TrueColor { get; set; }
+
+        LedColor FalseColor { get; set; }
+
+        LedShapeKind ShapeKind { get; set; }
+
+        void Toggle();
+    }
+
+    public enum LedShapeKind : byte
+    {
+        Rectangle = 0x00,
+        Ellipse = 0x01,
+    }
+
+    public class LedControl : DoubleBufferedControl, ILedControl
+    {
+        public LedControl()
+            : base()
         {
-            public Configuration()
+            this.MinimumSize = new Size(28, 28);
+            this.TrueColor = new LedColor(Color.LightGreen, false, true);
+            this.FalseColor = new LedColor(Color.DarkRed, false, false);
+            this.ShapeKind = LedShapeKind.Rectangle;
+        }
+
+        public void Toggle()
+        {
+            this.State = !this.State;
+        }
+
+        private Boolean _state;
+        [Bindable(true)]
+        public Boolean State
+        {
+            get
             {
-                this.TestMode = new TestModeConfiguration();
+                return this._state;
             }
-
-            [DataMember]
-            public DateTime Creation { get; private set; }
-
-            [DataMember]
-            public DateTime LastModification { get; private set; }
-
-            [DataMember]
-            public UInt32 TesterId { get; set; } 
-
-            [DataMember]
-            public UInt32 EcuId { get; set; }
-
-            [DataMember]
-            public TestModeConfiguration TestMode { get; private set; }
-        }
-
-        [DataContract]
-        public class TestModeConfiguration
-        {
-            public TestModeConfiguration()
+            set
             {
-                this.SensorInterfaces = new List<TransformableSingleStateMessageBasedFunctionConfiguration>();
-                this.DigitalInputs = new List<TransformableSingleStateMessageBasedFunctionConfiguration>();
-                this.FrequencyInputs = new List<TransformableSingleStateMessageBasedFunctionConfiguration>();
-                this.AdcData = new List<TransformableSingleStateMessageBasedFunctionConfiguration>();
-                this.ReadIds = new List<SingleStateMessageBasedFunctionConfiguration>();
-
-                this.RelayPowers = new List<DoubleStateMessageBasedFunctionConfiguration>();
-                this.Motor = new List<DoubleStateMessageBasedFunctionConfiguration>();
-                this.MotorCurrent = new List<TransformableDoubleStateMessageBasedFunctionConfiguration>();
-                this.Reserved = new List<DoubleStateMessageBasedFunctionConfiguration>();
-
-                this.EpRom = new DoubleStateMessageBasedFunctionConfiguration();
-                this.Flash = new SingleStateMessageBasedFunctionConfiguration();
-            }
-
-            [DataMember]
-            public ReadOnlyCollection<Byte> InitializationFrame { get; set; }
-        
-            [DataMember]
-            public List<TransformableSingleStateMessageBasedFunctionConfiguration> SensorInterfaces { get; private set; }
-
-            [DataMember]
-            public List<TransformableSingleStateMessageBasedFunctionConfiguration> DigitalInputs { get; private set; }
-
-            [DataMember]
-            public List<TransformableSingleStateMessageBasedFunctionConfiguration> FrequencyInputs { get; private set; }
-
-            [DataMember]
-            public List<TransformableSingleStateMessageBasedFunctionConfiguration> AdcData { get; private set; }
-        
-            [DataMember]
-            public List<SingleStateMessageBasedFunctionConfiguration> ReadIds { get; private set; }
-        
-            [DataMember]
-            public List<DoubleStateMessageBasedFunctionConfiguration> RelayPowers { get; private set; }
-
-            [DataMember]
-            public List<DoubleStateMessageBasedFunctionConfiguration> Motor { get; private set; }
-         
-            [DataMember]
-            public List<TransformableDoubleStateMessageBasedFunctionConfiguration> MotorCurrent { get; private set; }
-
-            [DataMember]
-            public List<DoubleStateMessageBasedFunctionConfiguration> Reserved { get; private set; }
-        
-            [DataMember]
-            public DoubleStateMessageBasedFunctionConfiguration EpRom { get; private set; }
-
-            [DataMember]
-            public SingleStateMessageBasedFunctionConfiguration Flash { get; private set; }
-        }
-
-        public interface INamable
-        {
-            String Name { get; set; }
-        }
-
-        [DataContract]
-        public abstract class Namable : INamable
-        {
-            protected Namable(String name = @"")
-            {
-                this.Name = name;
-            }
-
-            #region INamable Implementation
-            [DataMember]
-            public String Name { get; set; }
-            #endregion
-        }
-
-        public interface IIdentifiable : IIdentifiable<Byte>
-        {
-        }
-
-        public interface IIdentifiable<TId>
-            where TId : struct
-        {
-            TId Id { get; set; }
-        }
-
-        [DataContract]
-        public abstract class IdentifiableNamable<TId> : Namable, IIdentifiableNamable<TId>
-            where TId : struct
-        {
-            public IdentifiableNamable(String name = @"", TId id = default(TId))
-                : base(name)
-            {
-                this.Id = id;
-            }
-
-            #region IIdentifiable Implementation
-            [DataMember]
-            public TId Id { get; set; }
-            #endregion
-        }
-
-        public interface IIdentifiableNamable : INamable, IIdentifiable
-        {
-            
-        }
-
-        public interface IIdentifiableNamable<TId> : INamable, IIdentifiable<TId>
-            where TId : struct
-        {
-
-        }
-
-        [DataContract]
-        public abstract class IdentifiableNamable : Namable, IIdentifiableNamable
-        {
-            public IdentifiableNamable(String name = @"", Byte id = 0x00)
-                : base(name)
-            {
-                this.Id = id;
-            }
-
-            #region IIdentifiable Implementation
-            [DataMember]
-            public Byte Id { get; set; }
-            #endregion
-        }
-
-        public interface ISupportLinearTransformation
-        {
-            LinearTransformation Transformation { get; }
-        }
-
-        public interface ISingleStateMessageBasedFunctionConfiguration : INamable
-        {
-            ReadOnlyCollection<Byte> Activation { get; set; }
-        }
-
-        public interface IDoubleStateMessageBasedFunctionConfiguration : ISingleStateMessageBasedFunctionConfiguration
-        {
-            ReadOnlyCollection<Byte> Deactivation { get; set; }
-        }
-
-        public interface ILinearTransformation
-        {
-            Single A { get; set; }
-            Single B { get; set; }
-        }
-
-        [DataContract]
-        public struct LinearTransformation : ILinearTransformation
-        {
-            public LinearTransformation(Single a, Single b)
-            {
-                if ((a == 0.0f))
+                if (this.State != value)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(a));
-                }
-                else
-                {
-                    this.A = a;
-                    this.B = b;
+                    this._state = value;
+                    this.Invalidate();
                 }
             }
-
-            [DataMember]
-            public Single A { get; set; }
-
-            [DataMember]
-            public Single B { get; set; }
-
-            public static LinearTransformation Constant { get; } = new LinearTransformation(1.0f, 0.0f);
         }
 
-        [DataContract]
-        public abstract class FunctionConfiguration : Namable
+        private LedColor _trueColor;
+        [Bindable(true)]
+        public LedColor TrueColor
         {
-            protected FunctionConfiguration(String name = @"")
+            get
             {
-                this.Name = name;
+                return this._trueColor;
+            }
+            set
+            {
+                if (!this._trueColor.Equals(value))
+                {
+                    this._trueColor = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        private LedColor _falseColor;
+        [Bindable(true)]
+        public LedColor FalseColor
+        {
+            get
+            {
+                return this._falseColor;
+            }
+            set
+            {
+                if (!this._falseColor.Equals(value))
+                {
+                    this._falseColor = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        private LedShapeKind _shapeKind;
+        public LedShapeKind ShapeKind
+        {
+            get
+            {
+                return this._shapeKind;
+            }
+            set
+            {
+                if (!this._shapeKind.Equals(value))
+                {
+                    this._shapeKind = value;
+                    this.Invalidate();
+                }
+            }
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            e.Graphics.PaintLed(this);
+        }
+    }
+
+    public struct LedColor
+    {
+        public LedColor(Color color, Boolean isDark = false, Boolean isHalo = true)
+        {
+            this.Color = color;
+            this.IsDark = isDark;
+            this.IsHalo = isHalo;
+        }
+
+        public Color Color { get; }
+        public Boolean IsHalo { get; }
+        public Boolean IsDark { get; }
+    }
+
+    public static class GraphicsExtensions
+    {
+        static GraphicsExtensions()
+        {
+            GraphicsExtensions.LedColorReflection = Color.FromArgb(180, 255, 255, 255);
+            GraphicsExtensions.LedColorSurroundReflection = Color.FromArgb(0, 255, 255, 255);
+        }
+
+        private static Color LedColorReflection { get; }
+
+        private static Color LedColorSurroundReflection { get; }
+
+        public static void PaintLed<TLedControl>(this Graphics graphics, TLedControl ledControl)
+            where TLedControl : Control, ILedControl
+        {
+            var ledColor = ledControl.State ? ledControl.TrueColor : ledControl.FalseColor;
+            GraphicsExtensions.PaintLed(graphics, ledControl.Size, ledControl.Padding, ledColor, ledControl.ShapeKind);
+        }
+
+        public static void PaintLed(this Graphics graphics, Size size, Padding padding, LedColor ledColor, LedShapeKind shapeKind = LedShapeKind.Ellipse)
+        {
+            var color = ledColor.Color;
+            var isDark = ledColor.IsDark;
+            var isHalo = ledColor.IsHalo;
+
+            var darkColor = ControlPaint.Dark(color);
+            var darkDarkColor = ControlPaint.DarkDark(color);
+
+            var lightColor = isDark ? Color.FromArgb(150, darkColor) : color;
+            darkColor = isDark ? darkDarkColor : darkColor;
+
+            const Byte dimensionOffset = 2;
+
+            var width = size.Width - (padding.Left + padding.Right) - dimensionOffset;
+            var height = size.Height - (padding.Top + padding.Bottom) - dimensionOffset;
+
+            var diameter = Math.Min(width, height);
+            diameter = Math.Max(diameter - 1, 1);
+            var rectangle = new Rectangle(padding.Left, padding.Top, width, height);
+
+            // Backup
+            var smoothingMode = graphics.SmoothingMode;
+            var interpolationMode = graphics.InterpolationMode;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            // Background Ellipse
+            var solidBrushDarkColor = new SolidBrush(darkColor);
+
+            switch(shapeKind)
+            {
+                case LedShapeKind.Ellipse:
+                    graphics.FillEllipse(solidBrushDarkColor, rectangle);
+                    break;
+
+                case LedShapeKind.Rectangle:
+                    graphics.FillRectangle(solidBrushDarkColor, rectangle);
+                    break;
+
+                default:
+                    throw new ArgumentException(nameof(shapeKind));
             }
 
-            #region INamable Implementation
-            [DataMember]
-            public String Name { get; private set; }
-            #endregion
-        }
 
-        [DataContract]
-        public class SingleStateMessageBasedFunctionConfiguration : TransformableFunctionConfiguration, ISingleStateMessageBasedFunctionConfiguration
-        {
-            public SingleStateMessageBasedFunctionConfiguration(String name = @"", IEnumerable<Byte> activation = null)
-                : base(name)
+            // Glow Gradient
+            var graphicsPath = new GraphicsPath();
+
+            // Design smell
+            switch(shapeKind)
             {
-                if (activation != null)
+                case LedShapeKind.Ellipse:
+                    graphicsPath.AddEllipse(rectangle);
+                    break;
+                    
+                case LedShapeKind.Rectangle:
+                    graphicsPath.AddEllipse(rectangle);
+                    break;
+
+                default:
+                    throw new ArgumentException(nameof(shapeKind));
+            }
+
+
+            var pathGradientBrush = new PathGradientBrush(graphicsPath)
+            {
+                CenterColor = lightColor,
+                SurroundColors = new[] { Color.FromArgb(0, lightColor) }
+            };
+
+            // Design smell
+            switch(shapeKind)
+            {
+                case LedShapeKind.Ellipse:
+                    graphics.FillEllipse(pathGradientBrush, rectangle);
+                    break;
+
+                case LedShapeKind.Rectangle:
+                    graphics.FillRectangle(pathGradientBrush, rectangle);
+                    break;
+
+                default:
+                    throw new ArgumentException(nameof(shapeKind));
+            }
+
+            if (isHalo)
+            {
+                // White Reflection
+                var offsetReflection = Convert.ToInt32(diameter * 0.15f);
+                var rectangleReflection = new Rectangle(rectangle.X - offsetReflection, rectangle.Y - offsetReflection, Convert.ToInt32(rectangle.Width * 0.8f), Convert.ToInt32(rectangle.Height * 0.8f));
+                var graphicsPathReflection = new GraphicsPath();
+
+                // Design smell, DI required...
+                switch(shapeKind)
                 {
-                    this.Activation = new ReadOnlyCollection<Byte>(activation.ToList());
+                    case LedShapeKind.Ellipse:
+                        graphicsPathReflection.AddEllipse(rectangleReflection);
+                        break;
+
+                    case LedShapeKind.Rectangle:
+                        //graphicsPathReflection.AddRectangle(rectangleReflection);
+                        break;
+
+                    default:
+                        throw new ArgumentException(nameof(shapeKind));
+                }
+
+                var pathGradientReflection = new PathGradientBrush(graphicsPath)
+                {
+                    CenterColor = GraphicsExtensions.LedColorReflection,
+                    SurroundColors = new[] { GraphicsExtensions.LedColorSurroundReflection },
+                };
+
+                // graphics.FillEllipse(pathGradientReflection, rectangleReflection);
+
+                switch(shapeKind)
+                {
+                    case LedShapeKind.Ellipse:
+                        graphics.FillEllipse(pathGradientReflection, rectangleReflection);
+                        break;
+
+                    case LedShapeKind.Rectangle:
+                        //graphics.FillRectangle(pathGradientReflection, rectangle);
+                        break;
+
+                    default:
+                        throw new ArgumentException(nameof(shapeKind));
                 }
             }
 
-            #region ISingleStateMessageBasedFunctionConfiguration Implementation
-            [DataMember]
-            public ReadOnlyCollection<Byte> Activation { get; set; }
-            #endregion
-        }
+            // Draw the border
+            graphics.SetClip(rectangle);
 
-        [DataContract]
-        public class DoubleStateMessageBasedFunctionConfiguration : SingleStateMessageBasedFunctionConfiguration, IDoubleStateMessageBasedFunctionConfiguration
-        {
-            public DoubleStateMessageBasedFunctionConfiguration(String name = @"", IEnumerable<Byte> activation = null, IEnumerable<Byte> deactivation = null)
-                : base(name, activation)
+            if (!isDark)
             {
-                if (deactivation != null)
+                switch(shapeKind)
                 {
-                    this.Deactivation = new ReadOnlyCollection<Byte>(deactivation.ToList());
+                    case LedShapeKind.Ellipse:
+                        graphics.DrawEllipse(new Pen(Color.FromArgb(85, Color.Black), 1F), rectangle);
+                        break;
+
+                    case LedShapeKind.Rectangle:
+                        //graphics.DrawRectangle(new Pen(Color.FromArgb(85, Color.Black), 1F), rectangle);
+                        break;
+
+                    default:
+                        throw new ArgumentException(nameof(shapeKind));
                 }
             }
 
-            #region IDoubleStateMessageBasedFunctionConfiguration Implementation
-            [DataMember]
-            public ReadOnlyCollection<Byte> Deactivation { get; set; }
-            #endregion
+            graphics.SmoothingMode = smoothingMode;
+            graphics.InterpolationMode = interpolationMode;
         }
-
-        [DataContract]
-        public abstract class TransformableFunctionConfiguration : FunctionConfiguration, ISupportLinearTransformation
-        {
-            protected TransformableFunctionConfiguration()
-            {
-            }
-
-            public TransformableFunctionConfiguration(LinearTransformation transformation, String name = @"")
-                : base(name)
-            {
-                this.Transformation = transformation;
-            }
-
-            public TransformableFunctionConfiguration(String name = @"", Single transformationA = 1, Single transformationB = 0)
-                : this(new LinearTransformation(transformationA, transformationB), name)
-            {
-            }
-
-            #region ISupportLinearTransformation Implementation
-            [DataMember]
-            public LinearTransformation Transformation { get; set; }
-            #endregion
-        }
-
-        [DataContract]
-        public class TransformableSingleStateMessageBasedFunctionConfiguration : TransformableFunctionConfiguration, ISingleStateMessageBasedFunctionConfiguration
-        {
-            public TransformableSingleStateMessageBasedFunctionConfiguration(String name = @"", Single transformationA = 1, Single transformationB = 0, ReadOnlyCollection<Byte> activation = null)
-                : base(name, transformationA, transformationB)
-            {
-                this.Activation = activation;
-            }
-
-            public TransformableSingleStateMessageBasedFunctionConfiguration(LinearTransformation transformation, String name = @"", ReadOnlyCollection<Byte> activation = null)
-                : base(transformation, name)
-            {
-                this.Activation = activation;
-            }
-
-            #region ISingleStateMessageBasedFunctionConfiguration Implementation
-            [DataMember]
-            public ReadOnlyCollection<Byte> Activation { get; set; }
-            #endregion
-        }
-
-        [DataContract]
-        public class TransformableDoubleStateMessageBasedFunctionConfiguration : TransformableSingleStateMessageBasedFunctionConfiguration, IDoubleStateMessageBasedFunctionConfiguration
-        {
-            public TransformableDoubleStateMessageBasedFunctionConfiguration(String name = @"", Single transformationA = 1, Single transformationB = 0,  ReadOnlyCollection<Byte> activation = null, ReadOnlyCollection<Byte> deactivation = null)
-                : base(name, transformationA, transformationB, activation)
-            {
-                this.Deactivation = deactivation;
-            }
-
-            #region IDoubleStateMessageBasedFunctionConfiguration Implementation
-            [DataMember]
-            public ReadOnlyCollection<Byte> Deactivation { get; set; }
-            #endregion
-        }
-
-        [DataContract]
-        public class ApplicationConfiguration
-        {
-     
-        }
-
-        public enum BusKind : byte
-        {
-            Can = 0x00,
-            Kline = 0x01,
-        }
-
-        public enum SensorKind : byte
-        {
-            Analog = 0x00,
-            Digital = 0x01,
-        }
-
-        public interface IDescriptable
-        {
-            String Description { get; set; }
-        }
-
-        public interface IErrorCode : IIdentifiableNamable, IDescriptable
-        {
-        }
-
-        public class ErrorCode : IdentifiableNamable, IErrorCode
-        {
-            public ErrorCode(Byte id = 0x00, String name = @"", String description = @"")
-                : base(name, id)
-            {
-                this.Description = description;
-            }
-
-            #region IDescriptable implementation
-            public String Description { get; set; }
-            #endregion
-        }
-
-//        public class LoadControlConfiguration
-//        {
-//            
-//        }
-//
-//        public class LoadConfiguration
-//        {
-//            public Single DutyCycle { get; set; }
-//            public Single Frequency { get; set; }
-//            public Single Voltage { get; set; }
-//        }
-//
-//        public struct LinearTransformation
-//        {
-//            public LinearTransformation(Single a, Single b)
-//            {
-//                this.A = a;
-//                this.B = b;
-//            }
-//
-//            public Single A { get; }
-//
-//            public Single B { get; }
-//        }
-//
-//        public class FrequencyInputConfiguration : ISupportLinearTransformation
-//        {
-//            public FrequencyInputConfiguration()
-//            {
-//            }
-//
-//            public Byte Id { get; }
-//
-//            public Single Frequency { get; }
-//
-//            public LinearTransformation LinearTransformation { get; }
-//        }
-//
-//        public class SensorInterfaceConfiguration
-//        {
-//
-//        }
-//        public class AdcDataConfiguration
-//        {
-//
-//        }
-//        public class DigitalInputConfiguration
-//        {
-//
-//        }
-//        public class ReadIdConfiguration
-//        {
-//        }
-//        public class RelayPowerConfiguration
-//        {
-//        }
-//        public class MotorFunctionConfiguration
-//        {
-//        }
-//        public class MotorCurrentConfiguration
-//        {
-//        }
-//        public class ReservedFunctionsConfiguration
-//        {
-//        }
-//        public class EpRomConfiguration
-//        {
-//        }
-//        public class FlashCommandConfiguration
-//        {
-//            
-//        }
-
-//        private static void HeapPermutation<T>(IList<T> source, Int32 n)
-//        {
-//            // Console.Write(" n = {0} => ", n);
-//
-//            if (n == 1)
-//            {
-//                Console.WriteLine(String.Join(@" ", source));
-//            }
-//            else
-//            {
-//                for (var i = 0; i < n; i++)
-//                {
-//                    Program.HeapPermutation(source, n - 1);
-//
-//                    var index = ((i % 2) == 0) ? i : 0;
-//
-//                    Program.Swap(source, i, n - 1);
-//                }
-//            }
-//        }
-//
-//        private static void Swap<T>(IList<T> source, Int32 index1, Int32 index2)
-//        {
-//            var tmp = source[index1];
-//            source[index1] = source[index2];
-//            source[index2] = tmp;
-//        }
     }
 }

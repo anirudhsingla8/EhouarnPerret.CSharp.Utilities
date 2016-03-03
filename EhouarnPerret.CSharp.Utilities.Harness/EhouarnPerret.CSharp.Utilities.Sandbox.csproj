@@ -51,4 +51,7 @@
       <Name>EhouarnPerret.CSharp.Utilities.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="FuckMeeeeh" />
+  </ItemGroup>
 </Project>
