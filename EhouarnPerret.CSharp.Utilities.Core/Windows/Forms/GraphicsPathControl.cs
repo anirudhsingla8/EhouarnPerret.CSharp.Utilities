@@ -56,4 +56,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             // e.Graphics.FillPath();
         }
     }
+
 }

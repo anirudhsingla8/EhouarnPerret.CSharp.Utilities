@@ -29,7 +29,7 @@ using System.Drawing.Drawing2D;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public abstract class DoubleBufferedControl : Control
+    public abstract class DoubleBufferedControl : Control, ISupportDoubleBufferable
     {
         protected DoubleBufferedControl()
         {
@@ -64,7 +64,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         }
     }
 
-    public abstract class DoubleBufferedControl<TProperties> : Control<TProperties>
+    public abstract class DoubleBufferedControl<TProperties> : Control<TProperties>, ISupportDoubleBufferable
         where TProperties : ControlProperties
     {
         private void SetDoubleBuffered()

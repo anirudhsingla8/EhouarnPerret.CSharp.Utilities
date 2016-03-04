@@ -73,7 +73,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
             ledControl.Click += (sender, e) => ledControl.Toggle();
 
-            form.Controls.Add(ledControl);
+            // form.Controls.Add(ledControl);
+
+            form.Controls.Add(new PropertyGrid() { Dock = DockStyle.Right, });
 
             form.ShowDialog();
 

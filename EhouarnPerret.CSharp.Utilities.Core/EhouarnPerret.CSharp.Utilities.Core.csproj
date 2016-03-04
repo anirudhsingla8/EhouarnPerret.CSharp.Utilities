@@ -170,6 +170,7 @@
     <Compile Include="Windows\Forms\ExtendedSplitContainer.cs" />
     <Compile Include="Windows\Forms\ExtendedCollectionEditor.cs" />
     <Compile Include="Windows\Forms\ExtendedButton.cs" />
+    <Compile Include="Windows\Forms\DoubleBufferedForm.cs" />
     <Compile Include="Windows\Forms\Dropdown.cs" />
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
@@ -186,7 +187,6 @@
     <Compile Include="Windows\Forms\Canvas\CanvasControlPropertiesView.cs" />
     <Compile Include="Windows\Forms\Chart\ChartControlSeries.cs" />
     <Compile Include="StringValueAttribute.cs" />
-    <Compile Include="Windows\Forms\DoubleBufferedForm.cs" />
     <Compile Include="Windows\Forms\FormResizeRepaintStrategy.cs" />
     <Compile Include="Collections\Generic\IOrderedBindableDictionary.cs" />
     <Compile Include="Collections\Generic\IBindableDictionary.cs" />

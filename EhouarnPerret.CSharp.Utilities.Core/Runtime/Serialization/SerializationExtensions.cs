@@ -64,14 +64,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             return path.ReadTextFromFile().DeserializeJson<T>();
         }
 
-        private static DataContractSerializerSettings XmlSerializerSettings { get; }
+        private readonly static DataContractSerializerSettings XmlSerializerSettings { get; }
         = new DataContractSerializerSettings()
         {
             PreserveObjectReferences = true,
             SerializeReadOnlyTypes = true,
         };
 
-        private static DataContractJsonSerializerSettings JsonSerializerSettings 
+        private readonly static DataContractJsonSerializerSettings JsonSerializerSettings 
         = new DataContractJsonSerializerSettings()
         {
             SerializeReadOnlyTypes = true,

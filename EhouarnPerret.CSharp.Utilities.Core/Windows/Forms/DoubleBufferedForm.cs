@@ -30,7 +30,7 @@ using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class DoubleBufferedForm : Form
+    public class DoubleBufferedForm : Form, ISupportDoubleBufferable
     {
         public DoubleBufferedForm()
         {
@@ -99,6 +99,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
                 this._resizeRepaintStrategy = value;
             }
         }
+    }
+
+    public interface ISupportDoubleBufferable
+    {
+        Boolean DoubleBuffering { get; set; }
     }
 }
 
