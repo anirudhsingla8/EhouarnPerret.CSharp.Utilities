@@ -31,7 +31,6 @@ using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-
     public interface IResizePaintable
     {
         FormResizeRepaintStrategy ResizeRepaintStrategy { get; set; }

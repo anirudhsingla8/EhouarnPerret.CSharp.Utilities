@@ -28,13 +28,28 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using EhouarnPerret.CSharp.Utilities.Core.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-
     public interface ISupportDoubleBufferable
     {
         Boolean DoubleBuffering { get; set; }
     }
-    
+
+    public interface IGradientable
+    {
+
+    }
+
+    public class S
+    {
+        public S()
+        {
+            LinearGradientBrush d = new LinearGradientBrush();
+            var dd = new ColorBlend();
+            var ee = new Blend();
+
+        }
+    }
 }

@@ -24,10 +24,52 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Net;
+using System.Dynamic;
+using System.Threading;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public class FormControl
+    {
+    }
+    public class ColorGradient
+    {
+        public ColorGradient()
+        {
+            this.Points = new BindingList<ColorGradientPoint>();
+        }
+
+        public BindingList<ColorGradientPoint> Points { get; }
+
+        public Single Rotation { get; set; }
+    }
+
+    public abstract class ColorGradientPoint
+    {
+        public ColorGradientPoint(Single position, Color color)
+        {
+            this.Position = position;
+            this.Color = color;
+
+            LinearGradientBrush d = new LinearGradientBrush();
+        }
+
+        public Single Position { get; }
+        public Color Color { get; }
+    }
+
+    public class RadialGradient : ColorGradientPoint
+    {
+        public PointF Center
+
+    }
+
+    public class LinearGradient : ColorGradientPoint
     {
     }
 }
