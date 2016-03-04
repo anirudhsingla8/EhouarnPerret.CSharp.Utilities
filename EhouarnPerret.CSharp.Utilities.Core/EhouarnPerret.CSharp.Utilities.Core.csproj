@@ -308,6 +308,8 @@
     <Compile Include="Windows\Forms\Industrial\LightIndicator.cs" />
     <Compile Include="Windows\Forms\Industrial\SquareIndicator.cs" />
     <Compile Include="Windows\Forms\GraphicsPathControl.cs" />
+    <Compile Include="Windows\Forms\ISupportDoubleBufferable.cs" />
+    <Compile Include="Windows\Forms\IResizePaintable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

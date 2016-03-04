@@ -100,10 +100,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
     }
-
-    public interface ISupportDoubleBufferable
-    {
-        Boolean DoubleBuffering { get; set; }
-    }
 }
 
