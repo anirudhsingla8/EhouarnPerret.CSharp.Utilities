@@ -1,5 +1,5 @@
 //
-// GraphicsPathControl.cs
+// GraphicsPathControlProperties.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -31,36 +31,12 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-
-    public abstract class GraphicsPathControl : DoubleBufferedControl<GraphicsPathControlProperties>
+    public class GraphicsPathControlProperties : ControlProperties
     {
-        protected GraphicsPathControl()
-            : base()
+        internal GraphicsPathControlProperties(GraphicsPathControl parent)
+            : base(parent)
         {
-            this.GraphicsPath = this.CreateGraphicsPath();
-        }
-
-        private UInt16 _borderWidth;
-        public UInt16 BorderWidth
-        {
-            get
-            {
-                return this._borderWidth;
-            }
-            set
-            {
-                this._borderWidth = value;
-                this.Invalidate();
-            }
-        }
-
-        protected GraphicsPath GraphicsPath { get; }
-        protected abstract GraphicsPath CreateGraphicsPath();
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            // e.Graphics.FillPath();
         }
     }
+    
 }

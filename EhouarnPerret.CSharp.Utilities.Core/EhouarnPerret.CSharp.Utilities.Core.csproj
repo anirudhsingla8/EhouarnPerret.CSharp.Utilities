@@ -310,6 +310,7 @@
     <Compile Include="Windows\Forms\GraphicsPathControl.cs" />
     <Compile Include="Windows\Forms\ISupportDoubleBufferable.cs" />
     <Compile Include="Windows\Forms\IResizePaintable.cs" />
+    <Compile Include="Windows\Forms\GraphicsPathControlProperties.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
