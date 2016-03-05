@@ -31,13 +31,13 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-
     public abstract class GraphicsPathControl : DoubleBufferedControl<GraphicsPathControlProperties>
     {
         protected GraphicsPathControl()
             : base()
         {
             this.GraphicsPath = this.CreateGraphicsPath();
+            this.UseGraphicsPath = true;
         }
 
         private UInt16 _borderWidth;
@@ -51,6 +51,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             {
                 this._borderWidth = value;
                 this.Invalidate();
+            }
+        }
+
+        private Boolean _useGraphicsPath;
+        public Boolean UseGraphicsPath
+        {
+            get
+            {
+                return this._useGraphicsPath;
+            }
+            set
+            {
+                this.Region = value ? new Region(this.GraphicsPath) : new Region(this.ClientRectangle);
             }
         }
 

@@ -311,6 +311,8 @@
     <Compile Include="Windows\Forms\ISupportDoubleBufferable.cs" />
     <Compile Include="Windows\Forms\IResizePaintable.cs" />
     <Compile Include="Windows\Forms\GraphicsPathControlProperties.cs" />
+    <Compile Include="Windows\Forms\ColorGradientPoint.cs" />
+    <Compile Include="Windows\Forms\ColorGradient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

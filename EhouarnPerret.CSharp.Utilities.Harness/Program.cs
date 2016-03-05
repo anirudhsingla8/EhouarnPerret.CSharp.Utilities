@@ -24,31 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Configuration;
-using System.Dynamic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading;
-using System.Web.Script.Serialization;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using EhouarnPerret.CSharp.Utilities.Core;
-using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
-using EhouarnPerret.CSharp.Utilities.Core.Linq;
-using EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command;
-using EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization;
-using System.Drawing.Printing;
-using System.Net.Sockets;
-using System.Text;
-using EhouarnPerret.CSharp.Utilities.Core.Net.Sockets;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
@@ -72,8 +47,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             ledControl.RepaintOnRedraw = true;
 
             ledControl.Click += (sender, e) => ledControl.Toggle();
-
-            // form.Controls.Add(ledControl);
 
             form.Controls.Add(new PropertyGrid() { Dock = DockStyle.Right, });
 

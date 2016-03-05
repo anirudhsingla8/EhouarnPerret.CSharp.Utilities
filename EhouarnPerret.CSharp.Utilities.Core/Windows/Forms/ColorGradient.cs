@@ -1,10 +1,10 @@
-﻿//
-// Form.cs
+//
+// ColorGradient.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2015 Ehouarn Perret
+// Copyright (c) 2016 Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -34,8 +35,17 @@ using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class FormControl
+
+    public class ColorGradient
     {
+        public ColorGradient()
+        {
+            this.Points = new BindingList<ColorGradientPoint>();
+        }
+
+        public BindingList<ColorGradientPoint> Points { get; }
+
+        public Single Rotation { get; set; }
     }
 
 //    public class RadialGradient : ColorGradientPoint
@@ -48,4 +58,3 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 //    {
 //    }
 }
-
