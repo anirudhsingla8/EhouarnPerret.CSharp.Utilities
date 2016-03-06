@@ -236,7 +236,6 @@
     <Compile Include="Text\StringBuilderExtensions.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlItemBindingCollection.cs" />
     <Compile Include="Windows\Forms\Chart\ChartControlSeriesKind.cs" />
-    <Compile Include="Windows\Forms\BackgroundKind.cs" />
     <Compile Include="UI\Chart\IChart.cs" />
     <Compile Include="UI\Canvas\ICanvas.cs" />
     <Compile Include="UI\Canvas\ICanvasItem.cs" />
@@ -308,11 +307,13 @@
     <Compile Include="Windows\Forms\Industrial\LightIndicator.cs" />
     <Compile Include="Windows\Forms\Industrial\SquareIndicator.cs" />
     <Compile Include="Windows\Forms\GraphicsPathControl.cs" />
-    <Compile Include="Windows\Forms\ISupportDoubleBufferable.cs" />
-    <Compile Include="Windows\Forms\IResizePaintable.cs" />
     <Compile Include="Windows\Forms\GraphicsPathControlProperties.cs" />
     <Compile Include="Windows\Forms\ColorGradientPoint.cs" />
-    <Compile Include="Windows\Forms\ColorGradient.cs" />
+    <Compile Include="Windows\Forms\IFormResizePaintable.cs" />
+    <Compile Include="Windows\Forms\BackType.cs" />
+    <Compile Include="Windows\Forms\ControlBackgroundKind.cs" />
+    <Compile Include="Windows\Forms\IGradientable.cs" />
+    <Compile Include="Windows\Forms\Gradient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

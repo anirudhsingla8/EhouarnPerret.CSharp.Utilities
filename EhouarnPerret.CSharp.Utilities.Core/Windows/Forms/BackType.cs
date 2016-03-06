@@ -1,5 +1,5 @@
 //
-// IResizePaintable.cs
+// BackType.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,14 +25,13 @@
 // THE SOFTWARE.
 
 using System;
-using System.Windows.Forms;
-using System.Drawing;
-using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public interface IResizePaintable
+    public enum BackType : byte
     {
-        FormResizeRepaintStrategy ResizeRepaintStrategy { get; set; }
+        Color = 0x00,
+        Image = 0x01,
+        Gradient = 0x02,
     }
 }

@@ -54,6 +54,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
+        public Color _borderColor;
+        public Color BorderColor
+        {
+            get
+            {
+                return this._borderColor;
+            }
+            set
+            {
+                this._borderColor = value;
+                this.Invalidate();
+            }
+        }
+
         private Boolean _useGraphicsPath;
         public Boolean UseGraphicsPath
         {

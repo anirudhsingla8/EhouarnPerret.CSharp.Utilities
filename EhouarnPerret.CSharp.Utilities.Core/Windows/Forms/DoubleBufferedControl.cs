@@ -25,11 +25,10 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public abstract class DoubleBufferedControl : Control, ISupportDoubleBufferable
+    public abstract class DoubleBufferedControl : Control, IDoubleBufferable
     {
         protected DoubleBufferedControl()
         {
@@ -51,7 +50,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
-        public Boolean RepaintOnRedraw
+        public Boolean RepaintOnResize
         {
             get
             {
@@ -64,7 +63,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         }
     }
 
-    public abstract class DoubleBufferedControl<TProperties> : Control<TProperties>, ISupportDoubleBufferable
+    public abstract class DoubleBufferedControl<TProperties> : Control<TProperties>, IDoubleBufferable
         where TProperties : ControlProperties
     {
         private void SetDoubleBuffered()
@@ -92,6 +91,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             this.SetDoubleBuffered();
         }
+
+        #region ISupportDoubleBufferable Implementation
+        public bool DoubleBuffering
+        {
+            get
+            {
+                return this.DoubleBuffered;
+            }
+            set
+            {
+                this.DoubleBuffered = value;
+            }
+        }
+        #endregion
     }
 }
 

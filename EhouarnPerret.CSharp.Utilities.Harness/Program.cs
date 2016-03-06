@@ -44,7 +44,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
             ledControl.Dock = DockStyle.Fill;
 
-            ledControl.RepaintOnRedraw = true;
+            ledControl.RepaintOnResize = true;
 
             ledControl.Click += (sender, e) => ledControl.Toggle();
 

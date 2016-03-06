@@ -30,7 +30,7 @@ using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class DoubleBufferedForm : Form, ISupportDoubleBufferable
+    public class DoubleBufferedForm : Form, IDoubleBufferable, IGradientable
     {
         public DoubleBufferedForm()
         {

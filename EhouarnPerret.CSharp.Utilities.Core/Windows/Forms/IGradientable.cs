@@ -1,5 +1,5 @@
-﻿//
-// ControlAppearanceBackgroundKind.cs
+//
+// ISupportDoubleBufferable.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,15 +23,19 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
+using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public enum BackgroundKind
+    public interface IDoubleBufferable
     {
-        Color = 0x00,
-        Image = 0x01,
-        Gradient = 0x02,
+        Boolean DoubleBuffering { get; set; }
+    }
+
+    public interface IGradientable
+    {
+        
     }
 }
-

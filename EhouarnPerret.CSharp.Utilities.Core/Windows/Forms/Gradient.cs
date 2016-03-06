@@ -25,20 +25,13 @@
 // THE SOFTWARE.
 
 using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Net;
-using System.Dynamic;
-using System.Threading;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-
-    public class ColorGradient
+    public class Gradient
     {
-        public ColorGradient()
+        public Gradient()
         {
             this.Points = new BindingList<ColorGradientPoint>();
         }
@@ -48,13 +41,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         public Single Rotation { get; set; }
     }
 
-//    public class RadialGradient : ColorGradientPoint
-//    {
-//        public PointF Center
-//
-//    }
 
-//    public class LinearGradient : ColorGradientPoint
-//    {
-//    }
+    public enum GradientType
+    {
+    }
+
+    public class RadialGradient : Gradient
+    {
+        public RadialGradient()
+        {
+        }
+    }
+
+    public class LinearGradient : Gradient
+    {
+        public LinearGradient()
+        {
+            
+        }
+    }
 }
