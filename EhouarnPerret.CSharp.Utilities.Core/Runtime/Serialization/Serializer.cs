@@ -24,13 +24,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Threading.Tasks;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
     public abstract class Serializer
     {
-        public Serializer()
+        protected Serializer()
         {
         }
 

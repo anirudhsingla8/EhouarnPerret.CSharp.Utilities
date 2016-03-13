@@ -26,24 +26,56 @@
 
 using System;
 using System.ComponentModel;
+using System.Drawing;
+using System.Security.Cryptography.X509Certificates;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class Gradient
+    public abstract class ImmutableBrush
     {
-        public Gradient()
+        protected ImmutableBrush()
         {
-            this.Points = new BindingList<ColorGradientPoint>();
+
+            this.Points = new BindingList<GradientPoint>();
         }
 
-        public BindingList<ColorGradientPoint> Points { get; }
+        public BindingList<GradientPoint> Points { get; }
 
         public Single Rotation { get; set; }
+
+        internal abstract void Scale(Single scaleX, Single Y);
     }
 
-
-    public enum GradientType
+    public class ImmutableSolidBrush : ImmutableBrush
     {
+        public ImmutableSolidBrush(Color color)
+        {
+            this.SolidBrush = new SolidBrush(color);
+        }
+        public ImmutableSolidBrush(SolidBrush solidBrush)
+        {
+            this.SolidBrush = ExceptionHelpers.ThrowIfNull(solidBrush, nameof(solidBrush));
+        }
+
+        private SolidBrush SolidBrush { get; }
+
+        internal override void Scale(Single scaleX, Single Y)
+        {
+            // Do nothing here...
+        }
+    }
+
+    public abstract class ImmutableGradientBrush : ImmutableBrush
+    {
+        
+    }
+
+    public class ImmutableImageBrush : ImmutableBrush
+    {
+        public ImmutableImageBrush()
+        {
+            
+        }
     }
 
     public class RadialGradient : Gradient

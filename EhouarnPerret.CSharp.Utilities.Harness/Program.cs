@@ -36,23 +36,41 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var form = new DoubleBufferedForm();
+            var form = new DoubleBufferedForm()
+            {
+                BackColor = Color.Gray,
+            };
 
             form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;
 
-            var ledControl = new LedControl();
+            var dbc = new DBC
+            {
+                BackColor = Color.Yellow,     
+                Size = new Size(100, 200),
+                Dock = DockStyle.Fill,
+            };
 
-            ledControl.Dock = DockStyle.Fill;
+            var linearGradientBrush = new LinearGradientBrush(dbc.ClientRectangle, Color.Red, Color.Blue, LinearGradientMode.Vertical);
+            dbc.Brush = linearGradientBrush
 
-            ledControl.RepaintOnResize = true;
-
-            ledControl.Click += (sender, e) => ledControl.Toggle();
-
-            form.Controls.Add(new PropertyGrid() { Dock = DockStyle.Right, });
+            form.Controls.Add(dbc);
 
             form.ShowDialog();
+        }
+    }
 
-            Console.ReadKey();
+    public class DBC : GraphicsPathControl
+    {
+        protected override GraphicsPath CreateGraphicsPath()
+        {
+            var graphicsPath = new GraphicsPath();
+
+            var width = this.Width < 1 ? 1 : this.Width;
+            var height = this.Height < 1 ? 1 : this.Height;
+
+            graphicsPath.AddPie(0, 0, width, height, 200f, 300f);
+
+            return graphicsPath;
         }
     }
 

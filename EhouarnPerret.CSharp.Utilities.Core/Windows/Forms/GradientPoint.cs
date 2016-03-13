@@ -26,37 +26,18 @@
 
 using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Net;
-using System.Dynamic;
-using System.Threading;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-
-    public abstract class ColorGradientPoint
+    public struct GradientPoint
     {
-        protected ColorGradientPoint(Single position, Color color)
+        public GradientPoint(Single position, Color color)
         {
             this.Position = position;
             this.Color = color;
-
-            // v d = new LinearGradientBrush();
         }
 
         public Single Position { get; }
         public Color Color { get; }
     }
-
-//    public class RadialGradient : ColorGradientPoint
-//    {
-//        public PointF Center
-//
-//    }
-
-//    public class LinearGradient : ColorGradientPoint
-//    {
-//    }
 }

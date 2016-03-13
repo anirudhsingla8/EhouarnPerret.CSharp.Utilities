@@ -24,20 +24,22 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-using System.Drawing;
 using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public abstract class GraphicsPathControl : DoubleBufferedControl<GraphicsPathControlProperties>
+    public abstract class GraphicsPathControl : DoubleBufferedControl // <GraphicsPathControlProperties>;
     {
         protected GraphicsPathControl()
             : base()
         {
             this.GraphicsPath = this.CreateGraphicsPath();
-            this.UseGraphicsPath = true;
+            this.Brush = new SolidBrush(Color.Transparent);
+            this._previousSize = new SizeF(1, 1);
+            this.RepaintOnResize = true;
         }
 
         private UInt16 _borderWidth;
@@ -68,12 +70,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
-        private Boolean _useGraphicsPath;
-        public Boolean UseGraphicsPath
+        private Boolean _useGraphicsPathAsRegion;
+        public Boolean UseGraphicsPathAsRegion
         {
             get
             {
-                return this._useGraphicsPath;
+                return this._useGraphicsPathAsRegion;
             }
             set
             {
@@ -81,13 +83,49 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
-        protected GraphicsPath GraphicsPath { get; }
+        private Brush _brush;
+        public Brush Brush
+        {
+            get
+            { 
+                return this._brush;
+            }
+            set
+            {
+                this._brush = value;
+                this.Invalidate();
+            }
+        }
+
+        private GraphicsPath GraphicsPath { get; }
         protected abstract GraphicsPath CreateGraphicsPath();
+
+        private SizeF _previousSize;
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            // e.Graphics.FillPath();
+
+            e.Graphics.FillPath(this.Brush, this.GraphicsPath);
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+
+            var width = this.Width < 1 ? 1f : this.Width;
+            var height = this.Height < 1 ? 1f : this.Height;
+
+            var scaleX = width / this._previousSize.Width;
+            var scaleY = height / this._previousSize.Height;
+
+            var matrix = new Matrix();
+
+            matrix.Scale(scaleX, scaleY, MatrixOrder.Append);
+
+            this.GraphicsPath.Transform(matrix);
+
+            this._previousSize = new SizeF(width, height);
         }
     }
 }

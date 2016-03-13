@@ -24,10 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
-using System.Drawing;
-using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {

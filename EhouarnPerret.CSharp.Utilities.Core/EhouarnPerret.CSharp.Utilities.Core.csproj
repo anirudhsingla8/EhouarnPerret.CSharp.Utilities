@@ -308,12 +308,12 @@
     <Compile Include="Windows\Forms\Industrial\SquareIndicator.cs" />
     <Compile Include="Windows\Forms\GraphicsPathControl.cs" />
     <Compile Include="Windows\Forms\GraphicsPathControlProperties.cs" />
-    <Compile Include="Windows\Forms\ColorGradientPoint.cs" />
     <Compile Include="Windows\Forms\IFormResizePaintable.cs" />
     <Compile Include="Windows\Forms\BackType.cs" />
     <Compile Include="Windows\Forms\ControlBackgroundKind.cs" />
     <Compile Include="Windows\Forms\IGradientable.cs" />
     <Compile Include="Windows\Forms\Gradient.cs" />
+    <Compile Include="Windows\Forms\GradientPoint.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

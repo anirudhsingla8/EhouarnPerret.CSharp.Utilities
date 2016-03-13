@@ -25,18 +25,10 @@
 // THE SOFTWARE.
 using System;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Script.Serialization;
-using System.Xml;
-using System.Xml.Serialization;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
-using System.Windows.Forms;
-using System.Dynamic;
-using System.Runtime.Serialization.Formatters.Soap;
+using System.Text;
+using System.Xml;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
@@ -192,7 +184,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         //                }
         //            }
         //        }
-
     }
 }
     
