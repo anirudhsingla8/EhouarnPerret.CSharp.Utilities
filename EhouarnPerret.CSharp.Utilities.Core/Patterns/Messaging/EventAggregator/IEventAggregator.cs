@@ -24,9 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
 {
     public interface IEventAggregator : IEventPublisher, IEventSubscriptionManager

@@ -30,5 +30,4 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
     {
     }
 
-    public interface IRTree<TValue, TRTreeNode> : IRTree<>
 }

@@ -26,7 +26,6 @@
 
 using System;
 using System.Windows.Forms;
-using System.IO;
 using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas

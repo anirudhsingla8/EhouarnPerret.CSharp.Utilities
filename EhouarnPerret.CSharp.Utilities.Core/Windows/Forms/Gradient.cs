@@ -27,7 +27,6 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {

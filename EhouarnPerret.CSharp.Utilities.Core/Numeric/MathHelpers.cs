@@ -26,9 +26,6 @@
 using System;
 using System.Numerics;
 using System.Drawing;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {

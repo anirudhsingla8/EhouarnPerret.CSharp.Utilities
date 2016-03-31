@@ -24,9 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.Windows.Forms;
-using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public abstract class ControlPropertiesAppearance

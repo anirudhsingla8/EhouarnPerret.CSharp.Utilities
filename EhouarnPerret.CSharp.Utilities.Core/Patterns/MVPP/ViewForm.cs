@@ -13,9 +13,7 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-using System;
 using System.Windows.Forms;
-using EhouarnPerret.CSharp.Utilities.Core;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {

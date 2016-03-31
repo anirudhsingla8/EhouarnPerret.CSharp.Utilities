@@ -25,10 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Dynamic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {

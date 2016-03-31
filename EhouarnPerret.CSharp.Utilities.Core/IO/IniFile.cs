@@ -26,8 +26,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Dynamic;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO

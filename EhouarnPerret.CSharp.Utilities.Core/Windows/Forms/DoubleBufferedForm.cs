@@ -25,11 +25,10 @@
 // THE SOFTWARE.
 using System;
 using System.Windows.Forms;
-using System.Drawing;
-using EhouarnPerret.CSharp.Utilities.Core.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
+    [System.ComponentModel.DesignerCategory(@"code")]
     public class DoubleBufferedForm : Form, IDoubleBufferable, IGradientable
     {
         public DoubleBufferedForm()
@@ -87,14 +86,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
             set
             {
-                if (value == FormResizeRepaintStrategy.OnResize)
-                {
-                    this.ResizeRedraw = true;
-                }
-                else
-                {
-                    this.ResizeRedraw = false;
-                }
+                this.ResizeRedraw = value == FormResizeRepaintStrategy.OnResize;
 
                 this._resizeRepaintStrategy = value;
             }

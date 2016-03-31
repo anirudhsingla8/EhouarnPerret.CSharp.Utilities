@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {

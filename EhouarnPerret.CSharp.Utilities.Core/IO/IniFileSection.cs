@@ -25,13 +25,7 @@
 // THE SOFTWARE.
 
 using System;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Collections.Generic;
-using System.Security.Permissions;
-using System.Windows.Forms;
-using System.Collections.ObjectModel;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO

@@ -25,10 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.CodeDom;
-using System.Threading.Tasks;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {

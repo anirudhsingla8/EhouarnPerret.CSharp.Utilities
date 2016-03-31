@@ -26,7 +26,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {

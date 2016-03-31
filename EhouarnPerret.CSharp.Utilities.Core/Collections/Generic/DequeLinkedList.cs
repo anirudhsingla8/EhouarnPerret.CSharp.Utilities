@@ -24,10 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
 //    public class DequeLinkedList<T> : IDeque<T>

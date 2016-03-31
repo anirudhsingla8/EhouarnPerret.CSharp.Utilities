@@ -30,8 +30,6 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms

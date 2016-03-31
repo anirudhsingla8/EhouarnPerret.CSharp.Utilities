@@ -26,7 +26,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {

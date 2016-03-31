@@ -24,13 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Numerics;
-using System.ComponentModel;
-using System.Runtime.Remoting.Messaging;
-using System.Dynamic;
-using System.Configuration;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
 //    public abstract class Matrix<Int32>
