@@ -29,6 +29,9 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
+
+
+
     public interface IBindableQueue<T> : IQueue<T>, IBindingList, IRaiseItemChangedEvents
     {
     }

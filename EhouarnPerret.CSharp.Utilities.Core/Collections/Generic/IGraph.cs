@@ -29,6 +29,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IGraph
     {
+
     }
 }
 

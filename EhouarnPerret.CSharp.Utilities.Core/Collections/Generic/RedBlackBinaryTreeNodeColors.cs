@@ -29,7 +29,7 @@ using System.Collections.Generic;
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     // We can replace it someday with... a Boolean
-    // isRed (if not then it is obviously black)
+    // isRed (if not then: it is obviously black)
     public enum RedBlackBinaryTreeNodeColors : byte
     {
         Red = 0x00,

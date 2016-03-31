@@ -26,12 +26,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IObservableCollection<TItem> : ICollection<TItem>, INotifyCollectionChanged, INotifyPropertyChanged, IRaiseItemChangedEvents
+    {
+    }
+
+    public interface IObservableQueue<TItem> : IQueue<TItem>, IObservableCollection<TItem>
+    {
+    }
+
+    public interface IObservableStack<TItem> : IStack<TItem>, IObservableCollection<TItem>
     {
     }
 }
