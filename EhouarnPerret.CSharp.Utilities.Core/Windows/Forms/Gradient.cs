@@ -70,26 +70,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         
     }
 
-    public class ImmutableImageBrush : ImmutableBrush
-    {
-        public ImmutableImageBrush()
-        {
+    //public class ImmutableImageBrush : ImmutableBrush
+    //{
+    //    public ImmutableImageBrush()
+    //    {
             
-        }
-    }
+    //    }
+    //}
 
-    public class RadialGradient : Gradient
-    {
-        public RadialGradient()
-        {
-        }
-    }
+    //public class RadialGradient : Gradient
+    //{
+    //    public RadialGradient()
+    //    {
+    //    }
+    //}
 
-    public class LinearGradient : Gradient
-    {
-        public LinearGradient()
-        {
+    //public class LinearGradient : Gradient
+    //{
+    //    public LinearGradient()
+    //    {
             
-        }
-    }
+    //    }
+    //}
 }

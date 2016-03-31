@@ -52,7 +52,9 @@
     <Compile Include="IProperties.cs" />
     <Compile Include="IPropertiesParent.cs" />
     <Compile Include="Collections\Generic\CollectionExtensions.cs" />
-    <Compile Include="Windows\Forms\Control.cs" />
+    <Compile Include="Windows\Forms\Control.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\ControlProperties.cs" />
     <Compile Include="Patterns\Disposition\Disposable.cs" />
     <Compile Include="ExceptionHelpers.cs" />
@@ -81,7 +83,9 @@
     <Compile Include="Collections\Generic\BlockingCollectionExtensions.cs" />
     <Compile Include="IO\Ports\SerialPortExtensions.cs" />
     <Compile Include="Net\Sockets\SocketExtensions.cs" />
-    <Compile Include="Windows\Forms\DoubleBufferedControl.cs" />
+    <Compile Include="Windows\Forms\DoubleBufferedControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ByteBits.cs" />
     <Compile Include="Collections\Generic\ITree.cs">
       <DeployService-Deploy>True</DeployService-Deploy>
@@ -166,21 +170,33 @@
     <Compile Include="Collections\Generic\IInspectableReadOnlyCollection.cs" />
     <Compile Include="Collections\Generic\IInspectableClearableCollection.cs" />
     <Compile Include="Data\Common\DbCommandExtensions.cs" />
-    <Compile Include="Windows\Forms\DataLayoutPanel.cs" />
-    <Compile Include="Windows\Forms\ExtendedSplitContainer.cs" />
+    <Compile Include="Windows\Forms\DataLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\ExtendedSplitContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\ExtendedCollectionEditor.cs" />
-    <Compile Include="Windows\Forms\ExtendedButton.cs" />
-    <Compile Include="Windows\Forms\DoubleBufferedForm.cs" />
+    <Compile Include="Windows\Forms\ExtendedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Forms\DoubleBufferedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\Dropdown.cs" />
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
-    <Compile Include="Windows\Forms\Editor.cs" />
+    <Compile Include="Windows\Forms\Editor.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Collections\Generic\DictionaryExtensions.cs" />
     <Compile Include="Text\RegularExpressions\MatchExtensions.cs" />
     <Compile Include="Windows\Forms\ListViewControl.cs" />
     <Compile Include="Reflection\CustomAttributesProviderExtensions.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasControl.cs" />
+    <Compile Include="Windows\Forms\Canvas\CanvasControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\Chart\ChartControl.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlItem.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlProperties.cs" />
@@ -205,7 +221,9 @@
     <Compile Include="Threading\MicroTimer.cs" />
     <Compile Include="Linq\EnumerableExtensions.Join.cs" />
     <Compile Include="Threading\MicroTimerElapsedEventArgs.cs" />
-    <Compile Include="Windows\Forms\ButtonControl.cs" />
+    <Compile Include="Windows\Forms\ButtonControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\AccordionControl.cs" />
     <Compile Include="Windows\Forms\Bindable.cs" />
     <Compile Include="Linq\Expressions\ExpressionHelpers.cs" />
@@ -306,7 +324,9 @@
     <Compile Include="Windows\Forms\Industrial\Meter.cs" />
     <Compile Include="Windows\Forms\Industrial\LightIndicator.cs" />
     <Compile Include="Windows\Forms\Industrial\SquareIndicator.cs" />
-    <Compile Include="Windows\Forms\GraphicsPathControl.cs" />
+    <Compile Include="Windows\Forms\GraphicsPathControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Windows\Forms\GraphicsPathControlProperties.cs" />
     <Compile Include="Windows\Forms\IFormResizePaintable.cs" />
     <Compile Include="Windows\Forms\BackType.cs" />
@@ -317,65 +337,18 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Collections\" />
-    <Folder Include="Collections\Generic\" />
-    <Folder Include="Net\" />
-    <Folder Include="Windows\" />
-    <Folder Include="Windows\Forms\" />
-    <Folder Include="Drawing\" />
-    <Folder Include="Windows\Forms\Animation\" />
-    <Folder Include="Threading\" />
-    <Folder Include="Threading\ThreadPool\" />
-    <Folder Include="Patterns\" />
-    <Folder Include="Patterns\Disposition\" />
-    <Folder Include="Reflection\" />
-    <Folder Include="Patterns\PropertyChangesNotification\" />
-    <Folder Include="Patterns\Design\" />
-    <Folder Include="Patterns\Design\Command\" />
-    <Folder Include="Net\Mail\" />
-    <Folder Include="Numeric\" />
-    <Folder Include="Data\" />
-    <Folder Include="Linq\" />
-    <Folder Include="Text\" />
-    <Folder Include="Text\RegularExpressions\" />
-    <Folder Include="Numeric\Algorithms\" />
-    <Folder Include="IO\" />
-    <Folder Include="IO\Ports\" />
-    <Folder Include="Net\Sockets\" />
-    <Folder Include="Patterns\MVPP\" />
-    <Folder Include="Data\Common\" />
-    <Folder Include="Patterns\Design\Singleton\" />
-    <Folder Include="Patterns\Design\Multiton\" />
-    <Folder Include="Windows\Forms\Canvas\" />
-    <Folder Include="Diagnostics\" />
-    <Folder Include="Runtime\" />
-    <Folder Include="Runtime\Serialization\" />
-    <Folder Include="Windows\Forms\Editors\" />
-    <Folder Include="Windows\Forms\Chart\" />
-    <Folder Include="Linq\Expressions\" />
-    <Folder Include="Management\" />
-    <Folder Include="UI\" />
-    <Folder Include="UI\Canvas\" />
-    <Folder Include="UI\Chart\" />
-    <Folder Include="Threading\Tasks\" />
-    <Folder Include="Windows\Forms\Simple\" />
-    <Folder Include="Patterns\Messaging\" />
-    <Folder Include="Patterns\Messaging\EventAggregator\" />
-    <Folder Include="Patterns\Messaging\Messenger\" />
-    <Folder Include="Patterns\Messaging\Mediator\" />
-    <Folder Include="IO\Encoding\" />
-    <Folder Include="IO\Encoding\Lossless\" />
-    <Folder Include="IO\Encoding\Lossless\Entropy\" />
+    <Folder Include="IO\Encoding\Lossless\Dictionary\BytePairEncoding\" />
+    <Folder Include="IO\Encoding\Lossless\Dictionary\Deflate\" />
+    <Folder Include="IO\Encoding\Lossless\Dictionary\LempelZiv\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Golomb\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Huffman\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Range\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Shannon\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Unary\" />
-    <Folder Include="IO\Encoding\Lossless\Dictionary\" />
-    <Folder Include="IO\Encoding\Lossless\Dictionary\BytePairEncoding\" />
-    <Folder Include="IO\Encoding\Lossless\Dictionary\Deflate\" />
-    <Folder Include="IO\Encoding\Lossless\Dictionary\LempelZiv\" />
+    <Folder Include="Net\Mail\" />
+    <Folder Include="Threading\Tasks\" />
+    <Folder Include="Windows\Forms\Animation\" />
+    <Folder Include="Windows\Forms\Editors\" />
     <Folder Include="Xml\" />
-    <Folder Include="Windows\Forms\Industrial\" />
   </ItemGroup>
 </Project>

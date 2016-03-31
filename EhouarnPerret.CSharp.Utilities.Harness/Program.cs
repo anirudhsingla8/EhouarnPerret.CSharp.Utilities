@@ -36,12 +36,12 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var form = new DoubleBufferedForm()
+            var form = new DoubleBufferedForm
             {
                 BackColor = Color.Gray,
+                ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize,
             };
 
-            form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;
 
             var dbc = new DBC
             {
@@ -51,7 +51,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             };
 
             var linearGradientBrush = new LinearGradientBrush(dbc.ClientRectangle, Color.Red, Color.Blue, LinearGradientMode.Vertical);
-            dbc.Brush = linearGradientBrush
 
             form.Controls.Add(dbc);
 
