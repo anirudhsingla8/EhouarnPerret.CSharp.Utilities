@@ -100,25 +100,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
         /// Gets the physical filename without the extension.
         /// </summary>
         /// <value>The name.</value>
-        public String Name
-        {
-            get
-            {
-                return this._fileInfo.Name;
-            }
-        } 
+        public String Name => this._fileInfo.Name;
 
         /// <summary>
         /// Gets the full path related to the physical file.
         /// </summary>
         /// <value>The full path.</value>
-        public String Path
-        {
-            get
-            {
-                return this._fileInfo.FullName;
-            }
-        }
+        public String Path => this._fileInfo.FullName;
 
         /// <summary>
         /// The default comment tag.

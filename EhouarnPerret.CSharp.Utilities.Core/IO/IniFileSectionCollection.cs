@@ -1,5 +1,5 @@
 //
-// EventAggregatorOptions.cs
+// IniFileSectionCollection.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,19 +25,40 @@
 // THE SOFTWARE.
 
 using System;
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
+namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {
-    public class EventAggregatorOptions
+    public class IniFileSectionCollection : ParentReferencedKeyedCollection<String, IniFileSection, IniFile>
     {
-        public EventAggregatorOptions()
+        internal IniFileSectionCollection(IniFile iniFile)
+            : base(iniFile, section => section.Name)
         {
         }
 
-        private Boolean _useWeakReferences;
-        public Boolean UseWeakReferences => this._useWeakReferences;
+        protected override void InsertItem(Int32 index, IniFileSection item)
+        {
+            base.InsertItem(index, item);
 
-        private Boolean _supportsMessageInheritances;
-        public Boolean SupportsMessageInheritances => this._supportsMessageInheritances;
+            switch (this.Parent.Options.AutoSaveMode)
+            {
+                case IniFileAutoSaveMode.OnSectionChange:
+                case IniFileAutoSaveMode.OnSectionPropertyChange:
+                    this.Parent.Save();
+                    break;
+
+                case IniFileAutoSaveMode.None:
+                default:
+                    // Nothing =]
+                    break;
+            }
+        }
+
+//        public IniFileSection Add(String name)
+//        {
+//        }
+//        public IniFileSection Add(String name, IDictionary<String, String> properties)
+//        {
+//        }
     }
 }

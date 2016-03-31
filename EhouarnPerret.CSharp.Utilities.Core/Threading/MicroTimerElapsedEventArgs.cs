@@ -50,10 +50,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         /// <summary>
         /// Gets the time when timer event was called since the timer has been started.
         /// </summary>
-        public TimeSpan Elapsed
-        {
-            get { return TimeSpan.FromMilliseconds(this.ElapsedMicroseconds / 1E3); }
-        }
+        public TimeSpan Elapsed => TimeSpan.FromMilliseconds(this.ElapsedMicroseconds / 1E3);
 
         /// <summary>
         /// Gets how late the timer was compared to when it should have been called.

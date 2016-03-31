@@ -30,37 +30,6 @@ using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {
-    public class IniFileSectionCollection : ParentReferencedKeyedCollection<String, IniFileSection, IniFile>
-    {
-        internal IniFileSectionCollection(IniFile iniFile)
-            : base(iniFile, section => section.Name)
-        {
-        }
-
-        protected override void InsertItem(Int32 index, IniFileSection item)
-        {
-            base.InsertItem(index, item);
-
-            switch (this.Parent.Options.AutoSaveMode)
-            {
-                case IniFileAutoSaveMode.OnSectionChange:
-                case IniFileAutoSaveMode.OnSectionPropertyChange:
-                    this.Parent.Save();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-//        public IniFileSection Add(String name)
-//        {
-//        }
-//        public IniFileSection Add(String name, IDictionary<String, String> properties)
-//        {
-//        }
-    }
-
     public class IniFileSection
     {
         internal IniFileSection(IniFileSectionCollection parent, String name)
@@ -69,8 +38,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
             this.Properties = new Dictionary<String, String>();
         }
 
-        internal IniFileSection(IniFileSectionCollection parent, String name, IDictionary<String, String> properties)
-            : this(parent, name)
+        internal IniFileSection(IniFileSectionCollection parent, String name, IDictionary<String, String> properties) : this(parent, name)
         {
             this.Properties.Add(properties);
         }
@@ -79,14 +47,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
 
         public String this[String propertyKey]
         {
-            get
-            {
-                return this.Properties[propertyKey];
-            }
-            set
-            {
-                this.Properties[propertyKey] = value;
-            }
+            get { return this.Properties[propertyKey]; }
+            set { this.Properties[propertyKey] = value; }
         }
 
         public String Name { get; }
