@@ -168,7 +168,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
         {
             return this.Sections.Values.GetEnumerator();
         }
-
         #endregion
 
         #region IEnumerable Implementation

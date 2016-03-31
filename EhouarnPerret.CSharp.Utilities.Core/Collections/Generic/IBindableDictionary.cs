@@ -28,7 +28,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IBindableDictionary<TKey, TValue> : IBindingList, IDictionary<TKey, TValue>, IRaiseItemChangedEvents
+    public interface IBindableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IBindableCollection<KeyValuePair<TKey, TValue>>
     {
     }
 }

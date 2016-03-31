@@ -25,8 +25,7 @@
 // THE SOFTWARE.
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IGraphVertex
+    public interface IGraphVertex<T>
     {
-         
     }
 }

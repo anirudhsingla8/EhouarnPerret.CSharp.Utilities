@@ -45,6 +45,7 @@
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Generic\IBindableCollection.cs" />
     <Compile Include="Collections\Generic\IGraphVertex.cs" />
     <Compile Include="Collections\Generic\IRTree.cs" />
     <Compile Include="Collections\Generic\IRTreeNode.cs" />

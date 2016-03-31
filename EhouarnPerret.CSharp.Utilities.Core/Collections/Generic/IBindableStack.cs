@@ -29,7 +29,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IBindableStack<T> : IStack<T>, IBindingList, IRaiseItemChangedEvents
+    public interface IBindableStack<T> : IStack<T>, IBindableCollection<T>
     {
     }
 }
