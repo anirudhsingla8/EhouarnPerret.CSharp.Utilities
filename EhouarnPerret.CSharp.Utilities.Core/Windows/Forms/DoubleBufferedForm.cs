@@ -28,7 +28,6 @@ using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    [System.ComponentModel.DesignerCategory(@"code")]
     public class DoubleBufferedForm : Form, IDoubleBufferable, IGradientable
     {
         public DoubleBufferedForm()

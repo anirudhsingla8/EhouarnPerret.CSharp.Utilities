@@ -41,7 +41,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         public ExtendedCollectionEditor()
             : base(typeof(T))
         {
-            
         }
     }
 }
