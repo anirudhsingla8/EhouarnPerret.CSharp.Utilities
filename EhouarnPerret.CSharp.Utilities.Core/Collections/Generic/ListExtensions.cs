@@ -26,6 +26,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using EhouarnPerret.CSharp.Utilities.Core.Numeric;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
@@ -68,6 +69,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
                     source[i] = newValue;
                 }
             }
+        }
+
+        public static Int32 MaxValueIndex<TSource>(this IList<TSource> source, Int32 index1, Int32 index2)
+            where TSource : IComparable<TSource>
+        {
+            return source[index1].CompareTo(source[index2]) > 0 ? index1 : index2;
+        }
+
+        public static Int32 MinValueIndex<TSource>(this IList<TSource> source, Int32 index1, Int32 index2)
+            where TSource : IComparable<TSource>
+        {
+            return source[index1].CompareTo(source[index2]) < 0 ? index1 : index2;
         }
     }
 }

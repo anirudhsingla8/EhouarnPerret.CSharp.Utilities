@@ -59,6 +59,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         //        {
         //        }
 
+        public static T Min<T>(T val1, T val2)
+            where T : IComparable<T>
+        {
+            return (val1.CompareTo(val2) <= 0) ? val1 : val2;
+        }
+
+        public static T Max<T>(T val1, T val2)
+            where T : IComparable<T>
+        {
+            return (val1.CompareTo(val2) >= 0) ? val1 : val2;
+        }
+
         private static BigInteger FactorialNaiveIterative(UInt16 n)
         {
             var product = BigInteger.One;

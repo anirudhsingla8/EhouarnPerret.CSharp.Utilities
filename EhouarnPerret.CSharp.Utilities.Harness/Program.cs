@@ -28,6 +28,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
