@@ -1,5 +1,5 @@
 ﻿//
-// SerialPortExtensions.cs
+// BubbleSortScheme.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,38 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.IO.Ports;
-
-namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ports
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 {
-    internal static class SerialPortExtensions
+    public enum BubbleSortScheme
     {
-        public static void Write(this SerialPort serialPort, Byte[] data)
-        {
-            serialPort.Write(data, 0, data.Length);
-        }
-
-        public static Byte[] Read(this SerialPort serialPort)
-        {
-            lock (serialPort)
-            {
-                var data = default(Byte[]);
-
-                if (serialPort.BytesToRead > 0)
-                {
-                    data = new Byte[serialPort.BytesToRead];
-
-                    serialPort.Read(data, 0, data.Length);
-                }
-                else
-                {
-                    data = new Byte[0];
-                }
-
-                return data;
-            }
-        }
+        Default = 0x00,
+        NoOptimization = 0x01,
+        N1Optimization = 0x02,
+        NOptimization = 0x03,
     }
 }
-
