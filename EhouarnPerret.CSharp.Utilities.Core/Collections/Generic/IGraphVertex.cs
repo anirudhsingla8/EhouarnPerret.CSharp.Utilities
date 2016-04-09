@@ -25,7 +25,8 @@
 // THE SOFTWARE.
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IGraphVertex<T>
+    public interface IGraphVertex<TValue>
     {
+        TValue Value { get; }
     }
 }
