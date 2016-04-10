@@ -28,7 +28,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
-using EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
@@ -37,25 +36,6 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var form = new DoubleBufferedForm
-            {
-                BackColor = Color.Gray,
-                ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize,
-            };
-
-
-            var dbc = new DBC
-            {
-                BackColor = Color.Yellow,     
-                Size = new Size(100, 200),
-                Dock = DockStyle.Fill,
-            };
-
-            var linearGradientBrush = new LinearGradientBrush(dbc.ClientRectangle, Color.Red, Color.Blue, LinearGradientMode.Vertical);
-
-            form.Controls.Add(dbc);
-
-            form.ShowDialog();
         }
     }
 
@@ -216,7 +196,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             where TLedControl : Control, ILedControl
         {
             var ledColor = ledControl.State ? ledControl.TrueColor : ledControl.FalseColor;
-            GraphicsExtensions.PaintLed(graphics, ledControl.Size, ledControl.Padding, ledColor, ledControl.ShapeKind);
+            graphics.PaintLed(ledControl.Size, ledControl.Padding, ledColor, ledControl.ShapeKind);
         }
 
         public static void PaintLed(this Graphics graphics, Size size, Padding padding, LedColor ledColor, LedShapeKind shapeKind = LedShapeKind.Ellipse)

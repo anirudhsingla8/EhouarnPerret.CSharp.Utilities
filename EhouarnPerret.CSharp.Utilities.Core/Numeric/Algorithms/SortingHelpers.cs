@@ -221,17 +221,96 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             }
         }
 
+        public static void OddEvenSort<TSource>(IList<TSource> source)
+            where TSource : IComparable<TSource>
+        {
+            var sorted = false;
+
+            while (!sorted)
+            {
+                sorted = true;
+
+                for (var i = 1; i < (source.Count - 1); i += 2)
+                {
+                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    {
+                        source.Swap(i, i + 1);
+                        sorted = false;
+                    }
+                }
+
+                for (var i = 0; i < (source.Count - 1); i += 2)
+                {
+                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    {
+                        source.Swap(i, i + 1);
+                        sorted = false;
+                    }
+                }
+            }
+        }
+
         public static void CombSort<TSource>(IList<TSource> source, Single gapShrinkFactor = 1.3f)
             where TSource : IComparable<TSource>
         {
-            // Minimum gap is actually 1...
-            if (gapShrinkFactor < 1.0f)
+            // TODO: add some checks on gapShrinkFactor + relevant exceptions
+
+            var gap = source.Count;
+
+            var swapped = true;
+
+            while ((gap != 1) && swapped)
             {
-                throw new ArgumentOutOfRangeException(nameof(gapShrinkFactor));
+                // Update the gap value for a next comb.
+                gap = (Int32)(gap / gapShrinkFactor);
+
+                if (gap < 1)
+                {
+                    gap = 1;
+                }
+
+                swapped = false;
+
+                // A single "comb" over the input list
+                for (var i = 0; (i + gap) >= source.Count; i++)
+                {
+                    if (source[i].CompareTo(source[i + gap]) > 0)
+                    {
+                        source.Swap(i, i + gap);
+                        swapped = true;
+                    }
+
+                    // If items in comparison are same, swapped becomes false and algorithm fails to continue sorting further
+                    if (source[i].CompareTo(source[i + gap]) == 0)
+                    {
+                        // So, we will make swapped = true so that algorithm continues sorting remaining items
+                        swapped = true;
+                    }
+                }
             }
-            else
+        }
+
+        public static void StoogeSort<TSource>(IList<TSource> source)
+             where TSource : IComparable<TSource>
+        {
+            SortingHelpers.StoogeSortCore<TSource>(source, 0, source.Count);
+        }
+
+        private static void StoogeSortCore<TSource>(IList<TSource> source, Int32 startIndex, Int32 stopIndex)
+             where TSource : IComparable<TSource>
+        {
+            if (source[stopIndex].CompareTo(source[startIndex]) < 0)
             {
-                
+                source.Swap(startIndex, stopIndex);
+            }
+
+            if ((stopIndex - startIndex + 1) > 2)
+            {
+                var oneThird = (stopIndex - startIndex + 1) / 3;
+
+                SortingHelpers.StoogeSortCore(source, startIndex, stopIndex - oneThird);
+                SortingHelpers.StoogeSortCore(source, startIndex + oneThird, stopIndex);
+                SortingHelpers.StoogeSortCore(source, startIndex, stopIndex - oneThird);
             }
         }
 
@@ -267,7 +346,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
                 // Let's assume the miminum is the first element
                 var minimumValueIndex = i;
 
-                // Test against elements after i to find the smallest
+                // Test against elements after i to find the smallest element
                 for (var j = i + 1; i < source.Count; j++)
                 {
                     // If this element is lesser, then it is the new minimum
@@ -281,39 +360,76 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             }
         }
 
+        // TODO: option for descending order
+        public static void BingoSort<TSource>(IList<TSource> source)
+            where TSource : IComparable<TSource>
+        {
+            var maximumIndex = source.Count - 1;
+
+            // The first iteration is written to look very similar to the subsequent ones
+            // but without swaps
+            var nextValue = source[maximumIndex];
+
+            for (var i = maximumIndex - 1; i >= 0; i--)
+            {
+                if (source[i].CompareTo(nextValue) > 0)
+                {
+                    nextValue = source[i];
+                }
+            }
+
+            while ((maximumIndex > 0) && (source[maximumIndex].CompareTo(nextValue) == 0))
+            {
+                maximumIndex--;
+            }
+
+            //while (maximumIndex > 0)
+            //{
+            //    var value = nextValue;
+            //    nextValue = source[maximumIndex];
+
+            //}
+        }
+
         public static void InsertionSort<TSource>(IList<TSource> source)
             where TSource : IComparable<TSource>
         {
         }
 
-        public static void OddEvenSort<TSource>(IList<TSource> source)
+        public static void ShellSort<TSource>(IList<TSource> source, IEnumerable<Int32> gaps)
             where TSource : IComparable<TSource>
         {
-            var sorted = false;
-
-            while (!sorted)
+            // Start with the largest gap and work down to a gap of 1
+            foreach (var gap in gaps)
             {
-                sorted = true;
-
-                for (var i = 1; i < (source.Count - 1); i += 2)
+                // Perform a ranged insertion sort for this gap size
+                // The first gap elements from index 0 to gap - 1 are already in gapped order
+                // Keep adding one more element until the entire subarray is sorted
+                for (var i = gap; i < source.Count; i++)
                 {
-                    if (source[i].CompareTo(source[i + 1]) > 0)
-                    {
-                        source.Swap(i, i + 1);
-                        sorted = false;
-                    }
-                }
+                    // Add a[i] to the elements that have been gap sorted
+                    // Save a[i] in temp and make a hole at position i
+                    var temp = source[i];
 
-                for (var i = 0; i < (source.Count - 1); i += 2)
-                {
-                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    var j = i;
+
+                    // Shift earlier gap-sorted elements up until the correct location for source[i] is found
+                    while ((j >= gap) && (source[j - gap].CompareTo(temp) > 0))
                     {
-                        source.Swap(i, i + 1);
-                        sorted = false;
+                        source[j] = source[j - gap];
+
+                        j -= gap;
                     }
+
+                    // Put temp (original source[i]) in its correct position
+                    source[j] = temp;
                 }
             }
         }
+
+        //public static void ShellSort<TSource>(IList<TSource> source, IEnumerable<Int32> gaps)
+        //{
+        //}
 
         //            private static IEnumerable<TSource> QuickSortHoareScheme<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer = null)
         //            {

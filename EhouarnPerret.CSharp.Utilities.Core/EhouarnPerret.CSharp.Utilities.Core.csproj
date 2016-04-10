@@ -51,9 +51,11 @@
     <Compile Include="Collections\Generic\IRTree.cs" />
     <Compile Include="Collections\Generic\IRTreeNode.cs" />
     <Compile Include="DefaultBoolean.cs" />
+    <Compile Include="EnumHelpers.cs" />
     <Compile Include="IO\IniFileSectionCollection.cs" />
     <Compile Include="Numeric\Algorithms\BubbleSortScheme.cs" />
     <Compile Include="Numeric\Algorithms\CocktailShakerSortScheme.cs" />
+    <Compile Include="Numeric\Algorithms\ShellSortScheme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Windows\Forms\ControlExtensions.cs" />
     <Compile Include="Drawing\GraphicsExtensions.cs" />

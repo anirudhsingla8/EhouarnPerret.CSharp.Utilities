@@ -25,6 +25,9 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -38,6 +41,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public static void WriteToConsole<T>(this T value)
         {
             Console.Write(value.ToString());
+        }
+
+        public static Boolean IsNotIn<T>(this T source, IEnumerable<T> values)
+        {
+            return !source.IsIn(values);
+        }
+
+        public static Boolean IsNotIn<T>(this T source, params T[] values)
+        {
+            return !source.IsIn(values);
+        }
+
+        public static Boolean IsIn<T>(this T source, IEnumerable<T> values)
+        {
+            return values.Contains(source);
+        }
+
+        public static Boolean IsIn<T>(this T source, params T[] values)
+        {
+            return values.Contains(source);
         }
     }
 }

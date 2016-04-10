@@ -109,11 +109,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return regex;
         }
 
-        public static Boolean In (this String value, IEnumerable<String> source)
-        {
-            return source.Any(item => item.Contains(value));
-        }
-
         public static Byte[] ToBytes(this String value, Encoding encoding)
         {
             var bytes = encoding.GetBytes(value);
@@ -375,6 +370,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 StringSplitOptions.None;
             
             return value.Split(new [] { ' ' } , stringSplitOptions);
+        }
+
+        public static String Join<T>(this String separator, IEnumerable<T> values)
+        {
+            return String.Join(separator, values);
+        }
+
+        public static Boolean IsNullOrEmpty(this String value)
+        {
+            return String.IsNullOrEmpty(value);
+        }
+
+        public static Boolean IsNullOrWhiteSpace(this String value)
+        {
+            return String.IsNullOrWhiteSpace(value);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿//
-// CollectionExtensions.cs
+//
+// ShellSortScheme.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,39 +23,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
+namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 {
-    // Use SelectMany...
-    public static class CollectionExtensions
+    public enum ShellSortScheme : byte
     {
-        public static void Add<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection) 
-                {
-                    source.Add(item);
-                }
-            }
-        }
-
-        public static IEnumerable<Boolean> Remove<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            return from collection in collections
-                   from item in collection
-                   select source.Remove(item);
-        }
-
-        public static IEnumerable<Boolean> Contains<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
-        {
-            return from collection in collections
-                   from item in collection
-                   select source.Contains(item);
-        }
     }
 }
-
