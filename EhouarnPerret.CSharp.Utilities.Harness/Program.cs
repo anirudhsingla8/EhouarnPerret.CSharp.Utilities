@@ -36,6 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
+            Console.ReadKey();
         }
     }
 

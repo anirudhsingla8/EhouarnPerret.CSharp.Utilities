@@ -1,5 +1,5 @@
 //
-// ShellSortScheme.cs
+// HeapSortScheme.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,10 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+
 namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 {
-    public enum ShellSortScheme : byte
+    public enum HeapSortScheme : byte
     {
-
+        Default = 0x00,
+        SiftDown = 0x01,
+        SiftUp = 0x02,
     }
 }

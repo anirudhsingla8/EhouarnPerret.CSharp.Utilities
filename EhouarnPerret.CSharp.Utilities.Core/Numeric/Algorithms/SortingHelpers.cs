@@ -53,7 +53,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
                 }
 
                 // Dummy optimization... 
-               n--;
+                n--;
             }
         }
 
@@ -102,7 +102,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
         }
 
         public static void BubbleSort<TSource>(IList<TSource> source, BubbleSortScheme scheme = BubbleSortScheme.Default)
-             where TSource : IComparable<TSource>
+            where TSource : IComparable<TSource>
         {
             switch (scheme)
             {
@@ -124,7 +124,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             }
         }
 
-        public static void CocktailShakerSort<TSource>(IList<TSource> source, CocktailShakerSortScheme scheme = CocktailShakerSortScheme.Default)
+        public static void CocktailShakerSort<TSource>(IList<TSource> source,
+            CocktailShakerSortScheme scheme = CocktailShakerSortScheme.Default)
             where TSource : IComparable<TSource>
         {
             switch (scheme)
@@ -262,7 +263,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             while ((gap != 1) && swapped)
             {
                 // Update the gap value for a next comb.
-                gap = (Int32)(gap / gapShrinkFactor);
+                gap = (Int32) (gap/gapShrinkFactor);
 
                 if (gap < 1)
                 {
@@ -291,13 +292,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
         }
 
         public static void StoogeSort<TSource>(IList<TSource> source)
-             where TSource : IComparable<TSource>
+            where TSource : IComparable<TSource>
         {
             SortingHelpers.StoogeSortCore<TSource>(source, 0, source.Count);
         }
 
         private static void StoogeSortCore<TSource>(IList<TSource> source, Int32 startIndex, Int32 stopIndex)
-             where TSource : IComparable<TSource>
+            where TSource : IComparable<TSource>
         {
             if (source[stopIndex].CompareTo(source[startIndex]) < 0)
             {
@@ -306,7 +307,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
             if ((stopIndex - startIndex + 1) > 2)
             {
-                var oneThird = (stopIndex - startIndex + 1) / 3;
+                var oneThird = (stopIndex - startIndex + 1)/3;
 
                 SortingHelpers.StoogeSortCore(source, startIndex, stopIndex - oneThird);
                 SortingHelpers.StoogeSortCore(source, startIndex + oneThird, stopIndex);
@@ -352,7 +353,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
                     // If this element is lesser, then it is the new minimum
                     minimumValueIndex = source.MinValueIndex(j, minimumValueIndex);
                 }
-                    
+
                 if (minimumValueIndex != i)
                 {
                     source.Swap(i, minimumValueIndex);
@@ -383,12 +384,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
                 maximumIndex--;
             }
 
-            //while (maximumIndex > 0)
-            //{
-            //    var value = nextValue;
-            //    nextValue = source[maximumIndex];
+            while (maximumIndex > 0)
+            {
+                var value = nextValue;
+                nextValue = source[maximumIndex];
 
-            //}
+                for (var i = maximumIndex - 1; i >= 0; i--)
+                {
+                    if (source[i].CompareTo(value) == 0)
+                    {
+                        source.Swap(i, maximumIndex);
+                        maximumIndex--;
+                    }
+                    else if (source[i].CompareTo(nextValue) > 0)
+                    {
+                        nextValue = source[i];
+                    }
+                }
+
+                while ((maximumIndex > 0) && (source[maximumIndex]).CompareTo(nextValue) == 0)
+                {
+                    maximumIndex--;
+                }
+            }
         }
 
         public static void InsertionSort<TSource>(IList<TSource> source)
@@ -427,27 +445,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             }
         }
 
-        //public static void ShellSort<TSource>(IList<TSource> source, IEnumerable<Int32> gaps)
-        //{
-        //}
+        public static void HeapSort<TSource>(IList<TSource> source, HeapSortScheme scheme = HeapSortScheme.Default)
+            where TSource : IComparable<TSource>
+        {
+        }
 
-        //            private static IEnumerable<TSource> QuickSortHoareScheme<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer = null)
-        //            {
-        //                comparer = comparer ?? Comparer<TSource>.Default;
-        //            }
-        //            private static IEnumerable<TSource> QuickSortLomutoScheme<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer = null)
-        //            {
-        //                comparer = comparer ?? Comparer<TSource>.Default;
-        //            }
-        //
-        //            private static IEnumerable<TSource> QuickSortLomutoPartition<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer)
-        //            {
-        //                
-        //            }
-        //            private static IEnumerable<TSource> QuickSortHoarePartition<TSource>(IEnumerable<TSource> source, IComparer<TSource> comparer)
-        //            {
-        //
-        //            }
+        public static void HeapSortSiftDown<TSource>(IList<TSource> source)
+            where TSource : IComparable<TSource>
+        {
+        }
+
+        public static void HeapSortSiftUp<TSource>(IList<TSource> source)
+            where TSource : IComparable<TSource>
+        {
+        }
     }
 }
 
