@@ -27,7 +27,6 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
@@ -70,26 +69,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         
     }
 
-    public class ImmutableImageBrush : ImmutableBrush
-    {
-        public ImmutableImageBrush()
-        {
+    //public class ImmutableImageBrush : ImmutableBrush
+    //{
+    //    public ImmutableImageBrush()
+    //    {
             
-        }
-    }
+    //    }
+    //}
 
-    public class RadialGradient : Gradient
-    {
-        public RadialGradient()
-        {
-        }
-    }
+    //public class RadialGradient : Gradient
+    //{
+    //    public RadialGradient()
+    //    {
+    //    }
+    //}
 
-    public class LinearGradient : Gradient
-    {
-        public LinearGradient()
-        {
+    //public class LinearGradient : Gradient
+    //{
+    //    public LinearGradient()
+    //    {
             
-        }
-    }
+    //    }
+    //}
 }

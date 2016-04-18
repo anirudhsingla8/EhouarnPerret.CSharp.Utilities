@@ -63,8 +63,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             SerializeReadOnlyTypes = true,
         };
 
-        private static DataContractJsonSerializerSettings JsonSerializerSettings 
-        = new DataContractJsonSerializerSettings()
+        private static DataContractJsonSerializerSettings JsonSerializerSettings { get; }
+        = new DataContractJsonSerializerSettings
         {
             SerializeReadOnlyTypes = true,
         };

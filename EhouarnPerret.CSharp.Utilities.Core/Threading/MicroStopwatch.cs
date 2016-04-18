@@ -40,10 +40,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         }
 
         private static readonly Double _microSecondsPerTick = 1E6D / Stopwatch.Frequency;
-        public static Double MicroSecondsPerTick
-        {
-            get { return MicroStopwatch._microSecondsPerTick; }
-        }
+        public static Double MicroSecondsPerTick => MicroStopwatch._microSecondsPerTick;
 
         public MicroStopwatch()
             : base()
@@ -58,13 +55,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             }
         }
 
-        public Int64 ElapsedMicroseconds
-        {
-            get 
-            {
-                return (Int64)(this.ElapsedTicks * MicroStopwatch.MicroSecondsPerTick);
-            }
-        }
+        public Int64 ElapsedMicroseconds => (Int64)(this.ElapsedTicks * MicroStopwatch.MicroSecondsPerTick);
     }
 }
 

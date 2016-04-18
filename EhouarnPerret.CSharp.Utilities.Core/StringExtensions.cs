@@ -42,6 +42,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             File.AppendAllLines(path, source);
         }
+
         public static void WriteToFile(this IEnumerable<String> source, String path)
         {
             File.WriteAllLines(path, source);
@@ -51,6 +52,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             File.WriteAllText(path, value);
         }
+
         public static void AppendToFile(this String value, String path)
         {
             File.AppendAllText(path, value);
@@ -60,14 +62,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return File.ReadAllText(path);
         }
+
         public static String ReadTextFromFile(this String path, Encoding encoding)
         {
             return File.ReadAllText(path, encoding);
         }
+
         public static IEnumerable<String> ReadLinesFromFile(this String path)
         {
             return File.ReadAllLines(path);
         }
+
         public static IEnumerable<String> ReadLinesFromFile(this String path, Encoding encoding)
         {
             return File.ReadAllLines(path, encoding);
@@ -80,12 +85,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static ILookup<Char, Int32> IndexesOf(this String value, params Char[] characters) 
         {
-            var dictionary = new Dictionary<Char, IList<Int32>>();
-
-            foreach (var c in characters)
-            {
-                dictionary.Add(c, new List<Int32>());
-            }
+            var dictionary = characters.ToDictionary<Char, Char, IList<Int32>>(c => c, c => new List<Int32>());
 
             for (var i = 0; i < value.Length; i++)
             {
@@ -107,11 +107,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             var regex = new Regex(value, regexOptions);
 
             return regex;
-        }
-
-        public static Boolean In (this String value, IEnumerable<String> source)
-        {
-            return source.Any(item => item.Contains(value));
         }
 
         public static Byte[] ToBytes(this String value, Encoding encoding)
@@ -148,6 +143,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return Int16.Parse(value);
         }
+
         public static Int16? TryToInt16(this String value)
         {
             var result = default(Int16);
@@ -159,6 +155,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return Int32.Parse(value);
         }
+
         public static Int32? TryToInt32(this String value)
         {
             var result = default(Int32);
@@ -170,6 +167,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return Int64.Parse(value);
         }
+
         public static Int64? TryToInt64(this String value)
         {
             var result = default(Int64);
@@ -181,6 +179,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return BigInteger.Parse(value);
         }
+
         public static BigInteger? TryToBigInteger(this String value)
         {
             var result = default(BigInteger);
@@ -192,14 +191,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return Byte.Parse(value);
         }
+
         public static Int16 ToUInt16(this String value)
         {
             return Int16.Parse(value);
         }
+
         public static UInt32 ToUInt32(this String value)
         {
             return UInt32.Parse(value);
         }
+
         public static UInt64 ToUInt64 (this String value)
         {
             return UInt64.Parse(value);
@@ -211,18 +213,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return Byte.TryParse(value, out result) ? result : default(Byte?);
         }
+
         public static UInt16? TryToUInt16(this String value)
         {
             var result = default(UInt16);
 
             return UInt16.TryParse(value, out result) ? result : default(UInt16?);
         }
+
         public static UInt32? TryToUInt32(this String value)
         {
             var result = default(UInt32);
 
             return UInt32.TryParse(value, out result) ? result : default(UInt32?);
         }
+
         public static UInt64? TryToUInt64 (this String value)
         {
             var result = default(UInt64);
@@ -234,6 +239,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return Single.Parse(value);
         }
+
         public static Single? TryToSingle(this String value)
         {
             var result = default(Single);
@@ -245,6 +251,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return Double.Parse(value);
         }
+
         public static Double? TryToDouble(this String value)
         {
             var result = default(Double);
@@ -256,6 +263,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return Decimal.Parse(value);
         }
+
         public static Decimal? TryToDecimal(this String value)
         {
             var result = default(Decimal);
@@ -324,6 +332,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return new String(characters);
         }
 
+        // TODO: refactor it...
         public static IEnumerable<String> ToSubstrings(this String value)
         {
             for (var substringLength = 1; substringLength < value.Length; substringLength++)
@@ -361,6 +370,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 StringSplitOptions.None;
             
             return value.Split(new [] { ' ' } , stringSplitOptions);
+        }
+
+        public static String Join<T>(this String separator, IEnumerable<T> values)
+        {
+            return String.Join(separator, values);
+        }
+
+        public static Boolean IsNullOrEmpty(this String value)
+        {
+            return String.IsNullOrEmpty(value);
+        }
+
+        public static Boolean IsNullOrWhiteSpace(this String value)
+        {
+            return String.IsNullOrWhiteSpace(value);
         }
     }
 }

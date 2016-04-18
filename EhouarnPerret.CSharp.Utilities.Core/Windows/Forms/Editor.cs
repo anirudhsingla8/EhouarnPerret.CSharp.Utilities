@@ -27,11 +27,13 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
+    [System.ComponentModel.DesignerCategory("")]
     public abstract class Editor : DoubleBufferedControl
     {
         public Object Value { get; set; }
     }
 
+    [System.ComponentModel.DesignerCategory("")]
     public abstract class Editor<TValue> : Editor
     {
         public new TValue Value

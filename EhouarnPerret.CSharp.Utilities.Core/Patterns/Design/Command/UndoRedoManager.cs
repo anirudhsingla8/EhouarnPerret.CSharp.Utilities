@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms.Design;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {

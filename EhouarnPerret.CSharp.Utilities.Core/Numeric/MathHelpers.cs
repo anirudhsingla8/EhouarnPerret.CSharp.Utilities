@@ -26,9 +26,6 @@
 using System;
 using System.Numerics;
 using System.Drawing;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
@@ -61,6 +58,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         //        public static BigIntegerFraction SquareRootExponentialIdentityScheme(BigInteger value)
         //        {
         //        }
+
+        public static T Min<T>(T val1, T val2)
+            where T : IComparable<T>
+        {
+            return (val1.CompareTo(val2) <= 0) ? val1 : val2;
+        }
+
+        public static T Max<T>(T val1, T val2)
+            where T : IComparable<T>
+        {
+            return (val1.CompareTo(val2) >= 0) ? val1 : val2;
+        }
 
         private static BigInteger FactorialNaiveIterative(UInt16 n)
         {

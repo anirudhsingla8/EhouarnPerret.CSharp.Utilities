@@ -24,16 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.Collections.Generic;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IQuadTree<TValue, TQuadTreeNode> : ITree<TValue, TQuadTreeNode>
-        where TQuadTreeNode : IQuadTreeNode<TValue, TQuadTreeNode>
-    {
-    }
-
-    public interface IQuadTree<TValue> : ITree<TValue, IQuadTreeNode<TValue>>
+    public interface IQuadTree<TValue, TRTreeNode> : ITree<TValue, TRTreeNode>
+        where TRTreeNode : IQuadTreeNode<TValue, TRTreeNode>
     {
     }
 }

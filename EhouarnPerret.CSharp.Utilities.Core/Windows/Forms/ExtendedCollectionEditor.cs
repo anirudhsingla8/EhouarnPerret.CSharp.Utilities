@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Windows.Forms;
 using System.ComponentModel.Design;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
@@ -42,7 +41,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         public ExtendedCollectionEditor()
             : base(typeof(T))
         {
-            
         }
     }
 }

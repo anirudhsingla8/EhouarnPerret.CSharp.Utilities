@@ -24,9 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Windows.Forms;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     public enum FormResizeRepaintStrategy : byte

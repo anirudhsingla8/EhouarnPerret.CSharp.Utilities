@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Linq;
 using System.Diagnostics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Diagnostics

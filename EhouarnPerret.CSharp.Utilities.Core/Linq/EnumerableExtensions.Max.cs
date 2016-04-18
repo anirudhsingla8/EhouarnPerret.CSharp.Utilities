@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq

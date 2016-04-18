@@ -25,8 +25,6 @@
 // THE SOFTWARE.
 
 
-using System;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 {
     public enum StrictSignedness : byte

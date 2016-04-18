@@ -25,8 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Data;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {

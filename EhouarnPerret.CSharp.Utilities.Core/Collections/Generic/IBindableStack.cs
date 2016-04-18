@@ -24,12 +24,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.ComponentModel;
-using System.Collections.Generic;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IBindableStack<T> : IStack<T>, IBindingList, IRaiseItemChangedEvents
+    public interface IBindableStack<T> : IStack<T>, IBindableCollection<T>
     {
     }
 }

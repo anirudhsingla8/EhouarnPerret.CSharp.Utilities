@@ -24,9 +24,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
@@ -46,24 +45,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
         public static IEnumerable<Boolean> Remove<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
         {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection) 
-                {
-                    yield return source.Remove(item);
-                }
-            }
+            return from collection in collections
+                   from item in collection
+                   select source.Remove(item);
         }
-    
+
         public static IEnumerable<Boolean> Contains<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
         {
-            foreach (var collection in collections)
-            {
-                foreach (var item in collection)
-                {
-                    yield return source.Contains(item);
-                }
-            }
+            return from collection in collections
+                   from item in collection
+                   select source.Contains(item);
         }
     }
 }

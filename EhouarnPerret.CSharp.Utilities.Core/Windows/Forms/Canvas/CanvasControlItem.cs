@@ -79,20 +79,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
                 );
             }
         }
-        public Single Right
-        {
-            get
-            {
-                return this.BoundingRectangle.Right;
-            }
-        }
-        public Single Bottom
-        {
-            get
-            {
-                return this.BoundingRectangle.Bottom;
-            }
-        }
+        public Single Right => this.BoundingRectangle.Right;
+
+        public Single Bottom => this.BoundingRectangle.Bottom;
 
         private Boolean _enabled;
         public Boolean Enabled 
@@ -108,13 +97,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         }
             
         private RectangleF _boundingRectangle;
-        public RectangleF BoundingRectangle
-        {
-            get
-            {
-                return this._boundingRectangle;
-            }
-        }
+        public RectangleF BoundingRectangle => this._boundingRectangle;
 
         public SizeF Size
         {

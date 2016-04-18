@@ -34,6 +34,42 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         private const String DateIsoStringFormat = @"yyyy-MM-dd";
         private const String TimeIsoStringFormat = @"HH:mm:ss.fff";
 
+        public static DateTime NextDay(this DateTime dateTime)
+        {
+            return dateTime.AddDays(1);
+        }
+        public static DateTime PreviousDay(this DateTime dateTime)
+        {
+            return dateTime.AddDays(-1);
+        }
+
+        public static DateTime NextMonth(this DateTime dateTime)
+        {
+            return dateTime.AddMonths(1);
+        }
+        public static DateTime PreviousMonth(this DateTime dateTime)
+        {
+            return dateTime.AddMonths(-1);
+        }
+
+        public static DateTime NextYear(this DateTime dateTime)
+        {
+            return dateTime.AddYears(1);
+        }
+        public static DateTime PreviousYear(this DateTime dateTime)
+        {
+            return dateTime.AddYears(-1);
+        }
+
+        public static Boolean IsWeekend(this DateTime dateTime)
+        {
+            return dateTime.DayOfWeek.IsIn(DayOfWeek.Saturday, DayOfWeek.Sunday);
+        }
+        public static Boolean IsNotWeekend(this DateTime dateTime)
+        {
+            return !dateTime.IsWeekend();
+        }
+
         public static String ToInvariantIsoString(this DateTime dateTime)
         {
             return dateTime.ToIsoString(CultureInfo.InvariantCulture);

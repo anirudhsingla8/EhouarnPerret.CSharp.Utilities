@@ -32,13 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Singleton
     {
 		private static readonly Lazy<T> _lazy = new Lazy<T>(() => new T());
 
-        public static T Instance 
-        { 
-            get 
-            { 
-                return _lazy.Value; 
-            } 
-        }
+        public static T Instance => _lazy.Value;
 
         private Singleton()
         {

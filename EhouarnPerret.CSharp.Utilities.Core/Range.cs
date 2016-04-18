@@ -186,7 +186,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     
         public override String ToString()
         {
-            return String.Format(@"[{0};{1}]", this.LowerBound, this.UpperBound);
+            return $@"[{this.LowerBound};{this.UpperBound}]";
         }
     }
 }

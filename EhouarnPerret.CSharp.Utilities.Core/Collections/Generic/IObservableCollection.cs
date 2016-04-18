@@ -23,8 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -32,6 +31,14 @@ using System.ComponentModel;
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IObservableCollection<TItem> : ICollection<TItem>, INotifyCollectionChanged, INotifyPropertyChanged, IRaiseItemChangedEvents
+    {
+    }
+
+    public interface IObservableQueue<TItem> : IQueue<TItem>, IObservableCollection<TItem>
+    {
+    }
+
+    public interface IObservableStack<TItem> : IStack<TItem>, IObservableCollection<TItem>
     {
     }
 }

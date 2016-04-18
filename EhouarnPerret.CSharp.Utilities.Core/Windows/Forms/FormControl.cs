@@ -23,14 +23,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Net;
-using System.Dynamic;
-using System.Threading;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {

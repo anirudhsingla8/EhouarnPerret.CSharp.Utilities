@@ -26,7 +26,6 @@
 
 using System;
 using System.Windows.Forms;
-using System.IO;
 using System.Drawing;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
@@ -44,8 +43,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 
         public MouseButtons Button { get; }
         public PointF Location { get; }
-        public Single X { get { return this.Location.X; } }
-        public Single Y { get { return this.Location.Y; } }
+        public Single X => this.Location.X;
+        public Single Y => this.Location.Y;
         public Byte Clicks { get; }
         public Byte Delta { get; }
     }

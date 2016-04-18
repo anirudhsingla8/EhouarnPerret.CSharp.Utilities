@@ -36,26 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var form = new DoubleBufferedForm()
-            {
-                BackColor = Color.Gray,
-            };
-
-            form.ResizeRepaintStrategy = FormResizeRepaintStrategy.OnResize;
-
-            var dbc = new DBC
-            {
-                BackColor = Color.Yellow,     
-                Size = new Size(100, 200),
-                Dock = DockStyle.Fill,
-            };
-
-            var linearGradientBrush = new LinearGradientBrush(dbc.ClientRectangle, Color.Red, Color.Blue, LinearGradientMode.Vertical);
-            dbc.Brush = linearGradientBrush
-
-            form.Controls.Add(dbc);
-
-            form.ShowDialog();
+            Console.ReadKey();
         }
     }
 
@@ -216,7 +197,7 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             where TLedControl : Control, ILedControl
         {
             var ledColor = ledControl.State ? ledControl.TrueColor : ledControl.FalseColor;
-            GraphicsExtensions.PaintLed(graphics, ledControl.Size, ledControl.Padding, ledColor, ledControl.ShapeKind);
+            graphics.PaintLed(ledControl.Size, ledControl.Padding, ledColor, ledControl.ShapeKind);
         }
 
         public static void PaintLed(this Graphics graphics, Size size, Padding padding, LedColor ledColor, LedShapeKind shapeKind = LedShapeKind.Ellipse)
