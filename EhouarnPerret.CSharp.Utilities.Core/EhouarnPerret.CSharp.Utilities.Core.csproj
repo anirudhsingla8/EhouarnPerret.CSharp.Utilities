@@ -199,9 +199,7 @@
     <Compile Include="Windows\Forms\Dropdown.cs" />
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
-    <Compile Include="Windows\Forms\Editor.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Windows\Forms\Editor.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="Collections\Generic\DictionaryExtensions.cs" />
     <Compile Include="Text\RegularExpressions\MatchExtensions.cs" />
@@ -358,7 +356,7 @@
     <Folder Include="IO\Encoding\Lossless\Entropy\Range\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Shannon\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Unary\" />
-    <Folder Include="IO\OpemXml\" />
+    <Folder Include="IO\OfficeOpenXml\" />
     <Folder Include="IO\Svg\" />
     <Folder Include="Net\Mail\" />
     <Folder Include="Threading\Tasks\" />
