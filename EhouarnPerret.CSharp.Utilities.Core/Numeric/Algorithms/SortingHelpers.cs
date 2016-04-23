@@ -45,7 +45,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = 1; i < n; i++)
                 {
-                    if (source[i - 1].CompareTo(source[i]) > 0)
+                    if (source[i - 1].IsStrictlyGreaterThan(source[i]))
                     {
                         source.Swap(i - 1, i);
                         swapped = true;
@@ -69,7 +69,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = 1; i < n; i++)
                 {
-                    if (source[i - 1].CompareTo(source[i]) > 0)
+                    if (source[i - 1].IsStrictlyGreaterThan(source[i]))
                     {
                         source.Swap(i - 1, i);
                         lastSwapIndex = i;
@@ -92,7 +92,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = 1; i < source.Count; i++)
                 {
-                    if (source[i - 1].CompareTo(source[i]) > 0)
+                    if (source[i - 1].IsStrictlyGreaterThan(source[i]))
                     {
                         source.Swap(i - 1, i);
                         swapped = true;
@@ -156,7 +156,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = 0; i < source.Count; i++)
                 {
-                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    if (source[i].IsGreaterThan(source[i + 1]))
                     {
                         source.Swap(i, i + 1);
                         swapped = true;
@@ -173,7 +173,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = source.Count - 1; i >= 0; i++)
                 {
-                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    if (source[i].IsStrictlyGreaterThan(source[i + 1]))
                     {
                         source.Swap(i, i + 1);
                         swapped = true;
@@ -198,7 +198,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = startIndex; i < stopIndex; i++)
                 {
-                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    if (source[i].IsGreaterThan(source[i + 1]))
                     {
                         source.Swap(i, i + 1);
                         reducedStopIndex = i;
@@ -210,7 +210,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = stopIndex; i > startIndex; i--)
                 {
-                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    if (source[i].IsGreaterThan(source[i + 1]))
                     {
                         source.Swap(i, i + 1);
                         reducedStartIndex = i;
@@ -233,7 +233,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = 1; i < (source.Count - 1); i += 2)
                 {
-                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    if (source[i].IsStrictlyGreaterThan(source[i + 1]))
                     {
                         source.Swap(i, i + 1);
                         sorted = false;
@@ -242,7 +242,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = 0; i < (source.Count - 1); i += 2)
                 {
-                    if (source[i].CompareTo(source[i + 1]) > 0)
+                    if (source[i].IsStrictlyGreaterThan(source[i + 1]))
                     {
                         source.Swap(i, i + 1);
                         sorted = false;
@@ -263,7 +263,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             while ((gap != 1) && swapped)
             {
                 // Update the gap value for a next comb.
-                gap = (Int32) (gap/gapShrinkFactor);
+                gap = (Int32) (gap / gapShrinkFactor);
 
                 if (gap < 1)
                 {
@@ -275,14 +275,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
                 // A single "comb" over the input list
                 for (var i = 0; (i + gap) >= source.Count; i++)
                 {
-                    if (source[i].CompareTo(source[i + gap]) > 0)
+                    if (source[i].IsStrictlyGreaterThan(source[i + gap]))
                     {
                         source.Swap(i, i + gap);
                         swapped = true;
                     }
 
                     // If items in comparison are same, swapped becomes false and algorithm fails to continue sorting further
-                    if (source[i].CompareTo(source[i + gap]) == 0)
+                    if (source[i].IsEqualTo(source[i + gap]))
                     {
                         // So, we will make swapped = true so that algorithm continues sorting remaining items
                         swapped = true;
@@ -300,7 +300,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
         private static void StoogeSortCore<TSource>(IList<TSource> source, Int32 startIndex, Int32 stopIndex)
             where TSource : IComparable<TSource>
         {
-            if (source[stopIndex].CompareTo(source[startIndex]) < 0)
+            if (source[stopIndex].IsStrictlyLesserThan(source[startIndex]))
             {
                 source.Swap(startIndex, stopIndex);
             }
@@ -327,7 +327,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
             while (position < source.Count)
             {
-                if ((position == 0) || (source[position - 1].CompareTo(source[position]) <= 0))
+                if ((position == 0) || source[position - 1].IsLesserThan(source[position]))
                 {
                     position++;
                 }
@@ -373,13 +373,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
             for (var i = maximumIndex - 1; i >= 0; i--)
             {
-                if (source[i].CompareTo(nextValue) > 0)
+                if (source[i].IsStrictlyGreaterThan(nextValue))
                 {
                     nextValue = source[i];
                 }
             }
 
-            while ((maximumIndex > 0) && (source[maximumIndex].CompareTo(nextValue) == 0))
+            while ((maximumIndex > 0) && source[maximumIndex].IsEqualTo(nextValue))
             {
                 maximumIndex--;
             }
@@ -391,27 +391,83 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
 
                 for (var i = maximumIndex - 1; i >= 0; i--)
                 {
-                    if (source[i].CompareTo(value) == 0)
+                    if (source[i].IsEqualTo(value))
                     {
                         source.Swap(i, maximumIndex);
                         maximumIndex--;
                     }
-                    else if (source[i].CompareTo(nextValue) > 0)
+                    else if (source[i].IsStrictlyGreaterThan(nextValue))
                     {
                         nextValue = source[i];
                     }
                 }
 
-                while ((maximumIndex > 0) && (source[maximumIndex]).CompareTo(nextValue) == 0)
+                while ((maximumIndex > 0) && source[maximumIndex].IsEqualTo(nextValue))
                 {
                     maximumIndex--;
                 }
             }
         }
 
-        public static void InsertionSort<TSource>(IList<TSource> source)
+        public static void InsertionSort<TSource>(IList<TSource> source, InsertionSortScheme scheme = InsertionSortScheme.Default)
             where TSource : IComparable<TSource>
         {
+            switch (scheme)
+            {
+                case InsertionSortScheme.Default:
+                case InsertionSortScheme.NaiveRTL:
+                    SortingHelpers.InsertionSortNaiveRTL(source);
+                    break;
+
+                case InsertionSortScheme.NaiveLTR:
+                    SortingHelpers.InsertionSortNaiveLTR(source);
+                    break;
+
+                case InsertionSortScheme.RTLOptimized:
+                    SortingHelpers.CocktailShakerSortNoOptimization(source);
+                    break;
+
+                case InsertionSortScheme.LTROptimized:
+                    SortingHelpers.CocktailShakerSortNoOptimization(source);
+                    break;
+
+                default:
+                    throw new ArgumentException(nameof(scheme));
+            }
+        }
+
+        private static void InsertionSortOptimizedRTL<TSource>(IList<TSource> source)
+            where TSource : IComparable<TSource>
+        {
+        }
+
+        private static void InsertionSortOptimizedLTR<TSource>(IList<TSource> source)
+            where TSource : IComparable<TSource>
+        {
+        }
+
+        private static void InsertionSortNaiveRTL<TSource>(IList<TSource> source)
+            where TSource : IComparable<TSource>
+        {
+            for (var i = 0; i < source.Count; i++)
+            {
+                for (var j = i; (j > 0) && source[j - 1].IsStrictlyGreaterThan(source[j]); j--)
+                {
+                    source.Swap(j - 1, j);
+                }
+            }
+        }
+
+        private static void InsertionSortNaiveLTR<TSource>(IList<TSource> source)
+            where TSource : IComparable<TSource>
+        {
+            for (var i = source.Count - 1; i >= 1; i--)
+            {
+                for (var j = i; (j < source.Count) && source[j + 1].IsStrictlyLesserThan(source[j]); j++)
+                {
+                    source.Swap(j - 1, j);
+                }
+            }
         }
 
         public static void ShellSort<TSource>(IList<TSource> source, IEnumerable<Int32> gaps)
@@ -432,7 +488,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
                     var j = i;
 
                     // Shift earlier gap-sorted elements up until the correct location for source[i] is found
-                    while ((j >= gap) && (source[j - gap].CompareTo(temp) > 0))
+                    while ((j >= gap) && (source[j - gap].IsStrictlyGreaterThan(temp)))
                     {
                         source[j] = source[j - gap];
 
