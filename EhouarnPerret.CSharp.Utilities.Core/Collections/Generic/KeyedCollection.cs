@@ -68,7 +68,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
         private  Func<TItem, TKey> ItemKeySelector { get; }
 
-        protected override sealed TKey GetKeyForItem(TItem item)
+        protected sealed override TKey GetKeyForItem(TItem item)
         {
             return this.ItemKeySelector(item);
         }

@@ -48,7 +48,6 @@
     <Compile Include="Collections\Generic\IBindableCollection.cs" />
     <Compile Include="Collections\Generic\IGraphEdge.cs" />
     <Compile Include="Collections\Generic\IGraphVertex.cs" />
-    <Compile Include="Collections\Generic\IRTree.cs" />
     <Compile Include="Collections\Generic\IRTreeNode.cs" />
     <Compile Include="DefaultBoolean.cs" />
     <Compile Include="EnumHelpers.cs" />
@@ -108,7 +107,6 @@
     <Compile Include="Drawing\ImageExtensions.cs" />
     <Compile Include="Collections\Generic\IKeyedCollection.cs" />
     <Compile Include="Collections\Generic\KeyedCollection.cs" />
-    <Compile Include="Collections\Generic\ITreeNode.cs" />
     <Compile Include="Collections\Generic\IBinaryTreeNode.cs" />
     <Compile Include="Collections\Generic\DequeArray.cs" />
     <Compile Include="Reflection\AccessModifiersConverter.cs" />
@@ -171,13 +169,10 @@
     <Compile Include="Collections\Generic\IReadOnlyOrderedDictionary.cs" />
     <Compile Include="Collections\Generic\IReadOnlyKeyedCollection.cs" />
     <Compile Include="Collections\Generic\IQuadTreeNode.cs" />
-    <Compile Include="Collections\Generic\IQuadTree.cs" />
     <Compile Include="Net\Sockets\StringIPEndPointExtensions.cs" />
     <Compile Include="Net\Sockets\IPAddressExtensions.cs" />
     <Compile Include="Net\Sockets\IPEndPointHelpers.cs" />
     <Compile Include="Collections\Generic\IRedBlackBinaryTreeNode.cs" />
-    <Compile Include="Collections\Generic\IRedBlackBinaryTree.cs" />
-    <Compile Include="Collections\Generic\IBinaryTree.cs" />
     <Compile Include="Collections\Generic\IBin.cs" />
     <Compile Include="Collections\Generic\IPeekableCollection.cs" />
     <Compile Include="Collections\Generic\IOrderedObservableDictionary.cs" />

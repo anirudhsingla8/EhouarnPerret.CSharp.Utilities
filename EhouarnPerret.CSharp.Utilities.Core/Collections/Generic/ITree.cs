@@ -35,9 +35,5 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
         IEnumerable<TTreeNode> Nodes { get; }
     }
-
-    public interface ITree<TValue> : ITree<TValue, ITreeNode<TValue>>
-    {
-    }
 }
 
