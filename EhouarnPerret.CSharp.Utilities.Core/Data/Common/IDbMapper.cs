@@ -26,6 +26,7 @@
 
 using System.Collections.Generic;
 using System;
+using IDisposable = EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition.IDisposable;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {

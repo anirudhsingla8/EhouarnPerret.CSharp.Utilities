@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System;
 using System.Threading;
+using EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 {

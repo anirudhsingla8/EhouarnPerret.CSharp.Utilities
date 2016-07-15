@@ -26,7 +26,7 @@
 
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.IO
+namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
 {
     /// <summary>
     /// Ini file options.

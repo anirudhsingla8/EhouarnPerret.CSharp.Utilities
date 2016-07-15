@@ -28,7 +28,7 @@ using System;
 using System.Collections.Generic;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.IO
+namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
 {
     public class IniFileSection
     {

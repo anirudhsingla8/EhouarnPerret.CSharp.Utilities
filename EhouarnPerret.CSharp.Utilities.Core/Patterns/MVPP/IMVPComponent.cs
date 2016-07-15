@@ -24,7 +24,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+using EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition;
+
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.MVPP
 {
     public interface IMVPComponent : IDisposable
     {
