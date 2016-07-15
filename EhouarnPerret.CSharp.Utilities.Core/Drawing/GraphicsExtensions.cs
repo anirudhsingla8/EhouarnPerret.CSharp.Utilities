@@ -25,12 +25,73 @@
 // THE SOFTWARE.
 using System;
 using System.Drawing;
-using System.Diagnostics;
+using System.Drawing.Imaging;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
     public static class GraphicsExtensions
     {
+        public static Bitmap ToBitmap(this Graphics graphics, Int32 width, Int32 height, Int32 destinationX, Int32 destinationY, Int32 destinationHeight, Int32 destinationWidth, Single sourceX, Single sourceY, Single sourceWidth, Single sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        {
+            var bitmap = new Bitmap(width, height, pixelFormat);
+
+            var destination = new Rectangle(destinationX, destinationY, destinationWidth, destinationHeight);
+
+            graphics.DrawImage(bitmap, destination, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes);
+
+            return bitmap;
+        }
+        public static Bitmap ToBitmap(this Graphics graphics, Size size, Int32 destinationX, Int32 destinationY, Int32 destinationHeight, Int32 destinationWidth, Single sourceX, Single sourceY, Single sourceWidth, Single sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        {
+            return graphics.ToBitmap(size.Width, size.Height, destinationX, destinationY, destinationWidth, destinationHeight, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes, pixelFormat);
+        }
+        public static Bitmap ToBitmap(this Graphics graphics, Int32 width, Int32 height, Int32 destinationX, Int32 destinationY, Int32 destinationHeight, Int32 destinationWidth, Int32 sourceX, Int32 sourceY, Int32 sourceWidth, Int32 sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        {
+            var bitmap = new Bitmap(width, height, pixelFormat);
+
+            var destination = new Rectangle(destinationX, destinationY, destinationWidth, destinationHeight);
+
+            graphics.DrawImage(bitmap, destination, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes);
+
+            return bitmap;
+        }
+        public static Bitmap ToBitmap(this Graphics graphics, Size size, Int32 destinationX, Int32 destinationY, Int32 destinationHeight, Int32 destinationWidth, Int32 sourceX, Int32 sourceY, Int32 sourceWidth, Int32 sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        {
+            return graphics.ToBitmap(size.Width, size.Height, destinationX, destinationY, destinationWidth, destinationHeight, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes, pixelFormat);
+        }
+
+        public static Bitmap ToBitmap(this Graphics graphics, Rectangle destination, Single sourceX, Single sourceY, Single sourceWidth, Single sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        {
+            var bitmap = new Bitmap((Int32)graphics.ClipBounds.Size.Width, (Int32)graphics.ClipBounds.Size.Height, pixelFormat);
+
+            graphics.DrawImage(bitmap, destination, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes);
+
+            return bitmap;
+        }
+
+        //public static Bitmap ToBitmap(this Graphics graphics, Size size, Rectangle destination, Single sourceX, Single sourceY, Single sourceWidth, Single sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        //{
+        //    var bitmap = new Bitmap((Int32)graphics.ClipBounds.Size.Width, (Int32)graphics.ClipBounds.Size.Height, pixelFormat);
+
+        //    graphics.DrawImage(bitmap, destination, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes);
+
+        //    return bitmap;
+        //}
+
+
+        public static Bitmap ToBitmap(this Graphics graphics, Rectangle destination, Rectangle source, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        {
+            return graphics.ToBitmap(destination, source.X, source.Y, source.Width, source.Height, graphicsUnit, imageAttributes, pixelFormat);
+        }
+        public static Bitmap ToBitmap(this Graphics graphics, Rectangle destination, RectangleF source, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        {
+            return graphics.ToBitmap(destination, source.X, source.Y, source.Width, source.Height, graphicsUnit, imageAttributes, pixelFormat);
+        }
+        public static Bitmap ToBitmap(this Graphics graphics, Size size, Rectangle destination, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        {
+            return graphics.ToBitmap(size, 0, 0, size.Height, size.Width, destination.X, destination.Y, destination.Width, destination.Height, graphicsUnit, imageAttributes, pixelFormat);
+        }
+
         public static void DrawGrid(this Graphics graphics, Pen pen, Rectangle rectangle, Int32 columnCount, Int32 rowCount)
         {
             var cellSize = new SizeF(rectangle.Width / columnCount, rectangle.Height / rowCount);
@@ -118,7 +179,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
         {
             graphics.FillPolygon(brush, new PointF[] { pointA, pointB, pointC} );
         }
-    
     }
 }
 

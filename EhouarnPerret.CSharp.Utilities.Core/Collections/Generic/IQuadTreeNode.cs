@@ -26,19 +26,14 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IQuadTreeNode<TValue, TQuadTreeNode> : ITreeNode<TValue, TQuadTreeNode>
-        where TQuadTreeNode : IQuadTreeNode<TValue, TQuadTreeNode>
+    public interface IQuadTreeNode<TValue>
     {
-        TQuadTreeNode BottomLeft { get; }
+        IQuadTreeNode<TValue> BottomLeft { get; }
 
-        TQuadTreeNode BottomRight { get; }
+        IQuadTreeNode<TValue> BottomRight { get; }
 
-        TQuadTreeNode TopLeft { get; }
+        IQuadTreeNode<TValue> TopLeft { get; }
 
-        TQuadTreeNode TopRight { get; }
-    }
-
-    public interface IQuadTreeNode<TValue> : IQuadTreeNode<TValue, IQuadTreeNode<TValue>>
-    {
+        IQuadTreeNode<TValue> TopRight { get; }
     }
 }

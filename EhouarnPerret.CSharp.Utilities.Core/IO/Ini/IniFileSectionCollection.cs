@@ -27,7 +27,7 @@
 using System;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.IO
+namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
 {
     public class IniFileSectionCollection : ParentReferencedKeyedCollection<String, IniFileSection, IniFile>
     {

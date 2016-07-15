@@ -25,9 +25,12 @@
 // THE SOFTWARE.
 namespace EhouarnPerret.CSharp.Utilities.Core.IO.Midi
 {
-    // Check: https://www.midi.org/specifications
+    // Check: 
+    // http://www.cs.cmu.edu/~music/cmsip/readings/Standard-MIDI-file-format-updated.pdf
+    // https://www.midi.org/specifications
+    // http://cs.fit.edu/~ryan/cse4051/projects/midi/midi.html
     public class MidiFile
     {
-         
+        
     }
 }

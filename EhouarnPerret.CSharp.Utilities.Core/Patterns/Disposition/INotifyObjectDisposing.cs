@@ -26,7 +26,7 @@
 
 using System;
 
-namespace EhouarnPerret.CSharp.Utilities.Core
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition
 {
     public interface INotifyObjectDisposing
     {

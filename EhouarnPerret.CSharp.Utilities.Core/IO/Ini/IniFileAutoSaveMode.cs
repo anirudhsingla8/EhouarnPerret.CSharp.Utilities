@@ -24,7 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-namespace EhouarnPerret.CSharp.Utilities.Core.IO
+namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
 {
     public enum IniFileAutoSaveMode : byte
     {

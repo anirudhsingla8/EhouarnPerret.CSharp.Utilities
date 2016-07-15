@@ -26,12 +26,7 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IRTreeNode<TValue, TRTreeNode> : ITreeNode<TValue, TRTreeNode>
-        where TRTreeNode : IRTreeNode<TValue, TRTreeNode>
-    {
-    }
-
-    public interface IRTreeNode<TValue> : IRTreeNode<TValue, IRTreeNode<TValue>>
+    public interface IRTreeNode<TValue>
     {
     }
 }

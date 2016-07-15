@@ -52,8 +52,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
             }
-
-
         }
 
         public static Boolean IsStrictlyBetween<T> (this T value, T lowerBound, T upperBound)
