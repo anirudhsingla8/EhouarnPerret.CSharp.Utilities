@@ -28,6 +28,7 @@ using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
+    [System.ComponentModel.DesignerCategory(@"code")]
     public class DataLayoutControl : Control
     {
         public DataLayoutControl()

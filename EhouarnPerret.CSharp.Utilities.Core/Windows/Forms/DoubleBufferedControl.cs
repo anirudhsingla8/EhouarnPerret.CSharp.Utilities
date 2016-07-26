@@ -28,6 +28,7 @@ using System.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
+    [System.ComponentModel.DesignerCategory(@"code")]
     public abstract class DoubleBufferedControl : Control, IDoubleBufferable
     {
         protected DoubleBufferedControl()

@@ -24,11 +24,76 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {
-    public static class FileHelpers
+    public static class FileExtensions
     {
-        
+        private static Boolean DiscrimnateFile(this FileInfo fileInfo, DateTime lowerBound, DateTime upperBound, FileTimeKind fileTimeKind = FileTimeKind.Creation)
+        {
+            switch (fileTimeKind)
+            {
+                case FileTimeKind.Creation: return fileInfo.CreationTime.IsBetween(lowerBound, upperBound);
+                case FileTimeKind.LastAccess: return fileInfo.LastAccessTime.IsBetween(lowerBound, upperBound);
+                case FileTimeKind.LastWrite: return fileInfo.LastWriteTime.IsBetween(lowerBound, upperBound);
+                case FileTimeKind.CreationUtc: return fileInfo.CreationTimeUtc.IsBetween(lowerBound, upperBound);
+                case FileTimeKind.LastAccessUtc: return fileInfo.LastAccessTimeUtc.IsBetween(lowerBound, upperBound);
+                case FileTimeKind.LastWriteUtc: return fileInfo.LastWriteTimeUtc.IsBetween(lowerBound, upperBound);
+                default: throw new ArgumentException(nameof(fileTimeKind));
+            }
+        }
+
+        private static Boolean DiscriminateFile(this FileInfo fileInfo, Int64 lowerBound, Int64 upperBound, FileSizeUnit fileSizeUnit = FileSizeUnit.Byte)
+        {
+            switch (fileSizeUnit)
+            {
+                case FileSizeUnit.Byte: return fileInfo.Length.IsBetween(lowerBound, upperBound);
+                default: throw new ArgumentException(nameof(fileSizeUnit));
+            }
+        }
+
+
+        public static IEnumerable<FileInfo> GetFilesBetween(this DirectoryInfo directoryInfo, Int64 lowerBound, Int64 upperBound, FileTimeKind fileTimeKind = FileTimeKind.Creation, String pattern = "*.*", SearchOption searchOption = SearchOption.AllDirectories)
+        {
+            lowerBound.ThrowIfGreaterThan(upperBound, nameof(lowerBound));
+
+            directoryInfo.EnumerateFiles(pattern, searchOption).Where(file => file.Length)
+        }
+
+        public static IEnumerable<FileInfo> GetFilesBetween(this DirectoryInfo directoryInfo, DateTime lowerBound, DateTime upperBound, FileTimeKind fileTimeKind = FileTimeKind.Creation, String pattern = "*.*", SearchOption searchOption = SearchOption.AllDirectories)
+        {
+            lowerBound.ThrowIfGreaterThan(upperBound, nameof(lowerBound));
+
+            return directoryInfo.EnumerateFiles(pattern, searchOption).Where(file => DiscrimnateFile(file, lowerBound, upperBound, fileTimeKind));
+        }
+    }
+
+    public static class FileSizeUnitConverter
+    {
+        public static BigInteger ToMegabytes(this BigInteger bytes)
+        {
+            if (bytes < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(bytes));
+            }
+            else
+            {
+                return bytes / (1024 * 1024);
+            }
+        }
+        public static BigInteger ToKilobytes(this BigInteger bytes)
+        {
+        }
+
+        public static BigInteger ToUnit(this BigInteger bytes)
+        {
+            
+        }
     }
 }
 

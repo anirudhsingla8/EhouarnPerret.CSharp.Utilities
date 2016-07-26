@@ -27,6 +27,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
+    [System.ComponentModel.DesignerCategory(@"code")]
     public class ExtendedSplitContainer : System.Windows.Forms.SplitContainer
     {
         public ExtendedSplitContainer()
