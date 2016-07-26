@@ -5,16 +5,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ComparerExtensions
     {
-        public static Boolean UncheckedIsBetween<T>(this T source, T lowerBound, T upperBound, IComparer<T> comparer = null)
+        internal static Boolean UncheckedIsBetween<T>(this T source, T lowerBound, T upperBound, IComparer<T> comparer = null)
         {
         }
-        public static Boolean UncheckedIsStrictlyBetween<T>(this T source, T lowerBound, T upperBound, IComparer<T> comparer = null)
+        internal static Boolean UncheckedIsStrictlyBetween<T>(this T source, T lowerBound, T upperBound, IComparer<T> comparer = null)
         {
         }
-        public static Boolean UncheckedIsNotBetween<T>(this T source, T lowerBound, T upperBound, IComparer<T> comparer = null)
+        internal static Boolean UncheckedIsNotBetween<T>(this T source, T lowerBound, T upperBound, IComparer<T> comparer = null)
         {
         }
-        public static Boolean UncheckedIsNotStrictlyBetween(this T source, T lowerBound, T upperBound, IComparer<T> comparer = null)
+        internal static Boolean UncheckedIsNotStrictlyBetween(this T source, T lowerBound, T upperBound, IComparer<T> comparer = null)
         {
         }
 
