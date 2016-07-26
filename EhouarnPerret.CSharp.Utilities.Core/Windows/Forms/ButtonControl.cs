@@ -26,6 +26,7 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
+    [System.ComponentModel.DesignerCategory(@"code")]
     public class ButtonControl : DoubleBufferedControl
     {
     }

@@ -36,7 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //            
 //        }
 
-        public static T ThrowIfNull<T>(T parameterValue, String parameterName)
+        public static T ThrowIfNull<T>(this T parameterValue, String parameterName)
             where T : class
         {
             if (parameterValue == null)
@@ -61,7 +61,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static void ThrowIfLesserThan<T>(T parameterValue, T comparedValue, String parameterName)
+        public static void ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName)
             where T : IComparable<T>
         {
             if (parameterValue.CompareTo(comparedValue) < 0)
@@ -74,7 +74,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static void ThrowIfGreaterThan<T>(T parameterValue, T comparedValue, String parameterName)
+        public static void ThrowIfGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName)
             where T : IComparable<T>
         {
             if (parameterValue.CompareTo(comparedValue) > 0)
@@ -87,7 +87,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static void ThrowIfEqualsTo<T>(T parameterValue, T comparedValue, String parameterName)
+        public static void ThrowIfEqualsTo<T>(this T parameterValue, T comparedValue, String parameterName)
         {
             if (parameterValue.Equals(comparedValue))
             {

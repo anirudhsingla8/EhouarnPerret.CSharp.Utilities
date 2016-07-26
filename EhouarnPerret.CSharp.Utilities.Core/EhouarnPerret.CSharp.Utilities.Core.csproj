@@ -49,10 +49,15 @@
     <Compile Include="Collections\Generic\IGraphEdge.cs" />
     <Compile Include="Collections\Generic\IGraphVertex.cs" />
     <Compile Include="Collections\Generic\IRTreeNode.cs" />
+    <Compile Include="ComparerExtensions.cs" />
     <Compile Include="DefaultBoolean.cs" />
     <Compile Include="EnumHelpers.cs" />
+    <Compile Include="IO\FileSizeUnit.cs" />
+    <Compile Include="IO\FileTimeKind.cs" />
     <Compile Include="IO\Ini\IniFileSectionCollection.cs" />
     <Compile Include="IO\Midi\MidiFile.cs" />
+    <Compile Include="IValuable.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Between.cs" />
     <Compile Include="Numeric\Algorithms\BubbleSortScheme.cs" />
     <Compile Include="Numeric\Algorithms\CocktailShakerSortScheme.cs" />
     <Compile Include="Numeric\Algorithms\HeapSortScheme.cs" />
@@ -65,9 +70,7 @@
     <Compile Include="IProperties.cs" />
     <Compile Include="IPropertiesParent.cs" />
     <Compile Include="Collections\Generic\CollectionExtensions.cs" />
-    <Compile Include="Windows\Forms\Control.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Windows\Forms\Control.cs" />
     <Compile Include="Windows\Forms\ControlProperties.cs" />
     <Compile Include="Patterns\Disposition\Disposable.cs" />
     <Compile Include="ExceptionHelpers.cs" />
@@ -96,13 +99,8 @@
     <Compile Include="Collections\Generic\BlockingCollectionExtensions.cs" />
     <Compile Include="IO\Ports\SerialPortExtensions.cs" />
     <Compile Include="Net\Sockets\SocketExtensions.cs" />
-    <Compile Include="Windows\Forms\DoubleBufferedControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Windows\Forms\DoubleBufferedControl.cs" />
     <Compile Include="ByteBits.cs" />
-    <Compile Include="Collections\Generic\ITree.cs">
-      <DeployService-Deploy>True</DeployService-Deploy>
-    </Compile>
     <Compile Include="Text\RegularExpressions\FluentRegex.cs" />
     <Compile Include="Drawing\ImageExtensions.cs" />
     <Compile Include="Collections\Generic\IKeyedCollection.cs" />
@@ -179,19 +177,11 @@
     <Compile Include="Collections\Generic\IInspectableReadOnlyCollection.cs" />
     <Compile Include="Collections\Generic\IInspectableClearableCollection.cs" />
     <Compile Include="Data\Common\DbCommandExtensions.cs" />
-    <Compile Include="Windows\Forms\DataLayoutPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\ExtendedSplitContainer.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Windows\Forms\DataLayoutPanel.cs" />
+    <Compile Include="Windows\Forms\ExtendedSplitContainer.cs" />
     <Compile Include="Windows\Forms\ExtendedCollectionEditor.cs" />
-    <Compile Include="Windows\Forms\ExtendedButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Windows\Forms\DoubleBufferedForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Windows\Forms\ExtendedButton.cs" />
+    <Compile Include="Windows\Forms\DoubleBufferedForm.cs" />
     <Compile Include="Windows\Forms\Dropdown.cs" />
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
@@ -201,9 +191,7 @@
     <Compile Include="Text\RegularExpressions\MatchExtensions.cs" />
     <Compile Include="Windows\Forms\ListViewControl.cs" />
     <Compile Include="Reflection\CustomAttributesProviderExtensions.cs" />
-    <Compile Include="Windows\Forms\Canvas\CanvasControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Windows\Forms\Canvas\CanvasControl.cs" />
     <Compile Include="Windows\Forms\Chart\ChartControl.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlItem.cs" />
     <Compile Include="Windows\Forms\Canvas\CanvasControlProperties.cs" />
@@ -228,9 +216,7 @@
     <Compile Include="Threading\MicroTimer.cs" />
     <Compile Include="Linq\EnumerableExtensions.Join.cs" />
     <Compile Include="Threading\MicroTimerElapsedEventArgs.cs" />
-    <Compile Include="Windows\Forms\ButtonControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Windows\Forms\ButtonControl.cs" />
     <Compile Include="Windows\Forms\AccordionControl.cs" />
     <Compile Include="Windows\Forms\Bindable.cs" />
     <Compile Include="Linq\Expressions\ExpressionHelpers.cs" />
@@ -331,9 +317,7 @@
     <Compile Include="Windows\Forms\Industrial\Meter.cs" />
     <Compile Include="Windows\Forms\Industrial\LightIndicator.cs" />
     <Compile Include="Windows\Forms\Industrial\SquareIndicator.cs" />
-    <Compile Include="Windows\Forms\GraphicsPathControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Windows\Forms\GraphicsPathControl.cs" />
     <Compile Include="Windows\Forms\GraphicsPathControlProperties.cs" />
     <Compile Include="Windows\Forms\IFormResizePaintable.cs" />
     <Compile Include="Windows\Forms\BackType.cs" />
@@ -358,6 +342,7 @@
     <Folder Include="Threading\Tasks\" />
     <Folder Include="Windows\Forms\Animation\" />
     <Folder Include="Windows\Forms\Editors\" />
+    <Folder Include="Windows\Presentation\" />
     <Folder Include="Xml\" />
   </ItemGroup>
 </Project>

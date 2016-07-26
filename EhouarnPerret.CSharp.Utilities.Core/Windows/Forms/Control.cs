@@ -31,6 +31,7 @@ using EhouarnPerret.CSharp.Utilities.Core.Reflection;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
+    [System.ComponentModel.DesignerCategory(@"code")]
     public abstract class Control<TProperties> : Control, IProperties<TProperties>
         where TProperties : ControlProperties
     {
