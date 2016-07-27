@@ -43,17 +43,40 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return parameterValue;
             }
         }
-        public static T ThrowIfNotNull<T>(this T parameterValue, String parameterName = @"")
-            where T : class
+
+        public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName = @"")
         {
-            if (parameterValue != null)
+            if (String.IsNullOrEmpty(parameterValue))
             {
                 throw new ArgumentNullException(parameterName);
             }
             else
             {
-                // Makes sense...
-                return null;
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfEqualTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        {
+            if (parameterValue.Equals(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfNotEqualTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        {
+            if (!parameterValue.Equals(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
             }
         }
 
@@ -69,6 +92,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return parameterValue;
             }
         }
+
         public static T ThrowIfNotBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
             where T : IComparable<T>
         {
@@ -78,24 +102,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             else
             {
-                
+                return parameterValue;
             }
         }
+
         public static T ThrowIfStrictlyBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+            where T : IComparable<T>
         {
-            
-        }
-        public static T ThrowIfStrictlyBetween<T>(this T parameterValue)
-        {
-
-        }
-
-
-        public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName = @"")
-        {
-            if (String.IsNullOrEmpty(parameterValue))
+            if (parameterValue.IsStrictlyBetween(lowerBound, upperBound))
             {
-                throw new ArgumentNullException(parameterName);
+                throw new ArgumentOutOfRangeException();
             }
             else
             {
@@ -106,19 +122,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
             where T : IComparable<T>
         {
-            if (parameterValue.CompareTo(comparedValue) < 0)
+            if (parameterValue.IsLesserThan(comparedValue))
             {
                 throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
             else
             {
-                return;
+                return parameterValue;
             }
         }
+
         public static T ThrowIfStrictlyLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
             where T : IComparable<T>
         {
-            if (parameterValue.CompareTo(comparedValue) < 0)
+            if (parameterValue.IsStrictlyLesserThan(comparedValue))
             {
                 throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
@@ -140,6 +157,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return parameterValue;
             }
         }
+
         public static T ThrowIfStrictlyGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
           where T : IComparable<T>
         {
@@ -152,30 +170,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return parameterValue;
             }
         }
-
-        public static T ThrowIfEqualsTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
-        {
-            if (parameterValue.Equals(comparedValue))
-            {
-                throw new ArgumentOutOfRangeException(nameof(parameterName));
-            }
-            else
-            {
-                return parameterValue;
-            }
-        }
-        public static T ThrowIfNotEqualsTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
-        {
-            if (!parameterValue.Equals(comparedValue))
-            {
-                throw new ArgumentOutOfRangeException(nameof(parameterName));
-            }
-            else
-            {
-                return parameterValue;
-            }
-        }
-
 
         // See with the private stuff above...
         //        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName, String comparedName)
