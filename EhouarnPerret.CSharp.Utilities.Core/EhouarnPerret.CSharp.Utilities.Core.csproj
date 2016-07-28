@@ -57,6 +57,8 @@
     <Compile Include="IO\Ini\IniFileSectionCollection.cs" />
     <Compile Include="IO\Midi\MidiFile.cs" />
     <Compile Include="IValuable.cs" />
+    <Compile Include="Linq\EnumerableExtensions.First.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Pipe.cs" />
     <Compile Include="Linq\EnumerableExtensions.Between.cs" />
     <Compile Include="Numeric\Algorithms\BubbleSortScheme.cs" />
     <Compile Include="Numeric\Algorithms\CocktailShakerSortScheme.cs" />
@@ -344,5 +346,8 @@
     <Folder Include="Windows\Forms\Editors\" />
     <Folder Include="Windows\Presentation\" />
     <Folder Include="Xml\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Linq\EnumerableExtensions.Last.cs" />
   </ItemGroup>
 </Project>

@@ -170,15 +170,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return parameterValue;
             }
         }
-
-        // See with the private stuff above...
-        //        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName, String comparedName)
-        //        {
-        //            if (parameterValue < comparedValue)
-        //            {
-        //                throw new ArgumentOutOfRangeException()
-        //            }
-        //        }
     }
 }
 

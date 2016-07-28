@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Sum.cs
+// EnumerableExtensions.First.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -22,25 +22,24 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-using System.Numerics;
+// THE SOFTWARE
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using EhouarnPerret.CSharp.Utilities.Core.Numeric;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static BigInteger Sum(IEnumerable<BigInteger> source)
+        public static TResult First<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, Boolean> predicate)
         {
-            return source.Aggregate(BigInteger.Zero, (current, item) => current + item);
+            return source.Select(resultSelector).First(predicate);
         }
 
-        public static BigIntegerFraction Sum(IEnumerable<BigIntegerFraction> source)
+        public static TResult First<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
         {
-            return source.Aggregate(BigIntegerFraction.Zero, (current, item) => current + item);
+            return resultSelector(source.First());
         }
     }
 }
-

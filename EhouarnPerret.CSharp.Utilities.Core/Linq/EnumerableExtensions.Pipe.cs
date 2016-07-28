@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Sum.cs
+// EnumerableExtensions.Pipe.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,23 +23,21 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System.Numerics;
+
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using EhouarnPerret.CSharp.Utilities.Core.Numeric;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static BigInteger Sum(IEnumerable<BigInteger> source)
+        public static IEnumerable<TSource> Pipe<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
         {
-            return source.Aggregate(BigInteger.Zero, (current, item) => current + item);
-        }
-
-        public static BigIntegerFraction Sum(IEnumerable<BigIntegerFraction> source)
-        {
-            return source.Aggregate(BigIntegerFraction.Zero, (current, item) => current + item);
+            foreach (var item in source)
+            {
+                action(item);
+                yield return item;
+            }
         }
     }
 }

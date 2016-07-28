@@ -26,7 +26,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using EhouarnPerret.CSharp.Utilities.Core.Numeric;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
@@ -81,6 +80,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             where TSource : IComparable<TSource>
         {
             return source[index1].CompareTo(source[index2]) < 0 ? index1 : index2;
+        }
+
+        public static T Random<T>(this IList<T> source)
+        {
+            return source.Random(0, source.Count - 1);
+        }
+
+        public static T Random<T>(this IList<T> source, Int32 start, Int32 stop)
+        {
+            var index = RandomHelpers.NextInt32(start, stop);
+
+            return source[index];
         }
     }
 }

@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
@@ -95,6 +96,44 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public static String ToIsoTimeString(this DateTime dateTime, IFormatProvider formatProvider)
         {
             return dateTime.ToString(DateTimeExtensions.TimeIsoStringFormat, formatProvider);
+        }
+
+        public static IEnumerable<DateTime> AsEnumerable(this DateTime start, DateTime stop, TimeSpan interval)
+        {
+            interval.ThrowIfStrictlyLesserThan(TimeSpan.Zero);
+
+            var current = start.ThrowIfGreaterThan(stop);
+
+            while (current <= stop)
+            {
+                yield return current;
+                current = current.Add(interval);
+            }
+        }
+
+        public static IEnumerable<DateTime> AsEnumerableDays(this DateTime start, DateTime stop, Double interval = 1)
+        {
+            return start.AsEnumerable(stop, TimeSpan.FromDays(interval));
+        }
+
+        public static IEnumerable<DateTime> AsEnumerableHours(this DateTime start, DateTime stop, Double interval = 1)
+        {
+            return start.AsEnumerable(stop, TimeSpan.FromHours(interval));
+        }
+
+        public static IEnumerable<DateTime> AsEnumerableMinutes(this DateTime start, DateTime stop, Double interval = 1)
+        {
+            return start.AsEnumerable(stop, TimeSpan.FromMinutes(interval));
+        }
+
+        public static IEnumerable<DateTime> AsEnumerableSeconds(this DateTime start, DateTime stop, Double interval = 1)
+        {
+            return start.AsEnumerable(stop, TimeSpan.FromSeconds(interval));
+        }
+
+        public static IEnumerable<DateTime> AsEnumerableMilliseconds(this DateTime start, DateTime stop, Double interval = 1)
+        {
+            return start.AsEnumerable(stop, TimeSpan.FromMilliseconds(interval));
         }
     }
 }
