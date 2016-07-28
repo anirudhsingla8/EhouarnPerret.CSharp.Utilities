@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 using System.Numerics;
 using System.Collections.Generic;
+using System.Linq;
 using EhouarnPerret.CSharp.Utilities.Core.Numeric;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
@@ -33,26 +34,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
     {
         public static BigInteger Sum(IEnumerable<BigInteger> source)
         {
-            var sum = BigInteger.Zero;
-
-            foreach (var item in source)
-            {
-                sum += item;
-            }
-
-            return sum;
+            return source.Aggregate(BigInteger.Zero, (current, item) => current + item);
         }
 
         public static BigIntegerFraction Sum(IEnumerable<BigIntegerFraction> source)
         {
-            var sum = BigIntegerFraction.Zero;
-
-            foreach (var item in source)
-            {
-                sum += item;
-            }
-
-            return sum;
+            return source.Aggregate(BigIntegerFraction.Zero, (current, item) => current + item);
         }
     }
 }

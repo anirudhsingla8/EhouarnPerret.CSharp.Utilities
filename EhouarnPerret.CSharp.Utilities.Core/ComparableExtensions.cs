@@ -41,58 +41,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value.CompareTo(otherValue) != 0;
         }
 
-        public static Boolean IsBetween<T> (this T value, T lowerBound, T upperBound)
-            where T : IComparable<T>
-        {
-            if (lowerBound.CompareTo(upperBound) > 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
-            }
-        }
-
-        public static Boolean IsStrictlyBetween<T> (this T value, T lowerBound, T upperBound)
-            where T : IComparable<T>
-        {
-            if (lowerBound.CompareTo(upperBound) >= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                return (lowerBound.CompareTo(value) < 0) && (upperBound.CompareTo(value) > 0);
-            }
-        }
-
-        public static Boolean IsNotBetween<T> (this T value, T lowerBound, T upperBound)
-            where T : IComparable<T>
-        {
-            if (lowerBound.CompareTo(upperBound) > 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                return (lowerBound.CompareTo(value) >= 0) && (upperBound.CompareTo(value) <= 0);
-            }
-        }
-
-        public static Boolean IsStrictlyNotBetween<T> (this T value, T lowerBound, T upperBound)
-            where T : IComparable<T>
-        {
-            if (lowerBound.CompareTo(upperBound) >= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                return (lowerBound.CompareTo(value) > 0) && (upperBound.CompareTo(value) < 0);
-            }
-        }
-
         public static Boolean IsGreaterThan<T>(this T value, T otherValue)
             where T : IComparable<T>
         {
@@ -116,6 +64,83 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return value.CompareTo(otherValue) < 0;
         }
+
+        public static Boolean IsBetween<T> (this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            if (lowerBound.IsStrictlyGreaterThan(upperBound))
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
+            }
+        }
+
+        public static Boolean IsStrictlyBetween<T> (this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            if (lowerBound.IsGreaterThan(upperBound))
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                return (lowerBound.CompareTo(value) < 0) && (upperBound.CompareTo(value) > 0);
+            }
+        }
+
+        public static Boolean IsNotBetween<T> (this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            if (lowerBound.IsStrictlyGreaterThan(upperBound))
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                return (lowerBound.CompareTo(value) >= 0) && (upperBound.CompareTo(value) <= 0);
+            }
+        }
+
+        public static Boolean IsStrictlyNotBetween<T> (this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            if (lowerBound.IsGreaterThan(upperBound))
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                return (lowerBound.CompareTo(value) > 0) && (upperBound.CompareTo(value) < 0);
+            }
+        }
+
+        internal static Boolean UncheckedIsBetween<T>(this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
+        }
+
+        internal static Boolean UncheckedIsStrictlyBetween<T>(this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            return (lowerBound.CompareTo(value) < 0) && (upperBound.CompareTo(value) > 0);
+        }
+
+        internal static Boolean UncheckedIsNotBetween<T>(this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            return (lowerBound.CompareTo(value) >= 0) && (upperBound.CompareTo(value) <= 0);
+        }
+
+        internal static Boolean UncheckedIsStrictlyNotBetween<T>(this T value, T lowerBound, T upperBound)
+            where T : IComparable<T>
+        {
+            return (lowerBound.CompareTo(value) > 0) && (upperBound.CompareTo(value) < 0);
+        }
+
     }
 }
 

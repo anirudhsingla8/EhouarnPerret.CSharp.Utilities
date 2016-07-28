@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Max.cs
+// EnumerableExtensions.Last.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -22,24 +22,25 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
+// THE SOFTWARE
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-	public static partial class EnumerableExtensions
-	{
-        public static TSource Max<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
+    public static partial class EnumerableExtensions
+    {
+        public static TSource Last<TSource>(IEnumerable<TSource> source)
         {
-            return source.Max(keySelector, item => item, keyComparer);
+            return source.Reverse().First();
         }
 
-        public static TResult Max<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        public static TSource Last<TSource>(IEnumerable<TSource> source, Func<TSource, Boolean> predicate)
         {
-            return source.Max(keySelector, resultSelector, comparison => comparison > 0, keyComparer);
+            return source.Reverse().First();
         }
-	}
+    }
 }
-

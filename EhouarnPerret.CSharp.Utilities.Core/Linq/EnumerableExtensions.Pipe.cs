@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Max.cs
+// EnumerableExtensions.Pipe.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -29,17 +29,16 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-	public static partial class EnumerableExtensions
-	{
-        public static TSource Max<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
+    public static partial class EnumerableExtensions
+    {
+        public static IEnumerable<TSource> Pipe<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
         {
-            return source.Max(keySelector, item => item, keyComparer);
+            foreach (var item in source)
+            {
+                action(item);
+                yield return item;
+            }
         }
-
-        public static TResult Max<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
-        {
-            return source.Max(keySelector, resultSelector, comparison => comparison > 0, keyComparer);
-        }
-	}
+    }
 }
 

@@ -24,17 +24,61 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public static class ArrayExtensions
     {
-        public static T[] Concat<T>(this T[] inputArray, params T[][] arraysToConcatenate)
+        public static IEnumerable<TSource> VisitNeighbours<TSource>(this TSource[][] source, Int32 radius)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static TSource Random<TSource>(this IList<TSource> source)
+        {
+            var index = RandomHelpers.NextInt32(0, source.Count - 1);
+            return source[index];
+        }
+
+        public static Object Random(this Array source)
+        {
+            var indices = new Int32[source.Rank];
+
+            for (var dimension = 0; dimension < indices.Length; dimension++)
+            {
+                var lowerBound = source.GetLowerBound(dimension);
+                var upperBound = source.GetUpperBound(dimension);
+                indices[dimension] = RandomHelpers.NextInt32(lowerBound, upperBound);
+            }
+
+            var value = indices.GetValue(indices);
+
+            return value;
+        }
+
+        public static T Random<T>(this Array source)
+        {
+            var indices = new Int32[source.Rank];
+
+            for (var dimension = 0; dimension < indices.Length; dimension++)
+            {
+                var lowerBound = source.GetLowerBound(dimension);
+                var upperBound = source.GetUpperBound(dimension);
+                indices[dimension] = RandomHelpers.NextInt32(lowerBound, upperBound);
+            }
+
+            var value = indices.GetValue(indices);
+
+            return (T) value;
+        }
+
+        public static TSource[] Concat<TSource>(this TSource[] source, params TSource[][] arraysToConcatenate)
         {
             var length = arraysToConcatenate.Sum(array => array.Length);
 
-            var outputArray = new T[length];
+            var outputArray = new TSource[length];
 
             var index = 0;
 

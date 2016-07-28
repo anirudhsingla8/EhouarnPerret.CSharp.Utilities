@@ -32,11 +32,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-		public static DataTable ToDataTable<TSource>(this IEnumerable<TSource> source)
+		public static DataTable ToDataTable<TSource>(this IEnumerable<TSource> source, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
 		{
 			var tSourceType = typeof(TSource);
-
-			const BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance;
 
 			var properties = tSourceType.GetProperties (bindingFlags);
 

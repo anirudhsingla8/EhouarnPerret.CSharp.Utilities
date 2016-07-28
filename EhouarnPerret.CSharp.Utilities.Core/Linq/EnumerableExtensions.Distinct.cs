@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
@@ -35,14 +36,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
         {
             var keys = new HashSet<TKey>(keyComparer);
 
-            foreach (var item in source)
-            {
-                if (keys.Add(keySelector(item)))
-                {
-                    yield return resultSelector(item);
-                }
-            }
+            return from item in source where keys.Add(keySelector(item)) select resultSelector(item);
         }
+
         public static IEnumerable<TSource> Distinct<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
         {
             return source.Distinct(keySelector, item => item, keyComparer);

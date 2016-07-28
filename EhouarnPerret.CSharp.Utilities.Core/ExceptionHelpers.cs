@@ -25,18 +25,13 @@
 // THE SOFTWARE.
 
 using System;
+using System.CodeDom;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ExceptionHelpers
     {
-        // Create something more generic here... WIP
-//        private static T ThrowIf<T>(this T parameterValue, String parameterName, Func<T, Boolean> action)
-//        {
-//            
-//        }
-
-        public static T ThrowIfNull<T>(this T parameterValue, String parameterName)
+        public static T ThrowIfNull<T>(this T parameterValue, String parameterName = @"")
             where T : class
         {
             if (parameterValue == null)
@@ -49,7 +44,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName)
+        public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName = @"")
         {
             if (String.IsNullOrEmpty(parameterValue))
             {
@@ -61,33 +56,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static void ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName)
-            where T : IComparable<T>
-        {
-            if (parameterValue.CompareTo(comparedValue) < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(parameterName));
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        public static void ThrowIfGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName)
-            where T : IComparable<T>
-        {
-            if (parameterValue.CompareTo(comparedValue) > 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(parameterName));
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        public static void ThrowIfEqualsTo<T>(this T parameterValue, T comparedValue, String parameterName)
+        public static T ThrowIfEqualTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
         {
             if (parameterValue.Equals(comparedValue))
             {
@@ -95,19 +64,112 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             else
             {
-                return;
+                return parameterValue;
             }
         }
 
+        public static T ThrowIfNotEqualTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        {
+            if (!parameterValue.Equals(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
 
-        // See with the private stuff above...
-//        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName, String comparedName)
-//        {
-//            if (parameterValue < comparedValue)
-//            {
-//                throw new ArgumentOutOfRangeException()
-//            }
-//        }
+        public static T ThrowIfBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsBetween(lowerBound, upperBound))
+            {
+                throw new ArgumentNullException(parameterName);
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfNotBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsNotBetween(lowerBound, upperBound))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfStrictlyBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsStrictlyBetween(lowerBound, upperBound))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsLesserThan(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfStrictlyLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsStrictlyLesserThan(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsGreaterThan(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfStrictlyGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+          where T : IComparable<T>
+        {
+            if (parameterValue.IsStrictlyGreaterThan(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
     }
 }
 
