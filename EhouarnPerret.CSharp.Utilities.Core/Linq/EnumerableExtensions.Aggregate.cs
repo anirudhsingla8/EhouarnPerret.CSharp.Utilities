@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Single.cs
+// EnumerableExtensions.Aggregate.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -28,42 +28,50 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
+    public static class Comparabler
+    {
+        
+    }
+
     public static partial class EnumerableExtensions
     {
-        public static TResult Single<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
+        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
         {
             var itemKeyComparer = keyComparer ?? Comparer<TKey>.Default;
 
-            var enumerator = source.GetEnumerator();
-
-            if (enumerator.MoveNext())
+            using (var enumerator = source.GetEnumerator())
             {
-                throw new ArgumentException(nameof(source));
-            }
-            else
-            {
-                var selectedItem = enumerator.Current;
-                var selectedKey = keySelector(selectedItem);
-
-                while (enumerator.MoveNext())
+                if (enumerator.MoveNext())
                 {
-                    var item = enumerator.Current;
-                    var key = keySelector(selectedItem);
-
-                    if (comparerSelection(itemKeyComparer.Compare(key, selectedKey)))
-                    {
-                        selectedItem = item;
-                        selectedKey = key;
-                    }
+                    throw new ArgumentException(nameof(source));
                 }
+                else
+                {
+                    var selectedItem = enumerator.Current;
+                    var selectedKey = keySelector(selectedItem);
 
-                return resultSelector(selectedItem);
+                    while (enumerator.MoveNext())
+                    {
+                        var item = enumerator.Current;
+
+                        // Also called a projection...
+                        var key = keySelector(selectedItem);
+
+                        if (comparerSelection(itemKeyComparer.Compare(key, selectedKey)))
+                        {
+                            selectedItem = item;
+                            selectedKey = key;
+                        }
+                    }
+
+                    return resultSelector(selectedItem);
+                }
             }
         }
  
-        public static TSource Single<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
+        public static TSource Aggregate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
         {
-            return source.Single(keySelector, item => item, comparerSelection, keyComparer);
+            return source.Aggregate(keySelector, item => item, comparerSelection, keyComparer);
         }
     }
 }

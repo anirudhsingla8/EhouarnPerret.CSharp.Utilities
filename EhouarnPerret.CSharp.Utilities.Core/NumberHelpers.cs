@@ -76,7 +76,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public const Int32 UInt64BitCount = NumberHelpers.Int64BitCount;
 
         /// <summary>
-        /// The Single bit count.
+        /// The Aggregate bit count.
         /// </summary>
         public const Int32 SingleBitCount = 32;
 
@@ -134,7 +134,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
 
         /// <summary>
-        /// The Single byte count.
+        /// The Aggregate byte count.
         /// </summary>
         public const Int32 SingleByteCount = 4;
 

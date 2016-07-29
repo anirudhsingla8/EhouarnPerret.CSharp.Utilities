@@ -69,7 +69,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
             return bitmap;
         }
 
-        //public static Bitmap ToBitmap(this Graphics graphics, Size size, Rectangle destination, Single sourceX, Single sourceY, Single sourceWidth, Single sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        //public static Bitmap ToBitmap(this Graphics graphics, Size size, Rectangle destination, Single sourceX, Aggregate sourceY, Aggregate sourceWidth, Aggregate sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
         //{
         //    var bitmap = new Bitmap((Int32)graphics.ClipBounds.Size.Width, (Int32)graphics.ClipBounds.Size.Height, pixelFormat);
 

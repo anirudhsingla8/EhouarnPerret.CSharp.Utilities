@@ -32,16 +32,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
-        {
-            comparer = comparer ?? Comparer<TSource>.Default;
-            source.Where(item => comparer.Compare())
-        }
+        //public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
+        //{
+        //    comparer = comparer ?? Comparer<TSource>.Default;
+        //    source.Where(item => comparer.Compare())
+        //}
 
-        public static IEnumerable<TSource> Between<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TKey lowerBound, TKey upperBound, IComparer<TKey> comparer = null)
-        {
-            comparer = comparer ?? Comparer<TKey>.Default;
-
-        }
+        //public static IEnumerable<TSource> Between<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TKey lowerBound, TKey upperBound, IComparer<TKey> comparer = null)
+        //{
+        //    comparer = comparer ?? Comparer<TKey>.Default;
+        //}
     }
 }

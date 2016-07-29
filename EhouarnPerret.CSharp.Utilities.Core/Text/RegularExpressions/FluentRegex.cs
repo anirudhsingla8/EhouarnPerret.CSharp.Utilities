@@ -70,7 +70,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 //        {
 //            return this;
 //        }
-//        public FluentRegex AddNumericalRange(Single start, Single stop, Boolean isDotMandatory)
+//        public FluentRegex AddNumericalRange(Single start, Aggregate stop, Boolean isDotMandatory)
 //        {
 //            return this;
 //        }

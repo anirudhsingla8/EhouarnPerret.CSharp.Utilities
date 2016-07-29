@@ -28,7 +28,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Numerics;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {
@@ -58,42 +57,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO
         }
 
 
-        public static IEnumerable<FileInfo> GetFilesBetween(this DirectoryInfo directoryInfo, Int64 lowerBound, Int64 upperBound, FileTimeKind fileTimeKind = FileTimeKind.Creation, String pattern = "*.*", SearchOption searchOption = SearchOption.AllDirectories)
-        {
-            lowerBound.ThrowIfGreaterThan(upperBound, nameof(lowerBound));
+        //public static IEnumerable<FileInfo> GetFilesBetween(this DirectoryInfo directoryInfo, Int64 lowerBound, Int64 upperBound, FileTimeKind fileTimeKind = FileTimeKind.Creation, String pattern = "*.*", SearchOption searchOption = SearchOption.AllDirectories)
+        //{
+        //    lowerBound.ThrowIfGreaterThan(upperBound, nameof(lowerBound));
 
-            directoryInfo.EnumerateFiles(pattern, searchOption).Where(file => file.Length)
-        }
+        //    directoryInfo.EnumerateFiles(pattern, searchOption).Where(file => file.Length)
+        //}
 
-        public static IEnumerable<FileInfo> GetFilesBetween(this DirectoryInfo directoryInfo, DateTime lowerBound, DateTime upperBound, FileTimeKind fileTimeKind = FileTimeKind.Creation, String pattern = "*.*", SearchOption searchOption = SearchOption.AllDirectories)
-        {
-            lowerBound.ThrowIfGreaterThan(upperBound, nameof(lowerBound));
+        //public static IEnumerable<FileInfo> GetFilesBetween(this DirectoryInfo directoryInfo, DateTime lowerBound, DateTime upperBound, FileTimeKind fileTimeKind = FileTimeKind.Creation, String pattern = "*.*", SearchOption searchOption = SearchOption.AllDirectories)
+        //{
+        //    lowerBound.ThrowIfGreaterThan(upperBound, nameof(lowerBound));
 
-            return directoryInfo.EnumerateFiles(pattern, searchOption).Where(file => DiscrimnateFile(file, lowerBound, upperBound, fileTimeKind));
-        }
-    }
-
-    public static class FileSizeUnitConverter
-    {
-        public static BigInteger ToMegabytes(this BigInteger bytes)
-        {
-            if (bytes < 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(bytes));
-            }
-            else
-            {
-                return bytes / (1024 * 1024);
-            }
-        }
-        public static BigInteger ToKilobytes(this BigInteger bytes)
-        {
-        }
-
-        public static BigInteger ToUnit(this BigInteger bytes)
-        {
-            
-        }
+        //    return directoryInfo.EnumerateFiles(pattern, searchOption).Where(file => DiscrimnateFile(file, lowerBound, upperBound, fileTimeKind));
+        //}
     }
 }
 

@@ -26,7 +26,6 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-
     public enum PermutationGenerationScheme : byte
     {
         Head = 0x00,

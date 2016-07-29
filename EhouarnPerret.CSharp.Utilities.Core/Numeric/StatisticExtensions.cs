@@ -38,10 +38,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //
 //            return values.Any() ? values.StandardDeviation() : null;
 //        }
-//        public static Single StandardDeviation(this IEnumerable<Single> source)
+//        public static Single StandardDeviation(this IEnumerable<Aggregate> source)
 //        {
 //        }
-//        public static Single? StandardDeviation(this IEnumerable<Single?> source)
+//        public static Single? StandardDeviation(this IEnumerable<Aggregate?> source)
 //        {
 //            var values = source.AllValues();
 //
@@ -79,11 +79,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //
 //            return actualValues.Any() ? actualValues.StandardDeviation() : null;
 //        }
-//        public static Single Variance(this IEnumerable<Single> source)
+//        public static Single Variance(this IEnumerable<Aggregate> source)
 //        {
 //
 //        }
-//        public static Single? Variance(this IEnumerable<Single?> source)
+//        public static Single? Variance(this IEnumerable<Aggregate?> source)
 //        {
 //            var actualValues = values.AllValues();
 //
@@ -100,7 +100,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //            return actualValues.Any() ? actualValues.StandardDeviation() : null;
 //        }
 //
-//        public static Single MeanCompensated(this IEnumerable<Single> source)
+//        public static Single MeanCompensated(this IEnumerable<Aggregate> source)
 //        {
 //            var sum = default(Single);
 //            var lowOrderBitsCompensation = default(Single);
@@ -143,7 +143,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //        public static Decimal MeanCompensated(this IEnumerable<Decimal> source)
 //        {
 //        }
-//        public static Single? MeanCompensated(this IEnumerable<Single> source)
+//        public static Single? MeanCompensated(this IEnumerable<Aggregate> source)
 //        {
 //        }
 //        public static Double? MeanCompensated(this IEnumerable<Double> source)
