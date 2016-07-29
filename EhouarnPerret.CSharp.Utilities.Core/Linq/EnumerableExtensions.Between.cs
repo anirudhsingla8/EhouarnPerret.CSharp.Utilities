@@ -41,7 +41,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
         //public static IEnumerable<TSource> Between<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TKey lowerBound, TKey upperBound, IComparer<TKey> comparer = null)
         //{
         //    comparer = comparer ?? Comparer<TKey>.Default;
-
         //}
     }
 }

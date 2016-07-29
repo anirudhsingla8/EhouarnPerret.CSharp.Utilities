@@ -39,7 +39,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //                default: throw new NotImplementedException();
 //            }
 //        }
-//        public static Single Sum(this IEnumerable<Single> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
+//        public static Single Sum(this IEnumerable<Aggregate> source, SummationStrategy summationStrategy = SummationStrategy.Naive)
 //        {
 //            switch (summationStrategy)
 //            {
@@ -96,7 +96,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //            }
 //        }
 //
-//        public static Single SumNaive(this IEnumerable<Single> source)
+//        public static Single SumNaive(this IEnumerable<Aggregate> source)
 //        {
 //            var sum = default(Single);
 //
@@ -130,7 +130,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //            return sum;
 //        }
 //
-//        public static Single? SumNaive(this IEnumerable<Single?> source)
+//        public static Single? SumNaive(this IEnumerable<Aggregate?> source)
 //        {
 //            return source.ApplyIfAnyValuesTo(SummationExtensions.SumNaive);
 //        }
@@ -143,7 +143,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //            return source.ApplyIfAnyValuesTo(SummationExtensions.SumNaive);
 //        }
 //
-//        public static Single SumKahan(this IEnumerable<Single> source)
+//        public static Single SumKahan(this IEnumerable<Aggregate> source)
 //        {
 //            var sum = default(Single);
 //            var lowOrderBitsCompensation = default(Single);
@@ -213,7 +213,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //            return sum;
 //        }
 //
-//        public static Single? SumKahan(this IEnumerable<Single?> source)
+//        public static Single? SumKahan(this IEnumerable<Aggregate?> source)
 //        {
 //            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
 //        }
@@ -226,7 +226,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //            return source.ApplyIfAnyValuesTo(SummationStrategy.SumKahan);
 //        }
 //    
-//        public static Single SumPairWise(this IEnumerable<Single> source)
+//        public static Single SumPairWise(this IEnumerable<Aggregate> source)
 //        {
 //
 //        }
@@ -239,7 +239,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //
 //        }
 //
-//        public static Single? SumPairWise(this IEnumerable<Single?> source)
+//        public static Single? SumPairWise(this IEnumerable<Aggregate?> source)
 //        {
 //            return source.ApplyIfAnyValuesTo(SummationStrategy.SumPairWise);
 //        }

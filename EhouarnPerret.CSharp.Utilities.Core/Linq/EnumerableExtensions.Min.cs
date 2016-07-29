@@ -37,7 +37,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 
         public static TResult Min<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
-            return source.Single(keySelector, resultSelector, comparison => comparison < 0, keyComparer);
+            return source.Aggregate(keySelector, resultSelector, comparison => comparison < 0, keyComparer);
         }
 	}
 }

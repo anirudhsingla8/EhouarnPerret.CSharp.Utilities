@@ -152,7 +152,7 @@
     <Compile Include="Numeric\INumber.cs" />
     <Compile Include="Linq\EnumerableExtensions.Max.cs" />
     <Compile Include="Linq\EnumerableExtensions.Min.cs" />
-    <Compile Include="Linq\EnumerableExtensions.Single.cs" />
+    <Compile Include="Linq\EnumerableExtensions.Aggregate.cs" />
     <Compile Include="Patterns\MVPP\IMVPComponent.cs" />
     <Compile Include="Numeric\Algorithms\SortingHelpers.cs" />
     <Compile Include="Numeric\Algorithms\QuickSortPartitionScheme.cs" />
