@@ -32,10 +32,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-        public static IEnumerable<T> SkipTake<T>(IEnumerable<T> source, Int32 skipCount, Int32 takeCount)
+        public static IEnumerable<TSource> SkipTake<TSource>(IEnumerable<TSource> source, Int32 skipCount, Int32 takeCount)
 		{
             return source.Skip(skipCount).Take(takeCount);
 		}
-	}
+
+        public static TSource SkipTake<TSource>(IEnumerable<TSource> source, Int32 skipCount)
+        {
+            return source.Skip(skipCount).Take(1).Single();
+        }
+    }
 }
 

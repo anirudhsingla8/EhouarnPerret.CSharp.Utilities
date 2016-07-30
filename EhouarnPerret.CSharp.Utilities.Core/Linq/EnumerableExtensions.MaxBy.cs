@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Max.cs
+// EnumerableExtensions.MaxBy.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -31,12 +31,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-        public static TSource Max<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
+        public static TSource MaxBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
         {
-            return source.Max(keySelector, item => item, keyComparer);
+            return source.MaxBy(keySelector, item => item, keyComparer);
         }
 
-        public static TResult Max<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        public static TResult MaxBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
             return source.Aggregate(keySelector, resultSelector, comparison => comparison > 0, keyComparer);
         }

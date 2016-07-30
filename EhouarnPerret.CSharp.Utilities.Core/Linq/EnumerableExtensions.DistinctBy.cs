@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Distinct.cs
+// EnumerableExtensions.DistinctBy.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -32,16 +32,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TResult> Distinct<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
         {
             var keys = new HashSet<TKey>(keyComparer);
 
             return from item in source where keys.Add(keySelector(item)) select resultSelector(item);
         }
 
-        public static IEnumerable<TSource> Distinct<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
         {
-            return source.Distinct(keySelector, item => item, keyComparer);
+            return source.DistinctBy(keySelector, item => item, keyComparer);
         }
     }
 }

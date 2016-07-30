@@ -30,7 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TResult> Except<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
         {
             var keys = second.ToHashSet(keySelector, keyComparer);
 
@@ -47,9 +47,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
             }
         }
 
-        public static IEnumerable<TSource> Except<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
         {
-            return first.Except(second, keySelector, item => item, keyComparer);
+            return first.ExceptBy(second, keySelector, item => item, keyComparer);
         }
     }
 }

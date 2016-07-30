@@ -25,14 +25,10 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    public static class Comparabler
-    {
-        
-    }
-
     public static partial class EnumerableExtensions
     {
         public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)

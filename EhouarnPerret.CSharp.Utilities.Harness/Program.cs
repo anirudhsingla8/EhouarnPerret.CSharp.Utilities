@@ -28,6 +28,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
@@ -36,6 +37,12 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
+            var re = new Int32[42];
+            for (var i = 0; i < re.Length; i++)
+            {
+                re[i] = i;
+            }
+
             Console.ReadKey();
         }
     }

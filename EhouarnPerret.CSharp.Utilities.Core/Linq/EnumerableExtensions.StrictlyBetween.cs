@@ -1,5 +1,5 @@
 ﻿// 
-// EnumerableExtensions.Between.cs
+// EnumerableExtensions.StrictlyBetween.cs
 // 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -32,16 +32,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound)
+        public static IEnumerable<TSource> StrictlyBetween<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound)
                 where TSource : IComparable<TSource>
         {
-            return source.Between(lowerBound, upperBound, item => item);
+            return source.StrictlyBetween(lowerBound, upperBound, item => item);
         }
 
-        public static IEnumerable<TResult> Between<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector)
+        public static IEnumerable<TResult> StrictlyBetween<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector)
             where TSource : IComparable<TSource>
         {
-            return source.Where(item => item.UncheckedIsBetween(lowerBound, upperBound)).Select(resultSelector);
+            return source.Where(item => item.UncheckedIsStrictlyBetween(lowerBound, upperBound)).Select(resultSelector);
         }
 
 

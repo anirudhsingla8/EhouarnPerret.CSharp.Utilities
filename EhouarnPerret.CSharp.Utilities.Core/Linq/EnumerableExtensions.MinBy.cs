@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Min.cs
+// EnumerableExtensions.MinBy.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -30,12 +30,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-		public static TSource Min<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
+		public static TSource MinBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
 		{
-            return source.Min(keySelector, item => item, keyComparer);
+            return source.MinBy(keySelector, item => item, keyComparer);
 		}
 
-        public static TResult Min<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        public static TResult MinBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
             return source.Aggregate(keySelector, resultSelector, comparison => comparison < 0, keyComparer);
         }
