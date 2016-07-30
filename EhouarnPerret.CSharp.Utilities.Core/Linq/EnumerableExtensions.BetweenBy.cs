@@ -36,11 +36,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
         {
             return source.BetweenBy(lowerBound, upperBound, keySelector, item => item, comparer);
         }
+
         public static IEnumerable<TResult> BetweenBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> comparer = null)
         {
-            comparer = comparer ?? Comparer<TKey>.Default;
+            comparer = comparer.DefaultIfNull();
 
-            return source.Where(item => comparer.IsValueBetweenBounds(keySelector(item), lowerBound, upperBound)).Select(resultSelector);
+            if (comparer.IsLeftStrictlyGreaterThanRight(lowerBound, upperBound))
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                return source
+                    .Where(item => comparer.UncheckedIsValueBetweenBounds(keySelector(item), lowerBound, upperBound))
+                    .Select(resultSelector);
+            }
         }
     }
 }

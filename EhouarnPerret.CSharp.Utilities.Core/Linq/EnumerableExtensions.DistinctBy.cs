@@ -34,6 +34,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
     {
         public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
         {
+            keyComparer = keyComparer.DefaultIfNull();
+
             var keys = new HashSet<TKey>(keyComparer);
 
             return from item in source where keys.Add(keySelector(item)) select resultSelector(item);

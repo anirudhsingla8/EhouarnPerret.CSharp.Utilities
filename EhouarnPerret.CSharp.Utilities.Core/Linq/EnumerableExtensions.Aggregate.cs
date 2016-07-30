@@ -31,13 +31,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
     // ToDO: refactoring...
     public static partial class EnumerableExtensions
     {
-        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TKey, TKey, Boolean> comparerCandidateCurrentComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
-            var itemKeyComparer = keyComparer ?? Comparer<TKey>.Default;
+            keyComparer = keyComparer.DefaultIfNull();
 
             using (var enumerator = source.GetEnumerator())
             {
-                if (enumerator.MoveNext())
+                if (!enumerator.MoveNext())
                 {
                     throw new ArgumentException(nameof(source));
                 }
@@ -53,7 +53,42 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
                         // Also called a projection...
                         var key = keySelector(selectedItem);
 
-                        if (comparerComparison(itemKeyComparer.Compare(key, selectedKey)))
+                        if (comparerCandidateCurrentComparison(key, selectedKey))
+                        {
+                            selectedItem = item;
+                            selectedKey = key;
+                        }
+                    }
+
+                    return resultSelector(selectedItem);
+                }
+            }
+        }
+
+
+        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        {
+            keyComparer = keyComparer.DefaultIfNull();
+
+            using (var enumerator = source.GetEnumerator())
+            {
+                if (!enumerator.MoveNext())
+                {
+                    throw new ArgumentException(nameof(source));
+                }
+                else
+                {
+                    var selectedItem = enumerator.Current;
+                    var selectedKey = keySelector(selectedItem);
+
+                    while (enumerator.MoveNext())
+                    {
+                        var item = enumerator.Current;
+
+                        // Also called a projection...
+                        var key = keySelector(selectedItem);
+
+                        if (comparerComparison(keyComparer.Compare(key, selectedKey)))
                         {
                             selectedItem = item;
                             selectedKey = key;

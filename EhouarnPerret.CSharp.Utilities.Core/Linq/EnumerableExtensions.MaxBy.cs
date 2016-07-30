@@ -38,7 +38,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 
         public static TResult MaxBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
-            return source.Aggregate(keySelector, resultSelector, comparison => comparison > 0, keyComparer);
+            keyComparer = keyComparer.DefaultIfNull();
+
+            return source.Aggregate(keySelector, (key, selectedKey) => keyComparer.IsLeftGreaterThanRight(key, selectedKey),resultSelector, keyComparer);
         }
 	}
 }

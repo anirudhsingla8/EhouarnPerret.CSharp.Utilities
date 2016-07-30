@@ -40,7 +40,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 
         public static IEnumerable<TResult> Between<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
         {
-            if (comparer.IsLeftGreaterThanRight(lowerBound, upperBound))
+            comparer = comparer.DefaultIfNull();
+
+            if (comparer.IsLeftStrictlyGreaterThanRight(lowerBound, upperBound))
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }

@@ -24,10 +24,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using System.Linq;
 using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 
@@ -37,14 +39,58 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var re = new Int32[42];
-            for (var i = 0; i < re.Length; i++)
+            var personCount = 42;
+
+            var random = new Random();
+
+            var persons = new List<Person>();
+
+            for (var i = 0; i < 200; i++)
             {
-                re[i] = i;
+                var name = "Name " + i;
+                var age = (Byte)random.Next(Byte.MinValue, Byte.MaxValue);
+                var gender = (i % 2) == 0 ? BinaryGender.Female : BinaryGender.Male;
+                var person = new Person(name, age, gender);
+
+                persons.Add(person);
             }
+
+            var gendersAbove = persons.MaxBy(person => person.Age);
 
             Console.ReadKey();
         }
+    }
+
+    public class Person
+    {
+        public Person(String name, Byte age, BinaryGender gender)
+        {
+            if (String.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException(@"name");
+            }
+            else
+            {
+                this._name = name;
+                this._age = age;
+                this._gender = gender;
+            }
+        }
+
+        private readonly String _name;
+        public String Name => this._name;
+
+        private readonly Byte _age;
+        public Byte Age => this._age;
+
+        private readonly BinaryGender _gender;
+        public BinaryGender Gender => this._gender;
+    }
+
+    public enum BinaryGender : byte
+    {
+        Female = 0x00,
+        Male = 0x01,
     }
 
     public class DBC : GraphicsPathControl

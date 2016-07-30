@@ -39,14 +39,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 
         public static IEnumerable<TResult> StrictlyBetween<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
         {
+            comparer = comparer.DefaultIfNull();
+
             if (comparer.IsLeftGreaterThanRight(lowerBound, upperBound))
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
             else
             {
-                comparer = comparer.DefaultIfNull();
-
                 return source
                     .Where(item => comparer.UncheckedIsValueStrictlyBetweenBounds(item, lowerBound, upperBound))
                     .Select(resultSelector);

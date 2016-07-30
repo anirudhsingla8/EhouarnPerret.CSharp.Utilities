@@ -32,17 +32,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> StrictlyGreaterThanBy<TSource>(this IEnumerable<TSource> source, TSource other, IComparer<TSource> comparer = null)
+        public static IEnumerable<TSource> StrictlyGreaterThanBy<TSource, TKey>(this IEnumerable<TSource> source, TKey other, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
         {
-            return source.StrictlyGreaterThanBy(other, item => item, comparer);
+            return source.StrictlyGreaterThanBy(other, keySelector, item => item, keyComparer);
         }
 
-        public static IEnumerable<TResult> StrictlyGreaterThanBy<TSource, TResult>(this IEnumerable<TSource> source, TSource other, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
+        public static IEnumerable<TResult> StrictlyGreaterThanBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, TKey other, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
-            comparer = comparer.DefaultIfNull();
+            keyComparer = keyComparer.DefaultIfNull();
 
             return source
-                .Where(item => comparer.IsLeftStrictlyGreaterThanRight(item, other))
+                .Where(item => keyComparer.IsLeftStrictlyGreaterThanRight(keySelector(item), other))
                 .Select(resultSelector);
         }
     }
