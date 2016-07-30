@@ -29,40 +29,63 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ComparableExtensions
     {
-        public static Boolean IsEqualTo<T>(this T value, T otherValue)
+        public static Boolean IsEqualTo<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) == 0;
+            return value.CompareTo(other) == 0;
+        }
+        public static Boolean IsNotEqualTo<T>(this T value, T other)
+            where T : IComparable<T>
+        {
+            return value.CompareTo(other) != 0;
         }
 
-        public static Boolean IsNotEqualTo<T>(this T value, T otherValue)
+        public static Boolean IsGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) != 0;
+            return value.CompareTo(other) >= 0;
+        }
+        public static Boolean IsStrictlyGreaterThan<T>(this T value, T other)
+            where T : IComparable<T>
+        {
+            return value.CompareTo(other) > 0;
         }
 
-        public static Boolean IsGreaterThan<T>(this T value, T otherValue)
+        // TODO: refactor
+        public static Boolean IsNotGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) >= 0;
+            return !value.IsGreaterThan(other);
+        }
+        // TODO: refactor
+        public static Boolean IsStrictlyNotGreaterThan<T>(this T value, T other)
+            where T : IComparable<T>
+        {
+            return !value.IsStrictlyGreaterThan(other);
         }
 
-        public static Boolean IsStrictlyGreaterThan<T>(this T value, T otherValue)
+        public static Boolean IsLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) > 0;
+            return value.CompareTo(other) <= 0;
         }
-
-        public static Boolean IsLesserThan<T>(this T value, T otherValue)
+        public static Boolean IsStrictlyLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) <= 0;
+            return value.CompareTo(other) < 0;
         }
-
-        public static Boolean IsStrictlyLesserThan<T>(this T value, T otherValue)
+        
+        // TODO: Refactor
+        public static Boolean IsNotLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) < 0;
+            return !value.IsLesserThan(other);
+        }
+        // TODO: Refactor
+        public static Boolean IsStrictlyNotLesserThan<T>(this T value, T other)
+            where T : IComparable<T>
+        {
+            return !value.IsStrictlyLesserThan(other);
         }
 
         public static Boolean IsBetween<T> (this T value, T lowerBound, T upperBound)
@@ -77,7 +100,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
             }
         }
-
         public static Boolean IsStrictlyBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
@@ -103,7 +125,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return (lowerBound.CompareTo(value) >= 0) && (upperBound.CompareTo(value) <= 0);
             }
         }
-
         public static Boolean IsStrictlyNotBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
@@ -122,7 +143,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
         }
-
         internal static Boolean UncheckedIsStrictlyBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
@@ -134,13 +154,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return (lowerBound.CompareTo(value) >= 0) && (upperBound.CompareTo(value) <= 0);
         }
-
         internal static Boolean UncheckedIsStrictlyNotBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             return (lowerBound.CompareTo(value) > 0) && (upperBound.CompareTo(value) < 0);
         }
-
     }
 }
 

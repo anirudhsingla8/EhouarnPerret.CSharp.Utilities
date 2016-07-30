@@ -170,6 +170,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 return parameterValue;
             }
         }
+
+        public static Boolean ThrowIfTrue(this Boolean parameterValue, String parameterName = @"")
+        {
+            return parameterValue.ThrowIfEqualTo(true, parameterName);
+        }
+
+        public static Boolean ThrowIfFalse(this Boolean parameterValue, String parameterName = @"")
+        {
+            return parameterValue.ThrowIfEqualTo(false, parameterName);
+        }
     }
 }
 

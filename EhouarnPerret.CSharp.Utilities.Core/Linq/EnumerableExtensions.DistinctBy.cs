@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Min.cs
+// EnumerableExtensions.DistinctBy.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,22 +23,28 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-	public static partial class EnumerableExtensions
-	{
-		public static TSource Min<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
-		{
-            return source.Min(keySelector, item => item, keyComparer);
-		}
-
-        public static TResult Min<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+    public static partial class EnumerableExtensions
+    {
+        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
         {
-            return source.Aggregate(keySelector, resultSelector, comparison => comparison < 0, keyComparer);
+            keyComparer = keyComparer.DefaultIfNull();
+
+            var keys = new HashSet<TKey>(keyComparer);
+
+            return from item in source where keys.Add(keySelector(item)) select resultSelector(item);
         }
-	}
+
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        {
+            return source.DistinctBy(keySelector, item => item, keyComparer);
+        }
+    }
 }
 

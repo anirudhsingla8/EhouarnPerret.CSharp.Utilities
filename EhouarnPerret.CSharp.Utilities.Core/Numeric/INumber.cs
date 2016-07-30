@@ -79,7 +79,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 //			return left.Int32 % right.Int32;
 //		}
 //
-//		public NumberInt32 Max 
+//		public NumberInt32 MaxBy 
 //		{
 //			get 
 //			{

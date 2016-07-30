@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,15 +33,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        //public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
-        //{
-        //    comparer = comparer ?? Comparer<TSource>.Default;
-        //    source.Where(item => comparer.Compare())
-        //}
+        public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
+        {
+            return source.Between(lowerBound, upperBound, item => item);
+        }
 
-        //public static IEnumerable<TSource> Between<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TKey lowerBound, TKey upperBound, IComparer<TKey> comparer = null)
-        //{
-        //    comparer = comparer ?? Comparer<TKey>.Default;
-        //}
+        public static IEnumerable<TResult> Between<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
+        {
+            comparer = comparer.DefaultIfNull();
+
+            if (comparer.IsLeftStrictlyGreaterThanRight(lowerBound, upperBound))
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                return source
+                    .Where(item => comparer.UncheckedIsValueBetweenBounds(item, lowerBound, upperBound))
+                    .Select(resultSelector);
+            }
+        }
     }
 }

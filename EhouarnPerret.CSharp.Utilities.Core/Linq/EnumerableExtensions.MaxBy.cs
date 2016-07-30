@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.SkipTake.cs
+// EnumerableExtensions.MaxBy.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -22,25 +22,26 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE
+// THE SOFTWARE.
 
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-        public static IEnumerable<TSource> SkipTake<TSource>(IEnumerable<TSource> source, Int32 skipCount, Int32 takeCount)
-		{
-            return source.Skip(skipCount).Take(takeCount);
-		}
-
-        public static TSource SkipTake<TSource>(IEnumerable<TSource> source, Int32 skipCount)
+        public static TSource MaxBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
         {
-            return source.Skip(skipCount).Take(1).Single();
+            return source.MaxBy(keySelector, item => item, keyComparer);
         }
-    }
+
+        public static TResult MaxBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        {
+            keyComparer = keyComparer.DefaultIfNull();
+
+            return source.Aggregate(keySelector, (key, selectedKey) => keyComparer.IsLeftGreaterThanRight(key, selectedKey),resultSelector, keyComparer);
+        }
+	}
 }
 

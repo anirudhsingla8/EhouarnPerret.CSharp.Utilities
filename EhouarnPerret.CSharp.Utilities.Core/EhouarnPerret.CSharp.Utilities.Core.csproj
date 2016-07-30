@@ -30,6 +30,25 @@
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
@@ -52,14 +71,33 @@
     <Compile Include="ComparerExtensions.cs" />
     <Compile Include="DefaultBoolean.cs" />
     <Compile Include="EnumHelpers.cs" />
+    <Compile Include="EqualityComparerExtensions.cs" />
     <Compile Include="IO\FileSizeUnit.cs" />
     <Compile Include="IO\FileTimeKind.cs" />
     <Compile Include="IO\Ini\IniFileSectionCollection.cs" />
     <Compile Include="IO\Midi\MidiFile.cs" />
     <Compile Include="IValuable.cs" />
+    <Compile Include="Linq\EnumerableExtensions.LesserThanBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.GreaterThanBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.GreaterThan.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyBetweenBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyGreaterThanBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyLesserThanBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyNotBetweenBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyNotGreaterThanBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyNotLesserThanBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyNotLesserThan.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyNotGreaterThan.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyNotBetween.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyGreaterThan.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyLesserThan.cs" />
+    <Compile Include="Linq\EnumerableExtensions.LesserThan.cs" />
+    <Compile Include="Linq\EnumerableExtensions.StrictlyBetween.cs" />
+    <Compile Include="Linq\EnumerableExtensions.BetweenBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.First.cs" />
     <Compile Include="Linq\EnumerableExtensions.Pipe.cs" />
     <Compile Include="Linq\EnumerableExtensions.Between.cs" />
+    <Compile Include="Linq\EnumerableExtensions.SelectWhere.cs" />
     <Compile Include="Numeric\Algorithms\BubbleSortScheme.cs" />
     <Compile Include="Numeric\Algorithms\CocktailShakerSortScheme.cs" />
     <Compile Include="Numeric\Algorithms\HeapSortScheme.cs" />
@@ -147,11 +185,11 @@
     <Compile Include="Linq\EnumerableExtensions.ToBindingList.cs" />
     <Compile Include="Windows\Forms\ControlPropertiesView.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToKeyedCollection.cs" />
-    <Compile Include="Linq\EnumerableExtensions.Distinct.cs" />
+    <Compile Include="Linq\EnumerableExtensions.DistinctBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.Except.cs" />
     <Compile Include="Numeric\INumber.cs" />
-    <Compile Include="Linq\EnumerableExtensions.Max.cs" />
-    <Compile Include="Linq\EnumerableExtensions.Min.cs" />
+    <Compile Include="Linq\EnumerableExtensions.MaxBy.cs" />
+    <Compile Include="Linq\EnumerableExtensions.MinBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.Aggregate.cs" />
     <Compile Include="Patterns\MVPP\IMVPComponent.cs" />
     <Compile Include="Numeric\Algorithms\SortingHelpers.cs" />

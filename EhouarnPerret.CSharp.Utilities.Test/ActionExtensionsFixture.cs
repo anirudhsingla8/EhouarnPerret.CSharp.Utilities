@@ -1,21 +1,21 @@
-﻿//
-// EnumerableExtensions.Distinct.cs
-//
+﻿// 
+// ActionExtensionsFixture.cs
+// 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
-//
+// 
 // Copyright (c) 2016 Ehouarn Perret
-//
+// 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,25 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using NUnit.Framework;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Linq
+namespace EhouarnPerret.CSharp.Utilities.Test
 {
-    public static partial class EnumerableExtensions
+    [TestFixture]
+    public class ActionExtensionsFixture
     {
-        public static IEnumerable<TResult> Distinct<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            var keys = new HashSet<TKey>(keyComparer);
-
-            return from item in source where keys.Add(keySelector(item)) select resultSelector(item);
-        }
-
-        public static IEnumerable<TSource> Distinct<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
-        {
-            return source.Distinct(keySelector, item => item, keyComparer);
-        }
+         
     }
 }
-
