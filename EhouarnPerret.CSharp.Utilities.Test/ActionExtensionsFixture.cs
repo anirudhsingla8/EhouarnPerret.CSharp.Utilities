@@ -1,5 +1,5 @@
 ﻿// 
-// EnumerableExtensions.StrictlyBetween.cs
+// ActionExtensionsFixture.cs
 // 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,33 +24,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using NUnit.Framework;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Linq
+namespace EhouarnPerret.CSharp.Utilities.Test
 {
-    public static partial class EnumerableExtensions
+    [TestFixture]
+    public class ActionExtensionsFixture
     {
-        public static IEnumerable<TSource> StrictlyBetween<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
-        {
-            return source.StrictlyBetween(lowerBound, upperBound, item => item);
-        }
-
-        public static IEnumerable<TResult> StrictlyBetween<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
-        {
-            if (comparer.IsLeftGreaterThanRight(lowerBound, upperBound))
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                comparer = comparer.DefaultIfNull();
-
-                return source
-                    .Where(item => comparer.UncheckedIsValueStrictlyBetweenBounds(item, lowerBound, upperBound))
-                    .Select(resultSelector);
-            }
-        }
+         
     }
 }

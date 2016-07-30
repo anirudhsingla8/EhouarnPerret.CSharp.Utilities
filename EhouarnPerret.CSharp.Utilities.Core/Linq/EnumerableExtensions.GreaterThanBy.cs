@@ -1,5 +1,5 @@
 ﻿// 
-// EnumerableExtensions.StrictlyBetween.cs
+// EnumerableExtensions.StrictlyGreaterThanBy.cs
 // 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -32,25 +32,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> StrictlyBetween<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
+        public static IEnumerable<TSource> GreaterThanBy<TSource, TKey>(this IEnumerable<TSource> source, TKey other, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
         {
-            return source.StrictlyBetween(lowerBound, upperBound, item => item);
+            return source.GreaterThanBy(other, keySelector, item => item, keyComparer);
         }
 
-        public static IEnumerable<TResult> StrictlyBetween<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
+        public static IEnumerable<TResult> GreaterThanBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, TKey other, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
-            if (comparer.IsLeftGreaterThanRight(lowerBound, upperBound))
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                comparer = comparer.DefaultIfNull();
+            keyComparer = keyComparer.DefaultIfNull();
 
-                return source
-                    .Where(item => comparer.UncheckedIsValueStrictlyBetweenBounds(item, lowerBound, upperBound))
-                    .Select(resultSelector);
-            }
+            return source
+                .Where(item => keyComparer.IsLeftGreaterThanRight(keySelector(item), other))
+                .Select(resultSelector);
         }
     }
 }

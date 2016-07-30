@@ -25,6 +25,7 @@
 // THE SOFTWARE.
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -32,55 +33,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound)
-                where TSource : IComparable<TSource>
+        public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
         {
             return source.Between(lowerBound, upperBound, item => item);
         }
 
-        public static IEnumerable<TResult> Between<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector)
-            where TSource : IComparable<TSource>
+        public static IEnumerable<TResult> Between<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
         {
-            return source.Where(item => item.UncheckedIsBetween(lowerBound, upperBound)).Select(resultSelector);
+            if (comparer.IsLeftGreaterThanRight(lowerBound, upperBound))
+            {
+                throw new ArgumentOutOfRangeException(nameof(lowerBound));
+            }
+            else
+            {
+                return source
+                    .Where(item => comparer.UncheckedIsValueBetweenBounds(item, lowerBound, upperBound))
+                    .Select(resultSelector);
+            }
         }
-
-
-
-        //public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound)
-            //    where TSource : IComparable<TSource>
-            //{
-            //    return source.Where(item => item.UncheckedIsBetween(lowerBound, upperBound));
-            //}
-
-            //public static IEnumerable<TSource> Between<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TSource lowerBound, TSource upperBound)
-            //    where TKey : IComparable<TKey>
-            //{
-            //    var lowerBoundKey = keySelector(lowerBound);
-            //    var upperBoundKey = keySelector(upperBound);
-
-            //    return source.Where(item => keySelector(item).UncheckedIsBetween(lowerBoundKey, upperBoundKey));
-            //}
-            //public static IEnumerable<TSource> Between<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TKey lowerBound, TKey upperBound)
-            //    where TKey : IComparable<TKey>
-            //{
-            //    return source.Where(item => keySelector(item).UncheckedIsBetween(lowerBound, upperBound));
-            //}
-
-            //public static IEnumerable<TSource> Between<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TSource lowerBound, TSource upperBound)
-            //    where TKey : IComparable<TKey>
-            //{
-            //    return source.Where(item => keySelector(item).UncheckedIsBetween(lowerBound, upperBound));
-            //}
-            //public static IEnumerable<TSource> Between<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TKey lowerBound, TKey upperBound, IComparer<TKey> comparer = null)
-            //{
-            //    comparer = comparer ?? Comparer<TKey>.Default;
-            //    return null;
-            //}
-
-            //public static IEnumerable<TSource> Between<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, TKey lowerBound, TKey upperBound, IComparer<TKey> comparer = null)
-            //{
-            //    comparer = comparer ?? Comparer<TKey>.Default;
-            //    return null;
-            //}
-        }
+    }
 }

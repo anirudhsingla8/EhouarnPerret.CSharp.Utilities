@@ -29,63 +29,63 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ComparableExtensions
     {
-        public static Boolean IsEqualTo<T>(this T value, T otherValue)
+        public static Boolean IsEqualTo<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) == 0;
+            return value.CompareTo(other) == 0;
         }
-        public static Boolean IsNotEqualTo<T>(this T value, T otherValue)
+        public static Boolean IsNotEqualTo<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) != 0;
+            return value.CompareTo(other) != 0;
         }
 
-        public static Boolean IsGreaterThan<T>(this T value, T otherValue)
+        public static Boolean IsGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) >= 0;
+            return value.CompareTo(other) >= 0;
         }
-        public static Boolean IsStrictlyGreaterThan<T>(this T value, T otherValue)
+        public static Boolean IsStrictlyGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(otherValue) > 0;
+            return value.CompareTo(other) > 0;
         }
 
         // TODO: refactor
-        public static Boolean IsNotGreaterThan<T>(this T value, T otherValue)
+        public static Boolean IsNotGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return !value.IsGreaterThan(otherValue);
+            return !value.IsGreaterThan(other);
         }
         // TODO: refactor
-        public static Boolean IsNotStrictlyGreaterThan<T>(this T value, T otherValue)
+        public static Boolean IsStrictlyNotGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return !value.IsStrictlyGreaterThan(otherValue);
+            return !value.IsStrictlyGreaterThan(other);
         }
 
-        public static Boolean IsLesserThan<T>(this T value, T upperBound)
+        public static Boolean IsLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(upperBound) <= 0;
+            return value.CompareTo(other) <= 0;
         }
-        public static Boolean IsStrictlyLesserThan<T>(this T value, T upperBound)
+        public static Boolean IsStrictlyLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return value.CompareTo(upperBound) < 0;
+            return value.CompareTo(other) < 0;
         }
         
         // TODO: Refactor
-        public static Boolean IsNotLesserThan<T>(this T value, T upperBound)
+        public static Boolean IsNotLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return !value.IsLesserThan(upperBound);
+            return !value.IsLesserThan(other);
         }
         // TODO: Refactor
-        public static Boolean IsNotStrictlyLesserThan<T>(this T value, T upperBound)
+        public static Boolean IsStrictlyNotLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
-            return !value.IsStrictlyLesserThan(upperBound);
+            return !value.IsStrictlyLesserThan(other);
         }
 
         public static Boolean IsBetween<T> (this T value, T lowerBound, T upperBound)

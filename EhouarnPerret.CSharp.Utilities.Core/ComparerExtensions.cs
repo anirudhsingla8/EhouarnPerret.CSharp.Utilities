@@ -5,6 +5,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ComparerExtensions
     {
+        public static IComparer<T> DefaultIfNull<T>(this IComparer<T> comparer)
+        {
+            return comparer ?? Comparer<T>.Default;
+        } 
+
         public static Boolean AreEqual<T>(this IComparer<T> comparer, T left, T right)
         {
             return comparer.Compare(left, right) == 0;
@@ -38,7 +43,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return !comparer.IsLeftGreaterThanRight(left, right);
         }
         // TODO: refactoring
-        public static Boolean IsLeftNotStrictlyGreaterThanRight<T>(this IComparer<T> comparer, T left, T right)
+        public static Boolean IsLeftStrictlyNotGreaterThanRight<T>(this IComparer<T> comparer, T left, T right)
         {
             return !comparer.IsLeftStrictlyGreaterThanRight(left, right);
         }
@@ -83,8 +88,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             else
             {
-                return comparer.IsLeftLesserThanRight(lowerBound, value) &&
-                       comparer.IsLeftLesserThanRight(value, upperBound);
+                return comparer.UncheckedIsValueBetweenBounds(value, lowerBound, upperBound);
             }
         }
 
@@ -97,8 +101,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             else
             {
-                return comparer.IsLeftStrictlyLesserThanRight(lowerBound, value) &&
-                       comparer.IsLeftStrictlyLesserThanRight(value, upperBound);
+                return comparer.UncheckedIsValueStrictlyBetweenBounds(value, lowerBound, upperBound);
             }
         }
         
@@ -107,10 +110,37 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return !comparer.IsValueBetweenBounds(value, lowerBound, upperBound);
         }
+        
         // TODO: refactoring
-        public static Boolean IsValueNotStrictlyBetweenBounds<T>(this IComparer<T> comparer, T value, T lowerBound, T upperBound)
+        public static Boolean IsValueStrictlyNotBetweenBounds<T>(this IComparer<T> comparer, T value, T lowerBound, T upperBound)
         {
             return !comparer.IsValueStrictlyBetweenBounds(value, lowerBound, upperBound);
+        }
+
+
+
+        // TODO: refactoring
+        internal static Boolean UncheckedIsValueBetweenBounds<T>(this IComparer<T> comparer, T value, T lowerBound, T upperBound)
+        {
+            return comparer.IsLeftLesserThanRight(lowerBound, value) && comparer.IsLeftLesserThanRight(value, upperBound);
+        }
+
+        // TODO: refactoring
+        internal static Boolean UncheckedIsValueStrictlyBetweenBounds<T>(this IComparer<T> comparer, T value, T lowerBound, T upperBound)
+        {
+            return comparer.IsLeftStrictlyLesserThanRight(lowerBound, value) && comparer.IsLeftStrictlyLesserThanRight(value, upperBound);
+        }
+
+        // TODO: refactoring
+        internal static Boolean UncheckedIsValueNotBetweenBounds<T>(this IComparer<T> comparer, T value, T lowerBound, T upperBound)
+        {
+            return !comparer.UncheckedIsValueBetweenBounds(value, lowerBound, upperBound);
+        }
+
+        // TODO: refactoring
+        internal static Boolean UncheckedIsValueStrictlyNotBetweenBounds<T>(this IComparer<T> comparer, T value, T lowerBound, T upperBound)
+        {
+            return !comparer.UncheckedIsValueStrictlyBetweenBounds(value, lowerBound, upperBound);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// 
-// EnumerableExtensions.StrictlyBetween.cs
+// EnumerableExtensions.StrictlyGreaterThanBy.cs
 // 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -32,25 +32,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> StrictlyBetween<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
+        public static IEnumerable<TSource> StrictlyGreaterThanBy<TSource>(this IEnumerable<TSource> source, TSource other, IComparer<TSource> comparer = null)
         {
-            return source.StrictlyBetween(lowerBound, upperBound, item => item);
+            return source.StrictlyGreaterThanBy(other, item => item, comparer);
         }
 
-        public static IEnumerable<TResult> StrictlyBetween<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
+        public static IEnumerable<TResult> StrictlyGreaterThanBy<TSource, TResult>(this IEnumerable<TSource> source, TSource other, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
         {
-            if (comparer.IsLeftGreaterThanRight(lowerBound, upperBound))
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                comparer = comparer.DefaultIfNull();
+            comparer = comparer.DefaultIfNull();
 
-                return source
-                    .Where(item => comparer.UncheckedIsValueStrictlyBetweenBounds(item, lowerBound, upperBound))
-                    .Select(resultSelector);
-            }
+            return source
+                .Where(item => comparer.IsLeftStrictlyGreaterThanRight(item, other))
+                .Select(resultSelector);
         }
     }
 }

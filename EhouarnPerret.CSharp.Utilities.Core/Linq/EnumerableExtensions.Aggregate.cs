@@ -25,13 +25,13 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
+    // ToDO: refactoring...
     public static partial class EnumerableExtensions
     {
-        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
+        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
             var itemKeyComparer = keyComparer ?? Comparer<TKey>.Default;
 
@@ -53,7 +53,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
                         // Also called a projection...
                         var key = keySelector(selectedItem);
 
-                        if (comparerSelection(itemKeyComparer.Compare(key, selectedKey)))
+                        if (comparerComparison(itemKeyComparer.Compare(key, selectedKey)))
                         {
                             selectedItem = item;
                             selectedKey = key;
@@ -64,10 +64,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
                 }
             }
         }
- 
-        public static TSource Aggregate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerSelection, IComparer<TKey> keyComparer = null)
+
+        public static TSource Aggregate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, IComparer<TKey> keyComparer = null)
         {
-            return source.Aggregate(keySelector, item => item, comparerSelection, keyComparer);
+            return source.Aggregate(keySelector, comparerComparison, item => item, keyComparer);
         }
     }
 }

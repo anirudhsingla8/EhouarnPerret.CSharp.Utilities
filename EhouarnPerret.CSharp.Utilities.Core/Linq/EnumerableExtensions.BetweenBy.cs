@@ -1,5 +1,5 @@
 ﻿// 
-// EnumerableExtensions.StrictlyBetween.cs
+// EnumerableExtensions.Between.cs
 // 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -32,25 +32,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> StrictlyBetween<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
+        public static IEnumerable<TSource> BetweenBy<TSource, TKey>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
         {
-            return source.StrictlyBetween(lowerBound, upperBound, item => item);
+            return source.BetweenBy(lowerBound, upperBound, keySelector, item => item, comparer);
         }
-
-        public static IEnumerable<TResult> StrictlyBetween<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
+        public static IEnumerable<TResult> BetweenBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> comparer = null)
         {
-            if (comparer.IsLeftGreaterThanRight(lowerBound, upperBound))
-            {
-                throw new ArgumentOutOfRangeException(nameof(lowerBound));
-            }
-            else
-            {
-                comparer = comparer.DefaultIfNull();
+            comparer = comparer ?? Comparer<TKey>.Default;
 
-                return source
-                    .Where(item => comparer.UncheckedIsValueStrictlyBetweenBounds(item, lowerBound, upperBound))
-                    .Select(resultSelector);
-            }
+            return source.Where(item => comparer.IsValueBetweenBounds(keySelector(item), lowerBound, upperBound)).Select(resultSelector);
         }
     }
 }
