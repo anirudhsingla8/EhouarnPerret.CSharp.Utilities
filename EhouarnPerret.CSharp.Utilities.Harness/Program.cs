@@ -55,7 +55,11 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
                 persons.Add(person);
             }
 
-            var gendersAbove = persons.MaxBy(person => person.Age);
+            var maxAge = persons.Select(person => person.Age).Min();
+            var gendersAbove = persons.MinBy(person => person.Age);
+
+            Console.WriteLine(maxAge);
+            Console.WriteLine(gendersAbove.Age);
 
             Console.ReadKey();
         }
