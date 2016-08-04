@@ -37,7 +37,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 
         public static TResult MinBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
-            return source.Aggregate(keySelector, (comparer, candidate, current) => comparer.IsLeftStrictlyLesserThanRight(candidate, current), resultSelector, keyComparer);
+            return source.NoSeedAggregate(keySelector, (comparer, candidate, current) => comparer.IsLeftStrictlyLesserThanRight(candidate, current), resultSelector, keyComparer);
         }
     }
 }

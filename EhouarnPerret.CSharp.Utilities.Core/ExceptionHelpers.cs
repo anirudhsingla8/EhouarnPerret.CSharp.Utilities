@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.CodeDom;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {

@@ -25,9 +25,7 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO
 {

@@ -67,7 +67,10 @@
     <Compile Include="Collections\Generic\IBindableCollection.cs" />
     <Compile Include="Collections\Generic\IGraphEdge.cs" />
     <Compile Include="Collections\Generic\IGraphVertex.cs" />
+    <Compile Include="Collections\Generic\IObservableQueue.cs" />
+    <Compile Include="Collections\Generic\IObservableStack.cs" />
     <Compile Include="Collections\Generic\IRTreeNode.cs" />
+    <Compile Include="Collections\Generic\ObservableDictionary.cs" />
     <Compile Include="ComparerExtensions.cs" />
     <Compile Include="DefaultBoolean.cs" />
     <Compile Include="EnumHelpers.cs" />
@@ -186,7 +189,7 @@
     <Compile Include="Windows\Forms\ControlPropertiesView.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToKeyedCollection.cs" />
     <Compile Include="Linq\EnumerableExtensions.DistinctBy.cs" />
-    <Compile Include="Linq\EnumerableExtensions.Except.cs" />
+    <Compile Include="Linq\EnumerableExtensions.ExceptBy.cs" />
     <Compile Include="Numeric\INumber.cs" />
     <Compile Include="Linq\EnumerableExtensions.MaxBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.MinBy.cs" />
@@ -302,9 +305,6 @@
     <Compile Include="Windows\Forms\Simple\SimpleForm.cs" />
     <Compile Include="Windows\Forms\FormExtensions.cs" />
     <Compile Include="Linq\EnumerableExtensions.WriteLineToConsole.cs" />
-    <Compile Include="Linq\EnumerableExtensions.ConsecutiveSelect.cs" />
-    <Compile Include="Linq\EnumerableExtensions.ConsecutiveMin.cs" />
-    <Compile Include="Linq\EnumerableExtensions.ConsecutiveMax.cs" />
     <Compile Include="GeneralExtensions.cs" />
     <Compile Include="UI\IButton.cs" />
     <Compile Include="UI\ICheckBox.cs" />

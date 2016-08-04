@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Aggregate.cs
+// EnumerableExtensions.NoSeedAggregate.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -31,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
     // ToDO: refactoring...
     public static partial class EnumerableExtensions
     {
-        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<IComparer<TKey>, TKey, TKey, Boolean> comparerCandidateCurrentComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        public static TResult NoSeedAggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<IComparer<TKey>, TKey, TKey, Boolean> comparerCandidateCurrentComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
             keyComparer = keyComparer.DefaultIfNull();
 
@@ -65,7 +65,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
             }
         }
 
-        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        public static TResult NoSeedAggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
             keyComparer = keyComparer.DefaultIfNull();
 
@@ -99,9 +99,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
             }
         }
 
-        public static TSource Aggregate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, IComparer<TKey> keyComparer = null)
+        public static TSource NoSeedAggregate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, IComparer<TKey> keyComparer = null)
         {
-            return source.Aggregate(keySelector, comparerComparison, item => item, keyComparer);
+            return source.NoSeedAggregate(keySelector, comparerComparison, item => item, keyComparer);
         }
     }
 }

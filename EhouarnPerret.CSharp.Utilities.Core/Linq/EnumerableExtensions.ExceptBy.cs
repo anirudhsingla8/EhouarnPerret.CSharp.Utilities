@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.ConsecutiveSelect.cs
+// EnumerableExtensions.ExceptBy.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -22,13 +22,35 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE
+// THE SOFTWARE.
+using System;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
+        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
+        {
+            var keys = second.ToHashSet(keySelector, keyComparer);
 
-	}
+            foreach (var item in first)
+            {
+                var key = keySelector(item);
+
+                if (!keys.Contains(key))
+                {
+                    yield return resultSelector(item);
+
+                    keys.Add(key);
+                }
+            }
+        }
+
+        public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        {
+            return first.ExceptBy(second, keySelector, item => item, keyComparer);
+        }
+    }
 }
 

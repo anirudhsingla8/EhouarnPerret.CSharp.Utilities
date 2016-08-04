@@ -39,7 +39,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 
         public static IEnumerable<TResult> StrictlyNotGreaterThan<TSource, TResult>(this IEnumerable<TSource> source, TSource other, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
         {
-            comparer = comparer ?? Comparer<TSource>.Default;
+            comparer = comparer.DefaultIfNull();
 
             return source
                 .Where(item => comparer.IsLeftStrictlyNotGreaterThanRight(item, other))

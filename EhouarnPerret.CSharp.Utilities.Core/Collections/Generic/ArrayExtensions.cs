@@ -25,16 +25,38 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
+    public enum ArrayNeighboursVisitOrder : byte
+    {
+        Clockwise = 0x00,
+        CounterClockwise = 0x01,
+    }
+
     public static class ArrayExtensions
     {
-        public static IEnumerable<TSource> VisitNeighbours<TSource>(this TSource[][] source, Int32 radius)
-        {
-            throw new NotImplementedException();
-        }
+        //public static IEnumerable<TSource> VisitNeighbours<TSource>(this TSource[,] source, Point center, Int32 radius)
+        //{
+        //    if ((center.Y < 0) || (center.X < 0))
+        //    {
+        //        throw new ArgumentOutOfRangeException(nameof(center));
+        //    }
+        //    else if (radius < 0)
+        //    {
+        //        throw new ArgumentOutOfRangeException(nameof(radius));
+        //    }
+        //    else
+        //    {
+        //        // Going right
+        //        for (var i = 0; i < radius / 2; i++)
+        //        {
+                    
+        //        }
+        //    }
+        //}
 
         public static TSource Random<TSource>(this IList<TSource> source)
         {

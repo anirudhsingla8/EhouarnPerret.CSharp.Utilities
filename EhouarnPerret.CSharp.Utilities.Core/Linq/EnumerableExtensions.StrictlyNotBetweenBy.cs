@@ -32,23 +32,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> StrictlyNotBetweenBy<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound)
-            where TSource : IComparable<TSource>
+        public static IEnumerable<TSource> StrictlyNotBetweenBy<TSource, TKey>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, IComparer<TKey> keyComparer = null)
         {
-            return source.StrictlyNotBetweenBy(lowerBound, upperBound, item => item);
+            return source.StrictlyNotBetweenBy(lowerBound, upperBound, keySelector, item => item, keyComparer);
         }
 
-        public static IEnumerable<TResult> StrictlyNotBetweenBy<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector)
-            where TSource : IComparable<TSource>
+        public static IEnumerable<TResult> StrictlyNotBetweenBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
         {
-            if (lowerBound.IsGreaterThan(upperBound))
+            keyComparer = keyComparer.DefaultIfNull();
+
+            if (keyComparer.IsLeftGreaterThanRight(lowerBound, upperBound))
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
             else
             {
                 return source
-                    .Where(item => item.UncheckedIsStrictlyNotBetween(lowerBound, upperBound))
+                    .Where(item => keyComparer.UncheckedIsValueStrictlyNotBetweenBounds(keySelector(item), lowerBound, upperBound))
                     .Select(resultSelector);
             }
         }

@@ -26,6 +26,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Diagnostics
 {
@@ -35,15 +36,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Diagnostics
         {
             var currentProcess = Process.GetCurrentProcess();
 
-            foreach (var process in Process.GetProcesses())
-            {
-                if ((process.ProcessName == currentProcess.ProcessName) && (process.Id != currentProcess.Id))
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return Process.GetProcesses()
+                .Any(process => (process.ProcessName == currentProcess.ProcessName) && 
+                    (process.Id != currentProcess.Id));
         }
     }
 }

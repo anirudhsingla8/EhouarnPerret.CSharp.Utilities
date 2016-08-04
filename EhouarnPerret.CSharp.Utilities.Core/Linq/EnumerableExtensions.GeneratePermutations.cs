@@ -30,6 +30,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
+    // TODO: implementation
     public static partial class EnumerableExtensions
     {
         public static IEnumerable<IEnumerable<TSource>> GeneratePermutations<TSource>(this IEnumerable<TSource> seed)
