@@ -31,6 +31,95 @@ using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
+    //public interface ICircularList<T> : ICircularCollection<T>, IList<T>
+    //{
+
+    //}
+
+    //public interface ICircularLinkedList<T> : ICircularCollection<T>, ILinkedList<T>
+    //{
+
+    //}
+
+
+    //public class CircularLinkedList<T>
+    //{
+    //}
+
+
+    public abstract class BaseDictionary<TKey, TValue> : IDictionary<TKey, TValue>
+    {
+        protected BaseDictionary()
+        {
+        }
+
+        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Add(KeyValuePair<TKey, TValue> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Boolean Contains(KeyValuePair<TKey, TValue> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CopyTo(KeyValuePair<TKey, TValue>[] array, Int32 arrayIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Boolean Remove(KeyValuePair<TKey, TValue> item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Int32 Count { get; }
+        public Boolean IsReadOnly { get; }
+        public Boolean ContainsKey(TKey key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(TKey key, TValue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Boolean Remove(TKey key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Boolean TryGetValue(TKey key, out TValue value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TValue this[TKey key]
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        public ICollection<TKey> Keys { get; }
+        public ICollection<TValue> Values { get; }
+    }
+
     public class OrderedDictionary<TKey, TValue> : IOrderedDictionary<TKey, TValue>
     {
         protected Dictionary<TKey, TValue> Dictionary { get; }
@@ -55,7 +144,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return this.GetEnumerator();
         }
 
         public void Add(KeyValuePair<TKey, TValue> item)

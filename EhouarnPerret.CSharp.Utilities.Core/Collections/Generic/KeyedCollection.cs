@@ -72,7 +72,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         {
             return this.ItemKeySelector(item);
         }
-
         public Int32 IndexOf(TKey key)
         {
             var index = -1;
@@ -86,7 +85,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
             return index;
         }
-
         public Boolean TryGetItem(TKey key, out TItem item)
         {
             return this.Dictionary.TryGetValue(key, out item);

@@ -30,8 +30,10 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
 using System.Linq;
+using EhouarnPerret.CSharp.Utilities.Core;
 using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
+using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Sandbox
 {
@@ -39,29 +41,24 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var personCount = 42;
+            var bs = new BindingSource();
 
-            var random = new Random();
+            bs.DataSource = new[] {1, 2, 3, 4};
 
-            var persons = new List<Person>();
+            bs.AddNew();
 
-            for (var i = 0; i < 200; i++)
+            var queue = new Queue<Int32>();
+
+            var tests = new[] {1, 2, 3, 4, 5};
+
+            queue.Enqueue(tests);
+
+            foreach (var item in Enumerable.Range(6, 4))
             {
-                var name = "Name " + i;
-                var age = (Byte)random.Next(Byte.MinValue, Byte.MaxValue);
-                var gender = (i % 2) == 0 ? BinaryGender.Female : BinaryGender.Male;
-                var person = new Person(name, age, gender);
+                queue.CircularEnqueue(item, 4, true);
 
-                persons.Add(person);
+                queue.WriteLineToConsole(@" ");
             }
-
-            var maxAge = persons.Select(person => person.Age).Max();
-            var gendersAbove = persons.MaxBy(person => person.Age);
-
-            new[] {1, 3, 4, 5, 6}.StrictlyLesserThan(3).Join(" ").WriteLineToConsole();
-
-            Console.WriteLine(maxAge);
-            Console.WriteLine(gendersAbove.Age);
 
             Console.ReadKey();
         }

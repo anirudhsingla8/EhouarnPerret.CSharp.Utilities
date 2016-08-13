@@ -28,9 +28,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
     public abstract class Command : ICommand
     {
-        #region ICommand Implementation
         public abstract void Execute();
-        #endregion
     }
 }
 

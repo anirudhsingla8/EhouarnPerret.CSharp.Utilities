@@ -65,12 +65,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\Generic\IBindableCollection.cs" />
+    <Compile Include="Collections\Generic\ICircularQueue.cs" />
     <Compile Include="Collections\Generic\IGraphEdge.cs" />
     <Compile Include="Collections\Generic\IGraphVertex.cs" />
+    <Compile Include="Collections\Generic\ILinkedList.cs" />
     <Compile Include="Collections\Generic\IObservableQueue.cs" />
     <Compile Include="Collections\Generic\IObservableStack.cs" />
     <Compile Include="Collections\Generic\IRTreeNode.cs" />
     <Compile Include="Collections\Generic\ObservableDictionary.cs" />
+    <Compile Include="Collections\Generic\QueueExtensions.cs" />
+    <Compile Include="Collections\IBindingList.cs" />
     <Compile Include="ComparerExtensions.cs" />
     <Compile Include="DefaultBoolean.cs" />
     <Compile Include="EnumHelpers.cs" />
@@ -226,6 +230,7 @@
     <Compile Include="Windows\Forms\ExtendedButton.cs" />
     <Compile Include="Windows\Forms\DoubleBufferedForm.cs" />
     <Compile Include="Windows\Forms\Dropdown.cs" />
+    <Compile Include="Windows\Forms\MVVMContext.cs" />
     <Compile Include="Windows\Forms\ToggleButton.cs" />
     <Compile Include="Windows\Forms\ExtendedComboBox.cs" />
     <Compile Include="Windows\Forms\Editor.cs" />
@@ -382,6 +387,7 @@
     <Folder Include="Threading\Tasks\" />
     <Folder Include="Windows\Forms\Animation\" />
     <Folder Include="Windows\Forms\Editors\" />
+    <Folder Include="Windows\Input\" />
     <Folder Include="Windows\Presentation\" />
     <Folder Include="Xml\" />
   </ItemGroup>

@@ -30,5 +30,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
     {
         void Execute();
     }
+
+    public interface ICommand<T>
+    {
+        void Execute(T argument);
+    }
+
+    public abstract class Command<T> : ICommand<T>
+    {
+        public abstract void Execute(T argument);
+    }
 }
 

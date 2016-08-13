@@ -159,6 +159,97 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return (lowerBound.CompareTo(value) > 0) && (upperBound.CompareTo(value) < 0);
         }
+
+        public static T ThrowIfBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsBetween(lowerBound, upperBound))
+            {
+                throw new ArgumentNullException(parameterName);
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfNotBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsNotBetween(lowerBound, upperBound))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfStrictlyBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsStrictlyBetween(lowerBound, upperBound))
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsLesserThan(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfStrictlyLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsStrictlyLesserThan(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsGreaterThan(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
+
+        public static T ThrowIfStrictlyGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+            where T : IComparable<T>
+        {
+            if (parameterValue.IsStrictlyGreaterThan(comparedValue))
+            {
+                throw new ArgumentOutOfRangeException(nameof(parameterName));
+            }
+            else
+            {
+                return parameterValue;
+            }
+        }
     }
 }
 
