@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.Aggregate.cs
+// EnumerableExtensions.NoSeedAggregate.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -28,12 +28,19 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    // ToDO: refactoring...
+    // TODO: refactoring...
     public static partial class EnumerableExtensions
     {
-        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<IComparer<TKey>, TKey, TKey, Boolean> comparerCandidateCurrentComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        public static TResult NoSeedAggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<IComparer<TKey>, TKey, TKey, Boolean> comparerCandidateCurrentComparison, Func<TSource, TResult> resultSelector)
         {
-            keyComparer = keyComparer.DefaultIfNull();
+            var keyComparer = Comparer<TKey>.Default;
+
+            return source.NoSeedAggregate(keySelector, comparerCandidateCurrentComparison, resultSelector, keyComparer);
+        }
+
+        public static TResult NoSeedAggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<IComparer<TKey>, TKey, TKey, Boolean> comparerCandidateCurrentComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer)
+        {
+            keyComparer.ThrowIfNull();
 
             using (var enumerator = source.GetEnumerator())
             {
@@ -65,9 +72,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
             }
         }
 
-        public static TResult Aggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer = null)
+        public static TResult NoSeedAggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, Func<TSource, TResult> resultSelector, IComparer<TKey> keyComparer)
         {
-            keyComparer = keyComparer.DefaultIfNull();
+            keyComparer = keyComparer.ThrowIfNull(nameof(keyComparer));
 
             using (var enumerator = source.GetEnumerator())
             {
@@ -99,9 +106,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
             }
         }
 
-        public static TSource Aggregate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, IComparer<TKey> keyComparer = null)
+        public static TSource NoSeedAggregate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison, IComparer<TKey> keyComparer)
         {
-            return source.Aggregate(keySelector, comparerComparison, item => item, keyComparer);
+            return source.NoSeedAggregate(keySelector, comparerComparison, item => item, keyComparer);
+        }
+
+        public static TSource NoSeedAggregate<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<Int32, Boolean> comparerComparison)
+        {
+            return source.NoSeedAggregate(keySelector, comparerComparison, item => item, Comparer<TKey>.Default);
         }
     }
 }

@@ -33,16 +33,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
     public static partial class EnumerableExtensions
     {
         public static IEnumerable<TSource> StrictlyNotLesserThan<TSource>(this IEnumerable<TSource> source, TSource other)
-                where TSource : IComparable<TSource>
         {
-            return source.StrictlyNotLesserThan(other, item => item);
+            return source.StrictlyLesserThan(other, item => item);
         }
 
-        public static IEnumerable<TResult> StrictlyNotLesserThan<TSource, TResult>(this IEnumerable<TSource> source, TSource other, Func<TSource, TResult> resultSelector)
-            where TSource : IComparable<TSource>
+        public static IEnumerable<TResult> StrictlyNotLesserThan<TSource, TResult>(this IEnumerable<TSource> source, TSource other, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
         {
+            comparer = comparer.DefaultIfNull();
+
             return source
-                .Where(item => item.IsStrictlyNotLesserThan(other))
+                .Where(item => comparer.IsLeftStrictlyLesserThanRight(item, other))
                 .Select(resultSelector);
         }
     }

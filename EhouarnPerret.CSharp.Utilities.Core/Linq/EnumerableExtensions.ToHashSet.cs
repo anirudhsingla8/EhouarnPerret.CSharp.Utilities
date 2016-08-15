@@ -31,12 +31,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-		public static HashSet<TSource> ToHashSet<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer = null)
+        public static HashSet<TSource> ToHashSet<TSource> (this IEnumerable<TSource> source)
+        {
+            var comparer = EqualityComparer<TSource>.Default;
+
+            return source.ToHashSet(comparer);
+        }
+
+		public static HashSet<TSource> ToHashSet<TSource>(this IEnumerable<TSource> source, IEqualityComparer<TSource> comparer)
 		{
             return source.ToHashSet(item => item, comparer);
 		}
 
-        public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, IEqualityComparer<TResult> comparer = null)
+        public static HashSet<TResult> ToHashSet<TSource, TResult> (this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector)
+        {
+            var comparer = EqualityComparer<TResult>.Default;
+
+            return source.ToHashSet (resultSelector, comparer);
+        }
+
+        public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, IEqualityComparer<TResult> comparer)
         {
             var hashSet = new HashSet<TResult> (source.Select(resultSelector), comparer);
 

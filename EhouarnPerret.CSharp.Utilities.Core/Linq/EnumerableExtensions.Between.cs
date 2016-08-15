@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,15 +32,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer = null)
+        public static IEnumerable<TSource> Between<TSource>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound)
         {
-            return source.Between(lowerBound, upperBound, item => item);
+            var comparer = Comparer<TSource>.Default;
+
+            return source.Between (lowerBound, upperBound, comparer);
         }
 
-        public static IEnumerable<TResult> Between<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer = null)
+        public static IEnumerable<TSource> Between<TSource> (this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, IComparer<TSource> comparer)
         {
-            comparer = comparer.DefaultIfNull();
+            return source.Between (lowerBound, upperBound, item => item, comparer);
+        }
 
+        public static IEnumerable<TResult> Between<TSource, TResult> (this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector)
+        {
+            var comparer = Comparer<TSource>.Default;
+
+            return source.Between (lowerBound, upperBound, resultSelector, comparer);
+        }
+
+        public static IEnumerable<TResult> Between<TSource, TResult>(this IEnumerable<TSource> source, TSource lowerBound, TSource upperBound, Func<TSource, TResult> resultSelector, IComparer<TSource> comparer)
+        {
             if (comparer.IsLeftStrictlyGreaterThanRight(lowerBound, upperBound))
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));

@@ -38,6 +38,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 
             return readOnlyDictionary;
         }
+
         public static ReadOnlyDictionary<TKey, TElement> ToReadOnlyDictionary<TSource, TKey, TElement>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TElement> elementSelector)
         {
             var readOnlyDictionary = new ReadOnlyDictionary<TKey, TElement>(source.ToDictionary(keySelector, elementSelector));

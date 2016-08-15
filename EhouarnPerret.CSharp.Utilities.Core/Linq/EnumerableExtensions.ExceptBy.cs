@@ -1,5 +1,5 @@
 ﻿//
-// EnumerableExtensions.DistinctBy.cs
+// EnumerableExtensions.ExceptBy.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,40 +23,47 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector)
+        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult> (this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector)
         {
             var keyComparer = EqualityComparer<TKey>.Default;
 
-            return source.DistinctBy (keySelector, resultSelector);
+            return first.ExceptBy (second, keySelector, resultSelector, keyComparer);
         }
 
-        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer)
+        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer)
         {
-            var keys = new HashSet<TKey>(keyComparer);
+            var keys = second.ToHashSet(keySelector, keyComparer);
 
-            return from item in source where keys.Add(keySelector(item)) select resultSelector(item);
+            foreach (var item in first)
+            {
+                var key = keySelector(item);
+
+                if (!keys.Contains(key))
+                {
+                    yield return resultSelector(item);
+
+                    keys.Add(key);
+                }
+            }
         }
 
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        public static IEnumerable<TSource> ExceptBy<TSource, TKey> (this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector)
         {
             var keyComparer = EqualityComparer<TKey>.Default;
 
-            return source.DistinctBy (keySelector, item => item, keyComparer);
+            return first.ExceptBy (second, keySelector, keyComparer);
         }
 
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
+        public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
         {
-            return source.DistinctBy(keySelector, item => item, keyComparer);
+            return first.ExceptBy(second, keySelector, item => item, keyComparer);
         }
     }
 }
-

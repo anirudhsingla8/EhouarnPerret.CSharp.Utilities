@@ -30,15 +30,7 @@ using System.ComponentModel;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IObservableCollection<TItem> : ICollection<TItem>, INotifyCollectionChanged, INotifyPropertyChanged, IRaiseItemChangedEvents
-    {
-    }
-
-    public interface IObservableQueue<TItem> : IQueue<TItem>, IObservableCollection<TItem>
-    {
-    }
-
-    public interface IObservableStack<TItem> : IStack<TItem>, IObservableCollection<TItem>
+    public interface IObservableCollection<TItem> : ICollection<TItem>, INotifyCollectionChanged, INotifyPropertyChanged
     {
     }
 }

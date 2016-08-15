@@ -28,9 +28,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
     public abstract class ReversibleCommand : Command, IReversibleCommand
     {
-        #region IReversibleCommand Implementation
         public abstract void Unexecute();
-        #endregion
+    }
+
+    public abstract class ReversibleCommand<T> : IReversibleCommand<T>
+    {
+        public abstract void Execute(T argument);
+        public abstract void Unexecute(T argument);
     }
 }
 

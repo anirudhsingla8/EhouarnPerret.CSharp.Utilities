@@ -32,7 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, String separator = @"")
+        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, String separator)
 		{
             source.WriteLineToConsole(item => item.ToString(), separator);
 		}

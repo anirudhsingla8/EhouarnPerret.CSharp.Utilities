@@ -29,10 +29,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ReferenceTypeExtensions
     {
-        public static T ThrowIfNull<T>(this T value, String name)
-            where T : class
+        public static T ThrowIfNull<T>(this T parameterValue, String parameterName = @"")
+          where T : class
         {
-            return ExceptionHelpers.ThrowIfNull(value, name);
+            return ExceptionHelpers.ThrowIfNull(parameterValue, parameterName);
         }
 
         public static Boolean IsNull<T>(this T value)

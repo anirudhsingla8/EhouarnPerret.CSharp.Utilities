@@ -31,6 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
+        // TODO: implementation
         public static IEnumerable<IEnumerable<TSource>> GenerateCombinations<TSource>(this IEnumerable<TSource> seed)
         {
             throw new NotImplementedException();

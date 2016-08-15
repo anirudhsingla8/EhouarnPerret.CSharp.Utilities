@@ -32,15 +32,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TSource> BetweenBy<TSource, TKey>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, IComparer<TKey> comparer = null)
+        public static IEnumerable<TSource> BetweenBy<TSource, TKey> (this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector)
+        {
+            var comparer = Comparer<TKey>.Default;
+
+            return source.BetweenBy (lowerBound, upperBound, keySelector, comparer);
+        }
+
+        public static IEnumerable<TSource> BetweenBy<TSource, TKey>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, IComparer<TKey> comparer)
         {
             return source.BetweenBy(lowerBound, upperBound, keySelector, item => item, comparer);
         }
 
-        public static IEnumerable<TResult> BetweenBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> comparer = null)
+        public static IEnumerable<TResult> BetweenBy<TSource, TKey, TResult> (this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector)
         {
-            comparer = comparer.DefaultIfNull();
+            var comparer = Comparer<TKey>.Default;
 
+            return source.BetweenBy (lowerBound, upperBound, keySelector, resultSelector, comparer);
+        }
+
+        public static IEnumerable<TResult> BetweenBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, TKey lowerBound, TKey upperBound, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IComparer<TKey> comparer)
+        {
             if (comparer.IsLeftStrictlyGreaterThanRight(lowerBound, upperBound))
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));

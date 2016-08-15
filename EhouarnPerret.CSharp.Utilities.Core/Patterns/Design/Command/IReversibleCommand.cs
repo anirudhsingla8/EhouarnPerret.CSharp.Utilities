@@ -30,5 +30,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
     {
         void Unexecute();
     }
+
+    public interface IReversibleCommand<T> : ICommand<T>
+    {
+        void Unexecute(T argument);
+    }
 }
 

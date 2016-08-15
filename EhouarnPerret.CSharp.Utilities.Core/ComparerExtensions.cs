@@ -54,7 +54,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return !comparer.IsLeftLesserThanRight(left, right);
         }
         // TODO: refactoring
-        public static Boolean IsLeftNotStrictlyLesserThanRight<T>(this IComparer<T> comparer, T left, T right)
+        public static Boolean IsLeftStrictlyNotLesserThanRight<T>(this IComparer<T> comparer, T left, T right)
         {
             return !comparer.IsLeftStrictlyLesserThanRight(left, right);
         }

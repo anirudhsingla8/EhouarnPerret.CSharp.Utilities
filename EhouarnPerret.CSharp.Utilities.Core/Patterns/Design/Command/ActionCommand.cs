@@ -31,18 +31,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
     {
         public ActionCommand(Action execute)
         {
-            this._execute = ExceptionHelpers.ThrowIfNull(execute, (nameof(execute)));
+            this._execute = ExceptionHelpers.ThrowIfNull(execute, nameof(execute));
         }
 
-        private Action _execute;
+        private readonly Action _execute;
 
-        #region ICommand Implementation
         public override void Execute()
         {
             this._execute();
         }
-        #endregion
     }
-
 }
 

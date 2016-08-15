@@ -30,7 +30,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IInspectableReadOnlyCollection<T> : ICollection, IEnumerable<T>
+    public interface IInspectableReadOnlyCollection<T> : ICollection, IReadOnlyCollection<T>
     {
         Boolean Contains(T item);
 
