@@ -30,7 +30,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult> (this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector)
+        {
+            var keyComparer = EqualityComparer<TKey>.Default;
+
+            return first.ExceptBy (second, keySelector, resultSelector, keyComparer);
+        }
+
+        public static IEnumerable<TResult> ExceptBy<TSource, TKey, TResult>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer)
         {
             var keys = second.ToHashSet(keySelector, keyComparer);
 
@@ -47,10 +54,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
             }
         }
 
-        public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TSource> ExceptBy<TSource, TKey> (this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector)
+        {
+            var keyComparer = EqualityComparer<TKey>.Default;
+
+            return first.ExceptBy (second, keySelector, keyComparer);
+        }
+
+        public static IEnumerable<TSource> ExceptBy<TSource, TKey>(this IEnumerable<TSource> first, IEnumerable<TSource> second, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
         {
             return first.ExceptBy(second, keySelector, item => item, keyComparer);
         }
     }
 }
-

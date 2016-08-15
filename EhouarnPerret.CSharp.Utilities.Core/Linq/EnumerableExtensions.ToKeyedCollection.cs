@@ -33,7 +33,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-		public static KeyedCollection<TKey, TResult> ToKeyedCollection<TSource, TResult, TKey>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, TKey> resultKeySelector, IEqualityComparer<TKey> comparer = null)
+        public static KeyedCollection<TKey, TResult> ToKeyedCollection<TSource, TResult, TKey> (this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, TKey> resultKeySelector)
+        {
+            var comparer = EqualityComparer<TKey>.Default;
+
+            return source.ToKeyedCollection (resultSelector, resultKeySelector, comparer);
+        }
+
+		public static KeyedCollection<TKey, TResult> ToKeyedCollection<TSource, TResult, TKey>(this IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, TKey> resultKeySelector, IEqualityComparer<TKey> comparer)
 		{
 			var results = source.Select (resultSelector);
 
@@ -42,7 +49,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 			return keyedCollection;
 		}
 
-        public static KeyedCollection<TKey, TSource> ToKeyedCollection<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer = null)
+        public static KeyedCollection<TKey, TSource> ToKeyedCollection<TSource, TKey> (this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            var comparer = EqualityComparer<TKey>.Default;
+
+            return source.ToKeyedCollection (keySelector, comparer);
+        }
+
+        public static KeyedCollection<TKey, TSource> ToKeyedCollection<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer)
 		{
             return source.ToKeyedCollection (item => item, keySelector, comparer);
 		}

@@ -32,16 +32,28 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector)
         {
-            keyComparer = keyComparer.DefaultIfNull();
+            var keyComparer = EqualityComparer<TKey>.Default;
 
+            return source.DistinctBy (keySelector, resultSelector);
+        }
+
+        public static IEnumerable<TResult> DistinctBy<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<TSource, TResult> resultSelector, IEqualityComparer<TKey> keyComparer)
+        {
             var keys = new HashSet<TKey>(keyComparer);
 
             return from item in source where keys.Add(keySelector(item)) select resultSelector(item);
         }
 
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer = null)
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            var keyComparer = EqualityComparer<TKey>.Default;
+
+            return source.DistinctBy (keySelector, item => item, keyComparer);
+        }
+
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> keyComparer)
         {
             return source.DistinctBy(keySelector, item => item, keyComparer);
         }

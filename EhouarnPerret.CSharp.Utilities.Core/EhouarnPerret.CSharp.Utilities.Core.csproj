@@ -197,7 +197,7 @@
     <Compile Include="Numeric\INumber.cs" />
     <Compile Include="Linq\EnumerableExtensions.MaxBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.MinBy.cs" />
-    <Compile Include="Linq\EnumerableExtensions.Aggregate.cs" />
+    <Compile Include="Linq\EnumerableExtensions.NoSeedAggregate.cs" />
     <Compile Include="Patterns\MVPP\IMVPComponent.cs" />
     <Compile Include="Numeric\Algorithms\SortingHelpers.cs" />
     <Compile Include="Numeric\Algorithms\QuickSortPartitionScheme.cs" />
@@ -270,7 +270,6 @@
     <Compile Include="Linq\Expressions\ExpressionHelpers.cs" />
     <Compile Include="Linq\EnumerableExtensions.Concat.cs" />
     <Compile Include="Linq\EnumerableExtensions.ForEach.cs" />
-    <Compile Include="Linq\EnumerableExtensions.Union.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToReadOnlyDictionary.cs" />
     <Compile Include="Linq\EnumerableExtensions.ToReadOnlyCollection.cs" />
     <Compile Include="Linq\EnumerableExtensions.Flatten.cs" />

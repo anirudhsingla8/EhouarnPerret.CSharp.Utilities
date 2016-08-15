@@ -48,12 +48,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The Tnt16 bit count.
         /// </summary>
-        public const Int32 Int16bitCount = 16;
+        public const Int32 Int16BitCount = 16;
 
         /// <summary>
         /// The UInt16 bit count.
         /// </summary>
-        public const Int32 UInt16BitCount = NumberHelpers.Int16bitCount;
+        public const Int32 UInt16BitCount = NumberHelpers.Int16BitCount;
 
         /// <summary>
         /// The Int32 bit count.

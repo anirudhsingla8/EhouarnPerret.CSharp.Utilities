@@ -28,7 +28,7 @@ using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
-    // ToDO: refactoring...
+    // TODO: refactoring...
     public static partial class EnumerableExtensions
     {
         public static TResult NoSeedAggregate<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, Func<IComparer<TKey>, TKey, TKey, Boolean> comparerCandidateCurrentComparison, Func<TSource, TResult> resultSelector)
