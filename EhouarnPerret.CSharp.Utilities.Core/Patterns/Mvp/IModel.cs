@@ -1,5 +1,5 @@
 ﻿//
-// IView.cs
+// IModel.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -26,7 +26,7 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.MVPP
 {
-    public interface IView : IMVPComponent
+    public interface IModel : IMvpComponent
     {
     }
 }

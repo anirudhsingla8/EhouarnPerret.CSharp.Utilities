@@ -23,12 +23,40 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Multiton
 {
+    /// <summary>
+    /// Multiton.
+    /// </summary>
     public class Multiton<TKey, TValue>
+        where TValue : new()
     {
+        static Multiton()
+        {
+            Multiton<TKey, TValue>._instances = new ConcurrentDictionary<TKey, Lazy<TValue>> ();
+        }
 
+        private static Lazy<TValue> LazyValueFactory(TKey key)
+        {
+            return new Lazy<TValue> (() => new TValue());
+        }
+
+        public static TValue GetInstance(TKey key)
+        {
+            var lazyValue = Multiton<TKey, TValue>._instances.GetOrAdd (key, Multiton<TKey, TValue>.LazyValueFactory);
+
+            return lazyValue.Value;
+        }
+
+        private static readonly ConcurrentDictionary<TKey, Lazy<TValue>> _instances;
+
+        private Multiton()
+        {
+        }
     }
 }
 

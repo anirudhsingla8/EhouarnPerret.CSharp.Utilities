@@ -1,5 +1,5 @@
-﻿//
-// IModel.cs
+//
+// IPresenter.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -26,8 +26,7 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.MVPP
 {
-    public interface IModel : IMVPComponent
+    public interface IPresenter : IMvpComponent
     {
     }
 }
-

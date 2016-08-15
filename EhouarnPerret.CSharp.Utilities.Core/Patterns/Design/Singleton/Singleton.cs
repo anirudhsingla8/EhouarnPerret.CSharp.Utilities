@@ -27,6 +27,9 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Singleton
 {
+    /// <summary>
+    /// Singleton.
+    /// </summary>
     public class Singleton<T>
         where T : class, new() 
     {

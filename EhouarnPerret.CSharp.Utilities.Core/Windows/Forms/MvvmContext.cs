@@ -30,7 +30,7 @@ using EhouarnPerret.CSharp.Utilities.Core.Patterns.PropertyChangesNotification;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
-    public class MVVMContext
+    public class MvvmContext
     {
 
         public Type ViewModelType { get; }
