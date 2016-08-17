@@ -145,6 +145,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return RandomHelpers.Random.NextDecimal(minimumValue, maximumValue);
         }
 
+
+        public static DateTime NextDateTime()
+        {
+            return Random.NextDateTime();
+        }
+
+        public static DateTime NextDateTime(DateTime lowerBound, DateTime upperBound)
+        {
+            return Random.NextDateTime(lowerBound, upperBound);
+        }
+
+
         private static Random Random { get; }
     }
 }

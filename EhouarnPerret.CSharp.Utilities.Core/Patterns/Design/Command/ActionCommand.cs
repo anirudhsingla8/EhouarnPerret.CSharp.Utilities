@@ -27,7 +27,7 @@ using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
-    public class ActionCommand : Command, ICommand
+    public class ActionCommand : Command
     {
         public ActionCommand(Action execute)
         {

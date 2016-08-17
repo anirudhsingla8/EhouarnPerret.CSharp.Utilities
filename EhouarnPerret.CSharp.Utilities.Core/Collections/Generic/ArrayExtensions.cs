@@ -24,18 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public enum ArrayNeighboursVisitOrder : byte
-    {
-        Clockwise = 0x00,
-        CounterClockwise = 0x01,
-    }
-
     public static class ArrayExtensions
     {
         //public static IEnumerable<TSource> VisitNeighbours<TSource>(this TSource[,] source, Point center, Int32 radius)

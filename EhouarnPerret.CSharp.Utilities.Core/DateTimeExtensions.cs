@@ -26,6 +26,9 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Collections;
+using System.Runtime.CompilerServices;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
@@ -34,6 +37,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         private const String DateTimeIsoStringFormat = @"yyyy-MM-dd HH:mm:ss.fff";
         private const String DateIsoStringFormat = @"yyyy-MM-dd";
         private const String TimeIsoStringFormat = @"HH:mm:ss.fff";
+
+        public static IEnumerable<DateTime> OnWeekends(this IEnumerable<DateTime> source)
+        {
+            return source.Where (item => item.IsWeekend ());
+        }
+        public static IEnumerable<DateTime> OnNonWeekends (this IEnumerable<DateTime> source)
+        {
+            return source.Where (item => item.IsNotWeekend ());
+        }
 
         public static DateTime NextDay(this DateTime dateTime)
         {

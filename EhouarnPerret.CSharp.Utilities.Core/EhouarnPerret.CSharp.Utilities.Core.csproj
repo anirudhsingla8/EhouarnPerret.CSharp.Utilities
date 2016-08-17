@@ -111,6 +111,8 @@
     <Compile Include="Numeric\Algorithms\InsertionSortScheme.cs" />
     <Compile Include="Numeric\Algorithms\ShellSortScheme.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\SimpleAccessModifiers.cs" />
+    <Compile Include="Reflection\ReflectionExtensions.cs" />
     <Compile Include="Windows\Forms\ControlExtensions.cs" />
     <Compile Include="Drawing\GraphicsExtensions.cs" />
     <Compile Include="Threading\SynchronizeInvokeExtensions.cs" />
@@ -154,7 +156,7 @@
     <Compile Include="Collections\Generic\KeyedCollection.cs" />
     <Compile Include="Collections\Generic\IBinaryTreeNode.cs" />
     <Compile Include="Collections\Generic\DequeArray.cs" />
-    <Compile Include="Reflection\AccessModifiersConverter.cs" />
+    <Compile Include="Reflection\AccessModifiersExtensions.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="Patterns\Design\Singleton\Singleton.cs" />
     <Compile Include="Patterns\Design\Command\ICommand.cs" />
