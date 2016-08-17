@@ -1,5 +1,5 @@
 ﻿//
-// IModel.cs
+// IMVPComponent.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,9 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition;
+
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.MVPP
 {
-    public interface IModel : IMVPComponent
+    public interface IMvpComponent : IDisposable
     {
     }
 }

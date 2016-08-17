@@ -1,5 +1,5 @@
 ﻿//
-// AccessModifiersConverter.cs
+// IModel.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,24 +23,11 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
-using System.Reflection;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.MVPP
 {
-    public static class AccessModifiersConverter
+    public interface IModel : IMvpComponent
     {
-        public static BindingFlags ToBindingFlags(this AccessModifiers accessModifier)
-        {
-            switch (accessModifier)
-            {
-                case AccessModifiers.Both: return BindingFlags.Public | BindingFlags.NonPublic;
-                case AccessModifiers.Public: return BindingFlags.Public;
-                case AccessModifiers.NonPublic: return BindingFlags.NonPublic;
-                    
-                default: throw new ArgumentException(nameof(accessModifier));
-            }
-        }
     }
 }
 

@@ -55,14 +55,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
             TypeExtensions.Numbers = dictionary.AsReadOnly();
         }
 
-        public static FieldInfo[] GetConstantFields(this Type type, AccessModifiers accessModifier = AccessModifiers.Both)
+        public static IReadOnlyCollection<FieldInfo> GetConstantFields(this Type type, SimpleAccessModifiers accessModifier = SimpleAccessModifiers.Both)
         {
             return type.GetFields(BindingFlags.Static | accessModifier.ToBindingFlags())
                 .Where(fieldInfo => fieldInfo.IsLiteral)
                 .ToArray();
         }
 
-        public static FieldInfo GetConstantField(this Type type, String name, AccessModifiers accessModifier = AccessModifiers.Both)
+        public static FieldInfo GetConstantField(this Type type, String name, SimpleAccessModifiers accessModifier = SimpleAccessModifiers.Both)
         {
             var fieldInfo = type.GetField(name, BindingFlags.Static | accessModifier.ToBindingFlags());
 

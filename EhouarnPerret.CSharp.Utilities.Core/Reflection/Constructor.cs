@@ -30,8 +30,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
     public static class Constructor
     {
-        public static T Construct<T>(AccessModifiers accessModifier = AccessModifiers.Both, params Object[] parameters)
+        public static T Construct<T>(SimpleAccessModifiers accessModifier = SimpleAccessModifiers.Both, params Object[] parameters)
         {
+            var type = typeof (T);
+
             var bindingFlags = BindingFlags.CreateInstance | accessModifier.ToBindingFlags();
 
             var instance = (T)Activator.CreateInstance(typeof(T), bindingFlags, null, parameters);

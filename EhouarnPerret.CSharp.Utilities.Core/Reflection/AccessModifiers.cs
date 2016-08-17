@@ -28,8 +28,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
     public enum AccessModifiers : byte
     {
-        Both = 0x00,
+        All = 0x00,
         Public = 0x01,
         NonPublic = 0x02,
+        ProtectedOrInternal = 0x06,
+        Internal = 0x04,
+        Protected = 0x05,
+        Private = 0x07,
     }
 }

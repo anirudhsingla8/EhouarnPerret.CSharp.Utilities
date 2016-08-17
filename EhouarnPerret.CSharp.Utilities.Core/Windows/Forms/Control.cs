@@ -37,7 +37,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         protected Control()
         {
-            this.Properties = Reflection.Constructor.Construct<TProperties>(AccessModifiers.Both, this);
+            this.Properties = Reflection.Constructor.Construct<TProperties>(SimpleAccessModifiers.Both, this);
         }
         protected Control(Func<TProperties> propertiesConstructor)
         {
