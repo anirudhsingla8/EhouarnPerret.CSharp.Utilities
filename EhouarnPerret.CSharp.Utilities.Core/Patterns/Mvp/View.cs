@@ -26,7 +26,7 @@
 
 using EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.MVPP
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Mvp
 {
     public abstract class View : Disposable, IView
     {

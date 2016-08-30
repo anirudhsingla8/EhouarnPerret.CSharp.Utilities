@@ -1,5 +1,5 @@
 ﻿// 
-// IBindingList.cs
+// BinaryTreeExtensions.cs
 // 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -25,15 +25,39 @@
 // THE SOFTWARE.
 
 using System.Collections.Generic;
-using System.ComponentModel;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Collections
+namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IBindingList<T> : IBindingList, IList<T>, IRaiseItemChangedEvents
+    public static class BinaryTreeExtensions
     {
-    }
+        public static IEnumerable<T> RecursivePreOrder<T>(this IBinaryTreeNode<T> root)
+        {
+            if (root != null)
+            {
+                yield return root.Data;
+                RecursivePreOrder<T>(root.Left);
+                RecursivePreOrder<T>(root.Right);
+            }
+        }
 
-    public interface IBindingListView<T> : IBindingList<T>, IBindingListView
-    {
+        public static IEnumerable<T> RecursiveInOrder<T>(this IBinaryTreeNode<T> root)
+        {
+            if (root != null)
+            {
+                RecursiveInOrder<T>(root.Left);
+                yield return root.Data;
+                RecursiveInOrder<T>(root.Right);
+            }
+        }
+
+        public static IEnumerable<T> RecursivePostOrder<T>(this IBinaryTreeNode<T> root)
+        {
+            if (root != null)
+            {
+                RecursivePostOrder<T>(root.Left);
+                RecursivePostOrder<T>(root.Right);
+                yield return root.Data;
+            }
+        }
     }
 }

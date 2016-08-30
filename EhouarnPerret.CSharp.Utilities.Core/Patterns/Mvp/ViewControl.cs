@@ -26,7 +26,7 @@
 
 using System.Windows.Forms;
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.MVPP
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Mvp
 {
 
     public abstract class ViewControl<TControl> : View<TControl>

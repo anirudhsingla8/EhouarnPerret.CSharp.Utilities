@@ -64,7 +64,9 @@
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Generic\BinaryTreeExtensions.cs" />
     <Compile Include="Collections\Generic\IBindableCollection.cs" />
+    <Compile Include="Collections\Generic\IBindingListView.cs" />
     <Compile Include="Collections\Generic\ICircularQueue.cs" />
     <Compile Include="Collections\Generic\IGraphEdge.cs" />
     <Compile Include="Collections\Generic\IGraphVertex.cs" />
@@ -74,7 +76,7 @@
     <Compile Include="Collections\Generic\IRTreeNode.cs" />
     <Compile Include="Collections\Generic\ObservableDictionary.cs" />
     <Compile Include="Collections\Generic\QueueExtensions.cs" />
-    <Compile Include="Collections\IBindingList.cs" />
+    <Compile Include="Collections\Generic\IBindingList.cs" />
     <Compile Include="ComparerExtensions.cs" />
     <Compile Include="DefaultBoolean.cs" />
     <Compile Include="EnumHelpers.cs" />
