@@ -30,32 +30,48 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public static class BinaryTreeExtensions
     {
-        public static IEnumerable<T> RecursivePreOrder<T>(this IBinaryTreeNode<T> root)
+        public static IEnumerable<T> TraverseIterativePreOrder<T>(this IBinaryTreeNode<T> root)
+        {
+            
+        }
+
+        public static IEnumerable<T> TraverseIterativeInOrder<T>(IBinaryTreeNode<T> root)
+        {
+            
+        }
+
+        public static IEnumerable<T> TraverseIterativePostOrder<T>(IBinaryTreeNode<T> root)
+        {
+            
+        } 
+
+
+        public static IEnumerable<T> TraverseRecursivePreOrder<T>(this IBinaryTreeNode<T> root)
         {
             if (root != null)
             {
                 yield return root.Data;
-                RecursivePreOrder<T>(root.Left);
-                RecursivePreOrder<T>(root.Right);
+                TraverseRecursivePreOrder<T>(root.Left);
+                TraverseRecursivePreOrder<T>(root.Right);
             }
         }
 
-        public static IEnumerable<T> RecursiveInOrder<T>(this IBinaryTreeNode<T> root)
+        public static IEnumerable<T> TraverseRecursiveInOrder<T>(this IBinaryTreeNode<T> root)
         {
             if (root != null)
             {
-                RecursiveInOrder<T>(root.Left);
+                TraverseRecursiveInOrder<T>(root.Left);
                 yield return root.Data;
-                RecursiveInOrder<T>(root.Right);
+                TraverseRecursiveInOrder<T>(root.Right);
             }
         }
 
-        public static IEnumerable<T> RecursivePostOrder<T>(this IBinaryTreeNode<T> root)
+        public static IEnumerable<T> TraverseRecursivePostOrder<T>(this IBinaryTreeNode<T> root)
         {
             if (root != null)
             {
-                RecursivePostOrder<T>(root.Left);
-                RecursivePostOrder<T>(root.Right);
+                TraverseRecursivePostOrder<T>(root.Left);
+                TraverseRecursivePostOrder<T>(root.Right);
                 yield return root.Data;
             }
         }

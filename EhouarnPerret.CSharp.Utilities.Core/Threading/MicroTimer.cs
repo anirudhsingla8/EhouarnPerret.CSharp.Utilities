@@ -61,8 +61,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 
                 ThreadStart threadStart = () => this.NotificationTimer (ref this._interval, ref this._ignoreDurationThreshold, ref this._threadCancellationRequested);
 
-                this.Thread = new Thread(threadStart);
-                this.Thread.Priority = ThreadPriority.Lowest;
+                this.Thread = new Thread(threadStart) {Priority = ThreadPriority.Lowest};
                 this.Thread.Start();
             }
         }
@@ -126,13 +125,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
                             delay = 0L;
                         }
 
-                        var timerMicroEventArgs = new MicroTimerElapsedEventArgs(count, elapsedMicroseconds, delay, callbackDuration);
-                        this.Elapsed(this, timerMicroEventArgs);
+                        var e = new MicroTimerElapsedEventArgs(count, elapsedMicroseconds, delay, callbackDuration);
+                        
+                        this.OnElapsed(e);
                     }
                 }
 
                 microStopwatch.Stop();
             }
+        }
+
+        protected virtual void OnElapsed(MicroTimerElapsedEventArgs e)
+        {
+            this.Elapsed?.Invoke(this, e);
         }
 
         private Thread Thread { get; set; }
