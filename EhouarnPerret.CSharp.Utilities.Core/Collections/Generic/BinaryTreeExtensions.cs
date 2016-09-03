@@ -25,34 +25,56 @@
 // THE SOFTWARE.
 
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public static class BinaryTreeExtensions
     {
+
+
+        //public static IEnumerable<T> TraverseIterativePostOrder<T>(IReadOnlyBinaryTreeNode<T> root)
+        //{
+
+        //}
+
         public static IEnumerable<T> TraverseIterativePreOrder<T>(this IBinaryTreeNode<T> root)
         {
-            
+            var stack = new Stack<IBinaryTreeNode<T>>();
+
+            if (root != null)
+            {
+                stack.Push(root);
+
+                while (stack.Count > 0)
+                {
+                    var node = stack.Pop();
+
+                    if (node != null)
+                    {
+                        yield return node.Data;
+                        stack.Push(node.Right);
+                        stack.Push(node.Left);
+                    }
+                }
+            }
         }
-
-        public static IEnumerable<T> TraverseIterativeInOrder<T>(IBinaryTreeNode<T> root)
-        {
-            
-        }
-
-        public static IEnumerable<T> TraverseIterativePostOrder<T>(IBinaryTreeNode<T> root)
-        {
-            
-        } 
-
 
         public static IEnumerable<T> TraverseRecursivePreOrder<T>(this IBinaryTreeNode<T> root)
         {
             if (root != null)
             {
                 yield return root.Data;
-                TraverseRecursivePreOrder<T>(root.Left);
-                TraverseRecursivePreOrder<T>(root.Right);
+
+                foreach (var node in TraverseRecursivePreOrder(root.Left))
+                {
+                    yield return node;
+                }
+
+                foreach (var node in TraverseRecursivePreOrder(root.Right))
+                {
+                    yield return node;
+                }
             }
         }
 
@@ -60,9 +82,40 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         {
             if (root != null)
             {
-                TraverseRecursiveInOrder<T>(root.Left);
+                foreach (var node in TraverseRecursiveInOrder(root.Left))
+                {
+                    yield return node;
+                }
+
                 yield return root.Data;
-                TraverseRecursiveInOrder<T>(root.Right);
+
+                foreach (var node in TraverseRecursiveInOrder(root.Right))
+                {
+                    yield return node;
+                }
+            }
+        }
+
+        public static IEnumerable<T> TraverseIterativeInOrder<T>(this IBinaryTreeNode<T> root)
+        {
+            if (root != null)
+            {
+                var stack = new Stack<IBinaryTreeNode<T>>();
+
+                while ((stack.Count > 0) || (root != null))
+                {
+                    if (root != null)
+                    {
+                        stack.Push(root);
+                        root = root.Left;
+                    }
+                    else
+                    {
+                        root = stack.Pop();
+                        yield return root.Data;
+                        root = root.Right;
+                    }
+                }
             }
         }
 
@@ -70,8 +123,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         {
             if (root != null)
             {
-                TraverseRecursivePostOrder<T>(root.Left);
-                TraverseRecursivePostOrder<T>(root.Right);
+                foreach (var node in TraverseRecursiveInOrder(root.Left))
+                {
+                    yield return node;
+                }
+
+                foreach (var node in TraverseRecursiveInOrder(root.Right))
+                {
+                    yield return node;
+                }
+
                 yield return root.Data;
             }
         }
