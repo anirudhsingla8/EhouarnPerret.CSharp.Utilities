@@ -26,10 +26,6 @@
 
 using System;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition;
-using Timer = System.Threading.Timer;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 {

@@ -24,12 +24,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
-using System.Linq;
 using EhouarnPerret.CSharp.Utilities.Core.Linq;
 using EhouarnPerret.CSharp.Utilities.Core.Windows.Forms;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
@@ -40,28 +38,16 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public static void Main(params String[] arguments)
         {
-            var f = new BinaryTreeNode<char>('F', null, null);
+            var g = new BinaryTreeNode<char>('G', null, null);
+            var f = new BinaryTreeNode<char>('F', null, g);
             var e = new BinaryTreeNode<char>('E', null, null);
             var d = new BinaryTreeNode<char>('D', null, null);
             var c = new BinaryTreeNode<char>('C', null, f);
             var b = new BinaryTreeNode<char>('B', d, e);
             var a = new BinaryTreeNode<char>('A', b, c);
 
-            a.TraverseRecursiveInOrder().WriteLineToConsole(", ");
-
-            a.TraverseIterativeInOrder().WriteLineToConsole(", ");
-
-            //var bs = new BindingSource();
-            //bs.DataSource = new[] {1, 2, 3, 4};
-            //bs.AddNew();
-            //var queue = new Queue<Int32>();
-            //var tests = new[] {1, 2, 3, 4, 5};
-            //queue.Enqueue(tests);
-            //foreach (var item in Enumerable.Range(6, 4))
-            //{
-            //    queue.CircularEnqueue(item, 4, true);
-            //    queue.WriteLineToConsole(@" ");
-            //}
+            a.TraverseRecursivePostOrder().WriteLineToConsole(", ", "Postorder: ");
+            a.TraverseIterativePostOrder().WriteLineToConsole(", ", "Inorder: ");
 
             Console.ReadKey();
         }

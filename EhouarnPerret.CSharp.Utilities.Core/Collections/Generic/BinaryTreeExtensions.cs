@@ -25,19 +25,28 @@
 // THE SOFTWARE.
 
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public static class BinaryTreeExtensions
     {
+        public static IEnumerable<T> TraverseRecursivePreOrder<T>(this IBinaryTreeNode<T> root)
+        {
+            if (root != null)
+            {
+                yield return root.Data;
 
+                foreach (var node in TraverseRecursivePreOrder(root.Left))
+                {
+                    yield return node;
+                }
 
-        //public static IEnumerable<T> TraverseIterativePostOrder<T>(IReadOnlyBinaryTreeNode<T> root)
-        //{
-
-        //}
-
+                foreach (var node in TraverseRecursivePreOrder(root.Right))
+                {
+                    yield return node;
+                }
+            }
+        }
         public static IEnumerable<T> TraverseIterativePreOrder<T>(this IBinaryTreeNode<T> root)
         {
             var stack = new Stack<IBinaryTreeNode<T>>();
@@ -60,24 +69,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             }
         }
 
-        public static IEnumerable<T> TraverseRecursivePreOrder<T>(this IBinaryTreeNode<T> root)
-        {
-            if (root != null)
-            {
-                yield return root.Data;
-
-                foreach (var node in TraverseRecursivePreOrder(root.Left))
-                {
-                    yield return node;
-                }
-
-                foreach (var node in TraverseRecursivePreOrder(root.Right))
-                {
-                    yield return node;
-                }
-            }
-        }
-
         public static IEnumerable<T> TraverseRecursiveInOrder<T>(this IBinaryTreeNode<T> root)
         {
             if (root != null)
@@ -95,25 +86,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
                 }
             }
         }
-
         public static IEnumerable<T> TraverseIterativeInOrder<T>(this IBinaryTreeNode<T> root)
         {
             if (root != null)
             {
                 var stack = new Stack<IBinaryTreeNode<T>>();
 
-                while ((stack.Count > 0) || (root != null))
+                var node = root;
+
+                while ((stack.Count > 0) || (node != null))
                 {
-                    if (root != null)
+                    if (node != null)
                     {
-                        stack.Push(root);
-                        root = root.Left;
+                        stack.Push(node);
+                        node = node.Left;
                     }
                     else
                     {
-                        root = stack.Pop();
-                        yield return root.Data;
-                        root = root.Right;
+                        node = stack.Pop();
+                        yield return node.Data;
+                        node = node.Right;
                     }
                 }
             }
@@ -123,17 +115,52 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         {
             if (root != null)
             {
-                foreach (var node in TraverseRecursiveInOrder(root.Left))
+                foreach (var node in TraverseRecursivePostOrder(root.Left))
                 {
                     yield return node;
                 }
 
-                foreach (var node in TraverseRecursiveInOrder(root.Right))
+                foreach (var node in TraverseRecursivePostOrder(root.Right))
                 {
                     yield return node;
                 }
 
                 yield return root.Data;
+            }
+        }
+        public static IEnumerable<T> TraverseIterativePostOrder<T>(this IBinaryTreeNode<T> root)
+        {
+            if (root != null)
+            {
+                var node = root;
+
+                var lastVisitedNode = (IBinaryTreeNode<T>)null;
+
+                var stack = new Stack<IBinaryTreeNode<T>>();
+
+                while ((stack.Count > 0) || (node != null))
+                {
+                    if (node != null)
+                    {
+                        stack.Push(node);
+                        node = node.Left;
+                    }
+                    else
+                    {
+                        var peekNode = stack.Peek();
+
+                        // If right child exists and traversing node from left child, then move right
+                        if ((peekNode.Right != null) && (lastVisitedNode != peekNode.Right))
+                        {
+                            node = peekNode.Right;
+                        }
+                        else
+                        {
+                            yield return peekNode.Data;
+                            lastVisitedNode = stack.Pop();
+                        }
+                    }
+                }
             }
         }
     }

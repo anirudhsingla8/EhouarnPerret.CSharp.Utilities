@@ -82,6 +82,7 @@
     <Compile Include="DefaultBoolean.cs" />
     <Compile Include="EnumHelpers.cs" />
     <Compile Include="EqualityComparerExtensions.cs" />
+    <Compile Include="IO\Encoding\Lossless\Dictionary\BytePairEncoding\BPEEncoder.cs" />
     <Compile Include="IO\FileSizeUnit.cs" />
     <Compile Include="IO\FileTimeKind.cs" />
     <Compile Include="IO\Ini\IniFileSectionCollection.cs" />
@@ -378,7 +379,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="IO\Encoding\Lossless\Dictionary\BytePairEncoding\" />
     <Folder Include="IO\Encoding\Lossless\Dictionary\Deflate\" />
     <Folder Include="IO\Encoding\Lossless\Dictionary\LempelZiv\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Golomb\" />
