@@ -26,8 +26,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Collections;
-using System.Runtime.CompilerServices;
 using System.Linq;
 
 namespace EhouarnPerret.CSharp.Utilities.Core

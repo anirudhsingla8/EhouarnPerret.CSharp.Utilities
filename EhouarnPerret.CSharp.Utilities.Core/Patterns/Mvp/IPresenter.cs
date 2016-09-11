@@ -24,7 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.MVPP
+namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Mvp
 {
     public interface IPresenter : IMvpComponent
     {

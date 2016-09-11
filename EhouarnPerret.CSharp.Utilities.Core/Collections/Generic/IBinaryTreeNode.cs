@@ -26,8 +26,10 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IBinaryTreeNode<T>
+    public interface IBinaryTreeNode<out T>
     {
+        T Data { get; }
+
         IBinaryTreeNode<T> Left { get; }
         IBinaryTreeNode<T> Right { get; }
     }

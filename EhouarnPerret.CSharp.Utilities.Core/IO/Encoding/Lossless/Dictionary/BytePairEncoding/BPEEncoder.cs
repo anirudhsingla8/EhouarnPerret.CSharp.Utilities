@@ -1,5 +1,5 @@
 ﻿// 
-// IBindingList.cs
+// BPEEncoder.cs
 // 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -24,16 +24,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.Collections.Generic;
-using System.ComponentModel;
-
-namespace EhouarnPerret.CSharp.Utilities.Core.Collections
+namespace EhouarnPerret.CSharp.Utilities.Core.IO.Encoding.Lossless.Dictionary.BytePairEncoding
 {
-    public interface IBindingList<T> : IBindingList, IList<T>, IRaiseItemChangedEvents
+    public static class BPEEncoder
     {
-    }
-
-    public interface IBindingListView<T> : IBindingList<T>, IBindingListView
-    {
+        public static void Do()
+        {
+        }
     }
 }

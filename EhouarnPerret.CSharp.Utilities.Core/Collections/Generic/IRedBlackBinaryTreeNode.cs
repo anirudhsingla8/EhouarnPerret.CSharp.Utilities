@@ -26,7 +26,7 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
-    public interface IRedBlackBinaryTreeNode<TValue> : IBinaryTreeNode<TValue>
+    public interface IRedBlackBinaryTreeNode<out T> : IBinaryTreeNode<T>
     {
         RedBlackBinaryTreeNodeColors Color { get; }
     }

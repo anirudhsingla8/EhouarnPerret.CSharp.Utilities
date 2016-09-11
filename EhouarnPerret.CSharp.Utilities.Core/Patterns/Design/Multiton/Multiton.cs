@@ -25,7 +25,6 @@
 // THE SOFTWARE.
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Multiton
 {

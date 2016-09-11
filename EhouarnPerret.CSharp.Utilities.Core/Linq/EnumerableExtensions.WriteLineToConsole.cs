@@ -32,16 +32,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, String separator)
+        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, String separator, String prefix = @"", String suffix = @"")
 		{
-            source.WriteLineToConsole(item => item.ToString(), separator);
+            source.WriteLineToConsole(item => item.ToString(), separator, prefix, suffix);
 		}
 
-        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, Func<TSource, String> stringConverter, String separator = @"")
+        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, Func<TSource, String> stringConverter, String separator = @"", String prefix = @"", String suffix = @"")
         {
             var stringedSource = source.Select(stringConverter);
 
-            Console.WriteLine(String.Join(separator, stringedSource));
+            Console.WriteLine(prefix + String.Join(separator, stringedSource) + suffix);
         }
 	}
 }

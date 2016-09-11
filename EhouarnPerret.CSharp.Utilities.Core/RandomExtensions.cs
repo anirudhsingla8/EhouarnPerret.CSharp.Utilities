@@ -205,7 +205,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             return random.NextDateTime(DateTime.MinValue, DateTime.MaxValue);
         }
-
         public static DateTime NextDateTime(this Random random, DateTime lowerBound, DateTime upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound);
@@ -217,12 +216,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value;
         }
 
-
         public static TimeSpan NextTimeSpan(this Random random)
         {
             return random.NextTimeSpan(TimeSpan.MinValue, TimeSpan.MaxValue);
         }
-
         public static TimeSpan NextTimeSpan(this Random random, TimeSpan lowerBound, TimeSpan upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound);

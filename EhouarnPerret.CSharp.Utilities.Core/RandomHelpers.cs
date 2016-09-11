@@ -148,12 +148,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static DateTime NextDateTime()
         {
-            return Random.NextDateTime();
+            return RandomHelpers.Random.NextDateTime();
         }
 
         public static DateTime NextDateTime(DateTime lowerBound, DateTime upperBound)
         {
-            return Random.NextDateTime(lowerBound, upperBound);
+            return RandomHelpers.Random.NextDateTime(lowerBound, upperBound);
+        }
+
+
+        public static TimeSpan NextTimeSpan()
+        {
+            return RandomHelpers.Random.NextTimeSpan(TimeSpan.MinValue, TimeSpan.MaxValue);
+        }
+
+        public static TimeSpan NextTimeSpan(TimeSpan lowerBound, TimeSpan upperBound)
+        {
+            return RandomHelpers.Random.NextTimeSpan(lowerBound, upperBound);
         }
 
 

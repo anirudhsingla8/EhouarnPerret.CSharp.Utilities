@@ -64,7 +64,10 @@
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Generic\BinaryTreeExtensions.cs" />
+    <Compile Include="Collections\Generic\BinaryTreeNode.cs" />
     <Compile Include="Collections\Generic\IBindableCollection.cs" />
+    <Compile Include="Collections\Generic\IBindingListView.cs" />
     <Compile Include="Collections\Generic\ICircularQueue.cs" />
     <Compile Include="Collections\Generic\IGraphEdge.cs" />
     <Compile Include="Collections\Generic\IGraphVertex.cs" />
@@ -74,11 +77,12 @@
     <Compile Include="Collections\Generic\IRTreeNode.cs" />
     <Compile Include="Collections\Generic\ObservableDictionary.cs" />
     <Compile Include="Collections\Generic\QueueExtensions.cs" />
-    <Compile Include="Collections\IBindingList.cs" />
+    <Compile Include="Collections\Generic\IBindingList.cs" />
     <Compile Include="ComparerExtensions.cs" />
     <Compile Include="DefaultBoolean.cs" />
     <Compile Include="EnumHelpers.cs" />
     <Compile Include="EqualityComparerExtensions.cs" />
+    <Compile Include="IO\Encoding\Lossless\Dictionary\BytePairEncoding\BPEEncoder.cs" />
     <Compile Include="IO\FileSizeUnit.cs" />
     <Compile Include="IO\FileTimeKind.cs" />
     <Compile Include="IO\Ini\IniFileSectionCollection.cs" />
@@ -113,6 +117,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reflection\SimpleAccessModifiers.cs" />
     <Compile Include="Reflection\ReflectionExtensions.cs" />
+    <Compile Include="Threading\SynchronizedTimer.cs" />
     <Compile Include="Windows\Forms\ControlExtensions.cs" />
     <Compile Include="Drawing\GraphicsExtensions.cs" />
     <Compile Include="Threading\SynchronizeInvokeExtensions.cs" />
@@ -374,7 +379,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="IO\Encoding\Lossless\Dictionary\BytePairEncoding\" />
     <Folder Include="IO\Encoding\Lossless\Dictionary\Deflate\" />
     <Folder Include="IO\Encoding\Lossless\Dictionary\LempelZiv\" />
     <Folder Include="IO\Encoding\Lossless\Entropy\Golomb\" />
