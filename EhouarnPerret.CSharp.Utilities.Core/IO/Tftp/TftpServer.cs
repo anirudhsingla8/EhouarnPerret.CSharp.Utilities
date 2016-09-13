@@ -1,5 +1,5 @@
 ﻿// 
-// BPEEncoder.cs
+// TftpServer.cs
 // 
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
@@ -23,16 +23,10 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
-using System.IO;
-using System.IO.Compression;
-
-namespace EhouarnPerret.CSharp.Utilities.Core.IO.Encoding.Lossless.Dictionary.BytePairEncoding
+namespace EhouarnPerret.CSharp.Utilities.Core.IO.Tftp
 {
-    public static class BPEEncoder
+    public class TftpServer
     {
-        public static void Do()
-        {
-        }
+         
     }
 }

@@ -87,6 +87,8 @@
     <Compile Include="IO\FileTimeKind.cs" />
     <Compile Include="IO\Ini\IniFileSectionCollection.cs" />
     <Compile Include="IO\Midi\MidiFile.cs" />
+    <Compile Include="IO\Tftp\TftpClient.cs" />
+    <Compile Include="IO\Tftp\TftpServer.cs" />
     <Compile Include="IValuable.cs" />
     <Compile Include="Linq\EnumerableExtensions.LesserThanBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.GreaterThanBy.cs" />
