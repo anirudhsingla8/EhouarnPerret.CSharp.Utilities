@@ -33,7 +33,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         public DoubleBufferedForm()
         {
-            this.SetStyle(
+            SetStyle(
                 ControlStyles.UserPaint |
                 ControlStyles.AllPaintingInWmPaint |
                 ControlStyles.OptimizedDoubleBuffer, true);
@@ -43,11 +43,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this.DoubleBuffered;
+                return DoubleBuffered;
             }
             set
             {
-                this.DoubleBuffered = value;
+                DoubleBuffered = value;
             }
         }
 
@@ -55,20 +55,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             base.OnResizeBegin(e);
 
-            this.IsResizing = true;
+            IsResizing = true;
         }
 
         protected Boolean IsResizing { get; private set; }
 
         protected override void OnResizeEnd(EventArgs e)
         {
-            this.IsResizing = false;
+            IsResizing = false;
 
             base.OnResizeEnd(e);
 
-            if (this.ResizeRepaintStrategy == FormResizeRepaintStrategy.OnResizeEnd)
+            if (ResizeRepaintStrategy == FormResizeRepaintStrategy.OnResizeEnd)
             {
-                this.Invalidate();
+                Invalidate();
             }
         }
 
@@ -82,13 +82,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this._resizeRepaintStrategy;
+                return _resizeRepaintStrategy;
             }
             set
             {
-                this.ResizeRedraw = value == FormResizeRepaintStrategy.OnResize;
+                ResizeRedraw = value == FormResizeRepaintStrategy.OnResize;
 
-                this._resizeRepaintStrategy = value;
+                _resizeRepaintStrategy = value;
             }
         }
     }

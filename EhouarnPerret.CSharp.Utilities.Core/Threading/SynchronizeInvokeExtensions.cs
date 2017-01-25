@@ -50,10 +50,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             {
                 return (TResult)synchronizedInvoker.Invoke(func, null);
             }
-            else
-            {
-                return func();
-            }
+            return func();
         }
 
         public static void Invoke<TSynchronizeInvoke>(this TSynchronizeInvoke synchronizedInvoker, Action<TSynchronizeInvoke> action)
@@ -76,10 +73,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             {
                 return (TResult)synchronizedInvoker.Invoke(func, new Object[] { synchronizedInvoker });
             }
-            else
-            {
-                return func(synchronizedInvoker);
-            }
+            return func(synchronizedInvoker);
         }
     }
 }

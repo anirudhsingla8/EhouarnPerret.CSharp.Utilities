@@ -33,111 +33,98 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
     {
         public MicroTimer()
         {
-            this.Interval = MicroTimer.DefaultInterval;
+            Interval = DefaultInterval;
         }
 
-        public MicroTimer(Int64 interval) 
+        public MicroTimer(Int64 interval)
         {
             if (interval < 0L)
             {
-                throw new ArgumentException (@"The ""interval"" cannot be negative.", nameof(interval));
+                throw new ArgumentException (@"The ""{nameof(interval)}"" cannot be negative.", nameof(interval));
             }
-            else
-            {
-                this.Interval = interval;
-            }
-        }
 
-        public MicroTimer(TimeSpan interval) 
-            : this()
-        {
+            Interval = interval;
         }
 
         public void Start(ThreadPriority threadPriority = ThreadPriority.Lowest)
         {
-            if (!this.Enabled)
+            if (!Enabled)
             {
-                this._threadCancellationRequested = false;
+                _threadCancellationRequested = false;
 
-                ThreadStart threadStart = () => this.NotificationTimer (ref this._interval, ref this._ignoreDurationThreshold, ref this._threadCancellationRequested);
+                ThreadStart threadStart = () => NotificationTimer (ref _interval, ref _ignoreDurationThreshold, ref _threadCancellationRequested);
 
-                this.Thread = new Thread(threadStart) {Priority = ThreadPriority.Lowest};
-                this.Thread.Start();
+                Thread = new Thread(threadStart) {Priority = ThreadPriority.Lowest};
+                Thread.Start();
             }
         }
 
         public void Stop()
         {
-            this._threadCancellationRequested = true;
+            _threadCancellationRequested = true;
         }
 
         private void NotificationTimer(ref Int64 interval, ref Int64 ignoreDurationThreshold, ref Boolean hasToStopTimer)
         {
             if (interval < 0L)
             {
-                throw new ArgumentException(@"The ""interval"" cannot be negative.", nameof(interval));
+                throw new ArgumentException($@"The ""{nameof(interval)}"" cannot be negative.", nameof(interval));
             }
-            else if (ignoreDurationThreshold < 0L)
+            if (ignoreDurationThreshold < 0L)
             {
-                throw new ArgumentException(@"The ""ignoreDurationThreshold"" cannot be negative.", nameof(ignoreDurationThreshold));
+                throw new ArgumentException($@"The ""{nameof(ignoreDurationThreshold)}"" cannot be negative.", nameof(ignoreDurationThreshold));
             }
-            else
+            var count = 0L;
+            var nextNotification = 0L;
+
+            var microStopwatch = MicroStopwatch.StartNewMicro();
+
+            while (!hasToStopTimer)
             {
-                var count = 0L;
-                var nextNotification = 0L;
+                var callbackDuration = microStopwatch.ElapsedMicroseconds - nextNotification;
+                var intervalCurrent = Interlocked.Read(ref interval);
+                var ignoreDurationThresholdCurrent = Interlocked.Read(ref ignoreDurationThreshold);
 
-                var microStopwatch = MicroStopwatch.StartNewMicro();
+                nextNotification += intervalCurrent;
 
-                while (!hasToStopTimer)
+                if (count != Int64.MaxValue)
                 {
-                    var callbackDuration = microStopwatch.ElapsedMicroseconds - nextNotification;
-                    var intervalCurrent = Interlocked.Read(ref interval);
-                    var ignoreDurationThresholdCurrent = Interlocked.Read(ref ignoreDurationThreshold);
-
-                    nextNotification += intervalCurrent;
-
-                    if (count != Int64.MaxValue)
-                    {
-                        count++;
-                    }
-                    else
-                    {
-                        count = 0L;
-                    }
-
-                    var elapsedMicroseconds = 0L;
-
-                    while (((elapsedMicroseconds = microStopwatch.ElapsedMicroseconds) < nextNotification) && !hasToStopTimer)
-                    {
-                        Thread.SpinWait(10);
-                    }
-
-                    var delay = elapsedMicroseconds - nextNotification;
-
-                    if (delay >= ignoreDurationThresholdCurrent)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        if (delay < 0L)
-                        {
-                            delay = 0L;
-                        }
-
-                        var e = new MicroTimerElapsedEventArgs(count, elapsedMicroseconds, delay, callbackDuration);
-                        
-                        this.OnElapsed(e);
-                    }
+                    count++;
+                }
+                else
+                {
+                    count = 0L;
                 }
 
-                microStopwatch.Stop();
+                Int64 elapsedMicroseconds;
+
+                while ((elapsedMicroseconds = microStopwatch.ElapsedMicroseconds) < nextNotification && !hasToStopTimer)
+                {
+                    Thread.SpinWait(10);
+                }
+
+                var delay = elapsedMicroseconds - nextNotification;
+
+                if (delay >= ignoreDurationThresholdCurrent)
+                {
+                    continue;
+                }
+                if (delay < 0L)
+                {
+                    delay = 0L;
+                }
+
+                var e = new MicroTimerElapsedEventArgs(count, elapsedMicroseconds, delay, callbackDuration);
+                        
+                OnElapsed(e);
             }
+
+            microStopwatch.Stop();
         }
 
         protected virtual void OnElapsed(MicroTimerElapsedEventArgs e)
         {
-            this.Elapsed?.Invoke(this, e);
+            Elapsed?.Invoke(this, e);
         }
 
         private Thread Thread { get; set; }
@@ -150,11 +137,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         {
             get
             {
-                return this._interval;
+                return _interval;
             }
             protected set
             {
-                this._interval = value;
+                _interval = value;
             }
         }
         private Int64 _interval;
@@ -163,17 +150,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         {
             get
             {
-                return (this.Thread != null) && (this.Thread.IsAlive);
+                return Thread != null && Thread.IsAlive;
             }
             set
             {
                 if (value)
                 {
-                    this.Start();
+                    Start();
                 }
                 else
                 {
-                    this.Stop();
+                    Stop();
                 }
             }
         }
@@ -195,7 +182,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 
         protected override void FreeManagedResources()
         {
-            this.Stop();
+            Stop();
         }
     }
 }

@@ -32,7 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         static NumberHelpers()
         {
-            NumberHelpers.Endianess = BitConverter.IsLittleEndian ? Endianess.LittleEndian : Endianess.BigEndian;
+            Endianess = BitConverter.IsLittleEndian ? Endianess.LittleEndian : Endianess.BigEndian;
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The SByte bit count.
         /// </summary>
-        public const Int32 SByteBitCount = NumberHelpers.ByteBitCount;
+        public const Int32 SByteBitCount = ByteBitCount;
 
         /// <summary>
         /// The Tnt16 bit count.
@@ -53,7 +53,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The UInt16 bit count.
         /// </summary>
-        public const Int32 UInt16BitCount = NumberHelpers.Int16BitCount;
+        public const Int32 UInt16BitCount = Int16BitCount;
 
         /// <summary>
         /// The Int32 bit count.
@@ -63,7 +63,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The UInt32 bit count.
         /// </summary>
-        public const Int32 UInt32BitCount = NumberHelpers.Int32BitCount;
+        public const Int32 UInt32BitCount = Int32BitCount;
 
         /// <summary>
         /// The Int64 bit count.
@@ -73,7 +73,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The UInt64 bit count.
         /// </summary>
-        public const Int32 UInt64BitCount = NumberHelpers.Int64BitCount;
+        public const Int32 UInt64BitCount = Int64BitCount;
 
         /// <summary>
         /// The Aggregate bit count.
@@ -83,7 +83,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// Makes sense double is double single... eh!?
         /// </summary>
-        public const Int32 DoubleBitCount = NumberHelpers.SingleBitCount * 2;
+        public const Int32 DoubleBitCount = SingleBitCount * 2;
 
         /// <summary>
         /// The Decimal bit count.
@@ -115,22 +115,22 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The SByte byte count.
         /// </summary>
-        public const Int32 SByteByteCount = NumberHelpers.ByteByteCount;
+        public const Int32 SByteByteCount = ByteByteCount;
 
         /// <summary>
         /// The Int16 byte count.
         /// </summary>
-        public const Int32 Int16ByteCount = NumberHelpers.UInt16ByteCount;
+        public const Int32 Int16ByteCount = UInt16ByteCount;
 
         /// <summary>
         /// The Int32 byte count.
         /// </summary>
-        public const Int32 Int32ByteCount = NumberHelpers.UInt32ByteCount;
+        public const Int32 Int32ByteCount = UInt32ByteCount;
 
         /// <summary>
         /// The Int64 byte count.
         /// </summary>
-        public const Int32 Int64ByteCount = NumberHelpers.UInt64ByteCount;
+        public const Int32 Int64ByteCount = UInt64ByteCount;
 
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The decimal int32 count.
         /// </summary>
-        public const Int32 DecimalInt32Count = NumberHelpers.DecimalByteCount / NumberHelpers.Int32ByteCount;
+        public const Int32 DecimalInt32Count = DecimalByteCount / Int32ByteCount;
     
         public static Endianess Endianess { get; }
     }

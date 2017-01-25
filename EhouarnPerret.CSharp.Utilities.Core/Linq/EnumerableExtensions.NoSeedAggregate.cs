@@ -48,27 +48,24 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
                 {
                     throw new ArgumentException(nameof(source));
                 }
-                else
+                var selectedItem = enumerator.Current;
+                var selectedKey = keySelector(selectedItem);
+
+                while (enumerator.MoveNext())
                 {
-                    var selectedItem = enumerator.Current;
-                    var selectedKey = keySelector(selectedItem);
+                    var item = enumerator.Current;
 
-                    while (enumerator.MoveNext())
+                    // Also called a projection...
+                    var key = keySelector(item);
+
+                    if (comparerCandidateCurrentComparison(keyComparer, key, selectedKey))
                     {
-                        var item = enumerator.Current;
-
-                        // Also called a projection...
-                        var key = keySelector(item);
-
-                        if (comparerCandidateCurrentComparison(keyComparer, key, selectedKey))
-                        {
-                            selectedItem = item;
-                            selectedKey = key;
-                        }
+                        selectedItem = item;
+                        selectedKey = key;
                     }
-
-                    return resultSelector(selectedItem);
                 }
+
+                return resultSelector(selectedItem);
             }
         }
 
@@ -82,27 +79,24 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
                 {
                     throw new ArgumentException(nameof(source));
                 }
-                else
+                var selectedItem = enumerator.Current;
+                var selectedKey = keySelector(selectedItem);
+
+                while (enumerator.MoveNext())
                 {
-                    var selectedItem = enumerator.Current;
-                    var selectedKey = keySelector(selectedItem);
+                    var item = enumerator.Current;
 
-                    while (enumerator.MoveNext())
+                    // Also called a projection...
+                    var key = keySelector(item);
+
+                    if (comparerComparison(keyComparer.Compare(key, selectedKey)))
                     {
-                        var item = enumerator.Current;
-
-                        // Also called a projection...
-                        var key = keySelector(item);
-
-                        if (comparerComparison(keyComparer.Compare(key, selectedKey)))
-                        {
-                            selectedItem = item;
-                            selectedKey = key;
-                        }
+                        selectedItem = item;
+                        selectedKey = key;
                     }
-
-                    return resultSelector(selectedItem);
                 }
+
+                return resultSelector(selectedItem);
             }
         }
 

@@ -35,8 +35,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
     {
         public FluentRegex()
         {
-            this.StringBuilder = new StringBuilder();
-            this.UnstoppedStartedgroupNames = new Stack<String> ();
+            StringBuilder = new StringBuilder();
+            UnstoppedStartedgroupNames = new Stack<String> ();
         }
 
         private StringBuilder StringBuilder { get; }
@@ -45,18 +45,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
         public FluentRegex StartCapture(String groupName)
         {
-            this.StringBuilder.Append($"(?<{groupName}>");
+            StringBuilder.Append($"(?<{groupName}>");
 
-			this.UnstoppedStartedgroupNames.Push(groupName);
+			UnstoppedStartedgroupNames.Push(groupName);
 
             return this;
         }
 
         public FluentRegex StopCapture()
         {
-            this.StringBuilder.Append(@")");
+            StringBuilder.Append(@")");
 
-			this.UnstoppedStartedgroupNames.Pop();
+			UnstoppedStartedgroupNames.Pop();
 
             return this;
         }
@@ -202,14 +202,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 //
         public FluentRegex StartLine()
         {
-            this.StringBuilder.Append(@"^");      
+            StringBuilder.Append(@"^");      
 
             return this;
         }
 
         public FluentRegex StopLine()
         {
-            this.StringBuilder.Append(@"$");      
+            StringBuilder.Append(@"$");      
 
             return this;
         }
@@ -236,24 +236,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
 
         private void CheckUnclosedGroupNames()
         {
-            if (this.UnstoppedStartedgroupNames.Any())
+            if (UnstoppedStartedgroupNames.Any())
             {
-                var groupName = this.UnstoppedStartedgroupNames;
+                var groupName = UnstoppedStartedgroupNames;
                 // var message = $"The groups {groupName} are not closed.", this.UnstoppedStartedgroupNames;
 
                 throw new InvalidOperationException();
             }
-            else
-            {
-                return;
-            }
+            return;
         }
 
         public Regex ToRegex(Boolean isCompiled = true)
         {
-            this.CheckUnclosedGroupNames();
+            CheckUnclosedGroupNames();
 
-            var regex = new Regex(this.StringBuilder.ToString());
+            var regex = new Regex(StringBuilder.ToString());
             return regex;
         }
     }

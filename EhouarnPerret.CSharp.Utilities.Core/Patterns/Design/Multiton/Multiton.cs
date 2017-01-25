@@ -36,7 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Multiton
     {
         static Multiton()
         {
-            Multiton<TKey, TValue>._instances = new ConcurrentDictionary<TKey, Lazy<TValue>> ();
+            _instances = new ConcurrentDictionary<TKey, Lazy<TValue>> ();
         }
 
         private static Lazy<TValue> LazyValueFactory(TKey key)
@@ -46,7 +46,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Multiton
 
         public static TValue GetInstance(TKey key)
         {
-            var lazyValue = Multiton<TKey, TValue>._instances.GetOrAdd (key, Multiton<TKey, TValue>.LazyValueFactory);
+            var lazyValue = _instances.GetOrAdd (key, LazyValueFactory);
 
             return lazyValue.Value;
         }

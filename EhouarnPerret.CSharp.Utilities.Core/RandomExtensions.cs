@@ -172,7 +172,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
             // Analysis disable once InvokeAsExtensionMethod
-            var value = RandomExtensions.NextDouble(random) * (upperBound - lowerBound) + lowerBound;
+            var value = NextDouble(random) * (upperBound - lowerBound) + lowerBound;
 
             return value;
         }

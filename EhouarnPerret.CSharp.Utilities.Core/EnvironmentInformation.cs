@@ -32,11 +32,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         static EnvironmentInformation()
         {
-            EnvironmentInformation.IsRunningMono = Type.GetType(EnvironmentInformation.MonoRuntimeTypeName) != null;
+            IsRunningMono = Type.GetType(MonoRuntimeTypeName) != null;
 
             // Cheap Trick
             var platformId = (Int32)Environment.OSVersion.Platform;
-            EnvironmentInformation.IsUnix = (platformId == 4) || (platformId == 6) || (platformId == 128);
+            IsUnix = platformId == 4 || platformId == 6 || platformId == 128;
         }
 
         private const String MonoRuntimeTypeName = @"Mono.Runtime";

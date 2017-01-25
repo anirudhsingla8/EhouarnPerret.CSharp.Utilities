@@ -34,12 +34,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     public abstract class GraphicsPathControl : DoubleBufferedControl // <GraphicsPathControlProperties>;
     {
         protected GraphicsPathControl()
-            : base()
         {
-            this.GraphicsPath = this.CreateGraphicsPath();
-            this.Brush = new SolidBrush(Color.Transparent);
-            this._previousSize = new SizeF(1, 1);
-            this.RepaintOnResize = true;
+            GraphicsPath = CreateGraphicsPath();
+            Brush = new SolidBrush(Color.Transparent);
+            _previousSize = new SizeF(1, 1);
+            RepaintOnResize = true;
         }
 
         private UInt16 _borderWidth;
@@ -47,12 +46,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this._borderWidth;
+                return _borderWidth;
             }
             set
             {
-                this._borderWidth = value;
-                this.Invalidate();
+                _borderWidth = value;
+                Invalidate();
             }
         }
 
@@ -61,12 +60,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this._borderColor;
+                return _borderColor;
             }
             set
             {
-                this._borderColor = value;
-                this.Invalidate();
+                _borderColor = value;
+                Invalidate();
             }
         }
 
@@ -75,11 +74,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this._useGraphicsPathAsRegion;
+                return _useGraphicsPathAsRegion;
             }
             set
             {
-                this.Region = value ? new Region(this.GraphicsPath) : new Region(this.ClientRectangle);
+                Region = value ? new Region(GraphicsPath) : new Region(ClientRectangle);
             }
         }
 
@@ -88,12 +87,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             { 
-                return this._brush;
+                return _brush;
             }
             set
             {
-                this._brush = value;
-                this.Invalidate();
+                _brush = value;
+                Invalidate();
             }
         }
 
@@ -106,26 +105,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             base.OnPaint(e);
 
-            e.Graphics.FillPath(this.Brush, this.GraphicsPath);
+            e.Graphics.FillPath(Brush, GraphicsPath);
         }
 
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
 
-            var width = this.Width < 1 ? 1f : this.Width;
-            var height = this.Height < 1 ? 1f : this.Height;
+            var width = Width < 1 ? 1f : Width;
+            var height = Height < 1 ? 1f : Height;
 
-            var scaleX = width / this._previousSize.Width;
-            var scaleY = height / this._previousSize.Height;
+            var scaleX = width / _previousSize.Width;
+            var scaleY = height / _previousSize.Height;
 
             var matrix = new Matrix();
 
             matrix.Scale(scaleX, scaleY, MatrixOrder.Append);
 
-            this.GraphicsPath.Transform(matrix);
+            GraphicsPath.Transform(matrix);
 
-            this._previousSize = new SizeF(width, height);
+            _previousSize = new SizeF(width, height);
         }
     }
 }

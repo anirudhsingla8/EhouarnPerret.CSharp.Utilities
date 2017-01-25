@@ -32,7 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
     {
         protected DbMappingNameAttribute(String name)
         {
-            this.Name = name;
+            Name = name;
         }
 
         public String Name { get; }

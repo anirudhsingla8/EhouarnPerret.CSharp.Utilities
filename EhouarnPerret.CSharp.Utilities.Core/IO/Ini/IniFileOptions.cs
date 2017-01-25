@@ -35,22 +35,22 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
     {
         public IniFileOptions
         (
-            String fileExtension = IniFileOptions.DefaultFileExtension, 
-            String commentTag = IniFileOptions.DefaultCommentTag,
-            String sectionKeyValueSeparator = IniFileOptions.DefaultSectionKeyValueSeparator,
-            String sectionLeftDelimiter = IniFileOptions.DefaultSectionLeftDelimiter,
-            String sectionRightDelimiter = IniFileOptions.DefaultSectionRightDelimiter,
+            String fileExtension = DefaultFileExtension, 
+            String commentTag = DefaultCommentTag,
+            String sectionKeyValueSeparator = DefaultSectionKeyValueSeparator,
+            String sectionLeftDelimiter = DefaultSectionLeftDelimiter,
+            String sectionRightDelimiter = DefaultSectionRightDelimiter,
             Boolean allowEmptyLines = true,
             IniFileAutoSaveMode autoSaveMode = IniFileAutoSaveMode.None
         )
         {
-            this.FileExtension = fileExtension;
-            this.CommentTag = commentTag;
-            this.SectionKeyValueSeparator = sectionKeyValueSeparator;
-            this.SectionLeftDelimiter = sectionLeftDelimiter;
-            this.SectionRightDelimiter = sectionRightDelimiter;
-            this.AllowEmptyLines = allowEmptyLines;
-            this.AutoSaveMode = autoSaveMode;
+            FileExtension = fileExtension;
+            CommentTag = commentTag;
+            SectionKeyValueSeparator = sectionKeyValueSeparator;
+            SectionLeftDelimiter = sectionLeftDelimiter;
+            SectionRightDelimiter = sectionRightDelimiter;
+            AllowEmptyLines = allowEmptyLines;
+            AutoSaveMode = autoSaveMode;
         }
 
         public String FileExtension { get; }

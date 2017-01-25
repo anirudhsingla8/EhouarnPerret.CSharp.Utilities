@@ -35,16 +35,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
     {
         public CanvasItemMouseEventArgs(MouseButtons button, PointF location, Byte clicks, Byte delta)
         {
-            this.Button = button;
-            this.Location = location;
-            this.Clicks = clicks;
-            this.Delta = delta;
+            Button = button;
+            Location = location;
+            Clicks = clicks;
+            Delta = delta;
         }
 
         public MouseButtons Button { get; }
         public PointF Location { get; }
-        public Single X => this.Location.X;
-        public Single Y => this.Location.Y;
+        public Single X => Location.X;
+        public Single Y => Location.Y;
         public Byte Clicks { get; }
         public Byte Delta { get; }
     }

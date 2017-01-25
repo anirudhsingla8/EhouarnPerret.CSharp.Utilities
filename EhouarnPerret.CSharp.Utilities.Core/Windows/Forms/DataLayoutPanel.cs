@@ -33,8 +33,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         public DataLayoutControl()
         {
-            this.TableLayoutPanel = new TableLayoutPanel();
-            this._selectedObject = null;
+            TableLayoutPanel = new TableLayoutPanel();
+            _selectedObject = null;
         }
 
         private TableLayoutPanel TableLayoutPanel { get; }
@@ -44,11 +44,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this._selectedObject;
+                return _selectedObject;
             }
             set
             {
-                this._selectedObject = value;
+                _selectedObject = value;
             }
         }
     }

@@ -29,10 +29,6 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
     public class JsonSerializer : Serializer
     {
-        public JsonSerializer()
-        {
-        }
-
         #region Serializer Implementation
         public override Byte[] Serialize<T>(T value)
         {

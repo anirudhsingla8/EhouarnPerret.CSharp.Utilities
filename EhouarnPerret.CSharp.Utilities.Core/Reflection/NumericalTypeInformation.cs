@@ -36,17 +36,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 
         internal NumericalTypeInformation(Type type)
         {
-            if (type.IsPrimitive || (type.IsValueType && (type.FullName == DecimalTypeFullName)))
+            if (type.IsPrimitive || type.IsValueType && type.FullName == DecimalTypeFullName)
             {
-                var minValueConstantFieldInfo = type.GetConstantField(NumericalTypeInformation.MinValueConstantFieldName);
-                var maxValueConstantFieldInfo = type.GetConstantField(NumericalTypeInformation.MaxValueConstantFieldName);
+                var minValueConstantFieldInfo = type.GetConstantField(MinValueConstantFieldName);
+                var maxValueConstantFieldInfo = type.GetConstantField(MaxValueConstantFieldName);
 
-                this.Type = this.Type;
+                Type = Type;
 
-                this.Name = this.Type.Name;
+                Name = Type.Name;
 
-                this.BoxedMinValue = minValueConstantFieldInfo.GetValue(null);
-                this.BoxedMaxValue = maxValueConstantFieldInfo.GetValue(null);
+                BoxedMinValue = minValueConstantFieldInfo.GetValue(null);
+                BoxedMaxValue = maxValueConstantFieldInfo.GetValue(null);
             }
             else
             {
@@ -73,8 +73,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
         internal NumericalTypeInformation()
             :base(typeof(T))
         {
-            this.MinValue = (T)this.BoxedMinValue;
-            this.MaxValue = (T)this.BoxedMaxValue;
+            MinValue = (T)BoxedMinValue;
+            MaxValue = (T)BoxedMaxValue;
         }
 
         public T MinValue { get; }

@@ -35,7 +35,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         protected ImmutableBrush()
         {
 
-            this.Points = new BindingList<GradientPoint>();
+            Points = new BindingList<GradientPoint>();
         }
 
         public BindingList<GradientPoint> Points { get; }
@@ -49,11 +49,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         public ImmutableSolidBrush(Color color)
         {
-            this.SolidBrush = new SolidBrush(color);
+            SolidBrush = new SolidBrush(color);
         }
         public ImmutableSolidBrush(SolidBrush solidBrush)
         {
-            this.SolidBrush = ExceptionHelpers.ThrowIfNull(solidBrush, nameof(solidBrush));
+            SolidBrush = ExceptionHelpers.ThrowIfNull(solidBrush, nameof(solidBrush));
         }
 
         private SolidBrush SolidBrush { get; }

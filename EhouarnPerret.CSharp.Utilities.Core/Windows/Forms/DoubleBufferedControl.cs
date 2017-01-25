@@ -33,7 +33,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         protected DoubleBufferedControl()
         {
-            this.SetStyle(
+            SetStyle(
                 ControlStyles.UserPaint |
                 ControlStyles.AllPaintingInWmPaint |
                 ControlStyles.OptimizedDoubleBuffer, true);
@@ -43,11 +43,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this.DoubleBuffered;
+                return DoubleBuffered;
             }
             set
             {
-                this.DoubleBuffered = value;
+                DoubleBuffered = value;
             }
         }
 
@@ -55,11 +55,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this.ResizeRedraw;
+                return ResizeRedraw;
             }
             set
             {
-                this.ResizeRedraw = value;
+                ResizeRedraw = value;
             }
         }
     }
@@ -69,28 +69,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         private void SetDoubleBuffered()
         {
-            this.SetStyle(
+            SetStyle(
                 ControlStyles.UserPaint |
                 ControlStyles.AllPaintingInWmPaint |
                 ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         protected DoubleBufferedControl()
-            : base()
         {
-            this.SetDoubleBuffered();
+            SetDoubleBuffered();
         }
 
         protected DoubleBufferedControl(Func<TProperties> propertiesConstructor)
             : base(propertiesConstructor)
         {
-            this.SetDoubleBuffered();
+            SetDoubleBuffered();
         }
 
         protected DoubleBufferedControl(TProperties properties)
             : base(properties)
         {
-            this.SetDoubleBuffered();
+            SetDoubleBuffered();
         }
 
         #region ISupportDoubleBufferable Implementation
@@ -98,11 +97,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this.DoubleBuffered;
+                return DoubleBuffered;
             }
             set
             {
-                this.DoubleBuffered = value;
+                DoubleBuffered = value;
             }
         }
         #endregion

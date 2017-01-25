@@ -30,12 +30,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition
     {
         ~Disposable()
         {
-            this.Destruct();
+            Destruct();
         }
 
         protected virtual void Destruct()
         {
-            this.Dispose(false);
+            Dispose(false);
         }
 
         protected virtual void FreeManagedResources()
@@ -52,7 +52,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition
         /// <param name="e">Event Arguments.</param>
         protected virtual void OnDisposing(System.EventArgs e)
         {
-            this.Disposing?.Invoke(this, e);
+            Disposing?.Invoke(this, e);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition
         /// <param name="e">Event Arguments.</param>
         protected virtual void OnDisposed(System.EventArgs e)
         {
-            this.Disposed?.Invoke(this, e);
+            Disposed?.Invoke(this, e);
         }
 
 		private System.Object SyncRoot { get; } = new System.Object();
@@ -79,9 +79,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition
         #region IDisposable Implementation
         public void Dispose()
         {
-            lock (this.SyncRoot)
+            lock (SyncRoot)
             {
-                this.Dispose(true);
+                Dispose(true);
                 System.GC.SuppressFinalize(this);
             }
         }
@@ -90,24 +90,24 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition
 
         private void Dispose(System.Boolean disposing)
         {
-            lock (this.SyncRoot)
+            lock (SyncRoot)
             {
-                if (!this.IsDisposed)
+                if (!IsDisposed)
                 {
                     if (disposing)
                     {
-                        this.OnDisposing(System.EventArgs.Empty);
+                        OnDisposing(System.EventArgs.Empty);
 
-                        this.IsDisposing = true;
-                        this.FreeManagedResources();
-                        this.IsDisposing = false;
+                        IsDisposing = true;
+                        FreeManagedResources();
+                        IsDisposing = false;
                     }
 
-                    this.FreeUnmanagedResources();
+                    FreeUnmanagedResources();
 
-                    this.IsDisposed = true;
+                    IsDisposed = true;
 
-                    this.OnDisposed(System.EventArgs.Empty);
+                    OnDisposed(System.EventArgs.Empty);
                 }
             }
         }

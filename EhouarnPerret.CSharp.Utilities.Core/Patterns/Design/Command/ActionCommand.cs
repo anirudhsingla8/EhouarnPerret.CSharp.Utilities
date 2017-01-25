@@ -31,14 +31,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
     {
         public ActionCommand(Action execute)
         {
-            this._execute = ExceptionHelpers.ThrowIfNull(execute, nameof(execute));
+            _execute = ExceptionHelpers.ThrowIfNull(execute, nameof(execute));
         }
 
         private readonly Action _execute;
 
         public override void Execute()
         {
-            this._execute();
+            _execute();
         }
     }
 }

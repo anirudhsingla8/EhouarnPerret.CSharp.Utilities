@@ -31,8 +31,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
     {
         public ReversibleActionCommand(Action execute, Action unexecute)
         {
-            this._execute = ExceptionHelpers.ThrowIfNull(execute, nameof(execute));
-            this._unexecute = ExceptionHelpers.ThrowIfNull(unexecute, nameof(unexecute));
+            _execute = ExceptionHelpers.ThrowIfNull(execute, nameof(execute));
+            _unexecute = ExceptionHelpers.ThrowIfNull(unexecute, nameof(unexecute));
         }
 
         private readonly Action _execute;
@@ -40,12 +40,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 
         public override void Execute()
         {
-            this._execute();
+            _execute();
         }
 
         public override void Unexecute()
         {
-            this._unexecute();
+            _unexecute();
         }
     }
 

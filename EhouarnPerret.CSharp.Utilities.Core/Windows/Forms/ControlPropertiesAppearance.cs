@@ -39,7 +39,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         protected ControlPropertiesAppearance(TParent parent)
             : base(parent)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         protected TParent Parent { get; }

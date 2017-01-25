@@ -94,7 +94,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
                 var node = root;
 
-                while ((stack.Count > 0) || (node != null))
+                while (stack.Count > 0 || node != null)
                 {
                     if (node != null)
                     {
@@ -138,7 +138,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
                 var stack = new Stack<IBinaryTreeNode<T>>();
 
-                while ((stack.Count > 0) || (node != null))
+                while (stack.Count > 0 || node != null)
                 {
                     if (node != null)
                     {
@@ -150,7 +150,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
                         var peekNode = stack.Peek();
 
                         // If right child exists and traversing node from left child, then move right
-                        if ((peekNode.Right != null) && (lastVisitedNode != peekNode.Right))
+                        if (peekNode.Right != null && lastVisitedNode != peekNode.Right)
                         {
                             node = peekNode.Right;
                         }

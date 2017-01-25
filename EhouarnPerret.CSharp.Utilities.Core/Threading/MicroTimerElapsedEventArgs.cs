@@ -31,10 +31,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
     {
         public MicroTimerElapsedEventArgs(Int64 count, Int64 elapsedMicroseconds, Int64 delay, Int64 callbackDuration)
         {
-            this.Count = count;
-            this.ElapsedMicroseconds = elapsedMicroseconds;
-            this.Delay = delay;
-            this.CallbackDuration = callbackDuration;
+            Count = count;
+            ElapsedMicroseconds = elapsedMicroseconds;
+            Delay = delay;
+            CallbackDuration = callbackDuration;
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         /// <summary>
         /// Gets the time when timer event was called since the timer has been started.
         /// </summary>
-        public TimeSpan Elapsed => TimeSpan.FromMilliseconds(this.ElapsedMicroseconds / 1E3);
+        public TimeSpan Elapsed => TimeSpan.FromMilliseconds(ElapsedMicroseconds / 1E3);
 
         /// <summary>
         /// Gets how late the timer was compared to when it should have been called.

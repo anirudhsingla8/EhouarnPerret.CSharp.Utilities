@@ -95,10 +95,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
-            else
-            {
-                return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
-            }
+            return lowerBound.CompareTo(value) <= 0 && upperBound.CompareTo(value) >= 0;
         }
         public static Boolean IsStrictlyBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
@@ -107,10 +104,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
-            else
-            {
-                return (lowerBound.CompareTo(value) < 0) && (upperBound.CompareTo(value) > 0);
-            }
+            return lowerBound.CompareTo(value) < 0 && upperBound.CompareTo(value) > 0;
         }
 
         public static Boolean IsNotBetween<T> (this T value, T lowerBound, T upperBound)
@@ -120,10 +114,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
-            else
-            {
-                return (lowerBound.CompareTo(value) >= 0) && (upperBound.CompareTo(value) <= 0);
-            }
+            return lowerBound.CompareTo(value) >= 0 && upperBound.CompareTo(value) <= 0;
         }
         public static Boolean IsStrictlyNotBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
@@ -132,32 +123,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
-            else
-            {
-                return (lowerBound.CompareTo(value) > 0) && (upperBound.CompareTo(value) < 0);
-            }
+            return lowerBound.CompareTo(value) > 0 && upperBound.CompareTo(value) < 0;
         }
 
         internal static Boolean UncheckedIsBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
-            return (lowerBound.CompareTo(value) <= 0) && (upperBound.CompareTo(value) >= 0);
+            return lowerBound.CompareTo(value) <= 0 && upperBound.CompareTo(value) >= 0;
         }
         internal static Boolean UncheckedIsStrictlyBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
-            return (lowerBound.CompareTo(value) < 0) && (upperBound.CompareTo(value) > 0);
+            return lowerBound.CompareTo(value) < 0 && upperBound.CompareTo(value) > 0;
         }
 
         internal static Boolean UncheckedIsNotBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
-            return (lowerBound.CompareTo(value) >= 0) && (upperBound.CompareTo(value) <= 0);
+            return lowerBound.CompareTo(value) >= 0 && upperBound.CompareTo(value) <= 0;
         }
         internal static Boolean UncheckedIsStrictlyNotBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
-            return (lowerBound.CompareTo(value) > 0) && (upperBound.CompareTo(value) < 0);
+            return lowerBound.CompareTo(value) > 0 && upperBound.CompareTo(value) < 0;
         }
 
         public static T ThrowIfBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
@@ -167,10 +155,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentNullException(parameterName);
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
         public static T ThrowIfNotBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
@@ -180,10 +165,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException();
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
         public static T ThrowIfStrictlyBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
@@ -193,10 +175,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException();
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
         public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
@@ -206,10 +185,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
         public static T ThrowIfStrictlyLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
@@ -219,10 +195,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
         public static T ThrowIfGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
@@ -232,10 +205,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
         public static T ThrowIfStrictlyGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
@@ -245,10 +215,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
     }
 }

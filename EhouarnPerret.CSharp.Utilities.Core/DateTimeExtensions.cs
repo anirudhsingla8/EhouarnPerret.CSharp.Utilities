@@ -87,7 +87,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
         public static String ToIsoString(this DateTime dateTime, IFormatProvider formatProvider)
         {
-            return dateTime.ToString(DateTimeExtensions.DateTimeIsoStringFormat, formatProvider);
+            return dateTime.ToString(DateTimeIsoStringFormat, formatProvider);
         }
 
         public static String ToInvariantIsoDateString(this DateTime dateTime)
@@ -96,7 +96,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
         public static String ToIsoDatetring(this DateTime dateTime, IFormatProvider formatProvider)
         {
-            return dateTime.ToString(DateTimeExtensions.DateIsoStringFormat, formatProvider);
+            return dateTime.ToString(DateIsoStringFormat, formatProvider);
         }
     
         public static String ToInvariantIsoTimeString(this DateTime dateTime)
@@ -105,7 +105,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
         public static String ToIsoTimeString(this DateTime dateTime, IFormatProvider formatProvider)
         {
-            return dateTime.ToString(DateTimeExtensions.TimeIsoStringFormat, formatProvider);
+            return dateTime.ToString(TimeIsoStringFormat, formatProvider);
         }
 
         public static IEnumerable<DateTime> AsEnumerable(this DateTime start, DateTime stop, TimeSpan interval)

@@ -69,19 +69,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             {
                 throw new ArgumentOutOfRangeException(nameof(capacity));
             }
-            else if (throwIfOverflow && (source.Count >= capacity))
+            if (throwIfOverflow && source.Count >= capacity)
             {
                 throw new ArgumentOutOfRangeException(nameof(source));
             }
-            else
+            while (source.Count - 1 >= capacity - 1)
             {
-                while ((source.Count - 1) >= capacity - 1)
-                {
-                    yield return source.Dequeue();
-                }
-
-                source.Enqueue(item);
+                yield return source.Dequeue();
             }
+
+            source.Enqueue(item);
         }
 
         public static IEnumerable<T> CircularEnqueue<T>(this IQueue<T> source, T item, Int32 capacity, Boolean throwIfOverflow = false)
@@ -90,19 +87,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             {
                 throw new ArgumentOutOfRangeException(nameof(capacity));
             }
-            else if (throwIfOverflow && (((IReadOnlyCollection<T>) source).Count - 1) >= (capacity - 1))
+            if (throwIfOverflow && ((IReadOnlyCollection<T>) source).Count - 1 >= capacity - 1)
             {
                 throw new ArgumentOutOfRangeException(nameof(source));
             }
-            else
+            while (((IReadOnlyCollection<T>) source).Count - 1 >= capacity - 1)
             {
-                while ((((IReadOnlyCollection<T>) source).Count - 1) >= (capacity - 1))
-                {
-                    yield return source.Dequeue();
-                }
-
-                source.Enqueue(item);
+                yield return source.Dequeue();
             }
+
+            source.Enqueue(item);
         }
     }
 }

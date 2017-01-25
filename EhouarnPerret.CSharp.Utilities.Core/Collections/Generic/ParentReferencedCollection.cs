@@ -40,7 +40,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
         public ParentReferencedCollection(TParent parent, IEnumerable<TItem> items)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
             this.Add(items);
         }
 

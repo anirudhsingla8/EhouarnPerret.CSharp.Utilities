@@ -36,9 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Diagnostics
         {
             var currentProcess = Process.GetCurrentProcess();
 
-            return Process.GetProcesses()
-                .Any(process => (process.ProcessName == currentProcess.ProcessName) && 
-                    (process.Id != currentProcess.Id));
+            return Process.GetProcesses() .Any(process => process.ProcessName == currentProcess.ProcessName &&  process.Id != currentProcess.Id);
         }
     }
 }

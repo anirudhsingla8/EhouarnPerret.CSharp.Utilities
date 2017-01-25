@@ -34,21 +34,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
 
         public static IPEndPoint Parse(String ipEndPointString)
         {
-            var tokens = ipEndPointString.Split(IPEndPointHelpers.IPAddressPortSeparator);
+            var tokens = ipEndPointString.Split(IPAddressPortSeparator);
 
             if (tokens.Length != 2)
             {
                 throw new FormatException(nameof(ipEndPointString));
             }
-            else
-            {
-                var ipAddress = IPAddress.Parse(tokens[0]);
-                var port = UInt16.Parse(tokens[1]);
+            var ipAddress = IPAddress.Parse(tokens[0]);
+            var port = UInt16.Parse(tokens[1]);
 
-                var ipEndPoint = new IPEndPoint(ipAddress, port);
+            var ipEndPoint = new IPEndPoint(ipAddress, port);
 
-                return ipEndPoint;
-            }
+            return ipEndPoint;
         }
 
         public static IPEndPoint Parse(String ipAddressString, UInt16 port)

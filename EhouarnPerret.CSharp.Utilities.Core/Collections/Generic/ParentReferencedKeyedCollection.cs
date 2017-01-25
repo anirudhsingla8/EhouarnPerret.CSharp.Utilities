@@ -35,31 +35,31 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         public ParentReferencedKeyedCollection(TParent parent, Func<TItem, TKey> itemKeySelector)
             : base(itemKeySelector)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         public ParentReferencedKeyedCollection(TParent parent, Func<TItem, TKey> itemKeySelector, IEnumerable<TItem> items)
             : base(itemKeySelector, items)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         public ParentReferencedKeyedCollection(TParent parent, Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer)
             : base(itemKeySelector, comparer)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         public ParentReferencedKeyedCollection(TParent parent, Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, IEnumerable<TItem> items)
             : base(itemKeySelector, comparer, items)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         public ParentReferencedKeyedCollection(TParent parent, Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold, IEnumerable<TItem> items)
             : base(itemKeySelector, comparer, dictionaryThreshold, items)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         #region IReferenceParent Implementation

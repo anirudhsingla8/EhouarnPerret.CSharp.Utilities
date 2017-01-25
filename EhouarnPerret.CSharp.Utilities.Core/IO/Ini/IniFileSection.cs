@@ -34,21 +34,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
     {
         internal IniFileSection(IniFileSectionCollection parent, String name)
         {
-            this.Name = ExceptionHelpers.ThrowIfNullOrEmpty(name, nameof(name));
-            this.Properties = new Dictionary<String, String>();
+            Name = ExceptionHelpers.ThrowIfNullOrEmpty(name, nameof(name));
+            Properties = new Dictionary<String, String>();
         }
 
         internal IniFileSection(IniFileSectionCollection parent, String name, IDictionary<String, String> properties) : this(parent, name)
         {
-            this.Properties.Add(properties);
+            Properties.Add(properties);
         }
 
         protected IniFileSectionCollection File { get; }
 
         public String this[String propertyKey]
         {
-            get { return this.Properties[propertyKey]; }
-            set { this.Properties[propertyKey] = value; }
+            get { return Properties[propertyKey]; }
+            set { Properties[propertyKey] = value; }
         }
 
         public String Name { get; }

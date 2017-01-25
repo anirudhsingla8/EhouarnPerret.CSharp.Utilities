@@ -38,18 +38,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
         protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e)
         {
-            if ((e.Button == System.Windows.Forms.MouseButtons.Left) && this.SplitterRectangle.Contains(e.Location))
+            if (e.Button == System.Windows.Forms.MouseButtons.Left && SplitterRectangle.Contains(e.Location))
             {
-                this.IsSplitterFixed = true;
+                IsSplitterFixed = true;
 
-                switch (this.Orientation)
+                switch (Orientation)
                 {
-                    case (System.Windows.Forms.Orientation.Horizontal):
-                        this.Cursor = System.Windows.Forms.Cursors.HSplit;
+                    case System.Windows.Forms.Orientation.Horizontal:
+                        Cursor = System.Windows.Forms.Cursors.HSplit;
                         break;
 
-                    case (System.Windows.Forms.Orientation.Vertical):
-                        this.Cursor = System.Windows.Forms.Cursors.VSplit;
+                    case System.Windows.Forms.Orientation.Vertical:
+                        Cursor = System.Windows.Forms.Cursors.VSplit;
                         break;
 
                     default:
@@ -60,31 +60,31 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
         protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e)
         {
-            this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.IsSplitterFixed = false;
+            Cursor = System.Windows.Forms.Cursors.Default;
+            IsSplitterFixed = false;
         }
 
         protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e)
         {
-            if (this.IsSplitterFixed)
+            if (IsSplitterFixed)
             {
                 if (e.Button == System.Windows.Forms.MouseButtons.Left)
                 {
-                    switch (this.Orientation)
+                    switch (Orientation)
                     {
-                        case (System.Windows.Forms.Orientation.Vertical):
-                            if ((e.X > 0) && (e.X < this.Width))
+                        case System.Windows.Forms.Orientation.Vertical:
+                            if (e.X > 0 && e.X < Width)
                             {
-                                this.SplitterDistance = e.X;
-                                this.Refresh();
+                                SplitterDistance = e.X;
+                                Refresh();
                             }
                             break;
 
-                        case (System.Windows.Forms.Orientation.Horizontal):
-                            if ((e.Y > 0) && (e.Y < this.Height))
+                        case System.Windows.Forms.Orientation.Horizontal:
+                            if (e.Y > 0 && e.Y < Height)
                             {
-                                this.SplitterDistance = e.Y;
-                                this.Refresh();
+                                SplitterDistance = e.Y;
+                                Refresh();
                             }
                             break;
 
@@ -94,18 +94,18 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
                 }
                 else
                 {
-                    this.IsSplitterFixed = false;
+                    IsSplitterFixed = false;
                 }
             }
             else
             {
-                if (this.SplitterRectangle.Contains(e.Location))
+                if (SplitterRectangle.Contains(e.Location))
                 {
-                    this.Cursor = System.Windows.Forms.Cursors.Hand;
+                    Cursor = System.Windows.Forms.Cursors.Hand;
                 }
                 else
                 {
-                    this.Cursor = System.Windows.Forms.Cursors.Default;
+                    Cursor = System.Windows.Forms.Cursors.Default;
                 }
             }
         }

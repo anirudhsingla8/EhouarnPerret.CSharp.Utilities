@@ -72,7 +72,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         public static String SerializeToXml<T>(this T value)
             where T : new()
         {
-            var dataContractSerializer = new DataContractSerializer(typeof(T), SerializationExtensions.XmlSerializerSettings);
+            var dataContractSerializer = new DataContractSerializer(typeof(T), XmlSerializerSettings);
 
             using (var stringWriter = new StringWriter())
             {
@@ -105,7 +105,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         public static String SerializeToJson<T>(this T value)
             where T : new()
         {
-            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), SerializationExtensions.JsonSerializerSettings);
+            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), JsonSerializerSettings);
            
             using (var memoryStream = new MemoryStream())
             {
@@ -123,7 +123,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         public static T DeserializeXml<T>(this String value)
             where T : new()
         {
-            var dataContractSerializer = new DataContractSerializer(typeof(T), SerializationExtensions.XmlSerializerSettings);
+            var dataContractSerializer = new DataContractSerializer(typeof(T), XmlSerializerSettings);
 
             using (var stringReader = new StringReader(value))
             {
@@ -136,7 +136,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         public static T DeserializeJson<T>(this String value)
             where T : new()
         {
-            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), SerializationExtensions.JsonSerializerSettings);
+            var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), JsonSerializerSettings);
 
             using (var memoryStream = new MemoryStream(Encoding.Default.GetBytes(value)))
             {

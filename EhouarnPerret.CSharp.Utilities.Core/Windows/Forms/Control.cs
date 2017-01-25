@@ -37,15 +37,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         protected Control()
         {
-            this.Properties = Reflection.Constructor.Construct<TProperties>(SimpleAccessModifiers.Both, this);
+            Properties = Constructor.Construct<TProperties>(SimpleAccessModifiers.Both, this);
         }
         protected Control(Func<TProperties> propertiesConstructor)
         {
-            this.Properties = propertiesConstructor();
+            Properties = propertiesConstructor();
         }
         protected Control(TProperties properties)
         {
-            this.Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
+            Properties = ExceptionHelpers.ThrowIfNull(properties, nameof(properties));
         }
 
         #region IProperties Implementation

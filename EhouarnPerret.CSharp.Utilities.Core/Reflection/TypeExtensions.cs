@@ -52,7 +52,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
                 { typeof(Decimal), new NumericalTypeInformation<Decimal>() },
             };
 
-            TypeExtensions.Numbers = dictionary.AsReadOnly();
+            Numbers = dictionary.AsReadOnly();
         }
 
         public static IReadOnlyCollection<FieldInfo> GetConstantFields(this Type type, SimpleAccessModifiers accessModifier = SimpleAccessModifiers.Both)

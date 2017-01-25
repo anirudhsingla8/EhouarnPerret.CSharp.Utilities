@@ -34,33 +34,32 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         where TParent : class
     {
         public ParentReferencedDictionary(TParent parent)
-            : base()
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         public ParentReferencedDictionary(TParent parent, Int32 capacity)
             : base(capacity)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         public ParentReferencedDictionary(TParent parent, Int32 capacity, IEqualityComparer<TKey> comparer)
             : base(capacity, comparer)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         public ParentReferencedDictionary(TParent parent, IDictionary<TKey, TValue> dictionary)
             : base(dictionary)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         public ParentReferencedDictionary(TParent parent, IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparer)
             : base(dictionary, comparer)
         {
-            this.Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
+            Parent = ExceptionHelpers.ThrowIfNull(parent, nameof(parent));
         }
 
         #region IReferenceParent Implementation

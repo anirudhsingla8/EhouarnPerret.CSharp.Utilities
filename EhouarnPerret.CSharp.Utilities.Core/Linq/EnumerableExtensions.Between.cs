@@ -57,12 +57,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
-            else
-            {
-                return source
-                    .Where(item => comparer.UncheckedIsValueBetweenBounds(item, lowerBound, upperBound))
-                    .Select(resultSelector);
-            }
+            return source
+                .Where(item => comparer.UncheckedIsValueBetweenBounds(item, lowerBound, upperBound))
+                .Select(resultSelector);
         }
     }
 }

@@ -39,11 +39,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this._control;
+                return _control;
             }
             set
             {
-                this._control = Control;
+                _control = Control;
             }
         }
     }

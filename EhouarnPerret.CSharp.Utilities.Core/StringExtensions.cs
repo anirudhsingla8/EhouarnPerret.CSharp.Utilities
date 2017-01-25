@@ -97,7 +97,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 }
             }
 
-            var lookup = dictionary.ToLookup<Char, Int32>();
+            var lookup = dictionary.ToLookup();
 
             return lookup;
         }
@@ -134,7 +134,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
         public static SByte? TryToSByte(this String value)
         {
-            var result = default(SByte);
+            SByte result;
 
             return SByte.TryParse(value, out result) ? result : default(SByte?);
         }
@@ -146,7 +146,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int16? TryToInt16(this String value)
         {
-            var result = default(Int16);
+            Int16 result;
 
             return Int16.TryParse(value, out result) ? result : default(Int16?);
         }
@@ -158,7 +158,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int32? TryToInt32(this String value)
         {
-            var result = default(Int32);
+            Int32 result;
 
             return Int32.TryParse(value, out result) ? result : default(Int32?);
         }
@@ -170,7 +170,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int64? TryToInt64(this String value)
         {
-            var result = default(Int64);
+            Int64 result;
 
             return Int64.TryParse(value, out result) ? result : default(Int64?);
         }
@@ -182,7 +182,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static BigInteger? TryToBigInteger(this String value)
         {
-            var result = default(BigInteger);
+            BigInteger result;
 
             return BigInteger.TryParse(value, out result) ? result :  default(BigInteger?);
         }
@@ -209,28 +209,28 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Byte? TryToByte(this String value)
         {
-            var result = default(Byte);
+            Byte result;
 
             return Byte.TryParse(value, out result) ? result : default(Byte?);
         }
 
         public static UInt16? TryToUInt16(this String value)
         {
-            var result = default(UInt16);
+            UInt16 result;
 
             return UInt16.TryParse(value, out result) ? result : default(UInt16?);
         }
 
         public static UInt32? TryToUInt32(this String value)
         {
-            var result = default(UInt32);
+            UInt32 result;
 
             return UInt32.TryParse(value, out result) ? result : default(UInt32?);
         }
 
         public static UInt64? TryToUInt64 (this String value)
         {
-            var result = default(UInt64);
+            UInt64 result;
 
             return UInt64.TryParse(value, out result) ? result : default(UInt64?);
         }
@@ -242,7 +242,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Single? TryToSingle(this String value)
         {
-            var result = default(Single);
+            Single result;
 
             return Single.TryParse(value, out result) ? result : default(Single?);
         }
@@ -254,7 +254,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Double? TryToDouble(this String value)
         {
-            var result = default(Double);
+            Double result;
 
             return Double.TryParse(value, out result) ? result : default(Double?);
         }
@@ -266,7 +266,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Decimal? TryToDecimal(this String value)
         {
-            var result = default(Decimal);
+            Decimal result;
 
             return Decimal.TryParse(value, out result) ? result : default(Decimal?);
         }
@@ -288,7 +288,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 }
             );
 
-            return charactersCount.Count(character => (character.Count % 2) == 1) <= 1;
+            return charactersCount.Count(character => character.Count % 2 == 1) <= 1;
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value.ToLower()
                 .Where(Char.IsLetter)
                 .GroupBy(character => character)
-                .Count() == StringExtensions.LatinAlphabetCharacterCount;
+                .Count() == LatinAlphabetCharacterCount;
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         {
             for (var substringLength = 1; substringLength < value.Length; substringLength++)
             {
-                for (var start = 0; start <= (value.Length - substringLength); start++)
+                for (var start = 0; start <= value.Length - substringLength; start++)
                 {
                     yield return value.Substring(start, substringLength);
                 }

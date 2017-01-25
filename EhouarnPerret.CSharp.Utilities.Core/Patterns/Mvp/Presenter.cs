@@ -32,8 +32,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Mvp
     {
         protected Presenter(TView view, TModel model)
         {
-            this.View = ExceptionHelpers.ThrowIfNull(view, nameof(view));
-            this.Model = ExceptionHelpers.ThrowIfNull(model, nameof(model));
+            View = ExceptionHelpers.ThrowIfNull(view, nameof(view));
+            Model = ExceptionHelpers.ThrowIfNull(model, nameof(model));
         }
 
         protected TView View { get; }

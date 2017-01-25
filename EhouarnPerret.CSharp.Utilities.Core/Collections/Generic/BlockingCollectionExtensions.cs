@@ -38,10 +38,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             {
                 return value;
             }
-            else
-            {
-                throw new TimeoutException();
-            }
+            throw new TimeoutException();
         }
         public static T Take<T>(this BlockingCollection<T> blockingCollection, UInt16 timeout)
         {
@@ -51,10 +48,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             {
                 return value;
             }
-            else
-            {
-                throw new TimeoutException();
-            }
+            throw new TimeoutException();
         }
     }
 }

@@ -26,7 +26,6 @@
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
-
     public class UnsafeFastBitmap : FastBitmap
     {
 

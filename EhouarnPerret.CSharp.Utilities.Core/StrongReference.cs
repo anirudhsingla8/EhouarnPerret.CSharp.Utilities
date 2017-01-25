@@ -32,7 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         public StrongReference(Object target)
         {
-            this.Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
+            Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
         }
 
         #region IReference Implementation
@@ -45,7 +45,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         public StrongReference(TTarget target)
         {
-            this.Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
+            Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
         }
 
         #region IReference implementation

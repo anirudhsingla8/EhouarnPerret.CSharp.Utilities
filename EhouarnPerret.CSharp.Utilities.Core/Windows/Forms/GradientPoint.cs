@@ -33,8 +33,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
     {
         public GradientPoint(Single position, Color color)
         {
-            this.Position = position;
-            this.Color = color;
+            Position = position;
+            Color = color;
         }
 
         public Single Position { get; }

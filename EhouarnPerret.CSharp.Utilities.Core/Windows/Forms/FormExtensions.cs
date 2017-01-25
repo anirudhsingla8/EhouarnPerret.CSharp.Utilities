@@ -35,29 +35,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
         public static void AddEscapeKeyFormClose(this Form form)
         {
-            FormExtensions.Forms.Add(form);
+            Forms.Add(form);
 
             form.KeyPreview = true;
 
-            form.Disposed += FormExtensions.FormDisposed;
-            form.KeyDown += FormExtensions.OnFormKeyDown;
-            form.PreviewKeyDown += FormExtensions.OnFormPreviewKeyDown;
+            form.Disposed += FormDisposed;
+            form.KeyDown += OnFormKeyDown;
+            form.PreviewKeyDown += OnFormPreviewKeyDown;
         }
 
         private static void FormDisposed (Object sender, EventArgs e)
         {
             var form = sender as Form;
 
-            form.Disposed -= FormExtensions.FormDisposed;
-            form.KeyDown -= FormExtensions.OnFormKeyDown;
-            form.PreviewKeyDown -= FormExtensions.OnFormPreviewKeyDown;
+            form.Disposed -= FormDisposed;
+            form.KeyDown -= OnFormKeyDown;
+            form.PreviewKeyDown -= OnFormPreviewKeyDown;
         }
 
         private static void OnFormPreviewKeyDown (Object sender, PreviewKeyDownEventArgs e)
         {
             var form = sender as Form;
 
-            if ((e.Modifiers == Keys.None) && (e.KeyData == Keys.Escape))
+            if (e.Modifiers == Keys.None && e.KeyData == Keys.Escape)
             {
                 form.Close();
 

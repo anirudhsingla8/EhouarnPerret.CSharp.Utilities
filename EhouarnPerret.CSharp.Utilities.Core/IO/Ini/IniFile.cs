@@ -47,11 +47,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
             {
                 throw new FileNotFoundException();
             }
-            else
-            {
-                this._fileInfo = new FileInfo(path);
-                this.Options = ExceptionHelpers.ThrowIfNull(options, nameof(options));
-            }
+            _fileInfo = new FileInfo(path);
+            Options = ExceptionHelpers.ThrowIfNull(options, nameof(options));
         } 
 
         public IniFileOptions Options { get; }
@@ -64,8 +61,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         {
             get
             {
-                this._fileInfo.Refresh();
-                return this._fileInfo.CreationTime;
+                _fileInfo.Refresh();
+                return _fileInfo.CreationTime;
             }
         }
 
@@ -77,8 +74,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         {
             get
             {
-                this._fileInfo.Refresh();
-                return this._fileInfo.LastAccessTime;
+                _fileInfo.Refresh();
+                return _fileInfo.LastAccessTime;
             }
         }
 
@@ -90,8 +87,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         {
             get
             {
-                this._fileInfo.Refresh();
-                return this._fileInfo.LastWriteTime;
+                _fileInfo.Refresh();
+                return _fileInfo.LastWriteTime;
             }
         }
 
@@ -101,13 +98,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         /// Gets the physical filename without the extension.
         /// </summary>
         /// <value>The name.</value>
-        public String Name => this._fileInfo.Name;
+        public String Name => _fileInfo.Name;
 
         /// <summary>
         /// Gets the full path related to the physical file.
         /// </summary>
         /// <value>The full path.</value>
-        public String Path => this._fileInfo.FullName;
+        public String Path => _fileInfo.FullName;
 
         /// <summary>
         /// The default comment tag.
@@ -128,9 +125,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         /// </summary>
         public void Save()
         {
-            var contents = this.Sections.Values.Select(section => section.ToString());
+            var contents = Sections.Values.Select(section => section.ToString());
 
-            File.WriteAllLines(this.Path, contents);
+            File.WriteAllLines(Path, contents);
         }
 
         /// <summary>
@@ -153,14 +150,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         #region IEnumerable Implementation
         public IEnumerator<IniFileSection> GetEnumerator()
         {
-            return this.Sections.Values.GetEnumerator();
+            return Sections.Values.GetEnumerator();
         }
         #endregion
 
         #region IEnumerable Implementation
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return this.Sections.Values.GetEnumerator();
+            return Sections.Values.GetEnumerator();
         }
         #endregion
 

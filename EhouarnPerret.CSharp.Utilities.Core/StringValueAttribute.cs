@@ -31,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
     {
         public StringValueAttribute(String value)
         {
-            this.Value = value;
+            Value = value;
         }
 
         public String Value { get; }

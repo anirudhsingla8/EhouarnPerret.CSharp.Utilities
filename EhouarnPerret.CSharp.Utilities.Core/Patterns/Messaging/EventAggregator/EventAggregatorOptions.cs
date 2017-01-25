@@ -35,9 +35,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
         }
 
         private Boolean _useWeakReferences;
-        public Boolean UseWeakReferences => this._useWeakReferences;
+        public Boolean UseWeakReferences => _useWeakReferences;
 
         private Boolean _supportsMessageInheritances;
-        public Boolean SupportsMessageInheritances => this._supportsMessageInheritances;
+        public Boolean SupportsMessageInheritances => _supportsMessageInheritances;
     }
 }

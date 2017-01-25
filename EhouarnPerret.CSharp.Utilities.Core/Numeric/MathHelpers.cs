@@ -62,13 +62,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         public static T Min<T>(T val1, T val2)
             where T : IComparable<T>
         {
-            return (val1.CompareTo(val2) <= 0) ? val1 : val2;
+            return val1.CompareTo(val2) <= 0 ? val1 : val2;
         }
 
         public static T Max<T>(T val1, T val2)
             where T : IComparable<T>
         {
-            return (val1.CompareTo(val2) >= 0) ? val1 : val2;
+            return val1.CompareTo(val2) >= 0 ? val1 : val2;
         }
 
         private static BigInteger FactorialNaiveIterative(UInt16 n)
@@ -88,10 +88,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             {
                 return BigInteger.One;
             }
-            else
-            {
-                return n * MathHelpers.FactorialNaiveRecursive((UInt16)(n - 1));
-            }
+            return n * FactorialNaiveRecursive((UInt16)(n - 1));
         }
     
         public static Double EuclidianDistance(PointF pointA, PointF pointB)
@@ -107,8 +104,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDBinaryScheme.Iterative: return MathHelpers.GCDBinaryIterative(a, b);
-                case GCDBinaryScheme.Recursive: return MathHelpers.GCDBinaryRecursive(a, b);
+                case GCDBinaryScheme.Iterative: return GCDBinaryIterative(a, b);
+                case GCDBinaryScheme.Recursive: return GCDBinaryRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -116,8 +113,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDBinaryScheme.Iterative: return MathHelpers.GCDBinaryIterative(a, b);
-                case GCDBinaryScheme.Recursive: return MathHelpers.GCDBinaryRecursive(a, b);
+                case GCDBinaryScheme.Iterative: return GCDBinaryIterative(a, b);
+                case GCDBinaryScheme.Recursive: return GCDBinaryRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -131,43 +128,37 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             {
                 return a;
             }
-            else if (a == 0)
+            if (a == 0)
             {
                 return b;
             }
-            else if (b == 0)
+            if (b == 0)
             {
                 return a;
             }
             // Look for factors of 2
             // a is even
-            else if ((~a & 1) > 0) 
+            if ((~a & 1) > 0)
             {
                 // b is odd
                 if ((b & 1) > 0) 
                 {
-                    return MathHelpers.GCDBinaryRecursive(a >> 1, b);
+                    return GCDBinaryRecursive(a >> 1, b);
                 }
-                else // both a and b are eben
-                {
-                    return MathHelpers.GCDBinaryRecursive(a >> 1, b >> 1) << 1;
-                }
+                return GCDBinaryRecursive(a >> 1, b >> 1) << 1;
             }
 
             // a is odd and b is eben
             if ((~b & 1) > 0)
             {
-                return MathHelpers.GCDBinaryRecursive(a, b >> 1);
+                return GCDBinaryRecursive(a, b >> 1);
             }
             // Reduce larger argument
-            else if (a > b)
+            if (a > b)
             {
-                return MathHelpers.GCDBinaryRecursive((a - b) >> 1, b);
+                return GCDBinaryRecursive((a - b) >> 1, b);
             }
-            else
-            {
-                return MathHelpers.GCDBinaryRecursive((b - a) >> 1, a);
-            }
+            return GCDBinaryRecursive((b - a) >> 1, a);
         }
         public static UInt32 GCDBinaryIterative(UInt32 a, UInt32 b)
         {
@@ -178,57 +169,54 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             {
                 return b;
             }
-            else if (b == 0)
+            if (b == 0)
             {
                 return a;
             }
-            else
+            // Let shift := lg K, where K is the greatest power of 2 dividing both a and v.
+            for (shift = 0; ((a | b) & 1) == 0; ++shift)
             {
-                // Let shift := lg K, where K is the greatest power of 2 dividing both a and v.
-                for (shift = 0; ((a | b) & 1) == 0; ++shift)
+                a >>= 1;
+                b >>= 1;
+            }
+
+            while ((a & 1) == 0)
+            {
+                a >>= 1;
+            }
+
+            // From here on, a is always odd.
+            do
+            {
+                // Remove all factors of 2 in b -- they are not common
+                // Note: b is not zero, so while will terminate
+                // Loop X
+                while ((b & 1) == 0)
                 {
-                    a >>= 1;
                     b >>= 1;
                 }
 
-                while ((a & 1) == 0)
+                // Now a and b are both odd. Swap if necessary so a <= v,
+                // then set b = b - a (which is even). 
+
+                // For bignums, the swapping is just pointer movement, 
+                // and the subtraction can be done in-place.
+
+                if (a > b)
                 {
-                    a >>= 1;
-                }
+                    var temp = b; 
+                    b = a; 
+                    a = temp;
+                }  
 
-                // From here on, a is always odd.
-                do
-                {
-                    // Remove all factors of 2 in b -- they are not common
-                    // Note: b is not zero, so while will terminate
-                    // Loop X
-                    while ((b & 1) == 0)
-                    {
-                        b >>= 1;
-                    }
-
-                    // Now a and b are both odd. Swap if necessary so a <= v,
-                    // then set b = b - a (which is even). 
-
-                    // For bignums, the swapping is just pointer movement, 
-                    // and the subtraction can be done in-place.
-
-                    if (a > b)
-                    {
-                        var temp = b; 
-                        b = a; 
-                        a = temp;
-                    }  
-
-                    // Swap a and v.
-                    // Here b >= u.
-                    b = b - a;                       
-                }
-                while (b != 0);
-
-                // Restore common factors of
-                return a << shift;
+                // Swap a and v.
+                // Here b >= u.
+                b = b - a;                       
             }
+            while (b != 0);
+
+            // Restore common factors of
+            return a << shift;
         }
         public static UInt64 GCDBinaryRecursive(UInt64 a, UInt64 b)
         {
@@ -237,43 +225,37 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             {
                 return a;
             }
-            else if (a == 0)
+            if (a == 0)
             {
                 return b;
             }
-            else if (b == 0)
+            if (b == 0)
             {
                 return a;
             }
             // Look for factors of 2
             // a is even
-            else if ((~a & 1) > 0) 
+            if ((~a & 1) > 0)
             {
                 // b is odd
                 if ((b & 1) > 0) 
                 {
-                    return MathHelpers.GCDBinaryRecursive(a >> 1, b);
+                    return GCDBinaryRecursive(a >> 1, b);
                 }
-                else // both a and b are eben
-                {
-                    return MathHelpers.GCDBinaryRecursive(a >> 1, b >> 1) << 1;
-                }
+                return GCDBinaryRecursive(a >> 1, b >> 1) << 1;
             }
 
             // a is odd and b is eben
             if ((~b & 1) > 0)
             {
-                return MathHelpers.GCDBinaryRecursive(a, b >> 1);
+                return GCDBinaryRecursive(a, b >> 1);
             }
             // Reduce larger argument
-            else if (a > b)
+            if (a > b)
             {
-                return MathHelpers.GCDBinaryRecursive((a - b) >> 1, b);
+                return GCDBinaryRecursive((a - b) >> 1, b);
             }
-            else
-            {
-                return MathHelpers.GCDBinaryRecursive((b - a) >> 1, a);
-            }
+            return GCDBinaryRecursive((b - a) >> 1, a);
         }
         public static UInt64 GCDBinaryIterative(UInt64 a, UInt64 b)
         {
@@ -283,57 +265,54 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             {
                 return b;
             }
-            else if (b == 0)
+            if (b == 0)
             {
                 return a;
             }
-            else
+            // Let shift := lg K, where K is the greatest power of 2 dividing both a and v.
+            for (shift = 0; ((a | b) & 1) == 0; ++shift)
             {
-                // Let shift := lg K, where K is the greatest power of 2 dividing both a and v.
-                for (shift = 0; ((a | b) & 1) == 0; ++shift)
+                a >>= 1;
+                b >>= 1;
+            }
+
+            while ((a & 1) == 0)
+            {
+                a >>= 1;
+            }
+
+            // From here on, a is always odd.
+            do
+            {
+                // Remove all factors of 2 in b -- they are not common
+                // Note: b is not zero, so while will terminate
+                // Loop X
+                while ((b & 1) == 0)
                 {
-                    a >>= 1;
                     b >>= 1;
                 }
 
-                while ((a & 1) == 0)
+                // Now a and b are both odd. Swap if necessary so a <= v,
+                // then set b = b - a (which is even). 
+
+                // For big numbers, the swapping is just pointer movement, 
+                // and the subtraction can be done in-place.
+
+                if (a > b)
                 {
-                    a >>= 1;
-                }
+                    var temp = b; 
+                    b = a; 
+                    a = temp;
+                }  
 
-                // From here on, a is always odd.
-                do
-                {
-                    // Remove all factors of 2 in b -- they are not common
-                    // Note: b is not zero, so while will terminate
-                    // Loop X
-                    while ((b & 1) == 0)
-                    {
-                        b >>= 1;
-                    }
-
-                    // Now a and b are both odd. Swap if necessary so a <= v,
-                    // then set b = b - a (which is even). 
-
-                    // For big numbers, the swapping is just pointer movement, 
-                    // and the subtraction can be done in-place.
-
-                    if (a > b)
-                    {
-                        var temp = b; 
-                        b = a; 
-                        a = temp;
-                    }  
-
-                    // Swap a and b.
-                    // Here b >= a.
-                    b = b - a;                       
-                }
-                while (b != 0);
-
-                // Restore common factors of
-                return a << shift;
+                // Swap a and b.
+                // Here b >= a.
+                b = b - a;                       
             }
+            while (b != 0);
+
+            // Restore common factors of
+            return a << shift;
         }
 
         public static SByte GCDEuclideIterative(SByte a, SByte b)
@@ -444,44 +423,44 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 
         public static SByte GCDEuclideRecursive(SByte a, SByte b)
         {
-            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (SByte)(a % b));
+            return b == 0 ? a : GCDEuclideRecursive(b, (SByte)(a % b));
         }
         public static Int16 GCDEuclideRecursive(Int16 a, Int16 b)
         {
-            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (Int16)(a % b));
+            return b == 0 ? a : GCDEuclideRecursive(b, (Int16)(a % b));
         }
         public static Int32 GCDEuclideRecursive(Int32 a, Int32 b)
         {
-            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
+            return b == 0 ? a : GCDEuclideRecursive(b, a % b);
         }
         public static Int64 GCDEuclideRecursive(Int64 a, Int64 b)
         {
-            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
+            return b == 0 ? a : GCDEuclideRecursive(b, a % b);
         }
 
         public static Byte GCDEuclideRecursive(Byte a, Byte b)
         {
-            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (Byte)(a % b));
+            return b == 0 ? a : GCDEuclideRecursive(b, (Byte)(a % b));
         }
         public static UInt16 GCDEuclideRecursive(UInt16 a, UInt16 b)
         {
-            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, (UInt16)(a % b));
+            return b == 0 ? a : GCDEuclideRecursive(b, (UInt16)(a % b));
         }
         public static UInt32 GCDEuclideRecursive(UInt32 a, UInt32 b)
         {
-            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
+            return b == 0 ? a : GCDEuclideRecursive(b, a % b);
         }
         public static UInt64 GCDEuclideRecursive(UInt64 a, UInt64 b)
         {
-            return (b == 0) ? a : MathHelpers.GCDEuclideRecursive(b, a % b);
+            return b == 0 ? a : GCDEuclideRecursive(b, a % b);
         }
 
         public static SByte GCDEuclide(SByte a, SByte b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {
-                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
-                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                case GCDEuclideScheme.Iterative: return GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return GCDEuclideRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -489,8 +468,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
-                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                case GCDEuclideScheme.Iterative: return GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return GCDEuclideRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -498,8 +477,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
-                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                case GCDEuclideScheme.Iterative: return GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return GCDEuclideRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -507,8 +486,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
-                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                case GCDEuclideScheme.Iterative: return GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return GCDEuclideRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -517,8 +496,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
-                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                case GCDEuclideScheme.Iterative: return GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return GCDEuclideRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -526,8 +505,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
-                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                case GCDEuclideScheme.Iterative: return GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return GCDEuclideRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -535,8 +514,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
-                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                case GCDEuclideScheme.Iterative: return GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return GCDEuclideRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
@@ -544,8 +523,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
         {
             switch (scheme)
             {
-                case GCDEuclideScheme.Iterative: return MathHelpers.GCDEuclideIterative(a, b);
-                case GCDEuclideScheme.Recursive: return MathHelpers.GCDEuclideRecursive(a, b);
+                case GCDEuclideScheme.Iterative: return GCDEuclideIterative(a, b);
+                case GCDEuclideScheme.Recursive: return GCDEuclideRecursive(a, b);
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }

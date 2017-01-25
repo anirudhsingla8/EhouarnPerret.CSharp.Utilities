@@ -32,37 +32,35 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
     public class KeyedCollection<TKey, TItem> : System.Collections.ObjectModel.KeyedCollection<TKey, TItem>, IKeyedCollection<TKey, TItem>
     {
         public KeyedCollection(Func<TItem, TKey> itemKeySelector)
-            : base()
         {
-            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
         }
         public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEnumerable<TItem> items)
-            : base()
         {
-            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
             this.Add(items);
         }
         public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer)
             : base(comparer)
         {
-            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
         }
         public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, IEnumerable<TItem> items)
             : base(comparer)
         {
-            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
             this.Add(items);
         }
 
         public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold)
             : base(comparer, dictionaryThreshold)
         {
-            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
         }
         public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold, IEnumerable<TItem> items)
             : base(comparer, dictionaryThreshold)
         {
-            this.ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
+            ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
             this.Add(items);
         }
 
@@ -70,24 +68,24 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
         protected sealed override TKey GetKeyForItem(TItem item)
         {
-            return this.ItemKeySelector(item);
+            return ItemKeySelector(item);
         }
         public Int32 IndexOf(TKey key)
         {
             var index = -1;
 
-            if (this.Contains(key))
+            if (Contains(key))
             {
                 var item = this[key];
 
-                index = this.IndexOf(item);
+                index = IndexOf(item);
             }
 
             return index;
         }
         public Boolean TryGetItem(TKey key, out TItem item)
         {
-            return this.Dictionary.TryGetValue(key, out item);
+            return Dictionary.TryGetValue(key, out item);
         }
     }
 }

@@ -36,31 +36,31 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.PropertyChangesNotificati
         {
             ExceptionHelpers.ThrowIfNullOrEmpty(propertyName, nameof(propertyName));
 
-            this.OnPropertyChanging(propertyName);
+            OnPropertyChanging(propertyName);
 
             oldValue = newValue;
 
-            this.OnPropertyChanged(propertyName);
+            OnPropertyChanged(propertyName);
         }
 
         private void OnPropertyChanging(String propertyName)
         {
             var e = new PropertyChangingEventArgs(propertyName);
-            this.OnPropertyChanging(e);
+            OnPropertyChanging(e);
         }
         private void OnPropertyChanged(String propertyName)
         {
             var e = new PropertyChangedEventArgs(propertyName);
-            this.OnPropertyChanged(e);
+            OnPropertyChanged(e);
         }
 
         protected virtual void OnPropertyChanging(PropertyChangingEventArgs e)
         {
-            this.PropertyChanging?.Invoke(this, e);
+            PropertyChanging?.Invoke(this, e);
         }
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs e)
         {
-            this.PropertyChanged?.Invoke(this, e);
+            PropertyChanged?.Invoke(this, e);
         }
 
         #region INotifyPropertyChanging Implementation

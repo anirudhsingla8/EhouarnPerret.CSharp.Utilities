@@ -37,10 +37,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentNullException(parameterName);
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
         public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName = @"")
         {
@@ -48,10 +45,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentNullException(parameterName);
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
 
@@ -61,10 +55,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
         public static T ThrowIfNotEqualTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
@@ -73,10 +64,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(parameterName));
             }
-            else
-            {
-                return parameterValue;
-            }
+            return parameterValue;
         }
 
         public static Boolean ThrowIfTrue(this Boolean parameterValue, String parameterName = @"")

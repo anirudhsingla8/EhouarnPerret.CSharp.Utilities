@@ -46,9 +46,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             var controlType = typeof(Control);
 
-            ControlExtensions.DoubleBufferedProperty = controlType.GetProperty(ControlExtensions.DoubleBufferedPropertyName, BindingFlags.Instance | BindingFlags.NonPublic);
+            DoubleBufferedProperty = controlType.GetProperty(DoubleBufferedPropertyName, BindingFlags.Instance | BindingFlags.NonPublic);
         
-            ControlExtensions.DragAndDrops = new Dictionary<Control, ControlDragAndDrop>();
+            DragAndDrops = new Dictionary<Control, ControlDragAndDrop>();
         }
 
         private static PropertyInfo DoubleBufferedProperty { get; }
@@ -58,12 +58,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         public static void SetDoubleBuffered<TControl>(this TControl control, Boolean value)
             where TControl : Control
         {
-            ControlExtensions.DoubleBufferedProperty.SetValue(control, value);
+            DoubleBufferedProperty.SetValue(control, value);
         }
 
         public static Boolean GetDoubleBuffered<TControl>(this TControl control)
         {
-            return (Boolean)ControlExtensions.DoubleBufferedProperty.GetValue(control);
+            return (Boolean)DoubleBufferedProperty.GetValue(control);
         }
 
         /// <summary>
@@ -110,51 +110,51 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         public static void EnableDragAndDropSupport<TControl>(this TControl control)
             where TControl : Control
         {
-            control.Disposed += ControlExtensions.OnControlDisposed;
-            control.MouseDown += ControlExtensions.OnControlMouseDown;
-            control.MouseMove += ControlExtensions.OnControlMouseMove;
-            control.GiveFeedback += ControlExtensions.ControlGiveFeedback;
-            control.DragEnter += ControlExtensions.OnControlDragEnter;
-            control.DragOver += ControlExtensions.OnControlDragOver;
-            control.DragLeave += ControlExtensions.OnControlDragLeave;
-            control.DragDrop += ControlExtensions.OnControlDragDrop;
+            control.Disposed += OnControlDisposed;
+            control.MouseDown += OnControlMouseDown;
+            control.MouseMove += OnControlMouseMove;
+            control.GiveFeedback += ControlGiveFeedback;
+            control.DragEnter += OnControlDragEnter;
+            control.DragOver += OnControlDragOver;
+            control.DragLeave += OnControlDragLeave;
+            control.DragDrop += OnControlDragDrop;
         }
 
         private static void ControlGiveFeedback (Object sender, GiveFeedbackEventArgs e)
         {
             var control = (Control)sender;
-            ControlExtensions.DragAndDrops[control].GiveFeedback(control, e);
+            DragAndDrops[control].GiveFeedback(control, e);
         }
         private static void OnControlDragOver (Object sender, DragEventArgs e)
         {
             var control = (Control)sender;
-            ControlExtensions.DragAndDrops[control].DragOver(control, e);
+            DragAndDrops[control].DragOver(control, e);
         }
         private static void OnControlMouseDown (Object sender, MouseEventArgs e)
         {
             var control = (Control)sender;
-            ControlExtensions.DragAndDrops[control].MouseDown(control, e);
+            DragAndDrops[control].MouseDown(control, e);
         }
         private static void OnControlMouseMove (Object sender, MouseEventArgs e)
         {
             var control = (Control)sender;
-            ControlExtensions.DragAndDrops[control].MouseMove(control, e);
+            DragAndDrops[control].MouseMove(control, e);
         }
         private static void OnControlDragDrop (Object sender, DragEventArgs e)
         {
             var control = (Control)sender;
-            ControlExtensions.DragAndDrops[control].DragDrop(control, e);
+            DragAndDrops[control].DragDrop(control, e);
 
         }
         private static void OnControlDragLeave (Object sender, EventArgs e)
         {
             var control = (Control)sender;
-            ControlExtensions.DragAndDrops[control].DragLeave(control, e);
+            DragAndDrops[control].DragLeave(control, e);
         }
         private static void OnControlDragEnter (Object sender, DragEventArgs e)
         {
             var control = (Control)sender;
-            ControlExtensions.DragAndDrops[control].DragEnter(control, e);
+            DragAndDrops[control].DragEnter(control, e);
         }
 
         private static void OnControlDisposed (Object sender, EventArgs e)
@@ -166,13 +166,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         public static void DisableDragAndDropSupport<TControl>(this TControl control)
             where TControl : Control
         {
-            control.Disposed -= ControlExtensions.OnControlDisposed;
-            control.MouseMove -= ControlExtensions.OnControlMouseMove;
-            control.MouseDown -= ControlExtensions.OnControlMouseDown;
-            control.DragEnter -= ControlExtensions.OnControlDragEnter;
-            control.DragOver -= ControlExtensions.OnControlDragOver;
-            control.DragLeave -= ControlExtensions.OnControlDragLeave;
-            control.DragDrop -= ControlExtensions.OnControlDragDrop;
+            control.Disposed -= OnControlDisposed;
+            control.MouseMove -= OnControlMouseMove;
+            control.MouseDown -= OnControlMouseDown;
+            control.DragEnter -= OnControlDragEnter;
+            control.DragOver -= OnControlDragOver;
+            control.DragLeave -= OnControlDragLeave;
+            control.DragDrop -= OnControlDragDrop;
         }
 
         private static Dictionary<Control, ControlDragAndDrop> DragAndDrops { get; }

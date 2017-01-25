@@ -86,10 +86,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
-            else
-            {
-                return comparer.UncheckedIsValueBetweenBounds(value, lowerBound, upperBound);
-            }
+            return comparer.UncheckedIsValueBetweenBounds(value, lowerBound, upperBound);
         }
 
         // TODO: refactoring
@@ -99,10 +96,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             {
                 throw new ArgumentOutOfRangeException(nameof(lowerBound));
             }
-            else
-            {
-                return comparer.UncheckedIsValueStrictlyBetweenBounds(value, lowerBound, upperBound);
-            }
+            return comparer.UncheckedIsValueStrictlyBetweenBounds(value, lowerBound, upperBound);
         }
         
         // TODO: refactoring

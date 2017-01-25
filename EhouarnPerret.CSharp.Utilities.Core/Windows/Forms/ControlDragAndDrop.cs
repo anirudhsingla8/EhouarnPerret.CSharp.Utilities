@@ -40,12 +40,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             Action<Control, GiveFeedbackEventArgs> giveFeedback
         )
         {
-            this.MouseDown = ExceptionHelpers.ThrowIfNull(mouseDown, nameof(mouseDown));
-            this.MouseMove = ExceptionHelpers.ThrowIfNull(mouseMove, nameof(mouseDown));
-            this.DragEnter = ExceptionHelpers.ThrowIfNull(dragEnter, nameof(dragEnter));
-            this.DragOver = ExceptionHelpers.ThrowIfNull(dragOver, nameof(dragOver));
-            this.DragLeave = ExceptionHelpers.ThrowIfNull(dragLeave, nameof(dragLeave));
-            this.GiveFeedback =  ExceptionHelpers.ThrowIfNull(giveFeedback, nameof(giveFeedback));
+            MouseDown = ExceptionHelpers.ThrowIfNull(mouseDown, nameof(mouseDown));
+            MouseMove = ExceptionHelpers.ThrowIfNull(mouseMove, nameof(mouseDown));
+            DragEnter = ExceptionHelpers.ThrowIfNull(dragEnter, nameof(dragEnter));
+            DragOver = ExceptionHelpers.ThrowIfNull(dragOver, nameof(dragOver));
+            DragLeave = ExceptionHelpers.ThrowIfNull(dragLeave, nameof(dragLeave));
+            GiveFeedback =  ExceptionHelpers.ThrowIfNull(giveFeedback, nameof(giveFeedback));
         }
 
         public Action<Control, MouseEventArgs> MouseMove { get; } 

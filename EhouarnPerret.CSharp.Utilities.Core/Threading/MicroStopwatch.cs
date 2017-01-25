@@ -39,23 +39,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             return microStopwatch;
         }
 
-        private static readonly Double _microSecondsPerTick = 1E6D / Stopwatch.Frequency;
-        public static Double MicroSecondsPerTick => MicroStopwatch._microSecondsPerTick;
+        private static readonly Double _microSecondsPerTick = 1E6D / Frequency;
+        public static Double MicroSecondsPerTick => _microSecondsPerTick;
 
         public MicroStopwatch()
-            : base()
         {
-            if (!Stopwatch.IsHighResolution)
+            if (!IsHighResolution)
             {
                 throw new NotSupportedException(@"The system does not support high-resolution performance counter.");
             }
-            else
-            {
-                return;
-            }
+            return;
         }
 
-        public Int64 ElapsedMicroseconds => (Int64)(this.ElapsedTicks * MicroStopwatch.MicroSecondsPerTick);
+        public Int64 ElapsedMicroseconds => (Int64)(ElapsedTicks * MicroSecondsPerTick);
     }
 }
 

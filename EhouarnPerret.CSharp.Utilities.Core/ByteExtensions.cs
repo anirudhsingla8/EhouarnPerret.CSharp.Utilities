@@ -76,12 +76,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         public static Boolean GetBit(this Byte value, ByteBits bitIndex)
         {
             var mask = bitIndex.GetMask();
-            return ByteExtensions.GetBit(value, mask);
+            return GetBit(value, mask);
         }
         public static Byte SetBit(this Byte value, ByteBits bitIndex, Boolean bitValue)
         {
             var mask = bitIndex.GetMask();
-            return ByteExtensions.SetBit(value, mask, bitValue);
+            return SetBit(value, mask, bitValue);
         }
 
         public static Byte SetBigEndianMSB(Byte value, Boolean bitValue)
@@ -168,14 +168,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 0x1f, 0x9f, 0x5f, 0xdf, 0x3f, 0xbf, 0x7f, 0xff
             };
 
-            ByteExtensions.BitReversalLookupTable = new ReadOnlyCollection<Byte>(bitReverseLookupTable);
+            BitReversalLookupTable = new ReadOnlyCollection<Byte>(bitReverseLookupTable);
         }
 
         private static ReadOnlyCollection<Byte> BitReversalLookupTable { get; }
 
         public static Byte ReverseBits(this Byte value)
         {
-            return ByteExtensions.BitReversalLookupTable[value];
+            return BitReversalLookupTable[value];
         }
     }
 }

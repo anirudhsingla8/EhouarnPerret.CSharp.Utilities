@@ -37,7 +37,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Mvp
     {
         protected View(TCore core)
         {
-            this.Core = ExceptionHelpers.ThrowIfNull(core, nameof(core));
+            Core = ExceptionHelpers.ThrowIfNull(core, nameof(core));
         }
 
         protected TCore Core { get; }

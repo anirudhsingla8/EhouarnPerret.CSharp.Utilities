@@ -32,33 +32,33 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
     {
         static Type()
         {
-            Type<TInstance>.UnderlyingType = typeof(TInstance);
+            UnderlyingType = typeof(TInstance);
         }
 
         private static Type UnderlyingType { get; }
 
         public static TProperty GetPropertyValue<TProperty>(String propertyName, TInstance instance, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
-            var property = Type<TInstance>.UnderlyingType.GetProperty(propertyName, bindingFlags);
+            var property = UnderlyingType.GetProperty(propertyName, bindingFlags);
 
             return property.GetValue<TProperty, TInstance>(instance);
         }
         public static void SetPropertyValue<TProperty>(String propertyName, TInstance instance, TProperty value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
-            var property = Type<TInstance>.UnderlyingType.GetProperty(propertyName, bindingFlags);
+            var property = UnderlyingType.GetProperty(propertyName, bindingFlags);
 
             property.SetValue(instance, value);
         }
     
         public static TProperty GetFieldInfo<TProperty>(String propertyName, TInstance instance, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
-            var property = Type<TInstance>.UnderlyingType.GetProperty(propertyName, bindingFlags);
+            var property = UnderlyingType.GetProperty(propertyName, bindingFlags);
 
             return property.GetValue<TProperty, TInstance>(instance);
         }
         public static void SetFieldInfo<TProperty>(String propertyName, TInstance instance, TProperty value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
-            var property = Type<TInstance>.UnderlyingType.GetProperty(propertyName, bindingFlags);
+            var property = UnderlyingType.GetProperty(propertyName, bindingFlags);
 
             property.SetValue(instance, value);
         }

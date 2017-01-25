@@ -49,16 +49,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         {
             get
             {
-                return this.BoundingRectangle.Top;
+                return BoundingRectangle.Top;
             }
             set
             {
-                this._boundingRectangle = new RectangleF
+                _boundingRectangle = new RectangleF
                 (
-                    this.BoundingRectangle.Left, 
+                    BoundingRectangle.Left, 
                     value, 
-                    this.BoundingRectangle.Width, 
-                    this.BoundingRectangle.Height
+                    BoundingRectangle.Width, 
+                    BoundingRectangle.Height
                 );
             }
         }
@@ -66,49 +66,49 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         {
             get
             {
-                return this.BoundingRectangle.Left;
+                return BoundingRectangle.Left;
             }
             set
             {
-                this._boundingRectangle = new RectangleF
+                _boundingRectangle = new RectangleF
                 (
                     value, 
-                    this.BoundingRectangle.Left, 
-                    this.BoundingRectangle.Width, 
-                    this.BoundingRectangle.Height
+                    BoundingRectangle.Left, 
+                    BoundingRectangle.Width, 
+                    BoundingRectangle.Height
                 );
             }
         }
-        public Single Right => this.BoundingRectangle.Right;
+        public Single Right => BoundingRectangle.Right;
 
-        public Single Bottom => this.BoundingRectangle.Bottom;
+        public Single Bottom => BoundingRectangle.Bottom;
 
         private Boolean _enabled;
         public Boolean Enabled 
         {
             get
             {
-                return this._enabled;
+                return _enabled;
             }
             set
             {
-                this._enabled = value;
+                _enabled = value;
             }
         }
             
         private RectangleF _boundingRectangle;
-        public RectangleF BoundingRectangle => this._boundingRectangle;
+        public RectangleF BoundingRectangle => _boundingRectangle;
 
         public SizeF Size
         {
             get
             {
-                return this.BoundingRectangle.Size;
+                return BoundingRectangle.Size;
             }
             set
             {
-                this._boundingRectangle = new RectangleF(this.BoundingRectangle.Location, value);
-                this.OnSizeChanged(EventArgs.Empty);
+                _boundingRectangle = new RectangleF(BoundingRectangle.Location, value);
+                OnSizeChanged(EventArgs.Empty);
             }
         }
 
@@ -117,12 +117,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         {
             get
             {
-                return this._text;
+                return _text;
             }
             set
             {
-                this._text = value;
-                this.OnTextChanged(EventArgs.Empty);
+                _text = value;
+                OnTextChanged(EventArgs.Empty);
             }
         }
 
@@ -131,12 +131,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         {
             get
             {
-                return this._visible;
+                return _visible;
             }
             set
             {
-                this._visible = value;
-                this.OnVisibleChanged(EventArgs.Empty);
+                _visible = value;
+                OnVisibleChanged(EventArgs.Empty);
             }
         }
 
@@ -145,12 +145,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         {
             get
             {
-                return this._backColor;
+                return _backColor;
             }
             set
             {
-                this._backColor = value;
-                this.OnBackColorChanged(EventArgs.Empty);
+                _backColor = value;
+                OnBackColorChanged(EventArgs.Empty);
             }
         }
 
@@ -159,52 +159,52 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         {
             get
             {
-                return this._foreColor;
+                return _foreColor;
             }
             set
             {
-                this._foreColor = value;
-                this.OnForeColorChanged(EventArgs.Empty);
+                _foreColor = value;
+                OnForeColorChanged(EventArgs.Empty);
             }
         }
 
 
         protected virtual void OnBackColorChanged(EventArgs e)
         {
-            this.BackColorChanged?.Invoke(this, e);
+            BackColorChanged?.Invoke(this, e);
         }
         protected virtual void OnForeColorChanged(EventArgs e)
         {
-            this.ForeColorChanged?.Invoke(this, e);
+            ForeColorChanged?.Invoke(this, e);
         }
 
         protected virtual void OnClick(EventArgs e)
         {
-            this.Click?.Invoke(this, e);
+            Click?.Invoke(this, e);
         }
         protected virtual void OnPaint(PaintEventArgs e)
         {
-            this.Paint?.Invoke(this, e);
+            Paint?.Invoke(this, e);
         }
         protected virtual void OnEnabledChanged(EventArgs e)
         {
-            this.EnabledChanged?.Invoke(this, e);
+            EnabledChanged?.Invoke(this, e);
         }
         protected virtual void OnLocationChanged(EventArgs e)
         {
-            this.LocationChanged?.Invoke(this, e);
+            LocationChanged?.Invoke(this, e);
         }
         protected virtual void OnSizeChanged(EventArgs e)
         {
-            this.SizeChanged?.Invoke(this, e);
+            SizeChanged?.Invoke(this, e);
         }
         protected virtual void OnTextChanged(EventArgs e)
         {
-            this.TextChanged?.Invoke(this, e);
+            TextChanged?.Invoke(this, e);
         }
         protected virtual void OnVisibleChanged(EventArgs e)
         {
-            this.VisibleChanged?.Invoke(this, e);
+            VisibleChanged?.Invoke(this, e);
         }
     }
 }

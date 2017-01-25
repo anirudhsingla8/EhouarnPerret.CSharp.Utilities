@@ -32,15 +32,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
     {
         public UndoRedoManager(UInt16 capacity = 512)
         {
-            this.Capacity = capacity;
-            this.UndoCommands = new Stack<IReversibleCommand>(capacity);
-            this.RedoCommands = new Stack<IReversibleCommand>(capacity);
+            Capacity = capacity;
+            UndoCommands = new Stack<IReversibleCommand>(capacity);
+            RedoCommands = new Stack<IReversibleCommand>(capacity);
         }
 
         public UInt16 Capacity { get; }
 
-        public UInt16 RedoCount => Convert.ToUInt16(this.RedoCommands.Count);
-        public UInt16 UndoCount => Convert.ToUInt16(this.UndoCommands.Count);
+        public UInt16 RedoCount => Convert.ToUInt16(RedoCommands.Count);
+        public UInt16 UndoCount => Convert.ToUInt16(UndoCommands.Count);
 
         private Stack<IReversibleCommand> UndoCommands { get; }
         private Stack<IReversibleCommand> RedoCommands { get; }
@@ -49,53 +49,53 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
         {
             foreach (var command in commands)
             {
-                this.AddExecute(command);
+                AddExecute(command);
             }
         }
         public void AddExecute(IReversibleCommand command)
         {
             command.Execute();
 
-            this.UndoCommands.Push(command);
+            UndoCommands.Push(command);
 
             // Too simple?
-            this.RedoCommands.Clear();
+            RedoCommands.Clear();
         }
         public void AddExecute(Action execute, Action unexecute)
         {
             var command = new ReversibleActionCommand(execute, unexecute);
 
-            this.AddExecute(command);
+            AddExecute(command);
         }
 
         public void Undo(UInt16 levelCount = 1)
         {
-            for (var i = 0; (i < levelCount) && (this.UndoCount > 0); i++)
+            for (var i = 0; i < levelCount && UndoCount > 0; i++)
             {
-                var reversibleCommand = this.UndoCommands.Pop();
+                var reversibleCommand = UndoCommands.Pop();
 
                 reversibleCommand.Unexecute();
 
-                this.RedoCommands.Push(reversibleCommand);
+                RedoCommands.Push(reversibleCommand);
             }
         }
         public void Redo(UInt16 levelCount = 1)
         {
-            for (var i = 0; (i < levelCount) && (this.RedoCount > 0); i++)
+            for (var i = 0; i < levelCount && RedoCount > 0; i++)
             {
-                var reversibleCommand = this.RedoCommands.Pop();
+                var reversibleCommand = RedoCommands.Pop();
 
                 reversibleCommand.Execute();
 
-                this.UndoCommands.Push(reversibleCommand);
+                UndoCommands.Push(reversibleCommand);
             }
         }
 
         public void Clear()
         {
-            this.UndoCommands.Clear();
+            UndoCommands.Clear();
 
-            this.RedoCommands.Clear();
+            RedoCommands.Clear();
         }
     }
 }

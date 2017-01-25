@@ -40,11 +40,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         {
             get
             {
-                return this._checked;
+                return _checked;
             }
             set
             {
-                this._checked = value;
+                _checked = value;
             }
         }
     }

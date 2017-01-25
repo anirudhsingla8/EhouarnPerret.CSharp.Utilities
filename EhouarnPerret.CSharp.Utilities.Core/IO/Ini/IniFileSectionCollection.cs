@@ -40,11 +40,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         {
             base.InsertItem(index, item);
 
-            switch (this.Parent.Options.AutoSaveMode)
+            switch (Parent.Options.AutoSaveMode)
             {
                 case IniFileAutoSaveMode.OnSectionChange:
                 case IniFileAutoSaveMode.OnSectionPropertyChange:
-                    this.Parent.Save();
+                    Parent.Save();
                     break;
 
                 case IniFileAutoSaveMode.None:

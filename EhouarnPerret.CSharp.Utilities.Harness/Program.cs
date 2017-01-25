@@ -61,22 +61,19 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
             {
                 throw new ArgumentException(@"name");
             }
-            else
-            {
-                this._name = name;
-                this._age = age;
-                this._gender = gender;
-            }
+            _name = name;
+            _age = age;
+            _gender = gender;
         }
 
         private readonly String _name;
-        public String Name => this._name;
+        public String Name => _name;
 
         private readonly Byte _age;
-        public Byte Age => this._age;
+        public Byte Age => _age;
 
         private readonly BinaryGender _gender;
-        public BinaryGender Gender => this._gender;
+        public BinaryGender Gender => _gender;
     }
 
     public enum BinaryGender : byte
@@ -91,8 +88,8 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             var graphicsPath = new GraphicsPath();
 
-            var width = this.Width < 1 ? 1 : this.Width;
-            var height = this.Height < 1 ? 1 : this.Height;
+            var width = Width < 1 ? 1 : Width;
+            var height = Height < 1 ? 1 : Height;
 
             graphicsPath.AddPie(0, 0, width, height, 200f, 300f);
 
@@ -122,17 +119,16 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     public class LedControl : DoubleBufferedControl, ILedControl
     {
         public LedControl()
-            : base()
         {
-            this.MinimumSize = new Size(28, 28);
-            this.TrueColor = new LedColor(Color.LightGreen, false, true);
-            this.FalseColor = new LedColor(Color.DarkRed, false, false);
-            this.ShapeKind = LedShapeKind.Rectangle;
+            MinimumSize = new Size(28, 28);
+            TrueColor = new LedColor(Color.LightGreen, false, true);
+            FalseColor = new LedColor(Color.DarkRed, false, false);
+            ShapeKind = LedShapeKind.Rectangle;
         }
 
         public void Toggle()
         {
-            this.State = !this.State;
+            State = !State;
         }
 
         private Boolean _state;
@@ -141,14 +137,14 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             get
             {
-                return this._state;
+                return _state;
             }
             set
             {
-                if (this.State != value)
+                if (State != value)
                 {
-                    this._state = value;
-                    this.Invalidate();
+                    _state = value;
+                    Invalidate();
                 }
             }
         }
@@ -159,14 +155,14 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             get
             {
-                return this._trueColor;
+                return _trueColor;
             }
             set
             {
-                if (!this._trueColor.Equals(value))
+                if (!_trueColor.Equals(value))
                 {
-                    this._trueColor = value;
-                    this.Invalidate();
+                    _trueColor = value;
+                    Invalidate();
                 }
             }
         }
@@ -177,14 +173,14 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             get
             {
-                return this._falseColor;
+                return _falseColor;
             }
             set
             {
-                if (!this._falseColor.Equals(value))
+                if (!_falseColor.Equals(value))
                 {
-                    this._falseColor = value;
-                    this.Invalidate();
+                    _falseColor = value;
+                    Invalidate();
                 }
             }
         }
@@ -194,14 +190,14 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
         {
             get
             {
-                return this._shapeKind;
+                return _shapeKind;
             }
             set
             {
-                if (!this._shapeKind.Equals(value))
+                if (!_shapeKind.Equals(value))
                 {
-                    this._shapeKind = value;
-                    this.Invalidate();
+                    _shapeKind = value;
+                    Invalidate();
                 }
             }
         }
@@ -216,9 +212,9 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         public LedColor(Color color, Boolean isDark = false, Boolean isHalo = true)
         {
-            this.Color = color;
-            this.IsDark = isDark;
-            this.IsHalo = isHalo;
+            Color = color;
+            IsDark = isDark;
+            IsHalo = isHalo;
         }
 
         public Color Color { get; }
@@ -230,8 +226,8 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
     {
         static GraphicsExtensions()
         {
-            GraphicsExtensions.LedColorReflection = Color.FromArgb(180, 255, 255, 255);
-            GraphicsExtensions.LedColorSurroundReflection = Color.FromArgb(0, 255, 255, 255);
+            LedColorReflection = Color.FromArgb(180, 255, 255, 255);
+            LedColorSurroundReflection = Color.FromArgb(0, 255, 255, 255);
         }
 
         private static Color LedColorReflection { get; }
@@ -355,8 +351,8 @@ namespace EhouarnPerret.CSharp.Utilities.Sandbox
 
                 var pathGradientReflection = new PathGradientBrush(graphicsPath)
                 {
-                    CenterColor = GraphicsExtensions.LedColorReflection,
-                    SurroundColors = new[] { GraphicsExtensions.LedColorSurroundReflection },
+                    CenterColor = LedColorReflection,
+                    SurroundColors = new[] { LedColorSurroundReflection },
                 };
 
                 // graphics.FillEllipse(pathGradientReflection, rectangleReflection);

@@ -31,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
     {
         public SimpleForm()
         {
-            this.Form = new BorderlessForm();
+            Form = new BorderlessForm();
         }
 
         internal BorderlessForm Form { get; }
@@ -46,7 +46,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Simple
     {
         public BorderlessForm()
         {
-            this.FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;
         }
     }
 
