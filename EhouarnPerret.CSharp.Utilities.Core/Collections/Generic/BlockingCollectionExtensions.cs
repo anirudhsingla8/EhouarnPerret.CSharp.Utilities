@@ -32,9 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
     {
         public static T Take<T>(this BlockingCollection<T> blockingCollection, TimeSpan timeout)
         {
-            var value = default(T);
-
-            if (blockingCollection.TryTake(out value, timeout))
+            if (blockingCollection.TryTake(out var value, timeout))
             {
                 return value;
             }
@@ -42,9 +40,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         }
         public static T Take<T>(this BlockingCollection<T> blockingCollection, UInt16 timeout)
         {
-            var value = default(T);
-
-            if (blockingCollection.TryTake(out value, timeout))
+            if (blockingCollection.TryTake(out var value, timeout))
             {
                 return value;
             }

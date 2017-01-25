@@ -75,7 +75,6 @@
     <Compile Include="Collections\Generic\IObservableQueue.cs" />
     <Compile Include="Collections\Generic\IObservableStack.cs" />
     <Compile Include="Collections\Generic\IRTreeNode.cs" />
-    <Compile Include="Collections\Generic\ObservableDictionary.cs" />
     <Compile Include="Collections\Generic\QueueExtensions.cs" />
     <Compile Include="Collections\Generic\IBindingList.cs" />
     <Compile Include="ComparerExtensions.cs" />
@@ -89,11 +88,8 @@
     <Compile Include="IO\Midi\MidiFile.cs" />
     <Compile Include="IO\Tftp\TftpClient.cs" />
     <Compile Include="IO\Tftp\TftpServer.cs" />
-    <Compile Include="IValuable.cs" />
     <Compile Include="Linq\EnumerableExtensions.LesserThanBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.GreaterThanBy.cs" />
-    <Compile Include="Linq\EnumerableExtensions.GreaterThan.cs" />
-    <Compile Include="Linq\EnumerableExtensions.StrictlyBetweenBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.StrictlyGreaterThanBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.StrictlyLesserThanBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.StrictlyNotBetweenBy.cs" />
@@ -101,7 +97,6 @@
     <Compile Include="Linq\EnumerableExtensions.StrictlyNotLesserThanBy.cs" />
     <Compile Include="Linq\EnumerableExtensions.StrictlyNotLesserThan.cs" />
     <Compile Include="Linq\EnumerableExtensions.StrictlyNotGreaterThan.cs" />
-    <Compile Include="Linq\EnumerableExtensions.StrictlyNotBetween.cs" />
     <Compile Include="Linq\EnumerableExtensions.StrictlyGreaterThan.cs" />
     <Compile Include="Linq\EnumerableExtensions.StrictlyLesserThan.cs" />
     <Compile Include="Linq\EnumerableExtensions.LesserThan.cs" />

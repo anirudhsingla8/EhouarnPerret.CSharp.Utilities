@@ -134,9 +134,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
         public static SByte? TryToSByte(this String value)
         {
-            SByte result;
-
-            return SByte.TryParse(value, out result) ? result : default(SByte?);
+            return SByte.TryParse(value, out var result) ? result : default(SByte?);
         }
 
         public static Int16 ToInt16(this String value)
@@ -146,9 +144,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int16? TryToInt16(this String value)
         {
-            Int16 result;
-
-            return Int16.TryParse(value, out result) ? result : default(Int16?);
+            return Int16.TryParse(value, out var result) ? result : default(Int16?);
         }
 
         public static Int32 ToInt32(this String value)
@@ -158,9 +154,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int32? TryToInt32(this String value)
         {
-            Int32 result;
-
-            return Int32.TryParse(value, out result) ? result : default(Int32?);
+            return Int32.TryParse(value, out var result) ? result : default(Int32?);
         }
 
         public static Int64 ToInt64(this String value)
@@ -170,9 +164,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Int64? TryToInt64(this String value)
         {
-            Int64 result;
-
-            return Int64.TryParse(value, out result) ? result : default(Int64?);
+            return Int64.TryParse(value, out var result) ? result : default(Int64?);
         }
 
         public static BigInteger ToBigInteger(this String value)
@@ -182,9 +174,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static BigInteger? TryToBigInteger(this String value)
         {
-            BigInteger result;
-
-            return BigInteger.TryParse(value, out result) ? result :  default(BigInteger?);
+            return BigInteger.TryParse(value, out var result) ? result :  default(BigInteger?);
         }
 
         public static Byte ToByte(this String value)
@@ -209,30 +199,22 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Byte? TryToByte(this String value)
         {
-            Byte result;
-
-            return Byte.TryParse(value, out result) ? result : default(Byte?);
+            return Byte.TryParse(value, out var result) ? result : default(Byte?);
         }
 
         public static UInt16? TryToUInt16(this String value)
         {
-            UInt16 result;
-
-            return UInt16.TryParse(value, out result) ? result : default(UInt16?);
+            return UInt16.TryParse(value, out var result) ? result : default(UInt16?);
         }
 
         public static UInt32? TryToUInt32(this String value)
         {
-            UInt32 result;
-
-            return UInt32.TryParse(value, out result) ? result : default(UInt32?);
+            return UInt32.TryParse(value, out var result) ? result : default(UInt32?);
         }
 
         public static UInt64? TryToUInt64 (this String value)
         {
-            UInt64 result;
-
-            return UInt64.TryParse(value, out result) ? result : default(UInt64?);
+            return UInt64.TryParse(value, out var result) ? result : default(UInt64?);
         }
 
         public static Single ToSingle(this String value)
@@ -242,9 +224,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Single? TryToSingle(this String value)
         {
-            Single result;
-
-            return Single.TryParse(value, out result) ? result : default(Single?);
+            return Single.TryParse(value, out var result) ? result : default(Single?);
         }
 
         public static Double ToDouble(this String value)
@@ -254,9 +234,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Double? TryToDouble(this String value)
         {
-            Double result;
-
-            return Double.TryParse(value, out result) ? result : default(Double?);
+            return Double.TryParse(value, out var result) ? result : default(Double?);
         }
 
         public static Decimal ToDecimal(this String value)
@@ -266,9 +244,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
         public static Decimal? TryToDecimal(this String value)
         {
-            Decimal result;
-
-            return Decimal.TryParse(value, out result) ? result : default(Decimal?);
+            return Decimal.TryParse(value, out var result) ? result : default(Decimal?);
         }
 
         private const Int32 LatinAlphabetCharacterCount = 26;

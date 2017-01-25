@@ -165,19 +165,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
     
         public static void DrawTriangle(this Graphics graphics, Pen pen, Point pointA, Point pointB, Point pointC)
         {
-            graphics.DrawPolygon(pen, new Point[] { pointA, pointB, pointC } );
+            graphics.DrawPolygon(pen, new[] { pointA, pointB, pointC } );
         }
         public static void DrawTriangle(this Graphics graphics, Pen pen, PointF pointA, PointF pointB, PointF pointC)
         {
-            graphics.DrawPolygon(pen, new PointF[] { pointA, pointB, pointC } );
+            graphics.DrawPolygon(pen, new[] { pointA, pointB, pointC } );
         }
         public static void FillTriangle(this Graphics graphics, Brush brush, Point pointA, Point pointB, Point pointC)
         {
-            graphics.FillPolygon(brush, new Point[] { pointA, pointB, pointC } );
+            graphics.FillPolygon(brush, new[] { pointA, pointB, pointC } );
         }
         public static void FillTriangle(this Graphics graphics, Brush brush, PointF pointA, PointF pointB, PointF pointC)
         {
-            graphics.FillPolygon(brush, new PointF[] { pointA, pointB, pointC} );
+            graphics.FillPolygon(brush, new[] { pointA, pointB, pointC} );
         }
     }
 }
