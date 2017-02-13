@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
     public class DbMapperColumnAttribute : DbMappingNameAttribute
     {
-        protected DbMapperColumnAttribute(String name)
+        protected DbMapperColumnAttribute(string name)
             : base(name)
         {
         }

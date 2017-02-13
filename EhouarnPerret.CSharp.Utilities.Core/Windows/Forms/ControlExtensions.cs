@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -53,17 +53,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
         private static PropertyInfo DoubleBufferedProperty { get; }
 
-        private const String DoubleBufferedPropertyName = @"DoubleBuffered";
+        private const string DoubleBufferedPropertyName = @"DoubleBuffered";
 
-        public static void SetDoubleBuffered<TControl>(this TControl control, Boolean value)
+        public static void SetDoubleBuffered<TControl>(this TControl control, bool value)
             where TControl : Control
         {
             DoubleBufferedProperty.SetValue(control, value);
         }
 
-        public static Boolean GetDoubleBuffered<TControl>(this TControl control)
+        public static bool GetDoubleBuffered<TControl>(this TControl control)
         {
-            return (Boolean)DoubleBufferedProperty.GetValue(control);
+            return (bool)DoubleBufferedProperty.GetValue(control);
         }
 
         /// <summary>
@@ -120,44 +120,44 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             control.DragDrop += OnControlDragDrop;
         }
 
-        private static void ControlGiveFeedback (Object sender, GiveFeedbackEventArgs e)
+        private static void ControlGiveFeedback (object sender, GiveFeedbackEventArgs e)
         {
             var control = (Control)sender;
             DragAndDrops[control].GiveFeedback(control, e);
         }
-        private static void OnControlDragOver (Object sender, DragEventArgs e)
+        private static void OnControlDragOver (object sender, DragEventArgs e)
         {
             var control = (Control)sender;
             DragAndDrops[control].DragOver(control, e);
         }
-        private static void OnControlMouseDown (Object sender, MouseEventArgs e)
+        private static void OnControlMouseDown (object sender, MouseEventArgs e)
         {
             var control = (Control)sender;
             DragAndDrops[control].MouseDown(control, e);
         }
-        private static void OnControlMouseMove (Object sender, MouseEventArgs e)
+        private static void OnControlMouseMove (object sender, MouseEventArgs e)
         {
             var control = (Control)sender;
             DragAndDrops[control].MouseMove(control, e);
         }
-        private static void OnControlDragDrop (Object sender, DragEventArgs e)
+        private static void OnControlDragDrop (object sender, DragEventArgs e)
         {
             var control = (Control)sender;
             DragAndDrops[control].DragDrop(control, e);
 
         }
-        private static void OnControlDragLeave (Object sender, EventArgs e)
+        private static void OnControlDragLeave (object sender, EventArgs e)
         {
             var control = (Control)sender;
             DragAndDrops[control].DragLeave(control, e);
         }
-        private static void OnControlDragEnter (Object sender, DragEventArgs e)
+        private static void OnControlDragEnter (object sender, DragEventArgs e)
         {
             var control = (Control)sender;
             DragAndDrops[control].DragEnter(control, e);
         }
 
-        private static void OnControlDisposed (Object sender, EventArgs e)
+        private static void OnControlDisposed (object sender, EventArgs e)
         {
             var control = (Control)sender;
             control.DisableDragAndDropSupport();

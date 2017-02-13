@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
     [Serializable]
     public struct BigIntegerFraction : IFraction<BigInteger>
     {
-        public string ToString(String format, IFormatProvider formatProvider)
+        public string ToString(string format, IFormatProvider formatProvider)
         {
             throw new NotImplementedException();
         }
@@ -82,32 +82,32 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             Denominator = denominator;
         }
 
-        public static Boolean operator ==(BigIntegerFraction left,  BigIntegerFraction right) 
+        public static bool operator ==(BigIntegerFraction left,  BigIntegerFraction right) 
         {
             return Compare(left, right) == 0;
         }
 
-        public static Boolean operator !=(BigIntegerFraction left,  BigIntegerFraction right) 
+        public static bool operator !=(BigIntegerFraction left,  BigIntegerFraction right) 
         {
             return Compare(left, right) != 0;
         }
 
-        public static Boolean operator <(BigIntegerFraction left,  BigIntegerFraction right) 
+        public static bool operator <(BigIntegerFraction left,  BigIntegerFraction right) 
         {
             return Compare(left, right) < 0;
         }
 
-        public static Boolean operator <=(BigIntegerFraction left,  BigIntegerFraction right) 
+        public static bool operator <=(BigIntegerFraction left,  BigIntegerFraction right) 
         {
             return Compare(left, right) <= 0;
         }
 
-        public static Boolean operator >(BigIntegerFraction left,  BigIntegerFraction right) 
+        public static bool operator >(BigIntegerFraction left,  BigIntegerFraction right) 
         {
             return Compare(left, right) > 0;
         }
 
-        public static Boolean operator >=(BigIntegerFraction left,  BigIntegerFraction right) 
+        public static bool operator >=(BigIntegerFraction left,  BigIntegerFraction right) 
         {
             return Compare(left, right) >= 0;
         }
@@ -172,7 +172,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return new BigIntegerFraction(numerator, denominator);
         }
 
-        Boolean IEquatable<IFraction<BigInteger>>.Equals(IFraction<BigInteger> other)
+        bool IEquatable<IFraction<BigInteger>>.Equals(IFraction<BigInteger> other)
         {
             if (Numerator == other.Numerator && Denominator == other.Denominator)
             {
@@ -181,7 +181,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return Numerator * other.Denominator == Denominator * other.Numerator;
         }
        
-        public override Boolean Equals(object obj)
+        public override bool Equals(object obj)
         {
             if (obj == null || !(obj is BigIntegerFraction))
             {
@@ -190,12 +190,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return Equals((BigIntegerFraction)obj);
         }
 
-        public override Int32 GetHashCode()
+        public override int GetHashCode()
         {
             return (Numerator / Denominator).GetHashCode();
         }
 
-        public Int32 CompareTo(IFraction<BigInteger> other)
+        public int CompareTo(IFraction<BigInteger> other)
         {
             return Compare(this, (BigIntegerFraction)other);
         }
@@ -228,7 +228,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return result;
         }
 
-        public static Int32 Compare(BigIntegerFraction left, BigIntegerFraction right) 
+        public static int Compare(BigIntegerFraction left, BigIntegerFraction right) 
         {
             var numerator = left.Numerator * right.Denominator;
             var denominator = right.Numerator * left.Denominator;
@@ -236,7 +236,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return BigInteger.Compare(numerator, denominator);
         }
 
-        public Int32 CompareTo(Object obj)
+        public int CompareTo(object obj)
         {
             if (obj == null || !(obj is BigIntegerFraction))
             {
@@ -245,7 +245,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return Compare(this, (BigIntegerFraction)obj);
         }
 
-        public static BigIntegerFraction Parse(String numeratorString, String denominatorString)
+        public static BigIntegerFraction Parse(string numeratorString, string denominatorString)
         {
             var numerator = BigInteger.Parse(numeratorString);
             var denominator = BigInteger.Parse(denominatorString);

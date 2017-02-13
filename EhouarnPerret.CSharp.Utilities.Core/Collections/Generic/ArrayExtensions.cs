@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -57,9 +57,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             return source[index];
         }
 
-        public static Object Random(this Array source)
+        public static object Random(this Array source)
         {
-            var indices = new Int32[source.Rank];
+            var indices = new int[source.Rank];
 
             for (var dimension = 0; dimension < indices.Length; dimension++)
             {
@@ -75,7 +75,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
         public static T Random<T>(this Array source)
         {
-            var indices = new Int32[source.Rank];
+            var indices = new int[source.Rank];
 
             for (var dimension = 0; dimension < indices.Length; dimension++)
             {
@@ -107,7 +107,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             return outputArray;
         }
     
-        public static T[] Copy<T> (this T[] source, Int32 offset, Int32 length)
+        public static T[] Copy<T> (this T[] source, int offset, int length)
         {
             var array = new T[length];
 

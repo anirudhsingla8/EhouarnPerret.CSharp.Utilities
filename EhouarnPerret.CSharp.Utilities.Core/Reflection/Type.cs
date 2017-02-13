@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,26 +37,26 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 
         private static Type UnderlyingType { get; }
 
-        public static TProperty GetPropertyValue<TProperty>(String propertyName, TInstance instance, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
+        public static TProperty GetPropertyValue<TProperty>(string propertyName, TInstance instance, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
             var property = UnderlyingType.GetProperty(propertyName, bindingFlags);
 
             return property.GetValue<TProperty, TInstance>(instance);
         }
-        public static void SetPropertyValue<TProperty>(String propertyName, TInstance instance, TProperty value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
+        public static void SetPropertyValue<TProperty>(string propertyName, TInstance instance, TProperty value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
             var property = UnderlyingType.GetProperty(propertyName, bindingFlags);
 
             property.SetValue(instance, value);
         }
     
-        public static TProperty GetFieldInfo<TProperty>(String propertyName, TInstance instance, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
+        public static TProperty GetFieldInfo<TProperty>(string propertyName, TInstance instance, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
             var property = UnderlyingType.GetProperty(propertyName, bindingFlags);
 
             return property.GetValue<TProperty, TInstance>(instance);
         }
-        public static void SetFieldInfo<TProperty>(String propertyName, TInstance instance, TProperty value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
+        public static void SetFieldInfo<TProperty>(string propertyName, TInstance instance, TProperty value, BindingFlags bindingFlags = BindingFlags.Public | BindingFlags.Instance)
         {
             var property = UnderlyingType.GetProperty(propertyName, bindingFlags);
 

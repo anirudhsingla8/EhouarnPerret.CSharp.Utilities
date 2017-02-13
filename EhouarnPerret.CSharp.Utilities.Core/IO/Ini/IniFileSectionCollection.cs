@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,19 +24,18 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
 {
-    public class IniFileSectionCollection : ParentReferencedKeyedCollection<String, IniFileSection, IniFile>
+    public class IniFileSectionCollection : ParentReferencedKeyedCollection<string, IniFileSection, IniFile>
     {
         internal IniFileSectionCollection(IniFile iniFile)
             : base(iniFile, section => section.Name)
         {
         }
 
-        protected override void InsertItem(Int32 index, IniFileSection item)
+        protected override void InsertItem(int index, IniFileSection item)
         {
             base.InsertItem(index, item);
 

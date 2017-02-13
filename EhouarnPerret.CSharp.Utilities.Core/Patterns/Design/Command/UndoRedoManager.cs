@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,17 +30,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
 {
     public class UndoRedoManager
     {
-        public UndoRedoManager(UInt16 capacity = 512)
+        public UndoRedoManager(ushort capacity = 512)
         {
             Capacity = capacity;
             UndoCommands = new Stack<IReversibleCommand>(capacity);
             RedoCommands = new Stack<IReversibleCommand>(capacity);
         }
 
-        public UInt16 Capacity { get; }
+        public ushort Capacity { get; }
 
-        public UInt16 RedoCount => Convert.ToUInt16(RedoCommands.Count);
-        public UInt16 UndoCount => Convert.ToUInt16(UndoCommands.Count);
+        public ushort RedoCount => Convert.ToUInt16(RedoCommands.Count);
+        public ushort UndoCount => Convert.ToUInt16(UndoCommands.Count);
 
         private Stack<IReversibleCommand> UndoCommands { get; }
         private Stack<IReversibleCommand> RedoCommands { get; }
@@ -68,7 +68,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
             AddExecute(command);
         }
 
-        public void Undo(UInt16 levelCount = 1)
+        public void Undo(ushort levelCount = 1)
         {
             for (var i = 0; i < levelCount && UndoCount > 0; i++)
             {
@@ -79,7 +79,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Design.Command
                 RedoCommands.Push(reversibleCommand);
             }
         }
-        public void Redo(UInt16 levelCount = 1)
+        public void Redo(ushort levelCount = 1)
         {
             for (var i = 0; i < levelCount && RedoCount > 0; i++)
             {

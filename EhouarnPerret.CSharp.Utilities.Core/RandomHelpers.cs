@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -34,113 +34,113 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             Random = new Random();
         }
 
-        public static Boolean NextBoolean()
+        public static bool NextBoolean()
         {
             return Random.NextBoolean();
         }
 
-        public static Byte[] NextBytes(Int32 byteCount)
+        public static byte[] NextBytes(int byteCount)
         {
             return Random.NextBytes(byteCount);
         }
 
-        public static Byte NextByte()
+        public static byte NextByte()
         {
             return Random.NextByte();
         }
-        public static Byte NextByte(Byte minimumValue, Byte maximumValue)
+        public static byte NextByte(byte minimumValue, byte maximumValue)
         {
-            return Random.NextByte(Byte.MinValue, Byte.MaxValue);
+            return Random.NextByte(byte.MinValue, byte.MaxValue);
         }
 
-        public static UInt16 NextUInt16()
+        public static ushort NextUInt16()
         {
             return Random.NextUInt16();
         }
-        public static UInt16 NextUInt16(UInt16 minimumValue, UInt16 maximumValue)
+        public static ushort NextUInt16(ushort minimumValue, ushort maximumValue)
         {
             return Random.NextUInt16(minimumValue, maximumValue);
         }
 
-        public static UInt32 NextUInt32()
+        public static uint NextUInt32()
         {
             return Random.NextUInt32();
         }
-        public static UInt32 NextUInt32(UInt32 minimumValue, UInt32 maximumValue)
+        public static uint NextUInt32(uint minimumValue, uint maximumValue)
         {
             return Random.NextUInt32(minimumValue, maximumValue);
         }
 
-        public static UInt64 NextUInt64()
+        public static ulong NextUInt64()
         {
             return Random.NextUInt64();
         }
-        public static UInt64 NextUInt64(UInt64 minimumValue, UInt64 maximumValue)
+        public static ulong NextUInt64(ulong minimumValue, ulong maximumValue)
         {
             return Random.NextUInt64(minimumValue, maximumValue);
         }
 
-        public static SByte NextSByte()
+        public static sbyte NextSByte()
         {
             return Random.NextSByte();
         }
-        public static SByte NextSByte(SByte minimumValue, SByte maximumValue)
+        public static sbyte NextSByte(sbyte minimumValue, sbyte maximumValue)
         {
             return Random.NextSByte(minimumValue, maximumValue);
         }
 
-        public static Int16 NextInt16()
+        public static short NextInt16()
         {
             return Random.NextInt16();
         }
-        public static Int16 NextInt16(Int16 minimumValue, Int16 maximumValue)
+        public static short NextInt16(short minimumValue, short maximumValue)
         {
             return Random.NextInt16(minimumValue, maximumValue);
         }
 
-        public static Int32 NextInt32()
+        public static int NextInt32()
         {
             return Random.NextInt32();
         }
-        public static Int32 NextInt32(Int32 minimumValue, Int32 maximumValue)
+        public static int NextInt32(int minimumValue, int maximumValue)
         {
             return Random.NextInt32(minimumValue, maximumValue);
         }
 
-        public static Int64 NextInt64()
+        public static long NextInt64()
         {
             return Random.NextInt64();
         }
-        public static Int64 NextInt64(Int64 minimumValue, Int64 maximumValue)
+        public static long NextInt64(long minimumValue, long maximumValue)
         {
             return Random.NextInt64(minimumValue, maximumValue);
         }
 
-        public static Single NextSingle()
+        public static float NextSingle()
         {
             return Random.NextSingle();
         }
-        public static Single NextSingle(Single minimumValue, Single maximumValue)
+        public static float NextSingle(float minimumValue, float maximumValue)
         {
             return Random.NextSingle(minimumValue, maximumValue);
         }
 
-        public static Double NextDouble()
+        public static double NextDouble()
         {
             // RandomHelpers.Random.NextDouble();
             // Analysis disable once InvokeAsExtensionMethod
             return RandomExtensions.NextDouble(Random);
         }
-        public static Double NextDouble(Double minimumValue, Double maximumValue)
+        public static double NextDouble(double minimumValue, double maximumValue)
         {
             return Random.NextDouble(minimumValue, maximumValue);
         }
 
-        public static Decimal NextDecimal()
+        public static decimal NextDecimal()
         {
             return Random.NextDecimal();
         }
-        public static Decimal NextDecimal(Decimal minimumValue, Decimal maximumValue)
+        public static decimal NextDecimal(decimal minimumValue, decimal maximumValue)
         {
             return Random.NextDecimal(minimumValue, maximumValue);
         }

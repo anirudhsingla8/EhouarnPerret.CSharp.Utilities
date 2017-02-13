@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Drawing;
 using System.Drawing.Imaging;
 
@@ -31,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
     public static class GraphicsExtensions
     {
-        public static Bitmap ToBitmap(this Graphics graphics, Int32 width, Int32 height, Int32 destinationX, Int32 destinationY, Int32 destinationHeight, Int32 destinationWidth, Single sourceX, Single sourceY, Single sourceWidth, Single sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        public static Bitmap ToBitmap(this Graphics graphics, int width, int height, int destinationX, int destinationY, int destinationHeight, int destinationWidth, float sourceX, float sourceY, float sourceWidth, float sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
         {
             var bitmap = new Bitmap(width, height, pixelFormat);
 
@@ -41,11 +41,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 
             return bitmap;
         }
-        public static Bitmap ToBitmap(this Graphics graphics, Size size, Int32 destinationX, Int32 destinationY, Int32 destinationHeight, Int32 destinationWidth, Single sourceX, Single sourceY, Single sourceWidth, Single sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        public static Bitmap ToBitmap(this Graphics graphics, Size size, int destinationX, int destinationY, int destinationHeight, int destinationWidth, float sourceX, float sourceY, float sourceWidth, float sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
         {
             return graphics.ToBitmap(size.Width, size.Height, destinationX, destinationY, destinationWidth, destinationHeight, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes, pixelFormat);
         }
-        public static Bitmap ToBitmap(this Graphics graphics, Int32 width, Int32 height, Int32 destinationX, Int32 destinationY, Int32 destinationHeight, Int32 destinationWidth, Int32 sourceX, Int32 sourceY, Int32 sourceWidth, Int32 sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        public static Bitmap ToBitmap(this Graphics graphics, int width, int height, int destinationX, int destinationY, int destinationHeight, int destinationWidth, int sourceX, int sourceY, int sourceWidth, int sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
         {
             var bitmap = new Bitmap(width, height, pixelFormat);
 
@@ -55,14 +55,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 
             return bitmap;
         }
-        public static Bitmap ToBitmap(this Graphics graphics, Size size, Int32 destinationX, Int32 destinationY, Int32 destinationHeight, Int32 destinationWidth, Int32 sourceX, Int32 sourceY, Int32 sourceWidth, Int32 sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        public static Bitmap ToBitmap(this Graphics graphics, Size size, int destinationX, int destinationY, int destinationHeight, int destinationWidth, int sourceX, int sourceY, int sourceWidth, int sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
         {
             return graphics.ToBitmap(size.Width, size.Height, destinationX, destinationY, destinationWidth, destinationHeight, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes, pixelFormat);
         }
 
-        public static Bitmap ToBitmap(this Graphics graphics, Rectangle destination, Single sourceX, Single sourceY, Single sourceWidth, Single sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
+        public static Bitmap ToBitmap(this Graphics graphics, Rectangle destination, float sourceX, float sourceY, float sourceWidth, float sourceHeight, GraphicsUnit graphicsUnit = GraphicsUnit.Pixel, ImageAttributes imageAttributes = default(ImageAttributes), PixelFormat pixelFormat = PixelFormat.Format32bppArgb)
         {
-            var bitmap = new Bitmap((Int32)graphics.ClipBounds.Size.Width, (Int32)graphics.ClipBounds.Size.Height, pixelFormat);
+            var bitmap = new Bitmap((int)graphics.ClipBounds.Size.Width, (int)graphics.ClipBounds.Size.Height, pixelFormat);
 
             graphics.DrawImage(bitmap, destination, sourceX, sourceY, sourceWidth, sourceHeight, graphicsUnit, imageAttributes);
 
@@ -92,7 +92,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
             return graphics.ToBitmap(size, 0, 0, size.Height, size.Width, destination.X, destination.Y, destination.Width, destination.Height, graphicsUnit, imageAttributes, pixelFormat);
         }
 
-        public static void DrawGrid(this Graphics graphics, Pen pen, Rectangle rectangle, Int32 columnCount, Int32 rowCount)
+        public static void DrawGrid(this Graphics graphics, Pen pen, Rectangle rectangle, int columnCount, int rowCount)
         {
             var cellSize = new SizeF(rectangle.Width / columnCount, rectangle.Height / rowCount);
 
@@ -106,59 +106,59 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
             }
         }
 
-        public static void DrawSquare(this Graphics graphics, Pen pen, Point topLeftCorner, Int32 width)
+        public static void DrawSquare(this Graphics graphics, Pen pen, Point topLeftCorner, int width)
         {
             graphics.DrawRectangle(pen, topLeftCorner.X, topLeftCorner.Y, width, width);
         }
-        public static void DrawSquare(this Graphics graphics, Pen pen, PointF topLeftCorner, Single width)
+        public static void DrawSquare(this Graphics graphics, Pen pen, PointF topLeftCorner, float width)
         {
             graphics.DrawRectangle(pen, topLeftCorner.X, topLeftCorner.Y, width, width);
         }
 
-        public static void FillSquare(this Graphics graphics, Brush brush, Point topLeftCorner, Int32 width)
+        public static void FillSquare(this Graphics graphics, Brush brush, Point topLeftCorner, int width)
         {
             graphics.FillRectangle(brush, topLeftCorner.X, topLeftCorner.Y, width, width);
         }
-        public static void FillSquare(this Graphics graphics, Brush brush, PointF topLeftCorner, Single width)
+        public static void FillSquare(this Graphics graphics, Brush brush, PointF topLeftCorner, float width)
         {
             graphics.FillRectangle(brush, topLeftCorner.X, topLeftCorner.Y, width, width);
         }
 
-        public static void DrawCircle(this Graphics graphics, Pen pen, Point center, Int32 radius)
+        public static void DrawCircle(this Graphics graphics, Pen pen, Point center, int radius)
         {
             graphics.DrawCircle(pen, center.X, center.Y, radius);
         }
-        public static void DrawCircle(this Graphics graphics, Pen pen, Int32 centerX, Int32 centerY, Int32 radius)
+        public static void DrawCircle(this Graphics graphics, Pen pen, int centerX, int centerY, int radius)
         {
             var ellipseRectangle = new Rectangle(centerX - radius, centerY - radius, radius * 2, radius * 2);
 
             graphics.DrawEllipse(pen, ellipseRectangle);
         }
-        public static void DrawCircle(this Graphics graphics, Pen pen, PointF center, Single radius)
+        public static void DrawCircle(this Graphics graphics, Pen pen, PointF center, float radius)
         {
             graphics.DrawCircle(pen, center.X, center.Y, radius);
         }
-        public static void DrawCircle(this Graphics graphics, Pen pen, Single centerX, Single centerY, Single radius)
+        public static void DrawCircle(this Graphics graphics, Pen pen, float centerX, float centerY, float radius)
         {
             var ellipseRectangle = new RectangleF(centerX - radius, centerY - radius, radius * 2f, radius * 2f);
 
             graphics.DrawEllipse(pen, ellipseRectangle);
         }
 
-        public static void FillCircle(this Graphics graphics, Brush brush, Point center, Int32 radius)
+        public static void FillCircle(this Graphics graphics, Brush brush, Point center, int radius)
         {
             graphics.FillCircle(brush, center.X, center.Y, radius);
         }
-        public static void FillCircle(this Graphics graphics, Brush brush, Int32 centerX, Int32 centerY, Int32 radius)
+        public static void FillCircle(this Graphics graphics, Brush brush, int centerX, int centerY, int radius)
         {
             graphics.FillEllipse(brush, centerX - radius, centerY - radius, radius * 2, radius * 2);
         }
 
-        public static void FillCircle(this Graphics graphics, Brush brush, PointF center, Single radius)
+        public static void FillCircle(this Graphics graphics, Brush brush, PointF center, float radius)
         {
             graphics.FillCircle(brush, center.X, center.Y, radius);
         }
-        public static void FillCircle(this Graphics graphics, Brush brush, Single centerX, Single centerY, Single radius)
+        public static void FillCircle(this Graphics graphics, Brush brush, float centerX, float centerY, float radius)
         {
             graphics.FillEllipse(brush, centerX - radius, centerY - radius, radius * 2f, radius * 2f);
         }

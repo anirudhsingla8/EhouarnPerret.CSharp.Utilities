@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE
 
-using System;
 using System.Linq;
 using System.Collections.Generic;
 
@@ -32,12 +31,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-        public static IEnumerable<TSource> SkipTake<TSource>(IEnumerable<TSource> source, Int32 skipCount, Int32 takeCount)
+        public static IEnumerable<TSource> SkipTake<TSource>(IEnumerable<TSource> source, int skipCount, int takeCount)
 		{
             return source.Skip(skipCount).Take(takeCount);
 		}
 
-        public static TSource SkipTake<TSource>(IEnumerable<TSource> source, Int32 skipCount)
+        public static TSource SkipTake<TSource>(IEnumerable<TSource> source, int skipCount)
         {
             return source.Skip(skipCount).Take(1).Single();
         }

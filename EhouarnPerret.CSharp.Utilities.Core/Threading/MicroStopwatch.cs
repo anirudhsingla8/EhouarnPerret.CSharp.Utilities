@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -39,8 +39,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             return microStopwatch;
         }
 
-        private static readonly Double _microSecondsPerTick = 1E6D / Frequency;
-        public static Double MicroSecondsPerTick => _microSecondsPerTick;
+        private static readonly double _microSecondsPerTick = 1E6D / Frequency;
+        public static double MicroSecondsPerTick => _microSecondsPerTick;
 
         public MicroStopwatch()
         {
@@ -51,7 +51,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             return;
         }
 
-        public Int64 ElapsedMicroseconds => (Int64)(ElapsedTicks * MicroSecondsPerTick);
+        public long ElapsedMicroseconds => (long)(ElapsedTicks * MicroSecondsPerTick);
     }
 }
 

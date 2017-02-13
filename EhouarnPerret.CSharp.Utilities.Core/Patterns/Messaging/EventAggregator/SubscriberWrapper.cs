@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
 
         private Type MessageType { get; }
 
-        private SubscriberWrapper(Object subscriber)
+        private SubscriberWrapper(object subscriber)
         {
             var type = subscriber.GetType();
         }

@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             }
             throw new TimeoutException();
         }
-        public static T Take<T>(this BlockingCollection<T> blockingCollection, UInt16 timeout)
+        public static T Take<T>(this BlockingCollection<T> blockingCollection, ushort timeout)
         {
             if (blockingCollection.TryTake(out var value, timeout))
             {

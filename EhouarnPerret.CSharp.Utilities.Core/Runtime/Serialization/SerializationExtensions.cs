@@ -23,7 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -34,23 +34,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
     public static class SerializationExtensions
     {
-        public static void SerializeToXmlFile<T>(this T value, String path)
+        public static void SerializeToXmlFile<T>(this T value, string path)
             where T : new()
         {
             value.SerializeToXml().WriteToFile(path);
         }
-        public static void SerializeToJsonFile<T>(this T value, String path)
+        public static void SerializeToJsonFile<T>(this T value, string path)
             where T : new()
         {
             value.SerializeToJson().WriteToFile(path);
         }
 
-        public static T DeserializeXmlFile<T>(this String path)
+        public static T DeserializeXmlFile<T>(this string path)
             where T : new()
         {
             return path.ReadTextFromFile().DeserializeXml<T>();
         }
-        public static T DeserializeJsonFile<T>(this String path)
+        public static T DeserializeJsonFile<T>(this string path)
             where T : new()
         {
             return path.ReadTextFromFile().DeserializeJson<T>();
@@ -69,7 +69,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             SerializeReadOnlyTypes = true,
         };
 
-        public static String SerializeToXml<T>(this T value)
+        public static string SerializeToXml<T>(this T value)
             where T : new()
         {
             var dataContractSerializer = new DataContractSerializer(typeof(T), XmlSerializerSettings);
@@ -102,7 +102,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
                 }
             }
         }
-        public static String SerializeToJson<T>(this T value)
+        public static string SerializeToJson<T>(this T value)
             where T : new()
         {
             var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), JsonSerializerSettings);
@@ -120,7 +120,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
             }
         }
 
-        public static T DeserializeXml<T>(this String value)
+        public static T DeserializeXml<T>(this string value)
             where T : new()
         {
             var dataContractSerializer = new DataContractSerializer(typeof(T), XmlSerializerSettings);
@@ -133,7 +133,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
                 }
             }
         }
-        public static T DeserializeJson<T>(this String value)
+        public static T DeserializeJson<T>(this string value)
             where T : new()
         {
             var dataContractJsonSerializer = new DataContractJsonSerializer(typeof(T), JsonSerializerSettings);

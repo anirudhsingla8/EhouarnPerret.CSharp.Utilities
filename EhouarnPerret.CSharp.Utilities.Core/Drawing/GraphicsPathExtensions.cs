@@ -23,14 +23,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Drawing.Drawing2D;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Drawing
 {
     public static class GraphicsPathExtensions
     {
-        public static void Round(this GraphicsPath graphicsPath, UInt16 radius, Boolean vertexes)
+        public static void Round(this GraphicsPath graphicsPath, ushort radius, bool vertexes)
         {
 
         }

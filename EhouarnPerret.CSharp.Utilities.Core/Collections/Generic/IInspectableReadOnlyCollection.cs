@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -32,10 +31,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IInspectableReadOnlyCollection<T> : ICollection, IReadOnlyCollection<T>
     {
-        Boolean Contains(T item);
+        bool Contains(T item);
 
-        void CopyTo(T[] array, Int32 arrayIndex);
+        void CopyTo(T[] array, int arrayIndex);
 
-        Boolean TryGetItem(out T item);
+        bool TryGetItem(out T item);
     }
 }

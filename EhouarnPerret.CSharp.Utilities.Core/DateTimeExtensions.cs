@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,9 +32,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class DateTimeExtensions
     {
-        private const String DateTimeIsoStringFormat = @"yyyy-MM-dd HH:mm:ss.fff";
-        private const String DateIsoStringFormat = @"yyyy-MM-dd";
-        private const String TimeIsoStringFormat = @"HH:mm:ss.fff";
+        private const string DateTimeIsoStringFormat = @"yyyy-MM-dd HH:mm:ss.fff";
+        private const string DateIsoStringFormat = @"yyyy-MM-dd";
+        private const string TimeIsoStringFormat = @"HH:mm:ss.fff";
 
         public static IEnumerable<DateTime> OnWeekends(this IEnumerable<DateTime> source)
         {
@@ -72,38 +72,38 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return dateTime.AddYears(-1);
         }
 
-        public static Boolean IsWeekend(this DateTime dateTime)
+        public static bool IsWeekend(this DateTime dateTime)
         {
             return dateTime.DayOfWeek.IsIn(DayOfWeek.Saturday, DayOfWeek.Sunday);
         }
-        public static Boolean IsNotWeekend(this DateTime dateTime)
+        public static bool IsNotWeekend(this DateTime dateTime)
         {
             return !dateTime.IsWeekend();
         }
 
-        public static String ToInvariantIsoString(this DateTime dateTime)
+        public static string ToInvariantIsoString(this DateTime dateTime)
         {
             return dateTime.ToIsoString(CultureInfo.InvariantCulture);
         }
-        public static String ToIsoString(this DateTime dateTime, IFormatProvider formatProvider)
+        public static string ToIsoString(this DateTime dateTime, IFormatProvider formatProvider)
         {
             return dateTime.ToString(DateTimeIsoStringFormat, formatProvider);
         }
 
-        public static String ToInvariantIsoDateString(this DateTime dateTime)
+        public static string ToInvariantIsoDateString(this DateTime dateTime)
         {
             return dateTime.ToIsoDatetring(CultureInfo.InvariantCulture);
         }
-        public static String ToIsoDatetring(this DateTime dateTime, IFormatProvider formatProvider)
+        public static string ToIsoDatetring(this DateTime dateTime, IFormatProvider formatProvider)
         {
             return dateTime.ToString(DateIsoStringFormat, formatProvider);
         }
     
-        public static String ToInvariantIsoTimeString(this DateTime dateTime)
+        public static string ToInvariantIsoTimeString(this DateTime dateTime)
         {
             return dateTime.ToIsoTimeString(CultureInfo.InvariantCulture);
         }
-        public static String ToIsoTimeString(this DateTime dateTime, IFormatProvider formatProvider)
+        public static string ToIsoTimeString(this DateTime dateTime, IFormatProvider formatProvider)
         {
             return dateTime.ToString(TimeIsoStringFormat, formatProvider);
         }
@@ -121,27 +121,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static IEnumerable<DateTime> AsEnumerableDays(this DateTime start, DateTime stop, Double interval = 1)
+        public static IEnumerable<DateTime> AsEnumerableDays(this DateTime start, DateTime stop, double interval = 1)
         {
             return start.AsEnumerable(stop, TimeSpan.FromDays(interval));
         }
 
-        public static IEnumerable<DateTime> AsEnumerableHours(this DateTime start, DateTime stop, Double interval = 1)
+        public static IEnumerable<DateTime> AsEnumerableHours(this DateTime start, DateTime stop, double interval = 1)
         {
             return start.AsEnumerable(stop, TimeSpan.FromHours(interval));
         }
 
-        public static IEnumerable<DateTime> AsEnumerableMinutes(this DateTime start, DateTime stop, Double interval = 1)
+        public static IEnumerable<DateTime> AsEnumerableMinutes(this DateTime start, DateTime stop, double interval = 1)
         {
             return start.AsEnumerable(stop, TimeSpan.FromMinutes(interval));
         }
 
-        public static IEnumerable<DateTime> AsEnumerableSeconds(this DateTime start, DateTime stop, Double interval = 1)
+        public static IEnumerable<DateTime> AsEnumerableSeconds(this DateTime start, DateTime stop, double interval = 1)
         {
             return start.AsEnumerable(stop, TimeSpan.FromSeconds(interval));
         }
 
-        public static IEnumerable<DateTime> AsEnumerableMilliseconds(this DateTime start, DateTime stop, Double interval = 1)
+        public static IEnumerable<DateTime> AsEnumerableMilliseconds(this DateTime start, DateTime stop, double interval = 1)
         {
             return start.AsEnumerable(stop, TimeSpan.FromMilliseconds(interval));
         }

@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 // 
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Threading;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Threading
@@ -33,7 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
     {
         private SynchronizationContext SynchronizationContext { get; }
 
-        public Boolean IsAsynchronous { get; set; }
+        public bool IsAsynchronous { get; set; }
 
         public SynchronizedTimer(SynchronizationContext synchronizationContext)
         {

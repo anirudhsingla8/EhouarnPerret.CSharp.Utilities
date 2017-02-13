@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,16 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IKeyedCollection<TKey, TItem> : ICollection<TItem>
     {
-        Boolean Contains(TKey key);
-        Boolean TryGetItem(TKey key, out TItem item);
-        Int32 IndexOf(TKey key);
+        bool Contains(TKey key);
+        bool TryGetItem(TKey key, out TItem item);
+        int IndexOf(TKey key);
 
         TItem this [TKey key]{ get; }
     }

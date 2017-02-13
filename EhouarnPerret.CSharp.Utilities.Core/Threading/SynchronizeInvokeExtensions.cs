@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -58,7 +58,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         {
             if (synchronizedInvoker.InvokeRequired)
             {
-                synchronizedInvoker.Invoke(action, new Object[] { synchronizedInvoker });
+                synchronizedInvoker.Invoke(action, new object[] { synchronizedInvoker });
             }
             else
             {
@@ -71,7 +71,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         {
             if (synchronizedInvoker.InvokeRequired)
             {
-                return (TResult)synchronizedInvoker.Invoke(func, new Object[] { synchronizedInvoker });
+                return (TResult)synchronizedInvoker.Invoke(func, new object[] { synchronizedInvoker });
             }
             return func(synchronizedInvoker);
         }

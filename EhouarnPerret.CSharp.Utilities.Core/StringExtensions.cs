@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,7 +31,6 @@ using System.Linq;
 using System.Numerics;
 using System.Security;
 using System.Text;
-
 using System.Text.RegularExpressions;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
@@ -38,54 +38,76 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class StringExtensions
     {
-        public static void AppendToFile(this IEnumerable<String> source, String path)
+        public static void AppendToFile(this IEnumerable<string> source, string path)
         {
             File.AppendAllLines(path, source);
         }
 
-        public static void WriteToFile(this IEnumerable<String> source, String path)
+        //public static Task AppendToFileAsync(this IEnumerable<string> source, string path)
+        //{
+        //}
+
+        public static void WriteToFile(this IEnumerable<string> source, string path)
         {
             File.WriteAllLines(path, source);
         }
 
-        public static void WriteToFile(this String value, String path)
+        //public static Task WriteToFileAsync(this IEnumerable<string> source, string path)
+        //{
+        //    File.OpenWrite(path).WriteAsync()
+        //}
+
+        public static void WriteToFile(this string value, string path)
         {
             File.WriteAllText(path, value);
         }
 
-        public static void AppendToFile(this String value, String path)
+        //public static Task WriteToFileAsync(this IEnumerable<string> source, string path)
+        //{
+        //    File.OpenWrite(path).WriteAsync()
+        //}
+
+        public static void AppendToFile(this string value, string path)
         {
             File.AppendAllText(path, value);
         }
 
-        public static String ReadTextFromFile(this String path)
+        public static string ReadTextFromFile(this string path)
         {
             return File.ReadAllText(path);
         }
 
-        public static String ReadTextFromFile(this String path, Encoding encoding)
+        public static string ReadTextFromFile(this string path, Encoding encoding)
         {
             return File.ReadAllText(path, encoding);
         }
 
-        public static IEnumerable<String> ReadLinesFromFile(this String path)
-        {
-            return File.ReadAllLines(path);
-        }
+        //public static Task<string> ReadTextFromFileAsync(this string path, Encoding encoding)
+        //{
+        //}
 
-        public static IEnumerable<String> ReadLinesFromFile(this String path, Encoding encoding)
+        //public static IEnumerable<string> ReadLinesFromFile(this string path)
+        //{
+        //    return File.ReadAllLines(path);
+        //}
+
+        //public static Task<IEnumerable<string>> ReadLinesFromFile(this string path)
+        //{
+        //}
+
+        public static IEnumerable<string> ReadLinesFromFile(this string path, Encoding encoding)
         {
             return File.ReadAllLines(path, encoding);
         }
 
-        public static Byte[] ReadBytesFromFile(this String path)
+        public static byte[] ReadBytesFromFile(this string path)
         {
             return File.ReadAllBytes(path);
         }
 
-        public static ILookup<Char, Int32> IndexesOf(this String value, params Char[] characters) 
+        public static ILookup<char, int> IndexesOf(this string value, params char[] characters) 
         {
-            var dictionary = characters.ToDictionary<Char, Char, IList<Int32>>(c => c, c => new List<Int32>());
+            var dictionary = characters.ToDictionary<char, char, IList<int>>(c => c, c => new List<int>());
 
             for (var i = 0; i < value.Length; i++)
             {
@@ -102,21 +124,21 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return lookup;
         }
 
-        public static Regex ToRegex(this String value, RegexOptions regexOptions = RegexOptions.None)
+        public static Regex ToRegex(this string value, RegexOptions regexOptions = RegexOptions.None)
         {
             var regex = new Regex(value, regexOptions);
 
             return regex;
         }
 
-        public static Byte[] ToBytes(this String value, Encoding encoding)
+        public static byte[] ToBytes(this string value, Encoding encoding)
         {
             var bytes = encoding.GetBytes(value);
 
             return bytes;
         }
 
-        public static SecureString ToSecureString(this String value)
+        public static SecureString ToSecureString(this string value)
         {
             var secureString = new SecureString();
 
@@ -128,133 +150,133 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return secureString;
         }
     
-        public static SByte ToSByte(this String value)
+        public static sbyte ToSByte(this string value)
         {
-            return SByte.Parse(value);
+            return sbyte.Parse(value);
         }
-        public static SByte? TryToSByte(this String value)
+        public static sbyte? TryToSByte(this string value)
         {
-            return SByte.TryParse(value, out var result) ? result : default(SByte?);
-        }
-
-        public static Int16 ToInt16(this String value)
-        {
-            return Int16.Parse(value);
+            return sbyte.TryParse(value, out var result) ? result : default(sbyte?);
         }
 
-        public static Int16? TryToInt16(this String value)
+        public static short ToInt16(this string value)
         {
-            return Int16.TryParse(value, out var result) ? result : default(Int16?);
+            return short.Parse(value);
         }
 
-        public static Int32 ToInt32(this String value)
+        public static short? TryToInt16(this string value)
         {
-            return Int32.Parse(value);
+            return short.TryParse(value, out var result) ? result : default(short?);
         }
 
-        public static Int32? TryToInt32(this String value)
+        public static int ToInt32(this string value)
         {
-            return Int32.TryParse(value, out var result) ? result : default(Int32?);
+            return int.Parse(value);
         }
 
-        public static Int64 ToInt64(this String value)
+        public static int? TryToInt32(this string value)
         {
-            return Int64.Parse(value);
+            return int.TryParse(value, out var result) ? result : default(int?);
         }
 
-        public static Int64? TryToInt64(this String value)
+        public static long ToInt64(this string value)
         {
-            return Int64.TryParse(value, out var result) ? result : default(Int64?);
+            return long.Parse(value);
         }
 
-        public static BigInteger ToBigInteger(this String value)
+        public static long? TryToInt64(this string value)
+        {
+            return long.TryParse(value, out var result) ? result : default(long?);
+        }
+
+        public static BigInteger ToBigInteger(this string value)
         {
             return BigInteger.Parse(value);
         }
 
-        public static BigInteger? TryToBigInteger(this String value)
+        public static BigInteger? TryToBigInteger(this string value)
         {
             return BigInteger.TryParse(value, out var result) ? result :  default(BigInteger?);
         }
 
-        public static Byte ToByte(this String value)
+        public static byte ToByte(this string value)
         {
-            return Byte.Parse(value);
+            return byte.Parse(value);
         }
 
-        public static Int16 ToUInt16(this String value)
+        public static short ToUInt16(this string value)
         {
-            return Int16.Parse(value);
+            return short.Parse(value);
         }
 
-        public static UInt32 ToUInt32(this String value)
+        public static uint ToUInt32(this string value)
         {
-            return UInt32.Parse(value);
+            return uint.Parse(value);
         }
 
-        public static UInt64 ToUInt64 (this String value)
+        public static ulong ToUInt64 (this string value)
         {
-            return UInt64.Parse(value);
+            return ulong.Parse(value);
         }
 
-        public static Byte? TryToByte(this String value)
+        public static byte? TryToByte(this string value)
         {
-            return Byte.TryParse(value, out var result) ? result : default(Byte?);
+            return byte.TryParse(value, out var result) ? result : default(byte?);
         }
 
-        public static UInt16? TryToUInt16(this String value)
+        public static ushort? TryToUInt16(this string value)
         {
-            return UInt16.TryParse(value, out var result) ? result : default(UInt16?);
+            return ushort.TryParse(value, out var result) ? result : default(ushort?);
         }
 
-        public static UInt32? TryToUInt32(this String value)
+        public static uint? TryToUInt32(this string value)
         {
-            return UInt32.TryParse(value, out var result) ? result : default(UInt32?);
+            return uint.TryParse(value, out var result) ? result : default(uint?);
         }
 
-        public static UInt64? TryToUInt64 (this String value)
+        public static ulong? TryToUInt64 (this string value)
         {
-            return UInt64.TryParse(value, out var result) ? result : default(UInt64?);
+            return ulong.TryParse(value, out var result) ? result : default(ulong?);
         }
 
-        public static Single ToSingle(this String value)
+        public static float ToSingle(this string value)
         {
-            return Single.Parse(value);
+            return float.Parse(value);
         }
 
-        public static Single? TryToSingle(this String value)
+        public static float? TryToSingle(this string value)
         {
-            return Single.TryParse(value, out var result) ? result : default(Single?);
+            return float.TryParse(value, out var result) ? result : default(float?);
         }
 
-        public static Double ToDouble(this String value)
+        public static double ToDouble(this string value)
         {
-            return Double.Parse(value);
+            return double.Parse(value);
         }
 
-        public static Double? TryToDouble(this String value)
+        public static double? TryToDouble(this string value)
         {
-            return Double.TryParse(value, out var result) ? result : default(Double?);
+            return double.TryParse(value, out var result) ? result : default(double?);
         }
 
-        public static Decimal ToDecimal(this String value)
+        public static decimal ToDecimal(this string value)
         {
-            return Decimal.Parse(value);
+            return decimal.Parse(value);
         }
 
-        public static Decimal? TryToDecimal(this String value)
+        public static decimal? TryToDecimal(this string value)
         {
-            return Decimal.TryParse(value, out var result) ? result : default(Decimal?);
+            return decimal.TryParse(value, out var result) ? result : default(decimal?);
         }
 
-        private const Int32 LatinAlphabetCharacterCount = 26;
+        private const int LatinAlphabetCharacterCount = 26;
 
         /// <summary>
         /// Determines if the specified value is a palindrom anagram.
         /// </summary>
         /// <returns><c>true</c> if  the specified value is a palindrom anagram; otherwise, <c>false</c>.</returns>
         /// <param name="value">Value.</param>
-        public static Boolean IsPalindromAnagram(this String value)
+        public static bool IsPalindromAnagram(this string value)
         {
             var charactersCount = value.GroupBy(character => character, (character, characters)
                 => new 
@@ -272,10 +294,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// </summary>
         /// <returns><c>true</c> if the specified value is a pangram; otherwise, <c>false</c>.</returns>
         /// <param name="value">Value.</param>
-        public static Boolean IsPangram(this String value)
+        public static bool IsPangram(this string value)
         {
             return value.ToLower()
-                .Where(Char.IsLetter)
+                .Where(char.IsLetter)
                 .GroupBy(character => character)
                 .Count() == LatinAlphabetCharacterCount;
         }
@@ -286,13 +308,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <returns><c>true</c> if the specified value is a palindrome; otherwise, <c>false</c>.</returns>
         /// <param name="value">Value.</param>
         /// <param name="insensitiveCase">If set to <c>true</c> insensitive case.</param>
-        public static Boolean IsPalindrome(this String value, Boolean insensitiveCase = true)
+        public static bool IsPalindrome(this string value, bool insensitiveCase = true)
         {
             // Not sure the compiler is optimizing that sort of things
             value = insensitiveCase ? value.ToLower() : value;
 
-            var letters = value.Where(Char.IsLetter);
-            var reversedLetters = value.Reverse().Where(Char.IsLetter);
+            var letters = value.Where(char.IsLetter);
+            var reversedLetters = value.Reverse().Where(char.IsLetter);
 
             return letters.SequenceEqual(reversedLetters);
         }
@@ -301,15 +323,15 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// Reverse the specified value.
         /// </summary>
         /// <param name="value">Value.</param>
-        public static String Reverse(this String value)
+        public static string Reverse(this string value)
         {
             var characters = value.ToCharArray();
             Array.Reverse(characters);
-            return new String(characters);
+            return new string(characters);
         }
 
         // TODO: refactor it...
-        public static IEnumerable<String> ToSubstrings(this String value)
+        public static IEnumerable<string> ToSubstrings(this string value)
         {
             for (var substringLength = 1; substringLength < value.Length; substringLength++)
             {
@@ -320,7 +342,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static Boolean IsAnagramOf(this String value, String other)
+        public static bool IsAnagramOf(this string value, string other)
         {
             return value.OrderBy(character => character).SequenceEqual(other.OrderBy(character => character));
         }
@@ -330,7 +352,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 //            return BigIntegerFraction.Parse(value);
 //        }
     
-        public static String[] SplitLines(this String value, Boolean removeEmptyEntries = true)
+        public static string[] SplitLines(this string value, bool removeEmptyEntries = true)
         {
             var stringSplitOptions = removeEmptyEntries ? 
                 StringSplitOptions.RemoveEmptyEntries : 
@@ -339,7 +361,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value.Split(new [] { Environment.NewLine }, stringSplitOptions);
         }
 
-        public static String[] SplitSpaces(this String value, Boolean removeEmptyEntries = true)
+        public static string[] SplitSpaces(this string value, bool removeEmptyEntries = true)
         {
             var stringSplitOptions = removeEmptyEntries ? 
                 StringSplitOptions.RemoveEmptyEntries : 
@@ -348,19 +370,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value.Split(new [] { ' ' } , stringSplitOptions);
         }
 
-        public static String Join<T>(this String separator, IEnumerable<T> values)
+        public static string Join<T>(this string separator, IEnumerable<T> values)
         {
-            return String.Join(separator, values);
+            return string.Join(separator, values);
         }
 
-        public static Boolean IsNullOrEmpty(this String value)
+        public static bool IsNullOrEmpty(this string value)
         {
-            return String.IsNullOrEmpty(value);
+            return string.IsNullOrEmpty(value);
         }
 
-        public static Boolean IsNullOrWhiteSpace(this String value)
+        public static bool IsNullOrWhiteSpace(this string value)
         {
-            return String.IsNullOrWhiteSpace(value);
+            return string.IsNullOrWhiteSpace(value);
         }
     }
 }

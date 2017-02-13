@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 
     public class CanvasItemMouseEventArgs : EventArgs
     {
-        public CanvasItemMouseEventArgs(MouseButtons button, PointF location, Byte clicks, Byte delta)
+        public CanvasItemMouseEventArgs(MouseButtons button, PointF location, byte clicks, byte delta)
         {
             Button = button;
             Location = location;
@@ -43,10 +43,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
 
         public MouseButtons Button { get; }
         public PointF Location { get; }
-        public Single X => Location.X;
-        public Single Y => Location.Y;
-        public Byte Clicks { get; }
-        public Byte Delta { get; }
+        public float X => Location.X;
+        public float Y => Location.Y;
+        public byte Clicks { get; }
+        public byte Delta { get; }
     }
     
 }

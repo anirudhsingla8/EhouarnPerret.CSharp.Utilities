@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -42,22 +42,22 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             Console.Write(value.ToString());
         }
 
-        public static Boolean IsNotIn<T>(this T source, IEnumerable<T> values)
+        public static bool IsNotIn<T>(this T source, IEnumerable<T> values)
         {
             return !source.IsIn(values);
         }
 
-        public static Boolean IsNotIn<T>(this T source, params T[] values)
+        public static bool IsNotIn<T>(this T source, params T[] values)
         {
             return !source.IsIn(values);
         }
 
-        public static Boolean IsIn<T>(this T source, IEnumerable<T> values)
+        public static bool IsIn<T>(this T source, IEnumerable<T> values)
         {
             return values.Contains(source);
         }
 
-        public static Boolean IsIn<T>(this T source, params T[] values)
+        public static bool IsIn<T>(this T source, params T[] values)
         {
             return values.Contains(source);
         }

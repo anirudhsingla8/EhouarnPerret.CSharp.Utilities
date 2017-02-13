@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,7 +37,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
             return source.Reverse().First();
         }
 
-        public static TSource Last<TSource>(IEnumerable<TSource> source, Func<TSource, Boolean> predicate)
+        public static TSource Last<TSource>(IEnumerable<TSource> source, Func<TSource, bool> predicate)
         {
             return source.Reverse().First();
         }

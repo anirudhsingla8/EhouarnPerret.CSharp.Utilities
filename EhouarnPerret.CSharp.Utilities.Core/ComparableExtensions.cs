@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,66 +29,66 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ComparableExtensions
     {
-        public static Boolean IsEqualTo<T>(this T value, T other)
+        public static bool IsEqualTo<T>(this T value, T other)
             where T : IComparable<T>
         {
             return value.CompareTo(other) == 0;
         }
-        public static Boolean IsNotEqualTo<T>(this T value, T other)
+        public static bool IsNotEqualTo<T>(this T value, T other)
             where T : IComparable<T>
         {
             return value.CompareTo(other) != 0;
         }
 
-        public static Boolean IsGreaterThan<T>(this T value, T other)
+        public static bool IsGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
             return value.CompareTo(other) >= 0;
         }
-        public static Boolean IsStrictlyGreaterThan<T>(this T value, T other)
+        public static bool IsStrictlyGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
             return value.CompareTo(other) > 0;
         }
 
         // TODO: refactor
-        public static Boolean IsNotGreaterThan<T>(this T value, T other)
+        public static bool IsNotGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
             return !value.IsGreaterThan(other);
         }
         // TODO: refactor
-        public static Boolean IsStrictlyNotGreaterThan<T>(this T value, T other)
+        public static bool IsStrictlyNotGreaterThan<T>(this T value, T other)
             where T : IComparable<T>
         {
             return !value.IsStrictlyGreaterThan(other);
         }
 
-        public static Boolean IsLesserThan<T>(this T value, T other)
+        public static bool IsLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
             return value.CompareTo(other) <= 0;
         }
-        public static Boolean IsStrictlyLesserThan<T>(this T value, T other)
+        public static bool IsStrictlyLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
             return value.CompareTo(other) < 0;
         }
         
         // TODO: Refactor
-        public static Boolean IsNotLesserThan<T>(this T value, T other)
+        public static bool IsNotLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
             return !value.IsLesserThan(other);
         }
         // TODO: Refactor
-        public static Boolean IsStrictlyNotLesserThan<T>(this T value, T other)
+        public static bool IsStrictlyNotLesserThan<T>(this T value, T other)
             where T : IComparable<T>
         {
             return !value.IsStrictlyLesserThan(other);
         }
 
-        public static Boolean IsBetween<T> (this T value, T lowerBound, T upperBound)
+        public static bool IsBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             if (lowerBound.IsStrictlyGreaterThan(upperBound))
@@ -97,7 +97,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             return lowerBound.CompareTo(value) <= 0 && upperBound.CompareTo(value) >= 0;
         }
-        public static Boolean IsStrictlyBetween<T> (this T value, T lowerBound, T upperBound)
+        public static bool IsStrictlyBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             if (lowerBound.IsGreaterThan(upperBound))
@@ -107,7 +107,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return lowerBound.CompareTo(value) < 0 && upperBound.CompareTo(value) > 0;
         }
 
-        public static Boolean IsNotBetween<T> (this T value, T lowerBound, T upperBound)
+        public static bool IsNotBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             if (lowerBound.IsStrictlyGreaterThan(upperBound))
@@ -116,7 +116,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             return lowerBound.CompareTo(value) >= 0 && upperBound.CompareTo(value) <= 0;
         }
-        public static Boolean IsStrictlyNotBetween<T> (this T value, T lowerBound, T upperBound)
+        public static bool IsStrictlyNotBetween<T> (this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             if (lowerBound.IsGreaterThan(upperBound))
@@ -126,29 +126,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return lowerBound.CompareTo(value) > 0 && upperBound.CompareTo(value) < 0;
         }
 
-        internal static Boolean UncheckedIsBetween<T>(this T value, T lowerBound, T upperBound)
+        internal static bool UncheckedIsBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             return lowerBound.CompareTo(value) <= 0 && upperBound.CompareTo(value) >= 0;
         }
-        internal static Boolean UncheckedIsStrictlyBetween<T>(this T value, T lowerBound, T upperBound)
+        internal static bool UncheckedIsStrictlyBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             return lowerBound.CompareTo(value) < 0 && upperBound.CompareTo(value) > 0;
         }
 
-        internal static Boolean UncheckedIsNotBetween<T>(this T value, T lowerBound, T upperBound)
+        internal static bool UncheckedIsNotBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             return lowerBound.CompareTo(value) >= 0 && upperBound.CompareTo(value) <= 0;
         }
-        internal static Boolean UncheckedIsStrictlyNotBetween<T>(this T value, T lowerBound, T upperBound)
+        internal static bool UncheckedIsStrictlyNotBetween<T>(this T value, T lowerBound, T upperBound)
             where T : IComparable<T>
         {
             return lowerBound.CompareTo(value) > 0 && upperBound.CompareTo(value) < 0;
         }
 
-        public static T ThrowIfBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+        public static T ThrowIfBetween<T>(this T parameterValue, T lowerBound, T upperBound, string parameterName = @"")
             where T : IComparable<T>
         {
             if (parameterValue.IsBetween(lowerBound, upperBound))
@@ -158,7 +158,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return parameterValue;
         }
 
-        public static T ThrowIfNotBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+        public static T ThrowIfNotBetween<T>(this T parameterValue, T lowerBound, T upperBound, string parameterName = @"")
             where T : IComparable<T>
         {
             if (parameterValue.IsNotBetween(lowerBound, upperBound))
@@ -168,7 +168,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return parameterValue;
         }
 
-        public static T ThrowIfStrictlyBetween<T>(this T parameterValue, T lowerBound, T upperBound, String parameterName = @"")
+        public static T ThrowIfStrictlyBetween<T>(this T parameterValue, T lowerBound, T upperBound, string parameterName = @"")
             where T : IComparable<T>
         {
             if (parameterValue.IsStrictlyBetween(lowerBound, upperBound))
@@ -178,7 +178,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return parameterValue;
         }
 
-        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        public static T ThrowIfLesserThan<T>(this T parameterValue, T comparedValue, string parameterName = @"")
             where T : IComparable<T>
         {
             if (parameterValue.IsLesserThan(comparedValue))
@@ -188,7 +188,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return parameterValue;
         }
 
-        public static T ThrowIfStrictlyLesserThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        public static T ThrowIfStrictlyLesserThan<T>(this T parameterValue, T comparedValue, string parameterName = @"")
             where T : IComparable<T>
         {
             if (parameterValue.IsStrictlyLesserThan(comparedValue))
@@ -198,7 +198,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return parameterValue;
         }
 
-        public static T ThrowIfGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        public static T ThrowIfGreaterThan<T>(this T parameterValue, T comparedValue, string parameterName = @"")
             where T : IComparable<T>
         {
             if (parameterValue.IsGreaterThan(comparedValue))
@@ -208,7 +208,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return parameterValue;
         }
 
-        public static T ThrowIfStrictlyGreaterThan<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        public static T ThrowIfStrictlyGreaterThan<T>(this T parameterValue, T comparedValue, string parameterName = @"")
             where T : IComparable<T>
         {
             if (parameterValue.IsStrictlyGreaterThan(comparedValue))

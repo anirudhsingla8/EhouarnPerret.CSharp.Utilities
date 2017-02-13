@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,26 +23,26 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Net.Sockets;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
 {
     public static class SocketExtensions
     {
-        public static Byte[] Receive(this Socket socket)
+        public static byte[] Receive(this Socket socket)
         {
-            var data = default(Byte[]);
+            byte[] data;
 
             if (socket.Available > 0)
             {
-                data = new Byte[socket.Available];
+                data = new byte[socket.Available];
 
                 socket.Receive(data);
             }
             else
             {
-                data = new Byte[0];
+                data = new byte[0];
             }
 
             return data;

@@ -23,7 +23,6 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
 {
@@ -33,8 +32,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
         {
         }
 
-        public abstract Byte[] Serialize<T>(T value);
-        public abstract T Deserialize<T>(Byte[] source);
+        public abstract byte[] Serialize<T>(T value);
+        public abstract T Deserialize<T>(byte[] source);
     }
 }
 

@@ -23,14 +23,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 {
     [System.ComponentModel.DesignerCategory("")]
     public abstract class Editor : DoubleBufferedControl
     {
-        public Object Value { get; set; }
+        public object Value { get; set; }
     }
 
     [System.ComponentModel.DesignerCategory("")]
@@ -49,7 +48,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
         }
     }
 
-    public class StringEditor : Editor<String>
+    public class StringEditor : Editor<string>
     {
         public StringEditor()
         {

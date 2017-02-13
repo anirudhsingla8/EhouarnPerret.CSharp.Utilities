@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -52,12 +52,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             this.Add(items);
         }
 
-        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold)
+        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, int dictionaryThreshold)
             : base(comparer, dictionaryThreshold)
         {
             ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
         }
-        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, Int32 dictionaryThreshold, IEnumerable<TItem> items)
+        public KeyedCollection(Func<TItem, TKey> itemKeySelector, IEqualityComparer<TKey> comparer, int dictionaryThreshold, IEnumerable<TItem> items)
             : base(comparer, dictionaryThreshold)
         {
             ItemKeySelector = ExceptionHelpers.ThrowIfNull(itemKeySelector, nameof(itemKeySelector));
@@ -70,7 +70,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         {
             return ItemKeySelector(item);
         }
-        public Int32 IndexOf(TKey key)
+        public int IndexOf(TKey key)
         {
             var index = -1;
 
@@ -83,7 +83,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 
             return index;
         }
-        public Boolean TryGetItem(TKey key, out TItem item)
+        public bool TryGetItem(TKey key, out TItem item)
         {
             return Dictionary.TryGetValue(key, out item);
         }

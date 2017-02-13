@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -250,7 +250,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             }
         }
 
-        public static void CombSort<TSource>(IList<TSource> source, Single gapShrinkFactor = 1.3f)
+        public static void CombSort<TSource>(IList<TSource> source, float gapShrinkFactor = 1.3f)
             where TSource : IComparable<TSource>
         {
             // TODO: add some checks on gapShrinkFactor + relevant exceptions
@@ -262,7 +262,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             while (gap != 1 && swapped)
             {
                 // Update the gap value for a next comb.
-                gap = (Int32) (gap / gapShrinkFactor);
+                gap = (int) (gap / gapShrinkFactor);
 
                 if (gap < 1)
                 {
@@ -296,7 +296,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             StoogeSortCore(source, 0, source.Count);
         }
 
-        private static void StoogeSortCore<TSource>(IList<TSource> source, Int32 startIndex, Int32 stopIndex)
+        private static void StoogeSortCore<TSource>(IList<TSource> source, int startIndex, int stopIndex)
             where TSource : IComparable<TSource>
         {
             if (source[stopIndex].IsStrictlyLesserThan(source[startIndex]))
@@ -494,7 +494,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric.Algorithms
             }
         }
 
-        public static void ShellSort<TSource>(IList<TSource> source, IEnumerable<Int32> gaps)
+        public static void ShellSort<TSource>(IList<TSource> source, IEnumerable<int> gaps)
             where TSource : IComparable<TSource>
         {
             // Start with the largest gap and work down to a gap of 1

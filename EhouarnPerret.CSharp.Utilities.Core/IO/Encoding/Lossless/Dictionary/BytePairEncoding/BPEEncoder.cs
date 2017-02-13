@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 // 
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,12 +24,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System.IO;
-using System.IO.Compression;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.IO.Encoding.Lossless.Dictionary.BytePairEncoding
 {
-    public static class BPEEncoder
+    public static class BpeEncoder
     {
         public static void Do()
         {

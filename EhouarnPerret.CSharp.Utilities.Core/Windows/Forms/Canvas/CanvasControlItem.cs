@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,7 +45,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
         public event EventHandler ForeColorChanged;
         public event EventHandler BackColorChanged;
 
-        public Single Top
+        public float Top
         {
             get
             {
@@ -62,7 +62,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
                 );
             }
         }
-        public Single Left
+        public float Left
         {
             get
             {
@@ -79,12 +79,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
                 );
             }
         }
-        public Single Right => BoundingRectangle.Right;
+        public float Right => BoundingRectangle.Right;
 
-        public Single Bottom => BoundingRectangle.Bottom;
+        public float Bottom => BoundingRectangle.Bottom;
 
-        private Boolean _enabled;
-        public Boolean Enabled 
+        private bool _enabled;
+        public bool Enabled 
         {
             get
             {
@@ -112,8 +112,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
             }
         }
 
-        private String _text;
-        public String Text
+        private string _text;
+        public string Text
         {
             get
             {
@@ -126,8 +126,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms.Canvas
             }
         }
 
-        private Boolean _visible;
-        public Boolean Visible
+        private bool _visible;
+        public bool Visible
         {
             get
             {

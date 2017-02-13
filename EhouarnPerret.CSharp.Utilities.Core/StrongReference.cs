@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,19 +24,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public class StrongReference : IReference
     {
-        public StrongReference(Object target)
+        public StrongReference(object target)
         {
             Target = ExceptionHelpers.ThrowIfNull(target, nameof(target));
         }
 
         #region IReference Implementation
-        public Object Target { get; }
+        public object Target { get; }
         #endregion
     }
 

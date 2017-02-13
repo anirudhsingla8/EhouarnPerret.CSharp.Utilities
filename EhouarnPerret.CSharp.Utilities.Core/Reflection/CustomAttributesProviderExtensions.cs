@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
     public static class CustomAttributesProviderExtensions
     {
-        public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this ICustomAttributeProvider customAttributeProvider, Boolean isInherit = true)
+        public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this ICustomAttributeProvider customAttributeProvider, bool isInherit = true)
             where TAttribute : ICustomAttributeProvider
         {
             var attributeType = typeof(TAttribute);  
@@ -42,7 +42,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
             return attributes;
         }
 
-        public static Boolean IsDefined<TAttribute>(this ICustomAttributeProvider customAttributeProvider, Boolean isInherit = true)
+        public static bool IsDefined<TAttribute>(this ICustomAttributeProvider customAttributeProvider, bool isInherit = true)
             where TAttribute : ICustomAttributeProvider
         {
             var attributeType = typeof(TAttribute);  

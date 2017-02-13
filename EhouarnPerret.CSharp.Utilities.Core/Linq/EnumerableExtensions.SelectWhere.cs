@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 // 
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static IEnumerable<TResult> SelectWhere<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TSource, Boolean> predicate)
+        public static IEnumerable<TResult> SelectWhere<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TSource, bool> predicate)
         {
             return from item in source where predicate(item) select resultSelector(item);
         }

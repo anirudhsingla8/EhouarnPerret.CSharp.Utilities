@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 {
     public class MicroTimerElapsedEventArgs : EventArgs
     {
-        public MicroTimerElapsedEventArgs(Int64 count, Int64 elapsedMicroseconds, Int64 delay, Int64 callbackDuration)
+        public MicroTimerElapsedEventArgs(long count, long elapsedMicroseconds, long delay, long callbackDuration)
         {
             Count = count;
             ElapsedMicroseconds = elapsedMicroseconds;
@@ -40,12 +40,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         /// <summary>
         /// Gets the times timer event (callback function) executed count.
         /// </summary>
-        public Int64 Count { get; }
+        public long Count { get; }
 
         /// <summary>
         /// Gets the elapsed microseconds when timer event was called since the timer has been started.
         /// </summary>
-        public Int64 ElapsedMicroseconds { get; }
+        public long ElapsedMicroseconds { get; }
 
         /// <summary>
         /// Gets the time when timer event was called since the timer has been started.
@@ -55,12 +55,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
         /// <summary>
         /// Gets how late the timer was compared to when it should have been called.
         /// </summary>
-        public Int64 Delay { get; }
+        public long Delay { get; }
 
         /// <summary>
         /// Get the time it took to execute the previous call to the callback function (ElapsedEvent).
         /// </summary>
-        public Int64 CallbackDuration { get; }
+        public long CallbackDuration { get; }
     }
 }
 

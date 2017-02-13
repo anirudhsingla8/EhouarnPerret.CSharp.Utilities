@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
 {
     public class EventAggregatorOptions
@@ -34,10 +32,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Messaging.EventAggregator
         {
         }
 
-        private Boolean _useWeakReferences;
-        public Boolean UseWeakReferences => _useWeakReferences;
+        private bool _useWeakReferences;
+        public bool UseWeakReferences => _useWeakReferences;
 
-        private Boolean _supportsMessageInheritances;
-        public Boolean SupportsMessageInheritances => _supportsMessageInheritances;
+        private bool _supportsMessageInheritances;
+        public bool SupportsMessageInheritances => _supportsMessageInheritances;
     }
 }

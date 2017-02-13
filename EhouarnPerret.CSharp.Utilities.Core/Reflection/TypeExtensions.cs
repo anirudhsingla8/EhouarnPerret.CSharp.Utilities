@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -37,19 +37,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
         {
             var dictionary = new Dictionary<Type, NumericalTypeInformation>()
             {
-                { typeof(Byte), new NumericalTypeInformation<Byte>() },
-                { typeof(Int16), new NumericalTypeInformation<Int16>() },
-                { typeof(Int32), new NumericalTypeInformation<Int32>() },
-                { typeof(Int64), new NumericalTypeInformation<Int64>() },
+                { typeof(byte), new NumericalTypeInformation<byte>() },
+                { typeof(short), new NumericalTypeInformation<short>() },
+                { typeof(int), new NumericalTypeInformation<int>() },
+                { typeof(long), new NumericalTypeInformation<long>() },
 
-                { typeof(SByte), new NumericalTypeInformation<SByte>() },
-                { typeof(UInt16), new NumericalTypeInformation<UInt16>() },
-                { typeof(UInt32), new NumericalTypeInformation<UInt32>() },
-                { typeof(UInt64), new NumericalTypeInformation<UInt64>() },
+                { typeof(sbyte), new NumericalTypeInformation<sbyte>() },
+                { typeof(ushort), new NumericalTypeInformation<ushort>() },
+                { typeof(uint), new NumericalTypeInformation<uint>() },
+                { typeof(ulong), new NumericalTypeInformation<ulong>() },
 
-                { typeof(Single), new NumericalTypeInformation<Single>() },
-                { typeof(Double), new NumericalTypeInformation<Double>() },
-                { typeof(Decimal), new NumericalTypeInformation<Decimal>() },
+                { typeof(float), new NumericalTypeInformation<float>() },
+                { typeof(double), new NumericalTypeInformation<double>() },
+                { typeof(decimal), new NumericalTypeInformation<decimal>() },
             };
 
             Numbers = dictionary.AsReadOnly();
@@ -62,7 +62,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
                 .ToArray();
         }
 
-        public static FieldInfo GetConstantField(this Type type, String name, SimpleAccessModifiers accessModifier = SimpleAccessModifiers.Both)
+        public static FieldInfo GetConstantField(this Type type, string name, SimpleAccessModifiers accessModifier = SimpleAccessModifiers.Both)
         {
             var fieldInfo = type.GetField(name, BindingFlags.Static | accessModifier.ToBindingFlags());
 
@@ -71,17 +71,17 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 
         public static IReadOnlyDictionary<Type, NumericalTypeInformation> Numbers { get; }
     
-        public static Object GetDefaultValue(this Type type)
+        public static object GetDefaultValue(this Type type)
         {
             return Activator.CreateInstance(type);
         }
     
-        public static Boolean IsAssignableTo(this Type type, Type assignableType)
+        public static bool IsAssignableTo(this Type type, Type assignableType)
         {
             return assignableType.IsAssignableFrom(type);
         }
 
-        public static Boolean IsAssignableTo<TAssignable>(this Type type)
+        public static bool IsAssignableTo<TAssignable>(this Type type)
         {
             return type.IsAssignableTo(typeof(TAssignable));
         }

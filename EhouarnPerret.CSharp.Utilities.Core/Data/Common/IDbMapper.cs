@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -25,15 +25,14 @@
 // THE SOFTWARE.
 
 using System.Collections.Generic;
-using System;
 using IDisposable = EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition.IDisposable;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Data.Common
 {
     public interface IDbMapper<T> : IDisposable, IEnumerable<T>
     {
-        Boolean IsCreated { get; }
-        Boolean IsReadOnly { get; }
+        bool IsCreated { get; }
+        bool IsReadOnly { get; }
 
         void Insert(IEnumerable<T> records);
         void Create();

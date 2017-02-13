@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             return readOnlyList;
         }
 
-        public static void Swap<T>(this IList<T> source, Int32 index1, Int32 index2)
+        public static void Swap<T>(this IList<T> source, int index1, int index2)
         {
             var temp = source[index1];
             source[index1] = source[index2];
@@ -70,13 +70,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             }
         }
 
-        public static Int32 MaxValueIndex<TSource>(this IList<TSource> source, Int32 index1, Int32 index2)
+        public static int MaxValueIndex<TSource>(this IList<TSource> source, int index1, int index2)
             where TSource : IComparable<TSource>
         {
             return source[index1].CompareTo(source[index2]) > 0 ? index1 : index2;
         }
 
-        public static Int32 MinValueIndex<TSource>(this IList<TSource> source, Int32 index1, Int32 index2)
+        public static int MinValueIndex<TSource>(this IList<TSource> source, int index1, int index2)
             where TSource : IComparable<TSource>
         {
             return source[index1].CompareTo(source[index2]) < 0 ? index1 : index2;
@@ -87,7 +87,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             return source.Random(0, source.Count - 1);
         }
 
-        public static T Random<T>(this IList<T> source, Int32 start, Int32 stop)
+        public static T Random<T>(this IList<T> source, int start, int stop)
         {
             var index = RandomHelpers.NextInt32(start, stop);
 

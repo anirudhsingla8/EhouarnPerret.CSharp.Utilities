@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -71,7 +71,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return val1.CompareTo(val2) >= 0 ? val1 : val2;
         }
 
-        private static BigInteger FactorialNaiveIterative(UInt16 n)
+        private static BigInteger FactorialNaiveIterative(ushort n)
         {
             var product = BigInteger.One;
 
@@ -82,25 +82,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 
             return product;
         }
-        private static BigInteger FactorialNaiveRecursive(UInt16 n)
+        private static BigInteger FactorialNaiveRecursive(ushort n)
         {
             if (n == 0)
             {
                 return BigInteger.One;
             }
-            return n * FactorialNaiveRecursive((UInt16)(n - 1));
+            return n * FactorialNaiveRecursive((ushort)(n - 1));
         }
     
-        public static Double EuclidianDistance(PointF pointA, PointF pointB)
+        public static double EuclidianDistance(PointF pointA, PointF pointB)
         {
             return Math.Sqrt(Math.Pow(pointB.Y - pointA.Y, 2) + Math.Pow(pointB.X - pointA.X, 2));
         }
-        public static Double EuclidianDistance(Point pointA, Point pointB)
+        public static double EuclidianDistance(Point pointA, Point pointB)
         {
             return Math.Sqrt(Math.Pow(pointB.Y - pointA.Y, 2) + Math.Pow(pointB.X - pointA.X, 2));
         }
 
-        public static UInt32 GCDBinary(UInt32 a, UInt32 b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
+        public static uint GCDBinary(uint a, uint b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
         {
             switch (scheme)
             {
@@ -109,7 +109,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
-        public static UInt64 GCDBinary(UInt64 a, UInt64 b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
+        public static ulong GCDBinary(ulong a, ulong b, GCDBinaryScheme scheme = GCDBinaryScheme.Iterative)
         {
             switch (scheme)
             {
@@ -121,7 +121,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 
         // Add new methods to handle more than two numbers...
 
-        public static UInt32 GCDBinaryRecursive(UInt32 a, UInt32 b)
+        public static uint GCDBinaryRecursive(uint a, uint b)
         {
             // Simple cases (termination)
             if (a == b)
@@ -160,9 +160,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             }
             return GCDBinaryRecursive((b - a) >> 1, a);
         }
-        public static UInt32 GCDBinaryIterative(UInt32 a, UInt32 b)
+        public static uint GCDBinaryIterative(uint a, uint b)
         {
-            Int32 shift;
+            int shift;
 
             // GCD(0,v) == v; GCD(u,0) == u, GCD(0,0) == 0
             if (a == 0)
@@ -218,7 +218,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             // Restore common factors of
             return a << shift;
         }
-        public static UInt64 GCDBinaryRecursive(UInt64 a, UInt64 b)
+        public static ulong GCDBinaryRecursive(ulong a, ulong b)
         {
             // Simple cases (termination)
             if (a == b)
@@ -257,9 +257,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             }
             return GCDBinaryRecursive((b - a) >> 1, a);
         }
-        public static UInt64 GCDBinaryIterative(UInt64 a, UInt64 b)
+        public static ulong GCDBinaryIterative(ulong a, ulong b)
         {
-            Int32 shift;
+            int shift;
 
             if (a == 0)
             {
@@ -315,46 +315,33 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return a << shift;
         }
 
-        public static SByte GCDEuclideIterative(SByte a, SByte b)
+        public static sbyte GCDEuclideIterative(sbyte a, sbyte b)
         {
             while (b != 0)
             {
                 var temp = b;
 
-                b = (SByte)(a % b);
+                b = (sbyte)(a % b);
 
                 a = temp;
             }
 
             return a;
         }
-        public static Int16 GCDEuclideIterative(Int16 a, Int16 b)
+        public static short GCDEuclideIterative(short a, short b)
         {
             while (b != 0)
             {
                 var temp = b;
 
-                b = (Int16)(a % b);
+                b = (short)(a % b);
 
                 a = temp;
             }
 
             return a;
         }
-        public static Int32 GCDEuclideIterative(Int32 a, Int32 b)
-        {
-            while (b != 0)
-            {
-                var temp = b;
-
-                b = a % b;
-
-                a = temp;
-            }
-
-            return a;
-        }
-        public static Int64 GCDEuclideIterative(Int64 a, Int64 b)
+        public static int GCDEuclideIterative(int a, int b)
         {
             while (b != 0)
             {
@@ -367,47 +354,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
 
             return a;
         }
-
-        public static Byte GCDEuclideIterative(Byte a, Byte b)
-        {
-            while (b != 0)
-            {
-                var temp = b;
-
-                b = (Byte)(a % b);
-
-                a = temp;
-            }
-
-            return a;
-        }
-        public static UInt16 GCDEuclideIterative(UInt16 a, UInt16 b)
-        {
-            while (b != 0)
-            {
-                var temp = b;
-
-                b = (UInt16)(a % b);
-
-                a = temp;
-            }
-
-            return a;
-        }
-        public static UInt32 GCDEuclideIterative(UInt32 a, UInt32 b)
-        {
-            while (b != 0)
-            {
-                var temp = b;
-
-                b = (UInt32)a % b;
-
-                a = temp;
-            }
-
-            return a;
-        }
-        public static UInt64 GCDEuclideIterative(UInt64 a, UInt64 b)
+        public static long GCDEuclideIterative(long a, long b)
         {
             while (b != 0)
             {
@@ -421,41 +368,94 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             return a;
         }
 
-        public static SByte GCDEuclideRecursive(SByte a, SByte b)
+        public static byte GCDEuclideIterative(byte a, byte b)
         {
-            return b == 0 ? a : GCDEuclideRecursive(b, (SByte)(a % b));
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = (byte)(a % b);
+
+                a = temp;
+            }
+
+            return a;
         }
-        public static Int16 GCDEuclideRecursive(Int16 a, Int16 b)
+        public static ushort GCDEuclideIterative(ushort a, ushort b)
         {
-            return b == 0 ? a : GCDEuclideRecursive(b, (Int16)(a % b));
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = (ushort)(a % b);
+
+                a = temp;
+            }
+
+            return a;
         }
-        public static Int32 GCDEuclideRecursive(Int32 a, Int32 b)
+        public static uint GCDEuclideIterative(uint a, uint b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = (uint)a % b;
+
+                a = temp;
+            }
+
+            return a;
+        }
+        public static ulong GCDEuclideIterative(ulong a, ulong b)
+        {
+            while (b != 0)
+            {
+                var temp = b;
+
+                b = a % b;
+
+                a = temp;
+            }
+
+            return a;
+        }
+
+        public static sbyte GCDEuclideRecursive(sbyte a, sbyte b)
+        {
+            return b == 0 ? a : GCDEuclideRecursive(b, (sbyte)(a % b));
+        }
+        public static short GCDEuclideRecursive(short a, short b)
+        {
+            return b == 0 ? a : GCDEuclideRecursive(b, (short)(a % b));
+        }
+        public static int GCDEuclideRecursive(int a, int b)
         {
             return b == 0 ? a : GCDEuclideRecursive(b, a % b);
         }
-        public static Int64 GCDEuclideRecursive(Int64 a, Int64 b)
+        public static long GCDEuclideRecursive(long a, long b)
         {
             return b == 0 ? a : GCDEuclideRecursive(b, a % b);
         }
 
-        public static Byte GCDEuclideRecursive(Byte a, Byte b)
+        public static byte GCDEuclideRecursive(byte a, byte b)
         {
-            return b == 0 ? a : GCDEuclideRecursive(b, (Byte)(a % b));
+            return b == 0 ? a : GCDEuclideRecursive(b, (byte)(a % b));
         }
-        public static UInt16 GCDEuclideRecursive(UInt16 a, UInt16 b)
+        public static ushort GCDEuclideRecursive(ushort a, ushort b)
         {
-            return b == 0 ? a : GCDEuclideRecursive(b, (UInt16)(a % b));
+            return b == 0 ? a : GCDEuclideRecursive(b, (ushort)(a % b));
         }
-        public static UInt32 GCDEuclideRecursive(UInt32 a, UInt32 b)
+        public static uint GCDEuclideRecursive(uint a, uint b)
         {
             return b == 0 ? a : GCDEuclideRecursive(b, a % b);
         }
-        public static UInt64 GCDEuclideRecursive(UInt64 a, UInt64 b)
+        public static ulong GCDEuclideRecursive(ulong a, ulong b)
         {
             return b == 0 ? a : GCDEuclideRecursive(b, a % b);
         }
 
-        public static SByte GCDEuclide(SByte a, SByte b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        public static sbyte GCDEuclide(sbyte a, sbyte b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {
@@ -464,7 +464,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
-        public static Int16 GCDEuclide(Int16 a, Int16 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        public static short GCDEuclide(short a, short b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {
@@ -473,7 +473,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
-        public static Int32 GCDEuclide(Int32 a, Int32 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        public static int GCDEuclide(int a, int b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {
@@ -482,7 +482,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
-        public static Int64 GCDEuclide(Int64 a, Int64 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        public static long GCDEuclide(long a, long b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {
@@ -492,7 +492,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
             }
         }
 
-        public static Byte GCDEuclide(Byte a, Byte b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        public static byte GCDEuclide(byte a, byte b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {
@@ -501,7 +501,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
-        public static UInt16 GCDEuclide(UInt16 a, UInt16 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        public static ushort GCDEuclide(ushort a, ushort b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {
@@ -510,7 +510,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
-        public static UInt32 GCDEuclide(UInt32 a, UInt32 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        public static uint GCDEuclide(uint a, uint b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {
@@ -519,7 +519,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Numeric
                 default: throw new NotImplementedException(nameof(scheme));
             }
         }
-        public static UInt64 GCDEuclide(UInt64 a, UInt64 b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
+        public static ulong GCDEuclide(ulong a, ulong b, GCDEuclideScheme scheme = GCDEuclideScheme.Iterative)
         {
             switch (scheme)
             {

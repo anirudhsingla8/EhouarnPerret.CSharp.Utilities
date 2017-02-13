@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -32,11 +31,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Diagnostics
 {
     public static class ProcessHelpers
     {
-        public static Boolean CheckIsCurrentProcessAlreadyRunning()
+        public static bool CheckIsCurrentProcessAlreadyRunning()
         {
             var currentProcess = Process.GetCurrentProcess();
 
-            return Process.GetProcesses() .Any(process => process.ProcessName == currentProcess.ProcessName &&  process.Id != currentProcess.Id);
+            return Process.GetProcesses().Any(process => process.ProcessName == currentProcess.ProcessName &&  process.Id != currentProcess.Id);
         }
     }
 }

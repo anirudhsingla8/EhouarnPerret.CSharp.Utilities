@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
     public static partial class EnumerableExtensions
     {
-        public static TResult First<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, Boolean> predicate)
+        public static TResult First<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> resultSelector, Func<TResult, bool> predicate)
         {
             return source.Select(resultSelector).First(predicate);
         }

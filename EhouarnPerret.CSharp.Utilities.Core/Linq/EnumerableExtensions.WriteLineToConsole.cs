@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,16 +32,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Linq
 {
 	public static partial class EnumerableExtensions
 	{
-        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, String separator, String prefix = @"", String suffix = @"")
+        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, string separator, string prefix = @"", string suffix = @"")
 		{
             source.WriteLineToConsole(item => item.ToString(), separator, prefix, suffix);
 		}
 
-        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, Func<TSource, String> stringConverter, String separator = @"", String prefix = @"", String suffix = @"")
+        public static void WriteLineToConsole<TSource>(this IEnumerable<TSource> source, Func<TSource, string> stringConverter, string separator = @"", string prefix = @"", string suffix = @"")
         {
             var stringedSource = source.Select(stringConverter);
 
-            Console.WriteLine(prefix + String.Join(separator, stringedSource) + suffix);
+            Console.WriteLine(prefix + string.Join(separator, stringedSource) + suffix);
         }
 	}
 }

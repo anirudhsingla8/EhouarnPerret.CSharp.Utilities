@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ExceptionHelpers
     {
-        public static T ThrowIfNull<T>(T parameterValue, String parameterName = @"")
+        public static T ThrowIfNull<T>(T parameterValue, string parameterName = @"")
           where T : class
         {
             if (parameterValue == null)
@@ -39,9 +39,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             return parameterValue;
         }
-        public static String ThrowIfNullOrEmpty(String parameterValue, String parameterName = @"")
+        public static string ThrowIfNullOrEmpty(string parameterValue, string parameterName = @"")
         {
-            if (String.IsNullOrEmpty(parameterValue))
+            if (string.IsNullOrEmpty(parameterValue))
             {
                 throw new ArgumentNullException(parameterName);
             }
@@ -49,7 +49,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
 
 
-        public static T ThrowIfEqualTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        public static T ThrowIfEqualTo<T>(this T parameterValue, T comparedValue, string parameterName = @"")
         {
             if (parameterValue.Equals(comparedValue))
             {
@@ -58,7 +58,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return parameterValue;
         }
 
-        public static T ThrowIfNotEqualTo<T>(this T parameterValue, T comparedValue, String parameterName = @"")
+        public static T ThrowIfNotEqualTo<T>(this T parameterValue, T comparedValue, string parameterName = @"")
         {
             if (!parameterValue.Equals(comparedValue))
             {
@@ -67,12 +67,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return parameterValue;
         }
 
-        public static Boolean ThrowIfTrue(this Boolean parameterValue, String parameterName = @"")
+        public static bool ThrowIfTrue(this bool parameterValue, string parameterName = @"")
         {
             return parameterValue.ThrowIfEqualTo(true, parameterName);
         }
 
-        public static Boolean ThrowIfFalse(this Boolean parameterValue, String parameterName = @"")
+        public static bool ThrowIfFalse(this bool parameterValue, string parameterName = @"")
         {
             return parameterValue.ThrowIfEqualTo(false, parameterName);
         }

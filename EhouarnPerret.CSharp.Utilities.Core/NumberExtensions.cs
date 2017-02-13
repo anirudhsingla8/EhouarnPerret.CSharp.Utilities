@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class NumberExtensions
     {
-        public static Int64 ToInt64(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        public static long ToInt64(this byte[] source, Endianess endianess, int startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.Int64ByteCount);
 
@@ -42,7 +42,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes.ToInt64();
         }
-        public static UInt64 ToUInt64(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        public static ulong ToUInt64(this byte[] source, Endianess endianess, int startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.UInt64ByteCount);
 
@@ -54,7 +54,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return bytes.ToUInt64();
         }
 
-        public static Int32 ToInt32(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        public static int ToInt32(this byte[] source, Endianess endianess, int startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.Int32ByteCount);
 
@@ -65,7 +65,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes.ToInt32();
         }
-        public static UInt32 ToUInt32(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        public static uint ToUInt32(this byte[] source, Endianess endianess, int startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.UInt32ByteCount);
 
@@ -77,7 +77,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return bytes.ToUInt32();
         }
 
-        public static Int16 ToInt16(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        public static short ToInt16(this byte[] source, Endianess endianess, int startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.Int16ByteCount);
 
@@ -88,7 +88,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes.ToInt16();
         }
-        public static UInt16 ToUInt16(this Byte[] source, Endianess endianess, Int32 startIndex)
+        public static ushort ToUInt16(this byte[] source, Endianess endianess, int startIndex)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.UInt16ByteCount);
 
@@ -100,7 +100,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return bytes.ToUInt16();
         }
 
-        public static Single ToSingle(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        public static float ToSingle(this byte[] source, Endianess endianess, int startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.SingleByteCount);
 
@@ -111,7 +111,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes.ToSingle();
         }
-        public static Double ToDouble(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        public static double ToDouble(this byte[] source, Endianess endianess, int startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.DoubleByteCount);
 
@@ -123,7 +123,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return bytes.ToDouble();
         }
 
-        public static Decimal ToDecimal(this Byte[] source, Endianess endianess, Int32 startIndex = 0)
+        public static decimal ToDecimal(this byte[] source, Endianess endianess, int startIndex = 0)
         {
             var bytes = source.Copy(startIndex, NumberHelpers.DecimalByteCount);
 
@@ -135,7 +135,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return bytes.ToDecimal();
         }
 
-        public static Int64 ToInt64(this Byte[] source, Int32 startIndex = 0)
+        public static long ToInt64(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.Int64ByteCount)
             {
@@ -143,7 +143,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             return BitConverter.ToInt64(source, startIndex);
         }
-        public static UInt64 ToUInt64(this Byte[] source, Int32 startIndex = 0)
+        public static ulong ToUInt64(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.UInt64ByteCount)
             {
@@ -152,7 +152,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return BitConverter.ToUInt64(source, startIndex);
         }
 
-        public static Int32 ToInt32(this Byte[] source, Int32 startIndex = 0)
+        public static int ToInt32(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.Int32ByteCount)
             {
@@ -160,7 +160,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             return BitConverter.ToInt32(source, startIndex);
         }
-        public static UInt32 ToUInt32(this Byte[] source, Int32 startIndex = 0)
+        public static uint ToUInt32(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.UInt32ByteCount)
             {
@@ -169,7 +169,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return BitConverter.ToUInt32(source, startIndex);
         }
 
-        public static Int16 ToInt16(this Byte[] source, Int32 startIndex = 0)
+        public static short ToInt16(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.Int16ByteCount)
             {
@@ -177,7 +177,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             return BitConverter.ToInt16(source, startIndex);
         }
-        public static UInt16 ToUInt16(this Byte[] source, Int32 startIndex = 0)
+        public static ushort ToUInt16(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.UInt16ByteCount)
             {
@@ -186,7 +186,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return BitConverter.ToUInt16(source, startIndex);
         }
 
-        public static Byte ToByte(this Byte[] source, Int32 startIndex = 0)
+        public static byte ToByte(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.ByteByteCount)
             {
@@ -194,7 +194,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             return source[startIndex];
         }
-        public static SByte ToSByte(this Byte[] source, Int32 startIndex = 0)
+        public static sbyte ToSByte(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.SByteByteCount)
             {
@@ -203,7 +203,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return source[startIndex].AsSByte();
         }
 
-        public static Single ToSingle(this Byte[] source, Int32 startIndex = 0)
+        public static float ToSingle(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.SingleByteCount)
             {
@@ -211,7 +211,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             return BitConverter.ToSingle(source, startIndex);
         }
-        public static Double ToDouble(this Byte[] source, Int32 startIndex = 0)
+        public static double ToDouble(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.DoubleByteCount)
             {
@@ -220,13 +220,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return BitConverter.ToDouble(source, startIndex);
         }
 
-        public static Decimal ToDecimal(this Byte[] source, Int32 startIndex = 0)
+        public static decimal ToDecimal(this byte[] source, int startIndex = 0)
         {
             if (source.Length - startIndex < NumberHelpers.DecimalByteCount)
             {
                 throw new ArgumentOutOfRangeException(nameof(source));
             }
-            var int32s = new Int32[NumberHelpers.DecimalInt32Count];         
+            var int32s = new int[NumberHelpers.DecimalInt32Count];         
 
             for (var i = startIndex; i < NumberHelpers.DecimalInt32Count; i++)
             {
@@ -234,130 +234,130 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 int32s[i] = BitConverter.ToInt32(int32Bytes, 0);
             }
 
-            return new Decimal(int32s);
+            return new decimal(int32s);
         }
 
-        public static Byte AsByte(this SByte value)
+        public static byte AsByte(this sbyte value)
         {
             unchecked
             {
-                return (Byte)value;
+                return (byte)value;
             }
         }
-        public static SByte AsSByte(this Byte value)
+        public static sbyte AsSByte(this byte value)
         {
             unchecked
             {
-                return (SByte)value;
-            }
-        }
-
-        public static Int32 AsInt32(this UInt32 value)
-        {
-            unchecked
-            {
-                return (Int32)value;
-            }
-        }
-        public static UInt32 AsUInt32(this Int32 value)
-        {
-            unchecked
-            {
-                return (UInt32)value;
+                return (sbyte)value;
             }
         }
 
-        public static Single AsSingle(this UInt32 value)
+        public static int AsInt32(this uint value)
         {
             unchecked
             {
-                return (Single)value;
+                return (int)value;
             }
         }
-        public static Single AsSingle(this Int32 value)
+        public static uint AsUInt32(this int value)
         {
             unchecked
             {
-                return (Single)value;
-            }
-        }
-
-        public static Int32 AsInt32(this Single value)
-        {
-            unchecked
-            {
-                return (Int32)value;
-            }
-        }
-        public static UInt32 AsUInt32(this Single value)
-        {
-            unchecked
-            {
-                return (UInt32)value;
+                return (uint)value;
             }
         }
 
-        public static Int64 AsInt64(this Double value)
+        public static float AsSingle(this uint value)
         {
             unchecked
             {
-                return (Int64)value;
+                return (float)value;
             }
         }
-        public static UInt64 AsUInt64(this Double value)
+        public static float AsSingle(this int value)
         {
             unchecked
             {
-                return (UInt64)value;
-            }
-        }
-
-        public static Double AsDouble(this UInt64 value)
-        {
-            unchecked
-            {
-                return (Double)value;
-            }
-        }
-        public static Double AsDouble(this Int64 value)
-        {
-            unchecked
-            {
-                return (Double)value;
+                return (float)value;
             }
         }
 
-        public static Int64 AsInt64(this UInt64 value)
+        public static int AsInt32(this float value)
         {
             unchecked
             {
-                return (Int64)value;
+                return (int)value;
             }
         }
-        public static UInt64 AsUInt64(this Int64 value)
+        public static uint AsUInt32(this float value)
         {
             unchecked
             {
-                return (UInt64)value;
+                return (uint)value;
             }
         }
 
-        public static Int16 AsInt16(this UInt16 value)
+        public static long AsInt64(this double value)
         {
             unchecked
             {
-                return (Int16)value;
+                return (long)value;
             }
         }
-        public static UInt16 AsUInt16(this Int16 value)
+        public static ulong AsUInt64(this double value)
         {
             unchecked
             {
-                return (UInt16)value;
+                return (ulong)value;
+            }
+        }
+
+        public static double AsDouble(this ulong value)
+        {
+            unchecked
+            {
+                return (double)value;
+            }
+        }
+        public static double AsDouble(this long value)
+        {
+            unchecked
+            {
+                return (double)value;
+            }
+        }
+
+        public static long AsInt64(this ulong value)
+        {
+            unchecked
+            {
+                return (long)value;
+            }
+        }
+        public static ulong AsUInt64(this long value)
+        {
+            unchecked
+            {
+                return (ulong)value;
+            }
+        }
+
+        public static short AsInt16(this ushort value)
+        {
+            unchecked
+            {
+                return (short)value;
+            }
+        }
+        public static ushort AsUInt16(this short value)
+        {
+            unchecked
+            {
+                return (ushort)value;
             }
         }
     
-        public static Byte[] ToBytes(this Char value, Endianess endianess)
+        public static byte[] ToBytes(this char value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -368,29 +368,29 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this Char value)
+        public static byte[] ToBytes(this char value)
         {
             return BitConverter.GetBytes(value);
         }
 
         // A WTF function for the sake of completion!
-        public static Byte[] ToBytes(this Byte value)
+        public static byte[] ToBytes(this byte value)
         {
             return new [] { value };
         }
 
         // Another WTF function for the sake of completion...
-        public static Byte[] ToBytes(this SByte value)
+        public static byte[] ToBytes(this sbyte value)
         {
             return new [] { value.AsByte() };
         }
 
-        public static Byte[] ToBytes(this Decimal value)
+        public static byte[] ToBytes(this decimal value)
         {
             // Load 4 32 bit integers from the Decimal.GetBits method
-            var int32s = Decimal.GetBits(value);
+            var int32s = decimal.GetBits(value);
 
-            var bytes = new Byte[NumberHelpers.DecimalByteCount];
+            var bytes = new byte[NumberHelpers.DecimalByteCount];
 
             for (var i = 0; i < int32s.Length; i++)
             {
@@ -402,7 +402,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return bytes;
         }
 
-        public static Byte[] ToBytes(this Int32 value, Endianess endianess)
+        public static byte[] ToBytes(this int value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -413,14 +413,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this Int32 value)
+        public static byte[] ToBytes(this int value)
         {
             var bytes = BitConverter.GetBytes(value);
 
             return bytes;
         }
 
-        public static Byte[] ToBytes(this UInt32 value, Endianess endianess)
+        public static byte[] ToBytes(this uint value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -431,12 +431,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this UInt32 value)
+        public static byte[] ToBytes(this uint value)
         {
             return BitConverter.GetBytes(value);
         }
 
-        public static Byte[] ToBytes(this Int16 value, Endianess endianess)
+        public static byte[] ToBytes(this short value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -447,12 +447,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this Int16 value)
+        public static byte[] ToBytes(this short value)
         {
             return BitConverter.GetBytes(value);
         }
 
-        public static Byte[] ToBytes(this UInt16 value, Endianess endianess)
+        public static byte[] ToBytes(this ushort value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -463,12 +463,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this UInt16 value)
+        public static byte[] ToBytes(this ushort value)
         {
             return BitConverter.GetBytes(value);
         }
 
-        public static Byte[] ToBytes(this Int64 value, Endianess endianess)
+        public static byte[] ToBytes(this long value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -479,12 +479,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this Int64 value)
+        public static byte[] ToBytes(this long value)
         {
             return BitConverter.GetBytes(value);
         }
 
-        public static Byte[] ToBytes(this UInt64 value, Endianess endianess)
+        public static byte[] ToBytes(this ulong value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -495,12 +495,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this UInt64 value)
+        public static byte[] ToBytes(this ulong value)
         {
             return BitConverter.GetBytes(value);
         }
 
-        public static Byte[] ToBytes(this Single value, Endianess endianess)
+        public static byte[] ToBytes(this float value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -511,12 +511,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this Single value)
+        public static byte[] ToBytes(this float value)
         {
             return BitConverter.GetBytes(value);
         }
 
-        public static Byte[] ToBytes(this Double value, Endianess endianess)
+        public static byte[] ToBytes(this double value, Endianess endianess)
         {
             var bytes = value.ToBytes();
 
@@ -527,79 +527,79 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             return bytes;
         }
-        public static Byte[] ToBytes(this Double value)
+        public static byte[] ToBytes(this double value)
         {
             return BitConverter.GetBytes(value);
         }
 
-        public static Boolean IsEven(this Int64 value)
+        public static bool IsEven(this long value)
         {
             return value % 2 == 0;
         }
-        public static Boolean IsOdd(this Int64 value)
+        public static bool IsOdd(this long value)
         {
             return value % 2 == 1;
         }
 
-        public static Boolean IsEven(this UInt64 value)
+        public static bool IsEven(this ulong value)
         {
             return value % 2 == 0;
         }
-        public static Boolean IsOdd(this UInt64 value)
+        public static bool IsOdd(this ulong value)
         {
             return value % 2 == 1;
         }
 
-        public static Boolean IsEven(this Int32 value)
+        public static bool IsEven(this int value)
         {
             return value % 2 == 0;
         }
-        public static Boolean IsOdd(this Int32 value)
+        public static bool IsOdd(this int value)
         {
             return value % 2 == 1;
         }
 
-        public static Boolean IsEven(this UInt32 value)
+        public static bool IsEven(this uint value)
         {
             return value % 2 == 0;
         }
-        public static Boolean IsOdd(this UInt32 value)
+        public static bool IsOdd(this uint value)
         {
             return value % 2 == 1;
         }
 
-        public static Boolean IsEven(this Int16 value)
+        public static bool IsEven(this short value)
         {
             return value % 2 == 0;
         }
-        public static Boolean IsOdd(this Int16 value)
+        public static bool IsOdd(this short value)
         {
             return value % 2 == 1;
         }
 
-        public static Boolean IsEven(this UInt16 value)
+        public static bool IsEven(this ushort value)
         {
             return value % 2 == 0;
         }
-        public static Boolean IsOdd(this UInt16 value)
+        public static bool IsOdd(this ushort value)
         {
             return value % 2 == 1;
         }
 
-        public static Boolean IsEven(this SByte value)
+        public static bool IsEven(this sbyte value)
         {
             return value % 2 == 0;
         }
-        public static Boolean IsOdd(this SByte value)
+        public static bool IsOdd(this sbyte value)
         {
             return value % 2 == 1;
         }
 
-        public static Boolean IsEven(this Byte value)
+        public static bool IsEven(this byte value)
         {
             return value % 2 == 0;
         }
-        public static Boolean IsOdd(this Byte value)
+        public static bool IsOdd(this byte value)
         {
             return value % 2 == 1;
         }

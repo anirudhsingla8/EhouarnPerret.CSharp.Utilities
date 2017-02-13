@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
 
@@ -43,14 +43,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             }
         }
 
-        public static IEnumerable<Boolean> Remove<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
+        public static IEnumerable<bool> Remove<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
         {
             return from collection in collections
                    from item in collection
                    select source.Remove(item);
         }
 
-        public static IEnumerable<Boolean> Contains<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
+        public static IEnumerable<bool> Contains<T>(this ICollection<T> source, params IEnumerable<T>[] collections)
         {
             return from collection in collections
                    from item in collection

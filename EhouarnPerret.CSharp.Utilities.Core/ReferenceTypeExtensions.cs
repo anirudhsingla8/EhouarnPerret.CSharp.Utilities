@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,25 +23,24 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
 
 namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ReferenceTypeExtensions
     {
-        public static T ThrowIfNull<T>(this T parameterValue, String parameterName = @"")
+        public static T ThrowIfNull<T>(this T parameterValue, string parameterName = @"")
           where T : class
         {
             return ExceptionHelpers.ThrowIfNull(parameterValue, parameterName);
         }
 
-        public static Boolean IsNull<T>(this T value)
+        public static bool IsNull<T>(this T value)
             where T : class
         {
             return value == null;
         }
 
-        public static Boolean IsNotNull<T>(this T value)
+        public static bool IsNotNull<T>(this T value)
             where T : class
         {
             return value != null;

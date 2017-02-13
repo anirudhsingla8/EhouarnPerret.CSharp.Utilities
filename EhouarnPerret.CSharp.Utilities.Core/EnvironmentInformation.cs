@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -35,13 +35,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             IsRunningMono = Type.GetType(MonoRuntimeTypeName) != null;
 
             // Cheap Trick
-            var platformId = (Int32)Environment.OSVersion.Platform;
+            var platformId = (int)Environment.OSVersion.Platform;
             IsUnix = platformId == 4 || platformId == 6 || platformId == 128;
         }
 
-        private const String MonoRuntimeTypeName = @"Mono.Runtime";
-        public static Boolean IsRunningMono { get; } 
-        public static Boolean IsUnix { get; }
+        private const string MonoRuntimeTypeName = @"Mono.Runtime";
+        public static bool IsRunningMono { get; } 
+        public static bool IsUnix { get; }
     }
 }
 

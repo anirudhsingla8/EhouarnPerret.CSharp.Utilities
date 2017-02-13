@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -64,16 +64,16 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition
             Disposed?.Invoke(this, e);
         }
 
-		private System.Object SyncRoot { get; } = new System.Object();
+		private object SyncRoot { get; } = new object();
 
         #region INotifyObjectDisposing Implementation
         public event System.EventHandler Disposing;
-        public System.Boolean IsDisposing { get; private set; }
+        public bool IsDisposing { get; private set; }
         #endregion
 
         #region INotifyObjectDisposed Implementation
         public event System.EventHandler Disposed;
-        public System.Boolean IsDisposed { get; private set; }
+        public bool IsDisposed { get; private set; }
         #endregion
 
         #region IDisposable Implementation
@@ -88,7 +88,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.Disposition
 
         #endregion
 
-        private void Dispose(System.Boolean disposing)
+        private void Dispose(bool disposing)
         {
             lock (SyncRoot)
             {

@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,33 +24,32 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.IO.Ports;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ports
 {
     internal static class SerialPortExtensions
     {
-        public static void Write(this SerialPort serialPort, Byte[] data)
+        public static void Write(this SerialPort serialPort, byte[] data)
         {
             serialPort.Write(data, 0, data.Length);
         }
 
-        public static Byte[] Read(this SerialPort serialPort)
+        public static byte[] Read(this SerialPort serialPort)
         {
             lock (serialPort)
             {
-                var data = default(Byte[]);
+                byte[] data;
 
                 if (serialPort.BytesToRead > 0)
                 {
-                    data = new Byte[serialPort.BytesToRead];
+                    data = new byte[serialPort.BytesToRead];
 
                     serialPort.Read(data, 0, data.Length);
                 }
                 else
                 {
-                    data = new Byte[0];
+                    data = new byte[0];
                 }
 
                 return data;

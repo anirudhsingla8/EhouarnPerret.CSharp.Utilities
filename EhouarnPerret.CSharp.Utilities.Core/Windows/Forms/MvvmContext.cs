@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 // 
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -48,12 +48,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             
         }
 
-        public Boolean CanExecute(Object parameter)
+        public bool CanExecute(object parameter)
         {
             throw new NotImplementedException();
         }
 
-        public void Execute(Object parameter)
+        public void Execute(object parameter)
         {
             throw new NotImplementedException();
         }

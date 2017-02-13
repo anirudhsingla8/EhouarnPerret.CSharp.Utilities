@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -73,24 +73,24 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             throw new NotImplementedException();
         }
 
-        public Boolean Contains(KeyValuePair<TKey, TValue> item)
+        public bool Contains(KeyValuePair<TKey, TValue> item)
         {
             throw new NotImplementedException();
         }
 
-        public void CopyTo(KeyValuePair<TKey, TValue>[] array, Int32 arrayIndex)
+        public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
             throw new NotImplementedException();
         }
 
-        public Boolean Remove(KeyValuePair<TKey, TValue> item)
+        public bool Remove(KeyValuePair<TKey, TValue> item)
         {
             throw new NotImplementedException();
         }
 
-        public Int32 Count { get; }
-        public Boolean IsReadOnly { get; }
-        public Boolean ContainsKey(TKey key)
+        public int Count { get; }
+        public bool IsReadOnly { get; }
+        public bool ContainsKey(TKey key)
         {
             throw new NotImplementedException();
         }
@@ -100,12 +100,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             throw new NotImplementedException();
         }
 
-        public Boolean Remove(TKey key)
+        public bool Remove(TKey key)
         {
             throw new NotImplementedException();
         }
 
-        public Boolean TryGetValue(TKey key, out TValue value)
+        public bool TryGetValue(TKey key, out TValue value)
         {
             throw new NotImplementedException();
         }
@@ -125,13 +125,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         protected Dictionary<TKey, TValue> Dictionary { get; }
         protected List<TKey> List { get; }
 
-        public OrderedDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparer = null, Int32 capacity = 0)
+        public OrderedDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparer = null, int capacity = 0)
         {
             Dictionary = new Dictionary<TKey, TValue>(capacity, comparer) {dictionary};
             List = new List<TKey>(dictionary.Keys);
         }
 
-        public OrderedDictionary(IEqualityComparer<TKey> comparer = null, Int32 capacity = 0)
+        public OrderedDictionary(IEqualityComparer<TKey> comparer = null, int capacity = 0)
         {
             Dictionary = new Dictionary<TKey, TValue>(capacity, comparer);
             List = new List<TKey>(capacity);
@@ -158,12 +158,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             List.Clear();
         }
 
-        public Boolean Contains(KeyValuePair<TKey, TValue> item)
+        public bool Contains(KeyValuePair<TKey, TValue> item)
         {
             return Dictionary.Contains(item);
         }
 
-        public void CopyTo(KeyValuePair<TKey, TValue>[] array, Int32 arrayIndex)
+        public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
         {
             foreach (var pair in this)
             {
@@ -172,14 +172,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             }
         }
 
-        public Boolean Remove(KeyValuePair<TKey, TValue> item)
+        public bool Remove(KeyValuePair<TKey, TValue> item)
         {
             return Contains(item) && Remove(item.Key);
         }
 
-        public Int32 Count => Dictionary.Count;
-        public Boolean IsReadOnly => false;
-        public Boolean ContainsKey(TKey key)
+        public int Count => Dictionary.Count;
+        public bool IsReadOnly => false;
+        public bool ContainsKey(TKey key)
         {
             return Dictionary.ContainsKey(key);
         }
@@ -190,13 +190,13 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             List.Add(key);
         }
 
-        public Boolean Remove(TKey key)
+        public bool Remove(TKey key)
         {
             return List.Remove(key) && 
                    Dictionary.Remove(key);
         }
 
-        public Boolean TryGetValue(TKey key, out TValue value)
+        public bool TryGetValue(TKey key, out TValue value)
         {
             return Dictionary.TryGetValue(key, out value);
         }
@@ -213,7 +213,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
         public ICollection<TKey> Keys => Dictionary.Keys;
         public ICollection<TValue> Values => Dictionary.Values;
 
-        TValue IOrderedDictionary<TKey, TValue>.this[Int32 index]
+        TValue IOrderedDictionary<TKey, TValue>.this[int index]
         {
             get
             {
@@ -226,25 +226,25 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
             }
         }
 
-        public void Insert(Int32 index, TKey key, TValue value)
+        public void Insert(int index, TKey key, TValue value)
         {
             Dictionary.Add(key, value);
             List.Insert(index, key);
         }
 
-        public Int32 IndexOf(TKey key)
+        public int IndexOf(TKey key)
         {
             return List.IndexOf(key);
         }
 
-        public void RemoveAt(Int32 index)
+        public void RemoveAt(int index)
         {
             var key = List[index];
             Dictionary.Remove(key);
             List.RemoveAt(index);
         }
 
-        public void SetItem(Int32 index, TValue value)
+        public void SetItem(int index, TValue value)
         {
             var key = List[index];
             Dictionary[key] = value;

@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,120 +38,120 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         /// <summary>
         /// The Byte bit count.
         /// </summary>
-        public const Int32 ByteBitCount = 8;
+        public const int ByteBitCount = 8;
 
         /// <summary>
         /// The SByte bit count.
         /// </summary>
-        public const Int32 SByteBitCount = ByteBitCount;
+        public const int SByteBitCount = sizeof(sbyte) * ByteBitCount;
 
         /// <summary>
         /// The Tnt16 bit count.
         /// </summary>
-        public const Int32 Int16BitCount = 16;
+        public const int Int16BitCount = sizeof(short) * ByteBitCount;
 
         /// <summary>
         /// The UInt16 bit count.
         /// </summary>
-        public const Int32 UInt16BitCount = Int16BitCount;
+        public const int UInt16BitCount = sizeof(ushort) * ByteBitCount;
 
         /// <summary>
         /// The Int32 bit count.
         /// </summary>
-        public const Int32 Int32BitCount = 32;
+        public const int Int32BitCount = sizeof(int) * ByteBitCount;
 
         /// <summary>
         /// The UInt32 bit count.
         /// </summary>
-        public const Int32 UInt32BitCount = Int32BitCount;
+        public const int UInt32BitCount = sizeof(uint) * ByteBitCount;
 
         /// <summary>
         /// The Int64 bit count.
         /// </summary>
-        public const Int32 Int64BitCount = 64;
+        public const int Int64BitCount = sizeof(long) * ByteBitCount;
 
         /// <summary>
         /// The UInt64 bit count.
         /// </summary>
-        public const Int32 UInt64BitCount = Int64BitCount;
+        public const int UInt64BitCount = sizeof(ulong) * ByteBitCount;
 
         /// <summary>
         /// The Aggregate bit count.
         /// </summary>
-        public const Int32 SingleBitCount = 32;
+        public const int SingleBitCount = sizeof(float) * ByteBitCount;
 
         /// <summary>
         /// Makes sense double is double single... eh!?
         /// </summary>
-        public const Int32 DoubleBitCount = SingleBitCount * 2;
+        public const int DoubleBitCount = sizeof(double) * ByteBitCount;
 
         /// <summary>
         /// The Decimal bit count.
         /// </summary>
-        public const Int32 DecimalBitCount = 128;
+        public const int DecimalBitCount = sizeof(decimal) * ByteBitCount;
 
         /// <summary>
         /// The Byte byte count... makes some sense here.
         /// My sanity has been vanished long ago I guess.
         /// </summary>
-        public const Int32 ByteByteCount = 1;
+        public const int ByteByteCount = sizeof(byte);
 
         /// <summary>
         /// The UInt16 byte count.
         /// </summary>
-        public const Int32 UInt16ByteCount = 2;
+        public const int UInt16ByteCount = sizeof(ushort);
 
         /// <summary>
         /// The UInt32 byte count.
         /// </summary>
-        public const Int32 UInt32ByteCount = 4;
+        public const int UInt32ByteCount = sizeof(uint);
 
         /// <summary>
         /// The UInt64 byte count.
         /// </summary>
-        public const Int32 UInt64ByteCount = 8;
+        public const int UInt64ByteCount = sizeof(ulong);
 
 
         /// <summary>
         /// The SByte byte count.
         /// </summary>
-        public const Int32 SByteByteCount = ByteByteCount;
+        public const int SByteByteCount = sizeof(sbyte);
 
         /// <summary>
         /// The Int16 byte count.
         /// </summary>
-        public const Int32 Int16ByteCount = UInt16ByteCount;
+        public const int Int16ByteCount = sizeof(short);
 
         /// <summary>
         /// The Int32 byte count.
         /// </summary>
-        public const Int32 Int32ByteCount = UInt32ByteCount;
+        public const int Int32ByteCount = sizeof(int);
 
         /// <summary>
         /// The Int64 byte count.
         /// </summary>
-        public const Int32 Int64ByteCount = UInt64ByteCount;
+        public const int Int64ByteCount = sizeof(long);
 
 
         /// <summary>
         /// The Aggregate byte count.
         /// </summary>
-        public const Int32 SingleByteCount = 4;
+        public const int SingleByteCount = sizeof(float);
 
         /// <summary>
         /// The Double byte count.
         /// </summary>
-        public const Int32 DoubleByteCount = 8;
+        public const int DoubleByteCount = sizeof(double);
 
         /// <summary>
         /// The Decimal byte count.
         /// </summary>
-        public const Int32 DecimalByteCount = 16;
+        public const int DecimalByteCount = sizeof(decimal);
 
         /// <summary>
         /// The decimal int32 count.
         /// </summary>
-        public const Int32 DecimalInt32Count = DecimalByteCount / Int32ByteCount;
+        public const int DecimalInt32Count = sizeof(decimal) / sizeof(int);
     
         public static Endianess Endianess { get; }
     }

@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,14 +36,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
         public FluentRegex()
         {
             StringBuilder = new StringBuilder();
-            UnstoppedStartedgroupNames = new Stack<String> ();
+            UnstoppedStartedgroupNames = new Stack<string> ();
         }
 
         private StringBuilder StringBuilder { get; }
 
-		public Stack<String> UnstoppedStartedgroupNames { get; }
+		public Stack<string> UnstoppedStartedgroupNames { get; }
 
-        public FluentRegex StartCapture(String groupName)
+        public FluentRegex StartCapture(string groupName)
         {
             StringBuilder.Append($"(?<{groupName}>");
 
@@ -246,7 +246,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Text.RegularExpressions
             return;
         }
 
-        public Regex ToRegex(Boolean isCompiled = true)
+        public Regex ToRegex(bool isCompiled = true)
         {
             CheckUnclosedGroupNames();
 

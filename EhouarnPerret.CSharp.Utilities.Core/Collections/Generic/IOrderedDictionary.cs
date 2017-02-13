@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,18 +23,18 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Collections.Generic;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Collections.Generic
 {
     public interface IOrderedDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
-        TValue this[Int32 index] { get; set; }  
-        void Insert(Int32 index, TKey key, TValue value);  
-        Int32 IndexOf(TKey key);
-        void RemoveAt(Int32 index);
-        void SetItem(Int32 index, TValue value);
+        TValue this[int index] { get; set; }  
+        void Insert(int index, TKey key, TValue value);  
+        int IndexOf(TKey key);
+        void RemoveAt(int index);
+        void SetItem(int index, TValue value);
     }
 }
 

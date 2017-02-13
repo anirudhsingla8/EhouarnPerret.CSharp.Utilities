@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -32,11 +32,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class ByteExtensions
     {
-        public static void WriteToFile(this Byte[] value, String path)
+        public static void WriteToFile(this byte[] value, string path)
         {
             File.WriteAllBytes(path, value);
         }
-        public static void AppendToFile(this Byte[] bytes, String path)
+        public static void AppendToFile(this byte[] bytes, string path)
         {
             using (var stream = new FileStream(path, FileMode.Append))
             {
@@ -44,19 +44,19 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static Boolean[] GetBits(this Byte value)
+        public static bool[] GetBits(this byte value)
         {
-            var bitValues = new Boolean[NumberHelpers.ByteByteCount];
+            var bitValues = new bool[NumberHelpers.ByteByteCount];
 
             for (var i = ByteBits.Bit0; i <= ByteBits.Bit7; i++) 
             {
-                bitValues[(Byte)i] = value.GetBit(i);
+                bitValues[(byte)i] = value.GetBit(i);
             }
 
             return bitValues;
         }
 
-        private static Byte GetMask(this ByteBits bitIndex)
+        private static byte GetMask(this ByteBits bitIndex)
         {
             switch (bitIndex) 
             {
@@ -73,66 +73,66 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
 
-        public static Boolean GetBit(this Byte value, ByteBits bitIndex)
+        public static bool GetBit(this byte value, ByteBits bitIndex)
         {
             var mask = bitIndex.GetMask();
             return GetBit(value, mask);
         }
-        public static Byte SetBit(this Byte value, ByteBits bitIndex, Boolean bitValue)
+        public static byte SetBit(this byte value, ByteBits bitIndex, bool bitValue)
         {
             var mask = bitIndex.GetMask();
             return SetBit(value, mask, bitValue);
         }
 
-        public static Byte SetBigEndianMSB(Byte value, Boolean bitValue)
+        public static byte SetBigEndianMSB(byte value, bool bitValue)
         {
             return value.SetBit(ByteBits.Bit0, bitValue);
         }
-        public static Byte SetBigEndianLSB(Byte value, Boolean bitValue)
+        public static byte SetBigEndianLSB(byte value, bool bitValue)
         {
             return value.SetBit(ByteBits.Bit7, bitValue);
         }
 
-        public static Byte SetLittleEndianMSB(Byte value, Boolean bitValue)
+        public static byte SetLittleEndianMSB(byte value, bool bitValue)
         {
             return value.SetBit(ByteBits.Bit7, bitValue);
         }
-        public static Byte SetLittleEndianLSB(Byte value, Boolean bitValue)
+        public static byte SetLittleEndianLSB(byte value, bool bitValue)
         {
             return value.SetBit(ByteBits.Bit0, bitValue);
         }
 
-        public static Boolean GetBigEndianMSB(Byte value)
+        public static bool GetBigEndianMSB(byte value)
         {
             return value.GetBit(ByteBits.Bit0);
         }
-        public static Boolean GetBigEndianLSB(Byte value)
+        public static bool GetBigEndianLSB(byte value)
         {
             return value.GetBit(ByteBits.Bit7);
         }
 
-        public static Boolean GetLittleEndianMSB(Byte value)
+        public static bool GetLittleEndianMSB(byte value)
         {
             return value.GetBit(ByteBits.Bit7);
         }
-        public static Boolean GetLittleEndianLSB(Byte value)
+        public static bool GetLittleEndianLSB(byte value)
         {
             return value.GetBit(ByteBits.Bit0);
         }
 
-        private static Byte SetBit(Byte value, Byte mask, Boolean bitValue)
+        private static byte SetBit(byte value, byte mask, bool bitValue)
         {
             // Why, fucking stupid Int32 downgrading performance cast... motherfucka'
-            return bitValue ? (value |= mask) : (value &=(Byte)~mask);
+            return bitValue ? (value |= mask) : (value &=(byte)~mask);
         }
-        private static Boolean GetBit(Byte value, Byte mask)
+        private static bool GetBit(byte value, byte mask)
         {
             return (value & mask) > 0;
         }
 
         static ByteExtensions()
         {
-            var bitReverseLookupTable = new Byte[]
+            var bitReverseLookupTable = new byte[]
             {
                 0x00, 0x80, 0x40, 0xc0, 0x20, 0xa0, 0x60, 0xe0,
                 0x10, 0x90, 0x50, 0xd0, 0x30, 0xb0, 0x70, 0xf0,
@@ -168,12 +168,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
                 0x1f, 0x9f, 0x5f, 0xdf, 0x3f, 0xbf, 0x7f, 0xff
             };
 
-            BitReversalLookupTable = new ReadOnlyCollection<Byte>(bitReverseLookupTable);
+            BitReversalLookupTable = new ReadOnlyCollection<byte>(bitReverseLookupTable);
         }
 
-        private static ReadOnlyCollection<Byte> BitReversalLookupTable { get; }
+        private static ReadOnlyCollection<byte> BitReversalLookupTable { get; }
 
-        public static Byte ReverseBits(this Byte value)
+        public static byte ReverseBits(this byte value)
         {
             return BitReversalLookupTable[value];
         }

@@ -30,9 +30,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
 {
     public static class IPEndPointHelpers
     {
-        public const Char IPAddressPortSeparator = ':';
+        public const char IPAddressPortSeparator = ':';
 
-        public static IPEndPoint Parse(String ipEndPointString)
+        public static IPEndPoint Parse(string ipEndPointString)
         {
             var tokens = ipEndPointString.Split(IPAddressPortSeparator);
 
@@ -41,14 +41,14 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
                 throw new FormatException(nameof(ipEndPointString));
             }
             var ipAddress = IPAddress.Parse(tokens[0]);
-            var port = UInt16.Parse(tokens[1]);
+            var port = ushort.Parse(tokens[1]);
 
             var ipEndPoint = new IPEndPoint(ipAddress, port);
 
             return ipEndPoint;
         }
 
-        public static IPEndPoint Parse(String ipAddressString, UInt16 port)
+        public static IPEndPoint Parse(string ipAddressString, ushort port)
         {
             var ipAddress = IPAddress.Parse(ipAddressString);
 

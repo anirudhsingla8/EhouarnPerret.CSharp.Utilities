@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -32,7 +31,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.PropertyChangesNotificati
 {
     public abstract class PropertyChangesNotifier : INotifyPropertyChanges
     {
-        protected void ChangeProperty<T>(ref T oldValue, T newValue, [CallerMemberName]String propertyName = null)
+        protected void ChangeProperty<T>(ref T oldValue, T newValue, [CallerMemberName]string propertyName = null)
         {
             ExceptionHelpers.ThrowIfNullOrEmpty(propertyName, nameof(propertyName));
 
@@ -43,12 +42,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Patterns.PropertyChangesNotificati
             OnPropertyChanged(propertyName);
         }
 
-        private void OnPropertyChanging(String propertyName)
+        private void OnPropertyChanging(string propertyName)
         {
             var e = new PropertyChangingEventArgs(propertyName);
             OnPropertyChanging(e);
         }
-        private void OnPropertyChanged(String propertyName)
+        private void OnPropertyChanged(string propertyName)
         {
             var e = new PropertyChangedEventArgs(propertyName);
             OnPropertyChanged(e);

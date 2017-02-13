@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.Collections.Generic;
 using EhouarnPerret.CSharp.Utilities.Core.Collections.Generic;
 
@@ -32,27 +31,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
 {
     public class IniFileSection
     {
-        internal IniFileSection(IniFileSectionCollection parent, String name)
+        internal IniFileSection(IniFileSectionCollection parent, string name)
         {
             Name = ExceptionHelpers.ThrowIfNullOrEmpty(name, nameof(name));
-            Properties = new Dictionary<String, String>();
+            Properties = new Dictionary<string, string>();
         }
 
-        internal IniFileSection(IniFileSectionCollection parent, String name, IDictionary<String, String> properties) : this(parent, name)
+        internal IniFileSection(IniFileSectionCollection parent, string name, IDictionary<string, string> properties) : this(parent, name)
         {
             Properties.Add(properties);
         }
 
         protected IniFileSectionCollection File { get; }
 
-        public String this[String propertyKey]
+        public string this[string propertyKey]
         {
             get { return Properties[propertyKey]; }
             set { Properties[propertyKey] = value; }
         }
 
-        public String Name { get; }
-        public Dictionary<String, String> Properties { get; }
+        public string Name { get; }
+        public Dictionary<string, string> Properties { get; }
 
 //        public override String ToString()
 //        {

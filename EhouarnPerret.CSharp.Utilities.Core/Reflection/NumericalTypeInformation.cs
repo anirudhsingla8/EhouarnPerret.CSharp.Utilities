@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,9 +30,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 {
     public abstract class NumericalTypeInformation
     {
-        private const String DecimalTypeFullName = @"System.Decimal";
-        private const String MinValueConstantFieldName = @"MinValue";
-        private const String MaxValueConstantFieldName = @"MaxValue";
+        private const string DecimalTypeFullName = @"System.Decimal";
+        private const string MinValueConstantFieldName = @"MinValue";
+        private const string MaxValueConstantFieldName = @"MaxValue";
 
         internal NumericalTypeInformation(Type type)
         {
@@ -56,10 +56,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Reflection
 
         public Type Type { get; }
 
-        public String Name { get; }
+        public string Name { get; }
 
-        public Object BoxedMinValue { get; }
-        public Object BoxedMaxValue { get; }
+        public object BoxedMinValue { get; }
+        public object BoxedMaxValue { get; }
     }
 
     public class NumericalTypeInformation<T> : NumericalTypeInformation

@@ -23,14 +23,14 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-using System;
+
 using System.Net;
 
 namespace EhouarnPerret.CSharp.Utilities.Core.Net.Sockets
 {
     public static class IPAddressExtensions
     {
-        public static IPEndPoint ToIPEndPoint(this IPAddress ipAddress, UInt16 port)
+        public static IPEndPoint ToIPEndPoint(this IPAddress ipAddress, ushort port)
         {
             var ipEndPoint = new IPEndPoint(ipAddress, port);
 

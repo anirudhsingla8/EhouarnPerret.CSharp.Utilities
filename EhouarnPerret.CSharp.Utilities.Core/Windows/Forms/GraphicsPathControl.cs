@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,8 +41,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             RepaintOnResize = true;
         }
 
-        private UInt16 _borderWidth;
-        public UInt16 BorderWidth
+        private ushort _borderWidth;
+        public ushort BorderWidth
         {
             get
             {
@@ -69,8 +69,8 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
-        private Boolean _useGraphicsPathAsRegion;
-        public Boolean UseGraphicsPathAsRegion
+        private bool _useGraphicsPathAsRegion;
+        public bool UseGraphicsPathAsRegion
         {
             get
             {

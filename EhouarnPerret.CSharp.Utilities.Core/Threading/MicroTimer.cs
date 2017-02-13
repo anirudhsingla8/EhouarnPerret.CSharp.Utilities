@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             Interval = DefaultInterval;
         }
 
-        public MicroTimer(Int64 interval)
+        public MicroTimer(long interval)
         {
             if (interval < 0L)
             {
@@ -64,7 +64,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             _threadCancellationRequested = true;
         }
 
-        private void NotificationTimer(ref Int64 interval, ref Int64 ignoreDurationThreshold, ref Boolean hasToStopTimer)
+        private void NotificationTimer(ref long interval, ref long ignoreDurationThreshold, ref bool hasToStopTimer)
         {
             if (interval < 0L)
             {
@@ -87,7 +87,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 
                 nextNotification += intervalCurrent;
 
-                if (count != Int64.MaxValue)
+                if (count != long.MaxValue)
                 {
                     count++;
                 }
@@ -96,7 +96,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
                     count = 0L;
                 }
 
-                Int64 elapsedMicroseconds;
+                long elapsedMicroseconds;
 
                 while ((elapsedMicroseconds = microStopwatch.ElapsedMicroseconds) < nextNotification && !hasToStopTimer)
                 {
@@ -129,11 +129,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
 
         private Thread Thread { get; set; }
 
-        private Boolean _threadCancellationRequested;
+        private bool _threadCancellationRequested;
 
-        public const Int64 DefaultInterval = 1000;
+        public const long DefaultInterval = 1000;
 
-        public Int64 Interval
+        public long Interval
         {
             get
             {
@@ -144,9 +144,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
                 _interval = value;
             }
         }
-        private Int64 _interval;
+        private long _interval;
 
-        public Boolean Enabled
+        public bool Enabled
         {
             get
             {
@@ -165,7 +165,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             }
         }
 
-        public Int64 IgnoreDurationThreshold
+        public long IgnoreDurationThreshold
         {
             get
             {
@@ -173,10 +173,10 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Threading
             }
             set
             {
-                Interlocked.Exchange(ref _ignoreDurationThreshold, value <= 0 ? Int64.MaxValue : value);
+                Interlocked.Exchange(ref _ignoreDurationThreshold, value <= 0 ? long.MaxValue : value);
             }
         }
-        private Int64 _ignoreDurationThreshold = Int64.MaxValue;
+        private long _ignoreDurationThreshold = long.MaxValue;
     
         public event EventHandler<MicroTimerElapsedEventArgs> Elapsed;
 

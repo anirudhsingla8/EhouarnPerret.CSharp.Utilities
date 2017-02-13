@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -30,53 +30,53 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 {
     public static class RandomExtensions
     {
-        public static Byte[] NextBytes(this Random random, Int32 byteCount)
+        public static byte[] NextBytes(this Random random, int byteCount)
         {
-            var value = new Byte[byteCount];
+            var value = new byte[byteCount];
 
             random.NextBytes(value);
 
             return value;
         }
 
-        public static Boolean NextBoolean(this Random random)
+        public static bool NextBoolean(this Random random)
         {
             var value = random.NextByte(0, 1) == 1;
 
             return value;
         }
 
-        public static Byte NextByte(this Random random)
+        public static byte NextByte(this Random random)
         {
             return random.NextBytes(1)[0];
         }
-        public static Byte NextByte(this Random random, Byte lowerBound, Byte upperBound)
+        public static byte NextByte(this Random random, byte lowerBound, byte upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
-            var value = (Byte)(random.NextByte() % (upperBound + 1 - lowerBound) + lowerBound);
+            var value = (byte)(random.NextByte() % (upperBound + 1 - lowerBound) + lowerBound);
 
             return value;
         }
 
-        public static UInt16 NextUInt16(this Random random)
+        public static ushort NextUInt16(this Random random)
         {
             return BitConverter.ToUInt16(random.NextBytes(NumberHelpers.UInt16ByteCount), 0);
         }
-        public static UInt16 NextUInt16(this Random random, UInt16 lowerBound, UInt16 upperBound)
+        public static ushort NextUInt16(this Random random, ushort lowerBound, ushort upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
-            var value = (UInt16)(random.NextUInt16() % (upperBound + 1 - lowerBound) + lowerBound);
+            var value = (ushort)(random.NextUInt16() % (upperBound + 1 - lowerBound) + lowerBound);
 
             return value;
         }
 
-        public static UInt32 NextUInt32(this Random random)
+        public static uint NextUInt32(this Random random)
         {
             return BitConverter.ToUInt32(random.NextBytes(NumberHelpers.UInt32ByteCount), 0);
         }
-        public static UInt32 NextUInt32(this Random random, UInt32 lowerBound, UInt32 upperBound)
+        public static uint NextUInt32(this Random random, uint lowerBound, uint upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
@@ -85,11 +85,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value;
         }
 
-        public static UInt64 NextUInt64(this Random random)
+        public static ulong NextUInt64(this Random random)
         {
             return BitConverter.ToUInt64(random.NextBytes(NumberHelpers.UInt64ByteCount), 0);
         }
-        public static UInt64 NextUInt64(this Random random, UInt64 lowerBound, UInt64 upperBound)
+        public static ulong NextUInt64(this Random random, ulong lowerBound, ulong upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
@@ -98,37 +98,37 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value;
         }
 
-        public static SByte NextSByte(this Random random)
+        public static sbyte NextSByte(this Random random)
         {
             return random.NextByte().AsSByte();
         }
-        public static SByte NextSByte(this Random random, SByte lowerBound, SByte upperBound)
+        public static sbyte NextSByte(this Random random, sbyte lowerBound, sbyte upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
-            var value = (SByte)(random.NextSByte() % (upperBound + 1 - lowerBound) + lowerBound);
+            var value = (sbyte)(random.NextSByte() % (upperBound + 1 - lowerBound) + lowerBound);
 
             return value;
         }
 
-        public static Int16 NextInt16(this Random random)
+        public static short NextInt16(this Random random)
         {
             return BitConverter.ToInt16(random.NextBytes(NumberHelpers.Int16ByteCount), 0);
         }
-        public static Int16 NextInt16(this Random random, Int16 lowerBound, Int16 upperBound)
+        public static short NextInt16(this Random random, short lowerBound, short upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
-            var value = (Int16)(random.NextInt16() % (upperBound + 1 - lowerBound) + lowerBound);
+            var value = (short)(random.NextInt16() % (upperBound + 1 - lowerBound) + lowerBound);
 
             return value;
         }
 
-        public static Int32 NextInt32(this Random random)
+        public static int NextInt32(this Random random)
         {
             return BitConverter.ToInt32(random.NextBytes(NumberHelpers.Int32ByteCount), 0);
         }
-        public static Int32 NextInt32(this Random random, Int32 lowerBound, Int32 upperBound)
+        public static int NextInt32(this Random random, int lowerBound, int upperBound)
         {
             lowerBound.ThrowIfGreaterThan(upperBound, nameof(lowerBound));
 
@@ -137,11 +137,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value;
         }
 
-        public static Int64 NextInt64(this Random random)
+        public static long NextInt64(this Random random)
         {
             return BitConverter.ToInt64(random.NextBytes(NumberHelpers.Int64ByteCount), 0);
         }
-        public static Int64 NextInt64(this Random random, Int64 lowerBound, Int64 upperBound)
+        public static long NextInt64(this Random random, long lowerBound, long upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
@@ -150,11 +150,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value;
         }
 
-        public static Single NextSingle(this Random random)
+        public static float NextSingle(this Random random)
         {
             return BitConverter.ToSingle(random.NextBytes(NumberHelpers.SingleByteCount), 0);
         }
-        public static Single NextSingle(this Random random, Single lowerBound, Single upperBound)
+        public static float NextSingle(this Random random, float lowerBound, float upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
@@ -163,11 +163,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value;
         }
 
-        public static Double NextDouble(this Random random)
+        public static double NextDouble(this Random random)
         {
             return BitConverter.ToDouble(random.NextBytes(NumberHelpers.DoubleByteCount), 0);
         }
-        public static Double NextDouble(this Random random, Double lowerBound, Double upperBound)
+        public static double NextDouble(this Random random, double lowerBound, double upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
@@ -177,7 +177,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             return value;
         }
 
-        public static Decimal NextDecimal(this Random random)
+        public static decimal NextDecimal(this Random random)
         {
             var bytes = random.NextBytes(12);
 
@@ -188,11 +188,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             var isNegative = random.NextBoolean();
 
-            var value = new Decimal(low, mid, high, isNegative, scale);
+            var value = new decimal(low, mid, high, isNegative, scale);
 
             return value;
         }
-        public static Decimal NextDecimal(this Random random, Decimal lowerBound, Decimal upperBound)
+        public static decimal NextDecimal(this Random random, decimal lowerBound, decimal upperBound)
         {
             lowerBound.ThrowIfStrictlyGreaterThan(upperBound, nameof(lowerBound));
 
@@ -226,7 +226,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
 
             var ratio = random.NextDouble();
 
-            var value = new TimeSpan((Int64) (ratio*(upperBound.Ticks - lowerBound.Ticks)));
+            var value = new TimeSpan((long) (ratio*(upperBound.Ticks - lowerBound.Ticks)));
 
             return value;
         }

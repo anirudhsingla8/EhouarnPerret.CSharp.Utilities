@@ -1,10 +1,10 @@
 ﻿//
-// ExpressionHelpers.cs
+// FileInfoExtensions.cs
 //
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,16 +24,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-namespace EhouarnPerret.CSharp.Utilities.Core.Linq.Expressions
-{
-//    public static class ExpressionHelpers
-//    {
-//        public static PropertyInfo GetPropertyInfo<TSource, TProperty>(Expression<Func<TSource, TProperty>> expression)
-//        {
-//            var sourceType = typeof(TSource);
-//            var propertyType = typeof(TProperty);
-//
-//        }
-//    }
-}
 
+namespace EhouarnPerret.CSharp.Utilities.Core.IO
+{
+    public static class FileInfoExtensions
+    {
+        
+    }
+}

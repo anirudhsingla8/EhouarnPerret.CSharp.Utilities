@@ -30,11 +30,11 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Runtime.Serialization
     public class JsonSerializer : Serializer
     {
         #region Serializer Implementation
-        public override Byte[] Serialize<T>(T value)
+        public override byte[] Serialize<T>(T value)
         {
             throw new NotImplementedException();
         }
-        public override T Deserialize<T>(Byte[] source)
+        public override T Deserialize<T>(byte[] source)
         {
             throw new NotImplementedException();
         }

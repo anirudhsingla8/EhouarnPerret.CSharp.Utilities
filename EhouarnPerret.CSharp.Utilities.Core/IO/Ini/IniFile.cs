@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,12 +36,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
     /// </summary>
     public class IniFile : IEnumerable<IniFileSection>
     {
-        public IniFile(String path)
+        public IniFile(string path)
             : this(path, IniFileOptions.Default)
         {
         }
 
-        public IniFile(String path, IniFileOptions options)
+        public IniFile(string path, IniFileOptions options)
         {
             if (!File.Exists(path))
             {
@@ -98,27 +98,27 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         /// Gets the physical filename without the extension.
         /// </summary>
         /// <value>The name.</value>
-        public String Name => _fileInfo.Name;
+        public string Name => _fileInfo.Name;
 
         /// <summary>
         /// Gets the full path related to the physical file.
         /// </summary>
         /// <value>The full path.</value>
-        public String Path => _fileInfo.FullName;
+        public string Path => _fileInfo.FullName;
 
         /// <summary>
         /// The default comment tag.
         /// </summary>
-        public const String DefaultCommentTag = @";";
+        public const string DefaultCommentTag = @";";
 
         /// <summary>
         /// The default file extension.
         /// </summary>
-        public const String DefaultFileExtension = @"ini";
+        public const string DefaultFileExtension = @"ini";
 
-        private Object SyncRoot { get; }
+        private object SyncRoot { get; }
 
-        public Dictionary<String, IniFileSection> Sections { get; }
+        public Dictionary<string, IniFileSection> Sections { get; }
 
         /// <summary>
         /// Persist this instance.
@@ -134,7 +134,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         /// Persist this instance to the given path.
         /// </summary>
         /// <param name="path">Path.</param>
-        public IniFile SaveAs(String path)
+        public IniFile SaveAs(string path)
         {
             return null;
         }
@@ -161,7 +161,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
         }
         #endregion
 
-        public static IniFile LoadFrom(String path)
+        public static IniFile LoadFrom(string path)
         {
             return new IniFile(path);
         }

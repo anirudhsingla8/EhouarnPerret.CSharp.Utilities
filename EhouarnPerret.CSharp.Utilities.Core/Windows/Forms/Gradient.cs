@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -40,9 +39,9 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
         public BindingList<GradientPoint> Points { get; }
 
-        public Single Rotation { get; set; }
+        public float Rotation { get; set; }
 
-        internal abstract void Scale(Single scaleX, Single Y);
+        internal abstract void Scale(float scaleX, float Y);
     }
 
     public class ImmutableSolidBrush : ImmutableBrush
@@ -58,7 +57,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
 
         private SolidBrush SolidBrush { get; }
 
-        internal override void Scale(Single scaleX, Single Y)
+        internal override void Scale(float scaleX, float Y)
         {
             // Do nothing here...
         }

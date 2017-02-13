@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -44,7 +44,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             form.PreviewKeyDown += OnFormPreviewKeyDown;
         }
 
-        private static void FormDisposed (Object sender, EventArgs e)
+        private static void FormDisposed (object sender, EventArgs e)
         {
             var form = sender as Form;
 
@@ -53,7 +53,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             form.PreviewKeyDown -= OnFormPreviewKeyDown;
         }
 
-        private static void OnFormPreviewKeyDown (Object sender, PreviewKeyDownEventArgs e)
+        private static void OnFormPreviewKeyDown (object sender, PreviewKeyDownEventArgs e)
         {
             var form = sender as Form;
 
@@ -69,7 +69,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core.Windows.Forms
             }
         }
 
-        private static void OnFormKeyDown (Object sender, KeyEventArgs e)
+        private static void OnFormKeyDown (object sender, KeyEventArgs e)
         {
             var form = sender as Form;
 

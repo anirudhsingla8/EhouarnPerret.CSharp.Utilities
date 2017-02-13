@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -42,33 +42,33 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
             // Double Boxing... sad =/
             // I ain't gonna to make another one just for the sake of the structs... come on... meow =]
-            LowerBound = (T)ExceptionHelpers.ThrowIfNull((Object)lowerBound, nameof(lowerBound));
-            UpperBound = (T)ExceptionHelpers.ThrowIfNull((Object)upperBound, nameof(upperBound));
+            LowerBound = (T)ExceptionHelpers.ThrowIfNull((object)lowerBound, nameof(lowerBound));
+            UpperBound = (T)ExceptionHelpers.ThrowIfNull((object)upperBound, nameof(upperBound));
         }
 
-        public Boolean Contains(T value)
+        public bool Contains(T value)
         {
             return value.IsBetween(LowerBound, UpperBound);
         }
-        public Boolean Contains(Range<T> range)
+        public bool Contains(Range<T> range)
         {
             var isRangeLowered = LowerBound.CompareTo(range.LowerBound) <= 0;
             var isRangeUppered = UpperBound.CompareTo(range.UpperBound) >= 0;
 
             return isRangeLowered && isRangeUppered;
         }
-        public Boolean IsContainedBy(Range<T> range)
+        public bool IsContainedBy(Range<T> range)
         {
             return range.Contains(this);
         }
-        public Boolean Overlaps(Range<T> range)
+        public bool Overlaps(Range<T> range)
         {
             return Contains(range.LowerBound) || 
                    Contains(range.UpperBound) || 
                    range.Contains(LowerBound) || 
                    range.Contains(UpperBound);
         }
-        public Boolean IsContiguousWith(Range<T> range)
+        public bool IsContiguousWith(Range<T> range)
         {
             if (Overlaps(range) || Contains(range) || range.Overlaps(this) || range.Contains(this))
             {
@@ -112,7 +112,7 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             throw new ArgumentOutOfRangeException(nameof(value));
         }
 
-        public override Boolean Equals(Object obj)
+        public override bool Equals(object obj)
         {
 //            var range = obj as Range<T>;
 //
@@ -126,12 +126,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core
             }
         }
                         
-        public override Int32 GetHashCode()
+        public override int GetHashCode()
         {
             return LowerBound.GetHashCode();
         }
 
-        private IEnumerable<T> Iterate(Func<T, T> iterator, T start, T stop, Func<T, T, Boolean> stopCondition)
+        private IEnumerable<T> Iterate(Func<T, T> iterator, T start, T stop, Func<T, T, bool> stopCondition)
         {
             yield return start;
 
@@ -156,20 +156,20 @@ namespace EhouarnPerret.CSharp.Utilities.Core
         }
 
         #region IComparable<Range<T>> Implementation
-        public Int32 CompareTo(Range<T> other)
+        public int CompareTo(Range<T> other)
         {
             return LowerBound.CompareTo(other.LowerBound);
         }
         #endregion
 
         #region IComparable<T> Implementation
-        public Int32 CompareTo(T other)
+        public int CompareTo(T other)
         {
             return LowerBound.CompareTo(other);
         }
         #endregion
     
-        public override String ToString()
+        public override string ToString()
         {
             return $@"[{LowerBound};{UpperBound}]";
         }

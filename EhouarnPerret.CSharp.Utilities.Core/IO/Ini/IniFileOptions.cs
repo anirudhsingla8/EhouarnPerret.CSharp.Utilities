@@ -4,7 +4,7 @@
 // Author:
 //       Ehouarn Perret <ehouarn.perret@outlook.com>
 //
-// Copyright (c) 2016 Ehouarn Perret
+// Copyright (c) Ehouarn Perret
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using System;
-
 namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
 {
     /// <summary>
@@ -35,12 +33,12 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
     {
         public IniFileOptions
         (
-            String fileExtension = DefaultFileExtension, 
-            String commentTag = DefaultCommentTag,
-            String sectionKeyValueSeparator = DefaultSectionKeyValueSeparator,
-            String sectionLeftDelimiter = DefaultSectionLeftDelimiter,
-            String sectionRightDelimiter = DefaultSectionRightDelimiter,
-            Boolean allowEmptyLines = true,
+            string fileExtension = DefaultFileExtension, 
+            string commentTag = DefaultCommentTag,
+            string sectionKeyValueSeparator = DefaultSectionKeyValueSeparator,
+            string sectionLeftDelimiter = DefaultSectionLeftDelimiter,
+            string sectionRightDelimiter = DefaultSectionRightDelimiter,
+            bool allowEmptyLines = true,
             IniFileAutoSaveMode autoSaveMode = IniFileAutoSaveMode.None
         )
         {
@@ -53,23 +51,23 @@ namespace EhouarnPerret.CSharp.Utilities.Core.IO.Ini
             AutoSaveMode = autoSaveMode;
         }
 
-        public String FileExtension { get; }
-        public const String DefaultFileExtension = @".ini";
+        public string FileExtension { get; }
+        public const string DefaultFileExtension = @".ini";
 
-        public String CommentTag { get; }
-        public const String DefaultCommentTag = @";";
+        public string CommentTag { get; }
+        public const string DefaultCommentTag = @";";
 
-        public String SectionKeyValueSeparator { get; }
-        public const String DefaultSectionKeyValueSeparator = @"=";
+        public string SectionKeyValueSeparator { get; }
+        public const string DefaultSectionKeyValueSeparator = @"=";
 
-        public String SectionLeftDelimiter { get; }
-        public const String DefaultSectionLeftDelimiter = @"[";
+        public string SectionLeftDelimiter { get; }
+        public const string DefaultSectionLeftDelimiter = @"[";
 
-        public String SectionRightDelimiter { get; }
-        public const String DefaultSectionRightDelimiter = @"]";
+        public string SectionRightDelimiter { get; }
+        public const string DefaultSectionRightDelimiter = @"]";
     
-        public Boolean AllowEmptyLines { get; } = false;
-        public Boolean IgnoreWhiteSpaces { get; } = true;
+        public bool AllowEmptyLines { get; }
+        public bool IgnoreWhiteSpaces { get; } = true;
 
         public IniFileAutoSaveMode AutoSaveMode { get; }
 
